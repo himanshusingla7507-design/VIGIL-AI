@@ -1,0 +1,86 @@
+{
+  "model_version": "v2.1.0",
+  "model_type": "CalibratedHistGradientBoosting",
+  "training_date": "2026-10-03T19:56:36Z",
+  "dataset_rows": 235370,
+  "feature_count": 35,
+  "train_rows": 169466,
+  "threshold_rows": 18830,
+  "test_rows": 47074,
+  "validation_metrics": {
+    "accuracy": 0.9780197085029799,
+    "precision": 0.9904272038862695,
+    "recall": 0.9577892918825561,
+    "f1": 0.9738348610964773,
+    "roc_auc": 0.9917805229836952,
+    "pr_auc": 0.9928382546441693,
+    "brier_score": 0.01866705572192877,
+    "fpr": 0.006900458314022349,
+    "fnr": 0.04221070811744387,
+    "confusion_matrix": [
+      [
+        19285,
+        134
+      ],
+      [
+        611,
+        13864
+      ]
+    ]
+  },
+  "random_split_metrics": {
+    "accuracy": 0.9765050771126311,
+    "precision": 0.9879289089788371,
+    "recall": 0.956675288499801,
+    "f1": 0.972050945112706,
+    "roc_auc": 0.9916230189591801,
+    "pr_auc": 0.9925751015080696,
+    "brier_score": 0.01957368721995204,
+    "fpr": 0.008713385242862439,
+    "fnr": 0.04332471150019897,
+    "confusion_matrix": [
+      [
+        26735,
+        235
+      ],
+      [
+        871,
+        19233
+      ]
+    ]
+  },
+  "domain_aware_metrics": {
+    "accuracy": 0.9810882470259743,
+    "precision": 0.9831877585867209,
+    "recall": 0.9645641389085755,
+    "f1": 0.9737869129699492,
+    "roc_auc": 0.989088929386578,
+    "pr_auc": 0.9893688021786551,
+    "brier_score": 0.01759779762184798,
+    "fpr": 0.009447191674662337,
+    "fnr": 0.03543586109142452,
+    "confusion_matrix": [
+      [
+        26842,
+        256
+      ],
+      [
+        550,
+        14971
+      ]
+    ]
+  },
+  "thresholds": {
+    "safe": 0.45000000000000007,
+    "phishing": 0.5
+  },
+  "threshold_selection": "dedicated stratified holdout (random_state=45), not test set",
+  "report": {
+    "original_rows": 235370,
+    "removed_missing_url": 0,
+    "removed_missing_label": 0,
+    "removed_invalid_label": 0,
+    "removed_duplicates": 0,
+    "removed_conflicting_labels": 0
+  }
+}

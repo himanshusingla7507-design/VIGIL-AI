@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIGIL</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+  <meta charset="UTF-8">
+  <title>VIGIL</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@400;500&family=Share+Tech+Mono&display=swap');
+
+:root {
+  --cyan: #00f5ff;
+  --green: #00ff88;
+  --yellow: #ffe600;
+  --red: #ff2244;
+  --bg: #020b14;
+  --glass: rgba(0,245,255,0.05);
+  --border: rgba(0,245,255,0.2);
+  --text: #c8f0ff;
+}
+
+body {
+  margin: 0;
+  padding: 15px;
+  width: 270px;
+  background: radial-gradient(circle at top, rgba(0,245,255,0.08), transparent 60%), var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+}
+/* HEADER */
+h3 {
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--cyan);
+  text-shadow: 0 0 15px var(--cyan);
+  margin-bottom: 12px;
+  margin-top: 5px;   /* ← ADD THIS */
+}
+
+/* GLASS CARD */
+.container {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(0,245,255,0.08);
+  animation: fadeIn 0.4s ease;   /* ← ADD HERE */
+}
+/* BUTTON */
+button {
+  width: 100%;
+  padding: 9px;
+  margin-top: 8px;
+  border: 1px solid var(--cyan);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--cyan);
+  font-family: 'Orbitron', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+button:hover {
+  background: rgba(0,245,255,0.12);
+  box-shadow:
+    0 0 10px rgba(0,245,255,0.6),
+    0 0 20px rgba(0,245,255,0.4);
+}
+
+/* RESULT BOX */
+#result {
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 10px;
+  background: rgba(0,245,255,0.05);
+  border: 1px solid rgba(0,245,255,0.2);
+  font-family: 'Share Tech Mono', monospace;
+  transition: all 0.3s ease;
+}
+
+/* RESULT STATES */
+.result-safe {
+  border-color: rgba(0,255,136,0.4);
+  box-shadow: 0 0 15px rgba(0,255,136,0.2);
+}
+
+.result-warn {
+  border-color: rgba(255,230,0,0.4);
+  box-shadow: 0 0 15px rgba(255,230,0,0.2);
+}
+
+.result-danger {
+  border-color: rgba(255,34,68,0.4);
+  box-shadow: 0 0 15px rgba(255,34,68,0.2);
+}
+
+/* STATES */
+.safe { color: var(--green); text-shadow: 0 0 10px var(--green); }
+.warn { color: var(--yellow); text-shadow: 0 0 10px var(--yellow); }
+.danger { color: var(--red); text-shadow: 0 0 10px var(--red); }
+
+.small-text {
+  font-size: 10px;
+  color: rgba(200,240,255,0.4);
+  margin-top: 6px;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+<body>
+  <h3>◈ VIGIL ◈</h3>
+
+  <div class="container">
+    <button id="scanBtn">⬡ SCAN URL</button>
+
+    <div class="small-text">Real-time AI phishing detection</div>
+
+    <div id="result">Awaiting scan...</div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+
+</html>

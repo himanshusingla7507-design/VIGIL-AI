@@ -1,0 +1,28 @@
+{
+  "original_rows": 235370,
+  "removed_missing_url": 0,
+  "removed_missing_label": 0,
+  "removed_invalid_label": 0,
+  "removed_invalid_url": 0,
+  "removed_duplicate_rows": 936,
+  "removed_conflicting_label_rows": 2,
+  "exact_duplicate_rows": 14,
+  "normalized_duplicate_rows": 937,
+  "conflicting_label_groups": 1,
+  "cross_source_duplicate_groups": 0,
+  "rows_after_cleaning": 234432,
+  "class_distribution": {
+    "0": 134849,
+    "1": 99583
+  },
+  "source_distribution": {
+    "local_file:final_dataset_v2.csv": 234432
+  },
+  "unique_registered_domains": 197707,
+  "file": "final_dataset_v2.csv",
+  "rows_total": 235370,
+  "rows_after_valid_label": 234432,
+  "duplicate_exact_urls": 14,
+  "conflicting_label_rows": 2,
+  "source_provenance": "The input CSV has no upstream source or collection-date fields."
+}
