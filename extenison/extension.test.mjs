@@ -14,6 +14,8 @@ test("manifest keeps permissions scoped to extension behavior", () => {
 test("all extension scripts are external and use the backend as source of truth", () => {
   const popup = read("popup.js");
   const background = read("background.js");
+  assert.match(background, /HEALTH_CHECK/);
+  assert.match(background, /fetchWithTimeout/);
   assert.match(background, /\/scan/);
   assert.doesNotMatch(background, /PHISHING_THRESHOLD|SAFE_THRESHOLD|predict_proba|innerHTML/);
   assert.doesNotMatch(popup, /innerHTML|insertAdjacentHTML|eval\(/);
@@ -28,6 +30,14 @@ test("blocked UX has explicit back and deliberate one-time bypass actions", () =
   assert.match(script, /BYPASS_ONCE/);
   assert.match(script, /GO_BACK/);
   assert.match(script, /textContent/);
+  assert.match(script, /sendWorkerMessage\(\{type: "GO_BACK"\}\)/);
+});
+
+test("popup translates missing service-worker receivers", () => {
+  const popup = read("popup.js");
+  assert.match(popup, /chrome\.runtime\.lastError/);
+  assert.match(popup, /WORKER_UNAVAILABLE/);
+  assert.match(popup, /Extension service unavailable/);
 });
 
 test("extension surfaces include reduced-motion and responsive rules", () => {

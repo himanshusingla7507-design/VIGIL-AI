@@ -6,6 +6,13 @@ const scans = new Map();
 const inFlight = new Map();
 const bypasses = new Map();
 
+async function fetchWithTimeout(url, options = {}, timeoutMs = 5000) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), timeoutMs);
+  try { return await fetch(url, {...options, signal: controller.signal}); }
+  finally { clearTimeout(timeout); }
+}
+
 function isExtensionPage(url) {
   return typeof url === "string" && (url.startsWith(chrome.runtime.getURL("")) || url.startsWith("chrome-extension://"));
 }
@@ -36,7 +43,7 @@ async function scanUrl(tabId, url) {
   if (cached && Date.now() - cached.at < CACHE_TTL_MS) return cached.result;
   if (inFlight.has(key)) return inFlight.get(key);
 
-  const request = fetch(`${API_BASE}/scan`, {
+  const request = fetchWithTimeout(`${API_BASE}/scan`, {
     method: "POST",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify({url})
@@ -94,6 +101,15 @@ chrome.tabs.onRemoved.addListener(tabId => {
 });
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message?.type === "HEALTH_CHECK") {
+    fetchWithTimeout(`${API_BASE}/health`).then(async response => {
+      const data = await response.json().catch(() => null);
+      if (!response.ok || data?.status !== "ok" || data?.model_loaded !== true) return {state: "BACKEND_OFFLINE"};
+      return {state: "CONNECTED", model_version: data.model_version || null};
+    }).catch(() => ({state: "BACKEND_OFFLINE"})).then(sendResponse);
+    return true;
+  }
+
   if (message?.type === "SCAN_CURRENT_TAB") {
     chrome.tabs.query({active: true, currentWindow: true}).then(async tabs => {
       const tab = tabs[0];
@@ -117,6 +133,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
   if (message?.type === "GO_BACK" && sender.tab?.id !== undefined) {
     chrome.tabs.goBack(sender.tab.id).catch(() => chrome.tabs.update(sender.tab.id, {url: "about:blank"}));
+    sendResponse({ok: true});
     return false;
   }
 
@@ -128,6 +145,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       await chrome.tabs.update(sender.tab.id, {url: state.url});
       await chrome.storage.session.remove(`blocked:${message.token}`);
     });
+    sendResponse({ok: true});
     return false;
   }
 

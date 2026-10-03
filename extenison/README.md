@@ -44,6 +44,7 @@ node --check extenison/background.js
 node --check extenison/popup.js
 node --check extenison/blocked.js
 node --test extenison/extension.test.mjs
+node --test extenison/background.runtime.test.mjs
 ```
 
 The browser-flow scenarios still require loading the unpacked extension in a Chromium profile: safe navigation, suspicious navigation, phishing interception, back, blocked-page reload, deliberate bypass, and backend-offline behavior.

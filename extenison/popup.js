@@ -28,6 +28,21 @@ function clearResult() {
   $("evidence-list").replaceChildren();
 }
 
+function sendWorkerMessage(message) {
+  return new Promise((resolve, reject) => {
+    chrome.runtime.sendMessage(message, response => {
+      const error = chrome.runtime.lastError;
+      if (error) {
+        const workerError = new Error("The VIGIL extension service worker is unavailable.");
+        workerError.code = "WORKER_UNAVAILABLE";
+        reject(workerError);
+        return;
+      }
+      resolve(response);
+    });
+  });
+}
+
 function renderResult(result) {
   const label = result.label;
   const summary = label === "SAFE" ? "Low-risk URL characteristics detected." : label === "SUSPICIOUS" ? "Review this URL before continuing." : "High-risk URL detected. Navigation is blocked.";
@@ -69,9 +84,19 @@ async function scanCurrent() {
   if (activeRequest) return activeRequest;
   clearResult();
   $("scan-btn").disabled = true;
-  setState("SCANNING", "Scanning", "Analyzing the current URL with VIGIL.");
-  setProtection("online", "Backend connected");
-  activeRequest = chrome.runtime.sendMessage({type: "SCAN_CURRENT_TAB"}).then(response => {
+  setState("INITIALIZING", "Checking connection", "Connecting to VIGIL protection.");
+  setProtection("", "Checking");
+  activeRequest = sendWorkerMessage({type: "HEALTH_CHECK"}).then(health => {
+    if (!health || health.state === "BACKEND_OFFLINE") {
+      clearResult(); setState("ERROR", "Backend unavailable", "VIGIL could not reach the local Flask service."); setProtection("offline", "Offline");
+      $("notice").hidden = false; $("notice").textContent = "Start the backend at http://127.0.0.1:5000, then choose Retry.";
+      return null;
+    }
+    setState("SCANNING", "Scanning", "Analyzing the current URL with VIGIL.");
+    setProtection("online", "Connected");
+    return sendWorkerMessage({type: "SCAN_CURRENT_TAB"});
+  }).then(response => {
+    if (!response) return;
     if (!response || response.state === "UNSUPPORTED") return renderUnsupported(response?.url);
     currentUrl = response.url || currentUrl;
     $("site-url").textContent = hostLabel(currentUrl);
@@ -82,7 +107,15 @@ async function scanCurrent() {
     }
     renderResult(response.result);
   }).catch(error => {
-    clearResult(); setState("ERROR", "Scan unavailable", error.message || "VIGIL could not complete this scan."); setProtection("offline", "Offline");
+    clearResult();
+    if (error.code === "WORKER_UNAVAILABLE") {
+      setState("ERROR", "Extension service unavailable", "Reload VIGIL from the browser extensions page, then retry.");
+      setProtection("offline", "Extension error");
+      $("notice").hidden = false; $("notice").textContent = "The popup could not reach the VIGIL service worker. The backend status is unknown.";
+      return;
+    }
+    setState("ERROR", "Scan unavailable", "VIGIL could not complete this scan."); setProtection("offline", "Scan error");
+    $("notice").hidden = false; $("notice").textContent = "The scan did not complete. Choose Retry to try again.";
   }).finally(() => { activeRequest = null; $("scan-btn").disabled = false; });
   return activeRequest;
 }

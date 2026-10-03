@@ -41,3 +41,4 @@ jobs:
           node --check extenison/popup.js
           node --check extenison/blocked.js
           node --test extenison/extension.test.mjs
+          node --test extenison/background.runtime.test.mjs
