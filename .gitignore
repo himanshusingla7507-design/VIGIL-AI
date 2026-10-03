@@ -1,8 +1,53 @@
+# Python environments and caches
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Node and frontend build output
+node_modules/
+frontend/node_modules/
+dist/
+build/
+frontend/dist/
+frontend/qa-output/
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+frontend/.env
+frontend/.env.*
+!frontend/.env.example
+
+# IDE and operating-system files
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs and local runtime state
+*.log
+*.sqlite3
+
+# Large/local data and generated model bundles.
+# The named runtime bundle is intentionally available for review because the
+# API cannot run from a clean checkout without it. Other pickles remain ignored.
 *.csv
 *.pkl
-__pycache__/
-.env
-frontend/node_modules/
-frontend/dist/
-frontend/.env
-frontend/qa-output/
+models/backup/
+models/baseline/
+!phishing_model.pkl
+!feature_names.pkl
+!feature_importance.csv
+
+# One-off local analysis helper
+scripts/final_ml_pass.py
+
+# Notebook/runtime artifacts
+.ipynb_checkpoints/

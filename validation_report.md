@@ -2,20 +2,20 @@
 
 These synthetic examples do not represent real-world phishing prevalence and are not a substitute for dataset-level evaluation. Bare homepages of popular domains can still be misclassified by a URL-only model.
 
-Passed: 13/13
+Passed: 6/13
 
 | URL | Label | Probability | Risk | Expected | Pass |
 |---|---:|---:|---:|---|---|
-| https://google.com | SAFE | 0.021837 | 0 | SAFE | True |
-| https://github.com | SAFE | 0.013584 | 0 | SAFE | True |
-| https://microsoft.com | SAFE | 0.011354 | 0 | SAFE | True |
-| https://apple.com | SAFE | 0.010953 | 0 | SAFE | True |
-| https://amazon.com | SAFE | 0.020521 | 0 | SAFE | True |
-| https://python.org | SAFE | 0.028633 | 0 | SAFE | True |
-| https://cloudflare.com | SAFE | 0.010780 | 0 | SAFE | True |
-| https://fast.com/ | SAFE | 0.003954 | 0 | SAFE | True |
-| https://paypal-login.example.com/verify-account | PHISHING | 0.998246 | 100 | PHISHING | True |
-| http://secure-bank-login.example.com/update-account | PHISHING | 0.998445 | 100 | PHISHING | True |
-| http://microsoft-security.example.com/login | PHISHING | 0.998445 | 100 | PHISHING | True |
-| http://free-iphone-winner.example.com/claim | PHISHING | 0.998445 | 100 | PHISHING | True |
-| http://account-verify.example.com/signin/password | PHISHING | 0.998445 | 100 | PHISHING | True |
+| https://google.com | SUSPICIOUS | 0.174197 | 8 | SAFE | False |
+| https://github.com | SUSPICIOUS | 0.164589 | 6 | SAFE | False |
+| https://microsoft.com | SUSPICIOUS | 0.165807 | 6 | SAFE | False |
+| https://apple.com | SUSPICIOUS | 0.163865 | 6 | SAFE | False |
+| https://amazon.com | SUSPICIOUS | 0.170500 | 7 | SAFE | False |
+| https://python.org | SUSPICIOUS | 0.180289 | 9 | SAFE | False |
+| https://cloudflare.com | SUSPICIOUS | 0.156086 | 4 | SAFE | False |
+| https://fast.com/ | SAFE | 0.060029 | 0 | SAFE | True |
+| https://paypal-login.example.com/verify-account | PHISHING | 0.997742 | 100 | PHISHING | True |
+| http://secure-bank-login.example.com/update-account | PHISHING | 0.997742 | 100 | PHISHING | True |
+| http://microsoft-security.example.com/login | PHISHING | 0.997715 | 100 | PHISHING | True |
+| http://free-iphone-winner.example.com/claim | PHISHING | 0.997750 | 100 | PHISHING | True |
+| http://account-verify.example.com/signin/password | PHISHING | 0.997742 | 100 | PHISHING | True |

@@ -759,5 +759,101 @@
     "model_sha256": "5f16e09d5f6fb613d391051b2b5693cf47478356d77cec8c8e52f5b309159ba2",
     "feature_names_sha256": "d02a7c9cd2cb5b73c2bbccc7347c240fed6d77593b8e7d602dbb67f424099da9",
     "feature_importance_sha256": "e85920babf6d5f35919727f301b8831b240cf73a3501df68515a3449b691a09b"
+  },
+  "final_ml_pass": {
+    "generated_at_utc": "2026-10-03T21:08:07+00:00",
+    "baseline_artifacts": "models\\baseline\\20261004-pre-ml-pass",
+    "random_holdout_metrics": {
+      "decision_threshold": 0.5,
+      "accuracy": 0.8609422654467123,
+      "precision": 0.9559594309441154,
+      "recall": 0.7051262740372546,
+      "f1": 0.8116042533518262,
+      "roc_auc": 0.8845801045789786,
+      "pr_auc": 0.9006214375042932,
+      "brier_score": 0.10836509470792338,
+      "fpr": 0.023989618094178718,
+      "fnr": 0.2948737259627454,
+      "confusion_matrix": [
+        [
+          26323,
+          647
+        ],
+        [
+          5873,
+          14044
+        ]
+      ]
+    },
+    "domain_aware_holdout_metrics": {
+      "decision_threshold": 0.5,
+      "accuracy": 0.8631552577190456,
+      "precision": 0.951943776117513,
+      "recall": 0.7217608372137679,
+      "f1": 0.821023890784983,
+      "roc_auc": 0.8874904284071098,
+      "pr_auc": 0.9061921631722574,
+      "brier_score": 0.10673927965551437,
+      "fpr": 0.028038418913926857,
+      "fnr": 0.27823916278623206,
+      "confusion_matrix": [
+        [
+          26311,
+          759
+        ],
+        [
+          5796,
+          15035
+        ]
+      ]
+    },
+    "additional_features_retained": false,
+    "feature_promotion_gate": {
+      "validation": false,
+      "random_holdout": false,
+      "domain_aware_holdout": false,
+      "approved_for_promotion": false
+    },
+    "external_validation_status": "blocked_not_independent",
+    "thresholds": {
+      "safe": 0.13140956380602112,
+      "phishing": 0.6961575221255231
+    },
+    "inference_performance": {
+      "model_file_size_bytes": 1100240,
+      "serialized_model_size_bytes": 1100312,
+      "direct_predict_proba_median_ms": 15.27299999997922,
+      "direct_predict_proba_p95_ms": 16.233699999997953,
+      "end_to_end_service_median_ms": 16.45989999997255,
+      "end_to_end_service_p95_ms": 17.413199999998596,
+      "service_timing_sample_count": 30
+    },
+    "fast_com_regression": [
+      {
+        "url": "https://fast.com/",
+        "label": "SAFE",
+        "probability": 0.060029,
+        "risk_score": 0
+      },
+      {
+        "url": "https://fast.com",
+        "label": "SAFE",
+        "probability": 0.060029,
+        "risk_score": 0
+      },
+      {
+        "url": "https://www.fast.com/",
+        "label": "SAFE",
+        "probability": 0.060029,
+        "risk_score": 0
+      }
+    ],
+    "report_files": [
+      "reports\\error_analysis.json",
+      "reports\\model_comparison.json",
+      "reports\\external_validation.json",
+      "reports\\calibration.json"
+    ],
+    "temporal_validation": "not run: no reliable collection dates"
   }
 }

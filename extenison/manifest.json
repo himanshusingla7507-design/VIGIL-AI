@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "VIGIL Phishing Detector",
-  "version": "1.0",
+  "version": "1.1.0",
 
   "icons": {
     "16": "icons/icon-16.png",
@@ -9,16 +9,13 @@
     "128": "icons/icon-128.png"
   },
 
-  "permissions": ["activeTab", "scripting", "tabs"],
+  "permissions": ["tabs", "webNavigation", "storage"],
 
   "host_permissions": [
-    "https://vigil-api-5sed.onrender.com/*",
     "http://127.0.0.1:5000/*"
   ],
 
-  "action": {
-    "default_popup": "popup.html"
-  },
+  "action": { "default_popup": "popup.html", "default_title": "VIGIL URL protection" },
 
   "background": {
     "service_worker": "background.js"

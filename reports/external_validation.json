@@ -1,0 +1,70 @@
+{
+  "status": "blocked_not_independent",
+  "external_metrics": {
+    "precision": null,
+    "recall": null,
+    "f1": null,
+    "roc_auc": null,
+    "pr_auc": null,
+    "fpr": null,
+    "fnr": null,
+    "brier_score": null,
+    "ece": null
+  },
+  "candidates": [
+    {
+      "name": "PhiUSIIL IF3070 coursework split",
+      "source": "https://github.com/fetiai/phiusiil-if3070-stei-itb-2024-2025-1",
+      "upstream_source": "https://archive.ics.uci.edu/dataset/967/phiusiil+phishing+url+dataset",
+      "publication_date": "2024/2025-1 coursework release; exact day not stated in source README",
+      "license": "CC BY 4.0, as stated by the dataset README",
+      "label_semantics": {
+        "1": "legitimate",
+        "0": "phishing",
+        "training_label_mapping": "invert coursework labels to the local 0=benign, 1=phishing convention"
+      },
+      "sample_size": 140404,
+      "domain_coverage": {
+        "unique_registered_domains_in_rows_with_url": 93773,
+        "unique_normalized_url_keys": 96908
+      },
+      "feature_compatibility": "URL column exists; 21 listed URL-only columns are compatible in principle; 28 page-derived columns are unavailable for URL-only inference.",
+      "duplicate_overlap": {
+        "normalized_url_overlap_rows": 96915,
+        "overlap_rate_among_external_rows_with_urls": 0.9999793637855072,
+        "label_agreement_after_inversion": 96915,
+        "label_agreement_without_inversion": 0,
+        "duplicate_normalized_url_rows_within_candidate": 9
+      },
+      "provenance": "Course README says the corpus is a resampled distribution of the same upstream PhiUSIIL dataset. Normalized URL overlap confirms it is not an independent source.",
+      "used_for_training": false,
+      "external_validation": false,
+      "status": "not_independent_due_to_near_total_overlap",
+      "rows_with_usable_urls": 96917,
+      "rows_missing_or_invalid_url": 43487,
+      "label_counts": {
+        "1": 129850,
+        "0": 10554
+      }
+    },
+    {
+      "name": "ISCX-URL-2016",
+      "source": "https://www.unb.ca/cic/datasets/url-2016.html",
+      "publication_date": "2016",
+      "license": "No reuse license verified from the available official source",
+      "label_semantics": "Separate benign, phishing, spam, malware, and defacement categories; collapsing categories would be incompatible.",
+      "sample_size": null,
+      "domain_coverage": null,
+      "feature_compatibility": "Raw URL strings are described, but the official download was not available for inspection in the prior source check.",
+      "duplicate_overlap": null,
+      "provenance": "Official Canadian Institute for Cybersecurity dataset page; download requires a form.",
+      "status": "not_downloaded_license_and_access_unverified"
+    }
+  ],
+  "temporal_validation": {
+    "status": "not_run",
+    "reason": "The local source has no collection dates, and the coursework file has no reliable per-URL collection dates."
+  },
+  "reason": "No external metrics are reported: 96,915 of 96,917 valid candidate URL rows overlap the local corpus after the same URL canonicalization, so evaluation would be contaminated.",
+  "candidate_file_sha256": "9f02848b006629fbae94a64dfa367caafefdd78ef67074092eb1c911301cbc5e"
+}
