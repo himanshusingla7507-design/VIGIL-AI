@@ -5,11 +5,35 @@ const CACHE_TTL_MS = 30_000;
 const scans = new Map();
 const inFlight = new Map();
 const bypasses = new Map();
+const latestNavigations = new Map();
+
+function debugUrl(url) {
+  try {
+    const parsed = new URL(url);
+    return `${parsed.protocol}//${parsed.host}/`;
+  } catch {
+    return "unavailable";
+  }
+}
+
+function logScan(url, result) {
+  if (globalThis.VIGIL_DEBUG !== true) return;
+  console.info(`[SCAN]\nURL: ${debugUrl(url)}\nVERDICT: ${result?.label || "ERROR"}\nPROBABILITY: ${result?.probability ?? "n/a"}\nRISK: ${result?.risk_score ?? "n/a"}`);
+}
+
+function logBlockDecision(url, verdict, action) {
+  if (globalThis.VIGIL_DEBUG !== true) return;
+  console.info(`[BLOCK DECISION]\nURL: ${debugUrl(url)}\nVERDICT: ${verdict}\nACTION: ${action}`);
+}
 
 async function fetchWithTimeout(url, options = {}, timeoutMs = 5000) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), timeoutMs);
-  try { return await fetch(url, {...options, signal: controller.signal}); }
+  try {
+    const response = await fetch(url, {...options, signal: controller.signal});
+    const data = await response.json().catch(() => null);
+    return {response, data};
+  }
   finally { clearTimeout(timeout); }
 }
 
@@ -22,7 +46,7 @@ function isScannableUrl(url) {
 }
 
 function cacheKey(tabId, url) {
-  return `${tabId}:${url}`;
+  return `${tabId}:${new URL(url).href}`;
 }
 
 function badgeFor(label) {
@@ -38,24 +62,31 @@ function setBadge(tabId, label, offline = false) {
 }
 
 async function scanUrl(tabId, url) {
-  const key = cacheKey(tabId, url);
+  const normalizedUrl = new URL(url).href;
+  const key = cacheKey(tabId, normalizedUrl);
   const cached = scans.get(key);
-  if (cached && Date.now() - cached.at < CACHE_TTL_MS) return cached.result;
+  if (cached && Date.now() - cached.at < CACHE_TTL_MS) {
+    logScan(normalizedUrl, cached.result);
+    return cached.result;
+  }
   if (inFlight.has(key)) return inFlight.get(key);
 
   const request = fetchWithTimeout(`${API_BASE}/scan`, {
     method: "POST",
     headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({url})
-  }).then(async response => {
-    const data = await response.json().catch(() => null);
+    body: JSON.stringify({url: normalizedUrl})
+  }).then(({response, data}) => {
     if (!response.ok) throw new Error(data?.message || "The VIGIL backend rejected the scan.");
     if (!data || !["SAFE", "SUSPICIOUS", "PHISHING"].includes(data.label)) throw new Error("The VIGIL backend returned an invalid result.");
     scans.set(key, {at: Date.now(), result: data});
-    setBadge(tabId, data.label);
+    logScan(normalizedUrl, data);
+    const navigation = latestNavigations.get(tabId);
+    if (!navigation || navigation.url === normalizedUrl) setBadge(tabId, data.label);
     return data;
   }).catch(error => {
-    setBadge(tabId, null, true);
+    logScan(normalizedUrl, null);
+    const navigation = latestNavigations.get(tabId);
+    if (!navigation || navigation.url === normalizedUrl) setBadge(tabId, null, true);
     throw error;
   }).finally(() => inFlight.delete(key));
 
@@ -69,25 +100,44 @@ async function saveBlockedState(tabId, url, result) {
   return token;
 }
 
-async function blockNavigation(details) {
-  if (details.frameId !== 0 || !isScannableUrl(details.url)) return;
-  const bypassUrl = bypasses.get(details.tabId);
-  if (bypassUrl === details.url) {
-    bypasses.delete(details.tabId);
-    return;
-  }
+async function blockNavigation(details, navigation) {
   try {
     const result = await scanUrl(details.tabId, details.url);
-    if (result.label !== "PHISHING") return;
+    if (latestNavigations.get(details.tabId) !== navigation) {
+      logBlockDecision(details.url, result.label, "ALLOW (navigation changed)");
+      return;
+    }
+    if (result.label !== "PHISHING") {
+      logBlockDecision(details.url, result.label, "ALLOW");
+      return;
+    }
     const token = await saveBlockedState(details.tabId, details.url, result);
+    if (latestNavigations.get(details.tabId) !== navigation) {
+      await chrome.storage.session.remove(`blocked:${token}`);
+      logBlockDecision(details.url, result.label, "ALLOW (navigation changed)");
+      return;
+    }
     const blockedUrl = chrome.runtime.getURL(`blocked.html?token=${encodeURIComponent(token)}`);
+    logBlockDecision(details.url, result.label, "BLOCK");
     await chrome.tabs.update(details.tabId, {url: blockedUrl});
   } catch {
+    logBlockDecision(details.url, "ERROR", "ALLOW");
     // Fail open with an honest offline state. A failed request is not a phishing verdict.
   }
 }
 
-chrome.webNavigation.onBeforeNavigate.addListener(details => { void blockNavigation(details); });
+chrome.webNavigation.onBeforeNavigate.addListener(details => {
+  if (details.frameId !== 0) return;
+  const navigation = {url: isScannableUrl(details.url) ? new URL(details.url).href : null};
+  latestNavigations.set(details.tabId, navigation);
+  if (!isScannableUrl(details.url)) return;
+  const bypassUrl = bypasses.get(details.tabId);
+  if (bypassUrl === navigation.url) {
+    bypasses.delete(details.tabId);
+    return;
+  }
+  return blockNavigation(details, navigation);
+});
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   if (changeInfo.status !== "complete" || !isScannableUrl(tab.url)) return;
@@ -98,12 +148,12 @@ chrome.tabs.onRemoved.addListener(tabId => {
   for (const key of scans.keys()) if (key.startsWith(`${tabId}:`)) scans.delete(key);
   for (const key of inFlight.keys()) if (key.startsWith(`${tabId}:`)) inFlight.delete(key);
   bypasses.delete(tabId);
+  latestNavigations.delete(tabId);
 });
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message?.type === "HEALTH_CHECK") {
-    fetchWithTimeout(`${API_BASE}/health`).then(async response => {
-      const data = await response.json().catch(() => null);
+    fetchWithTimeout(`${API_BASE}/health`).then(({response, data}) => {
       if (!response.ok || data?.status !== "ok" || data?.model_loaded !== true) return {state: "BACKEND_OFFLINE"};
       return {state: "CONNECTED", model_version: data.model_version || null};
     }).catch(() => ({state: "BACKEND_OFFLINE"})).then(sendResponse);
@@ -141,7 +191,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     chrome.storage.session.get(`blocked:${message.token}`).then(async data => {
       const state = data[`blocked:${message.token}`];
       if (!state || state.tabId !== sender.tab.id) return;
-      bypasses.set(sender.tab.id, state.url);
+      bypasses.set(sender.tab.id, new URL(state.url).href);
       await chrome.tabs.update(sender.tab.id, {url: state.url});
       await chrome.storage.session.remove(`blocked:${message.token}`);
     });

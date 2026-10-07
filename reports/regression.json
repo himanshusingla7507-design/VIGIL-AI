@@ -1,0 +1,57 @@
+{
+  "status": "freshly_measured",
+  "model_version": "v2.1.0",
+  "latency_batch_ms": 146.25269999987722,
+  "results": [
+    {
+      "url": "https://fast.com/",
+      "label": "SAFE",
+      "probability": 0.21718953437528063
+    },
+    {
+      "url": "https://fast.com",
+      "label": "SAFE",
+      "probability": 0.21718953437528063
+    },
+    {
+      "url": "https://www.fast.com/",
+      "label": "SAFE",
+      "probability": 0.21718953437528063
+    },
+    {
+      "url": "https://google.com",
+      "label": "SUSPICIOUS",
+      "probability": 0.2614145962237609
+    },
+    {
+      "url": "https://github.com",
+      "label": "SAFE",
+      "probability": 0.25476798904773806
+    },
+    {
+      "url": "https://microsoft.com",
+      "label": "SUSPICIOUS",
+      "probability": 0.26606018773179474
+    },
+    {
+      "url": "https://apple.com",
+      "label": "SUSPICIOUS",
+      "probability": 0.25702362229997155
+    },
+    {
+      "url": "https://amazon.com",
+      "label": "SUSPICIOUS",
+      "probability": 0.2665529322477183
+    },
+    {
+      "url": "https://python.org",
+      "label": "SUSPICIOUS",
+      "probability": 0.2870688112415795
+    },
+    {
+      "url": "https://cloudflare.com",
+      "label": "SUSPICIOUS",
+      "probability": 0.2625616066411874
+    }
+  ]
+}

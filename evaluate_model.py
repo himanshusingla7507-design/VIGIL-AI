@@ -32,13 +32,23 @@ def main() -> None:
     if not os.path.exists(DATASET):
         raise FileNotFoundError(f"Dataset not found: {DATASET}. Run prepare_dataset.py first.")
 
-    df = pd.read_csv(DATASET)
-    features = pd.DataFrame(df["url"].map(extract_features).tolist())
-    y = df["label"].astype(int).reset_index(drop=True)
     model, names, metadata = load_model_bundle()
     dataset_hash = _sha256(DATASET)
     if metadata.get("dataset", {}).get("sha256") != dataset_hash:
-        raise RuntimeError("The saved model does not identify this prepared dataset; refusing to report holdout metrics.")
+        report = {
+            "evaluation_status": "blocked_model_dataset_mismatch",
+            "evaluated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+            "dataset_sha256": dataset_hash,
+            "model_dataset_sha256": metadata.get("dataset", {}).get("sha256"),
+            "reason": "The rejected candidate dataset is retained for audit, while the production baseline was intentionally restored. No mixed-dataset holdout metrics are reported.",
+        }
+        with open(REPORT_PATH, "w", encoding="utf-8") as f:
+            json.dump(report, f, indent=2)
+        print(json.dumps(report, indent=2))
+        return report
+    df = pd.read_csv(DATASET)
+    features = pd.DataFrame(df["url"].map(extract_features).tolist())
+    y = df["label"].astype(int).reset_index(drop=True)
     feature_hash = _sha256(os.path.join(ROOT, "feature_extractor.py"))
     if metadata.get("feature_extractor_sha256") != feature_hash:
         raise RuntimeError("The saved model does not identify this feature extractor; refusing to report holdout metrics.")

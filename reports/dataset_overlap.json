@@ -1,0 +1,12 @@
+{
+  "generated_at_utc": "2026-10-07T13:22:45+00:00",
+  "canonicalization": "feature_extractor.normalize_url + feature_extractor._analysis_url",
+  "phiusiil_normalized_unique_urls": 234433,
+  "feed_normalized_unique_urls": 784385,
+  "cross_source_normalized_overlap_urls": 9017,
+  "phishing_database_rows_overlapping_phiusiil": 9017,
+  "phishing_database_unique_rows_after_overlap_removal": 775368,
+  "domain_overlap_count": 8865,
+  "overlap_is_independent_validation": false,
+  "notes": "URLs are compared after VIGIL canonicalization; no feed URL was opened or fetched."
+}

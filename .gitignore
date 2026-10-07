@@ -35,13 +35,14 @@ Thumbs.db
 *.log
 *.sqlite3
 
-# Large/local data and generated model bundles.
-# The named runtime bundle is intentionally available for review because the
-# API cannot run from a clean checkout without it. Other pickles remain ignored.
+# Large/local data and generated model bundles
 *.csv
 *.pkl
+
 models/backup/
 models/baseline/
+
+# Keep production model artifacts required by the API
 !phishing_model.pkl
 !feature_names.pkl
 !feature_importance.csv

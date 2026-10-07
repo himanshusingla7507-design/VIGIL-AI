@@ -1,0 +1,760 @@
+{
+  "decision": "DO NOT PROMOTE",
+  "selected_model": "hist_gradient_boosting",
+  "training_rows": 337123,
+  "legitimate": 134849,
+  "phishing": 202274,
+  "source_composition": {
+    "all_combined": {
+      "rows": 854870,
+      "legitimate": 134849,
+      "phishing": 720021
+    },
+    "controlled": {
+      "rows": 337123,
+      "legitimate": 134849,
+      "phishing": 202274,
+      "phishing_to_legitimate_ratio": 1.5000037078510038
+    },
+    "controlled_sources": {
+      "PhiUSIIL": 234433,
+      "phishing_database_active": 102690
+    },
+    "new_phishing_rows_selected": 102690,
+    "sampling": "all legitimate PhiUSIIL + all old PhiUSIIL phishing + stable SHA-256 ordered new phishing to 1.5:1"
+  },
+  "label_audit": {
+    "PhiUSIIL": {
+      "legitimate": 134849,
+      "phishing": 99584
+    },
+    "phishing_database_active": {
+      "legitimate": 0,
+      "phishing": 620437
+    },
+    "mapping": [
+      "PhiUSIIL source 1 legitimate -> VIGIL 0",
+      "PhiUSIIL source 0 phishing -> VIGIL 1",
+      "Phishing.Database -> VIGIL 1"
+    ]
+  },
+  "domain_split": {
+    "strategy": "registered-domain GroupShuffleSplit",
+    "train_rows": 152904,
+    "calibration_rows": 51388,
+    "threshold_rows": 66865,
+    "test_rows": 65966,
+    "overlapping_domains": 0
+  },
+  "configuration_a_full_combined": {
+    "logistic_regression": {
+      "accuracy": 0.9140975811071347,
+      "precision": 0.9663709875784037,
+      "recall": 0.9292567188008161,
+      "f1": 0.9474505252686632,
+      "roc_auc": 0.9563378328754222,
+      "pr_auc": 0.9919009145056188,
+      "brier": 0.0600118857565661,
+      "fpr": 0.16170763260025872,
+      "fnr": 0.070743281199184,
+      "confusion_matrix": [
+        [
+          22680,
+          4375
+        ],
+        [
+          9571,
+          125721
+        ]
+      ]
+    },
+    "random_forest": {
+      "accuracy": 0.9191238519960332,
+      "precision": 0.9762873896634541,
+      "recall": 0.9254279632202939,
+      "f1": 0.9501775848460932,
+      "roc_auc": 0.9649317570445506,
+      "pr_auc": 0.9934340939026225,
+      "brier": 0.05564336733646991,
+      "fpr": 0.11240066531140269,
+      "fnr": 0.07457203677970611,
+      "confusion_matrix": [
+        [
+          24014,
+          3041
+        ],
+        [
+          10089,
+          125203
+        ]
+      ]
+    },
+    "hist_gradient_boosting": {
+      "accuracy": 0.918433971677949,
+      "precision": 0.95336017710949,
+      "recall": 0.9485261508441002,
+      "f1": 0.9509370206522464,
+      "roc_auc": 0.9660112349420684,
+      "pr_auc": 0.9936088041143825,
+      "brier": 0.056679025923685226,
+      "fpr": 0.232045832563297,
+      "fnr": 0.05147384915589983,
+      "confusion_matrix": [
+        [
+          20777,
+          6278
+        ],
+        [
+          6964,
+          128328
+        ]
+      ]
+    }
+  },
+  "candidate_models": {
+    "logistic_regression": {
+      "validation": {
+        "accuracy": 0.8715920137590668,
+        "precision": 0.9431564679637421,
+        "recall": 0.8355640057038501,
+        "f1": 0.8861061735600775,
+        "roc_auc": 0.9166731357811994,
+        "pr_auc": 0.9575153171498063,
+        "brier": 0.09832072313346611,
+        "fpr": 0.07485497545738509,
+        "fnr": 0.1644359942961499,
+        "confusion_matrix": [
+          [
+            24879,
+            2013
+          ],
+          [
+            6573,
+            33400
+          ]
+        ],
+        "selection_score": 0.6767589010452525
+      },
+      "domain_test": {
+        "accuracy": 0.8652032865415518,
+        "precision": 0.9416588839598412,
+        "recall": 0.823969559221615,
+        "f1": 0.8788918852659966,
+        "roc_auc": 0.9119636197637682,
+        "pr_auc": 0.9542792515792798,
+        "brier": 0.10214396681350123,
+        "fpr": 0.07456729334527007,
+        "fnr": 0.176030440778385,
+        "confusion_matrix": [
+          [
+            24809,
+            1999
+          ],
+          [
+            6893,
+            32265
+          ]
+        ],
+        "calibration": {
+          "expected_calibration_error": 0.02780294950579945,
+          "reliability_bins": [
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "count": 20311,
+              "mean_probability": 0.15676076939913627,
+              "positive_rate": 0.1912756634336074
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.30000000000000004,
+              "count": 5883,
+              "mean_probability": 0.24155711802392585,
+              "positive_rate": 0.19343872174060853
+            },
+            {
+              "lower": 0.30000000000000004,
+              "upper": 0.4,
+              "count": 3358,
+              "mean_probability": 0.345077990741078,
+              "positive_rate": 0.25104228707564025
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 2150,
+              "mean_probability": 0.44422831073954827,
+              "positive_rate": 0.47767441860465115
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6000000000000001,
+              "count": 1495,
+              "mean_probability": 0.5459835642622494,
+              "positive_rate": 0.611371237458194
+            },
+            {
+              "lower": 0.6000000000000001,
+              "upper": 0.7000000000000001,
+              "count": 1048,
+              "mean_probability": 0.6487841118520024,
+              "positive_rate": 0.6479007633587787
+            },
+            {
+              "lower": 0.7000000000000001,
+              "upper": 0.8,
+              "count": 1162,
+              "mean_probability": 0.751630432681677,
+              "positive_rate": 0.6660929432013769
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 1369,
+              "mean_probability": 0.8536253877238978,
+              "positive_rate": 0.7450693937180424
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 29190,
+              "mean_probability": 0.9853522519700858,
+              "positive_rate": 0.989311408016444
+            }
+          ]
+        },
+        "policy": {
+          "safe_rate": 0.07318921868841524,
+          "suspicious_rate": 0.49054058151168783,
+          "phishing_rate": 0.4362701997998969,
+          "false_safe_rate": 0.023366872669697124,
+          "false_phishing_rate": 0.009735899731423456,
+          "fpr": 0.009735899731423456
+        },
+        "thresholds": {
+          "safe": 0.1400551171760131,
+          "phishing": 0.9216392738228517
+        },
+        "hard_cohorts": {
+          "pathless_phishing": {
+            "samples": 19945,
+            "recall": 0.46658310353472043,
+            "fnr": 0.5334168964652796
+          },
+          "short_phishing": {
+            "samples": 27663,
+            "recall": 0.615406861150273,
+            "fnr": 0.38459313884972707
+          },
+          "https_phishing": {
+            "samples": 24318,
+            "recall": 0.8508512213175425,
+            "fnr": 0.14914877868245743
+          },
+          "no_suspicious_token": {
+            "samples": 35088,
+            "recall": 0.6973039215686274,
+            "fnr": 0.30269607843137253
+          },
+          "no_suspicious_tld": {
+            "samples": 36271,
+            "recall": 0.7066526977475118,
+            "fnr": 0.29334730225248823
+          },
+          "no_digits": {
+            "samples": 18240,
+            "recall": 0.47072368421052635,
+            "fnr": 0.5292763157894737
+          },
+          "ordinary_looking_domains": {
+            "samples": 32238,
+            "recall": 0.6705440784167752,
+            "fnr": 0.3294559215832248
+          }
+        },
+        "latency": {
+          "median_ms": 0.5514499998753308,
+          "p95_ms": 0.7138550001855036
+        },
+        "model_size_bytes": 1938,
+        "fit_seconds": 16.299378000000615
+      }
+    },
+    "random_forest": {
+      "validation": {
+        "accuracy": 0.8763329095939579,
+        "precision": 0.9502385821404227,
+        "recall": 0.836964951342156,
+        "f1": 0.8900121041220521,
+        "roc_auc": 0.9280744887299895,
+        "pr_auc": 0.9627190081107289,
+        "brier": 0.09230701700800838,
+        "fpr": 0.06514948683623382,
+        "fnr": 0.16303504865784404,
+        "confusion_matrix": [
+          [
+            25140,
+            1752
+          ],
+          [
+            6517,
+            33456
+          ]
+        ],
+        "selection_score": 0.6828443580701762
+      },
+      "domain_test": {
+        "accuracy": 0.8730103386593093,
+        "precision": 0.9496070813005755,
+        "recall": 0.8301241125695898,
+        "f1": 0.885854828380275,
+        "roc_auc": 0.9264281496891238,
+        "pr_auc": 0.9609839724858076,
+        "brier": 0.09488236786983022,
+        "fpr": 0.06434646374216652,
+        "fnr": 0.16987588743041013,
+        "confusion_matrix": [
+          [
+            25083,
+            1725
+          ],
+          [
+            6652,
+            32506
+          ]
+        ],
+        "calibration": {
+          "expected_calibration_error": 0.019753621185841008,
+          "reliability_bins": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "count": 1214,
+              "mean_probability": 0.09375451313880741,
+              "positive_rate": 0.09472817133443164
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "count": 21131,
+              "mean_probability": 0.15455901640098343,
+              "positive_rate": 0.17249538592589087
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.30000000000000004,
+              "count": 5940,
+              "mean_probability": 0.24278009796631247,
+              "positive_rate": 0.2769360269360269
+            },
+            {
+              "lower": 0.30000000000000004,
+              "upper": 0.4,
+              "count": 2236,
+              "mean_probability": 0.34275336428611475,
+              "positive_rate": 0.3313953488372093
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 1214,
+              "mean_probability": 0.4430050939709841,
+              "positive_rate": 0.41680395387149916
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6000000000000001,
+              "count": 753,
+              "mean_probability": 0.5501122055425495,
+              "positive_rate": 0.4395750332005312
+            },
+            {
+              "lower": 0.6000000000000001,
+              "upper": 0.7000000000000001,
+              "count": 725,
+              "mean_probability": 0.6515952558841804,
+              "positive_rate": 0.5406896551724137
+            },
+            {
+              "lower": 0.7000000000000001,
+              "upper": 0.8,
+              "count": 727,
+              "mean_probability": 0.7489671484105679,
+              "positive_rate": 0.5832187070151307
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 873,
+              "mean_probability": 0.8513600694316391,
+              "positive_rate": 0.6597938144329897
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 31153,
+              "mean_probability": 0.9813371586632949,
+              "positive_rate": 0.9881231342085834
+            }
+          ]
+        },
+        "policy": {
+          "safe_rate": 0.09166843525452506,
+          "suspicious_rate": 0.441545644726071,
+          "phishing_rate": 0.46678592001940394,
+          "false_safe_rate": 0.020123601818274682,
+          "false_phishing_rate": 0.010854968666069829,
+          "fpr": 0.010854968666069829
+        },
+        "thresholds": {
+          "safe": 0.13988932355850364,
+          "phishing": 0.9276963246414378
+        },
+        "hard_cohorts": {
+          "pathless_phishing": {
+            "samples": 19945,
+            "recall": 0.5659563800451242,
+            "fnr": 0.4340436199548759
+          },
+          "short_phishing": {
+            "samples": 27663,
+            "recall": 0.6870910602609984,
+            "fnr": 0.3129089397390016
+          },
+          "https_phishing": {
+            "samples": 24318,
+            "recall": 0.9001562628505634,
+            "fnr": 0.09984373714943663
+          },
+          "no_suspicious_token": {
+            "samples": 35088,
+            "recall": 0.7543034655722755,
+            "fnr": 0.24569653442772457
+          },
+          "no_suspicious_tld": {
+            "samples": 36271,
+            "recall": 0.762068870447465,
+            "fnr": 0.2379311295525351
+          },
+          "no_digits": {
+            "samples": 18240,
+            "recall": 0.5592105263157895,
+            "fnr": 0.4407894736842105
+          },
+          "ordinary_looking_domains": {
+            "samples": 32238,
+            "recall": 0.7333891680625348,
+            "fnr": 0.2666108319374651
+          }
+        },
+        "latency": {
+          "median_ms": 15.279000000191445,
+          "p95_ms": 16.947615000162838
+        },
+        "model_size_bytes": 43001793,
+        "fit_seconds": 19.924341699999786
+      }
+    },
+    "hist_gradient_boosting": {
+      "validation": {
+        "accuracy": 0.8793240110670755,
+        "precision": 0.9503670242800678,
+        "recall": 0.8421184299402097,
+        "f1": 0.8929741487936546,
+        "roc_auc": 0.9323782611346849,
+        "pr_auc": 0.9640374858632621,
+        "brier": 0.08969600534901905,
+        "fpr": 0.06537260151717983,
+        "fnr": 0.15788157005979037,
+        "confusion_matrix": [
+          [
+            25134,
+            1758
+          ],
+          [
+            6311,
+            33662
+          ]
+        ],
+        "selection_score": 0.6857642707135638
+      },
+      "domain_test": {
+        "accuracy": 0.8768911257314375,
+        "precision": 0.9502161362383591,
+        "recall": 0.8364318913121201,
+        "f1": 0.8897007891126897,
+        "roc_auc": 0.9307552024235798,
+        "pr_auc": 0.9624008625531634,
+        "brier": 0.09198967040080348,
+        "fpr": 0.06401074306177261,
+        "fnr": 0.16356810868787988,
+        "confusion_matrix": [
+          [
+            25092,
+            1716
+          ],
+          [
+            6405,
+            32753
+          ]
+        ],
+        "calibration": {
+          "expected_calibration_error": 0.020581017441187135,
+          "reliability_bins": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "count": 1662,
+              "mean_probability": 0.07685962410149702,
+              "positive_rate": 0.05535499398315283
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "count": 20959,
+              "mean_probability": 0.14538538405730492,
+              "positive_rate": 0.1690920368338184
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.30000000000000004,
+              "count": 4273,
+              "mean_probability": 0.2556100555841268,
+              "positive_rate": 0.2834074420781652
+            },
+            {
+              "lower": 0.30000000000000004,
+              "upper": 0.4,
+              "count": 3634,
+              "mean_probability": 0.3450654804365774,
+              "positive_rate": 0.32250963126031923
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 969,
+              "mean_probability": 0.44052995768630393,
+              "positive_rate": 0.39834881320949433
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6000000000000001,
+              "count": 812,
+              "mean_probability": 0.5494424247840761,
+              "positive_rate": 0.48645320197044334
+            },
+            {
+              "lower": 0.6000000000000001,
+              "upper": 0.7000000000000001,
+              "count": 938,
+              "mean_probability": 0.6468571881477504,
+              "positive_rate": 0.5469083155650319
+            },
+            {
+              "lower": 0.7000000000000001,
+              "upper": 0.8,
+              "count": 1018,
+              "mean_probability": 0.7571525468152502,
+              "positive_rate": 0.6267190569744597
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 582,
+              "mean_probability": 0.8582232188352206,
+              "positive_rate": 0.6907216494845361
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 31119,
+              "mean_probability": 0.9832175599824912,
+              "positive_rate": 0.9899097014685562
+            }
+          ]
+        },
+        "policy": {
+          "safe_rate": 0.08566534275232696,
+          "suspicious_rate": 0.44303125852712005,
+          "phishing_rate": 0.471303398720553,
+          "false_safe_rate": 0.016956943664129934,
+          "false_phishing_rate": 0.011414503133393017,
+          "fpr": 0.011414503133393017
+        },
+        "thresholds": {
+          "safe": 0.13207610126574837,
+          "phishing": 0.9046870572012211
+        },
+        "hard_cohorts": {
+          "pathless_phishing": {
+            "samples": 19945,
+            "recall": 0.5801453998495864,
+            "fnr": 0.41985460015041365
+          },
+          "short_phishing": {
+            "samples": 27663,
+            "recall": 0.6972851823735675,
+            "fnr": 0.30271481762643243
+          },
+          "https_phishing": {
+            "samples": 24318,
+            "recall": 0.904967513775804,
+            "fnr": 0.09503248622419606
+          },
+          "no_suspicious_token": {
+            "samples": 35088,
+            "recall": 0.7613999088007296,
+            "fnr": 0.2386000911992704
+          },
+          "no_suspicious_tld": {
+            "samples": 36271,
+            "recall": 0.7691268506520361,
+            "fnr": 0.23087314934796394
+          },
+          "no_digits": {
+            "samples": 18240,
+            "recall": 0.5743421052631579,
+            "fnr": 0.4256578947368421
+          },
+          "ordinary_looking_domains": {
+            "samples": 32238,
+            "recall": 0.7403064706247287,
+            "fnr": 0.2596935293752714
+          }
+        },
+        "latency": {
+          "median_ms": 1.5363499996965402,
+          "p95_ms": 2.3875049999787734
+        },
+        "model_size_bytes": 369200,
+        "fit_seconds": 21.035373199999412
+      }
+    }
+  },
+  "current_model_domain_test": {
+    "accuracy": 0.8729497013613073,
+    "precision": 0.9248502250075923,
+    "recall": 0.8554829153685071,
+    "f1": 0.8888151872537444,
+    "roc_auc": 0.9332772442349537,
+    "pr_auc": 0.9644872922793118,
+    "brier": 0.09697890255462864,
+    "fpr": 0.10153685467024769,
+    "fnr": 0.14451708463149293,
+    "confusion_matrix": [
+      [
+        24086,
+        2722
+      ],
+      [
+        5659,
+        33499
+      ]
+    ],
+    "policy": {
+      "safe_rate": 0.4356335081708759,
+      "suspicious_rate": 0.06806536700724616,
+      "phishing_rate": 0.49630112482187794,
+      "false_safe_rate": 0.13537463608968794,
+      "false_phishing_rate": 0.027379886601014623,
+      "fpr": 0.027379886601014623
+    }
+  },
+  "selected_thresholds": {
+    "safe": 0.13207610126574837,
+    "phishing": 0.9046870572012211
+  },
+  "legitimate_reference": {
+    "results": [
+      {
+        "url": "https://google.com",
+        "probability": 0.16877184520324184,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://github.com",
+        "probability": 0.15737806601448037,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://microsoft.com",
+        "probability": 0.15806618414242726,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://apple.com",
+        "probability": 0.1567543788888325,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://amazon.com",
+        "probability": 0.15806618414242726,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://python.org",
+        "probability": 0.16999126226483088,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://cloudflare.com",
+        "probability": 0.15537704560579468,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://fast.com",
+        "probability": 0.0750687842021373,
+        "verdict": "SAFE"
+      },
+      {
+        "url": "https://fast.com/",
+        "probability": 0.0750687842021373,
+        "verdict": "SAFE"
+      },
+      {
+        "url": "https://www.fast.com/",
+        "probability": 0.0750687842021373,
+        "verdict": "SAFE"
+      }
+    ],
+    "counts": {
+      "SAFE": 3,
+      "SUSPICIOUS": 7,
+      "PHISHING": 0
+    },
+    "safe_rate": 0.3,
+    "suspicious_rate": 0.7,
+    "phishing_rate": 0.0,
+    "false_safe_rate": 0.0,
+    "false_phishing_rate": 0.0,
+    "fpr": 0.0
+  },
+  "external_holdout": {
+    "rows": 154931,
+    "phishing_recall": 0.9138455183275135,
+    "fnr": 0.08615448167248646,
+    "probability_min": 0.07159805437463716,
+    "probability_median": 0.9853741571574345,
+    "probability_max": 0.9854210255529866,
+    "fpr": null,
+    "statement": "External FPR is undefined because the external holdout contains phishing URLs only."
+  },
+  "promotion_gate": {
+    "external_recall_materially_improved": true,
+    "domain_grouped_acceptable": false,
+    "fpr_budget": false,
+    "legitimate_hard_cases": true,
+    "fast_com": true,
+    "calibration": true,
+    "latency_and_size": true,
+    "production_safety": true
+  },
+  "production_artifacts_updated": false,
+  "artifact_hashes": {
+    "phishing_model.pkl": "5f16e09d5f6fb613d391051b2b5693cf47478356d77cec8c8e52f5b309159ba2",
+    "feature_names.pkl": "d02a7c9cd2cb5b73c2bbccc7347c240fed6d77593b8e7d602dbb67f424099da9",
+    "model_metadata.json": "f24e2edf6c35268ecf9273e3a0eb21c7b88caa87f91b71f139766d5adf598c87",
+    "feature_importance.csv": "e85920babf6d5f35919727f301b8831b240cf73a3501df68515a3449b691a09b"
+  },
+  "generated_at_utc": "2026-10-07T14:50:10+00:00"
+}

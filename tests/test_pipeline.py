@@ -88,9 +88,11 @@ def test_protocol_does_not_change_model_features_or_prediction():
 def test_model_excludes_transport_alias_and_constant_features():
     from service import load_model_bundle
 
-    _, feature_names, metadata = load_model_bundle()
+    model, feature_names, metadata = load_model_bundle()
     assert len(FEATURE_NAMES) == 35
     assert metadata["feature_count"] == 29
+    assert metadata["features"] == feature_names
+    assert model.n_features_in_ == len(feature_names)
     assert not (set(feature_names) & MODEL_EXCLUDED_FEATURES)
     assert "IsHTTPS" not in feature_names
 

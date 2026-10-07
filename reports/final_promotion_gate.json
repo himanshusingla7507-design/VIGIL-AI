@@ -1,0 +1,94 @@
+{
+  "decision": "DO NOT PROMOTE",
+  "generated_at": "2026-10-07T14:20:00+00:00",
+  "scope": "Final promotion gate only; production artifacts were not modified.",
+  "production": {
+    "model": "CalibratedHistGradientBoosting",
+    "thresholds": {"safe": 0.1314096, "phishing": 0.6961575},
+    "artifacts_unchanged": true,
+    "sha256": {
+      "phishing_model.pkl": "5f16e09d5f6fb613d391051b2b5693cf47478356d77cec8c8e52f5b309159ba2",
+      "feature_names.pkl": "d02a7c9cd2cb5b73c2bbccc7347c240fed6d77593b8e7d602dbb67f424099da9",
+      "model_metadata.json": "f24e2edf6c35268ecf9273e3a0eb21c7b88caa87f91b71f139766d5adf598c87",
+      "feature_importance.csv": "e85920babf6d5f35919727f301b8831b240cf73a3501df68515a3449b691a09b"
+    }
+  },
+  "candidate": {
+    "model": "Domain-only hostname character TF-IDF + Logistic Regression",
+    "ngram_range": [2, 6],
+    "candidate_artifact_promoted": false,
+    "candidate_artifact_serving_path": null
+  },
+  "domain_grouped_validation": {
+    "split": {"train_rows": 305006, "calibration_rows": 45760, "threshold_rows": 335564, "test_rows": 168540, "overlapping_domains": 0},
+    "metrics": {
+      "current": {"pr_auc": 0.9939009217, "roc_auc": 0.9660579637, "phishing_recall": 0.8769361161, "fnr": 0.1230638839, "fpr": 0.0103134854, "f1": 0.9334571317, "brier": 0.0643819240, "ece": 0.0516952123},
+      "domain_only": {"pr_auc": 0.9967113442, "roc_auc": 0.9813801856, "phishing_recall": 0.9320832009, "fnr": 0.0679167991, "fpr": 0.0086440364, "f1": 0.9640267799, "brier": 0.0371847766, "ece": 0.0079211423}
+    },
+    "result": "PASS on discrimination, recall, FNR, FPR, F1, Brier, and ECE; this does not override failed/incomplete mandatory regression evidence."
+  },
+  "external_holdout": {
+    "source": "Phishing.Database",
+    "rows": 154931,
+    "used_for_fitting": false,
+    "used_for_calibration": false,
+    "used_for_feature_selection": false,
+    "used_for_threshold_selection": false,
+    "current": {"phishing_recall": 0.9123997134, "fnr": 0.0876002866},
+    "domain_only": {"phishing_recall": 0.9675016620, "fnr": 0.0324983380},
+    "fpr": null,
+    "fpr_statement": "FPR is undefined because this holdout is phishing-only; no overall accuracy claim is made.",
+    "result": "PASS for material recall improvement."
+  },
+  "hard_case_cohorts": {
+    "source": "domain-grouped test partition; phishing recall/FNR",
+    "pathless_phishing": {"current_recall": 0.6249677142, "candidate_recall": 0.8867412828, "candidate_fnr": 0.1132587172},
+    "short_phishing": {"current_recall": 0.7900571126, "candidate_recall": 0.9155722100, "candidate_fnr": 0.0844277900},
+    "no_suspicious_token": {"current_recall": 0.8548949009, "candidate_recall": 0.9292477205, "candidate_fnr": 0.0707522795},
+    "no_suspicious_tld": {"current_recall": 0.8681667890, "candidate_recall": 0.9279018212, "candidate_fnr": 0.0720981788},
+    "no_digits": {"current_recall": 0.7014226777, "candidate_recall": 0.8843542449, "candidate_fnr": 0.1156457551},
+    "ordinary_looking_domains": {"current_recall": 0.8432675255, "candidate_recall": 0.9243615020, "candidate_fnr": 0.0756384980}
+  },
+  "fast_com_regression": {
+    "required_urls": ["https://fast.com", "https://fast.com/", "https://www.fast.com/", "canonicalized equivalents"],
+    "production_result": "All three project canonical variants were SAFE with identical production probability/risk in the backend regression test.",
+    "candidate_result": null,
+    "status": "FAIL_INCOMPLETE",
+    "reason": "The read-only candidate experiment did not persist a candidate serving artifact or candidate fast.com predictions; therefore the explicit candidate SAFE requirement cannot be certified. No trusted-domain bypass or score boost was added."
+  },
+  "legitimate_hard_case_regression": {
+    "candidate_false_safe": null,
+    "candidate_false_suspicious": null,
+    "candidate_false_phishing": 233,
+    "candidate_fpr": 0.0086440364,
+    "precision": 0.9982375456,
+    "status": "FAIL_INCOMPLETE",
+    "reason": "The available candidate grouped summary provides phishing-threshold confusion counts and FPR, but not the complete SAFE/SUSPICIOUS/PHISHING triage counts for the existing legitimate reference set. Promotion cannot be justified without that required regression evidence."
+  },
+  "latency_and_size": {
+    "current": {"inference_latency_ms": 29.4536, "model_size_bytes": 1100240},
+    "domain_only": {"inference_latency_ms": 4.0651, "model_size_bytes": 9682206},
+    "size_multiplier": 8.8007,
+    "result": "Latency improves, but candidate serialized size is approximately 8.8x larger; acceptability is not established."
+  },
+  "tests": {
+    "backend_pytest": {"status": "PASS", "passed": 15},
+    "frontend_vitest": {"status": "PASS", "passed": 3},
+    "frontend_build_typescript_vite": "PASS",
+    "extension_tests": {"status": "PASS", "passed": 8},
+    "extension_syntax_checks": "PASS",
+    "api_contracts": {"status": "PASS", "endpoints": ["/scan", "/health", "/model-info", "/history"]}
+  },
+  "gate_summary": {
+    "external_recall_materially_improved": true,
+    "domain_grouped_validation_acceptable": true,
+    "fpr_within_established_budget": true,
+    "legitimate_hard_cases_acceptable": false,
+    "fast_com_candidate_regression_passed": false,
+    "calibration_acceptable": true,
+    "latency_and_size_acceptable": false,
+    "all_existing_tests_pass": true,
+    "production_safety_regression_absent": false
+  },
+  "reason": "Mandatory candidate fast.com and legitimate-reference regression evidence is incomplete, candidate size acceptability is not established, and production safety cannot be certified. Keep the current production model unchanged."
+}

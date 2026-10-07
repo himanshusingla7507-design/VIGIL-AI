@@ -24,7 +24,9 @@ PHISHING → trusted local blocked.html interstitial
 back, or deliberate one-time bypass confirmation
 ```
 
-Popup scans and navigation scans share the same service-worker request path. Results are cached only in memory for 30 seconds per tab and exact URL; a failed request produces an offline state and never becomes a phishing verdict.
+Popup scans and navigation scans share the same service-worker request path. Results are cached only in memory for 30 seconds per tab and normalized URL. A navigation's result is ignored if the tab has since started navigating elsewhere, so a late phishing response cannot redirect a newer page. A failed request produces an offline state and never becomes a phishing verdict.
+
+For temporary development diagnostics, set `VIGIL_DEBUG = true` in the service worker DevTools console. Logs show only the URL origin, verdict, probability, risk score, and allow/block action; URL paths, queries, fragments, and userinfo are not logged.
 
 ## Security and UX notes
 

@@ -1,25 +1,59 @@
 {
-  "original_rows": 235370,
-  "removed_missing_url": 0,
-  "removed_missing_label": 0,
-  "removed_invalid_label": 0,
-  "removed_invalid_url": 0,
-  "removed_duplicate_rows": 936,
-  "removed_conflicting_label_rows": 2,
-  "exact_duplicate_rows": 14,
-  "normalized_duplicate_rows": 937,
-  "conflicting_label_groups": 1,
-  "cross_source_duplicate_groups": 0,
-  "rows_after_cleaning": 234432,
-  "class_distribution": {
+  "generated_at_utc": "2026-10-07T13:23:43+00:00",
+  "sources": {
+    "PhiUSIIL": {
+      "source": "PhiUSIIL",
+      "rows_before": 235795,
+      "rows_after": 234433,
+      "duplicates_removed": 1362,
+      "invalid_urls": 0,
+      "missing_urls": 0,
+      "exact_duplicate_urls": 439,
+      "normalized_duplicate_urls": 1362,
+      "label_distribution": {
+        "0": 134849,
+        "1": 99584
+      },
+      "unique_registered_domains": 197708,
+      "label_column": "label",
+      "label_semantics_in_source": {
+        "0": "phishing",
+        "1": "legitimate"
+      },
+      "label_mapping_to_vigil": {
+        "source_0": 1,
+        "source_1": 0
+      },
+      "invalid_labels": 0
+    },
+    "Phishing.Database active": {
+      "source": "Phishing.Database active",
+      "rows_before": 789054,
+      "rows_after": 784385,
+      "duplicates_removed": 3995,
+      "invalid_urls": 674,
+      "missing_urls": 0,
+      "exact_duplicate_urls": 79,
+      "normalized_duplicate_urls": 3995,
+      "label_distribution": {
+        "1": 784385
+      },
+      "unique_registered_domains": 323590,
+      "blank_lines": 0
+    }
+  },
+  "cross_source_overlap_removed_from_feed": 9017,
+  "feed_rows_reserved_for_external_validation": 154931,
+  "feed_rows_added_to_training": 620437,
+  "final_training_size": 854870,
+  "external_validation_size": 154931,
+  "final_training_label_distribution": {
     "0": 134849,
-    "1": 99583
+    "1": 720021
   },
-  "source_distribution": {
-    "local_file:final_dataset_v2.csv": 234432
+  "final_training_unique_domains": 463308,
+  "external_validation_label_distribution": {
+    "1": 154931
   },
-  "unique_registered_domains": 197707,
-  "source_file": "final_dataset_v2.csv",
-  "source_provenance": "The input CSV has no upstream source or collection-date fields.",
-  "output_file": "c:\\Users\\himan\\OneDrive\\Desktop\\VIGIL-main\\data\\processed\\clean_dataset.csv"
+  "collection_date_policy": "Null for both sources because no source-supplied retrieval date was provided."
 }

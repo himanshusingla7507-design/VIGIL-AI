@@ -1,0 +1,494 @@
+{
+  "status": "freshly_measured_read_only",
+  "generated_at_utc": "2026-10-07T13:43:47+00:00",
+  "holdout": {
+    "file": "data/processed/external_validation.csv",
+    "rows_read": 154931,
+    "usable_urls": 154931,
+    "invalid_urls": 0,
+    "untouched_by_training": true
+  },
+  "production_model": {
+    "model_version": "v2.1.0",
+    "model_type": "CalibratedHistGradientBoosting",
+    "thresholds": {
+      "safe": 0.13140956380602112,
+      "phishing": 0.6961575221255231
+    },
+    "feature_count": 29
+  },
+  "overall": {
+    "total_samples": 154931,
+    "detected_phishing": 141359,
+    "missed_phishing": 13572,
+    "recall": 0.9123997134208132,
+    "false_negative_rate": 0.08760028657918686,
+    "below_probability_0_5": 12176
+  },
+  "probability_distribution": {
+    "min": 0.05163617444140411,
+    "p01": 0.14364402465543427,
+    "p05": 0.2734464681384973,
+    "p25": 0.9975900139215957,
+    "median": 0.9978120704085881,
+    "p75": 0.9978120704085881,
+    "p95": 0.9979181104688823,
+    "p99": 0.9980234415040301,
+    "max": 0.9988223851281245,
+    "bins": {
+      "0.0-0.1": 50,
+      "0.1-0.2": 3891,
+      "0.2-0.3": 4571,
+      "0.3-0.4": 2360,
+      "0.4-0.5": 1304,
+      "0.5-0.6": 818,
+      "0.6-0.7": 593,
+      "0.7-0.8": 794,
+      "0.8-0.9": 1510,
+      "0.9-1.0": 139040
+    }
+  },
+  "cohorts": {
+    "scheme": {
+      "http": {
+        "samples": 36391,
+        "missed": 2839,
+        "miss_rate": 0.07801379461954878
+      },
+      "https": {
+        "samples": 118540,
+        "missed": 10733,
+        "miss_rate": 0.09054327653112873
+      }
+    },
+    "url_length": {
+      "101-200": {
+        "samples": 16378,
+        "missed": 0,
+        "miss_rate": 0.0
+      },
+      "61-100": {
+        "samples": 43862,
+        "missed": 0,
+        "miss_rate": 0.0
+      },
+      "<=60": {
+        "samples": 84778,
+        "missed": 13572,
+        "miss_rate": 0.1600887022576612
+      },
+      ">200": {
+        "samples": 9913,
+        "missed": 0,
+        "miss_rate": 0.0
+      }
+    },
+    "hostname_length": {
+      "31-60": {
+        "samples": 34928,
+        "missed": 260,
+        "miss_rate": 0.00744388456252863
+      },
+      "61-100": {
+        "samples": 1127,
+        "missed": 0,
+        "miss_rate": 0.0
+      },
+      "<=30": {
+        "samples": 118709,
+        "missed": 13312,
+        "miss_rate": 0.11213977036282001
+      },
+      ">100": {
+        "samples": 167,
+        "missed": 0,
+        "miss_rate": 0.0
+      }
+    },
+    "path_length": {
+      "0": {
+        "samples": 37138,
+        "missed": 13565,
+        "miss_rate": 0.36525930313964133
+      },
+      "1-40": {
+        "samples": 84742,
+        "missed": 7,
+        "miss_rate": 8.260366760284156e-05
+      },
+      "41-100": {
+        "samples": 26676,
+        "missed": 0,
+        "miss_rate": 0.0
+      },
+      ">100": {
+        "samples": 6375,
+        "missed": 0,
+        "miss_rate": 0.0
+      }
+    },
+    "pathless": {
+      "no": {
+        "samples": 115572,
+        "missed": 0,
+        "miss_rate": 0.0
+      },
+      "yes": {
+        "samples": 39359,
+        "missed": 13572,
+        "miss_rate": 0.3448258339896847
+      }
+    },
+    "subdomain_depth": {
+      "0": {
+        "samples": 56562,
+        "missed": 7328,
+        "miss_rate": 0.12955694635974682
+      },
+      "1": {
+        "samples": 74275,
+        "missed": 5610,
+        "miss_rate": 0.07553012453719286
+      },
+      "2": {
+        "samples": 18395,
+        "missed": 530,
+        "miss_rate": 0.028812177222071213
+      },
+      "3+": {
+        "samples": 5699,
+        "missed": 104,
+        "miss_rate": 0.018248815581680997
+      }
+    },
+    "digit_count": {
+      "0": {
+        "samples": 52646,
+        "missed": 12586,
+        "miss_rate": 0.23906849523230636
+      },
+      "1-2": {
+        "samples": 18327,
+        "missed": 716,
+        "miss_rate": 0.03906804168712828
+      },
+      "3-5": {
+        "samples": 21254,
+        "missed": 270,
+        "miss_rate": 0.012703491107556225
+      },
+      "6-10": {
+        "samples": 17941,
+        "missed": 0,
+        "miss_rate": 0.0
+      },
+      ">10": {
+        "samples": 44763,
+        "missed": 0,
+        "miss_rate": 0.0
+      }
+    },
+    "hyphen_count": {
+      "0": {
+        "samples": 75570,
+        "missed": 10433,
+        "miss_rate": 0.13805743019716818
+      },
+      "1": {
+        "samples": 37653,
+        "missed": 2525,
+        "miss_rate": 0.06705972963641675
+      },
+      "2-3": {
+        "samples": 26068,
+        "missed": 600,
+        "miss_rate": 0.023016725487187355
+      },
+      ">3": {
+        "samples": 15640,
+        "missed": 14,
+        "miss_rate": 0.0008951406649616369
+      }
+    },
+    "query_parameters": {
+      "0": {
+        "samples": 125663,
+        "missed": 13565,
+        "miss_rate": 0.1079474467424779
+      },
+      "1": {
+        "samples": 17425,
+        "missed": 7,
+        "miss_rate": 0.0004017216642754663
+      },
+      "2-3": {
+        "samples": 9253,
+        "missed": 0,
+        "miss_rate": 0.0
+      },
+      ">3": {
+        "samples": 2590,
+        "missed": 0,
+        "miss_rate": 0.0
+      }
+    },
+    "entropy": {
+      "3-4": {
+        "samples": 25522,
+        "missed": 10152,
+        "miss_rate": 0.39777446908549485
+      },
+      "4-5": {
+        "samples": 117572,
+        "missed": 3410,
+        "miss_rate": 0.029003504235702377
+      },
+      "<=3": {
+        "samples": 69,
+        "missed": 10,
+        "miss_rate": 0.14492753623188406
+      },
+      ">5": {
+        "samples": 11768,
+        "missed": 0,
+        "miss_rate": 0.0
+      }
+    },
+    "suspicious_tokens": {
+      "no": {
+        "samples": 130374,
+        "missed": 13555,
+        "miss_rate": 0.103970116741068
+      },
+      "yes": {
+        "samples": 24557,
+        "missed": 17,
+        "miss_rate": 0.0006922669707211793
+      }
+    },
+    "suspicious_tld": {
+      "no": {
+        "samples": 145826,
+        "missed": 13572,
+        "miss_rate": 0.09306982293966783
+      },
+      "yes": {
+        "samples": 9105,
+        "missed": 0,
+        "miss_rate": 0.0
+      }
+    },
+    "ip_hostname": {
+      "no": {
+        "samples": 153157,
+        "missed": 13572,
+        "miss_rate": 0.08861495067153313
+      },
+      "yes": {
+        "samples": 1774,
+        "missed": 0,
+        "miss_rate": 0.0
+      }
+    },
+    "punycode_idn": {
+      "no": {
+        "samples": 154754,
+        "missed": 13540,
+        "miss_rate": 0.08749369967819895
+      },
+      "yes": {
+        "samples": 177,
+        "missed": 32,
+        "miss_rate": 0.1807909604519774
+      }
+    },
+    "encoded_characters": {
+      "no": {
+        "samples": 151223,
+        "missed": 13572,
+        "miss_rate": 0.08974825258062596
+      },
+      "yes": {
+        "samples": 3708,
+        "missed": 0,
+        "miss_rate": 0.0
+      }
+    },
+    "random_looking_tokens": {
+      "no": {
+        "samples": 102158,
+        "missed": 13402,
+        "miss_rate": 0.13118894261829714
+      },
+      "yes": {
+        "samples": 52773,
+        "missed": 170,
+        "miss_rate": 0.003221344248005609
+      }
+    },
+    "url_structure": {
+      "host+path": {
+        "samples": 88523,
+        "missed": 0,
+        "miss_rate": 0.0
+      },
+      "host+path+query": {
+        "samples": 29270,
+        "missed": 7,
+        "miss_rate": 0.00023915271609156134
+      },
+      "host-only": {
+        "samples": 37138,
+        "missed": 13565,
+        "miss_rate": 0.36525930313964133
+      }
+    }
+  },
+  "top_failure_cohorts": [
+    {
+      "dimension": "pathless",
+      "value": "yes",
+      "samples": 39359,
+      "missed": 13572,
+      "miss_rate": 0.3448258339896847
+    },
+    {
+      "dimension": "url_length",
+      "value": "<=60",
+      "samples": 84778,
+      "missed": 13572,
+      "miss_rate": 0.1600887022576612
+    },
+    {
+      "dimension": "suspicious_tld",
+      "value": "no",
+      "samples": 145826,
+      "missed": 13572,
+      "miss_rate": 0.09306982293966783
+    },
+    {
+      "dimension": "encoded_characters",
+      "value": "no",
+      "samples": 151223,
+      "missed": 13572,
+      "miss_rate": 0.08974825258062596
+    },
+    {
+      "dimension": "ip_hostname",
+      "value": "no",
+      "samples": 153157,
+      "missed": 13572,
+      "miss_rate": 0.08861495067153313
+    },
+    {
+      "dimension": "path_length",
+      "value": "0",
+      "samples": 37138,
+      "missed": 13565,
+      "miss_rate": 0.36525930313964133
+    },
+    {
+      "dimension": "url_structure",
+      "value": "host-only",
+      "samples": 37138,
+      "missed": 13565,
+      "miss_rate": 0.36525930313964133
+    },
+    {
+      "dimension": "query_parameters",
+      "value": "0",
+      "samples": 125663,
+      "missed": 13565,
+      "miss_rate": 0.1079474467424779
+    },
+    {
+      "dimension": "suspicious_tokens",
+      "value": "no",
+      "samples": 130374,
+      "missed": 13555,
+      "miss_rate": 0.103970116741068
+    },
+    {
+      "dimension": "punycode_idn",
+      "value": "no",
+      "samples": 154754,
+      "missed": 13540,
+      "miss_rate": 0.08749369967819895
+    },
+    {
+      "dimension": "random_looking_tokens",
+      "value": "no",
+      "samples": 102158,
+      "missed": 13402,
+      "miss_rate": 0.13118894261829714
+    },
+    {
+      "dimension": "hostname_length",
+      "value": "<=30",
+      "samples": 118709,
+      "missed": 13312,
+      "miss_rate": 0.11213977036282001
+    },
+    {
+      "dimension": "digit_count",
+      "value": "0",
+      "samples": 52646,
+      "missed": 12586,
+      "miss_rate": 0.23906849523230636
+    },
+    {
+      "dimension": "scheme",
+      "value": "https",
+      "samples": 118540,
+      "missed": 10733,
+      "miss_rate": 0.09054327653112873
+    },
+    {
+      "dimension": "hyphen_count",
+      "value": "0",
+      "samples": 75570,
+      "missed": 10433,
+      "miss_rate": 0.13805743019716818
+    },
+    {
+      "dimension": "entropy",
+      "value": "3-4",
+      "samples": 25522,
+      "missed": 10152,
+      "miss_rate": 0.39777446908549485
+    },
+    {
+      "dimension": "subdomain_depth",
+      "value": "0",
+      "samples": 56562,
+      "missed": 7328,
+      "miss_rate": 0.12955694635974682
+    },
+    {
+      "dimension": "subdomain_depth",
+      "value": "1",
+      "samples": 74275,
+      "missed": 5610,
+      "miss_rate": 0.07553012453719286
+    },
+    {
+      "dimension": "entropy",
+      "value": "4-5",
+      "samples": 117572,
+      "missed": 3410,
+      "miss_rate": 0.029003504235702377
+    },
+    {
+      "dimension": "scheme",
+      "value": "http",
+      "samples": 36391,
+      "missed": 2839,
+      "miss_rate": 0.07801379461954878
+    }
+  ],
+  "analysis_definitions": {
+    "missed": "production probability below the current PHISHING threshold",
+    "random_looking_tokens": "analysis-only heuristic: token length >=8, entropy >=3.2, and digit or uppercase presence",
+    "url_structure": "mutually exclusive host-only, host+path, host+path+query, or host+query categories"
+  }
+}

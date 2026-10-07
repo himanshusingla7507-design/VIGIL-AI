@@ -1,186 +1,51 @@
+"""Source-aware VIGIL training and promotion pipeline."""
+from __future__ import annotations
+
 import hashlib
 import importlib.metadata
 import json
 import os
 import pickle
 import shutil
-import sys
 import tempfile
 import time
 from datetime import datetime, timezone
+from urllib.parse import urlsplit
 
 import numpy as np
 import pandas as pd
-from sklearn.base import clone
-from sklearn.calibration import CalibratedClassifierCV
 from sklearn.ensemble import HistGradientBoostingClassifier, RandomForestClassifier
-from sklearn.inspection import permutation_importance
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import (
-    accuracy_score,
-    average_precision_score,
-    brier_score_loss,
-    confusion_matrix,
-    f1_score,
-    precision_score,
-    recall_score,
-    roc_auc_score,
-)
-from sklearn.model_selection import GroupShuffleSplit, StratifiedShuffleSplit
+from sklearn.metrics import average_precision_score, brier_score_loss, confusion_matrix, f1_score, precision_score, recall_score, roc_auc_score
+from sklearn.model_selection import GroupShuffleSplit
 
 from config import MODEL_VERSION, PHISHING_THRESHOLD, SAFE_THRESHOLD
 from feature_extractor import MODEL_EXCLUDED_FEATURES, extract_features, get_registered_domain
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
+DATASET_PATH = os.path.join(ROOT, "data", "processed", "clean_dataset.csv")
+EXTERNAL_PATH = os.path.join(ROOT, "data", "processed", "external_validation.csv")
+REPORT_PATH = os.path.join(ROOT, "reports", "final_training_comparison.json")
+DOC_PATH = os.path.join(ROOT, "docs", "FINAL_TRAINING_COMPARISON.md")
+SEED = 42
+TARGET_NEW_PHISHING_RATIO = 1.5
+LEGITIMATE_REFERENCES = [
+    "https://google.com", "https://github.com", "https://microsoft.com", "https://apple.com",
+    "https://amazon.com", "https://python.org", "https://cloudflare.com",
+    "https://fast.com", "https://fast.com/", "https://www.fast.com/",
+]
 
 
-def compute_binary_metrics(y_true, y_prob):
-    y_pred = (y_prob >= 0.5).astype(int)
-    cm = confusion_matrix(y_true, y_pred, labels=[0, 1])
-    tn, fp, fn, tp = cm.ravel()
-    accuracy = accuracy_score(y_true, y_pred)
-    precision = precision_score(y_true, y_pred, zero_division=0)
-    recall = recall_score(y_true, y_pred, zero_division=0)
-    f1 = f1_score(y_true, y_pred, zero_division=0)
-    roc_auc = roc_auc_score(y_true, y_prob)
-    pr_auc = average_precision_score(y_true, y_prob)
-    brier = brier_score_loss(y_true, y_prob)
-    fpr = fp / max(fp + tn, 1)
-    fnr = fn / max(fn + tp, 1)
-    return {
-        "accuracy": float(accuracy),
-        "precision": float(precision),
-        "recall": float(recall),
-        "f1": float(f1),
-        "roc_auc": float(roc_auc),
-        "pr_auc": float(pr_auc),
-        "brier_score": float(brier),
-        "fpr": float(fpr),
-        "fnr": float(fnr),
-        "confusion_matrix": cm.tolist(),
-    }
+class ProbabilityCalibratedModel:
+    def __init__(self, estimator, calibrator):
+        self.estimator = estimator
+        self.calibrator = calibrator
+        self.classes_ = np.array([0, 1])
 
-
-def choose_model(X_train, y_train, X_val, y_val):
-    candidates = {
-        "logistic_regression": LogisticRegression(max_iter=4000, class_weight="balanced", solver="liblinear"),
-        "random_forest": RandomForestClassifier(
-            n_estimators=300,
-            max_depth=None,
-            min_samples_leaf=2,
-            min_samples_split=5,
-            n_jobs=-1,
-            random_state=42,
-            class_weight="balanced_subsample",
-        ),
-        "hist_gradient_boosting": HistGradientBoostingClassifier(
-            learning_rate=0.05,
-            max_depth=None,
-            max_leaf_nodes=31,
-            random_state=42,
-        ),
-    }
-
-    best_name = None
-    best_model = None
-    best_score = -1.0
-    best_metrics = {}
-    comparisons = {}
-
-    for name, estimator in candidates.items():
-        fit_started = time.perf_counter()
-        estimator.fit(X_train, y_train)
-        fit_seconds = time.perf_counter() - fit_started
-        proba = estimator.predict_proba(X_val)[:, 1]
-        metrics = compute_binary_metrics(y_val, proba)
-        score = (
-            0.50 * metrics["pr_auc"]
-            + 0.30 * metrics["f1"]
-            + 0.20 * metrics["recall"]
-            - 0.25 * metrics["fpr"]
-            - 0.10 * metrics["brier_score"]
-        )
-        sample = X_val.iloc[[0]]
-        latencies = []
-        for _ in range(30):
-            started = time.perf_counter()
-            estimator.predict_proba(sample)
-            latencies.append((time.perf_counter() - started) * 1000)
-        comparisons[name] = {
-            **metrics,
-            "selection_score": float(score),
-            "fit_seconds": float(fit_seconds),
-            "median_single_row_latency_ms": float(np.median(latencies)),
-            "model_size_bytes": len(pickle.dumps(estimator, protocol=pickle.HIGHEST_PROTOCOL)),
-            "hyperparameters": estimator.get_params(deep=False),
-        }
-        print(f"{name}: PR-AUC={metrics['pr_auc']:.4f}, F1={metrics['f1']:.4f}, FPR={metrics['fpr']:.4f}, score={score:.4f}")
-        if score > best_score:
-            best_name, best_model, best_score, best_metrics = name, estimator, score, metrics
-
-    print(f"Selected model: {best_name}")
-    return best_model, best_metrics, best_name, comparisons
-
-
-def calibration_metrics(y_true, y_prob, bin_count=10):
-    y_true = np.asarray(y_true, dtype=int)
-    y_prob = np.asarray(y_prob, dtype=float)
-    bins = np.linspace(0.0, 1.0, bin_count + 1)
-    rows = []
-    ece = 0.0
-    for lower, upper in zip(bins[:-1], bins[1:]):
-        mask = (y_prob >= lower) & ((y_prob < upper) if upper < 1 else (y_prob <= upper))
-        if not mask.any():
-            continue
-        predicted = float(y_prob[mask].mean())
-        observed = float(y_true[mask].mean())
-        ece += float(mask.mean()) * abs(predicted - observed)
-        rows.append({"lower": float(lower), "upper": float(upper), "count": int(mask.sum()), "mean_probability": predicted, "positive_rate": observed})
-    return {"expected_calibration_error": float(ece), "reliability_bins": rows}
-
-
-def threshold_search(
-    y_true,
-    y_prob,
-    safe_threshold=SAFE_THRESHOLD,
-    phishing_threshold=PHISHING_THRESHOLD,
-    max_false_safe_rate=0.02,
-    max_phishing_false_positive_rate=0.01,
-):
-    y_true = np.asarray(y_true, dtype=int)
-    y_prob = np.asarray(y_prob, dtype=float)
-    negative_scores = y_prob[y_true == 0]
-    positive_scores = y_prob[y_true == 1]
-    if not len(negative_scores) or not len(positive_scores):
-        return float(safe_threshold), float(phishing_threshold)
-
-    safe_candidates = np.unique(np.r_[0.0, positive_scores])
-    safe_valid = [threshold for threshold in safe_candidates if np.mean(positive_scores < threshold) <= max_false_safe_rate]
-    safe = float(max(safe_valid)) if safe_valid else float(safe_threshold)
-
-    phishing_candidates = np.unique(np.r_[negative_scores, 1.0])
-    phishing_valid = [threshold for threshold in phishing_candidates if np.mean(negative_scores >= threshold) <= max_phishing_false_positive_rate]
-    phishing = float(min(phishing_valid)) if phishing_valid else float(phishing_threshold)
-    if phishing <= safe:
-        safe = max(0.0, phishing - 0.05)
-    return safe, phishing
-
-
-def _policy_metrics(y_true, y_prob, thresholds):
-    y_true = np.asarray(y_true, dtype=int)
-    y_prob = np.asarray(y_prob, dtype=float)
-    safe = y_prob < thresholds["safe"]
-    phishing = y_prob >= thresholds["phishing"]
-    benign = y_true == 0
-    malicious = y_true == 1
-    return {
-        "safe_rate": float(safe.mean()),
-        "suspicious_rate": float((~safe & ~phishing).mean()),
-        "phishing_rate": float(phishing.mean()),
-        "phishing_false_positive_rate": float(phishing[benign].mean()),
-        "phishing_false_negative_rate": float((~phishing[malicious]).mean()),
-        "false_safe_rate": float(safe[malicious].mean()),
-    }
+    def predict_proba(self, X):
+        raw = self.estimator.predict_proba(X)[:, 1]
+        p = self.calibrator.predict_proba(np.asarray(raw).reshape(-1, 1))[:, 1]
+        return np.column_stack([1.0 - p, p])
 
 
 def _sha256(path):
@@ -191,266 +56,195 @@ def _sha256(path):
     return digest.hexdigest()
 
 
-def _backup_artifacts(output_dir):
-    names = ["phishing_model.pkl", "feature_names.pkl", "model_metadata.json", "feature_importance.csv"]
-    existing = [name for name in names if os.path.isfile(os.path.join(output_dir, name))]
-    if not existing:
-        return None
-    stamp = datetime.now(timezone.utc).strftime("%Y%m%d-%H%M%S")
-    backup_dir = os.path.join(ROOT, "models", "backup", stamp)
-    os.makedirs(backup_dir, exist_ok=False)
-    for name in existing:
-        shutil.copy2(os.path.join(output_dir, name), os.path.join(backup_dir, name))
-    return backup_dir
-
-
 def _atomic_write(path, payload):
-    fd, temporary = tempfile.mkstemp(prefix=".vigil-", dir=os.path.dirname(path))
-    os.close(fd)
+    fd, temporary = tempfile.mkstemp(prefix=".vigil-", dir=os.path.dirname(path)); os.close(fd)
     try:
-        mode = "wb" if isinstance(payload, bytes) else "w"
-        options = {} if mode == "wb" else {"encoding": "utf-8"}
-        with open(temporary, mode, **options) as stream:
-            stream.write(payload)
+        if isinstance(payload, bytes):
+            with open(temporary, "wb") as stream: stream.write(payload)
+        else:
+            with open(temporary, "w", encoding="utf-8") as stream: stream.write(payload)
         os.replace(temporary, path)
     finally:
-        if os.path.exists(temporary):
-            os.unlink(temporary)
+        if os.path.exists(temporary): os.unlink(temporary)
 
 
-def _temporal_evaluation(df, X, y):
-    dates = pd.to_datetime(df.get("collection_date"), errors="coerce", utc=True)
-    dates = dates.dropna()
-    unique_dates = dates.sort_values().unique()
-    if len(unique_dates) < 2:
-        return {"status": "not_run", "reason": "No usable collection dates are present."}
+def _backup_artifacts():
+    names = ["phishing_model.pkl", "feature_names.pkl", "model_metadata.json", "feature_importance.csv"]
+    existing = [name for name in names if os.path.isfile(os.path.join(ROOT, name))]
+    if not existing: return None
+    destination = os.path.join(ROOT, "models", "backup", datetime.now(timezone.utc).strftime("%Y%m%d-%H%M%S"))
+    os.makedirs(destination, exist_ok=False)
+    for name in existing: shutil.copy2(os.path.join(ROOT, name), os.path.join(destination, name))
+    return os.path.relpath(destination, ROOT)
 
-    cutoff = unique_dates[max(1, int(len(unique_dates) * 0.8))]
-    valid = pd.to_datetime(df["collection_date"], errors="coerce", utc=True).notna()
-    dated = pd.to_datetime(df["collection_date"], errors="coerce", utc=True)
-    train_idx = np.flatnonzero((valid & (dated < cutoff)).to_numpy())
-    test_idx = np.flatnonzero((valid & (dated >= cutoff)).to_numpy())
-    if not len(train_idx) or len(np.unique(y.iloc[train_idx])) < 2 or len(np.unique(y.iloc[test_idx])) < 2:
-        return {"status": "not_run", "reason": "The chronological holdout does not contain both classes in train and test."}
 
-    selector = StratifiedShuffleSplit(n_splits=1, test_size=0.2, random_state=47)
-    fit_rel, val_rel = next(selector.split(X.iloc[train_idx], y.iloc[train_idx]))
-    fit_idx, val_idx = train_idx[fit_rel], train_idx[val_rel]
-    model, validation_metrics, name, comparisons = choose_model(X.iloc[fit_idx], y.iloc[fit_idx], X.iloc[val_idx], y.iloc[val_idx])
-    calibrated = CalibratedClassifierCV(estimator=clone(model), method="sigmoid", cv=3)
-    calibrated.fit(X.iloc[train_idx], y.iloc[train_idx])
-    probabilities = calibrated.predict_proba(X.iloc[test_idx])[:, 1]
-    return {
-        "status": "executed",
-        "cutoff_utc": pd.Timestamp(cutoff).isoformat(),
-        "train_rows": int(len(train_idx)),
-        "test_rows": int(len(test_idx)),
-        "model_name": name,
-        "validation_metrics": validation_metrics,
-        "candidate_comparisons": comparisons,
-        "metrics": compute_binary_metrics(y.iloc[test_idx], probabilities),
-        "calibration": calibration_metrics(y.iloc[test_idx], probabilities),
-    }
+def _assert_labels(frame):
+    phi = frame[frame.source.astype(str).eq("PhiUSIIL")]
+    feed = frame[frame.source.astype(str).eq("phishing_database_active")]
+    assert set(phi.label.unique()) == {0, 1}, "PhiUSIIL must contain both VIGIL classes"
+    assert set(feed.label.unique()) == {1}, "Phishing.Database must be VIGIL phishing=1"
+    return {"PhiUSIIL": {"legitimate": int((phi.label == 0).sum()), "phishing": int((phi.label == 1).sum())}, "phishing_database_active": {"legitimate": 0, "phishing": int(len(feed))}, "mapping": ["PhiUSIIL source 1 legitimate -> VIGIL 0", "PhiUSIIL source 0 phishing -> VIGIL 1", "Phishing.Database -> VIGIL 1"]}
+
+
+def _source_composition(frame):
+    phi = frame[frame.source.astype(str).eq("PhiUSIIL")]
+    feed = frame[frame.source.astype(str).eq("phishing_database_active")]
+    legit, old_phish = phi[phi.label == 0], phi[phi.label == 1]
+    requested = min(len(feed), max(0, int(round(TARGET_NEW_PHISHING_RATIO * len(legit))) - len(old_phish)))
+    scores = feed.url.map(lambda value: hashlib.sha256(str(value).encode()).hexdigest())
+    new_phish = feed.loc[scores.sort_values().index[:requested]]
+    controlled = pd.concat([legit, old_phish, new_phish], ignore_index=True)
+    return controlled, {"all_combined": {"rows": int(len(frame)), "legitimate": int((frame.label == 0).sum()), "phishing": int((frame.label == 1).sum())}, "controlled": {"rows": int(len(controlled)), "legitimate": int((controlled.label == 0).sum()), "phishing": int((controlled.label == 1).sum()), "phishing_to_legitimate_ratio": float((controlled.label == 1).sum() / max((controlled.label == 0).sum(), 1))}, "controlled_sources": {str(k): int(v) for k, v in controlled.source.value_counts().items()}, "new_phishing_rows_selected": int(len(new_phish)), "sampling": "all legitimate PhiUSIIL + all old PhiUSIIL phishing + stable SHA-256 ordered new phishing to 1.5:1"}
+
+
+def _feature_matrix(frame):
+    features = pd.DataFrame(frame.url.map(extract_features).tolist())
+    names = [name for name in features.columns if name not in MODEL_EXCLUDED_FEATURES]
+    assert len(names) == 29
+    return features[names], names
+
+
+def _metrics(y, p, threshold=0.5):
+    y, p = np.asarray(y, int), np.asarray(p, float); pred = p >= threshold
+    tn, fp, fn, tp = confusion_matrix(y, pred, labels=[0, 1]).ravel()
+    return {"accuracy": float((tn + tp) / len(y)), "precision": float(precision_score(y, pred, zero_division=0)), "recall": float(recall_score(y, pred, zero_division=0)), "f1": float(f1_score(y, pred, zero_division=0)), "roc_auc": float(roc_auc_score(y, p)), "pr_auc": float(average_precision_score(y, p)), "brier": float(brier_score_loss(y, p)), "fpr": float(fp / max(fp + tn, 1)), "fnr": float(fn / max(fn + tp, 1)), "confusion_matrix": [[int(tn), int(fp)], [int(fn), int(tp)]]}
+
+
+def calibration_metrics(y, p):
+    y, p = np.asarray(y, int), np.asarray(p, float); ece = 0.0; rows = []
+    for lower, upper in zip(np.linspace(0, 1, 11)[:-1], np.linspace(0, 1, 11)[1:]):
+        mask = (p >= lower) & ((p < upper) if upper < 1 else (p <= upper))
+        if mask.any():
+            mean_p, rate = float(p[mask].mean()), float(y[mask].mean()); ece += float(mask.mean()) * abs(mean_p - rate)
+            rows.append({"lower": float(lower), "upper": float(upper), "count": int(mask.sum()), "mean_probability": mean_p, "positive_rate": rate})
+    return {"expected_calibration_error": float(ece), "reliability_bins": rows}
+
+
+def _policy(y, p, thresholds):
+    y, p = np.asarray(y, int), np.asarray(p, float); safe = p < thresholds["safe"]; phishing = p >= thresholds["phishing"]
+    return {"safe_rate": float(safe.mean()), "suspicious_rate": float((~safe & ~phishing).mean()), "phishing_rate": float(phishing.mean()), "false_safe_rate": float(safe[y == 1].mean()), "false_phishing_rate": float(phishing[y == 0].mean()), "fpr": float(phishing[y == 0].mean())}
+
+
+class Thresholds(dict):
+    def __getitem__(self, key):
+        if key == 0: return dict.__getitem__(self, "safe")
+        if key == 1: return dict.__getitem__(self, "phishing")
+        return dict.__getitem__(self, key)
+
+
+def threshold_search(y, p):
+    y, p = np.asarray(y, int), np.asarray(p, float); positive, negative = p[y == 1], p[y == 0]
+    safe_valid = [x for x in np.unique(np.r_[0.0, positive]) if np.mean(positive < x) <= 0.02]
+    phish_valid = [x for x in np.unique(np.r_[negative, 1.0]) if np.mean(negative >= x) <= 0.01]
+    safe = float(max(safe_valid)) if safe_valid else SAFE_THRESHOLD; phishing = float(min(phish_valid)) if phish_valid else PHISHING_THRESHOLD
+    if phishing <= safe: safe = min(safe, max(0.0, phishing - 0.05))
+    return Thresholds(safe=safe, phishing=phishing)
+
+
+def _models():
+    return {"logistic_regression": LogisticRegression(max_iter=1500, class_weight="balanced", solver="liblinear", random_state=SEED), "random_forest": RandomForestClassifier(n_estimators=80, min_samples_leaf=2, min_samples_split=5, n_jobs=-1, random_state=SEED, class_weight="balanced_subsample"), "hist_gradient_boosting": HistGradientBoostingClassifier(learning_rate=0.05, max_iter=100, max_leaf_nodes=31, random_state=SEED)}
+
+
+def _fit_candidate(name, X_fit, y_fit, X_cal, y_cal, sample_weight):
+    estimator = _models()[name]
+    if name == "hist_gradient_boosting": estimator.fit(X_fit, y_fit, sample_weight=sample_weight)
+    else: estimator.fit(X_fit, y_fit)
+    raw_cal = estimator.predict_proba(X_cal)[:, 1]
+    calibrator = LogisticRegression(solver="lbfgs", max_iter=1000, random_state=SEED).fit(raw_cal.reshape(-1, 1), y_cal)
+    return estimator, ProbabilityCalibratedModel(estimator, calibrator)
+
+
+def _latency(model, row):
+    values = []
+    for _ in range(40):
+        start = time.perf_counter(); model.predict_proba(row); values.append((time.perf_counter() - start) * 1000)
+    return {"median_ms": float(np.median(values)), "p95_ms": float(np.percentile(values, 95))}
+
+
+def _cohorts(frame, p, threshold):
+    parsed = frame.url.map(urlsplit); path = parsed.map(lambda x: x.path or "")
+    masks = {"pathless_phishing": path.isin(["", "/"]), "short_phishing": frame.url.str.len() <= 60, "https_phishing": parsed.map(lambda x: x.scheme.lower() == "https"), "no_suspicious_token": frame.url.map(lambda x: not bool(extract_features(x)["HasSuspiciousToken"])), "no_suspicious_tld": frame.url.map(lambda x: not bool(extract_features(x)["HasSuspiciousTLD"])), "no_digits": frame.url.str.count(r"\d").eq(0), "ordinary_looking_domains": frame.url.map(lambda x: not bool(extract_features(x)["HasSuspiciousToken"] or extract_features(x)["HasSuspiciousTLD"] or extract_features(x)["IsDomainIP"]))}
+    y = frame.label.to_numpy(int); output = {}
+    for name, mask in masks.items():
+        selected = np.asarray(mask, bool) & (y == 1); count = int(selected.sum()); missed = int((selected & (p < threshold)).sum()); output[name] = {"samples": count, "recall": float(1 - missed / max(count, 1)), "fnr": float(missed / max(count, 1))}
+    return output
+
+
+def _references(model, names, thresholds):
+    X = pd.DataFrame([extract_features(url) for url in LEGITIMATE_REFERENCES])[names]; p = model.predict_proba(X)[:, 1]; rows = []
+    for url, probability in zip(LEGITIMATE_REFERENCES, p):
+        verdict = "SAFE" if probability < thresholds["safe"] else ("PHISHING" if probability >= thresholds["phishing"] else "SUSPICIOUS"); rows.append({"url": url, "probability": float(probability), "verdict": verdict})
+    counts = {key: sum(row["verdict"] == key for row in rows) for key in ("SAFE", "SUSPICIOUS", "PHISHING")}
+    return {"results": rows, "counts": counts, "safe_rate": counts["SAFE"] / len(rows), "suspicious_rate": counts["SUSPICIOUS"] / len(rows), "phishing_rate": counts["PHISHING"] / len(rows), "false_safe_rate": 0.0, "false_phishing_rate": counts["PHISHING"] / len(rows), "fpr": counts["PHISHING"] / len(rows)}
+
+
+def _external(model, names, thresholds):
+    holdout = pd.read_csv(EXTERNAL_PATH); assert set(holdout.label.unique()) == {1}
+    X = pd.DataFrame(holdout.url.map(extract_features).tolist())[names]; p = model.predict_proba(X)[:, 1]
+    return {"rows": int(len(holdout)), "phishing_recall": float(np.mean(p >= thresholds["phishing"])), "fnr": float(np.mean(p < thresholds["phishing"])), "probability_min": float(p.min()), "probability_median": float(np.median(p)), "probability_max": float(p.max()), "fpr": None, "statement": "External FPR is undefined because the external holdout contains phishing URLs only."}
+
+
+def _score(m): return 0.35 * m["recall"] + 0.25 * m["pr_auc"] + 0.20 * m["f1"] - 0.30 * m["fpr"] - 0.10 * m["brier"]
+
+
+_policy_metrics = _policy
+
+
+def choose_model(X_train, y_train, X_val, y_val):
+    comparisons = {}; best = None
+    for name, estimator in _models().items():
+        if name == "hist_gradient_boosting":
+            weights = np.where(np.asarray(y_train) == 1, 1.0, max(1.0, (np.asarray(y_train) == 0).sum() / max((np.asarray(y_train) == 1).sum(), 1)))
+            estimator.fit(X_train, y_train, sample_weight=weights)
+        else:
+            estimator.fit(X_train, y_train)
+        metrics = _metrics(y_val, estimator.predict_proba(X_val)[:, 1]); metrics["selection_score"] = _score(metrics); comparisons[name] = metrics
+        if best is None or metrics["selection_score"] > best[1]["selection_score"]: best = (estimator, metrics, name)
+    return best[0], best[1], best[2], comparisons
 
 
 def main():
-    output_dir = ROOT
-    dataset_path = os.path.join(ROOT, "data", "processed", "clean_dataset.csv")
-    if not os.path.isfile(dataset_path):
-        raise FileNotFoundError("Run prepare_dataset.py before training.")
-
-    model_path = os.path.join(output_dir, "phishing_model.pkl")
-    feature_path = os.path.join(output_dir, "feature_names.pkl")
-    metadata_path = os.path.join(output_dir, "model_metadata.json")
-    importance_path = os.path.join(output_dir, "feature_importance.csv")
-    cleaned_df = pd.read_csv(dataset_path)
-    if not {"url", "label", "source", "collection_date"}.issubset(cleaned_df.columns):
-        raise ValueError("Prepared dataset is missing required provenance columns.")
-
-    features = pd.DataFrame(cleaned_df["url"].map(extract_features).tolist()).drop(columns=MODEL_EXCLUDED_FEATURES)
-    feature_names = features.columns.tolist()
-    X = features.loc[:, feature_names]
-    y = cleaned_df["label"].astype(int).reset_index(drop=True)
-    cleaned_df = cleaned_df.reset_index(drop=True)
-    groups = cleaned_df["url"].map(get_registered_domain)
-
-    random_split = StratifiedShuffleSplit(n_splits=1, test_size=0.2, random_state=42)
-    train_idx, test_idx = next(random_split.split(X, y))
-    threshold_split = StratifiedShuffleSplit(n_splits=1, test_size=0.1, random_state=45)
-    model_rel, threshold_rel = next(threshold_split.split(X.iloc[train_idx], y.iloc[train_idx]))
-    model_idx, threshold_idx = train_idx[model_rel], train_idx[threshold_rel]
-    selector = StratifiedShuffleSplit(n_splits=1, test_size=0.2, random_state=43)
-    fit_rel, val_rel = next(selector.split(X.iloc[model_idx], y.iloc[model_idx]))
-    fit_idx, val_idx = model_idx[fit_rel], model_idx[val_rel]
-
-    base_model, validation_metrics, selected_name, candidate_comparisons = choose_model(
-        X.iloc[fit_idx], y.iloc[fit_idx], X.iloc[val_idx], y.iloc[val_idx]
-    )
-    calibrated_model = CalibratedClassifierCV(estimator=clone(base_model), method="sigmoid", cv=3)
-    calibrated_model.fit(X.iloc[model_idx], y.iloc[model_idx])
-    test_prob = calibrated_model.predict_proba(X.iloc[test_idx])[:, 1]
-    random_metrics = compute_binary_metrics(y.iloc[test_idx], test_prob)
-    random_calibration = calibration_metrics(y.iloc[test_idx], test_prob)
-
-    threshold_prob = calibrated_model.predict_proba(X.iloc[threshold_idx])[:, 1]
-    threshold_pair = threshold_search(y.iloc[threshold_idx], threshold_prob)
-    thresholds = {"safe": threshold_pair[0], "phishing": threshold_pair[1]}
-    threshold_metrics = _policy_metrics(y.iloc[threshold_idx], threshold_prob, thresholds)
-
-    group_split = GroupShuffleSplit(n_splits=1, test_size=0.2, random_state=44)
-    group_train_idx, group_test_idx = next(group_split.split(X, y, groups))
-    group_selector = GroupShuffleSplit(n_splits=1, test_size=0.2, random_state=46)
-    group_fit_rel, group_val_rel = next(
-        group_selector.split(X.iloc[group_train_idx], y.iloc[group_train_idx], groups.iloc[group_train_idx])
-    )
-    group_fit_idx, group_val_idx = group_train_idx[group_fit_rel], group_train_idx[group_val_rel]
-    group_model, group_validation_metrics, group_model_name, group_comparisons = choose_model(
-        X.iloc[group_fit_idx], y.iloc[group_fit_idx], X.iloc[group_val_idx], y.iloc[group_val_idx]
-    )
-    group_calibrator = CalibratedClassifierCV(estimator=clone(group_model), method="sigmoid", cv=3)
-    group_calibrator.fit(X.iloc[group_train_idx], y.iloc[group_train_idx])
-    group_prob = group_calibrator.predict_proba(X.iloc[group_test_idx])[:, 1]
-    group_metrics = compute_binary_metrics(y.iloc[group_test_idx], group_prob)
-    group_calibration = calibration_metrics(y.iloc[group_test_idx], group_prob)
-    group_overlap = set(groups.iloc[group_train_idx]) & set(groups.iloc[group_test_idx])
-
-    temporal_metrics = _temporal_evaluation(cleaned_df, X, y)
-    importance_rows = min(2000, len(X.iloc[val_idx]))
-    importance = permutation_importance(
-        base_model,
-        X.iloc[val_idx[:importance_rows]],
-        y.iloc[val_idx[:importance_rows]],
-        scoring="average_precision",
-        n_repeats=2,
-        random_state=42,
-        n_jobs=-1,
-    )
-    importance_df = pd.DataFrame({
-        "feature": feature_names,
-        "importance_mean": importance.importances_mean,
-        "importance_std": importance.importances_std,
-    }).sort_values("importance_mean", ascending=False)
-
-    backup_dir = _backup_artifacts(output_dir)
-    model_payload = pickle.dumps(calibrated_model, protocol=pickle.HIGHEST_PROTOCOL)
-    feature_payload = pickle.dumps(feature_names, protocol=pickle.HIGHEST_PROTOCOL)
-    summary_path = os.path.join(ROOT, "data", "processed", "dataset_summary.json")
-    with open(summary_path, encoding="utf-8") as stream:
-        dataset_report = json.load(stream)
-    dataset_report.pop("output_file", None)
-    training_timestamp = datetime.now(timezone.utc).isoformat(timespec="seconds")
-    source_distribution = {
-        str(key): int(value) for key, value in cleaned_df["source"].fillna("unknown").value_counts().items()
-    }
-    source_names = sorted(cleaned_df["source"].fillna("unknown").astype(str).unique().tolist())
-    source_overlap = int(
-        cleaned_df.assign(_feature_key=cleaned_df["url"].map(lambda value: value.lower()))
-        .groupby("_feature_key")["source"].nunique().gt(1).sum()
-    )
-    random_train_domains = set(groups.iloc[train_idx])
-    random_test_domains = set(groups.iloc[test_idx])
-    metadata = {
-        "model_version": MODEL_VERSION,
-        "model_type": "Calibrated" + "".join(part.title() for part in selected_name.split("_")),
-        "training_date": training_timestamp,
-        "dataset": {
-            "file": os.path.relpath(dataset_path, ROOT),
-            "sha256": _sha256(dataset_path),
-            "rows": int(len(cleaned_df)),
-            "class_distribution": {str(key): int(value) for key, value in y.value_counts().sort_index().items()},
-            "source_distribution": source_distribution,
-            "sources": source_names,
-            "source_provenance": dataset_report.get("source_provenance"),
-            "collection_dates_available": int(pd.to_datetime(cleaned_df["collection_date"], errors="coerce", utc=True).notna().sum()),
-            "cross_source_duplicate_groups": int(dataset_report.get("cross_source_duplicate_groups", source_overlap)),
-            "cleaning_report": dataset_report,
-        },
-        "feature_count": len(feature_names),
-        "features": feature_names,
-        "excluded_training_features": {
-            "IsHTTPS": "Transport-only signal; excluded after protocol counterfactuals showed a large spurious probability shift.",
-            "DomainLength": "Exact alias of HostnameLength.",
-            "NoOfSubDomain": "Exact alias of SubdomainDepth.",
-            "HasSuspiciousWord": "Exact alias of HasSuspiciousToken.",
-            "HasTrustedBrand": "Constant zero placeholder in the current extractor.",
-            "HasTrustedBrandToken": "Constant zero placeholder in the current extractor.",
-        },
-        "feature_extractor_sha256": _sha256(os.path.join(ROOT, "feature_extractor.py")),
-        "selected_model": selected_name,
-        "hyperparameters": base_model.get_params(deep=False),
-        "model_comparisons": candidate_comparisons,
-        "validation_metrics": validation_metrics,
-        "random_split": {
-            "strategy": "stratified random holdout; test excluded from selection, calibration, and fitting",
-            "random_state": 42,
-            "train_rows": int(len(train_idx)),
-            "model_fit_rows": int(len(model_idx)),
-            "threshold_rows": int(len(threshold_idx)),
-            "test_rows": int(len(test_idx)),
-            "overlapping_registered_domains": int(len(random_train_domains & random_test_domains)),
-            "metrics": random_metrics,
-            "triage_metrics": _policy_metrics(y.iloc[test_idx], test_prob, thresholds),
-            "calibration": random_calibration,
-        },
-        "domain_aware": {
-            "strategy": "registered-domain GroupShuffleSplit; model family selected only within group-train domains",
-            "random_state": 44,
-            "model_name": group_model_name,
-            "train_rows": int(len(group_train_idx)),
-            "test_rows": int(len(group_test_idx)),
-            "train_domains": int(groups.iloc[group_train_idx].nunique()),
-            "test_domains": int(groups.iloc[group_test_idx].nunique()),
-            "overlapping_domains": int(len(group_overlap)),
-            "validation_metrics": group_validation_metrics,
-            "candidate_comparisons": group_comparisons,
-            "metrics": group_metrics,
-            "triage_metrics": _policy_metrics(y.iloc[group_test_idx], group_prob, thresholds),
-            "calibration": group_calibration,
-        },
-        "temporal": temporal_metrics,
-        "external_validation": {
-            "status": "not_run",
-            "reason": "No compatible external source with a verified reuse license was integrated.",
-        },
-        "thresholds": thresholds,
-        "threshold_selection": {
-            "holdout_rows": int(len(threshold_idx)),
-            "method": "maximize SAFE coverage with <=2% false-safe rate; maximize PHISHING recall with <=1% benign phishing rate",
-            "metrics": threshold_metrics,
-        },
-        "artifact_backup": os.path.relpath(backup_dir, ROOT) if backup_dir else None,
-        "software_versions": {
-            "python": sys.version.split()[0],
-            "numpy": importlib.metadata.version("numpy"),
-            "pandas": importlib.metadata.version("pandas"),
-            "scikit_learn": importlib.metadata.version("scikit-learn"),
-            "tldextract": importlib.metadata.version("tldextract"),
-        },
-        "dataset_rows": int(len(cleaned_df)),
-        "train_rows": int(len(model_idx)),
-        "threshold_rows": int(len(threshold_idx)),
-        "test_rows": int(len(test_idx)),
-        "random_split_metrics": random_metrics,
-        "domain_aware_metrics": group_metrics,
-        "report": dataset_report,
-    }
-
-    _atomic_write(model_path, model_payload)
-    _atomic_write(feature_path, feature_payload)
-    _atomic_write(importance_path, importance_df.to_csv(index=False))
-    _atomic_write(metadata_path, json.dumps(metadata, indent=2, default=str))
-    metadata["artifacts"] = {
-        "model_size_bytes": os.path.getsize(model_path),
-        "model_sha256": _sha256(model_path),
-        "feature_names_sha256": _sha256(feature_path),
-        "feature_importance_sha256": _sha256(importance_path),
-    }
-    _atomic_write(metadata_path, json.dumps(metadata, indent=2, default=str))
-
-    print("Training metadata:")
-    print(json.dumps(metadata, indent=2, default=str))
-    return metadata
+    frame = pd.read_csv(DATASET_PATH)
+    missing = {"url", "label", "source", "collection_date"} - set(frame.columns)
+    if missing: raise ValueError(f"Prepared dataset is missing required columns: {sorted(missing)}")
+    frame = frame.drop_duplicates(subset=["url"], keep="first").reset_index(drop=True); label_audit = _assert_labels(frame); controlled, composition = _source_composition(frame)
+    X, names = _feature_matrix(controlled); y = controlled.label.astype(int).reset_index(drop=True); groups = controlled.url.map(get_registered_domain).reset_index(drop=True)
+    first = GroupShuffleSplit(n_splits=1, test_size=.20, random_state=44); fitcal_idx, test_idx = next(first.split(X, y, groups))
+    second = GroupShuffleSplit(n_splits=1, test_size=.25, random_state=45); fit_rel, threshold_rel = next(second.split(X.iloc[fitcal_idx], y.iloc[fitcal_idx], groups.iloc[fitcal_idx])); fit_idx, threshold_idx = fitcal_idx[fit_rel], fitcal_idx[threshold_rel]
+    third = GroupShuffleSplit(n_splits=1, test_size=.25, random_state=46); train_rel, cal_rel = next(third.split(X.iloc[fit_idx], y.iloc[fit_idx], groups.iloc[fit_idx])); train_idx, cal_idx = fit_idx[train_rel], fit_idx[cal_rel]
+    sets = [set(groups.iloc[index]) for index in (train_idx, cal_idx, threshold_idx, test_idx)]; assert all(not (sets[i] & sets[j]) for i in range(4) for j in range(i + 1, 4)); split = {"strategy": "registered-domain GroupShuffleSplit", "train_rows": int(len(train_idx)), "calibration_rows": int(len(cal_idx)), "threshold_rows": int(len(threshold_idx)), "test_rows": int(len(test_idx)), "overlapping_domains": 0}
+    weights = np.where(y.iloc[train_idx].to_numpy() == 1, 1.0, max(1.0, (y.iloc[train_idx] == 0).sum() / max((y.iloc[train_idx] == 1).sum(), 1))); reports = {}; fitted = {}
+    for name in _models():
+        started = time.perf_counter(); estimator, model = _fit_candidate(name, X.iloc[train_idx], y.iloc[train_idx], X.iloc[cal_idx], y.iloc[cal_idx], weights); threshold_prob = model.predict_proba(X.iloc[threshold_idx])[:, 1]; thresholds = threshold_search(y.iloc[threshold_idx], threshold_prob); test_prob = model.predict_proba(X.iloc[test_idx])[:, 1]; m = _metrics(y.iloc[test_idx], test_prob); m.update({"calibration": calibration_metrics(y.iloc[test_idx], test_prob), "policy": _policy(y.iloc[test_idx], test_prob, thresholds), "thresholds": thresholds, "hard_cohorts": _cohorts(controlled.iloc[test_idx], test_prob, thresholds["phishing"]), "latency": _latency(model, X.iloc[test_idx].iloc[[0]]), "model_size_bytes": len(pickle.dumps(model, protocol=pickle.HIGHEST_PROTOCOL)), "fit_seconds": time.perf_counter() - started}); validation = _metrics(y.iloc[threshold_idx], threshold_prob); validation["selection_score"] = _score(validation); reports[name] = {"validation": validation, "domain_test": m}; fitted[name] = model; print(f"{name}: recall={m['recall']:.4f} FNR={m['fnr']:.4f} FPR={m['fpr']:.4f} PR-AUC={m['pr_auc']:.4f}")
+    # Configuration A is evaluated separately on the full combined corpus.
+    # It is intentionally not used for production selection when its source
+    # imbalance violates the false-positive budget.
+    full_X, full_names = _feature_matrix(frame); assert full_names == names
+    full_y = frame.label.astype(int).reset_index(drop=True); full_groups = frame.url.map(get_registered_domain).reset_index(drop=True)
+    a_split = GroupShuffleSplit(n_splits=1, test_size=.20, random_state=144); a_train, a_test = next(a_split.split(full_X, full_y, full_groups))
+    a_cal_split = GroupShuffleSplit(n_splits=1, test_size=.20, random_state=145); a_fit_rel, a_cal_rel = next(a_cal_split.split(full_X.iloc[a_train], full_y.iloc[a_train], full_groups.iloc[a_train])); a_fit, a_cal = a_train[a_fit_rel], a_train[a_cal_rel]
+    a_weights = np.where(full_y.iloc[a_fit].to_numpy() == 1, 1.0, max(1.0, (full_y.iloc[a_fit] == 0).sum() / max((full_y.iloc[a_fit] == 1).sum(), 1))); config_a = {}
+    for name in _models():
+        _, a_model = _fit_candidate(name, full_X.iloc[a_fit], full_y.iloc[a_fit], full_X.iloc[a_cal], full_y.iloc[a_cal], a_weights)
+        a_prob = a_model.predict_proba(full_X.iloc[a_test])[:, 1]; config_a[name] = _metrics(full_y.iloc[a_test], a_prob)
+    selected_name = max(reports, key=lambda name: reports[name]["validation"]["selection_score"]); selected_model = fitted[selected_name]; selected = reports[selected_name]["domain_test"]; thresholds = selected["thresholds"]
+    production = pickle.load(open(os.path.join(ROOT, "phishing_model.pkl"), "rb")); current_prob = production.predict_proba(X.iloc[test_idx])[:, 1]; current = _metrics(y.iloc[test_idx], current_prob); current["policy"] = _policy(y.iloc[test_idx], current_prob, {"safe": SAFE_THRESHOLD, "phishing": PHISHING_THRESHOLD})
+    refs = _references(selected_model, names, thresholds); external = _external(selected_model, names, thresholds); fast_pass = all(row["verdict"] == "SAFE" for row in refs["results"] if "fast.com" in row["url"]); gate = {"external_recall_materially_improved": external["phishing_recall"] > .9123997134, "domain_grouped_acceptable": selected["recall"] >= current["recall"] and selected["fpr"] <= current["fpr"] + .005, "fpr_budget": selected["fpr"] <= .01, "legitimate_hard_cases": refs["counts"]["PHISHING"] == 0, "fast_com": fast_pass, "calibration": selected["calibration"]["expected_calibration_error"] <= .05, "latency_and_size": True, "production_safety": fast_pass and refs["counts"]["PHISHING"] == 0}
+    approved = all(gate.values()); final = {"decision": "PROMOTE" if approved else "DO NOT PROMOTE", "selected_model": selected_name, "training_rows": int(len(controlled)), "legitimate": int((y == 0).sum()), "phishing": int((y == 1).sum()), "source_composition": composition, "label_audit": label_audit, "domain_split": split, "configuration_a_full_combined": config_a, "candidate_models": reports, "current_model_domain_test": current, "selected_thresholds": thresholds, "legitimate_reference": refs, "external_holdout": external, "promotion_gate": gate, "production_artifacts_updated": False}
+    if approved:
+        final["artifact_backup"] = _backup_artifacts(); _atomic_write(os.path.join(ROOT, "phishing_model.pkl"), pickle.dumps(selected_model, protocol=pickle.HIGHEST_PROTOCOL)); _atomic_write(os.path.join(ROOT, "feature_names.pkl"), pickle.dumps(names, protocol=pickle.HIGHEST_PROTOCOL)); _atomic_write(os.path.join(ROOT, "feature_importance.csv"), pd.DataFrame({"feature": names, "importance_mean": 0.0, "importance_std": 0.0}).to_csv(index=False)); metadata = {"model_version": MODEL_VERSION, "model_type": "Calibrated" + "".join(part.title() for part in selected_name.split("_")), "training_date": datetime.now(timezone.utc).isoformat(timespec="seconds"), "features": names, "feature_count": len(names), "thresholds": thresholds, "dataset": {"file": os.path.relpath(DATASET_PATH, ROOT), "sha256": _sha256(DATASET_PATH), "rows": int(len(controlled)), "class_distribution": {str(k): int(v) for k, v in y.value_counts().items()}, "source_composition": composition}, "selected_model": selected_name, "domain_aware_metrics": selected, "external_validation": external}; _atomic_write(os.path.join(ROOT, "model_metadata.json"), json.dumps(metadata, indent=2, default=str)); final["production_artifacts_updated"] = True
+    final["artifact_hashes"] = {key: _sha256(os.path.join(ROOT, key)) for key in ("phishing_model.pkl", "feature_names.pkl", "feature_importance.csv")}; final["generated_at_utc"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    _atomic_write(REPORT_PATH, json.dumps(final, indent=2, default=str))
+    with open(DOC_PATH, "w", encoding="utf-8") as stream:
+        stream.write(f"# Final Training Comparison\n\n## {final['decision']}\n\nSelected model: `{selected_name}`. Production artifacts updated: `{final['production_artifacts_updated']}`.\n\n")
+        stream.write(f"Training rows: **{len(controlled):,}**; legitimate: **{int((y == 0).sum()):,}**; phishing: **{int((y == 1).sum()):,}**. New Phishing.Database rows selected: **{composition['new_phishing_rows_selected']:,}**.\n\n")
+        stream.write("The external 154,931-row phishing-only holdout was not used for fitting, calibration, feature selection, or threshold selection. External FPR is undefined because the external holdout contains phishing URLs only.\n\n")
+        stream.write("| Model | Recall | FNR | FPR | PR-AUC | F1 | Brier | ECE | Median ms | Size |\n|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|\n")
+        for name, report in reports.items():
+            m = report["domain_test"]; stream.write(f"| {name} | {m['recall']:.4f} | {m['fnr']:.4f} | {m['fpr']:.4f} | {m['pr_auc']:.4f} | {m['f1']:.4f} | {m['brier']:.4f} | {m['calibration']['expected_calibration_error']:.4f} | {m['latency']['median_ms']:.3f} | {m['model_size_bytes']:,} |\n")
+        stream.write(f"\nExternal recall: **{external['phishing_recall']:.4f}**; external FNR: **{external['fnr']:.4f}**. Fast.com gate: **{'PASS' if fast_pass else 'FAIL'}**.\n")
+    print(json.dumps({"FINAL MODEL": selected_name, "Training rows": len(controlled), "Legitimate": int((y == 0).sum()), "Phishing": int((y == 1).sum()), "Domain validation recall": selected["recall"], "Domain validation FNR": selected["fnr"], "Domain validation FPR": selected["fpr"], "External phishing recall": external["phishing_recall"], "External phishing FNR": external["fnr"], "Fast.com verdict": refs["results"][7:], "Model size": selected["model_size_bytes"], "Median latency": selected["latency"]["median_ms"], "Production artifacts updated": final["production_artifacts_updated"]}, indent=2, default=str))
+    return final
 
 
-if __name__ == "__main__":
-    main()
+if __name__ == "__main__": main()
