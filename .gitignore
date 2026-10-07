@@ -53,3 +53,7 @@ scripts/final_ml_pass.py
 
 # Notebook/runtime artifacts
 .ipynb_checkpoints/
+# Local VIGIL training datasets and runtime history
+/data/benign_dynamic_urls.csv
+/data/external/benign_dynamic/
+/vigil_history.sqlite3
