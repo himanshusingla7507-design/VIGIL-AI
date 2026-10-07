@@ -37,6 +37,7 @@ Thumbs.db
 
 # Large/local data and generated model bundles
 *.csv
+!data/benign_dynamic_urls.csv
 *.pkl
 
 models/backup/

@@ -1,0 +1,1466 @@
+{
+  "decision": "DO NOT PROMOTE",
+  "generated_at_utc": "2026-10-07T17:27:58+00:00",
+  "root_cause": {
+    "summary": "The current 29-feature URL model learned a one-sided training pattern: legitimate training URLs are homepages, while every labeled URL with a path or query is phishing. Its tree splits consequently treat /search and simple query punctuation as decisive phishing signals.",
+    "evidence": {
+      "google_search_path_counterfactual_probability": 0.9980175596440618,
+      "youtube_query_counterfactual_probability": 0.738846607251053,
+      "google_homepage_probability": 0.17419740435065476
+    },
+    "no_domain_allowlist_or_bypass_added": true,
+    "feature_level_counterfactuals": {
+      "https://www.google.com/search?q=test": {
+        "hostname_only_url": "https://www.google.com",
+        "hostname_only_probability": 0.17419740435065476,
+        "full_url_probability": 0.9980175596440618,
+        "changed_production_features": [
+          {
+            "feature": "PathLength",
+            "hostname_only_value": 0,
+            "full_url_value": 7,
+            "probability_after_changing_only_this_feature": 0.9980175596440618
+          },
+          {
+            "feature": "QueryLength",
+            "hostname_only_value": 0,
+            "full_url_value": 6,
+            "probability_after_changing_only_this_feature": 0.746470761366544
+          },
+          {
+            "feature": "URLLength",
+            "hostname_only_value": 17,
+            "full_url_value": 31,
+            "probability_after_changing_only_this_feature": 0.21753109522345668
+          },
+          {
+            "feature": "URLEntropy",
+            "hostname_only_value": 3.4548223999466057,
+            "full_url_value": 3.977916874693636,
+            "probability_after_changing_only_this_feature": 0.15802452770158415
+          },
+          {
+            "feature": "NoOfLettersInURL",
+            "hostname_only_value": 13,
+            "full_url_value": 24,
+            "probability_after_changing_only_this_feature": 0.1735933727813744
+          },
+          {
+            "feature": "LetterRatioInURL",
+            "hostname_only_value": 0.7647058823529411,
+            "full_url_value": 0.7741935483870968,
+            "probability_after_changing_only_this_feature": 0.17476844984744186
+          },
+          {
+            "feature": "PathSegmentCount",
+            "hostname_only_value": 0,
+            "full_url_value": 1,
+            "probability_after_changing_only_this_feature": 0.17419740435065476
+          },
+          {
+            "feature": "QueryParameterCount",
+            "hostname_only_value": 0,
+            "full_url_value": 1,
+            "probability_after_changing_only_this_feature": 0.17419740435065476
+          },
+          {
+            "feature": "NoOfEqualsInURL",
+            "hostname_only_value": 0,
+            "full_url_value": 1,
+            "probability_after_changing_only_this_feature": 0.17419740435065476
+          },
+          {
+            "feature": "NoOfQMarkInURL",
+            "hostname_only_value": 0,
+            "full_url_value": 1,
+            "probability_after_changing_only_this_feature": 0.17419740435065476
+          }
+        ],
+        "interpretation": "Each feature is changed independently from the hostname-only vector; these one-feature probes do not sum and do not resolve tree feature interactions."
+      },
+      "https://www.google.com/search?q=cybersecurity": {
+        "hostname_only_url": "https://www.google.com",
+        "hostname_only_probability": 0.17419740435065476,
+        "full_url_probability": 0.9977148334346458,
+        "changed_production_features": [
+          {
+            "feature": "PathLength",
+            "hostname_only_value": 0,
+            "full_url_value": 7,
+            "probability_after_changing_only_this_feature": 0.9980175596440618
+          },
+          {
+            "feature": "URLLength",
+            "hostname_only_value": 17,
+            "full_url_value": 40,
+            "probability_after_changing_only_this_feature": 0.7944425720376533
+          },
+          {
+            "feature": "QueryLength",
+            "hostname_only_value": 0,
+            "full_url_value": 15,
+            "probability_after_changing_only_this_feature": 0.746470761366544
+          },
+          {
+            "feature": "LetterRatioInURL",
+            "hostname_only_value": 0.7647058823529411,
+            "full_url_value": 0.825,
+            "probability_after_changing_only_this_feature": 0.15220639051212928
+          },
+          {
+            "feature": "URLEntropy",
+            "hostname_only_value": 3.4548223999466057,
+            "full_url_value": 4.246439344671016,
+            "probability_after_changing_only_this_feature": 0.160350783757057
+          },
+          {
+            "feature": "NoOfLettersInURL",
+            "hostname_only_value": 13,
+            "full_url_value": 33,
+            "probability_after_changing_only_this_feature": 0.18730098272079457
+          },
+          {
+            "feature": "PathSegmentCount",
+            "hostname_only_value": 0,
+            "full_url_value": 1,
+            "probability_after_changing_only_this_feature": 0.17419740435065476
+          },
+          {
+            "feature": "QueryParameterCount",
+            "hostname_only_value": 0,
+            "full_url_value": 1,
+            "probability_after_changing_only_this_feature": 0.17419740435065476
+          },
+          {
+            "feature": "NoOfEqualsInURL",
+            "hostname_only_value": 0,
+            "full_url_value": 1,
+            "probability_after_changing_only_this_feature": 0.17419740435065476
+          },
+          {
+            "feature": "NoOfQMarkInURL",
+            "hostname_only_value": 0,
+            "full_url_value": 1,
+            "probability_after_changing_only_this_feature": 0.17419740435065476
+          }
+        ],
+        "interpretation": "Each feature is changed independently from the hostname-only vector; these one-feature probes do not sum and do not resolve tree feature interactions."
+      },
+      "https://www.youtube.com/?feature=ytca": {
+        "hostname_only_url": "https://www.youtube.com",
+        "hostname_only_probability": 0.1675840286555003,
+        "full_url_probability": 0.738846607251053,
+        "changed_production_features": [
+          {
+            "feature": "QueryLength",
+            "hostname_only_value": 0,
+            "full_url_value": 12,
+            "probability_after_changing_only_this_feature": 0.7366864831717129
+          },
+          {
+            "feature": "URLLength",
+            "hostname_only_value": 18,
+            "full_url_value": 31,
+            "probability_after_changing_only_this_feature": 0.2086275105538041
+          },
+          {
+            "feature": "URLEntropy",
+            "hostname_only_value": 3.5724312513221195,
+            "full_url_value": 3.9503441981686898,
+            "probability_after_changing_only_this_feature": 0.15908752041259436
+          },
+          {
+            "feature": "LetterRatioInURL",
+            "hostname_only_value": 0.7777777777777778,
+            "full_url_value": 0.8064516129032258,
+            "probability_after_changing_only_this_feature": 0.16555012282456125
+          },
+          {
+            "feature": "NoOfLettersInURL",
+            "hostname_only_value": 14,
+            "full_url_value": 25,
+            "probability_after_changing_only_this_feature": 0.16664203896723387
+          },
+          {
+            "feature": "QueryParameterCount",
+            "hostname_only_value": 0,
+            "full_url_value": 1,
+            "probability_after_changing_only_this_feature": 0.1675840286555003
+          },
+          {
+            "feature": "NoOfEqualsInURL",
+            "hostname_only_value": 0,
+            "full_url_value": 1,
+            "probability_after_changing_only_this_feature": 0.1675840286555003
+          },
+          {
+            "feature": "NoOfQMarkInURL",
+            "hostname_only_value": 0,
+            "full_url_value": 1,
+            "probability_after_changing_only_this_feature": 0.1675840286555003
+          }
+        ],
+        "interpretation": "Each feature is changed independently from the hostname-only vector; these one-feature probes do not sum and do not resolve tree feature interactions."
+      }
+    }
+  },
+  "production": {
+    "model_version": "v2.1.0",
+    "model_type": "CalibratedHistGradientBoosting",
+    "feature_count": 29,
+    "features": [
+      "URLLength",
+      "HostnameLength",
+      "PathLength",
+      "QueryLength",
+      "FragmentLength",
+      "PathSegmentCount",
+      "QueryParameterCount",
+      "DotCount",
+      "SubdomainDepth",
+      "NoOfDigitsInURL",
+      "DigitRatioInURL",
+      "NoOfLettersInURL",
+      "LetterRatioInURL",
+      "NoOfEqualsInURL",
+      "NoOfQMarkInURL",
+      "NoOfAmpersandInURL",
+      "NoOfAtInURL",
+      "NoOfHyphenInURL",
+      "NoOfUnderscoreInURL",
+      "URLPercentEncodingCount",
+      "HasObfuscation",
+      "HasUserInfo",
+      "HasPort",
+      "IsDomainIP",
+      "IsShortened",
+      "HasSuspiciousTLD",
+      "HasSuspiciousToken",
+      "IsTrustedTLD",
+      "URLEntropy"
+    ],
+    "feature_importance_new_url_model": {
+      "available": false,
+      "reason": "HistGradientBoostingClassifier does not expose built-in feature_importances_; controlled URL counterfactuals are reported separately."
+    },
+    "feature_sets": {
+      "production_url_features": [
+        "URLLength",
+        "HostnameLength",
+        "PathLength",
+        "QueryLength",
+        "FragmentLength",
+        "PathSegmentCount",
+        "QueryParameterCount",
+        "DotCount",
+        "SubdomainDepth",
+        "NoOfDigitsInURL",
+        "DigitRatioInURL",
+        "NoOfLettersInURL",
+        "LetterRatioInURL",
+        "NoOfEqualsInURL",
+        "NoOfQMarkInURL",
+        "NoOfAmpersandInURL",
+        "NoOfAtInURL",
+        "NoOfHyphenInURL",
+        "NoOfUnderscoreInURL",
+        "URLPercentEncodingCount",
+        "HasObfuscation",
+        "HasUserInfo",
+        "HasPort",
+        "IsDomainIP",
+        "IsShortened",
+        "HasSuspiciousTLD",
+        "HasSuspiciousToken",
+        "IsTrustedTLD",
+        "URLEntropy"
+      ],
+      "component_url_features": [
+        "NoOfSubDomain",
+        "IsHTTPS",
+        "HasSuspiciousWord",
+        "DomainLength",
+        "HasTrustedBrand",
+        "HasTrustedBrandToken",
+        "PathToUrlRatio",
+        "QueryToUrlRatio",
+        "QueryParametersToUrlRatio",
+        "HostToQueryLengthRatio",
+        "UniqueQueryKeyCount",
+        "RepeatedQueryKeyCount",
+        "QueryEncodedCharRatio",
+        "PathEncodedCharRatio",
+        "HostnameEntropy",
+        "PathEntropy",
+        "QueryEntropy",
+        "FragmentEntropy",
+        "SuspiciousHostTokenCount",
+        "SuspiciousPathTokenCount",
+        "SuspiciousQueryTokenCount",
+        "SuspiciousTokenHostOnly",
+        "SuspiciousTokenPathOnly",
+        "SuspiciousTokenQueryOnly",
+        "RepeatedPunctuationCount"
+      ],
+      "improved_url_model_full_feature_set": [
+        "URLLength",
+        "HostnameLength",
+        "PathLength",
+        "QueryLength",
+        "FragmentLength",
+        "PathSegmentCount",
+        "QueryParameterCount",
+        "DotCount",
+        "SubdomainDepth",
+        "NoOfDigitsInURL",
+        "DigitRatioInURL",
+        "NoOfLettersInURL",
+        "LetterRatioInURL",
+        "NoOfEqualsInURL",
+        "NoOfQMarkInURL",
+        "NoOfAmpersandInURL",
+        "NoOfAtInURL",
+        "NoOfHyphenInURL",
+        "NoOfUnderscoreInURL",
+        "URLPercentEncodingCount",
+        "HasObfuscation",
+        "HasUserInfo",
+        "HasPort",
+        "IsDomainIP",
+        "IsShortened",
+        "HasSuspiciousTLD",
+        "HasSuspiciousToken",
+        "IsTrustedTLD",
+        "URLEntropy",
+        "NoOfSubDomain",
+        "IsHTTPS",
+        "HasSuspiciousWord",
+        "DomainLength",
+        "HasTrustedBrand",
+        "HasTrustedBrandToken",
+        "PathToUrlRatio",
+        "QueryToUrlRatio",
+        "QueryParametersToUrlRatio",
+        "HostToQueryLengthRatio",
+        "UniqueQueryKeyCount",
+        "RepeatedQueryKeyCount",
+        "QueryEncodedCharRatio",
+        "PathEncodedCharRatio",
+        "HostnameEntropy",
+        "PathEntropy",
+        "QueryEntropy",
+        "FragmentEntropy",
+        "SuspiciousHostTokenCount",
+        "SuspiciousPathTokenCount",
+        "SuspiciousQueryTokenCount",
+        "SuspiciousTokenHostOnly",
+        "SuspiciousTokenPathOnly",
+        "SuspiciousTokenQueryOnly",
+        "RepeatedPunctuationCount"
+      ],
+      "hostname_character_model": {
+        "representation": "TfidfVectorizer analyzer=char, ngram_range=(3,5), min_df=2, max_features=120000",
+        "input": "hostname only; no path, query, live reputation, or allowlist"
+      },
+      "combined_model": "LogisticRegression stacker over calibrated improved URL-feature and hostname-character probabilities"
+    },
+    "artifact_hashes_before": {
+      "model": "5f16e09d5f6fb613d391051b2b5693cf47478356d77cec8c8e52f5b309159ba2",
+      "feature_names": "d02a7c9cd2cb5b73c2bbccc7347c240fed6d77593b8e7d602dbb67f424099da9",
+      "metadata": "f24e2edf6c35268ecf9273e3a0eb21c7b88caa87f91b71f139766d5adf598c87"
+    },
+    "artifact_hashes_after": {
+      "model": "5f16e09d5f6fb613d391051b2b5693cf47478356d77cec8c8e52f5b309159ba2",
+      "feature_names": "d02a7c9cd2cb5b73c2bbccc7347c240fed6d77593b8e7d602dbb67f424099da9",
+      "metadata": "f24e2edf6c35268ecf9273e3a0eb21c7b88caa87f91b71f139766d5adf598c87"
+    },
+    "artifacts_unchanged": true,
+    "thresholds_unchanged": true
+  },
+  "data": {
+    "dataset": "data\\processed\\clean_dataset.csv",
+    "rows": 854870,
+    "label_counts": {
+      "1": 720021,
+      "0": 134849
+    },
+    "source_composition_and_weights": {
+      "method": "all rows retained; PhiUSIIL row weight 1; Phishing.Database rows weighted to the same aggregate contribution as the existing 1.5:1 phishing-to-legitimate training policy",
+      "raw_rows": 854870,
+      "raw_rows_by_source_label": {
+        "PhiUSIIL|0": 134849,
+        "PhiUSIIL|1": 99584,
+        "phishing_database_active|1": 620437
+      },
+      "effective_weighted_rows_by_source": {
+        "PhiUSIIL": 234433.0,
+        "phishing_database_active": 102690.0
+      },
+      "phishing_database_active_row_weight": 0.16551237273083327,
+      "raw_rows_retained": true
+    },
+    "verified_labeled_url_cohorts": {
+      "homepage": {
+        "all": 355294,
+        "legitimate": 134849,
+        "phishing": 220445,
+        "legitimate_source_rows": {
+          "PhiUSIIL": 134849
+        },
+        "url_length_median_legitimate": 27.0,
+        "url_length_median_phishing": 32.0
+      },
+      "path_only": {
+        "all": 377872,
+        "legitimate": 0,
+        "phishing": 377872,
+        "legitimate_source_rows": {},
+        "url_length_median_legitimate": null,
+        "url_length_median_phishing": 59.0
+      },
+      "query_only": {
+        "all": 9800,
+        "legitimate": 0,
+        "phishing": 9800,
+        "legitimate_source_rows": {},
+        "url_length_median_legitimate": null,
+        "url_length_median_phishing": 66.0
+      },
+      "path_plus_query": {
+        "all": 111720,
+        "legitimate": 0,
+        "phishing": 111720,
+        "legitimate_source_rows": {},
+        "url_length_median_legitimate": null,
+        "url_length_median_phishing": 129.0
+      },
+      "long_query_over_100_chars": {
+        "all": 42549,
+        "legitimate": 0,
+        "phishing": 42549,
+        "legitimate_source_rows": {},
+        "url_length_median_legitimate": null,
+        "url_length_median_phishing": 257.0
+      },
+      "multiple_query_parameters": {
+        "all": 48999,
+        "legitimate": 0,
+        "phishing": 48999,
+        "legitimate_source_rows": {},
+        "url_length_median_legitimate": null,
+        "url_length_median_phishing": 186.0
+      },
+      "encoded_characters": {
+        "all": 15440,
+        "legitimate": 0,
+        "phishing": 15440,
+        "legitimate_source_rows": {},
+        "url_length_median_legitimate": null,
+        "url_length_median_phishing": 115.0
+      },
+      "long_url_over_200_chars": {
+        "all": 40014,
+        "legitimate": 0,
+        "phishing": 40014,
+        "legitimate_source_rows": {},
+        "url_length_median_legitimate": null,
+        "url_length_median_phishing": 291.0
+      },
+      "high_entropy_over_4": {
+        "all": 606843,
+        "legitimate": 32086,
+        "phishing": 574757,
+        "legitimate_source_rows": {
+          "PhiUSIIL": 32086
+        },
+        "url_length_median_legitimate": 31.0,
+        "url_length_median_phishing": 61.0
+      },
+      "redirect_or_tracking_parameter": {
+        "all": 4527,
+        "legitimate": 0,
+        "phishing": 4527,
+        "legitimate_source_rows": {},
+        "url_length_median_legitimate": null,
+        "url_length_median_phishing": 158.0
+      },
+      "fragment": {
+        "all": 831,
+        "legitimate": 0,
+        "phishing": 831,
+        "legitimate_source_rows": {},
+        "url_length_median_legitimate": null,
+        "url_length_median_phishing": 93.0
+      },
+      "repeated_punctuation": {
+        "all": 24788,
+        "legitimate": 1,
+        "phishing": 24787,
+        "legitimate_source_rows": {
+          "PhiUSIIL": 1
+        },
+        "url_length_median_legitimate": 20.0,
+        "url_length_median_phishing": 90.0
+      }
+    },
+    "raw_phiusiil_source_verification": {
+      "file": "data\\raw\\PhiUSIIL_Phishing_URL_Dataset.csv",
+      "rows": 235795,
+      "source_label_mapping": "PhiUSIIL label 1 is legitimate; label 0 is phishing",
+      "label_counts": {
+        "1": 134850,
+        "0": 100945
+      },
+      "legitimate_dynamic_urls": 0,
+      "phishing_dynamic_urls": 28673,
+      "legitimate_dynamic_examples": []
+    },
+    "external_holdout": {
+      "file": "data\\processed\\external_validation.csv",
+      "rows": 154931,
+      "phishing_only": true,
+      "sha256_before": "6548d7250a95a72f5e345e365fce26074b65116b333c5bd65710eec0762d270b",
+      "sha256_after": "6548d7250a95a72f5e345e365fce26074b65116b333c5bd65710eec0762d270b",
+      "untouched": true,
+      "used_only_after_training_for_evaluation": true,
+      "fpr": null,
+      "fpr_note": "External FPR is undefined because the holdout is phishing-only."
+    }
+  },
+  "counterfactuals": {
+    "construction": "A hostname-only, hostname-plus-path, hostname-plus-path-plus-query, and original comparison uses deterministic production feature extraction; omitted components are empty, not relabeled examples.",
+    "results": {
+      "youtube_query": {
+        "hostname_only": 0.1675840286555003,
+        "hostname_plus_path": 0.1675840286555003,
+        "hostname_plus_path_plus_query": 0.738846607251053,
+        "original": 0.738846607251053
+      },
+      "google_search_test": {
+        "hostname_only": 0.17419740435065476,
+        "hostname_plus_path": 0.9980175596440618,
+        "hostname_plus_path_plus_query": 0.9980175596440618,
+        "original": 0.9980175596440618
+      },
+      "google_search_cybersecurity": {
+        "hostname_only": 0.17419740435065476,
+        "hostname_plus_path": 0.9980175596440618,
+        "hostname_plus_path_plus_query": 0.9977148334346458,
+        "original": 0.9977148334346458
+      },
+      "google_homepage": {
+        "hostname_only": 0.17419740435065476,
+        "hostname_plus_path": 0.17419740435065476,
+        "hostname_plus_path_plus_query": 0.17419740435065476,
+        "original": 0.17419740435065476
+      }
+    }
+  },
+  "regression_urls": {
+    "manual_observations": {
+      "source": "manually observed URLs; regression-only, not used for fitting or threshold selection",
+      "urls": [
+        "https://www.google.com/",
+        "https://www.google.com/search?q=test",
+        "https://www.google.com/search?q=cybersecurity",
+        "https://www.youtube.com/",
+        "https://www.youtube.com/?feature=ytca",
+        "https://fast.com/"
+      ],
+      "legitimate_dynamic_training_coverage": {
+        "verified_labeled_dynamic_urls": 0,
+        "classification_limit": "The observed URLs are not treated as labeled training data because user supplied them as regression-only examples."
+      }
+    },
+    "predictions": {
+      "https://www.google.com/": {
+        "production": {
+          "probability": 0.17419740435065476,
+          "verdict": "SUSPICIOUS"
+        },
+        "improved_url_features": {
+          "probability": 0.9992898642540239,
+          "verdict": "PHISHING"
+        },
+        "hostname_character_model": {
+          "probability": 0.5742865368487625,
+          "verdict": "SUSPICIOUS"
+        },
+        "combined_url_hostname": {
+          "probability": 0.9987591325529765,
+          "verdict": "PHISHING"
+        },
+        "production_features": {
+          "URLLength": 17.0,
+          "HostnameLength": 10.0,
+          "PathLength": 0.0,
+          "QueryLength": 0.0,
+          "FragmentLength": 0.0,
+          "PathSegmentCount": 0,
+          "QueryParameterCount": 0,
+          "DotCount": 1.0,
+          "SubdomainDepth": 0.0,
+          "NoOfDigitsInURL": 0.0,
+          "DigitRatioInURL": 0.0,
+          "NoOfLettersInURL": 13.0,
+          "LetterRatioInURL": 0.7647058823529411,
+          "NoOfEqualsInURL": 0.0,
+          "NoOfQMarkInURL": 0.0,
+          "NoOfAmpersandInURL": 0.0,
+          "NoOfAtInURL": 0.0,
+          "NoOfHyphenInURL": 0.0,
+          "NoOfUnderscoreInURL": 0.0,
+          "URLPercentEncodingCount": 0.0,
+          "HasObfuscation": 0,
+          "HasUserInfo": 0,
+          "HasPort": 0,
+          "IsDomainIP": 0,
+          "IsShortened": 0,
+          "HasSuspiciousTLD": 0,
+          "HasSuspiciousToken": 0,
+          "IsTrustedTLD": 1,
+          "URLEntropy": 3.4548223999466057
+        }
+      },
+      "https://www.google.com/search?q=test": {
+        "production": {
+          "probability": 0.9980175596440618,
+          "verdict": "PHISHING"
+        },
+        "improved_url_features": {
+          "probability": 0.9992898642540239,
+          "verdict": "PHISHING"
+        },
+        "hostname_character_model": {
+          "probability": 0.5742865368487625,
+          "verdict": "SUSPICIOUS"
+        },
+        "combined_url_hostname": {
+          "probability": 0.9987591325529765,
+          "verdict": "PHISHING"
+        },
+        "production_features": {
+          "URLLength": 31.0,
+          "HostnameLength": 10.0,
+          "PathLength": 7.0,
+          "QueryLength": 6.0,
+          "FragmentLength": 0.0,
+          "PathSegmentCount": 1,
+          "QueryParameterCount": 1,
+          "DotCount": 1.0,
+          "SubdomainDepth": 0.0,
+          "NoOfDigitsInURL": 0.0,
+          "DigitRatioInURL": 0.0,
+          "NoOfLettersInURL": 24.0,
+          "LetterRatioInURL": 0.7741935483870968,
+          "NoOfEqualsInURL": 1.0,
+          "NoOfQMarkInURL": 1.0,
+          "NoOfAmpersandInURL": 0.0,
+          "NoOfAtInURL": 0.0,
+          "NoOfHyphenInURL": 0.0,
+          "NoOfUnderscoreInURL": 0.0,
+          "URLPercentEncodingCount": 0.0,
+          "HasObfuscation": 0,
+          "HasUserInfo": 0,
+          "HasPort": 0,
+          "IsDomainIP": 0,
+          "IsShortened": 0,
+          "HasSuspiciousTLD": 0,
+          "HasSuspiciousToken": 0,
+          "IsTrustedTLD": 1,
+          "URLEntropy": 3.977916874693636
+        }
+      },
+      "https://www.google.com/search?q=cybersecurity": {
+        "production": {
+          "probability": 0.9977148334346458,
+          "verdict": "PHISHING"
+        },
+        "improved_url_features": {
+          "probability": 0.9992898642540239,
+          "verdict": "PHISHING"
+        },
+        "hostname_character_model": {
+          "probability": 0.5742865368487625,
+          "verdict": "SUSPICIOUS"
+        },
+        "combined_url_hostname": {
+          "probability": 0.9987591325529765,
+          "verdict": "PHISHING"
+        },
+        "production_features": {
+          "URLLength": 40.0,
+          "HostnameLength": 10.0,
+          "PathLength": 7.0,
+          "QueryLength": 15.0,
+          "FragmentLength": 0.0,
+          "PathSegmentCount": 1,
+          "QueryParameterCount": 1,
+          "DotCount": 1.0,
+          "SubdomainDepth": 0.0,
+          "NoOfDigitsInURL": 0.0,
+          "DigitRatioInURL": 0.0,
+          "NoOfLettersInURL": 33.0,
+          "LetterRatioInURL": 0.825,
+          "NoOfEqualsInURL": 1.0,
+          "NoOfQMarkInURL": 1.0,
+          "NoOfAmpersandInURL": 0.0,
+          "NoOfAtInURL": 0.0,
+          "NoOfHyphenInURL": 0.0,
+          "NoOfUnderscoreInURL": 0.0,
+          "URLPercentEncodingCount": 0.0,
+          "HasObfuscation": 0,
+          "HasUserInfo": 0,
+          "HasPort": 0,
+          "IsDomainIP": 0,
+          "IsShortened": 0,
+          "HasSuspiciousTLD": 0,
+          "HasSuspiciousToken": 0,
+          "IsTrustedTLD": 1,
+          "URLEntropy": 4.246439344671016
+        }
+      },
+      "https://www.youtube.com/": {
+        "production": {
+          "probability": 0.1675840286555003,
+          "verdict": "SUSPICIOUS"
+        },
+        "improved_url_features": {
+          "probability": 0.9992898642540239,
+          "verdict": "PHISHING"
+        },
+        "hostname_character_model": {
+          "probability": 0.5080448805817177,
+          "verdict": "SUSPICIOUS"
+        },
+        "combined_url_hostname": {
+          "probability": 0.998266041828733,
+          "verdict": "PHISHING"
+        },
+        "production_features": {
+          "URLLength": 18.0,
+          "HostnameLength": 11.0,
+          "PathLength": 0.0,
+          "QueryLength": 0.0,
+          "FragmentLength": 0.0,
+          "PathSegmentCount": 0,
+          "QueryParameterCount": 0,
+          "DotCount": 1.0,
+          "SubdomainDepth": 0.0,
+          "NoOfDigitsInURL": 0.0,
+          "DigitRatioInURL": 0.0,
+          "NoOfLettersInURL": 14.0,
+          "LetterRatioInURL": 0.7777777777777778,
+          "NoOfEqualsInURL": 0.0,
+          "NoOfQMarkInURL": 0.0,
+          "NoOfAmpersandInURL": 0.0,
+          "NoOfAtInURL": 0.0,
+          "NoOfHyphenInURL": 0.0,
+          "NoOfUnderscoreInURL": 0.0,
+          "URLPercentEncodingCount": 0.0,
+          "HasObfuscation": 0,
+          "HasUserInfo": 0,
+          "HasPort": 0,
+          "IsDomainIP": 0,
+          "IsShortened": 0,
+          "HasSuspiciousTLD": 0,
+          "HasSuspiciousToken": 0,
+          "IsTrustedTLD": 1,
+          "URLEntropy": 3.5724312513221195
+        }
+      },
+      "https://www.youtube.com/?feature=ytca": {
+        "production": {
+          "probability": 0.738846607251053,
+          "verdict": "PHISHING"
+        },
+        "improved_url_features": {
+          "probability": 0.9992898642540239,
+          "verdict": "PHISHING"
+        },
+        "hostname_character_model": {
+          "probability": 0.5080448805817177,
+          "verdict": "SUSPICIOUS"
+        },
+        "combined_url_hostname": {
+          "probability": 0.998266041828733,
+          "verdict": "PHISHING"
+        },
+        "production_features": {
+          "URLLength": 31.0,
+          "HostnameLength": 11.0,
+          "PathLength": 0.0,
+          "QueryLength": 12.0,
+          "FragmentLength": 0.0,
+          "PathSegmentCount": 0,
+          "QueryParameterCount": 1,
+          "DotCount": 1.0,
+          "SubdomainDepth": 0.0,
+          "NoOfDigitsInURL": 0.0,
+          "DigitRatioInURL": 0.0,
+          "NoOfLettersInURL": 25.0,
+          "LetterRatioInURL": 0.8064516129032258,
+          "NoOfEqualsInURL": 1.0,
+          "NoOfQMarkInURL": 1.0,
+          "NoOfAmpersandInURL": 0.0,
+          "NoOfAtInURL": 0.0,
+          "NoOfHyphenInURL": 0.0,
+          "NoOfUnderscoreInURL": 0.0,
+          "URLPercentEncodingCount": 0.0,
+          "HasObfuscation": 0,
+          "HasUserInfo": 0,
+          "HasPort": 0,
+          "IsDomainIP": 0,
+          "IsShortened": 0,
+          "HasSuspiciousTLD": 0,
+          "HasSuspiciousToken": 0,
+          "IsTrustedTLD": 1,
+          "URLEntropy": 3.9503441981686898
+        }
+      },
+      "https://fast.com/": {
+        "production": {
+          "probability": 0.06002900571525518,
+          "verdict": "SAFE"
+        },
+        "improved_url_features": {
+          "probability": 0.9992898642540239,
+          "verdict": "PHISHING"
+        },
+        "hostname_character_model": {
+          "probability": 0.9886606680421306,
+          "verdict": "PHISHING"
+        },
+        "combined_url_hostname": {
+          "probability": 0.9998472957790854,
+          "verdict": "PHISHING"
+        },
+        "production_features": {
+          "URLLength": 15.0,
+          "HostnameLength": 8.0,
+          "PathLength": 0.0,
+          "QueryLength": 0.0,
+          "FragmentLength": 0.0,
+          "PathSegmentCount": 0,
+          "QueryParameterCount": 0,
+          "DotCount": 1.0,
+          "SubdomainDepth": 0.0,
+          "NoOfDigitsInURL": 0.0,
+          "DigitRatioInURL": 0.0,
+          "NoOfLettersInURL": 11.0,
+          "LetterRatioInURL": 0.7333333333333333,
+          "NoOfEqualsInURL": 0.0,
+          "NoOfQMarkInURL": 0.0,
+          "NoOfAmpersandInURL": 0.0,
+          "NoOfAtInURL": 0.0,
+          "NoOfHyphenInURL": 0.0,
+          "NoOfUnderscoreInURL": 0.0,
+          "URLPercentEncodingCount": 0.0,
+          "HasObfuscation": 0,
+          "HasUserInfo": 0,
+          "HasPort": 0,
+          "IsDomainIP": 0,
+          "IsShortened": 0,
+          "HasSuspiciousTLD": 0,
+          "HasSuspiciousToken": 0,
+          "IsTrustedTLD": 1,
+          "URLEntropy": 3.456564762130954
+        }
+      },
+      "http://secure-login-paypal-account.xyz": {
+        "production": {
+          "probability": 0.9582860515325705,
+          "verdict": "PHISHING"
+        },
+        "improved_url_features": {
+          "probability": 0.9992898642539924,
+          "verdict": "PHISHING"
+        },
+        "hostname_character_model": {
+          "probability": 0.9899094820964072,
+          "verdict": "PHISHING"
+        },
+        "combined_url_hostname": {
+          "probability": 0.9998482572629638,
+          "verdict": "PHISHING"
+        }
+      },
+      "http://verify-your-bank-update.ml": {
+        "production": {
+          "probability": 0.9792919505557616,
+          "verdict": "PHISHING"
+        },
+        "improved_url_features": {
+          "probability": 0.9992898642539924,
+          "verdict": "PHISHING"
+        },
+        "hostname_character_model": {
+          "probability": 0.9899012610527339,
+          "verdict": "PHISHING"
+        },
+        "combined_url_hostname": {
+          "probability": 0.9998482509532721,
+          "verdict": "PHISHING"
+        }
+      },
+      "http://amazon-security-alert.ga/login": {
+        "production": {
+          "probability": 0.9977924542698239,
+          "verdict": "PHISHING"
+        },
+        "improved_url_features": {
+          "probability": 0.9992898642540239,
+          "verdict": "PHISHING"
+        },
+        "hostname_character_model": {
+          "probability": 0.9898827569351683,
+          "verdict": "PHISHING"
+        },
+        "combined_url_hostname": {
+          "probability": 0.9998482367503108,
+          "verdict": "PHISHING"
+        }
+      },
+      "http://free-bonus-crypto.xyz/claim": {
+        "production": {
+          "probability": 0.9978024964773112,
+          "verdict": "PHISHING"
+        },
+        "improved_url_features": {
+          "probability": 0.9992898642540239,
+          "verdict": "PHISHING"
+        },
+        "hostname_character_model": {
+          "probability": 0.9898827035255064,
+          "verdict": "PHISHING"
+        },
+        "combined_url_hostname": {
+          "probability": 0.9998482367093138,
+          "verdict": "PHISHING"
+        }
+      },
+      "http://google-account-verify.cf": {
+        "production": {
+          "probability": 0.996937097524297,
+          "verdict": "PHISHING"
+        },
+        "improved_url_features": {
+          "probability": 0.9992898642539924,
+          "verdict": "PHISHING"
+        },
+        "hostname_character_model": {
+          "probability": 0.9899089346511917,
+          "verdict": "PHISHING"
+        },
+        "combined_url_hostname": {
+          "probability": 0.9998482568428049,
+          "verdict": "PHISHING"
+        }
+      },
+      "https://paypal-login.example.com/verify-account": {
+        "production": {
+          "probability": 0.9977419550527138,
+          "verdict": "PHISHING"
+        },
+        "improved_url_features": {
+          "probability": 0.9992898642540239,
+          "verdict": "PHISHING"
+        },
+        "hostname_character_model": {
+          "probability": 0.9894193332449946,
+          "verdict": "PHISHING"
+        },
+        "combined_url_hostname": {
+          "probability": 0.9998478806125077,
+          "verdict": "PHISHING"
+        }
+      },
+      "http://secure-bank-login.example.com/update-account": {
+        "production": {
+          "probability": 0.9977419550527138,
+          "verdict": "PHISHING"
+        },
+        "improved_url_features": {
+          "probability": 0.9992898642540239,
+          "verdict": "PHISHING"
+        },
+        "hostname_character_model": {
+          "probability": 0.9896922698168026,
+          "verdict": "PHISHING"
+        },
+        "combined_url_hostname": {
+          "probability": 0.9998480904633376,
+          "verdict": "PHISHING"
+        }
+      },
+      "http://microsoft-security.example.com/login": {
+        "production": {
+          "probability": 0.9977147861964807,
+          "verdict": "PHISHING"
+        },
+        "improved_url_features": {
+          "probability": 0.9992898642540239,
+          "verdict": "PHISHING"
+        },
+        "hostname_character_model": {
+          "probability": 0.9891528659108346,
+          "verdict": "PHISHING"
+        },
+        "combined_url_hostname": {
+          "probability": 0.9998476754560144,
+          "verdict": "PHISHING"
+        }
+      },
+      "http://free-iphone-winner.example.com/claim": {
+        "production": {
+          "probability": 0.9977495607793178,
+          "verdict": "PHISHING"
+        },
+        "improved_url_features": {
+          "probability": 0.9992898642540239,
+          "verdict": "PHISHING"
+        },
+        "hostname_character_model": {
+          "probability": 0.9854301393661716,
+          "verdict": "PHISHING"
+        },
+        "combined_url_hostname": {
+          "probability": 0.9998447801835764,
+          "verdict": "PHISHING"
+        }
+      },
+      "http://account-verify.example.com/signin/password": {
+        "production": {
+          "probability": 0.9977419550527138,
+          "verdict": "PHISHING"
+        },
+        "improved_url_features": {
+          "probability": 0.9992898642540239,
+          "verdict": "PHISHING"
+        },
+        "hostname_character_model": {
+          "probability": 0.9893959466391177,
+          "verdict": "PHISHING"
+        },
+        "combined_url_hostname": {
+          "probability": 0.9998478626179359,
+          "verdict": "PHISHING"
+        }
+      }
+    },
+    "known_phishing_urls": {
+      "source": "existing project regression fixtures; evaluated after training",
+      "urls": [
+        "http://secure-login-paypal-account.xyz",
+        "http://verify-your-bank-update.ml",
+        "http://amazon-security-alert.ga/login",
+        "http://free-bonus-crypto.xyz/claim",
+        "http://google-account-verify.cf",
+        "https://paypal-login.example.com/verify-account",
+        "http://secure-bank-login.example.com/update-account",
+        "http://microsoft-security.example.com/login",
+        "http://free-iphone-winner.example.com/claim",
+        "http://account-verify.example.com/signin/password"
+      ]
+    }
+  },
+  "candidate_comparison": {
+    "validation": {
+      "strategy": "registered-domain GroupShuffleSplit",
+      "seed": 44,
+      "train_rows": 384818,
+      "calibration_rows": 122968,
+      "threshold_rows": 178544,
+      "test_rows": 168540,
+      "overlapping_domains": 0
+    },
+    "models": {
+      "current_production": {
+        "thresholds_for_research_comparison_only": {
+          "safe": 0.13140956380602112,
+          "phishing": 0.6961575221255231
+        },
+        "test": {
+          "rows": 168540,
+          "recall": 0.8769361161139951,
+          "fnr": 0.12306388388600488,
+          "fpr": 0.01031348543869412,
+          "precision": 0.9977659736899204,
+          "pr_auc": 0.9939009217380315,
+          "roc_auc": 0.9660579636772116,
+          "brier": 0.0643819240287553,
+          "ece": 0.051695212260189825,
+          "confusion_matrix": [
+            [
+              26677,
+              278
+            ],
+            [
+              17424,
+              124161
+            ]
+          ]
+        },
+        "test_calibration": {
+          "brier": 0.0643819240287553,
+          "ece": 0.051695212260189825
+        },
+        "threshold_partition_fpr": 0.009487666034155597,
+        "hard_case_phishing_recall": {
+          "pathless_phishing": {
+            "samples": 46460,
+            "recall": 0.6249677141627206,
+            "fnr": 0.37503228583727943
+          },
+          "short_phishing": {
+            "samples": 82994,
+            "recall": 0.7900571125623539,
+            "fnr": 0.2099428874376461
+          },
+          "no_suspicious_token": {
+            "samples": 119982,
+            "recall": 0.854894900901802,
+            "fnr": 0.14510509909819802
+          },
+          "no_suspicious_tld": {
+            "samples": 132167,
+            "recall": 0.8681667889866608,
+            "fnr": 0.13183321101333922
+          },
+          "no_digits": {
+            "samples": 54053,
+            "recall": 0.701422677742216,
+            "fnr": 0.298577322257784
+          },
+          "ordinary_looking_domains": {
+            "samples": 111081,
+            "recall": 0.8432675254994103,
+            "fnr": 0.1567324745005897
+          },
+          "phishing_with_query": {
+            "samples": 25229,
+            "recall": 0.9999207261484799,
+            "fnr": 7.92738515200675e-05
+          },
+          "phishing_with_path": {
+            "samples": 95125,
+            "recall": 1.0,
+            "fnr": 0.0
+          }
+        },
+        "model_size_bytes": 1100240,
+        "fit_seconds": 0.0,
+        "latency": {
+          "median_ms": 7.930799999940064,
+          "p95_ms": 8.945949999679215
+        }
+      },
+      "improved_url_features": {
+        "thresholds_for_research_comparison_only": {
+          "safe": 0.0,
+          "phishing": 0.021543637141549908
+        },
+        "test": {
+          "rows": 168540,
+          "recall": 0.99368577179786,
+          "fnr": 0.006314228202140057,
+          "fpr": 0.010647375255054721,
+          "precision": 0.997964221367873,
+          "pr_auc": 0.9996819532766421,
+          "roc_auc": 0.9981888439050205,
+          "brier": 0.006543844282788166,
+          "ece": 0.005487114117730868,
+          "confusion_matrix": [
+            [
+              26668,
+              287
+            ],
+            [
+              894,
+              140691
+            ]
+          ]
+        },
+        "test_calibration": {
+          "brier": 0.006543844282788166,
+          "ece": 0.005487114117730868
+        },
+        "threshold_partition_fpr": 0.009971350969230196,
+        "hard_case_phishing_recall": {
+          "pathless_phishing": {
+            "samples": 46460,
+            "recall": 0.9807576409814894,
+            "fnr": 0.01924235901851057
+          },
+          "short_phishing": {
+            "samples": 82994,
+            "recall": 0.9892281369737571,
+            "fnr": 0.01077186302624289
+          },
+          "no_suspicious_token": {
+            "samples": 119982,
+            "recall": 0.9925822206664333,
+            "fnr": 0.0074177793335666875
+          },
+          "no_suspicious_tld": {
+            "samples": 132167,
+            "recall": 0.9932358304266572,
+            "fnr": 0.006764169573342804
+          },
+          "no_digits": {
+            "samples": 54053,
+            "recall": 0.9846632009324182,
+            "fnr": 0.015336799067581786
+          },
+          "ordinary_looking_domains": {
+            "samples": 111081,
+            "recall": 0.9919878287015781,
+            "fnr": 0.00801217129842191
+          },
+          "phishing_with_query": {
+            "samples": 25229,
+            "recall": 1.0,
+            "fnr": 0.0
+          },
+          "phishing_with_path": {
+            "samples": 95125,
+            "recall": 1.0,
+            "fnr": 0.0
+          }
+        },
+        "model_size_bytes": 448544,
+        "fit_seconds": 5.825443900000209,
+        "latency": {
+          "median_ms": 5.6850500000109605,
+          "p95_ms": 9.785010000223338
+        }
+      },
+      "hostname_character_model": {
+        "thresholds_for_research_comparison_only": {
+          "safe": 0.12696429368300557,
+          "phishing": 0.8618437901174736
+        },
+        "test": {
+          "rows": 168540,
+          "recall": 0.911282974891408,
+          "fnr": 0.08871702510859202,
+          "fpr": 0.009905397885364497,
+          "precision": 0.9979348910597026,
+          "pr_auc": 0.9967327476010722,
+          "roc_auc": 0.9817221712156998,
+          "brier": 0.04008033993393802,
+          "ece": 0.029182272623313375,
+          "confusion_matrix": [
+            [
+              26688,
+              267
+            ],
+            [
+              12561,
+              129024
+            ]
+          ]
+        },
+        "test_calibration": {
+          "brier": 0.04008033993393802,
+          "ece": 0.029182272623313375
+        },
+        "threshold_partition_fpr": 0.009971350969230196,
+        "hard_case_phishing_recall": {
+          "pathless_phishing": {
+            "samples": 46460,
+            "recall": 0.880262591476539,
+            "fnr": 0.11973740852346104
+          },
+          "short_phishing": {
+            "samples": 82994,
+            "recall": 0.910162180398583,
+            "fnr": 0.08983781960141701
+          },
+          "no_suspicious_token": {
+            "samples": 119982,
+            "recall": 0.9235718691137004,
+            "fnr": 0.07642813088629963
+          },
+          "no_suspicious_tld": {
+            "samples": 132167,
+            "recall": 0.9054756482329175,
+            "fnr": 0.09452435176708252
+          },
+          "no_digits": {
+            "samples": 54053,
+            "recall": 0.877564612509944,
+            "fnr": 0.122435387490056
+          },
+          "ordinary_looking_domains": {
+            "samples": 111081,
+            "recall": 0.9180507917645682,
+            "fnr": 0.08194920823543184
+          },
+          "phishing_with_query": {
+            "samples": 25229,
+            "recall": 0.8667406555947521,
+            "fnr": 0.1332593444052479
+          },
+          "phishing_with_path": {
+            "samples": 95125,
+            "recall": 0.9264336399474375,
+            "fnr": 0.07356636005256245
+          }
+        },
+        "model_size_bytes": 4584775,
+        "fit_seconds": 23.053618099999767,
+        "latency": {
+          "median_ms": 6.7246500007058785,
+          "p95_ms": 10.033325000404147
+        }
+      },
+      "combined_url_hostname": {
+        "thresholds_for_research_comparison_only": {
+          "safe": 0.08777167922914254,
+          "phishing": 0.13777167922914255
+        },
+        "test": {
+          "rows": 168540,
+          "recall": 0.996058904544973,
+          "fnr": 0.0039410954550270156,
+          "fpr": 0.009868299016879986,
+          "precision": 0.9981173872732548,
+          "pr_auc": 0.9998653296227995,
+          "roc_auc": 0.9992409286162391,
+          "brier": 0.005316413892637443,
+          "ece": 0.004641871336718818,
+          "confusion_matrix": [
+            [
+              26689,
+              266
+            ],
+            [
+              558,
+              141027
+            ]
+          ]
+        },
+        "test_calibration": {
+          "brier": 0.005316413892637443,
+          "ece": 0.004641871336718818
+        },
+        "threshold_partition_fpr": 0.009971350969230196,
+        "hard_case_phishing_recall": {
+          "pathless_phishing": {
+            "samples": 46460,
+            "recall": 0.9879896685320706,
+            "fnr": 0.012010331467929403
+          },
+          "short_phishing": {
+            "samples": 82994,
+            "recall": 0.993276622406439,
+            "fnr": 0.0067233775935610085
+          },
+          "no_suspicious_token": {
+            "samples": 119982,
+            "recall": 0.9953576369788801,
+            "fnr": 0.004642363021119866
+          },
+          "no_suspicious_tld": {
+            "samples": 132167,
+            "recall": 0.9957780686555645,
+            "fnr": 0.004221931344435492
+          },
+          "no_digits": {
+            "samples": 54053,
+            "recall": 0.9903243113240708,
+            "fnr": 0.009675688675929162
+          },
+          "ordinary_looking_domains": {
+            "samples": 111081,
+            "recall": 0.9949856411087404,
+            "fnr": 0.005014358891259563
+          },
+          "phishing_with_query": {
+            "samples": 25229,
+            "recall": 1.0,
+            "fnr": 0.0
+          },
+          "phishing_with_path": {
+            "samples": 95125,
+            "recall": 1.0,
+            "fnr": 0.0
+          }
+        },
+        "model_size_bytes": 5033237,
+        "fit_seconds": 0.04201960000045801,
+        "latency": {
+          "median_ms": 5.884149999928923,
+          "p95_ms": 6.883730000345167
+        }
+      }
+    },
+    "external_phishing_only_recall": {
+      "current_production": {
+        "rows": 154931,
+        "recall": 0.9123997134208132,
+        "fnr": 0.08760028657918684,
+        "fpr": null,
+        "note": "FPR is undefined because this holdout contains phishing URLs only."
+      },
+      "improved_url_features": {
+        "rows": 154931,
+        "recall": 0.9937133304503295,
+        "fnr": 0.006286669549670498,
+        "fpr": null,
+        "note": "FPR is undefined because this holdout contains phishing URLs only."
+      },
+      "hostname_character_model": {
+        "rows": 154931,
+        "recall": 0.9608858136848016,
+        "fnr": 0.03911418631519836,
+        "fpr": null,
+        "note": "FPR is undefined because this holdout contains phishing URLs only."
+      },
+      "combined_url_hostname": {
+        "rows": 154931,
+        "recall": 0.9964113056780115,
+        "fnr": 0.003588694321988495,
+        "fpr": null,
+        "note": "FPR is undefined because this holdout contains phishing URLs only."
+      }
+    }
+  },
+  "promotion_gate": {
+    "google_homepage_not_phishing": false,
+    "google_search_not_phishing": false,
+    "youtube_urls_not_phishing": false,
+    "fast_com_safe": false,
+    "verified_dynamic_legitimate_fpr_within_budget": false,
+    "observed_dynamic_regressions_not_phishing": false,
+    "phishing_recall_not_materially_degraded": true,
+    "external_recall_acceptable": true,
+    "domain_grouped_validation_acceptable": true,
+    "calibration_acceptable": true,
+    "external_holdout_unchanged": true,
+    "production_artifacts_unchanged": true,
+    "all_required_tests_pass": true
+  },
+  "test_results": {
+    "pytest": {
+      "status": "PASS",
+      "passed": 15
+    },
+    "frontend_vitest": {
+      "status": "PASS",
+      "passed": 3
+    },
+    "frontend_build_typescript_vite": "PASS",
+    "extension_tests": {
+      "status": "PASS",
+      "passed": 23
+    },
+    "javascript_syntax_checks": "PASS"
+  },
+  "limitations": [
+    "There are no verified labeled legitimate training URLs with a non-root path, query, or fragment. Dynamic legitimate FPR and calibration for that cohort cannot be estimated.",
+    "The six manually observed benign URLs are regression-only as required and were not used for fitting, calibration, threshold selection, or feature selection.",
+    "Component features are a candidate experiment; without labeled benign dynamic examples they cannot establish that normal query/path patterns should reduce phishing risk."
+  ]
+}

@@ -1,0 +1,948 @@
+{
+  "created_at_utc": "2026-10-07T18:01:34+00:00",
+  "collection_date": "2026-10-07",
+  "dataset": "data\\benign_dynamic_urls.csv",
+  "label_mapping": {
+    "0": "legitimate; only URLs linked from a named official first-party page and individually verified with a successful same-registered-domain HTTPS GET"
+  },
+  "method": "Conservative live collection from official first-party homepages and up to five linked same-registered-domain HTML pages per source. Existing same-domain hrefs were individually fetched over certificate-validated HTTPS; only successful 2xx responses staying on the source registered domain were labeled legitimate. No model predictions, allowlists for classification, or synthetic URLs were used to assign labels.",
+  "sources": [
+    {
+      "source_name": "Wikimedia Wikipedia",
+      "source_page_url": "https://en.wikipedia.org/wiki/Main_Page",
+      "source_homepage_status": 200,
+      "source_registered_domain": "wikipedia.org",
+      "collection_method": "Fetch the official first-party homepage and up to five linked same-registered-domain HTML pages over certificate-validated HTTPS; extract existing same-registered-domain anchor href values without synthesizing URL components; individually GET selected hrefs; retain only 2xx responses whose final registered domain remains the source domain.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Main_Page",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://szl.wikipedia.org/wiki/Przodni%C5%8F_zajta",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Mario_Party:_The_Top_100",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://tly.wikipedia.org/wiki/S%C9%99rlovh%C9%99",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://ami.wikipedia.org/wiki/Sa%E2%80%99ayayaw_pising_no_tyin-naw",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://ga.wikipedia.org/wiki/Pr%C3%ADomhleathanach",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        }
+      ],
+      "child_page_errors": [],
+      "collection_date": "2026-10-07",
+      "why_urls_are_considered_legitimate": "Wikipedia's official public encyclopedia page and same-registered-domain article/navigation routes.",
+      "candidate_links_checked": 36,
+      "verified_urls": 23,
+      "category_counts": {
+        "encoded_query": 5,
+        "fragment": 8,
+        "high_entropy_legitimate": 3,
+        "multiple_query_parameters": 3,
+        "path_only": 3,
+        "redirect_style": 1
+      },
+      "deduplication_method": "Canonicalized with feature_extractor.normalize_url, then exact and normalized URL deduplication across all sources.",
+      "error": null
+    },
+    {
+      "source_name": "Mozilla Developer Network",
+      "source_page_url": "https://developer.mozilla.org/en-US/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "mozilla.org",
+      "collection_method": "Fetch the official first-party homepage and up to five linked same-registered-domain HTML pages over certificate-validated HTTPS; extract existing same-registered-domain anchor href values without synthesizing URL components; individually GET selected hrefs; retain only 2xx responses whose final registered domain remains the source domain.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://developer.mozilla.org/en-US/",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://developer.mozilla.org/en-US/docs/Web/API/Navigation_API",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://developer.mozilla.org/en-US/play",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide",
+          "status": 200,
+          "content_type": "text/html"
+        }
+      ],
+      "child_page_errors": [],
+      "collection_date": "2026-10-07",
+      "why_urls_are_considered_legitimate": "Mozilla's official developer documentation and same-registered-domain documentation routes.",
+      "candidate_links_checked": 30,
+      "verified_urls": 30,
+      "category_counts": {
+        "fragment": 10,
+        "high_entropy_legitimate": 10,
+        "path_only": 10
+      },
+      "deduplication_method": "Canonicalized with feature_extractor.normalize_url, then exact and normalized URL deduplication across all sources.",
+      "error": null
+    },
+    {
+      "source_name": "GitHub",
+      "source_page_url": "https://github.com/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "github.com",
+      "collection_method": "Fetch the official first-party homepage and up to five linked same-registered-domain HTML pages over certificate-validated HTTPS; extract existing same-registered-domain anchor href values without synthesizing URL components; individually GET selected hrefs; retain only 2xx responses whose final registered domain remains the source domain.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://github.com/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://github.com/team",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://github.com/solutions/executive-insights",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://github.com/solutions",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://github.com/security/advanced-security/software-supply-chain",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "child_page_errors": [],
+      "collection_date": "2026-10-07",
+      "why_urls_are_considered_legitimate": "GitHub's official public service homepage and same-registered-domain product/navigation routes.",
+      "candidate_links_checked": 36,
+      "verified_urls": 29,
+      "category_counts": {
+        "encoded_query": 3,
+        "fragment": 1,
+        "high_entropy_legitimate": 8,
+        "multiple_query_parameters": 1,
+        "path_only": 5,
+        "path_query": 10,
+        "tracking_parameters": 1
+      },
+      "deduplication_method": "Canonicalized with feature_extractor.normalize_url, then exact and normalized URL deduplication across all sources.",
+      "error": null
+    },
+    {
+      "source_name": "NASA",
+      "source_page_url": "https://www.nasa.gov/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "nasa.gov",
+      "collection_method": "Fetch the official first-party homepage and up to five linked same-registered-domain HTML pages over certificate-validated HTTPS; extract existing same-registered-domain anchor href values without synthesizing URL components; individually GET selected hrefs; retain only 2xx responses whose final registered domain remains the source domain.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.nasa.gov/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.nasa.gov/es/aero/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.nasa.gov/budgets-plans-and-reports/agency-financial-reports/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://science.nasa.gov/solar-system/skywatching/whats-up-october-2026-skywatching-tips-from-nasa/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.nasa.gov/centers-and-facilities/langley/nasa-model-wing-lights-up-during-first-pressure-sensitive-paint-tests/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.nasa.gov/nasa-virtual-guest-program/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        }
+      ],
+      "child_page_errors": [],
+      "collection_date": "2026-10-07",
+      "why_urls_are_considered_legitimate": "NASA's official government homepage and same-registered-domain news and information routes.",
+      "candidate_links_checked": 36,
+      "verified_urls": 36,
+      "category_counts": {
+        "encoded_query": 8,
+        "high_entropy_legitimate": 8,
+        "path_only": 9,
+        "path_query": 6,
+        "query_only": 5
+      },
+      "deduplication_method": "Canonicalized with feature_extractor.normalize_url, then exact and normalized URL deduplication across all sources.",
+      "error": null
+    },
+    {
+      "source_name": "Library of Congress",
+      "source_page_url": "https://www.loc.gov/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "loc.gov",
+      "collection_method": "Fetch the official first-party homepage and up to five linked same-registered-domain HTML pages over certificate-validated HTTPS; extract existing same-registered-domain anchor href values without synthesizing URL components; individually GET selected hrefs; retain only 2xx responses whose final registered domain remains the source domain.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.loc.gov/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.loc.gov/topics/america-250-at-the-library-of-congress",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        }
+      ],
+      "child_page_errors": [
+        {
+          "url": "https://www.loc.gov/programs/john-w-kluge-center/",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        },
+        {
+          "url": "https://www.loc.gov/services-and-programs/",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        },
+        {
+          "url": "https://www.loc.gov/collections/",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        },
+        {
+          "url": "https://www.loc.gov/resource/afc1995028.afc1995028_mcc05010",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ],
+      "collection_date": "2026-10-07",
+      "why_urls_are_considered_legitimate": "The Library of Congress official government site and same-registered-domain catalog/navigation routes.",
+      "candidate_links_checked": 36,
+      "verified_urls": 10,
+      "category_counts": {
+        "high_entropy_legitimate": 4,
+        "path_only": 6
+      },
+      "deduplication_method": "Canonicalized with feature_extractor.normalize_url, then exact and normalized URL deduplication across all sources.",
+      "error": null
+    },
+    {
+      "source_name": "World Wide Web Consortium",
+      "source_page_url": "https://www.w3.org/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "w3.org",
+      "collection_method": "Fetch the official first-party homepage and up to five linked same-registered-domain HTML pages over certificate-validated HTTPS; extract existing same-registered-domain anchor href values without synthesizing URL components; individually GET selected hrefs; retain only 2xx responses whose final registered domain remains the source domain.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.w3.org/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.w3.org/standards/types/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.w3.org/zh-hans/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.w3.org/mission/accessibility/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.w3.org/help/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.w3.org/news/2026/updated-candidate-recommendation-scalable-vector-graphics-svg-2/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        }
+      ],
+      "child_page_errors": [],
+      "collection_date": "2026-10-07",
+      "why_urls_are_considered_legitimate": "W3C's official standards organization site and same-registered-domain standards routes.",
+      "candidate_links_checked": 30,
+      "verified_urls": 30,
+      "category_counts": {
+        "fragment": 8,
+        "high_entropy_legitimate": 10,
+        "path_only": 10,
+        "path_query": 2
+      },
+      "deduplication_method": "Canonicalized with feature_extractor.normalize_url, then exact and normalized URL deduplication across all sources.",
+      "error": null
+    },
+    {
+      "source_name": "Internet Engineering Task Force",
+      "source_page_url": "https://www.ietf.org/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "ietf.org",
+      "collection_method": "Fetch the official first-party homepage and up to five linked same-registered-domain HTML pages over certificate-validated HTTPS; extract existing same-registered-domain anchor href values without synthesizing URL components; individually GET selected hrefs; retain only 2xx responses whose final registered domain remains the source domain.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.ietf.org/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.ietf.org/blog/sidrops-and-avoidable-route-hijacks/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://datatracker.ietf.org/doc/statement-iesg-ietf-anti-harassment-policy-20131103/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.ietf.org/blog/rfc-editororg-update-202609/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.ietf.org/meeting/terms-and-conditions/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.ietf.org/policies/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "child_page_errors": [],
+      "collection_date": "2026-10-07",
+      "why_urls_are_considered_legitimate": "IETF's official standards organization site and same-registered-domain publication routes.",
+      "candidate_links_checked": 31,
+      "verified_urls": 30,
+      "category_counts": {
+        "fragment": 10,
+        "high_entropy_legitimate": 10,
+        "path_only": 10
+      },
+      "deduplication_method": "Canonicalized with feature_extractor.normalize_url, then exact and normalized URL deduplication across all sources.",
+      "error": null
+    },
+    {
+      "source_name": "arXiv",
+      "source_page_url": "https://arxiv.org/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "arxiv.org",
+      "collection_method": "Fetch the official first-party homepage and up to five linked same-registered-domain HTML pages over certificate-validated HTTPS; extract existing same-registered-domain anchor href values without synthesizing URL components; individually GET selected hrefs; retain only 2xx responses whose final registered domain remains the source domain.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://arxiv.org/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://arxiv.org/list/math.CT/recent",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://arxiv.org/list/math.GM/recent",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://arxiv.org/list/cs.HC/recent",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://arxiv.org/list/q-bio.QM/recent",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://arxiv.org/search/q-fin",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "child_page_errors": [],
+      "collection_date": "2026-10-07",
+      "why_urls_are_considered_legitimate": "The arXiv official research preprint repository and same-registered-domain browsing/search routes.",
+      "candidate_links_checked": 30,
+      "verified_urls": 30,
+      "category_counts": {
+        "encoded_query": 10,
+        "multiple_query_parameters": 10,
+        "path_only": 10
+      },
+      "deduplication_method": "Canonicalized with feature_extractor.normalize_url, then exact and normalized URL deduplication across all sources.",
+      "error": null
+    },
+    {
+      "source_name": "OpenStreetMap",
+      "source_page_url": "https://www.openstreetmap.org/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "openstreetmap.org",
+      "collection_method": "Fetch the official first-party homepage and up to five linked same-registered-domain HTML pages over certificate-validated HTTPS; extract existing same-registered-domain anchor href values without synthesizing URL components; individually GET selected hrefs; retain only 2xx responses whose final registered domain remains the source domain.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.openstreetmap.org/directions",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.openstreetmap.org/traces",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.openstreetmap.org/history",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://supporting.openstreetmap.org/donate/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.openstreetmap.org/user/new?cookie_test=true",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "child_page_errors": [],
+      "collection_date": "2026-10-07",
+      "why_urls_are_considered_legitimate": "OpenStreetMap's official public mapping service and same-registered-domain user interface routes.",
+      "candidate_links_checked": 36,
+      "verified_urls": 35,
+      "category_counts": {
+        "encoded_query": 4,
+        "fragment": 2,
+        "high_entropy_legitimate": 6,
+        "multiple_query_parameters": 7,
+        "path_only": 8,
+        "path_query": 8
+      },
+      "deduplication_method": "Canonicalized with feature_extractor.normalize_url, then exact and normalized URL deduplication across all sources.",
+      "error": null
+    },
+    {
+      "source_name": "World Health Organization",
+      "source_page_url": "https://www.who.int/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "who.int",
+      "collection_method": "Fetch the official first-party homepage and up to five linked same-registered-domain HTML pages over certificate-validated HTTPS; extract existing same-registered-domain anchor href values without synthesizing URL components; individually GET selected hrefs; retain only 2xx responses whose final registered domain remains the source domain.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.who.int/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.who.int/news-room/questions-and-answers",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.who.int/health-topics/who-pandemic-agreement",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.who.int/westernpacific/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.who.int/news-room/fact-sheets/detail/obesity-and-overweight",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.who.int/countries/country-presence",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "child_page_errors": [],
+      "collection_date": "2026-10-07",
+      "why_urls_are_considered_legitimate": "WHO's official public health organization site and same-registered-domain information routes.",
+      "candidate_links_checked": 36,
+      "verified_urls": 35,
+      "category_counts": {
+        "fragment": 8,
+        "high_entropy_legitimate": 8,
+        "long_legitimate_url": 3,
+        "multiple_query_parameters": 2,
+        "path_only": 9,
+        "path_query": 5
+      },
+      "deduplication_method": "Canonicalized with feature_extractor.normalize_url, then exact and normalized URL deduplication across all sources.",
+      "error": null
+    },
+    {
+      "source_name": "Massachusetts Institute of Technology",
+      "source_page_url": "https://www.mit.edu/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "mit.edu",
+      "collection_method": "Fetch the official first-party homepage and up to five linked same-registered-domain HTML pages over certificate-validated HTTPS; extract existing same-registered-domain anchor href values without synthesizing URL components; individually GET selected hrefs; retain only 2xx responses whose final registered domain remains the source domain.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.mit.edu/",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.mit.edu/education/",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.mit.edu/innovation/",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.mit.edu/visitmit/",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.mit.edu/accessibility/",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.mit.edu/research/",
+          "status": 200,
+          "content_type": "text/html"
+        }
+      ],
+      "child_page_errors": [],
+      "collection_date": "2026-10-07",
+      "why_urls_are_considered_legitimate": "MIT's official university homepage and same-registered-domain academic navigation routes.",
+      "candidate_links_checked": 21,
+      "verified_urls": 21,
+      "category_counts": {
+        "encoded_query": 1,
+        "fragment": 3,
+        "high_entropy_legitimate": 4,
+        "multiple_query_parameters": 1,
+        "path_only": 10,
+        "tracking_parameters": 2
+      },
+      "deduplication_method": "Canonicalized with feature_extractor.normalize_url, then exact and normalized URL deduplication across all sources.",
+      "error": null
+    },
+    {
+      "source_name": "Stanford University",
+      "source_page_url": "https://www.stanford.edu/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "stanford.edu",
+      "collection_method": "Fetch the official first-party homepage and up to five linked same-registered-domain HTML pages over certificate-validated HTTPS; extract existing same-registered-domain anchor href values without synthesizing URL components; individually GET selected hrefs; retain only 2xx responses whose final registered domain remains the source domain.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.stanford.edu/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://news.stanford.edu/stories/2026/10/karl-deisseroth-nobel-prize-physiology-medicine",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.stanford.edu/about/history",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "child_page_errors": [
+        {
+          "url": "https://news.stanford.edu/stories/2026/10/dan-grunfeld-named-general-manager-of-men-s-basketball",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        },
+        {
+          "url": "https://news.stanford.edu/stories/2026/04/luke-kemp-college-speaker-goliaths-curse",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        },
+        {
+          "url": "https://news.stanford.edu/stories/2026/09/new-undergraduate-minor-launches-civic-thought-and-practice",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ],
+      "collection_date": "2026-10-07",
+      "why_urls_are_considered_legitimate": "Stanford's official university homepage and same-registered-domain academic navigation routes.",
+      "candidate_links_checked": 21,
+      "verified_urls": 9,
+      "category_counts": {
+        "high_entropy_legitimate": 2,
+        "multiple_query_parameters": 1,
+        "path_only": 6
+      },
+      "deduplication_method": "Canonicalized with feature_extractor.normalize_url, then exact and normalized URL deduplication across all sources.",
+      "error": null
+    },
+    {
+      "source_name": "University of California, Berkeley",
+      "source_page_url": "https://www.berkeley.edu/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "berkeley.edu",
+      "collection_method": "Fetch the official first-party homepage and up to five linked same-registered-domain HTML pages over certificate-validated HTTPS; extract existing same-registered-domain anchor href values without synthesizing URL components; individually GET selected hrefs; retain only 2xx responses whose final registered domain remains the source domain.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.berkeley.edu/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.berkeley.edu/atoz/dept/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://news.berkeley.edu/2025/09/15/no-1-again-uc-berkeley-generates-more-startups-and-founders-than-any-other-university/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.berkeley.edu/academics/advising-tutoring/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://journalism.berkeley.edu/announce-forbidden-stories-lab-uc-berkeley-journalism/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://news.berkeley.edu/2026/10/06/a-uc-berkeley-undergraduates-research-leads-to-an-astronomical-first/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        }
+      ],
+      "child_page_errors": [],
+      "collection_date": "2026-10-07",
+      "why_urls_are_considered_legitimate": "UC Berkeley's official university homepage and same-registered-domain academic navigation routes.",
+      "candidate_links_checked": 30,
+      "verified_urls": 30,
+      "category_counts": {
+        "fragment": 8,
+        "high_entropy_legitimate": 10,
+        "multiple_query_parameters": 1,
+        "path_only": 10,
+        "path_query": 1
+      },
+      "deduplication_method": "Canonicalized with feature_extractor.normalize_url, then exact and normalized URL deduplication across all sources.",
+      "error": null
+    },
+    {
+      "source_name": "GOV.UK",
+      "source_page_url": "https://www.gov.uk/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "gov.uk",
+      "collection_method": "Fetch the official first-party homepage and up to five linked same-registered-domain HTML pages over certificate-validated HTTPS; extract existing same-registered-domain anchor href values without synthesizing URL components; individually GET selected hrefs; retain only 2xx responses whose final registered domain remains the source domain.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.gov.uk/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.gov.uk/browse/tax",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.gov.uk/search/policy-papers-and-consultations",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.gov.uk/cost-of-living",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.gov.uk/government/get-involved",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.gov.uk/foreign-travel-advice",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "child_page_errors": [],
+      "collection_date": "2026-10-07",
+      "why_urls_are_considered_legitimate": "The UK government's official public services portal and same-registered-domain service routes.",
+      "candidate_links_checked": 24,
+      "verified_urls": 24,
+      "category_counts": {
+        "encoded_query": 1,
+        "high_entropy_legitimate": 10,
+        "path_only": 10,
+        "path_query": 3
+      },
+      "deduplication_method": "Canonicalized with feature_extractor.normalize_url, then exact and normalized URL deduplication across all sources.",
+      "error": null
+    },
+    {
+      "source_name": "European Space Agency",
+      "source_page_url": "https://www.esa.int/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "esa.int",
+      "collection_method": "Fetch the official first-party homepage and up to five linked same-registered-domain HTML pages over certificate-validated HTTPS; extract existing same-registered-domain anchor href values without synthesizing URL components; individually GET selected hrefs; retain only 2xx responses whose final registered domain remains the source domain.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.esa.int/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.esa.int/ESA_Multimedia/Images/2026/10/When_the_Sun_turns_black",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.esa.int/ESA/Our_Missions",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.esa.int/Space_Safety",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.esa.int/ESA_Multimedia/Images/2026/09/Earth_from_Space_Venetian_Lagoon",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.esa.int/ESA_Multimedia/Videos/2026/10/The_Incredible_Adventures_of_the_Hera_mission_The_space_detectives_arrive",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "child_page_errors": [],
+      "collection_date": "2026-10-07",
+      "why_urls_are_considered_legitimate": "ESA's official public space agency site and same-registered-domain information routes.",
+      "candidate_links_checked": 23,
+      "verified_urls": 23,
+      "category_counts": {
+        "fragment": 3,
+        "high_entropy_legitimate": 10,
+        "path_only": 10
+      },
+      "deduplication_method": "Canonicalized with feature_extractor.normalize_url, then exact and normalized URL deduplication across all sources.",
+      "error": null
+    },
+    {
+      "source_name": "Chrome for Developers",
+      "source_page_url": "https://developer.chrome.com/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "chrome.com",
+      "collection_method": "Fetch the official first-party homepage and up to five linked same-registered-domain HTML pages over certificate-validated HTTPS; extract existing same-registered-domain anchor href values without synthesizing URL components; individually GET selected hrefs; retain only 2xx responses whose final registered domain remains the source domain.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://developer.chrome.com/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://developer.chrome.com/docs/iwa",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://developer.chrome.com/docs/accessibility",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://developer.chrome.com/docs",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://developer.chrome.com/docs/puppeteer",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://developer.chrome.com/blog",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "child_page_errors": [],
+      "collection_date": "2026-10-07",
+      "why_urls_are_considered_legitimate": "Google Chrome's official developer documentation and same-registered-domain documentation routes.",
+      "candidate_links_checked": 17,
+      "verified_urls": 17,
+      "category_counts": {
+        "fragment": 1,
+        "high_entropy_legitimate": 5,
+        "path_only": 10,
+        "path_query": 1
+      },
+      "deduplication_method": "Canonicalized with feature_extractor.normalize_url, then exact and normalized URL deduplication across all sources.",
+      "error": null
+    },
+    {
+      "source_name": "RFC Editor",
+      "source_page_url": "https://www.rfc-editor.org/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "rfc-editor.org",
+      "collection_method": "Fetch the official first-party homepage and up to five linked same-registered-domain HTML pages over certificate-validated HTTPS; extract existing same-registered-domain anchor href values without synthesizing URL components; individually GET selected hrefs; retain only 2xx responses whose final registered domain remains the source domain.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.rfc-editor.org/",
+          "status": 200,
+          "content_type": "text/html;charset=utf-8"
+        },
+        {
+          "url": "https://www.rfc-editor.org/search/",
+          "status": 200,
+          "content_type": "text/html;charset=utf-8"
+        },
+        {
+          "url": "https://www.rfc-editor.org/subjects/",
+          "status": 200,
+          "content_type": "text/html;charset=utf-8"
+        },
+        {
+          "url": "https://www.rfc-editor.org/info/rfc10054/",
+          "status": 200,
+          "content_type": "text/html;charset=utf-8"
+        },
+        {
+          "url": "https://www.rfc-editor.org/series/rfc-use/",
+          "status": 200,
+          "content_type": "text/html;charset=utf-8"
+        },
+        {
+          "url": "https://www.rfc-editor.org/authors/rfc-independent-submissions/",
+          "status": 200,
+          "content_type": "text/html;charset=utf-8"
+        }
+      ],
+      "child_page_errors": [],
+      "collection_date": "2026-10-07",
+      "why_urls_are_considered_legitimate": "The RFC Editor's official standards publication site and same-registered-domain publication routes.",
+      "candidate_links_checked": 23,
+      "verified_urls": 23,
+      "category_counts": {
+        "high_entropy_legitimate": 10,
+        "path_only": 10,
+        "path_query": 3
+      },
+      "deduplication_method": "Canonicalized with feature_extractor.normalize_url, then exact and normalized URL deduplication across all sources.",
+      "error": null
+    }
+  ],
+  "source_url_counts": {
+    "Wikimedia Wikipedia": 23,
+    "Mozilla Developer Network": 30,
+    "GitHub": 29,
+    "NASA": 36,
+    "Library of Congress": 10,
+    "World Wide Web Consortium": 30,
+    "Internet Engineering Task Force": 30,
+    "arXiv": 30,
+    "OpenStreetMap": 35,
+    "World Health Organization": 35,
+    "Massachusetts Institute of Technology": 21,
+    "Stanford University": 9,
+    "University of California, Berkeley": 30,
+    "GOV.UK": 24,
+    "European Space Agency": 23,
+    "Chrome for Developers": 17,
+    "RFC Editor": 23
+  },
+  "category_counts": {
+    "encoded_query": 32,
+    "fragment": 62,
+    "high_entropy_legitimate": 118,
+    "multiple_query_parameters": 26,
+    "path_only": 146,
+    "redirect_style": 1,
+    "path_query": 39,
+    "tracking_parameters": 3,
+    "query_only": 5,
+    "long_legitimate_url": 3
+  },
+  "rows_before_deduplication": 435,
+  "rows_after_deduplication": 435,
+  "deduplication": {
+    "exact_duplicate_urls_removed": 0,
+    "normalized_duplicate_urls_removed": 0,
+    "cross_source_or_existing_dataset_duplicates_removed": 0,
+    "method": "Exact URL deduplication, canonical URL deduplication via normalize_url, and cross-source comparison against every URL in clean_dataset.csv."
+  },
+  "existing_dataset_registered_domains_overlap": 11,
+  "category_definitions": {
+    "path_only": "Non-root path with no query or fragment.",
+    "query_only": "Query string on the root path.",
+    "path_query": "Non-root path and a query string, excluding higher-priority query categories.",
+    "multiple_query_parameters": "At least two query key/value segments.",
+    "long_query": "Raw query string longer than 100 characters.",
+    "encoded_query": "Query contains percent-encoded bytes.",
+    "fragment": "URL contains a fragment, excluding higher-priority query categories.",
+    "tracking_parameters": "Observed query uses a named utm_* parameter or common ad/click identifier.",
+    "redirect_style": "Observed query uses an explicit redirect/return/continue/destination parameter.",
+    "high_entropy_legitimate": "Path-only URL whose path Shannon entropy is at least 4.0 bits per character.",
+    "long_legitimate_url": "Path-only URL longer than 200 characters."
+  }
+}
