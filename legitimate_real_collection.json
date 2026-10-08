@@ -1,0 +1,4522 @@
+{
+  "started_utc": "2026-10-08T17:31:55.039547+00:00",
+  "finished_utc": "2026-10-08T18:02:40.012584+00:00",
+  "parameters": {
+    "existing": null,
+    "output_dir": ".",
+    "target": 150000,
+    "workers": 8,
+    "delay": 1.0,
+    "timeout": 30,
+    "contact": "student-research-project",
+    "sitemap_cap": 700,
+    "max_sitemap_files": 8,
+    "wayback_limit": 400,
+    "cc_limit": 400,
+    "wiki_cap": 400,
+    "hn_windows": 60,
+    "github_pages": 3,
+    "seed": 42,
+    "quick": false,
+    "no_sitemaps": false,
+    "no_feeds": false,
+    "no_open_web": false,
+    "no_wayback": false,
+    "no_commoncrawl": false,
+    "no_github": false
+  },
+  "collection_sources": [
+    {
+      "source": "commoncrawl:airbnb.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:amazon.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:apnews.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:archive.org",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:arxiv.org",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:atlassian.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:bbc.co.uk",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:bbc.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:berkeley.edu",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:bestbuy.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:bing.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:bitbucket.org",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:booking.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:caltech.edu",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:cam.ac.uk",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:canva.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:cdc.gov",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:census.gov",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:cloud.google.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:cloudflare.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:cmu.edu",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:cnn.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:coinbase.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:cornell.edu",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:coursera.org",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:data.gov",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:developer.android.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:developer.apple.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:developer.mozilla.org",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:developer.paypal.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:djangoproject.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:doc.rust-lang.org",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:docker.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:docs.aws.amazon.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:docs.djangoproject.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:docs.docker.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:docs.github.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:docs.gitlab.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:docs.google.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:docs.python.org",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:docs.stripe.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:drive.google.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:dropbox.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:duckduckgo.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:ebay.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:edx.org",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:epa.gov",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:ethz.ch",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:etsy.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:europa.eu",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:expedia.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:facebook.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:fastapi.tiangolo.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:fda.gov",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:figma.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:github.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:gitlab.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:go.dev",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:google.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:gov.uk",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:harvard.edu",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:homedepot.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:huggingface.co",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:iitb.ac.in",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:iitd.ac.in",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:ikea.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:imdb.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:india.gov.in",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:instagram.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:irs.gov",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:kaggle.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:kayak.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:khanacademy.org",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:kubernetes.io",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:learn.microsoft.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:linkedin.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:loc.gov",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:microsoft.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:mit.edu",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:nasa.gov",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:nih.gov",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:nist.gov",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:noaa.gov",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:nodejs.org",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:notion.so",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:npmjs.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:npr.org",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:numpy.org",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:nus.edu.sg",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:nytimes.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:office.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:openstreetmap.org",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:ox.ac.uk",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:palletsprojects.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:pandas.pydata.org",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:paypal.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:pinterest.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:pkg.go.dev",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:princeton.edu",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:pypi.org",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:python.org",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:pytorch.org",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:react.dev",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:readthedocs.io",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:reddit.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:reuters.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:rust-lang.org",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:scikit-learn.org",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:shopify.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:slack.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:soundcloud.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:spotify.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:stackexchange.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:stackoverflow.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:stanford.edu",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:stripe.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:target.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:theguardian.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:tiktok.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:trello.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:tripadvisor.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:twitch.tv",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:twitter.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:ucla.edu",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:udemy.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:un.org",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:usa.gov",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:utoronto.ca",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:vimeo.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:visa.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:walmart.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:who.int",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:wikipedia.org",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:wise.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:worldbank.org",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:x.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:yahoo.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:yale.edu",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:youtube.com",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "commoncrawl:zoom.us",
+      "method": "commoncrawl",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "feed:de.wikipedia.org",
+      "method": "feed",
+      "candidates_seen": 50,
+      "accepted_unique": 50,
+      "errors": {}
+    },
+    {
+      "source": "feed:en.wikipedia.org",
+      "method": "feed",
+      "candidates_seen": 50,
+      "accepted_unique": 50,
+      "errors": {}
+    },
+    {
+      "source": "feed:es.wikipedia.org",
+      "method": "feed",
+      "candidates_seen": 50,
+      "accepted_unique": 50,
+      "errors": {}
+    },
+    {
+      "source": "feed:export.arxiv.org",
+      "method": "feed",
+      "candidates_seen": 600,
+      "accepted_unique": 592,
+      "errors": {}
+    },
+    {
+      "source": "feed:feeds.bbci.co.uk",
+      "method": "feed",
+      "candidates_seen": 208,
+      "accepted_unique": 183,
+      "errors": {}
+    },
+    {
+      "source": "feed:fr.wikipedia.org",
+      "method": "feed",
+      "candidates_seen": 50,
+      "accepted_unique": 50,
+      "errors": {}
+    },
+    {
+      "source": "feed:github.com",
+      "method": "feed",
+      "candidates_seen": 240,
+      "accepted_unique": 120,
+      "errors": {}
+    },
+    {
+      "source": "feed:hnrss.org",
+      "method": "feed",
+      "candidates_seen": 30,
+      "accepted_unique": 9,
+      "errors": {
+        "HTTP 502": 1
+      }
+    },
+    {
+      "source": "feed:news.harvard.edu",
+      "method": "feed",
+      "candidates_seen": 50,
+      "accepted_unique": 50,
+      "errors": {}
+    },
+    {
+      "source": "feed:news.mit.edu",
+      "method": "feed",
+      "candidates_seen": 50,
+      "accepted_unique": 50,
+      "errors": {}
+    },
+    {
+      "source": "feed:news.stanford.edu",
+      "method": "feed",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 403": 1
+      }
+    },
+    {
+      "source": "feed:peps.python.org",
+      "method": "feed",
+      "candidates_seen": 10,
+      "accepted_unique": 10,
+      "errors": {}
+    },
+    {
+      "source": "feed:rss.arxiv.org",
+      "method": "feed",
+      "candidates_seen": 1130,
+      "accepted_unique": 838,
+      "errors": {}
+    },
+    {
+      "source": "feed:rss.cnn.com",
+      "method": "feed",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "SSLError": 3
+      }
+    },
+    {
+      "source": "feed:rss.nytimes.com",
+      "method": "feed",
+      "candidates_seen": 180,
+      "accepted_unique": 159,
+      "errors": {}
+    },
+    {
+      "source": "feed:stackoverflow.com",
+      "method": "feed",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 403": 3
+      }
+    },
+    {
+      "source": "feed:www.gov.uk",
+      "method": "feed",
+      "candidates_seen": 20,
+      "accepted_unique": 20,
+      "errors": {}
+    },
+    {
+      "source": "feed:www.nasa.gov",
+      "method": "feed",
+      "candidates_seen": 10,
+      "accepted_unique": 10,
+      "errors": {}
+    },
+    {
+      "source": "feed:www.openstreetmap.org",
+      "method": "feed",
+      "candidates_seen": 20,
+      "accepted_unique": 20,
+      "errors": {}
+    },
+    {
+      "source": "feed:www.reddit.com",
+      "method": "feed",
+      "candidates_seen": 25,
+      "accepted_unique": 25,
+      "errors": {
+        "HTTP 429": 4
+      }
+    },
+    {
+      "source": "feed:www.theguardian.com",
+      "method": "feed",
+      "candidates_seen": 283,
+      "accepted_unique": 249,
+      "errors": {}
+    },
+    {
+      "source": "feed:www.youtube.com",
+      "method": "feed",
+      "candidates_seen": 60,
+      "accepted_unique": 60,
+      "errors": {}
+    },
+    {
+      "source": "github_api:search_repositories",
+      "method": "github_api",
+      "candidates_seen": 2620,
+      "accepted_unique": 2314,
+      "errors": {
+        "HTTP 403": 1
+      }
+    },
+    {
+      "source": "hackernews:algolia",
+      "method": "hackernews",
+      "candidates_seen": 57571,
+      "accepted_unique": 54622,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:airbnb.com",
+      "method": "sitemap",
+      "candidates_seen": 700,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:amazon.com",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 500": 2
+      }
+    },
+    {
+      "source": "sitemap:apnews.com",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 403": 6
+      }
+    },
+    {
+      "source": "sitemap:archive.org",
+      "method": "sitemap",
+      "candidates_seen": 700,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:arxiv.org",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 404": 2
+      }
+    },
+    {
+      "source": "sitemap:atlassian.com",
+      "method": "sitemap",
+      "candidates_seen": 704,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:bbc.co.uk",
+      "method": "sitemap",
+      "candidates_seen": 700,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:bbc.com",
+      "method": "sitemap",
+      "candidates_seen": 700,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:berkeley.edu",
+      "method": "sitemap",
+      "candidates_seen": 525,
+      "accepted_unique": 525,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:bestbuy.com",
+      "method": "sitemap",
+      "candidates_seen": 700,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:bing.com",
+      "method": "sitemap",
+      "candidates_seen": 921,
+      "accepted_unique": 568,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:bitbucket.org",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 404": 2
+      }
+    },
+    {
+      "source": "sitemap:booking.com",
+      "method": "sitemap",
+      "candidates_seen": 700,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:caltech.edu",
+      "method": "sitemap",
+      "candidates_seen": 64,
+      "accepted_unique": 63,
+      "errors": {
+        "SSLError": 3,
+        "HTTP 404": 1
+      }
+    },
+    {
+      "source": "sitemap:cam.ac.uk",
+      "method": "sitemap",
+      "candidates_seen": 466,
+      "accepted_unique": 462,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:canva.com",
+      "method": "sitemap",
+      "candidates_seen": 700,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:cdc.gov",
+      "method": "sitemap",
+      "candidates_seen": 124,
+      "accepted_unique": 124,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:census.gov",
+      "method": "sitemap",
+      "candidates_seen": 701,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:cloud.google.com",
+      "method": "sitemap",
+      "candidates_seen": 130,
+      "accepted_unique": 130,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:cloudflare.com",
+      "method": "sitemap",
+      "candidates_seen": 466,
+      "accepted_unique": 389,
+      "errors": {
+        "HTTP 404": 1
+      }
+    },
+    {
+      "source": "sitemap:cmu.edu",
+      "method": "sitemap",
+      "candidates_seen": 233,
+      "accepted_unique": 230,
+      "errors": {
+        "HTTP 404": 1
+      }
+    },
+    {
+      "source": "sitemap:cnn.com",
+      "method": "sitemap",
+      "candidates_seen": 702,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:coinbase.com",
+      "method": "sitemap",
+      "candidates_seen": 701,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:cornell.edu",
+      "method": "sitemap",
+      "candidates_seen": 16,
+      "accepted_unique": 16,
+      "errors": {
+        "HTTP 404": 1
+      }
+    },
+    {
+      "source": "sitemap:coursera.org",
+      "method": "sitemap",
+      "candidates_seen": 700,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:data.gov",
+      "method": "sitemap",
+      "candidates_seen": 233,
+      "accepted_unique": 232,
+      "errors": {
+        "HTTP 404": 1
+      }
+    },
+    {
+      "source": "sitemap:developer.android.com",
+      "method": "sitemap",
+      "candidates_seen": 700,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:developer.apple.com",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 404": 2
+      }
+    },
+    {
+      "source": "sitemap:developer.mozilla.org",
+      "method": "sitemap",
+      "candidates_seen": 700,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:developer.paypal.com",
+      "method": "sitemap",
+      "candidates_seen": 233,
+      "accepted_unique": 233,
+      "errors": {
+        "HTTP 404": 1
+      }
+    },
+    {
+      "source": "sitemap:djangoproject.com",
+      "method": "sitemap",
+      "candidates_seen": 233,
+      "accepted_unique": 227,
+      "errors": {
+        "HTTP 404": 1
+      }
+    },
+    {
+      "source": "sitemap:doc.rust-lang.org",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 404": 2
+      }
+    },
+    {
+      "source": "sitemap:docker.com",
+      "method": "sitemap",
+      "candidates_seen": 714,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:docs.aws.amazon.com",
+      "method": "sitemap",
+      "candidates_seen": 700,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:docs.djangoproject.com",
+      "method": "sitemap",
+      "candidates_seen": 700,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:docs.docker.com",
+      "method": "sitemap",
+      "candidates_seen": 233,
+      "accepted_unique": 233,
+      "errors": {
+        "HTTP 404": 1
+      }
+    },
+    {
+      "source": "sitemap:docs.github.com",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 404": 2
+      }
+    },
+    {
+      "source": "sitemap:docs.gitlab.com",
+      "method": "sitemap",
+      "candidates_seen": 466,
+      "accepted_unique": 466,
+      "errors": {
+        "HTTP 403": 1
+      }
+    },
+    {
+      "source": "sitemap:docs.google.com",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 404": 2
+      }
+    },
+    {
+      "source": "sitemap:docs.python.org",
+      "method": "sitemap",
+      "candidates_seen": 7,
+      "accepted_unique": 7,
+      "errors": {
+        "HTTP 404": 1
+      }
+    },
+    {
+      "source": "sitemap:docs.stripe.com",
+      "method": "sitemap",
+      "candidates_seen": 233,
+      "accepted_unique": 233,
+      "errors": {
+        "HTTP 404": 1
+      }
+    },
+    {
+      "source": "sitemap:drive.google.com",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 404": 2
+      }
+    },
+    {
+      "source": "sitemap:dropbox.com",
+      "method": "sitemap",
+      "candidates_seen": 703,
+      "accepted_unique": 700,
+      "errors": {
+        "HTTP 404": 4
+      }
+    },
+    {
+      "source": "sitemap:duckduckgo.com",
+      "method": "sitemap",
+      "candidates_seen": 259,
+      "accepted_unique": 256,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:ebay.com",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 418": 9
+      }
+    },
+    {
+      "source": "sitemap:edx.org",
+      "method": "sitemap",
+      "candidates_seen": 466,
+      "accepted_unique": 459,
+      "errors": {
+        "HTTP 404": 1
+      }
+    },
+    {
+      "source": "sitemap:epa.gov",
+      "method": "sitemap",
+      "candidates_seen": 700,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:ethz.ch",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 404": 6
+      }
+    },
+    {
+      "source": "sitemap:etsy.com",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 404": 2
+      }
+    },
+    {
+      "source": "sitemap:europa.eu",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 404": 2
+      }
+    },
+    {
+      "source": "sitemap:expedia.com",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 403": 2
+      }
+    },
+    {
+      "source": "sitemap:facebook.com",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:fastapi.tiangolo.com",
+      "method": "sitemap",
+      "candidates_seen": 152,
+      "accepted_unique": 147,
+      "errors": {
+        "HTTP 404": 1
+      }
+    },
+    {
+      "source": "sitemap:fda.gov",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 404": 3
+      }
+    },
+    {
+      "source": "sitemap:figma.com",
+      "method": "sitemap",
+      "candidates_seen": 703,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:github.com",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 406": 1,
+        "HTTP 404": 1
+      }
+    },
+    {
+      "source": "sitemap:gitlab.com",
+      "method": "sitemap",
+      "candidates_seen": 233,
+      "accepted_unique": 233,
+      "errors": {
+        "HTTP 403": 1
+      }
+    },
+    {
+      "source": "sitemap:go.dev",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 404": 2
+      }
+    },
+    {
+      "source": "sitemap:google.com",
+      "method": "sitemap",
+      "candidates_seen": 701,
+      "accepted_unique": 700,
+      "errors": {
+        "HTTP 404": 2
+      }
+    },
+    {
+      "source": "sitemap:gov.uk",
+      "method": "sitemap",
+      "candidates_seen": 700,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:harvard.edu",
+      "method": "sitemap",
+      "candidates_seen": 343,
+      "accepted_unique": 342,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:homedepot.com",
+      "method": "sitemap",
+      "candidates_seen": 700,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:huggingface.co",
+      "method": "sitemap",
+      "candidates_seen": 705,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:iitb.ac.in",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "ConnectionError": 3
+      }
+    },
+    {
+      "source": "sitemap:iitd.ac.in",
+      "method": "sitemap",
+      "candidates_seen": 1,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 404": 1
+      }
+    },
+    {
+      "source": "sitemap:ikea.com",
+      "method": "sitemap",
+      "candidates_seen": 700,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:imdb.com",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 202": 2
+      }
+    },
+    {
+      "source": "sitemap:india.gov.in",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "ConnectionError": 3
+      }
+    },
+    {
+      "source": "sitemap:instagram.com",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 403": 4
+      }
+    },
+    {
+      "source": "sitemap:irs.gov",
+      "method": "sitemap",
+      "candidates_seen": 701,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:kaggle.com",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 404": 6
+      }
+    },
+    {
+      "source": "sitemap:kayak.com",
+      "method": "sitemap",
+      "candidates_seen": 701,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:khanacademy.org",
+      "method": "sitemap",
+      "candidates_seen": 38,
+      "accepted_unique": 38,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:kubernetes.io",
+      "method": "sitemap",
+      "candidates_seen": 705,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:learn.microsoft.com",
+      "method": "sitemap",
+      "candidates_seen": 700,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:linkedin.com",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:loc.gov",
+      "method": "sitemap",
+      "candidates_seen": 87,
+      "accepted_unique": 85,
+      "errors": {
+        "HTTP 403": 6,
+        "HTTP 404": 1
+      }
+    },
+    {
+      "source": "sitemap:microsoft.com",
+      "method": "sitemap",
+      "candidates_seen": 700,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:mit.edu",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 404": 2
+      }
+    },
+    {
+      "source": "sitemap:nasa.gov",
+      "method": "sitemap",
+      "candidates_seen": 700,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:nih.gov",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 403": 6
+      }
+    },
+    {
+      "source": "sitemap:nist.gov",
+      "method": "sitemap",
+      "candidates_seen": 700,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:noaa.gov",
+      "method": "sitemap",
+      "candidates_seen": 699,
+      "accepted_unique": 699,
+      "errors": {
+        "HTTP 403": 2
+      }
+    },
+    {
+      "source": "sitemap:nodejs.org",
+      "method": "sitemap",
+      "candidates_seen": 323,
+      "accepted_unique": 321,
+      "errors": {
+        "HTTP 404": 1
+      }
+    },
+    {
+      "source": "sitemap:notion.so",
+      "method": "sitemap",
+      "candidates_seen": 450,
+      "accepted_unique": 450,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:npmjs.com",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 403": 6
+      }
+    },
+    {
+      "source": "sitemap:npr.org",
+      "method": "sitemap",
+      "candidates_seen": 700,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:numpy.org",
+      "method": "sitemap",
+      "candidates_seen": 104,
+      "accepted_unique": 100,
+      "errors": {
+        "HTTP 404": 1
+      }
+    },
+    {
+      "source": "sitemap:nus.edu.sg",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:nytimes.com",
+      "method": "sitemap",
+      "candidates_seen": 732,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:office.com",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:openstreetmap.org",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 404": 2
+      }
+    },
+    {
+      "source": "sitemap:ox.ac.uk",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 403": 3
+      }
+    },
+    {
+      "source": "sitemap:palletsprojects.com",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 404": 2
+      }
+    },
+    {
+      "source": "sitemap:pandas.pydata.org",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 404": 2
+      }
+    },
+    {
+      "source": "sitemap:paypal.com",
+      "method": "sitemap",
+      "candidates_seen": 47,
+      "accepted_unique": 47,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:pinterest.com",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 404": 115
+      }
+    },
+    {
+      "source": "sitemap:pkg.go.dev",
+      "method": "sitemap",
+      "candidates_seen": 700,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:princeton.edu",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 403": 2
+      }
+    },
+    {
+      "source": "sitemap:pypi.org",
+      "method": "sitemap",
+      "candidates_seen": 700,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:python.org",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 404": 2
+      }
+    },
+    {
+      "source": "sitemap:pytorch.org",
+      "method": "sitemap",
+      "candidates_seen": 197,
+      "accepted_unique": 192,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:react.dev",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 404": 2
+      }
+    },
+    {
+      "source": "sitemap:readthedocs.io",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:reddit.com",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "SSLError": 6
+      }
+    },
+    {
+      "source": "sitemap:reuters.com",
+      "method": "sitemap",
+      "candidates_seen": 700,
+      "accepted_unique": 695,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:rust-lang.org",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 404": 6
+      }
+    },
+    {
+      "source": "sitemap:scikit-learn.org",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 404": 6
+      }
+    },
+    {
+      "source": "sitemap:shopify.com",
+      "method": "sitemap",
+      "candidates_seen": 702,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:slack.com",
+      "method": "sitemap",
+      "candidates_seen": 700,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:soundcloud.com",
+      "method": "sitemap",
+      "candidates_seen": 701,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:spotify.com",
+      "method": "sitemap",
+      "candidates_seen": 700,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:stackexchange.com",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 403": 6
+      }
+    },
+    {
+      "source": "sitemap:stackoverflow.com",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 403": 6
+      }
+    },
+    {
+      "source": "sitemap:stanford.edu",
+      "method": "sitemap",
+      "candidates_seen": 54,
+      "accepted_unique": 27,
+      "errors": {
+        "HTTP 404": 1
+      }
+    },
+    {
+      "source": "sitemap:stripe.com",
+      "method": "sitemap",
+      "candidates_seen": 700,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:target.com",
+      "method": "sitemap",
+      "candidates_seen": 700,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:theguardian.com",
+      "method": "sitemap",
+      "candidates_seen": 253,
+      "accepted_unique": 156,
+      "errors": {
+        "HTTP 404": 2
+      }
+    },
+    {
+      "source": "sitemap:tiktok.com",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:trello.com",
+      "method": "sitemap",
+      "candidates_seen": 112,
+      "accepted_unique": 112,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:tripadvisor.com",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 403": 10
+      }
+    },
+    {
+      "source": "sitemap:twitch.tv",
+      "method": "sitemap",
+      "candidates_seen": 700,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:twitter.com",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 404": 3
+      }
+    },
+    {
+      "source": "sitemap:ucla.edu",
+      "method": "sitemap",
+      "candidates_seen": 228,
+      "accepted_unique": 114,
+      "errors": {
+        "HTTP 404": 1
+      }
+    },
+    {
+      "source": "sitemap:udemy.com",
+      "method": "sitemap",
+      "candidates_seen": 703,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:un.org",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 404": 2
+      }
+    },
+    {
+      "source": "sitemap:usa.gov",
+      "method": "sitemap",
+      "candidates_seen": 466,
+      "accepted_unique": 415,
+      "errors": {
+        "HTTP 404": 1
+      }
+    },
+    {
+      "source": "sitemap:utoronto.ca",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 403": 6
+      }
+    },
+    {
+      "source": "sitemap:vimeo.com",
+      "method": "sitemap",
+      "candidates_seen": 469,
+      "accepted_unique": 469,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:visa.com",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 404": 4
+      }
+    },
+    {
+      "source": "sitemap:walmart.com",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:who.int",
+      "method": "sitemap",
+      "candidates_seen": 700,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:wikipedia.org",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 403": 1,
+        "HTTP 404": 2
+      }
+    },
+    {
+      "source": "sitemap:wise.com",
+      "method": "sitemap",
+      "candidates_seen": 700,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:worldbank.org",
+      "method": "sitemap",
+      "candidates_seen": 717,
+      "accepted_unique": 700,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:x.com",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 404": 2
+      }
+    },
+    {
+      "source": "sitemap:yahoo.com",
+      "method": "sitemap",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 404": 2
+      }
+    },
+    {
+      "source": "sitemap:yale.edu",
+      "method": "sitemap",
+      "candidates_seen": 233,
+      "accepted_unique": 233,
+      "errors": {
+        "SSLError": 3,
+        "HTTP 404": 1
+      }
+    },
+    {
+      "source": "sitemap:youtube.com",
+      "method": "sitemap",
+      "candidates_seen": 308,
+      "accepted_unique": 308,
+      "errors": {}
+    },
+    {
+      "source": "sitemap:zoom.us",
+      "method": "sitemap",
+      "candidates_seen": 233,
+      "accepted_unique": 233,
+      "errors": {
+        "HTTP 404": 1
+      }
+    },
+    {
+      "source": "wayback:airbnb.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:amazon.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:apnews.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:archive.org",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:arxiv.org",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:atlassian.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:bbc.co.uk",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:bbc.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:berkeley.edu",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:bestbuy.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:bing.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 600,
+      "accepted_unique": 400,
+      "errors": {}
+    },
+    {
+      "source": "wayback:bitbucket.org",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:booking.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:caltech.edu",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:cam.ac.uk",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:canva.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:cdc.gov",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:census.gov",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:cloud.google.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:cloudflare.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:cmu.edu",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:cnn.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:coinbase.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:cornell.edu",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:coursera.org",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:data.gov",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:developer.android.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:developer.apple.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:developer.mozilla.org",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:developer.paypal.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:djangoproject.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:doc.rust-lang.org",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:docker.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:docs.aws.amazon.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:docs.djangoproject.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:docs.docker.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:docs.github.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:docs.gitlab.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:docs.google.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:docs.python.org",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:docs.stripe.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:drive.google.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:dropbox.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:duckduckgo.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 504": 2
+      }
+    },
+    {
+      "source": "wayback:ebay.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:edx.org",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:epa.gov",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:ethz.ch",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:etsy.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:europa.eu",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:expedia.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:facebook.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:fastapi.tiangolo.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:fda.gov",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:figma.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:github.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:gitlab.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:go.dev",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:google.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 504": 2
+      }
+    },
+    {
+      "source": "wayback:gov.uk",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:harvard.edu",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:homedepot.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:huggingface.co",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:iitb.ac.in",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:iitd.ac.in",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:ikea.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:imdb.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:india.gov.in",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:instagram.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:irs.gov",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:kaggle.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:kayak.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:khanacademy.org",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:kubernetes.io",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:learn.microsoft.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:linkedin.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:loc.gov",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:microsoft.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:mit.edu",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:nasa.gov",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:nih.gov",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:nist.gov",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:noaa.gov",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:nodejs.org",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:notion.so",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:npmjs.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:npr.org",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:numpy.org",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:nus.edu.sg",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:nytimes.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:office.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:openstreetmap.org",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:ox.ac.uk",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:palletsprojects.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:pandas.pydata.org",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:paypal.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:pinterest.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:pkg.go.dev",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:princeton.edu",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:pypi.org",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:python.org",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:pytorch.org",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:react.dev",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:readthedocs.io",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:reddit.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:reuters.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:rust-lang.org",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:scikit-learn.org",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:shopify.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:slack.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:soundcloud.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:spotify.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:stackexchange.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:stackoverflow.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:stanford.edu",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:stripe.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:target.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:theguardian.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:tiktok.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:trello.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:tripadvisor.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:twitch.tv",
+      "method": "wayback_cdx",
+      "candidates_seen": 421,
+      "accepted_unique": 405,
+      "errors": {}
+    },
+    {
+      "source": "wayback:twitter.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:ucla.edu",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:udemy.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:un.org",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:usa.gov",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:utoronto.ca",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:vimeo.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 400,
+      "accepted_unique": 400,
+      "errors": {}
+    },
+    {
+      "source": "wayback:visa.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:walmart.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:who.int",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:wikipedia.org",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 504": 1
+      }
+    },
+    {
+      "source": "wayback:wise.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:worldbank.org",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:x.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:yahoo.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 504": 2
+      }
+    },
+    {
+      "source": "wayback:yale.edu",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wayback:youtube.com",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 504": 2
+      }
+    },
+    {
+      "source": "wayback:zoom.us",
+      "method": "wayback_cdx",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:airbnb.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 54,
+      "accepted_unique": 48,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:amazon.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 576,
+      "accepted_unique": 562,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:apnews.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 670,
+      "accepted_unique": 585,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:archive.org",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 439,
+      "accepted_unique": 415,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:arxiv.org",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "ReadTimeout": 1
+      }
+    },
+    {
+      "source": "wikipedia_extlinks:atlassian.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 203,
+      "accepted_unique": 183,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:bbc.co.uk",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 429": 1
+      }
+    },
+    {
+      "source": "wikipedia_extlinks:bbc.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "ReadTimeout": 1
+      }
+    },
+    {
+      "source": "wikipedia_extlinks:berkeley.edu",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 676,
+      "accepted_unique": 617,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:bestbuy.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 97,
+      "accepted_unique": 94,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:bing.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 656,
+      "accepted_unique": 656,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:bitbucket.org",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 240,
+      "accepted_unique": 226,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:booking.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 59,
+      "accepted_unique": 59,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:caltech.edu",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 899,
+      "accepted_unique": 803,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:cam.ac.uk",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 853,
+      "accepted_unique": 782,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:canva.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 64,
+      "accepted_unique": 59,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:cdc.gov",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 774,
+      "accepted_unique": 680,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:census.gov",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 1214,
+      "accepted_unique": 459,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:cloudflare.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 319,
+      "accepted_unique": 271,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:cmu.edu",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 829,
+      "accepted_unique": 764,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:cnn.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 632,
+      "accepted_unique": 571,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:coinbase.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 28,
+      "accepted_unique": 25,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:cornell.edu",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 603,
+      "accepted_unique": 553,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:coursera.org",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 290,
+      "accepted_unique": 258,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:data.gov",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 114,
+      "accepted_unique": 63,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:developer.android.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 315,
+      "accepted_unique": 273,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:developer.apple.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 357,
+      "accepted_unique": 337,
+      "errors": {
+        "HTTP 429": 1
+      }
+    },
+    {
+      "source": "wikipedia_extlinks:developer.mozilla.org",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 447,
+      "accepted_unique": 437,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:djangoproject.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 79,
+      "accepted_unique": 74,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:docker.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 104,
+      "accepted_unique": 94,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:dropbox.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 636,
+      "accepted_unique": 561,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:duckduckgo.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 42,
+      "accepted_unique": 37,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:ebay.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 551,
+      "accepted_unique": 536,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:edx.org",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 140,
+      "accepted_unique": 137,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:epa.gov",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 752,
+      "accepted_unique": 675,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:ethz.ch",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 785,
+      "accepted_unique": 673,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:etsy.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 153,
+      "accepted_unique": 149,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:europa.eu",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 857,
+      "accepted_unique": 811,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:expedia.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 37,
+      "accepted_unique": 36,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:facebook.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 560,
+      "accepted_unique": 504,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:fastapi.tiangolo.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 7,
+      "accepted_unique": 5,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:fda.gov",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 692,
+      "accepted_unique": 642,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:figma.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 20,
+      "accepted_unique": 17,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:github.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 576,
+      "accepted_unique": 558,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:gitlab.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 612,
+      "accepted_unique": 562,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:go.dev",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 132,
+      "accepted_unique": 119,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:google.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 453,
+      "accepted_unique": 428,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:gov.uk",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 429": 1
+      }
+    },
+    {
+      "source": "wikipedia_extlinks:harvard.edu",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 429": 1
+      }
+    },
+    {
+      "source": "wikipedia_extlinks:homedepot.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 50,
+      "accepted_unique": 46,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:huggingface.co",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 322,
+      "accepted_unique": 280,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:iitb.ac.in",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 183,
+      "accepted_unique": 172,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:iitd.ac.in",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 104,
+      "accepted_unique": 93,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:ikea.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 106,
+      "accepted_unique": 99,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:imdb.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 860,
+      "accepted_unique": 860,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:india.gov.in",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 743,
+      "accepted_unique": 464,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:instagram.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 658,
+      "accepted_unique": 645,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:irs.gov",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 678,
+      "accepted_unique": 591,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:kaggle.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 73,
+      "accepted_unique": 70,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:kayak.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 12,
+      "accepted_unique": 12,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:khanacademy.org",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 275,
+      "accepted_unique": 246,
+      "errors": {
+        "HTTP 429": 1
+      }
+    },
+    {
+      "source": "wikipedia_extlinks:kubernetes.io",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 88,
+      "accepted_unique": 83,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:linkedin.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 422,
+      "accepted_unique": 410,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:loc.gov",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 835,
+      "accepted_unique": 808,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:microsoft.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 630,
+      "accepted_unique": 604,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:mit.edu",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 704,
+      "accepted_unique": 643,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:nasa.gov",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 779,
+      "accepted_unique": 663,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:nih.gov",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 787,
+      "accepted_unique": 776,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:nist.gov",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 833,
+      "accepted_unique": 715,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:noaa.gov",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 766,
+      "accepted_unique": 580,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:nodejs.org",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 44,
+      "accepted_unique": 40,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:notion.so",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 28,
+      "accepted_unique": 26,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:npmjs.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 131,
+      "accepted_unique": 126,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:npr.org",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 746,
+      "accepted_unique": 679,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:numpy.org",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 23,
+      "accepted_unique": 19,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:nus.edu.sg",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 864,
+      "accepted_unique": 728,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:nytimes.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 728,
+      "accepted_unique": 662,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:office.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 295,
+      "accepted_unique": 244,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:openstreetmap.org",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 542,
+      "accepted_unique": 538,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:ox.ac.uk",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 818,
+      "accepted_unique": 761,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:palletsprojects.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 11,
+      "accepted_unique": 10,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:pandas.pydata.org",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 27,
+      "accepted_unique": 23,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:paypal.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 62,
+      "accepted_unique": 58,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:pinterest.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 426,
+      "accepted_unique": 417,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:princeton.edu",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 845,
+      "accepted_unique": 783,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:pypi.org",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 178,
+      "accepted_unique": 171,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:python.org",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 642,
+      "accepted_unique": 573,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:pytorch.org",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 36,
+      "accepted_unique": 31,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:react.dev",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 29,
+      "accepted_unique": 27,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:readthedocs.io",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 256,
+      "accepted_unique": 237,
+      "errors": {
+        "HTTP 429": 1
+      }
+    },
+    {
+      "source": "wikipedia_extlinks:reddit.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 472,
+      "accepted_unique": 449,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:reuters.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 891,
+      "accepted_unique": 849,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:rust-lang.org",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 402,
+      "accepted_unique": 319,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:scikit-learn.org",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 40,
+      "accepted_unique": 35,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:shopify.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 258,
+      "accepted_unique": 241,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:slack.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 27,
+      "accepted_unique": 23,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:soundcloud.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 736,
+      "accepted_unique": 705,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:spotify.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 729,
+      "accepted_unique": 706,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:stackexchange.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 448,
+      "accepted_unique": 439,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:stackoverflow.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 416,
+      "accepted_unique": 404,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:stanford.edu",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 676,
+      "accepted_unique": 640,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:stripe.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 44,
+      "accepted_unique": 40,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:target.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 454,
+      "accepted_unique": 423,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:theguardian.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 817,
+      "accepted_unique": 772,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:tiktok.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 553,
+      "accepted_unique": 522,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:trello.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 19,
+      "accepted_unique": 19,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:tripadvisor.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 704,
+      "accepted_unique": 685,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:twitch.tv",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 440,
+      "accepted_unique": 420,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:twitter.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 441,
+      "accepted_unique": 424,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:ucla.edu",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 848,
+      "accepted_unique": 706,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:udemy.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 34,
+      "accepted_unique": 33,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:un.org",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 790,
+      "accepted_unique": 538,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:usa.gov",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 193,
+      "accepted_unique": 139,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:utoronto.ca",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 766,
+      "accepted_unique": 672,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:vimeo.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 666,
+      "accepted_unique": 648,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:visa.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 83,
+      "accepted_unique": 70,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:walmart.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {
+        "HTTP 429": 1
+      }
+    },
+    {
+      "source": "wikipedia_extlinks:who.int",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 633,
+      "accepted_unique": 570,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:wikipedia.org",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 2,
+      "accepted_unique": 2,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:wise.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 38,
+      "accepted_unique": 35,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:worldbank.org",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 774,
+      "accepted_unique": 579,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:x.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 567,
+      "accepted_unique": 533,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:yahoo.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 926,
+      "accepted_unique": 827,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:yale.edu",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 842,
+      "accepted_unique": 782,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:youtube.com",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 435,
+      "accepted_unique": 435,
+      "errors": {}
+    },
+    {
+      "source": "wikipedia_extlinks:zoom.us",
+      "method": "wikipedia_extlinks",
+      "candidates_seen": 0,
+      "accepted_unique": 0,
+      "errors": {}
+    }
+  ],
+  "counts_per_source": {
+    "hackernews:algolia": 54622,
+    "github_api:search_repositories": 2314,
+    "wikipedia_extlinks:imdb.com": 860,
+    "wikipedia_extlinks:reuters.com": 849,
+    "feed:rss.arxiv.org": 838,
+    "wikipedia_extlinks:yahoo.com": 827,
+    "wikipedia_extlinks:europa.eu": 811,
+    "wikipedia_extlinks:loc.gov": 808,
+    "wikipedia_extlinks:caltech.edu": 803,
+    "wikipedia_extlinks:princeton.edu": 783,
+    "wikipedia_extlinks:cam.ac.uk": 782,
+    "wikipedia_extlinks:yale.edu": 782,
+    "wikipedia_extlinks:nih.gov": 776,
+    "wikipedia_extlinks:theguardian.com": 772,
+    "wikipedia_extlinks:cmu.edu": 764,
+    "wikipedia_extlinks:ox.ac.uk": 761,
+    "wikipedia_extlinks:nus.edu.sg": 728,
+    "wikipedia_extlinks:nist.gov": 715,
+    "wikipedia_extlinks:spotify.com": 706,
+    "wikipedia_extlinks:ucla.edu": 706,
+    "wikipedia_extlinks:soundcloud.com": 705,
+    "sitemap:google.com": 700,
+    "sitemap:soundcloud.com": 700,
+    "sitemap:spotify.com": 700,
+    "sitemap:twitch.tv": 700,
+    "sitemap:pypi.org": 700,
+    "sitemap:huggingface.co": 700,
+    "sitemap:docker.com": 700,
+    "sitemap:kubernetes.io": 700,
+    "sitemap:developer.mozilla.org": 700,
+    "sitemap:learn.microsoft.com": 700,
+    "sitemap:docs.djangoproject.com": 700,
+    "sitemap:docs.aws.amazon.com": 700,
+    "sitemap:shopify.com": 700,
+    "sitemap:bestbuy.com": 700,
+    "sitemap:pkg.go.dev": 700,
+    "sitemap:ikea.com": 700,
+    "sitemap:target.com": 700,
+    "sitemap:coursera.org": 700,
+    "sitemap:homedepot.com": 700,
+    "sitemap:developer.android.com": 700,
+    "sitemap:udemy.com": 700,
+    "sitemap:bbc.com": 700,
+    "sitemap:bbc.co.uk": 700,
+    "sitemap:cnn.com": 700,
+    "sitemap:nytimes.com": 700,
+    "sitemap:microsoft.com": 700,
+    "sitemap:npr.org": 700,
+    "sitemap:dropbox.com": 700,
+    "sitemap:slack.com": 700,
+    "sitemap:figma.com": 700,
+    "sitemap:canva.com": 700,
+    "sitemap:booking.com": 700,
+    "sitemap:atlassian.com": 700,
+    "sitemap:airbnb.com": 700,
+    "sitemap:kayak.com": 700,
+    "sitemap:stripe.com": 700,
+    "sitemap:wise.com": 700,
+    "sitemap:coinbase.com": 700,
+    "sitemap:nasa.gov": 700,
+    "sitemap:who.int": 700,
+    "sitemap:census.gov": 700,
+    "sitemap:gov.uk": 700,
+    "sitemap:nist.gov": 700,
+    "sitemap:irs.gov": 700,
+    "sitemap:epa.gov": 700,
+    "sitemap:worldbank.org": 700,
+    "sitemap:archive.org": 700,
+    "sitemap:noaa.gov": 699,
+    "sitemap:reuters.com": 695,
+    "wikipedia_extlinks:tripadvisor.com": 685,
+    "wikipedia_extlinks:cdc.gov": 680,
+    "wikipedia_extlinks:npr.org": 679,
+    "wikipedia_extlinks:epa.gov": 675,
+    "wikipedia_extlinks:ethz.ch": 673,
+    "wikipedia_extlinks:utoronto.ca": 672,
+    "wikipedia_extlinks:nasa.gov": 663,
+    "wikipedia_extlinks:nytimes.com": 662,
+    "wikipedia_extlinks:bing.com": 656,
+    "wikipedia_extlinks:vimeo.com": 648,
+    "wikipedia_extlinks:instagram.com": 645,
+    "wikipedia_extlinks:mit.edu": 643,
+    "wikipedia_extlinks:fda.gov": 642,
+    "wikipedia_extlinks:stanford.edu": 640,
+    "wikipedia_extlinks:berkeley.edu": 617,
+    "wikipedia_extlinks:microsoft.com": 604,
+    "feed:export.arxiv.org": 592,
+    "wikipedia_extlinks:irs.gov": 591,
+    "wikipedia_extlinks:apnews.com": 585,
+    "wikipedia_extlinks:noaa.gov": 580,
+    "wikipedia_extlinks:worldbank.org": 579,
+    "wikipedia_extlinks:python.org": 573,
+    "wikipedia_extlinks:cnn.com": 571,
+    "wikipedia_extlinks:who.int": 570,
+    "sitemap:bing.com": 568,
+    "wikipedia_extlinks:gitlab.com": 562,
+    "wikipedia_extlinks:amazon.com": 562,
+    "wikipedia_extlinks:dropbox.com": 561,
+    "wikipedia_extlinks:github.com": 558,
+    "wikipedia_extlinks:cornell.edu": 553,
+    "wikipedia_extlinks:openstreetmap.org": 538,
+    "wikipedia_extlinks:un.org": 538,
+    "wikipedia_extlinks:ebay.com": 536,
+    "wikipedia_extlinks:x.com": 533,
+    "sitemap:berkeley.edu": 525,
+    "wikipedia_extlinks:tiktok.com": 522,
+    "wikipedia_extlinks:facebook.com": 504,
+    "sitemap:vimeo.com": 469,
+    "sitemap:docs.gitlab.com": 466,
+    "wikipedia_extlinks:india.gov.in": 464,
+    "sitemap:cam.ac.uk": 462,
+    "wikipedia_extlinks:census.gov": 459,
+    "sitemap:edx.org": 459,
+    "sitemap:notion.so": 450,
+    "wikipedia_extlinks:reddit.com": 449,
+    "wikipedia_extlinks:stackexchange.com": 439,
+    "wikipedia_extlinks:developer.mozilla.org": 437,
+    "wikipedia_extlinks:youtube.com": 435,
+    "wikipedia_extlinks:google.com": 428,
+    "wikipedia_extlinks:twitter.com": 424,
+    "wikipedia_extlinks:target.com": 423,
+    "wikipedia_extlinks:twitch.tv": 420,
+    "wikipedia_extlinks:pinterest.com": 417,
+    "wikipedia_extlinks:archive.org": 415,
+    "sitemap:usa.gov": 415,
+    "wikipedia_extlinks:linkedin.com": 410,
+    "wayback:twitch.tv": 405,
+    "wikipedia_extlinks:stackoverflow.com": 404,
+    "wayback:bing.com": 400,
+    "wayback:vimeo.com": 400,
+    "sitemap:cloudflare.com": 389,
+    "sitemap:harvard.edu": 342,
+    "wikipedia_extlinks:developer.apple.com": 337,
+    "sitemap:nodejs.org": 321,
+    "wikipedia_extlinks:rust-lang.org": 319,
+    "sitemap:youtube.com": 308,
+    "wikipedia_extlinks:huggingface.co": 280,
+    "wikipedia_extlinks:developer.android.com": 273,
+    "wikipedia_extlinks:cloudflare.com": 271,
+    "wikipedia_extlinks:coursera.org": 258,
+    "sitemap:duckduckgo.com": 256,
+    "feed:www.theguardian.com": 249,
+    "wikipedia_extlinks:khanacademy.org": 246,
+    "wikipedia_extlinks:office.com": 244,
+    "wikipedia_extlinks:shopify.com": 241,
+    "wikipedia_extlinks:readthedocs.io": 237,
+    "sitemap:gitlab.com": 233,
+    "sitemap:docs.docker.com": 233,
+    "sitemap:developer.paypal.com": 233,
+    "sitemap:docs.stripe.com": 233,
+    "sitemap:zoom.us": 233,
+    "sitemap:yale.edu": 233,
+    "sitemap:data.gov": 232,
+    "sitemap:cmu.edu": 230,
+    "sitemap:djangoproject.com": 227,
+    "wikipedia_extlinks:bitbucket.org": 226,
+    "sitemap:pytorch.org": 192,
+    "feed:feeds.bbci.co.uk": 183,
+    "wikipedia_extlinks:atlassian.com": 183,
+    "wikipedia_extlinks:iitb.ac.in": 172,
+    "wikipedia_extlinks:pypi.org": 171,
+    "feed:rss.nytimes.com": 159,
+    "sitemap:theguardian.com": 156,
+    "wikipedia_extlinks:etsy.com": 149,
+    "sitemap:fastapi.tiangolo.com": 147,
+    "wikipedia_extlinks:usa.gov": 139,
+    "wikipedia_extlinks:edx.org": 137,
+    "sitemap:cloud.google.com": 130,
+    "wikipedia_extlinks:npmjs.com": 126,
+    "sitemap:cdc.gov": 124,
+    "feed:github.com": 120,
+    "wikipedia_extlinks:go.dev": 119,
+    "sitemap:ucla.edu": 114,
+    "sitemap:trello.com": 112,
+    "sitemap:numpy.org": 100,
+    "wikipedia_extlinks:ikea.com": 99,
+    "wikipedia_extlinks:docker.com": 94,
+    "wikipedia_extlinks:bestbuy.com": 94,
+    "wikipedia_extlinks:iitd.ac.in": 93,
+    "sitemap:loc.gov": 85,
+    "wikipedia_extlinks:kubernetes.io": 83,
+    "wikipedia_extlinks:djangoproject.com": 74,
+    "wikipedia_extlinks:kaggle.com": 70,
+    "wikipedia_extlinks:visa.com": 70,
+    "wikipedia_extlinks:data.gov": 63,
+    "sitemap:caltech.edu": 63,
+    "feed:www.youtube.com": 60,
+    "wikipedia_extlinks:canva.com": 59,
+    "wikipedia_extlinks:booking.com": 59,
+    "wikipedia_extlinks:paypal.com": 58,
+    "feed:news.mit.edu": 50,
+    "feed:news.harvard.edu": 50,
+    "feed:en.wikipedia.org": 50,
+    "feed:de.wikipedia.org": 50,
+    "feed:fr.wikipedia.org": 50,
+    "feed:es.wikipedia.org": 50,
+    "wikipedia_extlinks:airbnb.com": 48,
+    "sitemap:paypal.com": 47,
+    "wikipedia_extlinks:homedepot.com": 46,
+    "wikipedia_extlinks:nodejs.org": 40,
+    "wikipedia_extlinks:stripe.com": 40,
+    "sitemap:khanacademy.org": 38,
+    "wikipedia_extlinks:duckduckgo.com": 37,
+    "wikipedia_extlinks:expedia.com": 36,
+    "wikipedia_extlinks:scikit-learn.org": 35,
+    "wikipedia_extlinks:wise.com": 35,
+    "wikipedia_extlinks:udemy.com": 33,
+    "wikipedia_extlinks:pytorch.org": 31,
+    "wikipedia_extlinks:react.dev": 27,
+    "sitemap:stanford.edu": 27,
+    "wikipedia_extlinks:notion.so": 26,
+    "feed:www.reddit.com": 25,
+    "wikipedia_extlinks:coinbase.com": 25,
+    "wikipedia_extlinks:pandas.pydata.org": 23,
+    "wikipedia_extlinks:slack.com": 23,
+    "feed:www.openstreetmap.org": 20,
+    "feed:www.gov.uk": 20,
+    "wikipedia_extlinks:numpy.org": 19,
+    "wikipedia_extlinks:trello.com": 19,
+    "wikipedia_extlinks:figma.com": 17,
+    "sitemap:cornell.edu": 16,
+    "wikipedia_extlinks:kayak.com": 12,
+    "feed:peps.python.org": 10,
+    "feed:www.nasa.gov": 10,
+    "wikipedia_extlinks:palletsprojects.com": 10,
+    "feed:hnrss.org": 9,
+    "sitemap:docs.python.org": 7,
+    "wikipedia_extlinks:fastapi.tiangolo.com": 5,
+    "wikipedia_extlinks:wikipedia.org": 2
+  },
+  "counts_per_collection_method": {
+    "hackernews": 54622,
+    "wikipedia_extlinks": 46095,
+    "sitemap": 43169,
+    "feed": 2595,
+    "github_api": 2314,
+    "wayback_cdx": 1205
+  },
+  "total_candidates_seen": 160161,
+  "rejected_url_count": 245,
+  "rejection_reasons": {
+    "malformed_chars": 234,
+    "too_short": 5,
+    "userinfo_in_url": 2,
+    "parse_error": 1,
+    "internal_host": 1,
+    "bad_host": 1,
+    "ip_literal_host": 1
+  },
+  "duplicate_count": 9916,
+  "existing_dataset_urls_loaded": 0,
+  "existing_dataset_overlap_count": 0,
+  "task_failures": 0,
+  "unique_domains": 25266,
+  "category_distribution": {
+    "open_web": 41506,
+    "government": 17122,
+    "development": 15075,
+    "news": 11502,
+    "universities": 10649,
+    "video_media": 8350,
+    "documentation": 7785,
+    "cloud_productivity": 7041,
+    "education": 6513,
+    "shopping": 5622,
+    "social": 5168,
+    "search": 4980,
+    "other": 3368,
+    "travel": 2940,
+    "payments_finance": 2379
+  },
+  "structure_distribution": {
+    "path": 141224,
+    "multi_path": 123225,
+    "deep_path": 73764,
+    "article": 33415,
+    "numeric_id": 30661,
+    "repository": 11752,
+    "media": 11260,
+    "query": 11254,
+    "documentation": 9668,
+    "long_url": 7792,
+    "homepage": 7653,
+    "multi_query": 3282,
+    "encoded": 2782,
+    "fragment": 2395,
+    "profile": 2350,
+    "product": 1612,
+    "api_like": 1277,
+    "search": 1042,
+    "very_long_url": 761,
+    "pagination": 351,
+    "tracking": 339,
+    "account": 308,
+    "login": 71,
+    "settings": 69
+  },
+  "quality_summary": {
+    "with_path": 141224,
+    "with_query": 11254,
+    "with_fragment": 2395,
+    "with_tracking": 339,
+    "with_percent_encoding": 2782,
+    "over_120_chars": 7792,
+    "over_200_chars": 761,
+    "multi_path": 123225,
+    "search": 1042,
+    "login_account_settings": 443
+  },
+  "final_dataset_size": 150000
+}
