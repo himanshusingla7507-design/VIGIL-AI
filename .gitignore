@@ -57,3 +57,6 @@ scripts/final_ml_pass.py
 /data/benign_dynamic_urls.csv
 /data/external/benign_dynamic/
 /vigil_history.sqlite3
+
+# Experiment model artifacts
+/models/experiments/
