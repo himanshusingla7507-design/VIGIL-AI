@@ -1,0 +1,96 @@
+{
+  "model_importance_top_10": [
+    {
+      "feature": "HostnameLength",
+      "normalized_split_gain": 0.39884789349640387
+    },
+    {
+      "feature": "IsTrustedTLD",
+      "normalized_split_gain": 0.1622670273409405
+    },
+    {
+      "feature": "DotCount",
+      "normalized_split_gain": 0.05839676588250015
+    },
+    {
+      "feature": "URLLength",
+      "normalized_split_gain": 0.05705219605288706
+    },
+    {
+      "feature": "NoOfHyphenInURL",
+      "normalized_split_gain": 0.057004725100723824
+    },
+    {
+      "feature": "URLEntropy",
+      "normalized_split_gain": 0.04778996251291743
+    },
+    {
+      "feature": "DigitRatioInURL",
+      "normalized_split_gain": 0.04514220473218281
+    },
+    {
+      "feature": "PathSegmentCount",
+      "normalized_split_gain": 0.026477179598490296
+    },
+    {
+      "feature": "NoOfDigitsInURL",
+      "normalized_split_gain": 0.024423376503122193
+    },
+    {
+      "feature": "NoOfLettersInURL",
+      "normalized_split_gain": 0.02198111967998384
+    }
+  ],
+  "validation_permutation_importance_top_10": [
+    {
+      "feature": "HostnameLength",
+      "importance_mean": 0.2858588139796297,
+      "importance_std": 0.0028284796441362375
+    },
+    {
+      "feature": "IsTrustedTLD",
+      "importance_mean": 0.07865456443431278,
+      "importance_std": 0.0032022063695841024
+    },
+    {
+      "feature": "DotCount",
+      "importance_mean": 0.03263217700830068,
+      "importance_std": 0.004512231838130624
+    },
+    {
+      "feature": "NoOfHyphenInURL",
+      "importance_mean": 0.013922163074586566,
+      "importance_std": 0.001107242486157698
+    },
+    {
+      "feature": "FragmentLength",
+      "importance_mean": 0.011850949689189908,
+      "importance_std": 0.0012367262528069547
+    },
+    {
+      "feature": "URLEntropy",
+      "importance_mean": 0.010774108003283045,
+      "importance_std": 0.002509211117031068
+    },
+    {
+      "feature": "DigitRatioInURL",
+      "importance_mean": 0.006231005691112272,
+      "importance_std": 0.0018095078653597254
+    },
+    {
+      "feature": "PathSegmentCount",
+      "importance_mean": 0.004004512988340221,
+      "importance_std": 0.001056845055057064
+    },
+    {
+      "feature": "SubdomainDepth",
+      "importance_mean": 0.0035881106259749718,
+      "importance_std": 0.0006449812358171249
+    },
+    {
+      "feature": "NoOfDigitsInURL",
+      "importance_mean": 0.002930627726507503,
+      "importance_std": 0.0005096908175733426
+    }
+  ]
+}

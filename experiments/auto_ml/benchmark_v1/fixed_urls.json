@@ -1,0 +1,583 @@
+{
+  "baseline_legitimate_urls": [
+    "https://www.google.com/search?q=phishing+prevention",
+    "https://www.bing.com/search?q=phishing+prevention",
+    "https://www.youtube.com/results?search_query=phishing+prevention",
+    "https://github.com/microsoft/vscode",
+    "https://github.com/search?q=python+url+parser&type=repositories",
+    "https://www.amazon.com/s?k=usb+c+hub",
+    "https://learn.microsoft.com/en-us/python/",
+    "https://stackoverflow.com/questions/tagged/python",
+    "https://en.wikipedia.org/wiki/Computer_security",
+    "https://www.reddit.com/r/cybersecurity/",
+    "https://accounts.google.com/signin/v2/identifier",
+    "https://www.google.com/search?q=security+news&utm_source=baseline&utm_medium=organic",
+    "https://www.bing.com/search?q=python&count=20&form=QBLH&sp=-1",
+    "https://en.wikipedia.org/wiki/URL#Components",
+    "https://www.google.com/search?q=URL%20encoding%20examples",
+    "https://www.google.com/search?q=legitimate+dynamic+url+baseline+with+a+deliberately+long+query+containing+several+ordinary+words+for+testing+how+the+production+model+responds+to+long+search+queries"
+  ],
+  "counterfactual_legitimate_urls": [
+    {
+      "base_url": "https://www.google.com/",
+      "variant_type": "homepage",
+      "url": "https://www.google.com/",
+      "probability": 0.174197,
+      "label": "SUSPICIOUS",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://www.google.com/",
+      "variant_type": "path",
+      "url": "https://www.google.com/search",
+      "probability": 0.998018,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://www.google.com/",
+      "variant_type": "query",
+      "url": "https://www.google.com/?q=test",
+      "probability": 0.73294,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://www.google.com/",
+      "variant_type": "multi-query",
+      "url": "https://www.google.com/?q=test&page=2",
+      "probability": 0.904423,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://www.google.com/",
+      "variant_type": "encoded",
+      "url": "https://www.google.com/?q=cyber%20security",
+      "probability": 0.989402,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://www.google.com/",
+      "variant_type": "fragment",
+      "url": "https://www.google.com/#results",
+      "probability": 0.811971,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://www.google.com/",
+      "variant_type": "path+query",
+      "url": "https://www.google.com/search?q=test",
+      "probability": 0.998018,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://www.bing.com/",
+      "variant_type": "homepage",
+      "url": "https://www.bing.com/",
+      "probability": 0.059581,
+      "label": "SAFE",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://www.bing.com/",
+      "variant_type": "path",
+      "url": "https://www.bing.com/search",
+      "probability": 0.998018,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://www.bing.com/",
+      "variant_type": "query",
+      "url": "https://www.bing.com/?q=test",
+      "probability": 0.718445,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://www.bing.com/",
+      "variant_type": "multi-query",
+      "url": "https://www.bing.com/?q=test&page=2",
+      "probability": 0.88894,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://www.bing.com/",
+      "variant_type": "encoded",
+      "url": "https://www.bing.com/?q=cyber%20security",
+      "probability": 0.984747,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://www.bing.com/",
+      "variant_type": "fragment",
+      "url": "https://www.bing.com/#results",
+      "probability": 0.81172,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://www.bing.com/",
+      "variant_type": "path+query",
+      "url": "https://www.bing.com/search?q=test",
+      "probability": 0.998018,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://www.youtube.com/",
+      "variant_type": "homepage",
+      "url": "https://www.youtube.com/",
+      "probability": 0.167584,
+      "label": "SUSPICIOUS",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://www.youtube.com/",
+      "variant_type": "path",
+      "url": "https://www.youtube.com/search",
+      "probability": 0.998018,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://www.youtube.com/",
+      "variant_type": "query",
+      "url": "https://www.youtube.com/?q=test",
+      "probability": 0.728417,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://www.youtube.com/",
+      "variant_type": "multi-query",
+      "url": "https://www.youtube.com/?q=test&page=2",
+      "probability": 0.976354,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://www.youtube.com/",
+      "variant_type": "encoded",
+      "url": "https://www.youtube.com/?q=cyber%20security",
+      "probability": 0.990068,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://www.youtube.com/",
+      "variant_type": "fragment",
+      "url": "https://www.youtube.com/#results",
+      "probability": 0.811727,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://www.youtube.com/",
+      "variant_type": "path+query",
+      "url": "https://www.youtube.com/search?q=test",
+      "probability": 0.998033,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://github.com/",
+      "variant_type": "homepage",
+      "url": "https://github.com/",
+      "probability": 0.164589,
+      "label": "SUSPICIOUS",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://github.com/",
+      "variant_type": "path",
+      "url": "https://github.com/search",
+      "probability": 0.998018,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://github.com/",
+      "variant_type": "query",
+      "url": "https://github.com/?q=test",
+      "probability": 0.725768,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://github.com/",
+      "variant_type": "multi-query",
+      "url": "https://github.com/?q=test&page=2",
+      "probability": 0.886815,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://github.com/",
+      "variant_type": "encoded",
+      "url": "https://github.com/?q=cyber%20security",
+      "probability": 0.990193,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://github.com/",
+      "variant_type": "fragment",
+      "url": "https://github.com/#results",
+      "probability": 0.808698,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://github.com/",
+      "variant_type": "path+query",
+      "url": "https://github.com/search?q=test",
+      "probability": 0.998018,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://www.amazon.com/",
+      "variant_type": "homepage",
+      "url": "https://www.amazon.com/",
+      "probability": 0.1705,
+      "label": "SUSPICIOUS",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://www.amazon.com/",
+      "variant_type": "path",
+      "url": "https://www.amazon.com/search",
+      "probability": 0.998018,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://www.amazon.com/",
+      "variant_type": "query",
+      "url": "https://www.amazon.com/?q=test",
+      "probability": 0.726556,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://www.amazon.com/",
+      "variant_type": "multi-query",
+      "url": "https://www.amazon.com/?q=test&page=2",
+      "probability": 0.887182,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://www.amazon.com/",
+      "variant_type": "encoded",
+      "url": "https://www.amazon.com/?q=cyber%20security",
+      "probability": 0.990331,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://www.amazon.com/",
+      "variant_type": "fragment",
+      "url": "https://www.amazon.com/#results",
+      "probability": 0.809953,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://www.amazon.com/",
+      "variant_type": "path+query",
+      "url": "https://www.amazon.com/search?q=test",
+      "probability": 0.998018,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://learn.microsoft.com/",
+      "variant_type": "homepage",
+      "url": "https://learn.microsoft.com/",
+      "probability": 0.773441,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://learn.microsoft.com/",
+      "variant_type": "path",
+      "url": "https://learn.microsoft.com/search",
+      "probability": 0.998033,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://learn.microsoft.com/",
+      "variant_type": "query",
+      "url": "https://learn.microsoft.com/?q=test",
+      "probability": 0.996514,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://learn.microsoft.com/",
+      "variant_type": "multi-query",
+      "url": "https://learn.microsoft.com/?q=test&page=2",
+      "probability": 0.99839,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://learn.microsoft.com/",
+      "variant_type": "encoded",
+      "url": "https://learn.microsoft.com/?q=cyber%20security",
+      "probability": 0.997877,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://learn.microsoft.com/",
+      "variant_type": "fragment",
+      "url": "https://learn.microsoft.com/#results",
+      "probability": 0.997574,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://learn.microsoft.com/",
+      "variant_type": "path+query",
+      "url": "https://learn.microsoft.com/search?q=test",
+      "probability": 0.997835,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://stackoverflow.com/",
+      "variant_type": "homepage",
+      "url": "https://stackoverflow.com/",
+      "probability": 0.129926,
+      "label": "SAFE",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://stackoverflow.com/",
+      "variant_type": "path",
+      "url": "https://stackoverflow.com/search",
+      "probability": 0.998018,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://stackoverflow.com/",
+      "variant_type": "query",
+      "url": "https://stackoverflow.com/?q=test",
+      "probability": 0.717033,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://stackoverflow.com/",
+      "variant_type": "multi-query",
+      "url": "https://stackoverflow.com/?q=test&page=2",
+      "probability": 0.995298,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://stackoverflow.com/",
+      "variant_type": "encoded",
+      "url": "https://stackoverflow.com/?q=cyber%20security",
+      "probability": 0.997848,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://stackoverflow.com/",
+      "variant_type": "fragment",
+      "url": "https://stackoverflow.com/#results",
+      "probability": 0.937886,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://stackoverflow.com/",
+      "variant_type": "path+query",
+      "url": "https://stackoverflow.com/search?q=test",
+      "probability": 0.997868,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://en.wikipedia.org/",
+      "variant_type": "homepage",
+      "url": "https://en.wikipedia.org/",
+      "probability": 0.531338,
+      "label": "SUSPICIOUS",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://en.wikipedia.org/",
+      "variant_type": "path",
+      "url": "https://en.wikipedia.org/search",
+      "probability": 0.998018,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://en.wikipedia.org/",
+      "variant_type": "query",
+      "url": "https://en.wikipedia.org/?q=test",
+      "probability": 0.994219,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://en.wikipedia.org/",
+      "variant_type": "multi-query",
+      "url": "https://en.wikipedia.org/?q=test&page=2",
+      "probability": 0.998517,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://en.wikipedia.org/",
+      "variant_type": "encoded",
+      "url": "https://en.wikipedia.org/?q=cyber%20security",
+      "probability": 0.997874,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://en.wikipedia.org/",
+      "variant_type": "fragment",
+      "url": "https://en.wikipedia.org/#results",
+      "probability": 0.996091,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://en.wikipedia.org/",
+      "variant_type": "path+query",
+      "url": "https://en.wikipedia.org/search?q=test",
+      "probability": 0.997946,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://www.reddit.com/",
+      "variant_type": "homepage",
+      "url": "https://www.reddit.com/",
+      "probability": 0.164589,
+      "label": "SUSPICIOUS",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://www.reddit.com/",
+      "variant_type": "path",
+      "url": "https://www.reddit.com/search",
+      "probability": 0.998018,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://www.reddit.com/",
+      "variant_type": "query",
+      "url": "https://www.reddit.com/?q=test",
+      "probability": 0.729821,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://www.reddit.com/",
+      "variant_type": "multi-query",
+      "url": "https://www.reddit.com/?q=test&page=2",
+      "probability": 0.886815,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://www.reddit.com/",
+      "variant_type": "encoded",
+      "url": "https://www.reddit.com/?q=cyber%20security",
+      "probability": 0.990704,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://www.reddit.com/",
+      "variant_type": "fragment",
+      "url": "https://www.reddit.com/#results",
+      "probability": 0.80882,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://www.reddit.com/",
+      "variant_type": "path+query",
+      "url": "https://www.reddit.com/search?q=test",
+      "probability": 0.998018,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://accounts.google.com/",
+      "variant_type": "homepage",
+      "url": "https://accounts.google.com/",
+      "probability": 0.758785,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://accounts.google.com/",
+      "variant_type": "path",
+      "url": "https://accounts.google.com/search",
+      "probability": 0.998033,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://accounts.google.com/",
+      "variant_type": "query",
+      "url": "https://accounts.google.com/?q=test",
+      "probability": 0.995964,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://accounts.google.com/",
+      "variant_type": "multi-query",
+      "url": "https://accounts.google.com/?q=test&page=2",
+      "probability": 0.998722,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://accounts.google.com/",
+      "variant_type": "encoded",
+      "url": "https://accounts.google.com/?q=cyber%20security",
+      "probability": 0.997877,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://accounts.google.com/",
+      "variant_type": "fragment",
+      "url": "https://accounts.google.com/#results",
+      "probability": 0.997205,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "base_url": "https://accounts.google.com/",
+      "variant_type": "path+query",
+      "url": "https://accounts.google.com/search?q=test",
+      "probability": 0.997835,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    }
+  ],
+  "source": "Reports existing before this experiment; URLs are scored only and are not added as training rows."
+}

@@ -1,0 +1,3415 @@
+{
+  "schema_version": 1,
+  "generated_for_date": "2026-10-09",
+  "repository_root": "VIGIL-AI-main",
+  "paths_relative_to_root": true,
+  "path_separator": "/",
+  "scope": "All files and directories including hidden/ignored paths; individual contents in .git, .venv, node_modules, vendor, and history directories are represented only by subtree summaries.",
+  "git_status": "Unavailable: repository root has no .git directory; root branch/commit/tracked/modified/untracked/ignored state cannot be verified.",
+  "counts": {
+    "individually_listed_files": 333,
+    "individually_listed_directories": 77,
+    "summarized_excluded_trees": 3,
+    "summarized_files": 26715,
+    "summarized_directories": 2517,
+    "total_observed_files": 27048,
+    "total_observed_directories": 2594
+  },
+  "ignore_status": "Filesystem includes .gitignore-matched dependency/cache/runtime files. Without root Git metadata, Git tracked/untracked and check-ignore status is unknown; entries are not represented as modified/untracked claims.",
+  "excluded_tree_totals": {
+    "size_bytes": 2442214841,
+    "files": 26715
+  },
+  "entries": [
+    {
+      "path": "__pycache__",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 29180,
+      "file_count": 3,
+      "purpose": "Directory for __pycache__ contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "__pycache__/config.cpython-311.pyc",
+      "entry_type": "file",
+      "file_type": "Generated Python bytecode",
+      "size_bytes": 826,
+      "purpose": "Project file config.cpython-311.pyc.",
+      "inspection_status": "generated_bytecode_metadata_only"
+    },
+    {
+      "path": "__pycache__/feature_extractor.cpython-311.pyc",
+      "entry_type": "file",
+      "file_type": "Generated Python bytecode",
+      "size_bytes": 15542,
+      "purpose": "Project file feature_extractor.cpython-311.pyc.",
+      "inspection_status": "generated_bytecode_metadata_only"
+    },
+    {
+      "path": "__pycache__/service.cpython-311.pyc",
+      "entry_type": "file",
+      "file_type": "Generated Python bytecode",
+      "size_bytes": 12812,
+      "purpose": "Project file service.cpython-311.pyc.",
+      "inspection_status": "generated_bytecode_metadata_only"
+    },
+    {
+      "path": ".github",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 1370,
+      "file_count": 1,
+      "purpose": "Project CI workflow configuration.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": ".github/workflows",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 1370,
+      "file_count": 1,
+      "purpose": "Directory for workflows contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "entry_type": "file",
+      "file_type": "YAML workflow/config",
+      "size_bytes": 1370,
+      "purpose": "Project file ci.yml.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": ".gitignore",
+      "entry_type": "file",
+      "file_type": "Git ignore configuration",
+      "size_bytes": 1028,
+      "purpose": "Project file .gitignore.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": ".venv",
+      "entry_type": "excluded_directory_summary",
+      "file_type": "directory tree summary",
+      "size_bytes": 575348309,
+      "file_count": 16681,
+      "directory_count": 1759,
+      "purpose": "Directory for .venv contents.",
+      "inspection_status": "excluded_contents_not_individually_enumerated",
+      "exclusion_reason": "Installed Python environment/dependencies; do not enumerate individual entries."
+    },
+    {
+      "path": "api.py",
+      "entry_type": "file",
+      "file_type": "Python source/script",
+      "size_bytes": 4520,
+      "purpose": "Flask API routes, request validation, CORS, and SQLite scan history.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "app.py",
+      "entry_type": "file",
+      "file_type": "Python source/script",
+      "size_bytes": 29201,
+      "purpose": "Python application, training, evaluation, or maintenance source; see file-by-file audit.",
+      "inspection_status": "partial_major_sections_and_entrypoint_reviewed"
+    },
+    {
+      "path": "audit_notebook.ipynb",
+      "entry_type": "file",
+      "file_type": "Jupyter notebook",
+      "size_bytes": 3766,
+      "purpose": "Project file audit_notebook.ipynb.",
+      "inspection_status": "notebook_source_metadata_reviewed_not_executed"
+    },
+    {
+      "path": "collect_legitimate_urls.py",
+      "entry_type": "file",
+      "file_type": "Python source/script",
+      "size_bytes": 44838,
+      "purpose": "Python application, training, evaluation, or maintenance source; see file-by-file audit.",
+      "inspection_status": "source_outline_and_signatures_reviewed_not_line_by_line"
+    },
+    {
+      "path": "config.py",
+      "entry_type": "file",
+      "file_type": "Python source/script",
+      "size_bytes": 942,
+      "purpose": "Model defaults, fallback thresholds, token/TLD/domain lists.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "data",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 1873354732,
+      "file_count": 96,
+      "purpose": "Local datasets, source feeds, and processed-data summaries.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "data_audit.py",
+      "entry_type": "file",
+      "file_type": "Python source/script",
+      "size_bytes": 1202,
+      "purpose": "Python application, training, evaluation, or maintenance source; see file-by-file audit.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "data/experiments",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 58048,
+      "file_count": 2,
+      "purpose": "Directory for experiments contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "data/experiments/legitimate_dynamic_benchmark.csv",
+      "entry_type": "file",
+      "file_type": "CSV data/metrics",
+      "size_bytes": 49408,
+      "purpose": "Experimental dataset/benchmark input.",
+      "inspection_status": "dataset_metadata_only_no_row_dump"
+    },
+    {
+      "path": "data/experiments/legitimate_dynamic_training.csv",
+      "entry_type": "file",
+      "file_type": "CSV data/metrics",
+      "size_bytes": 8640,
+      "purpose": "Experimental dataset/benchmark input.",
+      "inspection_status": "dataset_metadata_only_no_row_dump"
+    },
+    {
+      "path": "data/external",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 1873295034,
+      "file_count": 93,
+      "purpose": "Directory for external contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "data/external/phishing_database_active.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 66612944,
+      "purpose": "External phishing feed or source data; rows not inspected.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 1806682090,
+      "file_count": 92,
+      "purpose": "Embedded external Phishing.Database source/feed snapshot.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "data/external/Phishing.Database/.git",
+      "entry_type": "excluded_directory_summary",
+      "file_type": "directory tree summary",
+      "size_bytes": 1676716444,
+      "file_count": 31,
+      "directory_count": 17,
+      "purpose": "Directory for .git contents.",
+      "inspection_status": "excluded_contents_not_individually_enumerated",
+      "exclusion_reason": "Git history/object database; do not enumerate individual entries."
+    },
+    {
+      "path": "data/external/Phishing.Database/.github",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 3952,
+      "file_count": 1,
+      "purpose": "Directory for .github contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "data/external/Phishing.Database/.github/workflows",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 3952,
+      "file_count": 1,
+      "purpose": "Directory for workflows contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "data/external/Phishing.Database/.github/workflows/verification-comment.yml",
+      "entry_type": "file",
+      "file_type": "YAML workflow/config",
+      "size_bytes": 3952,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "metadata_only_external_workflow"
+    },
+    {
+      "path": "data/external/Phishing.Database/LICENSE",
+      "entry_type": "file",
+      "file_type": "Plain text/config file",
+      "size_bytes": 1273,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "metadata_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-domains-ACTIVE",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 24008489,
+      "file_count": 6,
+      "purpose": "Directory for phishing-domains-ACTIVE contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-domains-ACTIVE-today",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 38,
+      "file_count": 2,
+      "purpose": "Directory for phishing-domains-ACTIVE-today contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-domains-ACTIVE-today/phishing-domains-ACTIVE-today.manifest.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 36,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-domains-ACTIVE-today/phishing-domains-ACTIVE-today1.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 2,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-domains-ACTIVE.adblock",
+      "entry_type": "file",
+      "file_type": "Adblock-formatted feed",
+      "size_bytes": 12592991,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-domains-ACTIVE.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 11415306,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-domains-ACTIVE/phishing-domains-ACTIVE.manifest.adblock",
+      "entry_type": "file",
+      "file_type": "Adblock-formatted feed",
+      "size_bytes": 102,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-domains-ACTIVE/phishing-domains-ACTIVE.manifest.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 90,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-domains-ACTIVE/phishing-domains-ACTIVE1.adblock",
+      "entry_type": "file",
+      "file_type": "Adblock-formatted feed",
+      "size_bytes": 10822697,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-domains-ACTIVE/phishing-domains-ACTIVE1.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 10856295,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-domains-ACTIVE/phishing-domains-ACTIVE2.adblock",
+      "entry_type": "file",
+      "file_type": "Adblock-formatted feed",
+      "size_bytes": 1770294,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-domains-ACTIVE/phishing-domains-ACTIVE2.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 559011,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-domains-INACTIVE",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 34,
+      "file_count": 2,
+      "purpose": "Directory for phishing-domains-INACTIVE contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-domains-INACTIVE.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 0,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-domains-INACTIVE/phishing-domains-INACTIVE.manifest.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 32,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-domains-INACTIVE/phishing-domains-INACTIVE1.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 2,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-domains-INVALID",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 96,
+      "file_count": 2,
+      "purpose": "Directory for phishing-domains-INVALID contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-domains-INVALID.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 483,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-domains-INVALID/phishing-domains-INVALID.manifest.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 62,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-domains-INVALID/phishing-domains-INVALID1.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 34,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-domains-NEW-last-hour",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 39,
+      "file_count": 2,
+      "purpose": "Directory for phishing-domains-NEW-last-hour contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-domains-NEW-last-hour.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 0,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-domains-NEW-last-hour/phishing-domains-NEW-last-hour.manifest.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 37,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-domains-NEW-last-hour/phishing-domains-NEW-last-hour1.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 2,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-domains-NEW-today",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 160,
+      "file_count": 2,
+      "purpose": "Directory for phishing-domains-NEW-today contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-domains-NEW-today.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 94,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-domains-NEW-today/phishing-domains-NEW-today.manifest.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 66,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-domains-NEW-today/phishing-domains-NEW-today1.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 94,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-IPs-ACTIVE",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 107710,
+      "file_count": 2,
+      "purpose": "Directory for phishing-IPs-ACTIVE contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-IPs-ACTIVE-today",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 34,
+      "file_count": 2,
+      "purpose": "Directory for phishing-IPs-ACTIVE-today contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-IPs-ACTIVE-today/phishing-IPs-ACTIVE-today.manifest.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 32,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-IPs-ACTIVE-today/phishing-IPs-ACTIVE-today1.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 2,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-IPs-ACTIVE.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 107658,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-IPs-ACTIVE/phishing-IPs-ACTIVE.manifest.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 52,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-IPs-ACTIVE/phishing-IPs-ACTIVE1.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 107658,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-IPs-INACTIVE",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 66069,
+      "file_count": 2,
+      "purpose": "Directory for phishing-IPs-INACTIVE contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-IPs-INACTIVE.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 40634,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-IPs-INACTIVE/phishing-IPs-INACTIVE.manifest.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 56,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-IPs-INACTIVE/phishing-IPs-INACTIVE1.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 66013,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-IPs-INVALID",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 29,
+      "file_count": 2,
+      "purpose": "Directory for phishing-IPs-INVALID contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-IPs-INVALID.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 14,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-IPs-INVALID/phishing-IPs-INVALID.manifest.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 27,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-IPs-INVALID/phishing-IPs-INVALID1.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 2,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-ips-NEW-last-hour",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 35,
+      "file_count": 2,
+      "purpose": "Directory for phishing-ips-NEW-last-hour contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-ips-NEW-last-hour.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 0,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-ips-NEW-last-hour/phishing-ips-NEW-last-hour.manifest.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 33,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-ips-NEW-last-hour/phishing-ips-NEW-last-hour1.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 2,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-IPs-NEW-today",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 31,
+      "file_count": 2,
+      "purpose": "Directory for phishing-IPs-NEW-today contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-ips-NEW-today.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 0,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-IPs-NEW-today/phishing-ips-NEW-today.manifest.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 29,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-IPs-NEW-today/phishing-ips-NEW-today1.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 2,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-links-ACTIVE",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 4488151,
+      "file_count": 2,
+      "purpose": "Directory for phishing-links-ACTIVE contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-links-ACTIVE-NOW.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 2,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-links-ACTIVE-today",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 36,
+      "file_count": 2,
+      "purpose": "Directory for phishing-links-ACTIVE-today contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-links-ACTIVE-today.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 0,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-links-ACTIVE-today/phishing-links-ACTIVE-today.manifest.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 34,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-links-ACTIVE-today/phishing-links-ACTIVE-today1.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 2,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-links-ACTIVE.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 66612944,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-links-ACTIVE/phishing-links-ACTIVE.manifest.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 56,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-links-ACTIVE/phishing-links-ACTIVE1.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 4488095,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-links-INACTIVE",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 1683039,
+      "file_count": 2,
+      "purpose": "Directory for phishing-links-INACTIVE contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-links-INACTIVE.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 8814832,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-links-INACTIVE/phishing-links-INACTIVE.manifest.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 60,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-links-INACTIVE/phishing-links-INACTIVE1.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 1682979,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-links-INVALID",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 128,
+      "file_count": 2,
+      "purpose": "Directory for phishing-links-INVALID contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-links-INVALID.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 568,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-links-INVALID/phishing-links-INVALID.manifest.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 58,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-links-INVALID/phishing-links-INVALID1.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 70,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-links-NEW-last-hour",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 37,
+      "file_count": 2,
+      "purpose": "Directory for phishing-links-NEW-last-hour contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-links-NEW-last-hour.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 0,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-links-NEW-last-hour/phishing-links-NEW-last-hour.manifest.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 35,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-links-NEW-last-hour/phishing-links-NEW-last-hour1.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 2,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-links-NEW-today",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 208,
+      "file_count": 2,
+      "purpose": "Directory for phishing-links-NEW-today contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-links-NEW-today.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 146,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-links-NEW-today/phishing-links-NEW-today.manifest.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 62,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/phishing-links-NEW-today/phishing-links-NEW-today1.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 146,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "data/external/Phishing.Database/README.md",
+      "entry_type": "file",
+      "file_type": "Markdown documentation",
+      "size_bytes": 20386,
+      "purpose": "External Phishing.Database snapshot: license, workflow, or feed data.",
+      "inspection_status": "headings_or_selected_sections_reviewed"
+    },
+    {
+      "path": "data/processed",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 1650,
+      "file_count": 1,
+      "purpose": "Directory for processed contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "data/processed/dataset_summary.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 1650,
+      "purpose": "Earlier merged-data cleaning/source summary; conflicts with active metadata.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "dataset_audit_report.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 812,
+      "purpose": "Project metadata, configuration, dataset summary, or report.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "dataset_summary.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 4143,
+      "purpose": "Current dataset-preparation blocker and available/missing row summary.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "docs",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 2961449,
+      "file_count": 21,
+      "purpose": "Project and experiment documentation.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "docs/.gitkeep",
+      "entry_type": "file",
+      "file_type": "Plain text/config file",
+      "size_bytes": 1,
+      "purpose": "Human-readable architecture, evaluation, experiment, or project documentation.",
+      "inspection_status": "metadata_only"
+    },
+    {
+      "path": "docs/API.md",
+      "entry_type": "file",
+      "file_type": "Markdown documentation",
+      "size_bytes": 2316,
+      "purpose": "Human-readable architecture, evaluation, experiment, or project documentation.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "entry_type": "file",
+      "file_type": "Markdown documentation",
+      "size_bytes": 1523,
+      "purpose": "Human-readable architecture, evaluation, experiment, or project documentation.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "docs/BACKEND_AUDIT.md",
+      "entry_type": "file",
+      "file_type": "Markdown documentation",
+      "size_bytes": 10807,
+      "purpose": "Human-readable architecture, evaluation, experiment, or project documentation.",
+      "inspection_status": "headings_or_selected_sections_reviewed"
+    },
+    {
+      "path": "docs/BENIGN_DYNAMIC_URL_TRAINING.md",
+      "entry_type": "file",
+      "file_type": "Markdown documentation",
+      "size_bytes": 19937,
+      "purpose": "Human-readable architecture, evaluation, experiment, or project documentation.",
+      "inspection_status": "headings_or_selected_sections_reviewed"
+    },
+    {
+      "path": "docs/DATA_AUDIT.md",
+      "entry_type": "file",
+      "file_type": "Markdown documentation",
+      "size_bytes": 1325,
+      "purpose": "Human-readable architecture, evaluation, experiment, or project documentation.",
+      "inspection_status": "headings_or_selected_sections_reviewed"
+    },
+    {
+      "path": "docs/DATASET_REPORT.md",
+      "entry_type": "file",
+      "file_type": "Markdown documentation",
+      "size_bytes": 2108,
+      "purpose": "Human-readable architecture, evaluation, experiment, or project documentation.",
+      "inspection_status": "headings_or_selected_sections_reviewed"
+    },
+    {
+      "path": "docs/DOMAIN_MODEL_EXPERIMENT.md",
+      "entry_type": "file",
+      "file_type": "Markdown documentation",
+      "size_bytes": 849,
+      "purpose": "Human-readable architecture, evaluation, experiment, or project documentation.",
+      "inspection_status": "headings_or_selected_sections_reviewed"
+    },
+    {
+      "path": "docs/DYNAMIC_TRAINING_COMPARISON.md",
+      "entry_type": "file",
+      "file_type": "Markdown documentation",
+      "size_bytes": 791,
+      "purpose": "Human-readable architecture, evaluation, experiment, or project documentation.",
+      "inspection_status": "headings_or_selected_sections_reviewed"
+    },
+    {
+      "path": "docs/DYNAMIC_URL_FALSE_POSITIVE_ANALYSIS.md",
+      "entry_type": "file",
+      "file_type": "Markdown documentation",
+      "size_bytes": 6782,
+      "purpose": "Human-readable architecture, evaluation, experiment, or project documentation.",
+      "inspection_status": "headings_or_selected_sections_reviewed"
+    },
+    {
+      "path": "docs/EXTERNAL_PHISHING_ERROR_ANALYSIS.md",
+      "entry_type": "file",
+      "file_type": "Markdown documentation",
+      "size_bytes": 2875,
+      "purpose": "Human-readable architecture, evaluation, experiment, or project documentation.",
+      "inspection_status": "headings_or_selected_sections_reviewed"
+    },
+    {
+      "path": "docs/FALSE_POSITIVE_ANALYSIS.md",
+      "entry_type": "file",
+      "file_type": "Markdown documentation",
+      "size_bytes": 1116,
+      "purpose": "Human-readable architecture, evaluation, experiment, or project documentation.",
+      "inspection_status": "headings_or_selected_sections_reviewed"
+    },
+    {
+      "path": "docs/FINAL_ML_PASS.md",
+      "entry_type": "file",
+      "file_type": "Markdown documentation",
+      "size_bytes": 14527,
+      "purpose": "Human-readable architecture, evaluation, experiment, or project documentation.",
+      "inspection_status": "headings_or_selected_sections_reviewed"
+    },
+    {
+      "path": "docs/FINAL_PROMOTION_GATE.md",
+      "entry_type": "file",
+      "file_type": "Markdown documentation",
+      "size_bytes": 2516,
+      "purpose": "Human-readable architecture, evaluation, experiment, or project documentation.",
+      "inspection_status": "headings_or_selected_sections_reviewed"
+    },
+    {
+      "path": "docs/FINAL_REPORT.md",
+      "entry_type": "file",
+      "file_type": "Markdown documentation",
+      "size_bytes": 969,
+      "purpose": "Human-readable architecture, evaluation, experiment, or project documentation.",
+      "inspection_status": "headings_or_selected_sections_reviewed"
+    },
+    {
+      "path": "docs/FINAL_TRAINING_COMPARISON.md",
+      "entry_type": "file",
+      "file_type": "Markdown documentation",
+      "size_bytes": 1511,
+      "purpose": "Human-readable architecture, evaluation, experiment, or project documentation.",
+      "inspection_status": "headings_or_selected_sections_reviewed"
+    },
+    {
+      "path": "docs/ideation-ppt.pdf",
+      "entry_type": "file",
+      "file_type": "PDF document",
+      "size_bytes": 2879083,
+      "purpose": "Human-readable architecture, evaluation, experiment, or project documentation.",
+      "inspection_status": "binary_metadata_only_not_decoded"
+    },
+    {
+      "path": "docs/INSPECTION.md",
+      "entry_type": "file",
+      "file_type": "Markdown documentation",
+      "size_bytes": 918,
+      "purpose": "Human-readable architecture, evaluation, experiment, or project documentation.",
+      "inspection_status": "headings_or_selected_sections_reviewed"
+    },
+    {
+      "path": "docs/ml-evaluation.md",
+      "entry_type": "file",
+      "file_type": "Markdown documentation",
+      "size_bytes": 2695,
+      "purpose": "Human-readable architecture, evaluation, experiment, or project documentation.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "docs/MODEL_REPORT.md",
+      "entry_type": "file",
+      "file_type": "Markdown documentation",
+      "size_bytes": 2034,
+      "purpose": "Human-readable architecture, evaluation, experiment, or project documentation.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "docs/project-report.md",
+      "entry_type": "file",
+      "file_type": "Markdown documentation",
+      "size_bytes": 6766,
+      "purpose": "Human-readable architecture, evaluation, experiment, or project documentation.",
+      "inspection_status": "headings_or_selected_sections_reviewed"
+    },
+    {
+      "path": "evaluate_model.py",
+      "entry_type": "file",
+      "file_type": "Python source/script",
+      "size_bytes": 3429,
+      "purpose": "Python application, training, evaluation, or maintenance source; see file-by-file audit.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "experiments",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 50287956,
+      "file_count": 96,
+      "purpose": "Experimental candidate runs and associated artifacts.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 42396128,
+      "file_count": 84,
+      "purpose": "Directory for auto_ml contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/benchmark_v1",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 615609,
+      "file_count": 4,
+      "purpose": "Directory for benchmark_v1 contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/benchmark_v1/fixed_urls.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 18187,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/benchmark_v1/legitimate_domain_disjoint.csv",
+      "entry_type": "file",
+      "file_type": "CSV data/metrics",
+      "size_bytes": 356132,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "dataset_metadata_only_no_row_dump"
+    },
+    {
+      "path": "experiments/auto_ml/benchmark_v1/manifest.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 304,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/benchmark_v1/phishing_domain_disjoint.csv",
+      "entry_type": "file",
+      "file_type": "CSV data/metrics",
+      "size_bytes": 240986,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "dataset_metadata_only_no_row_dump"
+    },
+    {
+      "path": "experiments/auto_ml/data_bootstrap_001",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 764135,
+      "file_count": 3,
+      "purpose": "Directory for data_bootstrap_001 contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/data_bootstrap_001/collect_verified_legitimate.py",
+      "entry_type": "file",
+      "file_type": "Python source/script",
+      "size_bytes": 19476,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "source_outline_and_signatures_reviewed_not_line_by_line"
+    },
+    {
+      "path": "experiments/auto_ml/data_bootstrap_001/collection_report.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 110810,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/data_bootstrap_001/legitimate_urls.csv",
+      "entry_type": "file",
+      "file_type": "CSV data/metrics",
+      "size_bytes": 633849,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "dataset_metadata_only_no_row_dump"
+    },
+    {
+      "path": "experiments/auto_ml/data_bootstrap_002",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 1569124,
+      "file_count": 3,
+      "purpose": "Directory for data_bootstrap_002 contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/data_bootstrap_002/collect_verified_legitimate.py",
+      "entry_type": "file",
+      "file_type": "Python source/script",
+      "size_bytes": 7188,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "source_outline_and_signatures_reviewed_not_line_by_line"
+    },
+    {
+      "path": "experiments/auto_ml/data_bootstrap_002/collection_report.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 111086,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/data_bootstrap_002/legitimate_urls.csv",
+      "entry_type": "file",
+      "file_type": "CSV data/metrics",
+      "size_bytes": 1450850,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "dataset_metadata_only_no_row_dump"
+    },
+    {
+      "path": "experiments/auto_ml/exp001_verified_sources_domain_balanced",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 8772994,
+      "file_count": 23,
+      "purpose": "Directory for exp001_verified_sources_domain_balanced contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp001_verified_sources_domain_balanced/candidates",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 6905578,
+      "file_count": 20,
+      "purpose": "Directory for candidates contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp001_verified_sources_domain_balanced/candidates/hist_gradient_boosting_drop_PathLength",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 405703,
+      "file_count": 5,
+      "purpose": "Directory for hist_gradient_boosting_drop_PathLength contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp001_verified_sources_domain_balanced/candidates/hist_gradient_boosting_drop_PathLength/candidate.joblib",
+      "entry_type": "file",
+      "file_type": "Serialized ML candidate artifact",
+      "size_bytes": 378681,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_and_hash_only_not_deserialized"
+    },
+    {
+      "path": "experiments/auto_ml/exp001_verified_sources_domain_balanced/candidates/hist_gradient_boosting_drop_PathLength/configuration.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 1998,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp001_verified_sources_domain_balanced/candidates/hist_gradient_boosting_drop_PathLength/failure_analysis.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 5845,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp001_verified_sources_domain_balanced/candidates/hist_gradient_boosting_drop_PathLength/metrics.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 15714,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp001_verified_sources_domain_balanced/candidates/hist_gradient_boosting_drop_PathLength/validation_permutation_importance.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 3465,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp001_verified_sources_domain_balanced/candidates/hist_gradient_boosting_production_29",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 407210,
+      "file_count": 5,
+      "purpose": "Directory for hist_gradient_boosting_production_29 contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp001_verified_sources_domain_balanced/candidates/hist_gradient_boosting_production_29/candidate.joblib",
+      "entry_type": "file",
+      "file_type": "Serialized ML candidate artifact",
+      "size_bytes": 380260,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_and_hash_only_not_deserialized"
+    },
+    {
+      "path": "experiments/auto_ml/exp001_verified_sources_domain_balanced/candidates/hist_gradient_boosting_production_29/configuration.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 2016,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp001_verified_sources_domain_balanced/candidates/hist_gradient_boosting_production_29/failure_analysis.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 5896,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp001_verified_sources_domain_balanced/candidates/hist_gradient_boosting_production_29/metrics.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 15477,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp001_verified_sources_domain_balanced/candidates/hist_gradient_boosting_production_29/validation_permutation_importance.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 3561,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp001_verified_sources_domain_balanced/candidates/logistic_regression_production_29",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 32663,
+      "file_count": 5,
+      "purpose": "Directory for logistic_regression_production_29 contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp001_verified_sources_domain_balanced/candidates/logistic_regression_production_29/candidate.joblib",
+      "entry_type": "file",
+      "file_type": "Serialized ML candidate artifact",
+      "size_bytes": 4049,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_and_hash_only_not_deserialized"
+    },
+    {
+      "path": "experiments/auto_ml/exp001_verified_sources_domain_balanced/candidates/logistic_regression_production_29/configuration.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 2453,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp001_verified_sources_domain_balanced/candidates/logistic_regression_production_29/failure_analysis.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 6758,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp001_verified_sources_domain_balanced/candidates/logistic_regression_production_29/metrics.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 15642,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp001_verified_sources_domain_balanced/candidates/logistic_regression_production_29/validation_permutation_importance.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 3761,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp001_verified_sources_domain_balanced/candidates/random_forest_production_29",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 6060002,
+      "file_count": 5,
+      "purpose": "Directory for random_forest_production_29 contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp001_verified_sources_domain_balanced/candidates/random_forest_production_29/candidate.joblib",
+      "entry_type": "file",
+      "file_type": "Serialized ML candidate artifact",
+      "size_bytes": 6033579,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_and_hash_only_not_deserialized"
+    },
+    {
+      "path": "experiments/auto_ml/exp001_verified_sources_domain_balanced/candidates/random_forest_production_29/configuration.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 1946,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp001_verified_sources_domain_balanced/candidates/random_forest_production_29/failure_analysis.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 5710,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp001_verified_sources_domain_balanced/candidates/random_forest_production_29/metrics.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 15017,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp001_verified_sources_domain_balanced/candidates/random_forest_production_29/validation_permutation_importance.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 3750,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp001_verified_sources_domain_balanced/dataset_composition.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 9815,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp001_verified_sources_domain_balanced/dataset.csv",
+      "entry_type": "file",
+      "file_type": "CSV data/metrics",
+      "size_bytes": 1777121,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "dataset_metadata_only_no_row_dump"
+    },
+    {
+      "path": "experiments/auto_ml/exp001_verified_sources_domain_balanced/experiment_report.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 80480,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp002_verified_sources_domain_balanced",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 14522108,
+      "file_count": 23,
+      "purpose": "Directory for exp002_verified_sources_domain_balanced contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp002_verified_sources_domain_balanced/candidates",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 10357494,
+      "file_count": 20,
+      "purpose": "Directory for candidates contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp002_verified_sources_domain_balanced/candidates/hist_gradient_boosting_drop_PathLength",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 404845,
+      "file_count": 5,
+      "purpose": "Directory for hist_gradient_boosting_drop_PathLength contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp002_verified_sources_domain_balanced/candidates/hist_gradient_boosting_drop_PathLength/candidate.joblib",
+      "entry_type": "file",
+      "file_type": "Serialized ML candidate artifact",
+      "size_bytes": 379577,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_and_hash_only_not_deserialized"
+    },
+    {
+      "path": "experiments/auto_ml/exp002_verified_sources_domain_balanced/candidates/hist_gradient_boosting_drop_PathLength/configuration.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 2019,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp002_verified_sources_domain_balanced/candidates/hist_gradient_boosting_drop_PathLength/failure_analysis.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 5897,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp002_verified_sources_domain_balanced/candidates/hist_gradient_boosting_drop_PathLength/metrics.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 13811,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp002_verified_sources_domain_balanced/candidates/hist_gradient_boosting_drop_PathLength/validation_permutation_importance.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 3541,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp002_verified_sources_domain_balanced/candidates/hist_gradient_boosting_production_29",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 406552,
+      "file_count": 5,
+      "purpose": "Directory for hist_gradient_boosting_production_29 contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp002_verified_sources_domain_balanced/candidates/hist_gradient_boosting_production_29/candidate.joblib",
+      "entry_type": "file",
+      "file_type": "Serialized ML candidate artifact",
+      "size_bytes": 381108,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_and_hash_only_not_deserialized"
+    },
+    {
+      "path": "experiments/auto_ml/exp002_verified_sources_domain_balanced/candidates/hist_gradient_boosting_production_29/configuration.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 2017,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp002_verified_sources_domain_balanced/candidates/hist_gradient_boosting_production_29/failure_analysis.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 5881,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp002_verified_sources_domain_balanced/candidates/hist_gradient_boosting_production_29/metrics.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 13871,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp002_verified_sources_domain_balanced/candidates/hist_gradient_boosting_production_29/validation_permutation_importance.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 3675,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp002_verified_sources_domain_balanced/candidates/logistic_regression_production_29",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 35481,
+      "file_count": 5,
+      "purpose": "Directory for logistic_regression_production_29 contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp002_verified_sources_domain_balanced/candidates/logistic_regression_production_29/candidate.joblib",
+      "entry_type": "file",
+      "file_type": "Serialized ML candidate artifact",
+      "size_bytes": 4049,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_and_hash_only_not_deserialized"
+    },
+    {
+      "path": "experiments/auto_ml/exp002_verified_sources_domain_balanced/candidates/logistic_regression_production_29/configuration.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 2474,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp002_verified_sources_domain_balanced/candidates/logistic_regression_production_29/failure_analysis.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 7709,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp002_verified_sources_domain_balanced/candidates/logistic_regression_production_29/metrics.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 17395,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp002_verified_sources_domain_balanced/candidates/logistic_regression_production_29/validation_permutation_importance.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 3854,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp002_verified_sources_domain_balanced/candidates/random_forest_production_29",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 9510616,
+      "file_count": 5,
+      "purpose": "Directory for random_forest_production_29 contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp002_verified_sources_domain_balanced/candidates/random_forest_production_29/candidate.joblib",
+      "entry_type": "file",
+      "file_type": "Serialized ML candidate artifact",
+      "size_bytes": 9483003,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_and_hash_only_not_deserialized"
+    },
+    {
+      "path": "experiments/auto_ml/exp002_verified_sources_domain_balanced/candidates/random_forest_production_29/configuration.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 1966,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp002_verified_sources_domain_balanced/candidates/random_forest_production_29/failure_analysis.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 6009,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp002_verified_sources_domain_balanced/candidates/random_forest_production_29/metrics.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 15780,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp002_verified_sources_domain_balanced/candidates/random_forest_production_29/validation_permutation_importance.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 3858,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp002_verified_sources_domain_balanced/dataset_composition.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 10584,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp002_verified_sources_domain_balanced/dataset.csv",
+      "entry_type": "file",
+      "file_type": "CSV data/metrics",
+      "size_bytes": 4073742,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "dataset_metadata_only_no_row_dump"
+    },
+    {
+      "path": "experiments/auto_ml/exp002_verified_sources_domain_balanced/experiment_report.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 80288,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp003_url_char_ngram_hybrid",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 16152158,
+      "file_count": 28,
+      "purpose": "Directory for exp003_url_char_ngram_hybrid contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp003_url_char_ngram_hybrid/candidates",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 11962908,
+      "file_count": 25,
+      "purpose": "Directory for candidates contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp003_url_char_ngram_hybrid/candidates/hist_gradient_boosting_drop_PathLength",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 405243,
+      "file_count": 5,
+      "purpose": "Directory for hist_gradient_boosting_drop_PathLength contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp003_url_char_ngram_hybrid/candidates/hist_gradient_boosting_drop_PathLength/candidate.joblib",
+      "entry_type": "file",
+      "file_type": "Serialized ML candidate artifact",
+      "size_bytes": 379632,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_and_hash_only_not_deserialized"
+    },
+    {
+      "path": "experiments/auto_ml/exp003_url_char_ngram_hybrid/candidates/hist_gradient_boosting_drop_PathLength/configuration.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 2159,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp003_url_char_ngram_hybrid/candidates/hist_gradient_boosting_drop_PathLength/failure_analysis.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 5839,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp003_url_char_ngram_hybrid/candidates/hist_gradient_boosting_drop_PathLength/metrics.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 15049,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp003_url_char_ngram_hybrid/candidates/hist_gradient_boosting_drop_PathLength/validation_feature_importance.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 2564,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp003_url_char_ngram_hybrid/candidates/hist_gradient_boosting_production_29",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 406743,
+      "file_count": 5,
+      "purpose": "Directory for hist_gradient_boosting_production_29 contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp003_url_char_ngram_hybrid/candidates/hist_gradient_boosting_production_29/candidate.joblib",
+      "entry_type": "file",
+      "file_type": "Serialized ML candidate artifact",
+      "size_bytes": 381163,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_and_hash_only_not_deserialized"
+    },
+    {
+      "path": "experiments/auto_ml/exp003_url_char_ngram_hybrid/candidates/hist_gradient_boosting_production_29/configuration.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 2159,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp003_url_char_ngram_hybrid/candidates/hist_gradient_boosting_production_29/failure_analysis.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 5835,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp003_url_char_ngram_hybrid/candidates/hist_gradient_boosting_production_29/metrics.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 15014,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp003_url_char_ngram_hybrid/candidates/hist_gradient_boosting_production_29/validation_feature_importance.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 2572,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp003_url_char_ngram_hybrid/candidates/logistic_regression_production_29",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 35711,
+      "file_count": 5,
+      "purpose": "Directory for logistic_regression_production_29 contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp003_url_char_ngram_hybrid/candidates/logistic_regression_production_29/candidate.joblib",
+      "entry_type": "file",
+      "file_type": "Serialized ML candidate artifact",
+      "size_bytes": 4104,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_and_hash_only_not_deserialized"
+    },
+    {
+      "path": "experiments/auto_ml/exp003_url_char_ngram_hybrid/candidates/logistic_regression_production_29/configuration.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 2615,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp003_url_char_ngram_hybrid/candidates/logistic_regression_production_29/failure_analysis.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 7709,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp003_url_char_ngram_hybrid/candidates/logistic_regression_production_29/metrics.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 18712,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp003_url_char_ngram_hybrid/candidates/logistic_regression_production_29/validation_feature_importance.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 2571,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp003_url_char_ngram_hybrid/candidates/random_forest_production_29",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 9510615,
+      "file_count": 5,
+      "purpose": "Directory for random_forest_production_29 contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp003_url_char_ngram_hybrid/candidates/random_forest_production_29/candidate.joblib",
+      "entry_type": "file",
+      "file_type": "Serialized ML candidate artifact",
+      "size_bytes": 9483058,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_and_hash_only_not_deserialized"
+    },
+    {
+      "path": "experiments/auto_ml/exp003_url_char_ngram_hybrid/candidates/random_forest_production_29/configuration.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 2106,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp003_url_char_ngram_hybrid/candidates/random_forest_production_29/failure_analysis.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 6010,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp003_url_char_ngram_hybrid/candidates/random_forest_production_29/metrics.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 16985,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp003_url_char_ngram_hybrid/candidates/random_forest_production_29/validation_feature_importance.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 2456,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp003_url_char_ngram_hybrid/candidates/url_char_logistic_url_char_3_5_plus_29",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 1604596,
+      "file_count": 5,
+      "purpose": "Directory for url_char_logistic_url_char_3_5_plus_29 contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp003_url_char_ngram_hybrid/candidates/url_char_logistic_url_char_3_5_plus_29/candidate.joblib",
+      "entry_type": "file",
+      "file_type": "Serialized ML candidate artifact",
+      "size_bytes": 1576602,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_and_hash_only_not_deserialized"
+    },
+    {
+      "path": "experiments/auto_ml/exp003_url_char_ngram_hybrid/candidates/url_char_logistic_url_char_3_5_plus_29/configuration.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 2009,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp003_url_char_ngram_hybrid/candidates/url_char_logistic_url_char_3_5_plus_29/failure_analysis.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 7591,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp003_url_char_ngram_hybrid/candidates/url_char_logistic_url_char_3_5_plus_29/metrics.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 17141,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp003_url_char_ngram_hybrid/candidates/url_char_logistic_url_char_3_5_plus_29/validation_feature_importance.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 1253,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp003_url_char_ngram_hybrid/dataset_composition.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 10562,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/auto_ml/exp003_url_char_ngram_hybrid/dataset.csv",
+      "entry_type": "file",
+      "file_type": "CSV data/metrics",
+      "size_bytes": 4073742,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "dataset_metadata_only_no_row_dump"
+    },
+    {
+      "path": "experiments/auto_ml/exp003_url_char_ngram_hybrid/experiment_report.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 104946,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/dynamic_augmentation",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 2867400,
+      "file_count": 8,
+      "purpose": "Directory for dynamic_augmentation contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "experiments/dynamic_augmentation/hist_gradient_boosting_calibrator.pkl",
+      "entry_type": "file",
+      "file_type": "Serialized Python artifact",
+      "size_bytes": 676,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_and_hash_only_not_deserialized"
+    },
+    {
+      "path": "experiments/dynamic_augmentation/hist_gradient_boosting_estimator.pkl",
+      "entry_type": "file",
+      "file_type": "Serialized Python artifact",
+      "size_bytes": 2861825,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_and_hash_only_not_deserialized"
+    },
+    {
+      "path": "experiments/dynamic_augmentation/hist_gradient_boosting_feature_names.pkl",
+      "entry_type": "file",
+      "file_type": "Serialized Python artifact",
+      "size_bytes": 504,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_and_hash_only_not_deserialized"
+    },
+    {
+      "path": "experiments/dynamic_augmentation/hist_gradient_boosting_threshold.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 316,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/dynamic_augmentation/logistic_regression_calibrator.pkl",
+      "entry_type": "file",
+      "file_type": "Serialized Python artifact",
+      "size_bytes": 676,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_and_hash_only_not_deserialized"
+    },
+    {
+      "path": "experiments/dynamic_augmentation/logistic_regression_estimator.pkl",
+      "entry_type": "file",
+      "file_type": "Serialized Python artifact",
+      "size_bytes": 2583,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_and_hash_only_not_deserialized"
+    },
+    {
+      "path": "experiments/dynamic_augmentation/logistic_regression_feature_names.pkl",
+      "entry_type": "file",
+      "file_type": "Serialized Python artifact",
+      "size_bytes": 504,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_and_hash_only_not_deserialized"
+    },
+    {
+      "path": "experiments/dynamic_augmentation/logistic_regression_threshold.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 316,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "experiments/dynamic_hardening",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 2867968,
+      "file_count": 2,
+      "purpose": "Directory for dynamic_hardening contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "experiments/dynamic_hardening/candidate_hist_gradient_boosting.pkl",
+      "entry_type": "file",
+      "file_type": "Serialized Python artifact",
+      "size_bytes": 2864403,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_and_hash_only_not_deserialized"
+    },
+    {
+      "path": "experiments/dynamic_hardening/candidate_logistic_regression.pkl",
+      "entry_type": "file",
+      "file_type": "Serialized Python artifact",
+      "size_bytes": 3565,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_and_hash_only_not_deserialized"
+    },
+    {
+      "path": "experiments/dynamic_recovery",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 2156460,
+      "file_count": 2,
+      "purpose": "Directory for dynamic_recovery contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "experiments/dynamic_recovery/candidate_hist_gradient_boosting.pkl",
+      "entry_type": "file",
+      "file_type": "Serialized Python artifact",
+      "size_bytes": 2152898,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_and_hash_only_not_deserialized"
+    },
+    {
+      "path": "experiments/dynamic_recovery/candidate_logistic_regression.pkl",
+      "entry_type": "file",
+      "file_type": "Serialized Python artifact",
+      "size_bytes": 3562,
+      "purpose": "Experimental collection/training/evaluation artifact.",
+      "inspection_status": "metadata_and_hash_only_not_deserialized"
+    },
+    {
+      "path": "extenison",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 616097,
+      "file_count": 14,
+      "purpose": "Manifest V3 browser extension (legacy misspelling retained).",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "extenison/background.js",
+      "entry_type": "file",
+      "file_type": "JavaScript source",
+      "size_bytes": 8104,
+      "purpose": "Browser-extension manifest, UI, worker, style, or test file.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "extenison/background.runtime.test.mjs",
+      "entry_type": "file",
+      "file_type": "JavaScript module/test",
+      "size_bytes": 9079,
+      "purpose": "Browser-extension manifest, UI, worker, style, or test file.",
+      "inspection_status": "executed_node_tests_source_outline_reviewed"
+    },
+    {
+      "path": "extenison/blocked.css",
+      "entry_type": "file",
+      "file_type": "CSS stylesheet",
+      "size_bytes": 3675,
+      "purpose": "Browser-extension manifest, UI, worker, style, or test file.",
+      "inspection_status": "not_content_inspected_stylesheet"
+    },
+    {
+      "path": "extenison/blocked.html",
+      "entry_type": "file",
+      "file_type": "HTML interface",
+      "size_bytes": 1858,
+      "purpose": "Browser-extension manifest, UI, worker, style, or test file.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "extenison/blocked.js",
+      "entry_type": "file",
+      "file_type": "JavaScript source",
+      "size_bytes": 2440,
+      "purpose": "Browser-extension manifest, UI, worker, style, or test file.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "extenison/extension.test.mjs",
+      "entry_type": "file",
+      "file_type": "JavaScript module/test",
+      "size_bytes": 2010,
+      "purpose": "Browser-extension manifest, UI, worker, style, or test file.",
+      "inspection_status": "executed_node_tests_source_outline_reviewed"
+    },
+    {
+      "path": "extenison/icons",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 572351,
+      "file_count": 3,
+      "purpose": "Directory for icons contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "extenison/icons/icon-128.png",
+      "entry_type": "file",
+      "file_type": "PNG image asset",
+      "size_bytes": 96928,
+      "purpose": "Browser-extension manifest, UI, worker, style, or test file.",
+      "inspection_status": "binary_metadata_only_not_decoded"
+    },
+    {
+      "path": "extenison/icons/icon-16.png",
+      "entry_type": "file",
+      "file_type": "PNG image asset",
+      "size_bytes": 429851,
+      "purpose": "Browser-extension manifest, UI, worker, style, or test file.",
+      "inspection_status": "binary_metadata_only_not_decoded"
+    },
+    {
+      "path": "extenison/icons/icon-48.png",
+      "entry_type": "file",
+      "file_type": "PNG image asset",
+      "size_bytes": 45572,
+      "purpose": "Browser-extension manifest, UI, worker, style, or test file.",
+      "inspection_status": "binary_metadata_only_not_decoded"
+    },
+    {
+      "path": "extenison/manifest.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 467,
+      "purpose": "Browser-extension manifest, UI, worker, style, or test file.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "extenison/popup.css",
+      "entry_type": "file",
+      "file_type": "CSS stylesheet",
+      "size_bytes": 4838,
+      "purpose": "Browser-extension manifest, UI, worker, style, or test file.",
+      "inspection_status": "not_content_inspected_stylesheet"
+    },
+    {
+      "path": "extenison/popup.html",
+      "entry_type": "file",
+      "file_type": "HTML interface",
+      "size_bytes": 2295,
+      "purpose": "Browser-extension manifest, UI, worker, style, or test file.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "extenison/popup.js",
+      "entry_type": "file",
+      "file_type": "JavaScript source",
+      "size_bytes": 6192,
+      "purpose": "Browser-extension manifest, UI, worker, style, or test file.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "extenison/README.md",
+      "entry_type": "file",
+      "file_type": "Markdown documentation",
+      "size_bytes": 2788,
+      "purpose": "Browser-extension manifest, UI, worker, style, or test file.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "feature_extractor.py",
+      "entry_type": "file",
+      "file_type": "Python source/script",
+      "size_bytes": 6841,
+      "purpose": "URL normalization and deterministic lexical feature extraction.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "feature_importance.csv",
+      "entry_type": "file",
+      "file_type": "CSV data/metrics",
+      "size_bytes": 1326,
+      "purpose": "Production feature-importance output.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "feature_names.pkl",
+      "entry_type": "file",
+      "file_type": "Serialized Python artifact",
+      "size_bytes": 504,
+      "purpose": "Production ordered feature-name artifact; not deserialized.",
+      "inspection_status": "metadata_and_hash_only_not_deserialized"
+    },
+    {
+      "path": "fix_dataset.py",
+      "entry_type": "file",
+      "file_type": "Python source/script",
+      "size_bytes": 255,
+      "purpose": "Python application, training, evaluation, or maintenance source; see file-by-file audit.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "frontend",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 190294508,
+      "file_count": 10032,
+      "purpose": "React/Vite frontend project.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "frontend/.env.example",
+      "entry_type": "file",
+      "file_type": "Example environment file",
+      "size_bytes": 40,
+      "purpose": "Project file .env.example.",
+      "inspection_status": "metadata_only"
+    },
+    {
+      "path": "frontend/index.html",
+      "entry_type": "file",
+      "file_type": "HTML interface",
+      "size_bytes": 439,
+      "purpose": "Project file index.html.",
+      "inspection_status": "metadata_only"
+    },
+    {
+      "path": "frontend/node_modules",
+      "entry_type": "excluded_directory_summary",
+      "file_type": "directory tree summary",
+      "size_bytes": 190150088,
+      "file_count": 10003,
+      "directory_count": 738,
+      "purpose": "Directory for node_modules contents.",
+      "inspection_status": "excluded_contents_not_individually_enumerated",
+      "exclusion_reason": "Installed JavaScript dependencies; do not enumerate individual entries."
+    },
+    {
+      "path": "frontend/package-lock.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 103365,
+      "purpose": "Project metadata, configuration, dataset summary, or report.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "frontend/package.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 843,
+      "purpose": "Project metadata, configuration, dataset summary, or report.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "frontend/qa",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 3399,
+      "file_count": 1,
+      "purpose": "Directory for qa contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "frontend/qa/browser-qa.mjs",
+      "entry_type": "file",
+      "file_type": "JavaScript module/test",
+      "size_bytes": 3399,
+      "purpose": "Playwright browser QA script; writes screenshots when run.",
+      "inspection_status": "source_outline_reviewed"
+    },
+    {
+      "path": "frontend/README.md",
+      "entry_type": "file",
+      "file_type": "Markdown documentation",
+      "size_bytes": 311,
+      "purpose": "Project documentation or manual test material.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "frontend/src",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 34734,
+      "file_count": 19,
+      "purpose": "Directory for src contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "frontend/src/App.tsx",
+      "entry_type": "file",
+      "file_type": "TypeScript React component",
+      "size_bytes": 1148,
+      "purpose": "Frontend entry, type, utility, style, or test support.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "frontend/src/components",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 7265,
+      "file_count": 6,
+      "purpose": "Directory for components contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "frontend/src/components/EvidenceList.tsx",
+      "entry_type": "file",
+      "file_type": "TypeScript React component",
+      "size_bytes": 778,
+      "purpose": "Reusable React UI component.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "frontend/src/components/FeatureGrid.tsx",
+      "entry_type": "file",
+      "file_type": "TypeScript React component",
+      "size_bytes": 989,
+      "purpose": "Reusable React UI component.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "frontend/src/components/RiskMeter.tsx",
+      "entry_type": "file",
+      "file_type": "TypeScript React component",
+      "size_bytes": 727,
+      "purpose": "Reusable React UI component.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "frontend/src/components/ScanResult.tsx",
+      "entry_type": "file",
+      "file_type": "TypeScript React component",
+      "size_bytes": 2923,
+      "purpose": "Reusable React UI component.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "frontend/src/components/Shell.tsx",
+      "entry_type": "file",
+      "file_type": "TypeScript React component",
+      "size_bytes": 1455,
+      "purpose": "Reusable React UI component.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "frontend/src/components/StatusBadge.tsx",
+      "entry_type": "file",
+      "file_type": "TypeScript React component",
+      "size_bytes": 393,
+      "purpose": "Reusable React UI component.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "frontend/src/main.tsx",
+      "entry_type": "file",
+      "file_type": "TypeScript React component",
+      "size_bytes": 220,
+      "purpose": "Frontend entry, type, utility, style, or test support.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "frontend/src/pages",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 9247,
+      "file_count": 4,
+      "purpose": "Directory for pages contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "frontend/src/pages/AboutPage.tsx",
+      "entry_type": "file",
+      "file_type": "TypeScript React component",
+      "size_bytes": 1531,
+      "purpose": "React page component.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "frontend/src/pages/AnalysisPage.tsx",
+      "entry_type": "file",
+      "file_type": "TypeScript React component",
+      "size_bytes": 2993,
+      "purpose": "React page component.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "frontend/src/pages/HistoryPage.tsx",
+      "entry_type": "file",
+      "file_type": "TypeScript React component",
+      "size_bytes": 2223,
+      "purpose": "React page component.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "frontend/src/pages/ScanPage.tsx",
+      "entry_type": "file",
+      "file_type": "TypeScript React component",
+      "size_bytes": 2500,
+      "purpose": "React page component.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "frontend/src/services",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 1114,
+      "file_count": 1,
+      "purpose": "Directory for services contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "frontend/src/services/api.ts",
+      "entry_type": "file",
+      "file_type": "TypeScript source/declaration",
+      "size_bytes": 1114,
+      "purpose": "Frontend API/service integration.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "frontend/src/styles.css",
+      "entry_type": "file",
+      "file_type": "CSS stylesheet",
+      "size_bytes": 13245,
+      "purpose": "Frontend entry, type, utility, style, or test support.",
+      "inspection_status": "not_content_inspected_stylesheet"
+    },
+    {
+      "path": "frontend/src/test-setup.ts",
+      "entry_type": "file",
+      "file_type": "TypeScript source/declaration",
+      "size_bytes": 120,
+      "purpose": "Frontend entry, type, utility, style, or test support.",
+      "inspection_status": "source_outline_reviewed"
+    },
+    {
+      "path": "frontend/src/types.ts",
+      "entry_type": "file",
+      "file_type": "TypeScript source/declaration",
+      "size_bytes": 956,
+      "purpose": "Frontend entry, type, utility, style, or test support.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "frontend/src/utils.test.ts",
+      "entry_type": "file",
+      "file_type": "TypeScript source/declaration",
+      "size_bytes": 627,
+      "purpose": "Frontend entry, type, utility, style, or test support.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "frontend/src/utils.ts",
+      "entry_type": "file",
+      "file_type": "TypeScript source/declaration",
+      "size_bytes": 754,
+      "purpose": "Frontend entry, type, utility, style, or test support.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "frontend/src/vite-env.d.ts",
+      "entry_type": "file",
+      "file_type": "TypeScript source/declaration",
+      "size_bytes": 38,
+      "purpose": "Frontend entry, type, utility, style, or test support.",
+      "inspection_status": "source_outline_reviewed"
+    },
+    {
+      "path": "frontend/tsconfig.app.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 578,
+      "purpose": "Project metadata, configuration, dataset summary, or report.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "frontend/tsconfig.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 107,
+      "purpose": "Project metadata, configuration, dataset summary, or report.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "frontend/tsconfig.node.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 339,
+      "purpose": "Project metadata, configuration, dataset summary, or report.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "frontend/vite.config.ts",
+      "entry_type": "file",
+      "file_type": "TypeScript source/declaration",
+      "size_bytes": 265,
+      "purpose": "Project file vite.config.ts.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "large_legitimate_regression.py",
+      "entry_type": "file",
+      "file_type": "Python source/script",
+      "size_bytes": 25512,
+      "purpose": "Python application, training, evaluation, or maintenance source; see file-by-file audit.",
+      "inspection_status": "partial_major_sections_and_entrypoint_reviewed"
+    },
+    {
+      "path": "legitimate_real_collection.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 107053,
+      "purpose": "Project metadata, configuration, dataset summary, or report.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "merge_dataset.py",
+      "entry_type": "file",
+      "file_type": "Python source/script",
+      "size_bytes": 1612,
+      "purpose": "Python application, training, evaluation, or maintenance source; see file-by-file audit.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "model_metadata.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 24535,
+      "purpose": "Production model provenance, ordered feature schema, thresholds, hashes, and recorded metrics.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "models",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 125642,
+      "file_count": 5,
+      "purpose": "Directory for models contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "models/backup",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 44745,
+      "file_count": 4,
+      "purpose": "Historical model metadata snapshots; no complete model bundles listed.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "models/backup/20261003-201230",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 2002,
+      "file_count": 1,
+      "purpose": "Directory for 20261003-201230 contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "models/backup/20261003-201230/model_metadata.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 2002,
+      "purpose": "Historical model metadata backup.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "models/backup/20261003-201829",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 18919,
+      "file_count": 1,
+      "purpose": "Directory for 20261003-201829 contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "models/backup/20261003-201829/model_metadata.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 18919,
+      "purpose": "Historical model metadata backup.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "models/backup/20261003-202517",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 21822,
+      "file_count": 1,
+      "purpose": "Directory for 20261003-202517 contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "models/backup/20261003-202517/model_metadata.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 21822,
+      "purpose": "Historical model metadata backup.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "models/backup/20261004-013142",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 2002,
+      "file_count": 1,
+      "purpose": "Directory for 20261004-013142 contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "models/backup/20261004-013142/model_metadata.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 2002,
+      "purpose": "Historical model metadata backup.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "models/experimental",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 80897,
+      "file_count": 1,
+      "purpose": "Experimental model candidates, separate from production serving path.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "models/experimental/dynamic_candidate",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 80897,
+      "file_count": 1,
+      "purpose": "Directory for dynamic_candidate contents.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "models/experimental/dynamic_candidate/dynamic_candidate.joblib",
+      "entry_type": "file",
+      "file_type": "Serialized ML candidate artifact",
+      "size_bytes": 80897,
+      "purpose": "Experimental model candidate, not used by serving code.",
+      "inspection_status": "metadata_and_hash_only_not_deserialized"
+    },
+    {
+      "path": "phishing_detector.py",
+      "entry_type": "file",
+      "file_type": "Python source/script",
+      "size_bytes": 374,
+      "purpose": "Python application, training, evaluation, or maintenance source; see file-by-file audit.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "phishing_model.pkl",
+      "entry_type": "file",
+      "file_type": "Serialized Python artifact",
+      "size_bytes": 1100240,
+      "purpose": "Production calibrated classifier artifact; not deserialized.",
+      "inspection_status": "metadata_and_hash_only_not_deserialized"
+    },
+    {
+      "path": "prepare_dataset.py",
+      "entry_type": "file",
+      "file_type": "Python source/script",
+      "size_bytes": 9320,
+      "purpose": "Python application, training, evaluation, or maintenance source; see file-by-file audit.",
+      "inspection_status": "partial_major_sections_and_entrypoint_reviewed"
+    },
+    {
+      "path": "Procfile",
+      "entry_type": "file",
+      "file_type": "Plain text/config file",
+      "size_bytes": 21,
+      "purpose": "Project file Procfile.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "README.md",
+      "entry_type": "file",
+      "file_type": "Markdown documentation",
+      "size_bytes": 12476,
+      "purpose": "Project documentation or manual test material.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "reports",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 1955726,
+      "file_count": 41,
+      "purpose": "Saved evaluation, experiment, and audit reports.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "reports/auto_ml_leaderboard.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 6945,
+      "purpose": "Saved model/data experiment or evaluation report; see repository_audit.md for interpretation.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "reports/baseline_dynamic_legitimate.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 3181,
+      "purpose": "Saved model/data experiment or evaluation report; see repository_audit.md for interpretation.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "reports/benign_dynamic_url_sources.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 40574,
+      "purpose": "Saved model/data experiment or evaluation report; see repository_audit.md for interpretation.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "reports/benign_dynamic_url_training.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 203795,
+      "purpose": "Saved model/data experiment or evaluation report; see repository_audit.md for interpretation.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "reports/calibration.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 9943,
+      "purpose": "Saved model/data experiment or evaluation report; see repository_audit.md for interpretation.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "reports/dataset_overlap.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 573,
+      "purpose": "Saved model/data experiment or evaluation report; see repository_audit.md for interpretation.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "reports/dataset_quality.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 1650,
+      "purpose": "Saved model/data experiment or evaluation report; see repository_audit.md for interpretation.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "reports/domain_model_experiment.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 18091,
+      "purpose": "Saved model/data experiment or evaluation report; see repository_audit.md for interpretation.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "reports/dynamic_augmentation_final.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 22419,
+      "purpose": "Saved model/data experiment or evaluation report; see repository_audit.md for interpretation.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "reports/dynamic_augmentation_run.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 5120,
+      "purpose": "Saved model/data experiment or evaluation report; see repository_audit.md for interpretation.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "reports/dynamic_benign_cohort.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 5171,
+      "purpose": "Saved model/data experiment or evaluation report; see repository_audit.md for interpretation.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "reports/dynamic_candidate_evaluation.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 41709,
+      "purpose": "Saved model/data experiment or evaluation report; see repository_audit.md for interpretation.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "reports/dynamic_candidate_promotion.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 1842,
+      "purpose": "Saved model/data experiment or evaluation report; see repository_audit.md for interpretation.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "reports/dynamic_candidate_training.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 6573,
+      "purpose": "Saved model/data experiment or evaluation report; see repository_audit.md for interpretation.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "reports/dynamic_counterfactual_analysis.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 17461,
+      "purpose": "Saved model/data experiment or evaluation report; see repository_audit.md for interpretation.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "reports/dynamic_experiment_failure_analysis.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 129817,
+      "purpose": "Saved model/data experiment or evaluation report; see repository_audit.md for interpretation.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "reports/dynamic_hardening_final.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 75884,
+      "purpose": "Saved model/data experiment or evaluation report; see repository_audit.md for interpretation.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "reports/dynamic_hardening_run.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 41740,
+      "purpose": "Saved model/data experiment or evaluation report; see repository_audit.md for interpretation.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "reports/dynamic_recovery_comparison.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 66269,
+      "purpose": "Saved model/data experiment or evaluation report; see repository_audit.md for interpretation.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "reports/dynamic_recovery_final.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 106978,
+      "purpose": "Saved model/data experiment or evaluation report; see repository_audit.md for interpretation.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "reports/dynamic_training_bias_analysis.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 6150,
+      "purpose": "Saved model/data experiment or evaluation report; see repository_audit.md for interpretation.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "reports/dynamic_training_comparison.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 40059,
+      "purpose": "Saved model/data experiment or evaluation report; see repository_audit.md for interpretation.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "reports/dynamic_url_false_positive_analysis.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 47947,
+      "purpose": "Saved model/data experiment or evaluation report; see repository_audit.md for interpretation.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "reports/error_analysis.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 637,
+      "purpose": "Saved model/data experiment or evaluation report; see repository_audit.md for interpretation.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "reports/external_phishing_error_analysis.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 10981,
+      "purpose": "Saved model/data experiment or evaluation report; see repository_audit.md for interpretation.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "reports/external_validation.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 2305,
+      "purpose": "Saved model/data experiment or evaluation report; see repository_audit.md for interpretation.",
+      "inspection_status": "metadata_reviewed_invalid_strict_json_bare_NaN"
+    },
+    {
+      "path": "reports/final_ml_validation.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 28050,
+      "purpose": "Saved model/data experiment or evaluation report; see repository_audit.md for interpretation.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "reports/final_promotion_gate.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 5667,
+      "purpose": "Saved model/data experiment or evaluation report; see repository_audit.md for interpretation.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "reports/final_training_comparison.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 22127,
+      "purpose": "Saved model/data experiment or evaluation report; see repository_audit.md for interpretation.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "reports/large_legitimate_regression.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 561147,
+      "purpose": "Saved model/data experiment or evaluation report; see repository_audit.md for interpretation.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "reports/legitimate_dynamic_benchmark_results.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 159913,
+      "purpose": "Saved model/data experiment or evaluation report; see repository_audit.md for interpretation.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "reports/legitimate_dynamic_benchmark.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 14562,
+      "purpose": "Saved model/data experiment or evaluation report; see repository_audit.md for interpretation.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "reports/metrics.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 462,
+      "purpose": "Saved model/data experiment or evaluation report; see repository_audit.md for interpretation.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "reports/model_comparison.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 3075,
+      "purpose": "Saved model/data experiment or evaluation report; see repository_audit.md for interpretation.",
+      "inspection_status": "metadata_reviewed_invalid_strict_json_bare_NaN"
+    },
+    {
+      "path": "reports/phishing_feed_verification.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 44952,
+      "purpose": "Saved model/data experiment or evaluation report; see repository_audit.md for interpretation.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "reports/recovered_dynamic_data.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 3369,
+      "purpose": "Saved model/data experiment or evaluation report; see repository_audit.md for interpretation.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "reports/regression.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 1282,
+      "purpose": "Saved model/data experiment or evaluation report; see repository_audit.md for interpretation.",
+      "inspection_status": "metadata_or_report_structure_reviewed"
+    },
+    {
+      "path": "reports/repository_audit.md",
+      "entry_type": "file",
+      "file_type": "Markdown documentation",
+      "size_bytes": 43100,
+      "purpose": "Human-readable repository architecture and file-by-file audit.",
+      "inspection_status": "generated_and_reviewed"
+    },
+    {
+      "path": "reports/repository_file_inventory.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 139585,
+      "purpose": "Recursive inventory with type, size, purpose, and inspection status.",
+      "inspection_status": "generated_and_strict_json_validated"
+    },
+    {
+      "path": "reports/repository_ml_audit.json",
+      "entry_type": "file",
+      "file_type": "JSON data/config/report",
+      "size_bytes": 13461,
+      "purpose": "Structured production/experimental ML artifact and evaluation audit.",
+      "inspection_status": "generated_and_strict_json_validated"
+    },
+    {
+      "path": "reports/residual_fp_correction_run.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 1160,
+      "purpose": "Saved model/data experiment or evaluation report; see repository_audit.md for interpretation.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "requirements.txt",
+      "entry_type": "file",
+      "file_type": "Text data/log/feed",
+      "size_bytes": 117,
+      "purpose": "Text dataset/feed or execution log; contents not fully inspected.",
+      "inspection_status": "path_size_or_report_summary_only"
+    },
+    {
+      "path": "run_vigil.bat",
+      "entry_type": "file",
+      "file_type": "Windows batch script",
+      "size_bytes": 377,
+      "purpose": "Windows helper script; paths/actions reviewed from file content.",
+      "inspection_status": "metadata_only"
+    },
+    {
+      "path": "runme.bat",
+      "entry_type": "file",
+      "file_type": "Windows batch script",
+      "size_bytes": 89,
+      "purpose": "Windows helper script; paths/actions reviewed from file content.",
+      "inspection_status": "metadata_only"
+    },
+    {
+      "path": "scripts",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 334161,
+      "file_count": 17,
+      "purpose": "Offline data, evaluation, and experiment utilities.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "scripts/analyze_dynamic_training_bias.py",
+      "entry_type": "file",
+      "file_type": "Python source/script",
+      "size_bytes": 11894,
+      "purpose": "Offline training/data/evaluation helper; see source name and reports.",
+      "inspection_status": "source_outline_and_signatures_reviewed_not_line_by_line"
+    },
+    {
+      "path": "scripts/analyze_experiment_failure.py",
+      "entry_type": "file",
+      "file_type": "Python source/script",
+      "size_bytes": 42837,
+      "purpose": "Offline training/data/evaluation helper; see source name and reports.",
+      "inspection_status": "source_outline_and_signatures_reviewed_not_line_by_line"
+    },
+    {
+      "path": "scripts/baseline_dynamic_urls.py",
+      "entry_type": "file",
+      "file_type": "Python source/script",
+      "size_bytes": 2620,
+      "purpose": "Offline training/data/evaluation helper; see source name and reports.",
+      "inspection_status": "source_outline_and_signatures_reviewed_not_line_by_line"
+    },
+    {
+      "path": "scripts/build_dynamic_benign_cohort.py",
+      "entry_type": "file",
+      "file_type": "Python source/script",
+      "size_bytes": 9801,
+      "purpose": "Offline training/data/evaluation helper; see source name and reports.",
+      "inspection_status": "source_outline_and_signatures_reviewed_not_line_by_line"
+    },
+    {
+      "path": "scripts/collect_benign_dynamic_urls.py",
+      "entry_type": "file",
+      "file_type": "Python source/script",
+      "size_bytes": 21074,
+      "purpose": "Offline training/data/evaluation helper; see source name and reports.",
+      "inspection_status": "source_outline_and_signatures_reviewed_not_line_by_line"
+    },
+    {
+      "path": "scripts/dynamic_counterfactual_analysis.py",
+      "entry_type": "file",
+      "file_type": "Python source/script",
+      "size_bytes": 5199,
+      "purpose": "Offline training/data/evaluation helper; see source name and reports.",
+      "inspection_status": "source_outline_and_signatures_reviewed_not_line_by_line"
+    },
+    {
+      "path": "scripts/dynamic_url_false_positive_analysis.py",
+      "entry_type": "file",
+      "file_type": "Python source/script",
+      "size_bytes": 49819,
+      "purpose": "Offline training/data/evaluation helper; see source name and reports.",
+      "inspection_status": "source_outline_and_signatures_reviewed_not_line_by_line"
+    },
+    {
+      "path": "scripts/evaluate_dynamic_candidate.py",
+      "entry_type": "file",
+      "file_type": "Python source/script",
+      "size_bytes": 19385,
+      "purpose": "Offline training/data/evaluation helper; see source name and reports.",
+      "inspection_status": "source_outline_and_signatures_reviewed_not_line_by_line"
+    },
+    {
+      "path": "scripts/external_phishing_error_analysis.py",
+      "entry_type": "file",
+      "file_type": "Python source/script",
+      "size_bytes": 11637,
+      "purpose": "Offline training/data/evaluation helper; see source name and reports.",
+      "inspection_status": "source_outline_and_signatures_reviewed_not_line_by_line"
+    },
+    {
+      "path": "scripts/load_murl.py",
+      "entry_type": "file",
+      "file_type": "Python source/script",
+      "size_bytes": 2649,
+      "purpose": "Offline training/data/evaluation helper; see source name and reports.",
+      "inspection_status": "source_outline_and_signatures_reviewed_not_line_by_line"
+    },
+    {
+      "path": "scripts/record_candidate_evaluation.py",
+      "entry_type": "file",
+      "file_type": "Python source/script",
+      "size_bytes": 5089,
+      "purpose": "Offline training/data/evaluation helper; see source name and reports.",
+      "inspection_status": "source_outline_and_signatures_reviewed_not_line_by_line"
+    },
+    {
+      "path": "scripts/run_auto_ml_experiment.py",
+      "entry_type": "file",
+      "file_type": "Python source/script",
+      "size_bytes": 56623,
+      "purpose": "Offline training/data/evaluation helper; see source name and reports.",
+      "inspection_status": "source_outline_and_signatures_reviewed_not_line_by_line"
+    },
+    {
+      "path": "scripts/run_domain_model_experiment.py",
+      "entry_type": "file",
+      "file_type": "Python source/script",
+      "size_bytes": 16261,
+      "purpose": "Offline training/data/evaluation helper; see source name and reports.",
+      "inspection_status": "source_outline_and_signatures_reviewed_not_line_by_line"
+    },
+    {
+      "path": "scripts/train_benign_dynamic_url_experiment.py",
+      "entry_type": "file",
+      "file_type": "Python source/script",
+      "size_bytes": 49760,
+      "purpose": "Offline training/data/evaluation helper; see source name and reports.",
+      "inspection_status": "source_outline_and_signatures_reviewed_not_line_by_line"
+    },
+    {
+      "path": "scripts/train_dynamic_candidate.py",
+      "entry_type": "file",
+      "file_type": "Python source/script",
+      "size_bytes": 15730,
+      "purpose": "Offline training/data/evaluation helper; see source name and reports.",
+      "inspection_status": "source_outline_and_signatures_reviewed_not_line_by_line"
+    },
+    {
+      "path": "scripts/validation_report.py",
+      "entry_type": "file",
+      "file_type": "Python source/script",
+      "size_bytes": 1576,
+      "purpose": "Offline training/data/evaluation helper; see source name and reports.",
+      "inspection_status": "source_outline_and_signatures_reviewed_not_line_by_line"
+    },
+    {
+      "path": "scripts/verify_phishing_feed.py",
+      "entry_type": "file",
+      "file_type": "Python source/script",
+      "size_bytes": 12207,
+      "purpose": "Offline training/data/evaluation helper; see source name and reports.",
+      "inspection_status": "source_outline_and_signatures_reviewed_not_line_by_line"
+    },
+    {
+      "path": "service.py",
+      "entry_type": "file",
+      "file_type": "Python source/script",
+      "size_bytes": 7114,
+      "purpose": "Central model loading, URL inference, thresholds, risk score, and evidence.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "test",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 399,
+      "file_count": 1,
+      "purpose": "Manual/sample test material.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "test/sample set.md",
+      "entry_type": "file",
+      "file_type": "Markdown documentation",
+      "size_bytes": 399,
+      "purpose": "Project documentation or manual test material.",
+      "inspection_status": "headings_or_selected_sections_reviewed"
+    },
+    {
+      "path": "tests",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 8118,
+      "file_count": 1,
+      "purpose": "Python regression test suite.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "tests/test_pipeline.py",
+      "entry_type": "file",
+      "file_type": "Python source/script",
+      "size_bytes": 8118,
+      "purpose": "Python inference/API regression tests.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "train_balanced_experiment.py",
+      "entry_type": "file",
+      "file_type": "Python source/script",
+      "size_bytes": 56781,
+      "purpose": "Python application, training, evaluation, or maintenance source; see file-by-file audit.",
+      "inspection_status": "source_outline_and_signatures_reviewed_not_line_by_line"
+    },
+    {
+      "path": "train_dynamic_augmentation_experiment.py",
+      "entry_type": "file",
+      "file_type": "Python source/script",
+      "size_bytes": 42295,
+      "purpose": "Python application, training, evaluation, or maintenance source; see file-by-file audit.",
+      "inspection_status": "source_outline_and_signatures_reviewed_not_line_by_line"
+    },
+    {
+      "path": "train_dynamic_hardening_experiment.py",
+      "entry_type": "file",
+      "file_type": "Python source/script",
+      "size_bytes": 94652,
+      "purpose": "Python application, training, evaluation, or maintenance source; see file-by-file audit.",
+      "inspection_status": "source_outline_and_signatures_reviewed_not_line_by_line"
+    },
+    {
+      "path": "train_dynamic_recovery_experiment.py",
+      "entry_type": "file",
+      "file_type": "Python source/script",
+      "size_bytes": 71420,
+      "purpose": "Python application, training, evaluation, or maintenance source; see file-by-file audit.",
+      "inspection_status": "source_outline_and_signatures_reviewed_not_line_by_line"
+    },
+    {
+      "path": "train_model_backup_before_balancing.py",
+      "entry_type": "file",
+      "file_type": "Python source/script",
+      "size_bytes": 47665,
+      "purpose": "Python application, training, evaluation, or maintenance source; see file-by-file audit.",
+      "inspection_status": "source_outline_and_signatures_reviewed_not_line_by_line"
+    },
+    {
+      "path": "train_model.py",
+      "entry_type": "file",
+      "file_type": "Python source/script",
+      "size_bytes": 47665,
+      "purpose": "Python application, training, evaluation, or maintenance source; see file-by-file audit.",
+      "inspection_status": "partial_major_sections_and_entrypoint_reviewed"
+    },
+    {
+      "path": "train_model.py.backup_dynamic",
+      "entry_type": "file",
+      "file_type": "BACKUP_DYNAMIC file",
+      "size_bytes": 22160,
+      "purpose": "Project file train_model.py.backup_dynamic.",
+      "inspection_status": "source_outline_and_signatures_reviewed_not_line_by_line"
+    },
+    {
+      "path": "trial",
+      "entry_type": "directory",
+      "file_type": "directory",
+      "size_bytes": 33803,
+      "file_count": 2,
+      "purpose": "Legacy prototype applications.",
+      "inspection_status": "directory_metadata_reviewed"
+    },
+    {
+      "path": "trial/app.py",
+      "entry_type": "file",
+      "file_type": "Python source/script",
+      "size_bytes": 29783,
+      "purpose": "Legacy prototype source; not wired to the current manifest/API architecture.",
+      "inspection_status": "source_outline_and_signatures_reviewed_not_line_by_line"
+    },
+    {
+      "path": "trial/popup.js",
+      "entry_type": "file",
+      "file_type": "JavaScript source",
+      "size_bytes": 4020,
+      "purpose": "Legacy prototype source; not wired to the current manifest/API architecture.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "validation_check.py",
+      "entry_type": "file",
+      "file_type": "Python source/script",
+      "size_bytes": 692,
+      "purpose": "Python application, training, evaluation, or maintenance source; see file-by-file audit.",
+      "inspection_status": "content_reviewed"
+    },
+    {
+      "path": "validation_report.md",
+      "entry_type": "file",
+      "file_type": "Markdown documentation",
+      "size_bytes": 1350,
+      "purpose": "Project documentation or manual test material.",
+      "inspection_status": "headings_or_selected_sections_reviewed"
+    },
+    {
+      "path": "vigil_history.sqlite3",
+      "entry_type": "file",
+      "file_type": "SQLite runtime history database",
+      "size_bytes": 45056,
+      "purpose": "Local runtime scan-history database; records not inspected.",
+      "inspection_status": "file_metadata_only_not_queried"
+    }
+  ]
+}

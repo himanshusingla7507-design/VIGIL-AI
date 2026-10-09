@@ -20,9 +20,3 @@ After VIGIL canonicalization, 9,017 Phishing.Database rows overlap PhiUSIIL and 
 ## Final data
 
 Training rows: 854,870. External validation rows: 154,931. Random and registered-domain-aware evaluation splits are performed by the existing training pipeline after this preparation step.
-
-## Model decision
-
-The freshly trained candidate was rejected and the existing `CalibratedHistGradientBoosting` baseline was restored. The candidate improved internal phishing recall/FNR, but its random/domain-aware FPR rose to 0.1132/0.1146 and its serialized model was approximately 648 MB. The phishing-only holdout measured recall 0.9572 and PR-AUC 1.0, but cannot estimate FPR and therefore cannot override the promotion gate. These values are freshly measured; baseline comparison values are historical metadata.
-
-The active baseline remains unchanged. `evaluate_model.py` reports a dataset-binding block because the audited candidate dataset is intentionally retained separately from the dataset used to train the active baseline.

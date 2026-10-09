@@ -1,0 +1,354 @@
+{
+  "experiment": "exp002_verified_sources_domain_balanced",
+  "dataset": "experiments\\auto_ml\\exp002_verified_sources_domain_balanced\\dataset.csv",
+  "feature_count": 29,
+  "features": [
+    "URLLength",
+    "HostnameLength",
+    "PathLength",
+    "QueryLength",
+    "FragmentLength",
+    "PathSegmentCount",
+    "QueryParameterCount",
+    "DotCount",
+    "SubdomainDepth",
+    "NoOfDigitsInURL",
+    "DigitRatioInURL",
+    "NoOfLettersInURL",
+    "LetterRatioInURL",
+    "NoOfEqualsInURL",
+    "NoOfQMarkInURL",
+    "NoOfAmpersandInURL",
+    "NoOfAtInURL",
+    "NoOfHyphenInURL",
+    "NoOfUnderscoreInURL",
+    "URLPercentEncodingCount",
+    "HasObfuscation",
+    "HasUserInfo",
+    "HasPort",
+    "IsDomainIP",
+    "IsShortened",
+    "HasSuspiciousTLD",
+    "HasSuspiciousToken",
+    "IsTrustedTLD",
+    "URLEntropy"
+  ],
+  "legitimate_source": {
+    "path": "experiments\\auto_ml\\data_bootstrap_002\\legitimate_urls.csv",
+    "input_rows": 3594,
+    "analysis_unique_rows": 3594,
+    "duplicates_removed": 0,
+    "registered_domains": 59,
+    "source_counts": {
+      "Wikimedia Wikipedia": 111,
+      "Mozilla Developer Network": 77,
+      "GitHub": 97,
+      "NASA": 74,
+      "Library of Congress": 19,
+      "World Wide Web Consortium": 66,
+      "Internet Engineering Task Force": 51,
+      "arXiv": 77,
+      "OpenStreetMap": 91,
+      "World Health Organization": 99,
+      "Massachusetts Institute of Technology": 52,
+      "Stanford University": 49,
+      "University of California, Berkeley": 58,
+      "GOV.UK": 70,
+      "European Space Agency": 54,
+      "Chrome for Developers": 36,
+      "RFC Editor": 54,
+      "NumPy": 37,
+      "pandas": 82,
+      "PyTorch": 58,
+      "TensorFlow": 73,
+      "Go": 71,
+      "Rust": 28,
+      "Kotlin": 54,
+      "PHP": 86,
+      "Ruby": 29,
+      "Perl": 26,
+      "Julia": 73,
+      "SQLite": 66,
+      "GNU Project": 67,
+      "Linux Kernel": 46,
+      "OpenAPI Initiative": 48,
+      "OWASP": 27,
+      "docs.rs": 70,
+      "Django": 61,
+      "Centers for Disease Control and Prevention": 92,
+      "US Food and Drug Administration": 90,
+      "National Institute of Standards and Technology": 54,
+      "Environmental Protection Agency": 41,
+      "US Department of Energy": 50,
+      "USA.gov": 30,
+      "US National Park Service": 75,
+      "US Census Bureau": 56,
+      "US Securities and Exchange Commission": 94,
+      "Federal Reserve": 69,
+      "Federal Trade Commission": 69,
+      "Consumer Financial Protection Bureau": 69,
+      "Harvard University": 75,
+      "California Institute of Technology": 50,
+      "Carnegie Mellon University": 50,
+      "Cornell University": 35,
+      "University of Oxford": 15,
+      "University of Cambridge": 101,
+      "United Nations": 47,
+      "World Bank": 61,
+      "UNESCO": 2,
+      "BBC": 61,
+      "NPR": 80,
+      "The Guardian": 91
+    }
+  },
+  "phishing_source": {
+    "path": "data\\external\\phishing_database_active.txt",
+    "physical_lines": 789054,
+    "blank_lines": 0,
+    "invalid_urls": 674,
+    "selection": "One URL per registered domain outside all legitimate and benchmark domains; deterministic SHA-256 ordering within the matching primary structure bucket."
+  },
+  "split_method": "Deterministic SHA-256 rank assignment over legitimate registered domains, with exact target-count quantiles; the resulting cutoffs assign phishing-feed registered domains to the same four partitions. Positive and phishing domains are kept in exactly one partition.",
+  "domain_split_plan": {
+    "eligible_legitimate_domains": 57,
+    "legitimate_domains_per_split": {
+      "train": 34,
+      "calibration": 9,
+      "validation": 8,
+      "test": 6
+    },
+    "hash_score_cutoffs": {
+      "train_upper_exclusive": 0.5002106086652395,
+      "calibration_upper_exclusive": 0.6442670724260321,
+      "validation_upper_exclusive": 0.7542879701502527
+    },
+    "benchmark_reserved_positive_domains": [
+      "github.com",
+      "wikipedia.org"
+    ]
+  },
+  "split_rows": {
+    "train": {
+      "total": 4006,
+      "legitimate": 2003,
+      "phishing": 2003,
+      "registered_domains": 2037,
+      "source_counts": {
+        "NASA": 74,
+        "Library of Congress": 19,
+        "World Wide Web Consortium": 66,
+        "Internet Engineering Task Force": 51,
+        "arXiv": 77,
+        "OpenStreetMap": 91,
+        "World Health Organization": 99,
+        "Stanford University": 49,
+        "RFC Editor": 54,
+        "pandas": 82,
+        "PyTorch": 58,
+        "TensorFlow": 73,
+        "PHP": 86,
+        "Perl": 26,
+        "Julia": 73,
+        "GNU Project": 67,
+        "OpenAPI Initiative": 48,
+        "Centers for Disease Control and Prevention": 92,
+        "National Institute of Standards and Technology": 54,
+        "Environmental Protection Agency": 41,
+        "US Department of Energy": 50,
+        "USA.gov": 30,
+        "US Census Bureau": 56,
+        "Federal Reserve": 69,
+        "Federal Trade Commission": 69,
+        "Consumer Financial Protection Bureau": 69,
+        "California Institute of Technology": 50,
+        "Carnegie Mellon University": 50,
+        "Cornell University": 35,
+        "University of Oxford": 15,
+        "University of Cambridge": 101,
+        "United Nations": 47,
+        "UNESCO": 2,
+        "NPR": 80,
+        "phishing_database_active": 2003
+      },
+      "primary_structures": {
+        "homepage": 30,
+        "path_only": 3392,
+        "path_plus_query": 500,
+        "query_only": 84
+      }
+    },
+    "calibration": {
+      "total": 884,
+      "legitimate": 442,
+      "phishing": 442,
+      "registered_domains": 451,
+      "source_counts": {
+        "Massachusetts Institute of Technology": 52,
+        "European Space Agency": 54,
+        "Rust": 28,
+        "Ruby": 29,
+        "Linux Kernel": 46,
+        "OWASP": 27,
+        "docs.rs": 70,
+        "US National Park Service": 75,
+        "World Bank": 61,
+        "phishing_database_active": 442
+      },
+      "primary_structures": {
+        "homepage": 4,
+        "path_only": 780,
+        "path_plus_query": 94,
+        "query_only": 6
+      }
+    },
+    "validation": {
+      "total": 1098,
+      "legitimate": 549,
+      "phishing": 549,
+      "registered_domains": 557,
+      "source_counts": {
+        "University of California, Berkeley": 58,
+        "GOV.UK": 70,
+        "NumPy": 37,
+        "Go": 71,
+        "Kotlin": 54,
+        "US Food and Drug Administration": 90,
+        "US Securities and Exchange Commission": 94,
+        "Harvard University": 75,
+        "phishing_database_active": 549
+      },
+      "primary_structures": {
+        "homepage": 8,
+        "path_only": 910,
+        "path_plus_query": 172,
+        "query_only": 8
+      }
+    },
+    "test": {
+      "total": 784,
+      "legitimate": 392,
+      "phishing": 392,
+      "registered_domains": 398,
+      "source_counts": {
+        "Mozilla Developer Network": 77,
+        "Chrome for Developers": 36,
+        "SQLite": 66,
+        "Django": 61,
+        "BBC": 61,
+        "The Guardian": 91,
+        "phishing_database_active": 392
+      },
+      "primary_structures": {
+        "path_only": 666,
+        "homepage": 4,
+        "path_plus_query": 92,
+        "query_only": 22
+      }
+    }
+  },
+  "phishing_structure_quotas": {
+    "train": {
+      "rows": 2003,
+      "primary_structure_counts": {
+        "homepage": 15,
+        "query_only": 42,
+        "path_plus_query": 250,
+        "path_only": 1696
+      },
+      "registered_domains": 2003
+    },
+    "calibration": {
+      "rows": 442,
+      "primary_structure_counts": {
+        "homepage": 2,
+        "query_only": 3,
+        "path_plus_query": 47,
+        "path_only": 390
+      },
+      "registered_domains": 442
+    },
+    "validation": {
+      "rows": 549,
+      "primary_structure_counts": {
+        "homepage": 4,
+        "query_only": 4,
+        "path_plus_query": 86,
+        "path_only": 455
+      },
+      "registered_domains": 549
+    },
+    "test": {
+      "rows": 392,
+      "primary_structure_counts": {
+        "homepage": 2,
+        "query_only": 11,
+        "path_plus_query": 46,
+        "path_only": 333
+      },
+      "registered_domains": 392
+    }
+  },
+  "registered_domain_split_overlaps": {
+    "train|calibration": 0,
+    "train|validation": 0,
+    "train|test": 0,
+    "calibration|validation": 0,
+    "calibration|test": 0,
+    "validation|test": 0
+  },
+  "benchmark": {
+    "version": "v1",
+    "legitimate_urls": 600,
+    "phishing_urls": 392,
+    "baseline_urls": 16,
+    "counterfactual_urls": 70,
+    "counterfactual_rows_are_evaluation_only": true,
+    "no_synthetic_training_urls": true,
+    "sha256": {
+      "experiments\\auto_ml\\benchmark_v1\\legitimate_domain_disjoint.csv": "541749cbdee74446f5348f9978b05838101d18240596414bc1c65e3f1533e694",
+      "experiments\\auto_ml\\benchmark_v1\\phishing_domain_disjoint.csv": "706c12d4002e6ef8f6bb8f60087cc1ad90a1cbbe63a67e1c0a22b39850ea998c",
+      "experiments\\auto_ml\\benchmark_v1\\fixed_urls.json": "2d04fd816d86fa3b2bb862be58726a792e1f34395cc94fc0b9392a52bb0e1fcc"
+    }
+  },
+  "data_coverage": {
+    "legitimate_structure_counts": {
+      "path": 3510,
+      "encoded": 178,
+      "docs": 487,
+      "api": 33,
+      "homepage": 15,
+      "search": 209,
+      "query": 584,
+      "path_plus_query": 524,
+      "multiple_query_params": 273,
+      "pagination": 77,
+      "fragment": 449,
+      "long_url": 67,
+      "login_account": 27,
+      "long_query": 35,
+      "tracking": 21
+    },
+    "phishing_structure_counts": {
+      "homepage": 23,
+      "query": 489,
+      "multiple_query_params": 192,
+      "tracking": 7,
+      "long_query": 161,
+      "docs": 61,
+      "long_url": 165,
+      "path": 3303,
+      "path_plus_query": 429,
+      "login_account": 535,
+      "encoded": 87,
+      "pagination": 4,
+      "search": 3,
+      "api": 7
+    },
+    "limitations": [
+      "The phishing feed has no fragment-bearing URLs in the sampled pool; fragment-bearing verified legitimate URLs are retained only in the domain-held-out benchmark.",
+      "API-like and search URL examples are sparse in the phishing feed and therefore remain explicitly measured as cohort metrics."
+    ]
+  },
+  "production_modified": false,
+  "training_performed": false
+}

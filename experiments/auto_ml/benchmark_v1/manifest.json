@@ -1,0 +1,8 @@
+{
+  "version": "v1",
+  "legitimate_csv": "legitimate_domain_disjoint.csv",
+  "phishing_csv": "phishing_domain_disjoint.csv",
+  "fixed_urls": "fixed_urls.json",
+  "source_report": "experiments\\auto_ml\\exp003_url_char_ngram_hybrid\\dataset_composition.json",
+  "immutable_after_creation": true
+}

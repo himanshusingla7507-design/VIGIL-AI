@@ -1,0 +1,108 @@
+{
+  "summary": {
+    "total": 16,
+    "SAFE": 0,
+    "SUSPICIOUS": 0,
+    "PHISHING": 16,
+    "average_probability": 0.997798,
+    "maximum_probability": 0.998023
+  },
+  "results": [
+    {
+      "url": "https://www.google.com/search?q=phishing+prevention",
+      "probability": 0.997742,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.bing.com/search?q=phishing+prevention",
+      "probability": 0.997715,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.youtube.com/results?search_query=phishing+prevention",
+      "probability": 0.997701,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://github.com/microsoft/vscode",
+      "probability": 0.998023,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://github.com/search?q=python+url+parser&type=repositories",
+      "probability": 0.997742,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.amazon.com/s?k=usb+c+hub",
+      "probability": 0.998018,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/python/",
+      "probability": 0.997835,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://stackoverflow.com/questions/tagged/python",
+      "probability": 0.997635,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Computer_security",
+      "probability": 0.997743,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.reddit.com/r/cybersecurity/",
+      "probability": 0.998023,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://accounts.google.com/signin/v2/identifier",
+      "probability": 0.997815,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.google.com/search?q=security+news&utm_source=baseline&utm_medium=organic",
+      "probability": 0.997742,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.bing.com/search?q=python&count=20&form=QBLH&sp=-1",
+      "probability": 0.997812,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/URL#Components",
+      "probability": 0.997715,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.google.com/search?q=URL%20encoding%20examples",
+      "probability": 0.997812,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.google.com/search?q=legitimate+dynamic+url+baseline+with+a+deliberately+long+query+containing+several+ordinary+words+for+testing+how+the+production+model+responds+to+long+search+queries",
+      "probability": 0.997701,
+      "label": "PHISHING",
+      "model_version": "v2.1.0"
+    }
+  ]
+}

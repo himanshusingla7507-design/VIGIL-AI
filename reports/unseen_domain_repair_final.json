@@ -1,0 +1,127 @@
+{
+  "run_id": "unseen_domain_repair_20261009",
+  "created_at_utc": "2026-10-09T09:34:00Z",
+  "status": "BLOCKED_BEFORE_TRAINING",
+  "experiments_completed": 0,
+  "experiment_budget": 12,
+  "best_new_candidate": null,
+  "prior_candidate_reference": {
+    "name": "character_ngrams_plus_numeric",
+    "artifact": "experiments/auto_ml/false_positive_repair_20261009T084933Z/best_validation_candidate.joblib",
+    "threshold": 0.48177141554223285,
+    "metrics_are_from_prior_exposed_data": true
+  },
+  "prior_candidate_metrics_not_independent_for_this_run": {
+    "internal_domain_disjoint_test": {
+      "legitimate_fpr": {
+        "numerator": 162,
+        "denominator": 1039,
+        "percentage": 15.591915303176132,
+        "wilson_95_ci_percentage": [
+          13.513203054107148,
+          17.92412196281694
+        ]
+      },
+      "phishing_fnr": {
+        "numerator": 32,
+        "denominator": 1039,
+        "percentage": 3.079884504331087
+      },
+      "phishing_recall": {
+        "numerator": 1007,
+        "denominator": 1039,
+        "percentage": 96.92011549566891,
+        "wilson_95_ci_percentage": [
+          95.68452198980279,
+          97.81003480530076
+        ]
+      },
+      "precision_percentage": 86.14,
+      "brier_score": 0.06579175514367513,
+      "pr_auc": 0.9759603878524791,
+      "roc_auc": 0.9794936828463736,
+      "expected_calibration_error_10_bins": 0.059894399546965536,
+      "legitimate_domains": 24,
+      "phishing_domains": 793
+    },
+    "benchmark_v1_regression_only": {
+      "legitimate_fpr": {
+        "numerator": 51,
+        "denominator": 600,
+        "percentage": 8.5,
+        "wilson_95_ci_percentage": [
+          6.524029664442158,
+          11.003991519695003
+        ]
+      },
+      "phishing_fnr": {
+        "numerator": 11,
+        "denominator": 392,
+        "percentage": 2.806122448979592
+      },
+      "phishing_recall": {
+        "numerator": 381,
+        "denominator": 392,
+        "percentage": 97.1938775510204,
+        "wilson_95_ci_percentage": [
+          95.04574811789948,
+          98.42601734656655
+        ]
+      }
+    }
+  },
+  "acceptance_gates": {
+    "legitimate_fpr_at_most_0_5_percent": {
+      "status": "UNVERIFIED_FOR_THIS_RUN",
+      "reason": "No unused legitimate lockbox. Prior benchmark v1 FPR is 8.50% and is regression-only."
+    },
+    "phishing_recall_at_least_98_percent": {
+      "status": "UNVERIFIED_FOR_THIS_RUN",
+      "reason": "No new domain-disjoint phishing lockbox certified."
+    },
+    "hard_phishing_recall_at_least_97_percent": {
+      "status": "UNVERIFIED",
+      "reason": "Benchmark v1 is exposed; refreshed feed domain overlap with all historical inputs is not certified."
+    },
+    "normal_path_query_encoding_false_positive_behavior": {
+      "status": "UNVERIFIED_FOR_THIS_RUN",
+      "reason": "No new evaluation rows."
+    },
+    "calibration_and_threshold_selection": {
+      "status": "NOT_RUN",
+      "reason": "No new calibration/validation domains available."
+    },
+    "registered_domain_and_source_group_leakage": {
+      "status": "NO_NEW_SPLIT_CREATED"
+    },
+    "production_artifacts_unchanged": {
+      "status": "PASS"
+    }
+  },
+  "data_audit": {
+    "report_json": "reports/data_quality_audit.json",
+    "report_markdown": "reports/data_quality_audit.md",
+    "decision": "BLOCKED_BEFORE_TRAINING",
+    "new_phishtank_snapshot_downloaded": true,
+    "new_phishtank_snapshot_used_for_training_or_evaluation": false,
+    "new_legitimate_lockbox_collected": false,
+    "destination_phishing_urls_fetched": 0
+  },
+  "tests": {
+    "backend_pipeline": {
+      "passed": 14,
+      "failed": 1,
+      "status": "FAIL",
+      "failure": "ModuleNotFoundError: No module named 'scripts.final_ml_pass'"
+    },
+    "extension": {
+      "passed": 23,
+      "failed": 0,
+      "status": "PASS"
+    }
+  },
+  "production_hashes_unchanged": true,
+  "production_files_modified": false,
+  "candidate_promoted": false,
+  "stop_reason": "Available validation/test evidence is exposed; no fresh legitimate lockbox exists, and refreshed phishing snapshot domain independence could not be established. Further training would not support the requested unseen-domain claims."
+}

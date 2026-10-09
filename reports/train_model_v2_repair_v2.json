@@ -1,0 +1,1359 @@
+{
+  "generated_at_utc": "2026-10-09T11:31:00+00:00",
+  "experiment": "train_model_v2",
+  "candidate_status": "EXPERIMENTAL_NOT_PROMOTED",
+  "production_ready": false,
+  "production_artifacts_modified": false,
+  "dataset": {
+    "path": "data\\processed\\clean_dataset.csv",
+    "sha256": "af373d723739836235e630e9198d902a690f9cbbd994a2b4fc9e2a0ca71e1dcc",
+    "rows_before_deduplication": 854870,
+    "rows_before": 854870,
+    "rows_after": 854870,
+    "invalid_urls": 0,
+    "normalized_duplicate_rows_removed": 0,
+    "registered_domains": 463308,
+    "label_counts_before_deduplication": {
+      "0": 134849,
+      "1": 720021
+    },
+    "label_counts_after_deduplication": {
+      "0": 134849,
+      "1": 720021
+    },
+    "source_label_counts_after_deduplication": {
+      "PhiUSIIL": {
+        "0": 134849,
+        "1": 99584
+      },
+      "phishing_database_active": {
+        "1": 620437
+      }
+    },
+    "missing_collection_date_rows": 854870,
+    "collection_date_note": "All dates are missing; the dataset summary confirms dates were not supplied by either source.",
+    "domains_with_both_labels": 296,
+    "domains_with_single_label": 463012,
+    "domain_label_conflicts": "Retained and reported. All rows for a registered domain are assigned to exactly one split; the conflict may reflect distinct benign and malicious URLs on the same domain or source-label noise."
+  },
+  "optional_legitimate_datasets": {
+    "legitimate_dynamic_training": {
+      "path": "data\\experiments\\legitimate_dynamic_training.csv",
+      "sha256": "0ffb97d38b36521727ce05854f79a54a312746a90c872b76c4e38b859c1eed60",
+      "status": "VALID_LEGITIMATE_REGRESSION_ONLY",
+      "label_counts": {
+        "0": 95
+      },
+      "rows_before": 95,
+      "rows_after": 95,
+      "invalid_urls": 0,
+      "normalized_duplicate_rows_removed": 0,
+      "registered_domains": 17,
+      "used_for_training": false,
+      "prior_use": "Previously used in an earlier candidate experiment."
+    },
+    "legitimate_dynamic_benchmark": {
+      "path": "data\\experiments\\legitimate_dynamic_benchmark.csv",
+      "sha256": "e80df11ac2d1cfeedcbf8f7ee67313d260e314e6c0623643eb819b35dcaa5e94",
+      "status": "VALID_LEGITIMATE_REGRESSION_ONLY",
+      "label_counts": {
+        "0": 544
+      },
+      "rows_before": 544,
+      "rows_after": 544,
+      "invalid_urls": 0,
+      "normalized_duplicate_rows_removed": 0,
+      "registered_domains": 65,
+      "used_for_training": false,
+      "prior_use": "Previously used as benchmark/regression data; not an untouched test."
+    },
+    "legitimate_training_v3": {
+      "path": "data\\experiments\\legitimate_training_v3.csv",
+      "sha256": "5deb4c56cce486d1922c883394351537502e369c646075f228cc0bdb5baa56f6",
+      "status": "VALID_LEGITIMATE_REGRESSION_ONLY",
+      "label_counts": {
+        "0": 298
+      },
+      "rows_before": 298,
+      "rows_after": 298,
+      "invalid_urls": 0,
+      "normalized_duplicate_rows_removed": 0,
+      "registered_domains": 17,
+      "used_for_training": false,
+      "prior_use": "Previously used/reviewed in earlier training-data experiments."
+    },
+    "external_benign_dynamic": {
+      "path": "data\\external\\benign_dynamic\\legitimate_dynamic_urls.csv",
+      "status": "MISSING_OPTIONAL"
+    }
+  },
+  "training_policy": {
+    "dynamic_datasets_used_for_training": [
+      "legitimate_dynamic_benchmark",
+      "legitimate_dynamic_training",
+      "legitimate_training_v3"
+    ],
+    "dynamic_datasets_used_for_regression": [
+      "legitimate_dynamic_benchmark",
+      "legitimate_dynamic_training",
+      "legitimate_training_v3"
+    ],
+    "dynamic_data_partitioning": "All normalized rows are combined and deduplicated before registered-domain grouping; dynamic data is evaluated only on rows assigned to the untouched test partition.",
+    "dynamic_datasets_were_previously_exposed": true,
+    "augmentation": {
+      "primary_rows": 854870,
+      "dynamic_rows_before_deduplication": 937,
+      "dynamic_rows_after_deduplication": 746,
+      "dynamic_duplicate_rows_removed": 191,
+      "dynamic_rows_by_dataset": {
+        "legitimate_dynamic_training": 95,
+        "legitimate_dynamic_benchmark": 544,
+        "legitimate_training_v3": 298
+      },
+      "combined_same_label_duplicate_rows_removed": 0,
+      "combined_rows": 855616,
+      "combined_label_counts": {
+        "0": 135595,
+        "1": 720021
+      },
+      "combined_registered_domains": 463344
+    },
+    "sample_weighting": "Equal total weight per source_group within each class; classes have equal total mass.",
+    "normalization": "feature_extractor.normalize_url",
+    "registered_domain": "feature_extractor.get_registered_domain",
+    "labels": "clean_dataset.csv labels accepted as VIGIL: 0 legitimate, 1 phishing; source semantics checked against dataset audit"
+  },
+  "features": {
+    "extractor": "feature_extractor.extract_features",
+    "source": "production feature_names.pkl",
+    "names": [
+      "URLLength",
+      "HostnameLength",
+      "PathLength",
+      "QueryLength",
+      "FragmentLength",
+      "PathSegmentCount",
+      "QueryParameterCount",
+      "DotCount",
+      "SubdomainDepth",
+      "NoOfDigitsInURL",
+      "DigitRatioInURL",
+      "NoOfLettersInURL",
+      "LetterRatioInURL",
+      "NoOfEqualsInURL",
+      "NoOfQMarkInURL",
+      "NoOfAmpersandInURL",
+      "NoOfAtInURL",
+      "NoOfHyphenInURL",
+      "NoOfUnderscoreInURL",
+      "URLPercentEncodingCount",
+      "HasObfuscation",
+      "HasUserInfo",
+      "HasPort",
+      "IsDomainIP",
+      "IsShortened",
+      "HasSuspiciousTLD",
+      "HasSuspiciousToken",
+      "IsTrustedTLD",
+      "URLEntropy"
+    ],
+    "count": 29,
+    "exact_production_order": true
+  },
+  "model": {
+    "estimator": "HistGradientBoostingClassifier",
+    "parameters": {
+      "learning_rate": 0.05,
+      "max_iter": 100,
+      "max_leaf_nodes": 31,
+      "random_state": 44
+    },
+    "sample_weighting": "Equal total weight per source_group within each class on the training partition; classes have equal total mass.",
+    "calibration": {
+      "method": "LogisticRegression over raw estimator probabilities, fit without sample weights to retain calibration-partition prevalence",
+      "fit_partition": "registered-domain-disjoint calibration partition only",
+      "sample_weighting": "none; natural observed calibration rows",
+      "parameters": {
+        "solver": "lbfgs",
+        "max_iter": 1000,
+        "random_state": 44
+      }
+    }
+  },
+  "split": {
+    "method": "GroupShuffleSplit by registered domain; test 20%; calibration 25% of remaining rows",
+    "seed": 44,
+    "train": {
+      "rows": 511442,
+      "class_counts": {
+        "0": 81310,
+        "1": 430132
+      },
+      "registered_domains": 278006,
+      "source_counts": {
+        "phishing_database_active": 371102,
+        "PhiUSIIL": 139850,
+        "legitimate_dynamic_benchmark": 305,
+        "legitimate_training_v3": 126,
+        "legitimate_dynamic_training": 59
+      }
+    },
+    "calibration": {
+      "rows": 172704,
+      "class_counts": {
+        "0": 27081,
+        "1": 145623
+      },
+      "registered_domains": 92669,
+      "source_counts": {
+        "phishing_database_active": 126535,
+        "PhiUSIIL": 46036,
+        "legitimate_dynamic_benchmark": 73,
+        "legitimate_training_v3": 42,
+        "legitimate_dynamic_training": 18
+      }
+    },
+    "test": {
+      "rows": 171470,
+      "class_counts": {
+        "0": 27204,
+        "1": 144266
+      },
+      "registered_domains": 92669,
+      "source_counts": {
+        "phishing_database_active": 122800,
+        "PhiUSIIL": 48547,
+        "legitimate_dynamic_benchmark": 71,
+        "legitimate_training_v3": 34,
+        "legitimate_dynamic_training": 18
+      }
+    },
+    "registered_domain_overlaps": {
+      "train::calibration": 0,
+      "train::test": 0,
+      "calibration::test": 0
+    },
+    "registered_domain_overlap_checked_before_augmentation": false,
+    "no_registered_domain_crosses_partitions": true
+  },
+  "source_and_url_structure_audit": {
+    "by_source_and_label": {
+      "PhiUSIIL::label_0": {
+        "rows": 134849,
+        "registered_domains": 132185,
+        "feature_median": {
+          "URLLength": 22.0,
+          "HostnameLength": 15.0,
+          "PathLength": 0.0,
+          "QueryLength": 0.0,
+          "QueryParameterCount": 0.0,
+          "URLPercentEncodingCount": 0.0,
+          "HasSuspiciousTLD": 0.0,
+          "HasSuspiciousToken": 0.0,
+          "IsDomainIP": 0.0,
+          "IsTrustedTLD": 1.0,
+          "URLEntropy": 3.7622673511505127
+        },
+        "structure_rates": {
+          "homepage": 1.0,
+          "content_path": 0.0,
+          "search": 0.0,
+          "query": 0.0,
+          "multiple_query_parameters": 0.0,
+          "query_heavy": 0.0,
+          "encoded": 0.0,
+          "fragment": 0.0
+        }
+      },
+      "PhiUSIIL::label_1": {
+        "rows": 99584,
+        "registered_domains": 65628,
+        "feature_median": {
+          "URLLength": 32.0,
+          "HostnameLength": 19.0,
+          "PathLength": 0.0,
+          "QueryLength": 0.0,
+          "QueryParameterCount": 0.0,
+          "URLPercentEncodingCount": 0.0,
+          "HasSuspiciousTLD": 0.0,
+          "HasSuspiciousToken": 0.0,
+          "IsDomainIP": 0.0,
+          "IsTrustedTLD": 0.0,
+          "URLEntropy": 4.037844657897949
+        },
+        "structure_rates": {
+          "homepage": 0.7146830816195373,
+          "content_path": 0.2731462885604113,
+          "search": 0.0029221561696658096,
+          "query": 0.06078285668380463,
+          "multiple_query_parameters": 0.026791452442159382,
+          "query_heavy": 0.026791452442159382,
+          "encoded": 0.00880663560411311,
+          "fragment": 0.008344714010282776
+        }
+      },
+      "phishing_database_active::label_1": {
+        "rows": 620437,
+        "registered_domains": 269848,
+        "feature_median": {
+          "URLLength": 54.0,
+          "HostnameLength": 21.0,
+          "PathLength": 17.0,
+          "QueryLength": 0.0,
+          "QueryParameterCount": 0.0,
+          "URLPercentEncodingCount": 0.0,
+          "HasSuspiciousTLD": 0.0,
+          "HasSuspiciousToken": 0.0,
+          "IsDomainIP": 0.0,
+          "IsTrustedTLD": 0.0,
+          "URLEntropy": 4.350372791290283
+        },
+        "structure_rates": {
+          "homepage": 0.2405965472723258,
+          "content_path": 0.7452424661972126,
+          "search": 0.00218877984388423,
+          "query": 0.18608819267709695,
+          "multiple_query_parameters": 0.07467478567525793,
+          "query_heavy": 0.07467478567525793,
+          "encoded": 0.02347216558651402,
+          "fragment": 0.0
+        }
+      },
+      "verified_legitimate_dynamic::label_0": {
+        "rows": 746,
+        "registered_domains": 65,
+        "feature_median": {
+          "URLLength": 50.0,
+          "HostnameLength": 10.0,
+          "PathLength": 10.0,
+          "QueryLength": 0.0,
+          "QueryParameterCount": 0.0,
+          "URLPercentEncodingCount": 0.0,
+          "HasSuspiciousTLD": 0.0,
+          "HasSuspiciousToken": 0.0,
+          "IsDomainIP": 0.0,
+          "IsTrustedTLD": 1.0,
+          "URLEntropy": 4.29692268371582
+        },
+        "structure_rates": {
+          "homepage": 0.057640750670241284,
+          "content_path": 0.9155495978552279,
+          "search": 0.3739946380697051,
+          "query": 0.4410187667560322,
+          "multiple_query_parameters": 0.15147453083109919,
+          "query_heavy": 0.15147453083109919,
+          "encoded": 0.28418230563002683,
+          "fragment": 0.05227882037533512
+        }
+      }
+    },
+    "by_label": {
+      "0": {
+        "rows": 135595,
+        "feature_median": {
+          "URLLength": 22.0,
+          "HostnameLength": 15.0,
+          "PathLength": 0.0,
+          "QueryLength": 0.0,
+          "QueryParameterCount": 0.0,
+          "URLPercentEncodingCount": 0.0,
+          "HasSuspiciousTLD": 0.0,
+          "HasSuspiciousToken": 0.0,
+          "IsDomainIP": 0.0,
+          "IsTrustedTLD": 1.0,
+          "URLEntropy": 3.7622673511505127
+        },
+        "structure_rates": {
+          "homepage": 0.99481544304731,
+          "content_path": 0.005037058888602087,
+          "search": 0.0020575979940263282,
+          "query": 0.0024263431542461003,
+          "multiple_query_parameters": 0.000833364062096685,
+          "query_heavy": 0.000833364062096685,
+          "encoded": 0.0015634794793318338,
+          "fragment": 0.00028762122497142225
+        }
+      },
+      "1": {
+        "rows": 720021,
+        "feature_median": {
+          "URLLength": 50.0,
+          "HostnameLength": 21.0,
+          "PathLength": 13.0,
+          "QueryLength": 0.0,
+          "QueryParameterCount": 0.0,
+          "URLPercentEncodingCount": 0.0,
+          "HasSuspiciousTLD": 0.0,
+          "HasSuspiciousToken": 0.0,
+          "IsDomainIP": 0.0,
+          "IsTrustedTLD": 0.0,
+          "URLEntropy": 4.305950164794922
+        },
+        "structure_rates": {
+          "homepage": 0.3061660701562871,
+          "content_path": 0.6799482237323634,
+          "search": 0.002290210979957529,
+          "query": 0.1687575779039778,
+          "multiple_query_parameters": 0.06805218181136384,
+          "query_heavy": 0.06805218181136384,
+          "encoded": 0.02144381899972362,
+          "fragment": 0.0011541330044540369
+        }
+      }
+    },
+    "cohort_counts_by_label": {
+      "homepage": {
+        "0": 134892,
+        "1": 220446
+      },
+      "content_path": {
+        "0": 683,
+        "1": 489577
+      },
+      "search": {
+        "0": 279,
+        "1": 1649
+      },
+      "query": {
+        "0": 329,
+        "1": 121509
+      },
+      "multiple_query_parameters": {
+        "0": 113,
+        "1": 48999
+      },
+      "query_heavy": {
+        "0": 113,
+        "1": 48999
+      },
+      "encoded": {
+        "0": 212,
+        "1": 15440
+      },
+      "fragment": {
+        "0": 39,
+        "1": 831
+      }
+    }
+  },
+  "test_metrics": {
+    "decision_threshold": 0.5,
+    "accuracy": 0.9112381174549484,
+    "precision": 0.9515697829038534,
+    "recall": 0.9424673866330251,
+    "f1": 0.9469967125424862,
+    "roc_auc": 0.9561200973712294,
+    "pr_auc": 0.9919495510778369,
+    "brier_score": 0.060601600033309555,
+    "false_positive_rate": 0.2543743567122482,
+    "false_negative_rate": 0.05753261336697489,
+    "confusion_matrix": {
+      "labels": [
+        "legitimate_0",
+        "phishing_1"
+      ],
+      "matrix": [
+        [
+          20284,
+          6920
+        ],
+        [
+          8300,
+          135966
+        ]
+      ],
+      "true_negative": 20284,
+      "false_positive": 6920,
+      "false_negative": 8300,
+      "true_positive": 135966
+    },
+    "class_counts": {
+      "0": 27204,
+      "1": 144266
+    },
+    "expected_calibration_error": 0.011311775336716625,
+    "production_threshold_cohort_metrics": {
+      "homepage": {
+        "legitimate_rows": 27088,
+        "false_positives": 2845,
+        "false_positive_rate": 0.10502805670407561,
+        "phishing_rows": 51190,
+        "false_negatives": 10573,
+        "false_negative_rate": 0.2065442469232272
+      },
+      "content_path": {
+        "legitimate_rows": 100,
+        "false_positives": 42,
+        "false_positive_rate": 0.42,
+        "phishing_rows": 91159,
+        "false_negatives": 2419,
+        "false_negative_rate": 0.02653605239197446
+      },
+      "search": {
+        "legitimate_rows": 46,
+        "false_positives": 3,
+        "false_positive_rate": 0.06521739130434782,
+        "phishing_rows": 360,
+        "false_negatives": 5,
+        "false_negative_rate": 0.013888888888888888
+      },
+      "query": {
+        "legitimate_rows": 50,
+        "false_positives": 3,
+        "false_positive_rate": 0.06,
+        "phishing_rows": 22814,
+        "false_negatives": 370,
+        "false_negative_rate": 0.01621811168580696
+      },
+      "multiple_query_parameters": {
+        "legitimate_rows": 14,
+        "false_positives": 2,
+        "false_positive_rate": 0.14285714285714285,
+        "phishing_rows": 9189,
+        "false_negatives": 141,
+        "false_negative_rate": 0.01534443356186745
+      },
+      "query_heavy": {
+        "legitimate_rows": 14,
+        "false_positives": 2,
+        "false_positive_rate": 0.14285714285714285,
+        "phishing_rows": 9189,
+        "false_negatives": 141,
+        "false_negative_rate": 0.01534443356186745
+      },
+      "encoded": {
+        "legitimate_rows": 36,
+        "false_positives": 1,
+        "false_positive_rate": 0.027777777777777776,
+        "phishing_rows": 3051,
+        "false_negatives": 68,
+        "false_negative_rate": 0.022287774500163882
+      },
+      "fragment": {
+        "legitimate_rows": 11,
+        "false_positives": 2,
+        "false_positive_rate": 0.18181818181818182,
+        "phishing_rows": 185,
+        "false_negatives": 9,
+        "false_negative_rate": 0.04864864864864865
+      }
+    },
+    "threshold_0_5_cohort_metrics": {
+      "homepage": {
+        "legitimate_rows": 27088,
+        "false_positives": 6873,
+        "false_positive_rate": 0.2537285883047844,
+        "phishing_rows": 51190,
+        "false_negatives": 6790,
+        "false_negative_rate": 0.13264309435436608
+      },
+      "content_path": {
+        "legitimate_rows": 100,
+        "false_positives": 47,
+        "false_positive_rate": 0.47,
+        "phishing_rows": 91159,
+        "false_negatives": 1451,
+        "false_negative_rate": 0.01591724349762503
+      },
+      "search": {
+        "legitimate_rows": 46,
+        "false_positives": 3,
+        "false_positive_rate": 0.06521739130434782,
+        "phishing_rows": 360,
+        "false_negatives": 2,
+        "false_negative_rate": 0.005555555555555556
+      },
+      "query": {
+        "legitimate_rows": 50,
+        "false_positives": 3,
+        "false_positive_rate": 0.06,
+        "phishing_rows": 22814,
+        "false_negatives": 249,
+        "false_negative_rate": 0.010914350837205225
+      },
+      "multiple_query_parameters": {
+        "legitimate_rows": 14,
+        "false_positives": 2,
+        "false_positive_rate": 0.14285714285714285,
+        "phishing_rows": 9189,
+        "false_negatives": 92,
+        "false_negative_rate": 0.010011970834693655
+      },
+      "query_heavy": {
+        "legitimate_rows": 14,
+        "false_positives": 2,
+        "false_positive_rate": 0.14285714285714285,
+        "phishing_rows": 9189,
+        "false_negatives": 92,
+        "false_negative_rate": 0.010011970834693655
+      },
+      "encoded": {
+        "legitimate_rows": 36,
+        "false_positives": 1,
+        "false_positive_rate": 0.027777777777777776,
+        "phishing_rows": 3051,
+        "false_negatives": 40,
+        "false_negative_rate": 0.013110455588331694
+      },
+      "fragment": {
+        "legitimate_rows": 11,
+        "false_positives": 2,
+        "false_positive_rate": 0.18181818181818182,
+        "phishing_rows": 185,
+        "false_negatives": 5,
+        "false_negative_rate": 0.02702702702702703
+      }
+    },
+    "production_threshold_verdict_counts": {
+      "SAFE": 1304,
+      "SUSPICIOUS": 36098,
+      "PHISHING": 134068
+    },
+    "production_phishing_threshold_metrics": {
+      "threshold": 0.6961575221255231,
+      "false_positive_count": 2887,
+      "legitimate_denominator": 27204,
+      "false_positive_rate": 0.10612409939714748,
+      "false_negative_count": 13085,
+      "phishing_denominator": 144266,
+      "recall": 0.9092994884449559
+    },
+    "production_thresholds_used_for_verdict_counts": {
+      "safe": 0.13140956380602112,
+      "phishing": 0.6961575221255231
+    }
+  },
+  "production_on_identical_test_rows": {
+    "decision_threshold": 0.5,
+    "accuracy": 0.9078031142473902,
+    "precision": 0.994449533868621,
+    "recall": 0.8954154131950702,
+    "f1": 0.9423376433899294,
+    "roc_auc": 0.9643805302036328,
+    "pr_auc": 0.9929222791813461,
+    "brier_score": 0.06243550626138373,
+    "false_positive_rate": 0.026503455374209676,
+    "false_negative_rate": 0.10458458680492978,
+    "confusion_matrix": {
+      "labels": [
+        "legitimate_0",
+        "phishing_1"
+      ],
+      "matrix": [
+        [
+          26483,
+          721
+        ],
+        [
+          15088,
+          129178
+        ]
+      ],
+      "true_negative": 26483,
+      "false_positive": 721,
+      "false_negative": 15088,
+      "true_positive": 129178
+    },
+    "class_counts": {
+      "0": 27204,
+      "1": 144266
+    },
+    "production_phishing_threshold_counts": {
+      "SAFE": 4824,
+      "SUSPICIOUS": 38805,
+      "PHISHING": 127841
+    },
+    "cohorts": {
+      "homepage": {
+        "legitimate_rows": 27088,
+        "false_positives": 284,
+        "false_positive_rate": 0.010484347312463083,
+        "phishing_rows": 51190,
+        "false_negatives": 16822,
+        "false_negative_rate": 0.32861887087321745
+      },
+      "content_path": {
+        "legitimate_rows": 100,
+        "false_positives": 100,
+        "false_positive_rate": 1.0,
+        "phishing_rows": 91159,
+        "false_negatives": 0,
+        "false_negative_rate": 0.0
+      },
+      "search": {
+        "legitimate_rows": 46,
+        "false_positives": 46,
+        "false_positive_rate": 1.0,
+        "phishing_rows": 360,
+        "false_negatives": 0,
+        "false_negative_rate": 0.0
+      },
+      "query": {
+        "legitimate_rows": 50,
+        "false_positives": 50,
+        "false_positive_rate": 1.0,
+        "phishing_rows": 22814,
+        "false_negatives": 3,
+        "false_negative_rate": 0.00013149820285789427
+      },
+      "multiple_query_parameters": {
+        "legitimate_rows": 14,
+        "false_positives": 14,
+        "false_positive_rate": 1.0,
+        "phishing_rows": 9189,
+        "false_negatives": 0,
+        "false_negative_rate": 0.0
+      },
+      "query_heavy": {
+        "legitimate_rows": 14,
+        "false_positives": 14,
+        "false_positive_rate": 1.0,
+        "phishing_rows": 9189,
+        "false_negatives": 0,
+        "false_negative_rate": 0.0
+      },
+      "encoded": {
+        "legitimate_rows": 36,
+        "false_positives": 36,
+        "false_positive_rate": 1.0,
+        "phishing_rows": 3051,
+        "false_negatives": 0,
+        "false_negative_rate": 0.0
+      },
+      "fragment": {
+        "legitimate_rows": 11,
+        "false_positives": 11,
+        "false_positive_rate": 1.0,
+        "phishing_rows": 185,
+        "false_negatives": 0,
+        "false_negative_rate": 0.0
+      }
+    }
+  },
+  "legitimate_dynamic_domain_disjoint_test": {
+    "legitimate_dynamic_training": {
+      "prior_use": "Previously used in an earlier candidate experiment.",
+      "used_for_training_in_this_run": true,
+      "evaluation_partition": "untouched registered-domain-disjoint test rows only",
+      "test_rows": 18,
+      "test_registered_domains": 3,
+      "candidate_false_positive_count": 13,
+      "candidate_false_positive_rate": 0.7222222222222222,
+      "candidate_decision_threshold": 0.5,
+      "production_false_positive_count": 16,
+      "production_false_positive_rate": 0.8888888888888888,
+      "candidate_cohorts": {
+        "homepage": {
+          "legitimate_rows": 3,
+          "false_positives": 2,
+          "false_positive_rate": 0.6666666666666666,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "content_path": {
+          "legitimate_rows": 15,
+          "false_positives": 11,
+          "false_positive_rate": 0.7333333333333333,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "search": {
+          "legitimate_rows": 1,
+          "false_positives": 1,
+          "false_positive_rate": 1.0,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "query": {
+          "legitimate_rows": 0,
+          "false_positives": 0,
+          "false_positive_rate": null,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "multiple_query_parameters": {
+          "legitimate_rows": 0,
+          "false_positives": 0,
+          "false_positive_rate": null,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "query_heavy": {
+          "legitimate_rows": 0,
+          "false_positives": 0,
+          "false_positive_rate": null,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "encoded": {
+          "legitimate_rows": 0,
+          "false_positives": 0,
+          "false_positive_rate": null,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "fragment": {
+          "legitimate_rows": 0,
+          "false_positives": 0,
+          "false_positive_rate": null,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        }
+      },
+      "production_cohorts": {
+        "homepage": {
+          "legitimate_rows": 3,
+          "false_positives": 1,
+          "false_positive_rate": 0.3333333333333333,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "content_path": {
+          "legitimate_rows": 15,
+          "false_positives": 15,
+          "false_positive_rate": 1.0,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "search": {
+          "legitimate_rows": 1,
+          "false_positives": 1,
+          "false_positive_rate": 1.0,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "query": {
+          "legitimate_rows": 0,
+          "false_positives": 0,
+          "false_positive_rate": null,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "multiple_query_parameters": {
+          "legitimate_rows": 0,
+          "false_positives": 0,
+          "false_positive_rate": null,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "query_heavy": {
+          "legitimate_rows": 0,
+          "false_positives": 0,
+          "false_positive_rate": null,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "encoded": {
+          "legitimate_rows": 0,
+          "false_positives": 0,
+          "false_positive_rate": null,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "fragment": {
+          "legitimate_rows": 0,
+          "false_positives": 0,
+          "false_positive_rate": null,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        }
+      },
+      "prior_evaluation_use": "These source rows were previously reviewed/used; not independent evidence."
+    },
+    "legitimate_dynamic_benchmark": {
+      "prior_use": "Previously used as benchmark/regression data; not an untouched test.",
+      "used_for_training_in_this_run": true,
+      "evaluation_partition": "untouched registered-domain-disjoint test rows only",
+      "test_rows": 89,
+      "test_registered_domains": 14,
+      "candidate_false_positive_count": 32,
+      "candidate_false_positive_rate": 0.3595505617977528,
+      "candidate_decision_threshold": 0.5,
+      "production_false_positive_count": 84,
+      "production_false_positive_rate": 0.9438202247191011,
+      "candidate_cohorts": {
+        "homepage": {
+          "legitimate_rows": 7,
+          "false_positives": 5,
+          "false_positive_rate": 0.7142857142857143,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "content_path": {
+          "legitimate_rows": 67,
+          "false_positives": 27,
+          "false_positive_rate": 0.40298507462686567,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "search": {
+          "legitimate_rows": 44,
+          "false_positives": 3,
+          "false_positive_rate": 0.06818181818181818,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "query": {
+          "legitimate_rows": 48,
+          "false_positives": 3,
+          "false_positive_rate": 0.0625,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "multiple_query_parameters": {
+          "legitimate_rows": 14,
+          "false_positives": 2,
+          "false_positive_rate": 0.14285714285714285,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "query_heavy": {
+          "legitimate_rows": 14,
+          "false_positives": 2,
+          "false_positive_rate": 0.14285714285714285,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "encoded": {
+          "legitimate_rows": 36,
+          "false_positives": 1,
+          "false_positive_rate": 0.027777777777777776,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "fragment": {
+          "legitimate_rows": 4,
+          "false_positives": 2,
+          "false_positive_rate": 0.5,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        }
+      },
+      "production_cohorts": {
+        "homepage": {
+          "legitimate_rows": 7,
+          "false_positives": 2,
+          "false_positive_rate": 0.2857142857142857,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "content_path": {
+          "legitimate_rows": 67,
+          "false_positives": 67,
+          "false_positive_rate": 1.0,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "search": {
+          "legitimate_rows": 44,
+          "false_positives": 44,
+          "false_positive_rate": 1.0,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "query": {
+          "legitimate_rows": 48,
+          "false_positives": 48,
+          "false_positive_rate": 1.0,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "multiple_query_parameters": {
+          "legitimate_rows": 14,
+          "false_positives": 14,
+          "false_positive_rate": 1.0,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "query_heavy": {
+          "legitimate_rows": 14,
+          "false_positives": 14,
+          "false_positive_rate": 1.0,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "encoded": {
+          "legitimate_rows": 36,
+          "false_positives": 36,
+          "false_positive_rate": 1.0,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "fragment": {
+          "legitimate_rows": 4,
+          "false_positives": 4,
+          "false_positive_rate": 1.0,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        }
+      },
+      "prior_evaluation_use": "These source rows were previously reviewed/used; not independent evidence."
+    },
+    "legitimate_training_v3": {
+      "prior_use": "Previously used/reviewed in earlier training-data experiments.",
+      "used_for_training_in_this_run": true,
+      "evaluation_partition": "untouched registered-domain-disjoint test rows only",
+      "test_rows": 52,
+      "test_registered_domains": 3,
+      "candidate_false_positive_count": 33,
+      "candidate_false_positive_rate": 0.6346153846153846,
+      "candidate_decision_threshold": 0.5,
+      "production_false_positive_count": 50,
+      "production_false_positive_rate": 0.9615384615384616,
+      "candidate_cohorts": {
+        "homepage": {
+          "legitimate_rows": 3,
+          "false_positives": 2,
+          "false_positive_rate": 0.6666666666666666,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "content_path": {
+          "legitimate_rows": 48,
+          "false_positives": 31,
+          "false_positive_rate": 0.6458333333333334,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "search": {
+          "legitimate_rows": 3,
+          "false_positives": 1,
+          "false_positive_rate": 0.3333333333333333,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "query": {
+          "legitimate_rows": 2,
+          "false_positives": 0,
+          "false_positive_rate": 0.0,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "multiple_query_parameters": {
+          "legitimate_rows": 0,
+          "false_positives": 0,
+          "false_positive_rate": null,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "query_heavy": {
+          "legitimate_rows": 0,
+          "false_positives": 0,
+          "false_positive_rate": null,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "encoded": {
+          "legitimate_rows": 0,
+          "false_positives": 0,
+          "false_positive_rate": null,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "fragment": {
+          "legitimate_rows": 7,
+          "false_positives": 0,
+          "false_positive_rate": 0.0,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        }
+      },
+      "production_cohorts": {
+        "homepage": {
+          "legitimate_rows": 3,
+          "false_positives": 1,
+          "false_positive_rate": 0.3333333333333333,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "content_path": {
+          "legitimate_rows": 48,
+          "false_positives": 48,
+          "false_positive_rate": 1.0,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "search": {
+          "legitimate_rows": 3,
+          "false_positives": 3,
+          "false_positive_rate": 1.0,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "query": {
+          "legitimate_rows": 2,
+          "false_positives": 2,
+          "false_positive_rate": 1.0,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "multiple_query_parameters": {
+          "legitimate_rows": 0,
+          "false_positives": 0,
+          "false_positive_rate": null,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "query_heavy": {
+          "legitimate_rows": 0,
+          "false_positives": 0,
+          "false_positive_rate": null,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "encoded": {
+          "legitimate_rows": 0,
+          "false_positives": 0,
+          "false_positive_rate": null,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "fragment": {
+          "legitimate_rows": 7,
+          "false_positives": 7,
+          "false_positive_rate": 1.0,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        }
+      },
+      "prior_evaluation_use": "These source rows were previously reviewed/used; not independent evidence."
+    },
+    "external_benign_dynamic": {
+      "prior_use": "MISSING_OPTIONAL",
+      "used_for_training_in_this_run": true,
+      "evaluation_partition": "untouched registered-domain-disjoint test rows only",
+      "test_rows": 0,
+      "test_registered_domains": 0,
+      "candidate_false_positive_count": 0,
+      "candidate_false_positive_rate": null,
+      "candidate_decision_threshold": 0.5,
+      "production_false_positive_count": 0,
+      "production_false_positive_rate": null,
+      "candidate_cohorts": {
+        "homepage": {
+          "legitimate_rows": 0,
+          "false_positives": 0,
+          "false_positive_rate": null,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "content_path": {
+          "legitimate_rows": 0,
+          "false_positives": 0,
+          "false_positive_rate": null,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "search": {
+          "legitimate_rows": 0,
+          "false_positives": 0,
+          "false_positive_rate": null,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "query": {
+          "legitimate_rows": 0,
+          "false_positives": 0,
+          "false_positive_rate": null,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "multiple_query_parameters": {
+          "legitimate_rows": 0,
+          "false_positives": 0,
+          "false_positive_rate": null,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "query_heavy": {
+          "legitimate_rows": 0,
+          "false_positives": 0,
+          "false_positive_rate": null,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "encoded": {
+          "legitimate_rows": 0,
+          "false_positives": 0,
+          "false_positive_rate": null,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "fragment": {
+          "legitimate_rows": 0,
+          "false_positives": 0,
+          "false_positive_rate": null,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        }
+      },
+      "production_cohorts": {
+        "homepage": {
+          "legitimate_rows": 0,
+          "false_positives": 0,
+          "false_positive_rate": null,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "content_path": {
+          "legitimate_rows": 0,
+          "false_positives": 0,
+          "false_positive_rate": null,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "search": {
+          "legitimate_rows": 0,
+          "false_positives": 0,
+          "false_positive_rate": null,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "query": {
+          "legitimate_rows": 0,
+          "false_positives": 0,
+          "false_positive_rate": null,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "multiple_query_parameters": {
+          "legitimate_rows": 0,
+          "false_positives": 0,
+          "false_positive_rate": null,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "query_heavy": {
+          "legitimate_rows": 0,
+          "false_positives": 0,
+          "false_positive_rate": null,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "encoded": {
+          "legitimate_rows": 0,
+          "false_positives": 0,
+          "false_positive_rate": null,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        },
+        "fragment": {
+          "legitimate_rows": 0,
+          "false_positives": 0,
+          "false_positive_rate": null,
+          "phishing_rows": 0,
+          "false_negatives": 0,
+          "false_negative_rate": null
+        }
+      },
+      "prior_evaluation_use": "These source rows were previously reviewed/used; not independent evidence."
+    }
+  },
+  "prior_evaluation_use": {
+    "legitimate_dynamic_training": "Previously used in earlier candidate experiments; regression-only here.",
+    "legitimate_dynamic_benchmark": "Previously used as benchmark/regression data; now included as training augmentation but each row's evaluation is restricted to test domains.",
+    "legitimate_training_v3": "Previously used/reviewed in earlier training-data experiments; included as training augmentation and not independent evidence.",
+    "test_partition": "Domain-disjoint from train/calibration within this run, but drawn from clean_dataset.csv, which was used by prior VIGIL training; not an untouched external lockbox."
+  },
+  "production_thresholds_reference_only": {
+    "safe": 0.13140956380602112,
+    "phishing": 0.6961575221255231
+  },
+  "production_hashes_before": {
+    "phishing_model.pkl": "5f16e09d5f6fb613d391051b2b5693cf47478356d77cec8c8e52f5b309159ba2",
+    "feature_names.pkl": "d02a7c9cd2cb5b73c2bbccc7347c240fed6d77593b8e7d602dbb67f424099da9",
+    "model_metadata.json": "76f11a2883837c0226898d9a37d28a58475d5bdedc013e9f7969a43a493feba9",
+    "feature_extractor.py": "826436788ddf02e2dfe76c55cf6e062bab297c3cf1ead4602e4533c446733874",
+    "service.py": "10834ae85143560c5fe3defc665f31ab0eeed9b6ce6f3a19f8e0ed582328cf23",
+    "config.py": "23ef9dfe2390e605ab866d99abd5ba7b4e6a7cc7bc09a7a15497991d1ecc7dfb"
+  },
+  "production_hashes_after": {
+    "phishing_model.pkl": "5f16e09d5f6fb613d391051b2b5693cf47478356d77cec8c8e52f5b309159ba2",
+    "feature_names.pkl": "d02a7c9cd2cb5b73c2bbccc7347c240fed6d77593b8e7d602dbb67f424099da9",
+    "model_metadata.json": "76f11a2883837c0226898d9a37d28a58475d5bdedc013e9f7969a43a493feba9",
+    "feature_extractor.py": "826436788ddf02e2dfe76c55cf6e062bab297c3cf1ead4602e4533c446733874",
+    "service.py": "10834ae85143560c5fe3defc665f31ab0eeed9b6ce6f3a19f8e0ed582328cf23",
+    "config.py": "23ef9dfe2390e605ab866d99abd5ba7b4e6a7cc7bc09a7a15497991d1ecc7dfb"
+  },
+  "production_hashes_verified_unchanged": true,
+  "outputs": {
+    "candidate_model": "models\\experimental\\train_model_v2\\repair_source_balanced_natural_calibration\\candidate_model.pkl",
+    "candidate_model_sha256": "fc294873f2f651d16029adf1ae9a47e3497b303ac3b7964bda9d1fa7f206fbe7",
+    "candidate_model_size_bytes": 362858,
+    "feature_names": "models\\experimental\\train_model_v2\\repair_source_balanced_natural_calibration\\feature_names.json",
+    "training_manifest": "models\\experimental\\train_model_v2\\repair_source_balanced_natural_calibration\\training_manifest.json",
+    "report": "reports\\train_model_v2_repair_v2.json"
+  },
+  "fit_and_evaluation_seconds": 214.6989168,
+  "limitations": [
+    "clean_dataset.csv has no source collection dates; recency cannot be assessed.",
+    "The clean dataset contains registered domains with both labels; those rows were retained and domain-grouped, not automatically relabeled.",
+    "The dynamic datasets were previously used in prior work; test-domain results are useful regression checks but are not an independently sourced benchmark.",
+    "The calibration partition comes from a previously used corpus; it is domain-disjoint in this run but is not an independent external lockbox.",
+    "The domain-disjoint test partition is drawn from a previously used dataset and is not an untouched external lockbox.",
+    "This candidate is experimental and has not been tested through production serving or extension behavior."
+  ]
+}

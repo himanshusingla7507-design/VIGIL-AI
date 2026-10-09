@@ -1,0 +1,171 @@
+{
+  "false_phishing_benchmark_examples": [
+    {
+      "url": "https://www.djangoproject.com/weblog/2026/oct/06/security-releases/",
+      "probability": 0.5126613060795602,
+      "verdict": "SUSPICIOUS"
+    },
+    {
+      "url": "https://www.theguardian.com/index/subjects/a",
+      "probability": 0.51237213491545,
+      "verdict": "SUSPICIOUS"
+    },
+    {
+      "url": "https://www.theguardian.com/lifeandstyle/2026/oct/08/sudoku-7479-hard",
+      "probability": 0.5121245305940935,
+      "verdict": "SUSPICIOUS"
+    },
+    {
+      "url": "https://www.theguardian.com/preference/edition/eur",
+      "probability": 0.5118648885605764,
+      "verdict": "SUSPICIOUS"
+    },
+    {
+      "url": "https://www.theguardian.com/preference/edition/us",
+      "probability": 0.5117975986131077,
+      "verdict": "SUSPICIOUS"
+    },
+    {
+      "url": "https://www.djangoproject.com/download/6.0.9/checksum/",
+      "probability": 0.5110518887114953,
+      "verdict": "SUSPICIOUS"
+    },
+    {
+      "url": "https://www.djangoproject.com/download/6.1.2/checksum/",
+      "probability": 0.5110518887114953,
+      "verdict": "SUSPICIOUS"
+    },
+    {
+      "url": "https://github.com/community/community/blob/9b4ed8f9f9961d38041198da75b5d10a4f1d0bb6/CODE_OF_CONDUCT.md",
+      "probability": 0.5110068726633715,
+      "verdict": "SUSPICIOUS"
+    },
+    {
+      "url": "https://www.theguardian.com/tone/recipes",
+      "probability": 0.5109585121846252,
+      "verdict": "SUSPICIOUS"
+    },
+    {
+      "url": "https://www.theguardian.com/sport/cycling",
+      "probability": 0.5106955246963404,
+      "verdict": "SUSPICIOUS"
+    }
+  ],
+  "counterfactuals": {
+    "count": 70,
+    "verdicts": {
+      "SUSPICIOUS": 70
+    },
+    "per_variant": {
+      "path": {
+        "samples": 10,
+        "median_probability_delta": -0.007793336037564047,
+        "mean_probability_delta": -0.005916183902733946,
+        "maximum_probability_delta": -3.022285574033612e-05,
+        "positive_delta_count": 0,
+        "systematic_jump": false
+      },
+      "query": {
+        "samples": 10,
+        "median_probability_delta": -0.007008258055576144,
+        "mean_probability_delta": -0.00618157404254272,
+        "maximum_probability_delta": 3.031599226765991e-06,
+        "positive_delta_count": 1,
+        "systematic_jump": false
+      },
+      "multi-query": {
+        "samples": 10,
+        "median_probability_delta": -0.013209062728348514,
+        "mean_probability_delta": -0.011674541340450045,
+        "maximum_probability_delta": 0.00011146426816527333,
+        "positive_delta_count": 1,
+        "systematic_jump": false
+      },
+      "encoded": {
+        "samples": 10,
+        "median_probability_delta": -0.016457206221111798,
+        "mean_probability_delta": -0.013967917973242738,
+        "maximum_probability_delta": 0.0001100698417994539,
+        "positive_delta_count": 1,
+        "systematic_jump": false
+      },
+      "fragment": {
+        "samples": 10,
+        "median_probability_delta": -0.016973886922073245,
+        "mean_probability_delta": -0.016806550417224418,
+        "maximum_probability_delta": -0.00025145198156190096,
+        "positive_delta_count": 0,
+        "systematic_jump": false
+      },
+      "path+query": {
+        "samples": 10,
+        "median_probability_delta": -0.00960959456079899,
+        "mean_probability_delta": -0.009575475865348293,
+        "maximum_probability_delta": -8.914416184724328e-05,
+        "positive_delta_count": 0,
+        "systematic_jump": false
+      }
+    }
+  },
+  "hard_cohort_results": {
+    "query_strings": {
+      "samples": 5,
+      "excluded_due_to_training_domain_overlap": 0,
+      "candidate_phishing_recall": 0.0,
+      "production_phishing_recall_same_nontraining_domains": 1.0,
+      "not_major_regression": false
+    },
+    "paths": {
+      "samples": 5,
+      "excluded_due_to_training_domain_overlap": 0,
+      "candidate_phishing_recall": 0.2,
+      "production_phishing_recall_same_nontraining_domains": 1.0,
+      "not_major_regression": false
+    },
+    "login_parameters": {
+      "samples": 4,
+      "excluded_due_to_training_domain_overlap": 1,
+      "candidate_phishing_recall": 0.5,
+      "production_phishing_recall_same_nontraining_domains": 1.0,
+      "not_major_regression": false
+    },
+    "encoded_values": {
+      "samples": 4,
+      "excluded_due_to_training_domain_overlap": 1,
+      "candidate_phishing_recall": 0.0,
+      "production_phishing_recall_same_nontraining_domains": 1.0,
+      "not_major_regression": false
+    },
+    "long_urls_over_200": {
+      "samples": 4,
+      "excluded_due_to_training_domain_overlap": 1,
+      "candidate_phishing_recall": 0.5,
+      "production_phishing_recall_same_nontraining_domains": 1.0,
+      "not_major_regression": false
+    },
+    "redirect_parameters": {
+      "samples": 2,
+      "excluded_due_to_training_domain_overlap": 3,
+      "candidate_phishing_recall": 0.5,
+      "production_phishing_recall_same_nontraining_domains": 1.0,
+      "not_major_regression": false
+    },
+    "brand_like_hostnames": {
+      "samples": 5,
+      "excluded_due_to_training_domain_overlap": 0,
+      "candidate_phishing_recall": 0.2,
+      "production_phishing_recall_same_nontraining_domains": 1.0,
+      "not_major_regression": false
+    }
+  },
+  "threshold_validation_confusion": {
+    "legitimate_false_positives": 0,
+    "legitimate_rows": 549,
+    "phishing_false_negatives": 261,
+    "phishing_rows": 549
+  },
+  "data_limitations": [
+    "The active phishing feed contains no fragment-bearing URLs; no fragment phishing labels were invented.",
+    "API/search patterns are less common in the phishing feed; per-cohort sample counts are included in dataset composition."
+  ]
+}

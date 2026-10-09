@@ -1,0 +1,1012 @@
+{
+  "evaluation": "experimental_candidate_only",
+  "overall_gate": "FAIL",
+  "promotable": false,
+  "failed_gates": [
+    "no_phishing_on_fixed_legitimate_baseline",
+    "phishing_recall_not_materially_below_strongest_reference",
+    "no_major_hard_cohort_regression"
+  ],
+  "candidate_artifact": "models\\experimental\\dynamic_candidate\\dynamic_candidate.joblib",
+  "production_artifacts_modified": false,
+  "thresholds": {
+    "safe": 0.13140956380602112,
+    "phishing": 0.6961575221255231,
+    "source": "candidate bundle's stored production thresholds, verified against model_metadata.json",
+    "changed_for_evaluation": false
+  },
+  "feature_schema": {
+    "count": 29,
+    "features": [
+      "URLLength",
+      "HostnameLength",
+      "PathLength",
+      "QueryLength",
+      "FragmentLength",
+      "PathSegmentCount",
+      "QueryParameterCount",
+      "DotCount",
+      "SubdomainDepth",
+      "NoOfDigitsInURL",
+      "DigitRatioInURL",
+      "NoOfLettersInURL",
+      "LetterRatioInURL",
+      "NoOfEqualsInURL",
+      "NoOfQMarkInURL",
+      "NoOfAmpersandInURL",
+      "NoOfAtInURL",
+      "NoOfHyphenInURL",
+      "NoOfUnderscoreInURL",
+      "URLPercentEncodingCount",
+      "HasObfuscation",
+      "HasUserInfo",
+      "HasPort",
+      "IsDomainIP",
+      "IsShortened",
+      "HasSuspiciousTLD",
+      "HasSuspiciousToken",
+      "IsTrustedTLD",
+      "URLEntropy"
+    ],
+    "matches_production_29_features": true
+  },
+  "legitimate_baseline": {
+    "total": 16,
+    "verdict_counts": {
+      "SAFE": 0,
+      "SUSPICIOUS": 15,
+      "PHISHING": 1
+    },
+    "false_phishing_count": 1,
+    "false_positive_rate_phishing_label": 0.0625,
+    "not_safe_rate": 1.0,
+    "average_probability": 0.432239873339262,
+    "maximum_probability": 0.6971267359337556,
+    "results": [
+      {
+        "url": "https://www.google.com/search?q=phishing+prevention",
+        "probability": 0.39451193837142917
+      },
+      {
+        "url": "https://www.bing.com/search?q=phishing+prevention",
+        "probability": 0.37430148608317676
+      },
+      {
+        "url": "https://www.youtube.com/results?search_query=phishing+prevention",
+        "probability": 0.43620592109244055
+      },
+      {
+        "url": "https://github.com/microsoft/vscode",
+        "probability": 0.3912221874204163
+      },
+      {
+        "url": "https://github.com/search?q=python+url+parser&type=repositories",
+        "probability": 0.39451193837142917
+      },
+      {
+        "url": "https://www.amazon.com/s?k=usb+c+hub",
+        "probability": 0.4460309852311752
+      },
+      {
+        "url": "https://learn.microsoft.com/en-us/python/",
+        "probability": 0.48959959130798014
+      },
+      {
+        "url": "https://stackoverflow.com/questions/tagged/python",
+        "probability": 0.4785616075206577
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Computer_security",
+        "probability": 0.40631252385456457
+      },
+      {
+        "url": "https://www.reddit.com/r/cybersecurity/",
+        "probability": 0.3883330288112554
+      },
+      {
+        "url": "https://accounts.google.com/signin/v2/identifier",
+        "probability": 0.6971267359337556
+      },
+      {
+        "url": "https://www.google.com/search?q=security+news&utm_source=baseline&utm_medium=organic",
+        "probability": 0.40076264409324447
+      },
+      {
+        "url": "https://www.bing.com/search?q=python&count=20&form=QBLH&sp=-1",
+        "probability": 0.378483611619544
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/URL#Components",
+        "probability": 0.44700439580201207
+      },
+      {
+        "url": "https://www.google.com/search?q=URL%20encoding%20examples",
+        "probability": 0.3921067338218664
+      },
+      {
+        "url": "https://www.google.com/search?q=legitimate+dynamic+url+baseline+with+a+deliberately+long+query+containing+several+ordinary+words+for+testing+how+the+production+model+responds+to+long+search+queries",
+        "probability": 0.40076264409324447
+      }
+    ]
+  },
+  "counterfactual_legitimate": {
+    "total": 70,
+    "verdict_counts": {
+      "SAFE": 0,
+      "SUSPICIOUS": 64,
+      "PHISHING": 6
+    },
+    "false_positive_rate_phishing_label": 0.08571428571428572,
+    "not_safe_rate": 1.0,
+    "average_probability": 0.5274402233794574,
+    "maximum_probability": 0.7302638713112484,
+    "per_variant": {
+      "path": {
+        "samples": 10,
+        "probability_increased_vs_homepage": 1,
+        "median_probability_delta": -0.012646247164849411,
+        "mean_probability_delta": -0.03744818141363858,
+        "maximum_probability_delta": 0.02250700321557142,
+        "crossed_into_phishing": 0,
+        "verdict_counts": {
+          "SAFE": 0,
+          "SUSPICIOUS": 10,
+          "PHISHING": 0
+        },
+        "maximum_probability": 0.6320422204075282
+      },
+      "query": {
+        "samples": 10,
+        "probability_increased_vs_homepage": 7,
+        "median_probability_delta": 0.007203378074948558,
+        "mean_probability_delta": 0.0061405653359228925,
+        "maximum_probability_delta": 0.08753192527982467,
+        "crossed_into_phishing": 0,
+        "verdict_counts": {
+          "SAFE": 0,
+          "SUSPICIOUS": 8,
+          "PHISHING": 2
+        },
+        "maximum_probability": 0.7302638713112484
+      },
+      "multi-query": {
+        "samples": 10,
+        "probability_increased_vs_homepage": 6,
+        "median_probability_delta": 0.02360986868030146,
+        "mean_probability_delta": -0.010591470024013571,
+        "maximum_probability_delta": 0.06566563084116062,
+        "crossed_into_phishing": 0,
+        "verdict_counts": {
+          "SAFE": 0,
+          "SUSPICIOUS": 10,
+          "PHISHING": 0
+        },
+        "maximum_probability": 0.6914430262953191
+      },
+      "encoded": {
+        "samples": 10,
+        "probability_increased_vs_homepage": 5,
+        "median_probability_delta": 6.668230326686841e-05,
+        "mean_probability_delta": -0.03750423932568901,
+        "maximum_probability_delta": 0.0046005303957751265,
+        "crossed_into_phishing": 0,
+        "verdict_counts": {
+          "SAFE": 0,
+          "SUSPICIOUS": 10,
+          "PHISHING": 0
+        },
+        "maximum_probability": 0.6134898994794207
+      },
+      "fragment": {
+        "samples": 10,
+        "probability_increased_vs_homepage": 8,
+        "median_probability_delta": 0.05388633108325008,
+        "mean_probability_delta": 0.04212858605441926,
+        "maximum_probability_delta": 0.11538593704642564,
+        "crossed_into_phishing": 0,
+        "verdict_counts": {
+          "SAFE": 0,
+          "SUSPICIOUS": 10,
+          "PHISHING": 0
+        },
+        "maximum_probability": 0.6889337195782714
+      },
+      "path+query": {
+        "samples": 10,
+        "probability_increased_vs_homepage": 1,
+        "median_probability_delta": -0.031056254243775755,
+        "mean_probability_delta": -0.021774585293904015,
+        "maximum_probability_delta": 0.07249449624047255,
+        "crossed_into_phishing": 0,
+        "verdict_counts": {
+          "SAFE": 0,
+          "SUSPICIOUS": 8,
+          "PHISHING": 2
+        },
+        "maximum_probability": 0.6963862822774789
+      }
+    },
+    "systematic_high_risk_escalation": {
+      "path": false,
+      "query": false,
+      "multi-query": false,
+      "encoded": false,
+      "fragment": false,
+      "path+query": false
+    },
+    "systematic_escalation_definition": "A variant fails when its median increase over matched homepages is at least 0.20, or when more than half of matched domains newly cross the unchanged PHISHING threshold.",
+    "results": [
+      {
+        "base_url": "https://www.google.com/",
+        "variant_type": "path",
+        "url": "https://www.google.com/search",
+        "probability": 0.41599655671481484,
+        "homepage_probability": 0.42854698990378204,
+        "delta_from_homepage": -0.012550433188967203
+      },
+      {
+        "base_url": "https://www.bing.com/",
+        "variant_type": "path",
+        "url": "https://www.bing.com/search",
+        "probability": 0.37091835596791733,
+        "homepage_probability": 0.38366041710864895,
+        "delta_from_homepage": -0.01274206114073162
+      },
+      {
+        "base_url": "https://www.youtube.com/",
+        "variant_type": "path",
+        "url": "https://www.youtube.com/search",
+        "probability": 0.5475480510180205,
+        "homepage_probability": 0.5597170820110298,
+        "delta_from_homepage": -0.012169030993009256
+      },
+      {
+        "base_url": "https://github.com/",
+        "variant_type": "path",
+        "url": "https://github.com/search",
+        "probability": 0.45105399311935346,
+        "homepage_probability": 0.42854698990378204,
+        "delta_from_homepage": 0.02250700321557142
+      },
+      {
+        "base_url": "https://www.amazon.com/",
+        "variant_type": "path",
+        "url": "https://www.amazon.com/search",
+        "probability": 0.41599655671481484,
+        "homepage_probability": 0.42854698990378204,
+        "delta_from_homepage": -0.012550433188967203
+      },
+      {
+        "base_url": "https://learn.microsoft.com/",
+        "variant_type": "path",
+        "url": "https://learn.microsoft.com/search",
+        "probability": 0.5930890773606909,
+        "homepage_probability": 0.7194998772408592,
+        "delta_from_homepage": -0.12641079988016823
+      },
+      {
+        "base_url": "https://stackoverflow.com/",
+        "variant_type": "path",
+        "url": "https://stackoverflow.com/search",
+        "probability": 0.5536213983500583,
+        "homepage_probability": 0.6082460450207199,
+        "delta_from_homepage": -0.05462464667066158
+      },
+      {
+        "base_url": "https://en.wikipedia.org/",
+        "variant_type": "path",
+        "url": "https://en.wikipedia.org/search",
+        "probability": 0.6320422204075282,
+        "homepage_probability": 0.6619131323225328,
+        "delta_from_homepage": -0.029870911915004572
+      },
+      {
+        "base_url": "https://www.reddit.com/",
+        "variant_type": "path",
+        "url": "https://www.reddit.com/search",
+        "probability": 0.41599655671481484,
+        "homepage_probability": 0.42854698990378204,
+        "delta_from_homepage": -0.012550433188967203
+      },
+      {
+        "base_url": "https://accounts.google.com/",
+        "variant_type": "path",
+        "url": "https://accounts.google.com/search",
+        "probability": 0.5880138313857504,
+        "homepage_probability": 0.7115338985712307,
+        "delta_from_homepage": -0.12352006718548036
+      },
+      {
+        "base_url": "https://www.google.com/",
+        "variant_type": "query",
+        "url": "https://www.google.com/?q=test",
+        "probability": 0.4425105316331601,
+        "homepage_probability": 0.42854698990378204,
+        "delta_from_homepage": 0.013963541729378082
+      },
+      {
+        "base_url": "https://www.bing.com/",
+        "variant_type": "query",
+        "url": "https://www.bing.com/?q=test",
+        "probability": 0.3824543084179832,
+        "homepage_probability": 0.38366041710864895,
+        "delta_from_homepage": -0.0012061086906657303
+      },
+      {
+        "base_url": "https://www.youtube.com/",
+        "variant_type": "query",
+        "url": "https://www.youtube.com/?q=test",
+        "probability": 0.5548871038374791,
+        "homepage_probability": 0.5597170820110298,
+        "delta_from_homepage": -0.004829978173550686
+      },
+      {
+        "base_url": "https://github.com/",
+        "variant_type": "query",
+        "url": "https://github.com/?q=test",
+        "probability": 0.437753165866143,
+        "homepage_probability": 0.42854698990378204,
+        "delta_from_homepage": 0.009206175962360952
+      },
+      {
+        "base_url": "https://www.amazon.com/",
+        "variant_type": "query",
+        "url": "https://www.amazon.com/?q=test",
+        "probability": 0.437753165866143,
+        "homepage_probability": 0.42854698990378204,
+        "delta_from_homepage": 0.009206175962360952
+      },
+      {
+        "base_url": "https://learn.microsoft.com/",
+        "variant_type": "query",
+        "url": "https://learn.microsoft.com/?q=test",
+        "probability": 0.7302638713112484,
+        "homepage_probability": 0.7194998772408592,
+        "delta_from_homepage": 0.010763994070389193
+      },
+      {
+        "base_url": "https://stackoverflow.com/",
+        "variant_type": "query",
+        "url": "https://stackoverflow.com/?q=test",
+        "probability": 0.6957779703005446,
+        "homepage_probability": 0.6082460450207199,
+        "delta_from_homepage": 0.08753192527982467
+      },
+      {
+        "base_url": "https://en.wikipedia.org/",
+        "variant_type": "query",
+        "url": "https://en.wikipedia.org/?q=test",
+        "probability": 0.5918082018206251,
+        "homepage_probability": 0.6619131323225328,
+        "delta_from_homepage": -0.07010493050190769
+      },
+      {
+        "base_url": "https://www.reddit.com/",
+        "variant_type": "query",
+        "url": "https://www.reddit.com/?q=test",
+        "probability": 0.4337475700913182,
+        "homepage_probability": 0.42854698990378204,
+        "delta_from_homepage": 0.0052005801875361635
+      },
+      {
+        "base_url": "https://accounts.google.com/",
+        "variant_type": "query",
+        "url": "https://accounts.google.com/?q=test",
+        "probability": 0.7132081761047337,
+        "homepage_probability": 0.7115338985712307,
+        "delta_from_homepage": 0.0016742775335030213
+      },
+      {
+        "base_url": "https://www.google.com/",
+        "variant_type": "multi-query",
+        "url": "https://www.google.com/?q=test&page=2",
+        "probability": 0.46675285362036867,
+        "homepage_probability": 0.42854698990378204,
+        "delta_from_homepage": 0.03820586371658663
+      },
+      {
+        "base_url": "https://www.bing.com/",
+        "variant_type": "multi-query",
+        "url": "https://www.bing.com/?q=test&page=2",
+        "probability": 0.4014638862924089,
+        "homepage_probability": 0.38366041710864895,
+        "delta_from_homepage": 0.017803469183759968
+      },
+      {
+        "base_url": "https://www.youtube.com/",
+        "variant_type": "multi-query",
+        "url": "https://www.youtube.com/?q=test&page=2",
+        "probability": 0.6253827128521904,
+        "homepage_probability": 0.5597170820110298,
+        "delta_from_homepage": 0.06566563084116062
+      },
+      {
+        "base_url": "https://github.com/",
+        "variant_type": "multi-query",
+        "url": "https://github.com/?q=test&page=2",
+        "probability": 0.457963258080625,
+        "homepage_probability": 0.42854698990378204,
+        "delta_from_homepage": 0.029416268176842952
+      },
+      {
+        "base_url": "https://www.amazon.com/",
+        "variant_type": "multi-query",
+        "url": "https://www.amazon.com/?q=test&page=2",
+        "probability": 0.457963258080625,
+        "homepage_probability": 0.42854698990378204,
+        "delta_from_homepage": 0.029416268176842952
+      },
+      {
+        "base_url": "https://learn.microsoft.com/",
+        "variant_type": "multi-query",
+        "url": "https://learn.microsoft.com/?q=test&page=2",
+        "probability": 0.6154405984900708,
+        "homepage_probability": 0.7194998772408592,
+        "delta_from_homepage": -0.10405927875078835
+      },
+      {
+        "base_url": "https://stackoverflow.com/",
+        "variant_type": "multi-query",
+        "url": "https://stackoverflow.com/?q=test&page=2",
+        "probability": 0.5393184252763397,
+        "homepage_probability": 0.6082460450207199,
+        "delta_from_homepage": -0.06892761974438022
+      },
+      {
+        "base_url": "https://en.wikipedia.org/",
+        "variant_type": "multi-query",
+        "url": "https://en.wikipedia.org/?q=test&page=2",
+        "probability": 0.5391524345814412,
+        "homepage_probability": 0.6619131323225328,
+        "delta_from_homepage": -0.12276069774109155
+      },
+      {
+        "base_url": "https://www.reddit.com/",
+        "variant_type": "multi-query",
+        "url": "https://www.reddit.com/?q=test&page=2",
+        "probability": 0.457963258080625,
+        "homepage_probability": 0.42854698990378204,
+        "delta_from_homepage": 0.029416268176842952
+      },
+      {
+        "base_url": "https://accounts.google.com/",
+        "variant_type": "multi-query",
+        "url": "https://accounts.google.com/?q=test&page=2",
+        "probability": 0.6914430262953191,
+        "homepage_probability": 0.7115338985712307,
+        "delta_from_homepage": -0.020090872275911664
+      },
+      {
+        "base_url": "https://www.google.com/",
+        "variant_type": "encoded",
+        "url": "https://www.google.com/?q=cyber%20security",
+        "probability": 0.4315497883257893,
+        "homepage_probability": 0.42854698990378204,
+        "delta_from_homepage": 0.0030027984220072357
+      },
+      {
+        "base_url": "https://www.bing.com/",
+        "variant_type": "encoded",
+        "url": "https://www.bing.com/?q=cyber%20security",
+        "probability": 0.38079098329317546,
+        "homepage_probability": 0.38366041710864895,
+        "delta_from_homepage": -0.002869433815473499
+      },
+      {
+        "base_url": "https://www.youtube.com/",
+        "variant_type": "encoded",
+        "url": "https://www.youtube.com/?q=cyber%20security",
+        "probability": 0.5276541835388254,
+        "homepage_probability": 0.5597170820110298,
+        "delta_from_homepage": -0.03206289847220434
+      },
+      {
+        "base_url": "https://github.com/",
+        "variant_type": "encoded",
+        "url": "https://github.com/?q=cyber%20security",
+        "probability": 0.4315497883257893,
+        "homepage_probability": 0.42854698990378204,
+        "delta_from_homepage": 0.0030027984220072357
+      },
+      {
+        "base_url": "https://www.amazon.com/",
+        "variant_type": "encoded",
+        "url": "https://www.amazon.com/?q=cyber%20security",
+        "probability": 0.4315497883257893,
+        "homepage_probability": 0.42854698990378204,
+        "delta_from_homepage": 0.0030027984220072357
+      },
+      {
+        "base_url": "https://learn.microsoft.com/",
+        "variant_type": "encoded",
+        "url": "https://learn.microsoft.com/?q=cyber%20security",
+        "probability": 0.6134898994794207,
+        "homepage_probability": 0.7194998772408592,
+        "delta_from_homepage": -0.1060099777614385
+      },
+      {
+        "base_url": "https://stackoverflow.com/",
+        "variant_type": "encoded",
+        "url": "https://stackoverflow.com/?q=cyber%20security",
+        "probability": 0.612846575416495,
+        "homepage_probability": 0.6082460450207199,
+        "delta_from_homepage": 0.0046005303957751265
+      },
+      {
+        "base_url": "https://en.wikipedia.org/",
+        "variant_type": "encoded",
+        "url": "https://en.wikipedia.org/?q=cyber%20security",
+        "probability": 0.509245324122765,
+        "homepage_probability": 0.6619131323225328,
+        "delta_from_homepage": -0.15266780819976777
+      },
+      {
+        "base_url": "https://www.reddit.com/",
+        "variant_type": "encoded",
+        "url": "https://www.reddit.com/?q=cyber%20security",
+        "probability": 0.4315497883257893,
+        "homepage_probability": 0.42854698990378204,
+        "delta_from_homepage": 0.0030027984220072357
+      },
+      {
+        "base_url": "https://accounts.google.com/",
+        "variant_type": "encoded",
+        "url": "https://accounts.google.com/?q=cyber%20security",
+        "probability": 0.6134898994794207,
+        "homepage_probability": 0.7115338985712307,
+        "delta_from_homepage": -0.09804399909181005
+      },
+      {
+        "base_url": "https://www.google.com/",
+        "variant_type": "fragment",
+        "url": "https://www.google.com/#results",
+        "probability": 0.5051338394760185,
+        "homepage_probability": 0.42854698990378204,
+        "delta_from_homepage": 0.07658684957223649
+      },
+      {
+        "base_url": "https://www.bing.com/",
+        "variant_type": "fragment",
+        "url": "https://www.bing.com/#results",
+        "probability": 0.3927775213911299,
+        "homepage_probability": 0.38366041710864895,
+        "delta_from_homepage": 0.00911710428248097
+      },
+      {
+        "base_url": "https://www.youtube.com/",
+        "variant_type": "fragment",
+        "url": "https://www.youtube.com/#results",
+        "probability": 0.6751030190574554,
+        "homepage_probability": 0.5597170820110298,
+        "delta_from_homepage": 0.11538593704642564
+      },
+      {
+        "base_url": "https://github.com/",
+        "variant_type": "fragment",
+        "url": "https://github.com/#results",
+        "probability": 0.5117477291952499,
+        "homepage_probability": 0.42854698990378204,
+        "delta_from_homepage": 0.08320073929146787
+      },
+      {
+        "base_url": "https://www.amazon.com/",
+        "variant_type": "fragment",
+        "url": "https://www.amazon.com/#results",
+        "probability": 0.5162770546518979,
+        "homepage_probability": 0.42854698990378204,
+        "delta_from_homepage": 0.08773006474811584
+      },
+      {
+        "base_url": "https://learn.microsoft.com/",
+        "variant_type": "fragment",
+        "url": "https://learn.microsoft.com/#results",
+        "probability": 0.6889337195782714,
+        "homepage_probability": 0.7194998772408592,
+        "delta_from_homepage": -0.030566157662587745
+      },
+      {
+        "base_url": "https://stackoverflow.com/",
+        "variant_type": "fragment",
+        "url": "https://stackoverflow.com/#results",
+        "probability": 0.6394318576149836,
+        "homepage_probability": 0.6082460450207199,
+        "delta_from_homepage": 0.031185812594263673
+      },
+      {
+        "base_url": "https://en.wikipedia.org/",
+        "variant_type": "fragment",
+        "url": "https://en.wikipedia.org/#results",
+        "probability": 0.6796675342450997,
+        "homepage_probability": 0.6619131323225328,
+        "delta_from_homepage": 0.017754401922566942
+      },
+      {
+        "base_url": "https://www.reddit.com/",
+        "variant_type": "fragment",
+        "url": "https://www.reddit.com/#results",
+        "probability": 0.5117477291952499,
+        "homepage_probability": 0.42854698990378204,
+        "delta_from_homepage": 0.08320073929146787
+      },
+      {
+        "base_url": "https://accounts.google.com/",
+        "variant_type": "fragment",
+        "url": "https://accounts.google.com/#results",
+        "probability": 0.6592242680289858,
+        "homepage_probability": 0.7115338985712307,
+        "delta_from_homepage": -0.05230963054224491
+      },
+      {
+        "base_url": "https://www.google.com/",
+        "variant_type": "path+query",
+        "url": "https://www.google.com/search?q=test",
+        "probability": 0.3895480763796108,
+        "homepage_probability": 0.42854698990378204,
+        "delta_from_homepage": -0.03899891352417123
+      },
+      {
+        "base_url": "https://www.bing.com/",
+        "variant_type": "path+query",
+        "url": "https://www.bing.com/search?q=test",
+        "probability": 0.3715284127311699,
+        "homepage_probability": 0.38366041710864895,
+        "delta_from_homepage": -0.012132004377479078
+      },
+      {
+        "base_url": "https://www.youtube.com/",
+        "variant_type": "path+query",
+        "url": "https://www.youtube.com/search?q=test",
+        "probability": 0.6322115782515023,
+        "homepage_probability": 0.5597170820110298,
+        "delta_from_homepage": 0.07249449624047255
+      },
+      {
+        "base_url": "https://github.com/",
+        "variant_type": "path+query",
+        "url": "https://github.com/search?q=test",
+        "probability": 0.3895480763796108,
+        "homepage_probability": 0.42854698990378204,
+        "delta_from_homepage": -0.03899891352417123
+      },
+      {
+        "base_url": "https://www.amazon.com/",
+        "variant_type": "path+query",
+        "url": "https://www.amazon.com/search?q=test",
+        "probability": 0.3895480763796108,
+        "homepage_probability": 0.42854698990378204,
+        "delta_from_homepage": -0.03899891352417123
+      },
+      {
+        "base_url": "https://learn.microsoft.com/",
+        "variant_type": "path+query",
+        "url": "https://learn.microsoft.com/search?q=test",
+        "probability": 0.6963862822774789,
+        "homepage_probability": 0.7194998772408592,
+        "delta_from_homepage": -0.02311359496338028
+      },
+      {
+        "base_url": "https://stackoverflow.com/",
+        "variant_type": "path+query",
+        "url": "https://stackoverflow.com/search?q=test",
+        "probability": 0.5936396501766512,
+        "homepage_probability": 0.6082460450207199,
+        "delta_from_homepage": -0.01460639484406867
+      },
+      {
+        "base_url": "https://en.wikipedia.org/",
+        "variant_type": "path+query",
+        "url": "https://en.wikipedia.org/search?q=test",
+        "probability": 0.5926680477183849,
+        "homepage_probability": 0.6619131323225328,
+        "delta_from_homepage": -0.06924508460414791
+      },
+      {
+        "base_url": "https://www.reddit.com/",
+        "variant_type": "path+query",
+        "url": "https://www.reddit.com/search?q=test",
+        "probability": 0.3895480763796108,
+        "homepage_probability": 0.42854698990378204,
+        "delta_from_homepage": -0.03899891352417123
+      },
+      {
+        "base_url": "https://accounts.google.com/",
+        "variant_type": "path+query",
+        "url": "https://accounts.google.com/search?q=test",
+        "probability": 0.6963862822774789,
+        "homepage_probability": 0.7115338985712307,
+        "delta_from_homepage": -0.015147616293751831
+      }
+    ]
+  },
+  "phishing_hard_cohorts": {
+    "source_report": "reports\\benign_dynamic_url_training.json",
+    "source_section": "phishing_regressions",
+    "cohort_sample_counts": {
+      "query_strings": {
+        "samples": 5,
+        "phishing_recall_at_unchanged_threshold": 0.8,
+        "false_negative_rate": 0.19999999999999996,
+        "probability_minimum": 0.692624897203146,
+        "probability_maximum": 0.7681378479933523
+      },
+      "paths": {
+        "samples": 5,
+        "phishing_recall_at_unchanged_threshold": 0.4,
+        "false_negative_rate": 0.6,
+        "probability_minimum": 0.37091835596791733,
+        "probability_maximum": 0.7488970415222681
+      },
+      "login_parameters": {
+        "samples": 5,
+        "phishing_recall_at_unchanged_threshold": 0.8,
+        "false_negative_rate": 0.19999999999999996,
+        "probability_minimum": 0.5059689514416718,
+        "probability_maximum": 0.7670177936015323
+      },
+      "encoded_values": {
+        "samples": 5,
+        "phishing_recall_at_unchanged_threshold": 0.8,
+        "false_negative_rate": 0.19999999999999996,
+        "probability_minimum": 0.5594270643433851,
+        "probability_maximum": 0.7607431366393986
+      },
+      "long_urls_over_200": {
+        "samples": 5,
+        "phishing_recall_at_unchanged_threshold": 1.0,
+        "false_negative_rate": 0.0,
+        "probability_minimum": 0.7079829463791397,
+        "probability_maximum": 0.7667514548163631
+      },
+      "redirect_parameters": {
+        "samples": 5,
+        "phishing_recall_at_unchanged_threshold": 1.0,
+        "false_negative_rate": 0.0,
+        "probability_minimum": 0.7408178404044912,
+        "probability_maximum": 0.7667514548163631
+      },
+      "brand_like_hostnames": {
+        "samples": 5,
+        "phishing_recall_at_unchanged_threshold": 0.4,
+        "false_negative_rate": 0.6,
+        "probability_minimum": 0.6209988637502866,
+        "probability_maximum": 0.7622058114113536
+      }
+    },
+    "unique_phishing_urls": 29,
+    "unique_verdict_counts": {
+      "SAFE": 0,
+      "SUSPICIOUS": 8,
+      "PHISHING": 21
+    },
+    "unique_phishing_recall": 0.7241379310344828,
+    "unique_false_negative_rate": 0.27586206896551724,
+    "results": [
+      {
+        "url": "https://www.ksh.o2o.my/h/citibank/login.php?cmd=3dlogin_submit&id=3d57c7824=",
+        "probability": 0.692624897203146
+      },
+      {
+        "url": "https://rumboaeuropa.site/?fbclid=iwzxh0bgnhzw0bmabhzglkaasacwes3yobhz",
+        "probability": 0.7449347288806792
+      },
+      {
+        "url": "https://www.amazon.jp.3mgv.xyz/signin/?openid.pape.max_auth_age=0&openid.return_to=https://www.amazon.co.jp/?ref_=nav_em_hd_re_signin&openid.identity=http://specs.openid.net/auth/2.0/identifier_select&openid.assoc_handle=jpflex&openid.mode=checkid_setup&key=a@b.c&openid.claimed_id=http://specs.openid.net/auth/2.0/identifier_select&openid.ns=http://specs.openid.net/auth/2.0&&ref_=nav_em_hd_clc_signin",
+        "probability": 0.723120462536122
+      },
+      {
+        "url": "https://www.policlinicariovermelho.com.br/home?pag=home",
+        "probability": 0.7681378479933523
+      },
+      {
+        "url": "https://support.servicemeta.gq/?update_security_help",
+        "probability": 0.7644395666499457
+      },
+      {
+        "url": "https://www.qrfy.com/p8pbcmgomw",
+        "probability": 0.37091835596791733
+      },
+      {
+        "url": "https://viasan.life/jp",
+        "probability": 0.7488970415222681
+      },
+      {
+        "url": "http://www.kplof.com/tax/home.php",
+        "probability": 0.3766203129312885
+      },
+      {
+        "url": "https://www.transerviciostapatios.com/ppt/na272730s3sud/login/?login.srf&tz2pfja61wrnu0kegxsv93hc8mydoil74bq59hbep5fi18tvd2xy76maculwkrsnog30z4jqzghemt0xi2jfqw4k7c6198vnpbrlys3du5oa.n0goe29yplthzas87dk51miqbcw6juxvrf43a6032krwmb8oniu54c9jzxst7qgedhlfpyv1=cr75b19fdekj2xv8yzutniga4qlm63ohpw0s.n0goe29yplthzas87dk51miqbcw6juxvrf43a6032krwmb8oniu54c9jzxst7qgedhlfpyv1&kamu=ZGZkZmRmZ3MzMjg0NzgyQGpzaGZoa2EuY29t&n0goe29yplthzas87dk51miqbcw6juxvrf43a6032krwmb8oniu54c9jzxst7qgedhlfpyv1=cr75b19fdekj2xv8yzutniga4qlm63ohpw0s",
+        "probability": 0.7534952676446894
+      },
+      {
+        "url": "https://mariaalicesouza.com/luiza/?userid=14&amp;uri=r2jvr98aycth+e/8edl2rcqiplsiz/2t18pdxriq1xe=",
+        "probability": 0.7070504547210472
+      },
+      {
+        "url": "https://sparkasse-auth.com/files/login.php?user=true",
+        "probability": 0.5059689514416718
+      },
+      {
+        "url": "https://verification-center-10003266614.bridalgallerymaryville.com/?processing-verification-account-57253",
+        "probability": 0.7408178404044912
+      },
+      {
+        "url": "https://www.marketplace.facebook.com-oh9wq0pzv.isiolo.go.ke/profile.html?countUser=53902fa36517cbe25ae968713de5f929",
+        "probability": 0.7670177936015323
+      },
+      {
+        "url": "https://www.embeddedintel823.tankfilthhounds.net/?country.x=us&locale.x=en_us%3e&client=cb6a65fb7ab25595596e186c81eb9dc9",
+        "probability": 0.7607431366393986
+      },
+      {
+        "url": "https://www.ogsoft.cz/modules/mod_simplefileuploadv1.3/elements/shrme/verification/dmn14e52973nc74mn7nm/index.php?country.x=gb-united%20kingdom&lang.x=en",
+        "probability": 0.5594270643433851
+      },
+      {
+        "url": "http://u-bla.de-d.jfpaccountant.co.uk/de/reio/index.php?str%d1%96n=i6io4tuih4swc",
+        "probability": 0.7588730852864202
+      },
+      {
+        "url": "https://dezembroameaqui.com/?comon%2f=index&amp;amp;id=2&amp;amp;tokenize=fc6c8162e5e3ec260490d9d80754411e",
+        "probability": 0.746640349681688
+      },
+      {
+        "url": "https://magazine-2009.myshopify.com/products/intel-core-i5-9400f-processador-2-9ghz-cache-9mb-6-nucleos-6-threads-9%c2%aa-geracao-lga-1151-bx80684i59400f?utm_source=google&amp;utm_medium=shopping+ads&amp;utm_campaign=multifeed+google+shopping+xml",
+        "probability": 0.7240930217010053
+      },
+      {
+        "url": "https://www.royalmail.co.uk-rebook.com/banks/online.citi.eu/login.php?sslchannel=true&sessionid=g1bzq75wlbikjql6zz6qxmstnsimdhwzkwcjvhkscekgfiflsixx2olvdyi4klmlyohcmgawqfnjxtnd3do4jdoir73eedteuf6a1ji9qozzpcw0ftcqycowamqvhetycv",
+        "probability": 0.7079829463791397
+      },
+      {
+        "url": "https://www.agitated-volhard.45-146-252-70.plesk.page/index.php/false/false/py1n.html/discovercard.com/dfs/accounthome/summary/-www.schwab.com/secure.accurint.com/unfcu2.org/login1/wachovia.com/myaccounts.aspx/investing.schwab.com/secure/schwab/https:/snsbank.nl/files/files/activityi.html",
+        "probability": 0.7540091521076522
+      },
+      {
+        "url": "https://3elsfhvy.robertaocana.com.br/?swahjsdhjsduewuyhjskldi-3rq~hi28a35lx-6jobp6s~ab6i6g4grhqaazovbhl3a73n4-ctavr3tom4mnqmdp3ojdtd578gqamieb-1z3v3ppppyl15cud2726ghlkbas2jpbvot5xr8lckpmvjrqyqgpes1o1-yfeh5fdjrc72g7zrx5ft~92bjypic-4kkg5ul2a1q5h4flfoqhd-lmbzo33c-v2~96yhus-4tm2m-yqo7ajt~p87a437il-ux4b43mm2e8pmtlbec685k5y2mrrchquoma8c4yss5xxsnabbk25vib6h64hp6oialo15hsahjshjduywqyhwhjf8-m45ehhxu8za9vdcc2jjyi6jjdmm44h-i~6cdglmktnezmfu1xhakf1i5~r1rqotuc3xe~bnpkn1l86v58f2k5s9ytn-dxgt4b7jdt~lnbjuxszu6urf~4x7ty4685=value&url=ssomacesac.com/.wwww/bjfkfskl/bwfya21lzwxlckbtew9tyxdhdgvylmnvbq==",
+        "probability": 0.7667514548163631
+      },
+      {
+        "url": "https://g5yxcsua.lacarmencita.org/?swahjsdhjsduewuyhjskldi-3rq~hi28a35lx-6jobp6s~ab6i6g4grhqaazovbhl3a73n4-ctavr3tom4mnqmdp3ojdtd578gqamieb-1z3v3ppppyl15cud2726ghlkbas2jpbvot5xr8lckpmvjrqyqgpes1o1-yfeh5fdjrc72g7zrx5ft~92bjypic-4kkg5ul2a1q5h4flfoqhd-lmbzo33c-v2~96yhus-4tm2m-yqo7ajt~p87a437il-ux4b43mm2e8pmtlbec685k5y2mrrchquoma8c4yss5xxsnabbk25vib6h64hp6oialo15hsahjshjduywqyhwhjf8-m45ehhxu8za9vdcc2jjyi6jjdmm44h-i~6cdglmktnezmfu1xhakf1i5~r1rqotuc3xe~bnpkn1l86v58f2k5s9ytn-dxgt4b7jdt~lnbjuxszu6urf~4x7ty4685=value&url=profoto.cl/.poc/dshjdsfhjds/amtydWVnZXJAZm1rYXJjaGl0ZWN0cy5jb20=",
+        "probability": 0.7408178404044912
+      },
+      {
+        "url": "https://3fm3y5rw.robertaocana.com.br/?swahjsdhjsduewuyhjskldi-3rq~hi28a35lx-6jobp6s~ab6i6g4grhqaazovbhl3a73n4-ctavr3tom4mnqmdp3ojdtd578gqamieb-1z3v3ppppyl15cud2726ghlkbas2jpbvot5xr8lckpmvjrqyqgpes1o1-yfeh5fdjrc72g7zrx5ft~92bjypic-4kkg5ul2a1q5h4flfoqhd-lmbzo33c-v2~96yhus-4tm2m-yqo7ajt~p87a437il-ux4b43mm2e8pmtlbec685k5y2mrrchquoma8c4yss5xxsnabbk25vib6h64hp6oialo15hsahjshjduywqyhwhjf8-m45ehhxu8za9vdcc2jjyi6jjdmm44h-i~6cdglmktnezmfu1xhakf1i5~r1rqotuc3xe~bnpkn1l86v58f2k5s9ytn-dxgt4b7jdt~lnbjuxszu6urf~4x7ty4685=value&url=ssomacesac.com/.wwww/bjfkfskl/cmpazgf1bwnvbw1lcmnpywwuy29t",
+        "probability": 0.7667514548163631
+      },
+      {
+        "url": "https://hdimkuzf.robertaocana.com.br/?swahjsdhjsduewuyhjskldi-3rq~hi28a35lx-6jobp6s~ab6i6g4grhqaazovbhl3a73n4-ctavr3tom4mnqmdp3ojdtd578gqamieb-1z3v3ppppyl15cud2726ghlkbas2jpbvot5xr8lckpmvjrqyqgpes1o1-yfeh5fdjrc72g7zrx5ft~92bjypic-4kkg5ul2a1q5h4flfoqhd-lmbzo33c-v2~96yhus-4tm2m-yqo7ajt~p87a437il-ux4b43mm2e8pmtlbec685k5y2mrrchquoma8c4yss5xxsnabbk25vib6h64hp6oialo15hsahjshjduywqyhwhjf8-m45ehhxu8za9vdcc2jjyi6jjdmm44h-i~6cdglmktnezmfu1xhakf1i5~r1rqotuc3xe~bnpkn1l86v58f2k5s9ytn-dxgt4b7jdt~lnbjuxszu6urf~4x7ty4685=value&url=ssomacesac.com/.wwww/bjfkfskl/c2FsZXNAc3Rld2FyZHNoaXB0ZWNobm9sb2d5LmNvbQ==",
+        "probability": 0.7667514548163631
+      },
+      {
+        "url": "http://43.134.233.26/interactivelogin?continue=https://accounts.google.com/?&amp;followup=https://accounts.google.com/?&amp;passive=1209600&amp;xrealip=107.178.200.200&amp;ifkv=awnoghea3x47vq8iowjmra7lbv6vpkkdlvfns6c7pp97bb4fsyipihl00qhd0s6a3vre2jorqea0",
+        "probability": 0.752405462420912
+      },
+      {
+        "url": "https://www.accountappletejapanr.tokyo/api/japan",
+        "probability": 0.7622058114113536
+      },
+      {
+        "url": "https://s3.amazonaws.com/appforest_uf/f1675087895842x532383498274006500/ccx.html?email=3mail@b.c",
+        "probability": 0.6814968584227243
+      },
+      {
+        "url": "https://www.apple-payupdate.com/login.php?sessionid=2be08edbe41609fc827748360c7b02d1",
+        "probability": 0.6812528956602206
+      },
+      {
+        "url": "https://s3.amazonaws.com/appforest_uf/f1672928170901x832944279810371700/e-mail_settings_2023.html?websrc=05i8e-2d663c9oc3oa93a8oxib54i73x50-34a564a6540a46x554-9c5b4--54cd4454xxic-544oic2b48ic83639-96ai2502605-e77xeab-2ib6c6a0888eii76-5de4384b0id35e4-5b65-5855c00555o5-23x3eecaei4a9670i6aex45365443496o44442d83ca0e5ab03044-086-i-b63504i3i&amp;dispatch=5921257785045547650639297849390546933423747591819288257008724545718402134489265070083131783453084931440878298288671073546909601554326157614211152388973961209675135141126118052817444975227751511898946277075462490876892203803393222618&amp;id=54xo-c66e48io44x54049634idaoa8-5biec69560-8-54d674xei95a-3cac5",
+        "probability": 0.6209988637502866
+      }
+    ]
+  },
+  "domain_disjoint_test": {
+    "train_rows": 126,
+    "calibration_rows": 34,
+    "test_rows": 30,
+    "unique_test_registered_domains": 23,
+    "test_labels": {
+      "legitimate": 9,
+      "phishing": 21
+    },
+    "registered_domain_overlaps": {
+      "train|calibration": 0,
+      "train|test": 0,
+      "calibration|test": 0
+    },
+    "metrics_at_unchanged_production_phishing_threshold": {
+      "decision_threshold": 0.6961575221255231,
+      "accuracy": 0.8,
+      "precision": 1.0,
+      "recall": 0.7142857142857143,
+      "false_negative_rate": 0.2857142857142857,
+      "f1": 0.8333333333333334,
+      "pr_auc": 0.9702280420292846,
+      "roc_auc": 0.9259259259259259,
+      "brier_score": 0.14267625778923948,
+      "false_positive_rate": 0.0,
+      "confusion_counts": {
+        "true_negative": 9,
+        "false_positive": 0,
+        "false_negative": 6,
+        "true_positive": 15
+      }
+    },
+    "training_report_metrics_at_0_5": {
+      "accuracy": 0.8,
+      "precision": 0.8947368421052632,
+      "recall": 0.8095238095238095,
+      "f1": 0.85,
+      "roc_auc": 0.9259259259259259,
+      "pr_auc": 0.9702280420292846,
+      "brier_score": 0.14267625778923948
+    },
+    "reference_candidate": {
+      "name": "domain_only",
+      "report": "reports\\final_promotion_gate.json",
+      "domain_test_phishing_recall": 0.9320832009,
+      "domain_test_pr_auc": 0.9967113442,
+      "domain_test_f1": 0.9640267799
+    }
+  },
+  "training_bias_evidence": {
+    "report": "reports\\dynamic_training_bias_analysis.json",
+    "hypothesis_assessment": {
+      "status": "supports",
+      "statement": "The stored production-dataset counts show phishing examples in each path/query cohort and zero legitimate examples in all three.",
+      "core_cohorts": [
+        "path_only",
+        "query_only",
+        "path_plus_query"
+      ],
+      "limitation": "The row-level clean_dataset.csv is absent locally. This assessment uses its prior stored cohort report; null fields were not inferred."
+    }
+  },
+  "gate_results": {
+    "exact_29_feature_schema": {
+      "pass": true,
+      "actual_feature_count": 29,
+      "expected_feature_count": 29
+    },
+    "no_phishing_on_fixed_legitimate_baseline": {
+      "pass": false,
+      "phishing_count": 1,
+      "legitimate_false_phishing_rate": 0.0625
+    },
+    "no_systematic_structural_high_risk_escalation": {
+      "pass": true,
+      "per_variant": {
+        "path": false,
+        "query": false,
+        "multi-query": false,
+        "encoded": false,
+        "fragment": false,
+        "path+query": false
+      },
+      "criterion": "A variant fails when its median increase over matched homepages is at least 0.20, or when more than half of matched domains newly cross the unchanged PHISHING threshold."
+    },
+    "phishing_recall_not_materially_below_strongest_reference": {
+      "pass": false,
+      "candidate_domain_test_recall": 0.7142857142857143,
+      "strongest_validated_reference_recall": 0.9320832009,
+      "maximum_relative_drop": 0.2,
+      "minimum_acceptable_recall": 0.74566656072,
+      "reference_report": "reports\\final_promotion_gate.json"
+    },
+    "no_major_hard_cohort_regression": {
+      "pass": false,
+      "minimum_cohort_recall": 0.74566656072,
+      "low_recall_cohorts": {
+        "paths": 0.4,
+        "brand_like_hostnames": 0.4
+      },
+      "criterion": "Each sampled phishing hard cohort must recall at least 80% of the strongest validated domain-test phishing recall.",
+      "sample_size_caveat": "Five examples per cohort in the source report; this is a regression screen, not a population estimate."
+    }
+  },
+  "limitations": [
+    "The held-out candidate test has only 30 rows; metrics are high-variance.",
+    "The labeled hard-cohort report provides five sampled URLs per cohort, not full population data.",
+    "The strongest validated reference uses a separate, much larger domain-grouped test set; it is a screening comparator, not a paired statistical comparison.",
+    "No phishing-only external holdout CSV is locally available to independently reproduce external recall."
+  ]
+}

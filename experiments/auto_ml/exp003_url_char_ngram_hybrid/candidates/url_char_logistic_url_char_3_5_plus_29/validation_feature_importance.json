@@ -1,0 +1,46 @@
+{
+  "model_importance_top_10": [
+    {
+      "feature": "HostnameLength",
+      "absolute_coefficient": 0.28763115917368987
+    },
+    {
+      "feature": "IsTrustedTLD",
+      "absolute_coefficient": 0.2630308206358614
+    },
+    {
+      "feature": "DigitRatioInURL",
+      "absolute_coefficient": 0.14309461933316303
+    },
+    {
+      "feature": "HasSuspiciousToken",
+      "absolute_coefficient": 0.1430663160387383
+    },
+    {
+      "feature": "NoOfHyphenInURL",
+      "absolute_coefficient": 0.13942969031865246
+    },
+    {
+      "feature": "URLEntropy",
+      "absolute_coefficient": 0.1199819236535255
+    },
+    {
+      "feature": "HasSuspiciousTLD",
+      "absolute_coefficient": 0.09155158961693119
+    },
+    {
+      "feature": "NoOfDigitsInURL",
+      "absolute_coefficient": 0.07137833422207356
+    },
+    {
+      "feature": "FragmentLength",
+      "absolute_coefficient": 0.07099654971695131
+    },
+    {
+      "feature": "LetterRatioInURL",
+      "absolute_coefficient": 0.05919974325059768
+    }
+  ],
+  "validation_permutation_importance_top_10": null,
+  "permutation_note": "Skipped for the high-dimensional character n-gram feature space; coefficient magnitudes are reported instead."
+}

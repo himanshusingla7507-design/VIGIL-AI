@@ -1,0 +1,171 @@
+{
+  "false_phishing_benchmark_examples": [
+    {
+      "url": "https://profile.theguardian.com/signin?INTCMP=DOTCOM_NEWHEADER_SIGNIN&componentEventParams=componentType%3Didentityauthentication%26componentId%3Dguardian_signin_header",
+      "probability": 0.5007684435483101,
+      "verdict": "PHISHING"
+    },
+    {
+      "url": "https://profile.theguardian.com/signin?INTCMP=DOTCOM_NEWHEADER_SIGNIN&ABCMP=ab-sign-in&componentEventParams=componentType%3Didentityauthentication%26componentId%3Dguardian_signin_header",
+      "probability": 0.5007129074994557,
+      "verdict": "PHISHING"
+    },
+    {
+      "url": "https://profile.theguardian.com/signin?INTCMP=DOTCOM_COMMENTS_SIGNIN&componentEventParams=componentType%3Didentityauthentication%26componentId%3Dregister_to_comment",
+      "probability": 0.5006936134012466,
+      "verdict": "PHISHING"
+    },
+    {
+      "url": "https://profile.theguardian.com/signin?INTCMP=DOTCOM_COMMENTS_SIGNIN&componentEventParams=componentType%3Didentityauthentication%26componentId%3Dsignin_to_comment",
+      "probability": 0.5006826228081572,
+      "verdict": "PHISHING"
+    },
+    {
+      "url": "https://accounts.google.com/signin/v2/identifier",
+      "probability": 0.5004192396287814,
+      "verdict": "PHISHING"
+    },
+    {
+      "url": "https://docs.github.com/en/enterprise-cloud@latest/code-security/supply-chain-security/end-to-end-supply-chain/end-to-end-supply-chain-overview",
+      "probability": 0.5003849711473939,
+      "verdict": "PHISHING"
+    },
+    {
+      "url": "https://developer.chrome.com/docs/privacy-security",
+      "probability": 0.50030649492417,
+      "verdict": "PHISHING"
+    },
+    {
+      "url": "https://support.theguardian.com/subscribe/weekly?REFPVID=undefined&INTCMP=undefined&acquisitionData=%7B%22source%22%3A%22GUARDIAN_WEB%22%2C%22componentId%22%3A%22PrintSubscriptionsHeaderLink%22%2C%22componentType%22%3A%22ACQUISITIONS_HEADER%22%2C%22referrerUrl%22%3A%22%22%7D",
+      "probability": 0.5002964965393405,
+      "verdict": "PHISHING"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Computer_security",
+      "probability": 0.5002085120355939,
+      "verdict": "SUSPICIOUS"
+    },
+    {
+      "url": "https://support.theguardian.com/subscribe/weekly?acquisitionData=%7B%22source%22:%22GUARDIAN_WEB%22,%22componentType%22:%22ACQUISITIONS_HEADER%22,%22componentId%22:%22mobilenav_print_cta%22%7D&INTCMP=mobilenav_print_cta",
+      "probability": 0.5001890707366881,
+      "verdict": "SUSPICIOUS"
+    }
+  ],
+  "counterfactuals": {
+    "count": 70,
+    "verdicts": {
+      "SUSPICIOUS": 70
+    },
+    "per_variant": {
+      "path": {
+        "samples": 10,
+        "median_probability_delta": 0.0001473229950961219,
+        "mean_probability_delta": 0.00013100803905014558,
+        "maximum_probability_delta": 0.00020998302667918356,
+        "positive_delta_count": 10,
+        "systematic_jump": false
+      },
+      "query": {
+        "samples": 10,
+        "median_probability_delta": 8.07553963060037e-05,
+        "mean_probability_delta": 8.144575656651165e-05,
+        "maximum_probability_delta": 0.00016411818757439134,
+        "positive_delta_count": 10,
+        "systematic_jump": false
+      },
+      "multi-query": {
+        "samples": 10,
+        "median_probability_delta": 0.0003396048100577642,
+        "mean_probability_delta": 0.0002945903253535498,
+        "maximum_probability_delta": 0.00038239974930498466,
+        "positive_delta_count": 10,
+        "systematic_jump": false
+      },
+      "encoded": {
+        "samples": 10,
+        "median_probability_delta": 0.00018132949413496302,
+        "mean_probability_delta": 0.00019360012672038905,
+        "maximum_probability_delta": 0.0003658762579538677,
+        "positive_delta_count": 10,
+        "systematic_jump": false
+      },
+      "fragment": {
+        "samples": 10,
+        "median_probability_delta": -9.130867308962398e-05,
+        "mean_probability_delta": -9.96623759083104e-05,
+        "maximum_probability_delta": 3.877545091029999e-05,
+        "positive_delta_count": 1,
+        "systematic_jump": false
+      },
+      "path+query": {
+        "samples": 10,
+        "median_probability_delta": 0.00016801667285140653,
+        "mean_probability_delta": 0.0001460505410760482,
+        "maximum_probability_delta": 0.0002310717167833265,
+        "positive_delta_count": 10,
+        "systematic_jump": false
+      }
+    }
+  },
+  "hard_cohort_results": {
+    "query_strings": {
+      "samples": 5,
+      "excluded_due_to_training_domain_overlap": 0,
+      "candidate_phishing_recall": 1.0,
+      "production_phishing_recall_same_nontraining_domains": 1.0,
+      "not_major_regression": true
+    },
+    "paths": {
+      "samples": 5,
+      "excluded_due_to_training_domain_overlap": 0,
+      "candidate_phishing_recall": 0.4,
+      "production_phishing_recall_same_nontraining_domains": 1.0,
+      "not_major_regression": false
+    },
+    "login_parameters": {
+      "samples": 4,
+      "excluded_due_to_training_domain_overlap": 1,
+      "candidate_phishing_recall": 0.5,
+      "production_phishing_recall_same_nontraining_domains": 1.0,
+      "not_major_regression": false
+    },
+    "encoded_values": {
+      "samples": 5,
+      "excluded_due_to_training_domain_overlap": 0,
+      "candidate_phishing_recall": 0.4,
+      "production_phishing_recall_same_nontraining_domains": 1.0,
+      "not_major_regression": false
+    },
+    "long_urls_over_200": {
+      "samples": 5,
+      "excluded_due_to_training_domain_overlap": 0,
+      "candidate_phishing_recall": 1.0,
+      "production_phishing_recall_same_nontraining_domains": 1.0,
+      "not_major_regression": true
+    },
+    "redirect_parameters": {
+      "samples": 5,
+      "excluded_due_to_training_domain_overlap": 0,
+      "candidate_phishing_recall": 1.0,
+      "production_phishing_recall_same_nontraining_domains": 1.0,
+      "not_major_regression": true
+    },
+    "brand_like_hostnames": {
+      "samples": 5,
+      "excluded_due_to_training_domain_overlap": 0,
+      "candidate_phishing_recall": 0.8,
+      "production_phishing_recall_same_nontraining_domains": 1.0,
+      "not_major_regression": false
+    }
+  },
+  "threshold_validation_confusion": {
+    "legitimate_false_positives": 0,
+    "legitimate_rows": 38,
+    "phishing_false_negatives": 10,
+    "phishing_rows": 38
+  },
+  "data_limitations": [
+    "The active phishing feed contains no fragment-bearing URLs; no fragment phishing labels were invented.",
+    "API/search patterns are less common in the phishing feed; per-cohort sample counts are included in dataset composition."
+  ]
+}

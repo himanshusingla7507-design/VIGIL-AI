@@ -1,0 +1,1913 @@
+{
+  "benchmark_or_counterfactual_rows_included": 0,
+  "counts_by_category": {
+    "encoded_query": 3,
+    "fragment": 18,
+    "high_entropy_legitimate": 101,
+    "homepage": 28,
+    "long_query": 1,
+    "multiple_query_parameters": 1,
+    "path_only": 232,
+    "path_query": 27,
+    "query_only": 8,
+    "redirect_style": 1,
+    "tracking_parameters": 5
+  },
+  "counts_by_cohort": {
+    "documentation": 8,
+    "encoded": 8,
+    "fragment": 18,
+    "homepage": 28,
+    "login_account": 2,
+    "long_url": 2,
+    "multiple_parameters": 9,
+    "pagination": 1,
+    "path": 387,
+    "query": 46,
+    "search": 2,
+    "tracking": 5
+  },
+  "counts_by_registered_domain": {
+    "apnews.com": 15,
+    "archives.gov": 16,
+    "bestbuy.com": 2,
+    "caltech.edu": 17,
+    "cam.ac.uk": 15,
+    "canada.ca": 16,
+    "cdc.gov": 17,
+    "ed.ac.uk": 14,
+    "energy.gov": 17,
+    "epfl.ch": 17,
+    "ethz.ch": 16,
+    "fda.gov": 17,
+    "freecodecamp.org": 1,
+    "home.cern": 16,
+    "homedepot.com": 8,
+    "irs.gov": 16,
+    "khanacademy.org": 1,
+    "linuxfoundation.org": 17,
+    "mdanderson.org": 17,
+    "nationalarchives.gov.uk": 17,
+    "nps.gov": 17,
+    "nypl.org": 1,
+    "standardebooks.org": 4,
+    "theconversation.com": 17,
+    "tiangolo.com": 17,
+    "umich.edu": 12,
+    "unicef.org": 17,
+    "usa.gov": 17,
+    "usgs.gov": 1,
+    "w3schools.com": 15,
+    "webkit.org": 17,
+    "whitehouse.gov": 17,
+    "zalando.com": 1
+  },
+  "counts_by_source": {
+    "Associated Press": 15,
+    "Best Buy": 2,
+    "CDC": 17,
+    "CERN": 16,
+    "California Institute of Technology": 17,
+    "EPFL": 17,
+    "ETH Zurich": 16,
+    "FastAPI Documentation": 17,
+    "Government of Canada": 16,
+    "Internal Revenue Service": 16,
+    "Khan Academy": 1,
+    "Linux Foundation": 17,
+    "MD Anderson Cancer Center": 17,
+    "National Park Service": 17,
+    "New York Public Library": 1,
+    "Standard Ebooks": 4,
+    "The Conversation": 17,
+    "The Home Depot": 8,
+    "The White House": 17,
+    "U.S. Department of Energy": 17,
+    "U.S. Food and Drug Administration": 17,
+    "U.S. Geological Survey": 1,
+    "U.S. National Archives": 16,
+    "UK National Archives": 17,
+    "UNICEF": 17,
+    "USA.gov": 17,
+    "University of Cambridge": 15,
+    "University of Edinburgh": 14,
+    "University of Michigan": 12,
+    "W3Schools": 15,
+    "WebKit": 17,
+    "Zalando": 1,
+    "freeCodeCamp": 1
+  },
+  "counts_by_verification_status": {
+    "http_200_same_registered_domain": 424,
+    "http_202_same_registered_domain": 1
+  },
+  "created_at_utc": "2026-10-09T09:21:38+00:00",
+  "dataset": "experiments\\auto_ml\\accuracy_repair_20261009\\new_legitimate_observations.csv",
+  "duplicate_removal": {
+    "duplicate_rows_removed_total": 1,
+    "exact_duplicate_rows_removed": 1,
+    "input_observations": 426,
+    "normalization_function": "feature_extractor.normalize_url",
+    "normalized_duplicate_rows_removed": 0,
+    "output_unique_rows": 425
+  },
+  "label": 0,
+  "normalization_function": "feature_extractor.normalize_url",
+  "provenance_policy": "Official first-party homepage and same-registered-domain anchor observations; each retained URL was individually fetched over HTTPS and had a 2xx response with the same registered domain. No URL components were synthesized.",
+  "request_policy": {
+    "benchmark_reservation_source": {
+      "baseline_legitimate_urls": [
+        "https://www.google.com/search?q=phishing+prevention",
+        "https://www.bing.com/search?q=phishing+prevention",
+        "https://www.youtube.com/results?search_query=phishing+prevention",
+        "https://github.com/microsoft/vscode",
+        "https://github.com/search?q=python+url+parser&type=repositories",
+        "https://www.amazon.com/s?k=usb+c+hub",
+        "https://learn.microsoft.com/en-us/python/",
+        "https://stackoverflow.com/questions/tagged/python",
+        "https://en.wikipedia.org/wiki/Computer_security",
+        "https://www.reddit.com/r/cybersecurity/",
+        "https://accounts.google.com/signin/v2/identifier",
+        "https://www.google.com/search?q=security+news&utm_source=baseline&utm_medium=organic",
+        "https://www.bing.com/search?q=python&count=20&form=QBLH&sp=-1",
+        "https://en.wikipedia.org/wiki/URL#Components",
+        "https://www.google.com/search?q=URL%20encoding%20examples",
+        "https://www.google.com/search?q=legitimate+dynamic+url+baseline+with+a+deliberately+long+query+containing+several+ordinary+words+for+testing+how+the+production+model+responds+to+long+search+queries"
+      ],
+      "counterfactual_legitimate_urls": [
+        {
+          "base_url": "https://www.google.com/",
+          "label": "SUSPICIOUS",
+          "model_version": "v2.1.0",
+          "probability": 0.174197,
+          "url": "https://www.google.com/",
+          "variant_type": "homepage"
+        },
+        {
+          "base_url": "https://www.google.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.998018,
+          "url": "https://www.google.com/search",
+          "variant_type": "path"
+        },
+        {
+          "base_url": "https://www.google.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.73294,
+          "url": "https://www.google.com/?q=test",
+          "variant_type": "query"
+        },
+        {
+          "base_url": "https://www.google.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.904423,
+          "url": "https://www.google.com/?q=test&page=2",
+          "variant_type": "multi-query"
+        },
+        {
+          "base_url": "https://www.google.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.989402,
+          "url": "https://www.google.com/?q=cyber%20security",
+          "variant_type": "encoded"
+        },
+        {
+          "base_url": "https://www.google.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.811971,
+          "url": "https://www.google.com/#results",
+          "variant_type": "fragment"
+        },
+        {
+          "base_url": "https://www.google.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.998018,
+          "url": "https://www.google.com/search?q=test",
+          "variant_type": "path+query"
+        },
+        {
+          "base_url": "https://www.bing.com/",
+          "label": "SAFE",
+          "model_version": "v2.1.0",
+          "probability": 0.059581,
+          "url": "https://www.bing.com/",
+          "variant_type": "homepage"
+        },
+        {
+          "base_url": "https://www.bing.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.998018,
+          "url": "https://www.bing.com/search",
+          "variant_type": "path"
+        },
+        {
+          "base_url": "https://www.bing.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.718445,
+          "url": "https://www.bing.com/?q=test",
+          "variant_type": "query"
+        },
+        {
+          "base_url": "https://www.bing.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.88894,
+          "url": "https://www.bing.com/?q=test&page=2",
+          "variant_type": "multi-query"
+        },
+        {
+          "base_url": "https://www.bing.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.984747,
+          "url": "https://www.bing.com/?q=cyber%20security",
+          "variant_type": "encoded"
+        },
+        {
+          "base_url": "https://www.bing.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.81172,
+          "url": "https://www.bing.com/#results",
+          "variant_type": "fragment"
+        },
+        {
+          "base_url": "https://www.bing.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.998018,
+          "url": "https://www.bing.com/search?q=test",
+          "variant_type": "path+query"
+        },
+        {
+          "base_url": "https://www.youtube.com/",
+          "label": "SUSPICIOUS",
+          "model_version": "v2.1.0",
+          "probability": 0.167584,
+          "url": "https://www.youtube.com/",
+          "variant_type": "homepage"
+        },
+        {
+          "base_url": "https://www.youtube.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.998018,
+          "url": "https://www.youtube.com/search",
+          "variant_type": "path"
+        },
+        {
+          "base_url": "https://www.youtube.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.728417,
+          "url": "https://www.youtube.com/?q=test",
+          "variant_type": "query"
+        },
+        {
+          "base_url": "https://www.youtube.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.976354,
+          "url": "https://www.youtube.com/?q=test&page=2",
+          "variant_type": "multi-query"
+        },
+        {
+          "base_url": "https://www.youtube.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.990068,
+          "url": "https://www.youtube.com/?q=cyber%20security",
+          "variant_type": "encoded"
+        },
+        {
+          "base_url": "https://www.youtube.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.811727,
+          "url": "https://www.youtube.com/#results",
+          "variant_type": "fragment"
+        },
+        {
+          "base_url": "https://www.youtube.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.998033,
+          "url": "https://www.youtube.com/search?q=test",
+          "variant_type": "path+query"
+        },
+        {
+          "base_url": "https://github.com/",
+          "label": "SUSPICIOUS",
+          "model_version": "v2.1.0",
+          "probability": 0.164589,
+          "url": "https://github.com/",
+          "variant_type": "homepage"
+        },
+        {
+          "base_url": "https://github.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.998018,
+          "url": "https://github.com/search",
+          "variant_type": "path"
+        },
+        {
+          "base_url": "https://github.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.725768,
+          "url": "https://github.com/?q=test",
+          "variant_type": "query"
+        },
+        {
+          "base_url": "https://github.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.886815,
+          "url": "https://github.com/?q=test&page=2",
+          "variant_type": "multi-query"
+        },
+        {
+          "base_url": "https://github.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.990193,
+          "url": "https://github.com/?q=cyber%20security",
+          "variant_type": "encoded"
+        },
+        {
+          "base_url": "https://github.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.808698,
+          "url": "https://github.com/#results",
+          "variant_type": "fragment"
+        },
+        {
+          "base_url": "https://github.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.998018,
+          "url": "https://github.com/search?q=test",
+          "variant_type": "path+query"
+        },
+        {
+          "base_url": "https://www.amazon.com/",
+          "label": "SUSPICIOUS",
+          "model_version": "v2.1.0",
+          "probability": 0.1705,
+          "url": "https://www.amazon.com/",
+          "variant_type": "homepage"
+        },
+        {
+          "base_url": "https://www.amazon.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.998018,
+          "url": "https://www.amazon.com/search",
+          "variant_type": "path"
+        },
+        {
+          "base_url": "https://www.amazon.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.726556,
+          "url": "https://www.amazon.com/?q=test",
+          "variant_type": "query"
+        },
+        {
+          "base_url": "https://www.amazon.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.887182,
+          "url": "https://www.amazon.com/?q=test&page=2",
+          "variant_type": "multi-query"
+        },
+        {
+          "base_url": "https://www.amazon.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.990331,
+          "url": "https://www.amazon.com/?q=cyber%20security",
+          "variant_type": "encoded"
+        },
+        {
+          "base_url": "https://www.amazon.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.809953,
+          "url": "https://www.amazon.com/#results",
+          "variant_type": "fragment"
+        },
+        {
+          "base_url": "https://www.amazon.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.998018,
+          "url": "https://www.amazon.com/search?q=test",
+          "variant_type": "path+query"
+        },
+        {
+          "base_url": "https://learn.microsoft.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.773441,
+          "url": "https://learn.microsoft.com/",
+          "variant_type": "homepage"
+        },
+        {
+          "base_url": "https://learn.microsoft.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.998033,
+          "url": "https://learn.microsoft.com/search",
+          "variant_type": "path"
+        },
+        {
+          "base_url": "https://learn.microsoft.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.996514,
+          "url": "https://learn.microsoft.com/?q=test",
+          "variant_type": "query"
+        },
+        {
+          "base_url": "https://learn.microsoft.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.99839,
+          "url": "https://learn.microsoft.com/?q=test&page=2",
+          "variant_type": "multi-query"
+        },
+        {
+          "base_url": "https://learn.microsoft.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.997877,
+          "url": "https://learn.microsoft.com/?q=cyber%20security",
+          "variant_type": "encoded"
+        },
+        {
+          "base_url": "https://learn.microsoft.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.997574,
+          "url": "https://learn.microsoft.com/#results",
+          "variant_type": "fragment"
+        },
+        {
+          "base_url": "https://learn.microsoft.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.997835,
+          "url": "https://learn.microsoft.com/search?q=test",
+          "variant_type": "path+query"
+        },
+        {
+          "base_url": "https://stackoverflow.com/",
+          "label": "SAFE",
+          "model_version": "v2.1.0",
+          "probability": 0.129926,
+          "url": "https://stackoverflow.com/",
+          "variant_type": "homepage"
+        },
+        {
+          "base_url": "https://stackoverflow.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.998018,
+          "url": "https://stackoverflow.com/search",
+          "variant_type": "path"
+        },
+        {
+          "base_url": "https://stackoverflow.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.717033,
+          "url": "https://stackoverflow.com/?q=test",
+          "variant_type": "query"
+        },
+        {
+          "base_url": "https://stackoverflow.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.995298,
+          "url": "https://stackoverflow.com/?q=test&page=2",
+          "variant_type": "multi-query"
+        },
+        {
+          "base_url": "https://stackoverflow.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.997848,
+          "url": "https://stackoverflow.com/?q=cyber%20security",
+          "variant_type": "encoded"
+        },
+        {
+          "base_url": "https://stackoverflow.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.937886,
+          "url": "https://stackoverflow.com/#results",
+          "variant_type": "fragment"
+        },
+        {
+          "base_url": "https://stackoverflow.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.997868,
+          "url": "https://stackoverflow.com/search?q=test",
+          "variant_type": "path+query"
+        },
+        {
+          "base_url": "https://en.wikipedia.org/",
+          "label": "SUSPICIOUS",
+          "model_version": "v2.1.0",
+          "probability": 0.531338,
+          "url": "https://en.wikipedia.org/",
+          "variant_type": "homepage"
+        },
+        {
+          "base_url": "https://en.wikipedia.org/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.998018,
+          "url": "https://en.wikipedia.org/search",
+          "variant_type": "path"
+        },
+        {
+          "base_url": "https://en.wikipedia.org/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.994219,
+          "url": "https://en.wikipedia.org/?q=test",
+          "variant_type": "query"
+        },
+        {
+          "base_url": "https://en.wikipedia.org/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.998517,
+          "url": "https://en.wikipedia.org/?q=test&page=2",
+          "variant_type": "multi-query"
+        },
+        {
+          "base_url": "https://en.wikipedia.org/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.997874,
+          "url": "https://en.wikipedia.org/?q=cyber%20security",
+          "variant_type": "encoded"
+        },
+        {
+          "base_url": "https://en.wikipedia.org/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.996091,
+          "url": "https://en.wikipedia.org/#results",
+          "variant_type": "fragment"
+        },
+        {
+          "base_url": "https://en.wikipedia.org/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.997946,
+          "url": "https://en.wikipedia.org/search?q=test",
+          "variant_type": "path+query"
+        },
+        {
+          "base_url": "https://www.reddit.com/",
+          "label": "SUSPICIOUS",
+          "model_version": "v2.1.0",
+          "probability": 0.164589,
+          "url": "https://www.reddit.com/",
+          "variant_type": "homepage"
+        },
+        {
+          "base_url": "https://www.reddit.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.998018,
+          "url": "https://www.reddit.com/search",
+          "variant_type": "path"
+        },
+        {
+          "base_url": "https://www.reddit.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.729821,
+          "url": "https://www.reddit.com/?q=test",
+          "variant_type": "query"
+        },
+        {
+          "base_url": "https://www.reddit.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.886815,
+          "url": "https://www.reddit.com/?q=test&page=2",
+          "variant_type": "multi-query"
+        },
+        {
+          "base_url": "https://www.reddit.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.990704,
+          "url": "https://www.reddit.com/?q=cyber%20security",
+          "variant_type": "encoded"
+        },
+        {
+          "base_url": "https://www.reddit.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.80882,
+          "url": "https://www.reddit.com/#results",
+          "variant_type": "fragment"
+        },
+        {
+          "base_url": "https://www.reddit.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.998018,
+          "url": "https://www.reddit.com/search?q=test",
+          "variant_type": "path+query"
+        },
+        {
+          "base_url": "https://accounts.google.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.758785,
+          "url": "https://accounts.google.com/",
+          "variant_type": "homepage"
+        },
+        {
+          "base_url": "https://accounts.google.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.998033,
+          "url": "https://accounts.google.com/search",
+          "variant_type": "path"
+        },
+        {
+          "base_url": "https://accounts.google.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.995964,
+          "url": "https://accounts.google.com/?q=test",
+          "variant_type": "query"
+        },
+        {
+          "base_url": "https://accounts.google.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.998722,
+          "url": "https://accounts.google.com/?q=test&page=2",
+          "variant_type": "multi-query"
+        },
+        {
+          "base_url": "https://accounts.google.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.997877,
+          "url": "https://accounts.google.com/?q=cyber%20security",
+          "variant_type": "encoded"
+        },
+        {
+          "base_url": "https://accounts.google.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.997205,
+          "url": "https://accounts.google.com/#results",
+          "variant_type": "fragment"
+        },
+        {
+          "base_url": "https://accounts.google.com/",
+          "label": "PHISHING",
+          "model_version": "v2.1.0",
+          "probability": 0.997835,
+          "url": "https://accounts.google.com/search?q=test",
+          "variant_type": "path+query"
+        }
+      ],
+      "source": "Reports existing before this experiment; URLs are scored only and are not added as training rows."
+    },
+    "benchmark_reserved_domains": 407,
+    "max_child_pages_per_source": 2,
+    "max_link_verifications_per_source": 16,
+    "request_pause_seconds": 0.5,
+    "same_registered_domain_https_redirects_only": true,
+    "source_domains_seen_in_previous_legitimate_data": 202
+  },
+  "row_count": 425,
+  "skipped_sources": [
+    {
+      "domain": "stackoverflow.com",
+      "homepage": "https://stackoverflow.com/",
+      "name": "Stack Overflow",
+      "reason": "registered domain reserved by fixed benchmark"
+    }
+  ],
+  "source_allowlist": [
+    {
+      "homepage": "https://www.si.edu/",
+      "name": "Smithsonian",
+      "provenance_basis": "Official public homepage of Smithsonian; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "si.edu"
+    },
+    {
+      "homepage": "https://www.cdc.gov/",
+      "name": "CDC",
+      "provenance_basis": "Official public homepage of CDC; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "cdc.gov"
+    },
+    {
+      "homepage": "https://www.fda.gov/",
+      "name": "U.S. Food and Drug Administration",
+      "provenance_basis": "Official public homepage of U.S. Food and Drug Administration; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "fda.gov"
+    },
+    {
+      "homepage": "https://www.usa.gov/",
+      "name": "USA.gov",
+      "provenance_basis": "Official public homepage of USA.gov; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "usa.gov"
+    },
+    {
+      "homepage": "https://www.irs.gov/",
+      "name": "Internal Revenue Service",
+      "provenance_basis": "Official public homepage of Internal Revenue Service; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "irs.gov"
+    },
+    {
+      "homepage": "https://www.archives.gov/",
+      "name": "U.S. National Archives",
+      "provenance_basis": "Official public homepage of U.S. National Archives; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "archives.gov"
+    },
+    {
+      "homepage": "https://www.nps.gov/",
+      "name": "National Park Service",
+      "provenance_basis": "Official public homepage of National Park Service; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "nps.gov"
+    },
+    {
+      "homepage": "https://www.nih.gov/",
+      "name": "National Institutes of Health",
+      "provenance_basis": "Official public homepage of National Institutes of Health; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "nih.gov"
+    },
+    {
+      "homepage": "https://www.usgs.gov/",
+      "name": "U.S. Geological Survey",
+      "provenance_basis": "Official public homepage of U.S. Geological Survey; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "usgs.gov"
+    },
+    {
+      "homepage": "https://www.noaa.gov/",
+      "name": "NOAA",
+      "provenance_basis": "Official public homepage of NOAA; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "noaa.gov"
+    },
+    {
+      "homepage": "https://www.congress.gov/",
+      "name": "U.S. Congress",
+      "provenance_basis": "Official public homepage of U.S. Congress; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "congress.gov"
+    },
+    {
+      "homepage": "https://www.whitehouse.gov/",
+      "name": "The White House",
+      "provenance_basis": "Official public homepage of The White House; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "whitehouse.gov"
+    },
+    {
+      "homepage": "https://www.state.gov/",
+      "name": "U.S. Department of State",
+      "provenance_basis": "Official public homepage of U.S. Department of State; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "state.gov"
+    },
+    {
+      "homepage": "https://www.ed.gov/",
+      "name": "U.S. Department of Education",
+      "provenance_basis": "Official public homepage of U.S. Department of Education; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "ed.gov"
+    },
+    {
+      "homepage": "https://www.energy.gov/",
+      "name": "U.S. Department of Energy",
+      "provenance_basis": "Official public homepage of U.S. Department of Energy; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "energy.gov"
+    },
+    {
+      "homepage": "https://www.princeton.edu/",
+      "name": "Princeton University",
+      "provenance_basis": "Official public homepage of Princeton University; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "princeton.edu"
+    },
+    {
+      "homepage": "https://www.ox.ac.uk/",
+      "name": "University of Oxford",
+      "provenance_basis": "Official public homepage of University of Oxford; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "ox.ac.uk"
+    },
+    {
+      "homepage": "https://www.cam.ac.uk/",
+      "name": "University of Cambridge",
+      "provenance_basis": "Official public homepage of University of Cambridge; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "cam.ac.uk"
+    },
+    {
+      "homepage": "https://www.caltech.edu/",
+      "name": "California Institute of Technology",
+      "provenance_basis": "Official public homepage of California Institute of Technology; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "caltech.edu"
+    },
+    {
+      "homepage": "https://umich.edu/",
+      "name": "University of Michigan",
+      "provenance_basis": "Official public homepage of University of Michigan; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "umich.edu"
+    },
+    {
+      "homepage": "https://www.utoronto.ca/",
+      "name": "University of Toronto",
+      "provenance_basis": "Official public homepage of University of Toronto; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "utoronto.ca"
+    },
+    {
+      "homepage": "https://ethz.ch/",
+      "name": "ETH Zurich",
+      "provenance_basis": "Official public homepage of ETH Zurich; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "ethz.ch"
+    },
+    {
+      "homepage": "https://www.epfl.ch/",
+      "name": "EPFL",
+      "provenance_basis": "Official public homepage of EPFL; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "epfl.ch"
+    },
+    {
+      "homepage": "https://www.ed.ac.uk/",
+      "name": "University of Edinburgh",
+      "provenance_basis": "Official public homepage of University of Edinburgh; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "ed.ac.uk"
+    },
+    {
+      "homepage": "https://www.unicef.org/",
+      "name": "UNICEF",
+      "provenance_basis": "Official public homepage of UNICEF; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "unicef.org"
+    },
+    {
+      "homepage": "https://www.unesco.org/",
+      "name": "UNESCO",
+      "provenance_basis": "Official public homepage of UNESCO; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "unesco.org"
+    },
+    {
+      "homepage": "https://home.cern/",
+      "name": "CERN",
+      "provenance_basis": "Official public homepage of CERN; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "home.cern"
+    },
+    {
+      "homepage": "https://www.khanacademy.org/",
+      "name": "Khan Academy",
+      "provenance_basis": "Official public homepage of Khan Academy; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "khanacademy.org"
+    },
+    {
+      "homepage": "https://www.etsy.com/",
+      "name": "Etsy",
+      "provenance_basis": "Official public homepage of Etsy; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "etsy.com"
+    },
+    {
+      "homepage": "https://www.ebay.com/",
+      "name": "eBay",
+      "provenance_basis": "Official public homepage of eBay; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "ebay.com"
+    },
+    {
+      "homepage": "https://www.w3schools.com/",
+      "name": "W3Schools",
+      "provenance_basis": "Official public homepage of W3Schools; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "w3schools.com"
+    },
+    {
+      "homepage": "https://www.reuters.com/",
+      "name": "Reuters",
+      "provenance_basis": "Official public homepage of Reuters; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "reuters.com"
+    },
+    {
+      "homepage": "https://apnews.com/",
+      "name": "Associated Press",
+      "provenance_basis": "Official public homepage of Associated Press; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "apnews.com"
+    },
+    {
+      "homepage": "https://www.theatlantic.com/",
+      "name": "The Atlantic",
+      "provenance_basis": "Official public homepage of The Atlantic; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "theatlantic.com"
+    },
+    {
+      "homepage": "https://theconversation.com/",
+      "name": "The Conversation",
+      "provenance_basis": "Official public homepage of The Conversation; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "theconversation.com"
+    },
+    {
+      "homepage": "https://www.imf.org/",
+      "name": "International Monetary Fund",
+      "provenance_basis": "Official public homepage of International Monetary Fund; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "imf.org"
+    },
+    {
+      "homepage": "https://www.oecd.org/",
+      "name": "OECD",
+      "provenance_basis": "Official public homepage of OECD; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "oecd.org"
+    },
+    {
+      "homepage": "https://www.nationalarchives.gov.uk/",
+      "name": "UK National Archives",
+      "provenance_basis": "Official public homepage of UK National Archives; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "nationalarchives.gov.uk"
+    },
+    {
+      "homepage": "https://standardebooks.org/",
+      "name": "Standard Ebooks",
+      "provenance_basis": "Official public homepage of Standard Ebooks; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "standardebooks.org"
+    },
+    {
+      "homepage": "https://www.nypl.org/",
+      "name": "New York Public Library",
+      "provenance_basis": "Official public homepage of New York Public Library; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "nypl.org"
+    },
+    {
+      "homepage": "https://www.mdanderson.org/",
+      "name": "MD Anderson Cancer Center",
+      "provenance_basis": "Official public homepage of MD Anderson Cancer Center; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "mdanderson.org"
+    },
+    {
+      "homepage": "https://www.britannica.com/",
+      "name": "Encyclopaedia Britannica",
+      "provenance_basis": "Official public homepage of Encyclopaedia Britannica; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "britannica.com"
+    },
+    {
+      "homepage": "https://www.bestbuy.com/",
+      "name": "Best Buy",
+      "provenance_basis": "Official public homepage of Best Buy; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "bestbuy.com"
+    },
+    {
+      "homepage": "https://www.homedepot.com/",
+      "name": "The Home Depot",
+      "provenance_basis": "Official public homepage of The Home Depot; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "homedepot.com"
+    },
+    {
+      "homepage": "https://www.wayfair.com/",
+      "name": "Wayfair",
+      "provenance_basis": "Official public homepage of Wayfair; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "wayfair.com"
+    },
+    {
+      "homepage": "https://www.zalando.com/",
+      "name": "Zalando",
+      "provenance_basis": "Official public homepage of Zalando; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "zalando.com"
+    },
+    {
+      "homepage": "https://www.linuxfoundation.org/",
+      "name": "Linux Foundation",
+      "provenance_basis": "Official public homepage of Linux Foundation; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "linuxfoundation.org"
+    },
+    {
+      "homepage": "https://webkit.org/",
+      "name": "WebKit",
+      "provenance_basis": "Official public homepage of WebKit; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "webkit.org"
+    },
+    {
+      "homepage": "https://www.npmjs.com/",
+      "name": "npm",
+      "provenance_basis": "Official public homepage of npm; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "npmjs.com"
+    },
+    {
+      "homepage": "https://www.freecodecamp.org/",
+      "name": "freeCodeCamp",
+      "provenance_basis": "Official public homepage of freeCodeCamp; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "freecodecamp.org"
+    },
+    {
+      "homepage": "https://fastapi.tiangolo.com/",
+      "name": "FastAPI Documentation",
+      "provenance_basis": "Official public homepage of FastAPI Documentation; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "tiangolo.com"
+    },
+    {
+      "homepage": "https://www.canada.ca/",
+      "name": "Government of Canada",
+      "provenance_basis": "Official public homepage of Government of Canada; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "canada.ca"
+    },
+    {
+      "homepage": "https://www.gov.ie/",
+      "name": "Government of Ireland",
+      "provenance_basis": "Official public homepage of Government of Ireland; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "gov.ie"
+    },
+    {
+      "homepage": "https://www.parliament.uk/",
+      "name": "Parliament of the United Kingdom",
+      "provenance_basis": "Official public homepage of Parliament of the United Kingdom; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "parliament.uk"
+    },
+    {
+      "homepage": "https://www.australia.gov.au/",
+      "name": "Australian Government",
+      "provenance_basis": "Official public homepage of Australian Government; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "australia.gov.au"
+    }
+  ],
+  "source_results": [
+    {
+      "approved_homepage": "https://www.si.edu/",
+      "errors": [
+        "homepage: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "homepage_status": null,
+      "homepage_verified": false,
+      "links_checked": 0,
+      "links_verified": 0,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 0,
+      "provenance": "Official public homepage of Smithsonian; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "si.edu",
+      "request_count": 1,
+      "source": "Smithsonian"
+    },
+    {
+      "approved_homepage": "https://www.cdc.gov/",
+      "errors": [],
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 16,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 17,
+      "provenance": "Official public homepage of CDC; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "cdc.gov",
+      "request_count": 17,
+      "source": "CDC"
+    },
+    {
+      "approved_homepage": "https://www.fda.gov/",
+      "errors": [],
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 16,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 17,
+      "provenance": "Official public homepage of U.S. Food and Drug Administration; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "fda.gov",
+      "request_count": 17,
+      "source": "U.S. Food and Drug Administration"
+    },
+    {
+      "approved_homepage": "https://www.usa.gov/",
+      "errors": [],
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 16,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 17,
+      "provenance": "Official public homepage of USA.gov; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "usa.gov",
+      "request_count": 17,
+      "source": "USA.gov"
+    },
+    {
+      "approved_homepage": "https://www.irs.gov/",
+      "errors": [
+        "link: HTTPError: HTTP Error 401: Unauthorized"
+      ],
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 15,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 16,
+      "provenance": "Official public homepage of Internal Revenue Service; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "irs.gov",
+      "request_count": 17,
+      "source": "Internal Revenue Service"
+    },
+    {
+      "approved_homepage": "https://www.archives.gov/",
+      "errors": [
+        "link: URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1006)>"
+      ],
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 15,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 16,
+      "provenance": "Official public homepage of U.S. National Archives; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "archives.gov",
+      "request_count": 17,
+      "source": "U.S. National Archives"
+    },
+    {
+      "approved_homepage": "https://www.nps.gov/",
+      "errors": [],
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 16,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 17,
+      "provenance": "Official public homepage of National Park Service; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "nps.gov",
+      "request_count": 17,
+      "source": "National Park Service"
+    },
+    {
+      "approved_homepage": "https://www.nih.gov/",
+      "errors": [
+        "homepage: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "homepage_status": null,
+      "homepage_verified": false,
+      "links_checked": 0,
+      "links_verified": 0,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 0,
+      "provenance": "Official public homepage of National Institutes of Health; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "nih.gov",
+      "request_count": 1,
+      "source": "National Institutes of Health"
+    },
+    {
+      "approved_homepage": "https://www.usgs.gov/",
+      "errors": [],
+      "homepage_status": 202,
+      "homepage_verified": true,
+      "links_checked": 0,
+      "links_verified": 0,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 1,
+      "provenance": "Official public homepage of U.S. Geological Survey; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "usgs.gov",
+      "request_count": 1,
+      "source": "U.S. Geological Survey"
+    },
+    {
+      "approved_homepage": "https://www.noaa.gov/",
+      "errors": [
+        "homepage: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "homepage_status": null,
+      "homepage_verified": false,
+      "links_checked": 0,
+      "links_verified": 0,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 0,
+      "provenance": "Official public homepage of NOAA; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "noaa.gov",
+      "request_count": 1,
+      "source": "NOAA"
+    },
+    {
+      "approved_homepage": "https://www.congress.gov/",
+      "errors": [
+        "homepage: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "homepage_status": null,
+      "homepage_verified": false,
+      "links_checked": 0,
+      "links_verified": 0,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 0,
+      "provenance": "Official public homepage of U.S. Congress; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "congress.gov",
+      "request_count": 1,
+      "source": "U.S. Congress"
+    },
+    {
+      "approved_homepage": "https://www.whitehouse.gov/",
+      "errors": [],
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 16,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 17,
+      "provenance": "Official public homepage of The White House; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "whitehouse.gov",
+      "request_count": 17,
+      "source": "The White House"
+    },
+    {
+      "approved_homepage": "https://www.state.gov/",
+      "errors": [
+        "homepage: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "homepage_status": null,
+      "homepage_verified": false,
+      "links_checked": 0,
+      "links_verified": 0,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 0,
+      "provenance": "Official public homepage of U.S. Department of State; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "state.gov",
+      "request_count": 1,
+      "source": "U.S. Department of State"
+    },
+    {
+      "approved_homepage": "https://www.ed.gov/",
+      "errors": [
+        "homepage: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "homepage_status": null,
+      "homepage_verified": false,
+      "links_checked": 0,
+      "links_verified": 0,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 0,
+      "provenance": "Official public homepage of U.S. Department of Education; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "ed.gov",
+      "request_count": 1,
+      "source": "U.S. Department of Education"
+    },
+    {
+      "approved_homepage": "https://www.energy.gov/",
+      "errors": [],
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 16,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 17,
+      "provenance": "Official public homepage of U.S. Department of Energy; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "energy.gov",
+      "request_count": 17,
+      "source": "U.S. Department of Energy"
+    },
+    {
+      "approved_homepage": "https://www.princeton.edu/",
+      "errors": [
+        "homepage: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "homepage_status": null,
+      "homepage_verified": false,
+      "links_checked": 0,
+      "links_verified": 0,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 0,
+      "provenance": "Official public homepage of Princeton University; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "princeton.edu",
+      "request_count": 1,
+      "source": "Princeton University"
+    },
+    {
+      "approved_homepage": "https://www.ox.ac.uk/",
+      "errors": [
+        "homepage: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "homepage_status": null,
+      "homepage_verified": false,
+      "links_checked": 0,
+      "links_verified": 0,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 0,
+      "provenance": "Official public homepage of University of Oxford; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "ox.ac.uk",
+      "request_count": 1,
+      "source": "University of Oxford"
+    },
+    {
+      "approved_homepage": "https://www.cam.ac.uk/",
+      "errors": [
+        "link: URLError: <urlopen error redirect outside approved HTTPS registered domain blocked>",
+        "link: URLError: <urlopen error redirect outside approved HTTPS registered domain blocked>"
+      ],
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 14,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 15,
+      "provenance": "Official public homepage of University of Cambridge; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "cam.ac.uk",
+      "request_count": 17,
+      "source": "University of Cambridge"
+    },
+    {
+      "approved_homepage": "https://www.caltech.edu/",
+      "errors": [],
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 16,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 17,
+      "provenance": "Official public homepage of California Institute of Technology; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "caltech.edu",
+      "request_count": 17,
+      "source": "California Institute of Technology"
+    },
+    {
+      "approved_homepage": "https://umich.edu/",
+      "errors": [
+        "link: HTTPError: HTTP Error 403: Forbidden",
+        "link: HTTPError: HTTP Error 403: Forbidden",
+        "link: HTTPError: HTTP Error 403: Forbidden",
+        "link: HTTPError: HTTP Error 403: Forbidden",
+        "link: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 11,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 12,
+      "provenance": "Official public homepage of University of Michigan; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "umich.edu",
+      "request_count": 17,
+      "source": "University of Michigan"
+    },
+    {
+      "approved_homepage": "https://www.utoronto.ca/",
+      "errors": [
+        "homepage: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "homepage_status": null,
+      "homepage_verified": false,
+      "links_checked": 0,
+      "links_verified": 0,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 0,
+      "provenance": "Official public homepage of University of Toronto; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "utoronto.ca",
+      "request_count": 1,
+      "source": "University of Toronto"
+    },
+    {
+      "approved_homepage": "https://ethz.ch/",
+      "errors": [],
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 16,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 17,
+      "provenance": "Official public homepage of ETH Zurich; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "ethz.ch",
+      "request_count": 17,
+      "source": "ETH Zurich"
+    },
+    {
+      "approved_homepage": "https://www.epfl.ch/",
+      "errors": [],
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 16,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 17,
+      "provenance": "Official public homepage of EPFL; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "epfl.ch",
+      "request_count": 17,
+      "source": "EPFL"
+    },
+    {
+      "approved_homepage": "https://www.ed.ac.uk/",
+      "errors": [
+        "link: HTTPError: HTTP Error 403: Forbidden",
+        "link: HTTPError: HTTP Error 403: Forbidden",
+        "link: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 13,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 14,
+      "provenance": "Official public homepage of University of Edinburgh; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "ed.ac.uk",
+      "request_count": 17,
+      "source": "University of Edinburgh"
+    },
+    {
+      "approved_homepage": "https://www.unicef.org/",
+      "errors": [],
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 16,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 17,
+      "provenance": "Official public homepage of UNICEF; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "unicef.org",
+      "request_count": 17,
+      "source": "UNICEF"
+    },
+    {
+      "approved_homepage": "https://www.unesco.org/",
+      "errors": [
+        "homepage: RemoteDisconnected: Remote end closed connection without response"
+      ],
+      "homepage_status": null,
+      "homepage_verified": false,
+      "links_checked": 0,
+      "links_verified": 0,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 0,
+      "provenance": "Official public homepage of UNESCO; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "unesco.org",
+      "request_count": 1,
+      "source": "UNESCO"
+    },
+    {
+      "approved_homepage": "https://home.cern/",
+      "errors": [
+        "link: URLError: <urlopen error redirect outside approved HTTPS registered domain blocked>"
+      ],
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 15,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 16,
+      "provenance": "Official public homepage of CERN; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "home.cern",
+      "request_count": 17,
+      "source": "CERN"
+    },
+    {
+      "approved_homepage": "https://www.khanacademy.org/",
+      "errors": [],
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 0,
+      "links_verified": 0,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 1,
+      "provenance": "Official public homepage of Khan Academy; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "khanacademy.org",
+      "request_count": 1,
+      "source": "Khan Academy"
+    },
+    {
+      "approved_homepage": "https://www.etsy.com/",
+      "errors": [
+        "homepage: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "homepage_status": null,
+      "homepage_verified": false,
+      "links_checked": 0,
+      "links_verified": 0,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 0,
+      "provenance": "Official public homepage of Etsy; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "etsy.com",
+      "request_count": 1,
+      "source": "Etsy"
+    },
+    {
+      "approved_homepage": "https://www.ebay.com/",
+      "errors": [
+        "homepage: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "homepage_status": null,
+      "homepage_verified": false,
+      "links_checked": 0,
+      "links_verified": 0,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 0,
+      "provenance": "Official public homepage of eBay; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "ebay.com",
+      "request_count": 1,
+      "source": "eBay"
+    },
+    {
+      "approved_homepage": "https://www.w3schools.com/",
+      "errors": [
+        "link: HTTPError: HTTP Error 404: Not Found",
+        "link: HTTPError: HTTP Error 404: Not Found"
+      ],
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 14,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 15,
+      "provenance": "Official public homepage of W3Schools; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "w3schools.com",
+      "request_count": 17,
+      "source": "W3Schools"
+    },
+    {
+      "approved_homepage": "https://www.reuters.com/",
+      "errors": [
+        "homepage: HTTPError: HTTP Error 401: HTTP Forbidden"
+      ],
+      "homepage_status": null,
+      "homepage_verified": false,
+      "links_checked": 0,
+      "links_verified": 0,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 0,
+      "provenance": "Official public homepage of Reuters; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "reuters.com",
+      "request_count": 1,
+      "source": "Reuters"
+    },
+    {
+      "approved_homepage": "https://apnews.com/",
+      "errors": [
+        "link: HTTPError: HTTP Error 403: Forbidden",
+        "link: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 14,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 15,
+      "provenance": "Official public homepage of Associated Press; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "apnews.com",
+      "request_count": 17,
+      "source": "Associated Press"
+    },
+    {
+      "approved_homepage": "https://www.theatlantic.com/",
+      "errors": [
+        "homepage: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "homepage_status": null,
+      "homepage_verified": false,
+      "links_checked": 0,
+      "links_verified": 0,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 0,
+      "provenance": "Official public homepage of The Atlantic; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "theatlantic.com",
+      "request_count": 1,
+      "source": "The Atlantic"
+    },
+    {
+      "approved_homepage": "https://theconversation.com/",
+      "errors": [],
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 16,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 17,
+      "provenance": "Official public homepage of The Conversation; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "theconversation.com",
+      "request_count": 17,
+      "source": "The Conversation"
+    },
+    {
+      "approved_homepage": "https://www.imf.org/",
+      "errors": [
+        "homepage: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "homepage_status": null,
+      "homepage_verified": false,
+      "links_checked": 0,
+      "links_verified": 0,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 0,
+      "provenance": "Official public homepage of International Monetary Fund; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "imf.org",
+      "request_count": 1,
+      "source": "International Monetary Fund"
+    },
+    {
+      "approved_homepage": "https://www.oecd.org/",
+      "errors": [
+        "homepage: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "homepage_status": null,
+      "homepage_verified": false,
+      "links_checked": 0,
+      "links_verified": 0,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 0,
+      "provenance": "Official public homepage of OECD; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "oecd.org",
+      "request_count": 1,
+      "source": "OECD"
+    },
+    {
+      "approved_homepage": "https://www.nationalarchives.gov.uk/",
+      "errors": [],
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 16,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 17,
+      "provenance": "Official public homepage of UK National Archives; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "nationalarchives.gov.uk",
+      "request_count": 17,
+      "source": "UK National Archives"
+    },
+    {
+      "approved_homepage": "https://standardebooks.org/",
+      "errors": [
+        "link: HTTPError: HTTP Error 404: Not Found",
+        "link: URLError: <urlopen error timed out>",
+        "link: URLError: <urlopen error timed out>",
+        "link: URLError: <urlopen error timed out>",
+        "link: URLError: <urlopen error timed out>",
+        "link: URLError: <urlopen error timed out>",
+        "link: URLError: <urlopen error timed out>",
+        "link: URLError: <urlopen error timed out>",
+        "link: URLError: <urlopen error timed out>",
+        "link: URLError: <urlopen error timed out>",
+        "link: URLError: <urlopen error timed out>",
+        "link: URLError: <urlopen error timed out>",
+        "link: URLError: <urlopen error timed out>"
+      ],
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 3,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 4,
+      "provenance": "Official public homepage of Standard Ebooks; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "standardebooks.org",
+      "request_count": 17,
+      "source": "Standard Ebooks"
+    },
+    {
+      "approved_homepage": "https://www.nypl.org/",
+      "errors": [],
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 0,
+      "links_verified": 0,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 1,
+      "provenance": "Official public homepage of New York Public Library; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "nypl.org",
+      "request_count": 1,
+      "source": "New York Public Library"
+    },
+    {
+      "approved_homepage": "https://www.mdanderson.org/",
+      "errors": [],
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 16,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 17,
+      "provenance": "Official public homepage of MD Anderson Cancer Center; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "mdanderson.org",
+      "request_count": 17,
+      "source": "MD Anderson Cancer Center"
+    },
+    {
+      "approved_homepage": "https://www.britannica.com/",
+      "errors": [
+        "homepage: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "homepage_status": null,
+      "homepage_verified": false,
+      "links_checked": 0,
+      "links_verified": 0,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 0,
+      "provenance": "Official public homepage of Encyclopaedia Britannica; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "britannica.com",
+      "request_count": 1,
+      "source": "Encyclopaedia Britannica"
+    },
+    {
+      "approved_homepage": "https://www.bestbuy.com/",
+      "errors": [],
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 1,
+      "links_verified": 1,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 2,
+      "provenance": "Official public homepage of Best Buy; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "bestbuy.com",
+      "request_count": 2,
+      "source": "Best Buy"
+    },
+    {
+      "approved_homepage": "https://www.homedepot.com/",
+      "errors": [
+        "link: HTTPError: HTTP Error 403: Forbidden",
+        "link: HTTPError: HTTP Error 403: Forbidden",
+        "link: HTTPError: HTTP Error 403: Forbidden",
+        "link: HTTPError: HTTP Error 403: Forbidden",
+        "link: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 12,
+      "links_verified": 7,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 8,
+      "provenance": "Official public homepage of The Home Depot; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "homedepot.com",
+      "request_count": 13,
+      "source": "The Home Depot"
+    },
+    {
+      "approved_homepage": "https://www.wayfair.com/",
+      "errors": [
+        "homepage: HTTPError: HTTP Error 429: Too Many Requests"
+      ],
+      "homepage_status": null,
+      "homepage_verified": false,
+      "links_checked": 0,
+      "links_verified": 0,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 0,
+      "provenance": "Official public homepage of Wayfair; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "wayfair.com",
+      "request_count": 1,
+      "source": "Wayfair"
+    },
+    {
+      "approved_homepage": "https://www.zalando.com/",
+      "errors": [],
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 0,
+      "links_verified": 0,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 1,
+      "provenance": "Official public homepage of Zalando; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "zalando.com",
+      "request_count": 1,
+      "source": "Zalando"
+    },
+    {
+      "approved_homepage": "https://www.linuxfoundation.org/",
+      "errors": [],
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 16,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 17,
+      "provenance": "Official public homepage of Linux Foundation; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "linuxfoundation.org",
+      "request_count": 17,
+      "source": "Linux Foundation"
+    },
+    {
+      "approved_homepage": "https://webkit.org/",
+      "errors": [],
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 16,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 17,
+      "provenance": "Official public homepage of WebKit; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "webkit.org",
+      "request_count": 17,
+      "source": "WebKit"
+    },
+    {
+      "approved_homepage": "https://www.npmjs.com/",
+      "errors": [
+        "homepage: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "homepage_status": null,
+      "homepage_verified": false,
+      "links_checked": 0,
+      "links_verified": 0,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 0,
+      "provenance": "Official public homepage of npm; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "npmjs.com",
+      "request_count": 1,
+      "source": "npm"
+    },
+    {
+      "approved_homepage": "https://www.freecodecamp.org/",
+      "errors": [],
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 0,
+      "links_verified": 0,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 1,
+      "provenance": "Official public homepage of freeCodeCamp; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "freecodecamp.org",
+      "request_count": 1,
+      "source": "freeCodeCamp"
+    },
+    {
+      "approved_homepage": "https://fastapi.tiangolo.com/",
+      "errors": [],
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 16,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 17,
+      "provenance": "Official public homepage of FastAPI Documentation; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "tiangolo.com",
+      "request_count": 17,
+      "source": "FastAPI Documentation"
+    },
+    {
+      "approved_homepage": "https://www.canada.ca/",
+      "errors": [
+        "link: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1006)>"
+      ],
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 15,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 16,
+      "provenance": "Official public homepage of Government of Canada; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "canada.ca",
+      "request_count": 17,
+      "source": "Government of Canada"
+    },
+    {
+      "approved_homepage": "https://www.gov.ie/",
+      "errors": [
+        "homepage: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "homepage_status": null,
+      "homepage_verified": false,
+      "links_checked": 0,
+      "links_verified": 0,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 0,
+      "provenance": "Official public homepage of Government of Ireland; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "gov.ie",
+      "request_count": 1,
+      "source": "Government of Ireland"
+    },
+    {
+      "approved_homepage": "https://www.parliament.uk/",
+      "errors": [
+        "homepage: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "homepage_status": null,
+      "homepage_verified": false,
+      "links_checked": 0,
+      "links_verified": 0,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 0,
+      "provenance": "Official public homepage of Parliament of the United Kingdom; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "parliament.uk",
+      "request_count": 1,
+      "source": "Parliament of the United Kingdom"
+    },
+    {
+      "approved_homepage": "https://www.australia.gov.au/",
+      "errors": [
+        "homepage: URLError: <urlopen error redirect outside approved HTTPS registered domain blocked>"
+      ],
+      "homepage_status": null,
+      "homepage_verified": false,
+      "links_checked": 0,
+      "links_verified": 0,
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "observed_rows": 0,
+      "provenance": "Official public homepage of Australian Government; legitimacy is attributed only to individually observed same-registered-domain HTTPS URLs.",
+      "registered_domain": "australia.gov.au",
+      "request_count": 1,
+      "source": "Australian Government"
+    }
+  ],
+  "synthetic_urls_created": 0
+}

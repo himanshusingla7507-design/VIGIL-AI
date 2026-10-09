@@ -1,0 +1,43 @@
+{
+  "run_id": "unseen_domain_repair_20261009",
+  "status": "BLOCKED_BEFORE_TRAINING",
+  "experiment_budget": 12,
+  "experiments_completed": 0,
+  "selected_on_validation_only": null,
+  "stop_reason": "No new legitimate source-domain validation/lockbox was available, and registered-domain independence of the refreshed phishing snapshot was not certified. Prior validation/test rows are exposed and were not reused.",
+  "prior_candidate_reference_only": {
+    "name": "character_ngrams_plus_numeric",
+    "artifact": "experiments/auto_ml/false_positive_repair_20261009T084933Z/best_validation_candidate.joblib",
+    "artifact_sha256": "06e7e19c7552809e1cbca87a3f2d1586731107bc00c397330efb225e69a7fa1e",
+    "thresholds": {
+      "safe": 0.45,
+      "phishing": 0.48177141554223285
+    },
+    "selection_basis": "Prior validation split; not available for new selection.",
+    "previous_internal_test": {
+      "legitimate_false_positives": {
+        "numerator": 162,
+        "denominator": 1039,
+        "percentage": 15.591915303176132
+      },
+      "phishing_false_negatives": {
+        "numerator": 32,
+        "denominator": 1039,
+        "percentage": 3.079884504331087
+      },
+      "phishing_recall": {
+        "numerator": 1007,
+        "denominator": 1039,
+        "percentage": 96.92011549566891
+      },
+      "precision_percentage": 86.14,
+      "brier_score": 0.06579175514367513,
+      "pr_auc": 0.9759603878524791,
+      "roc_auc": 0.9794936828463736,
+      "expected_calibration_error_10_bins": 0.059894399546965536
+    },
+    "status": "REFERENCE_ONLY_NOT_A_NEW_EXPERIMENT"
+  },
+  "experiments": [],
+  "input_manifest": "experiments/auto_ml/unseen_domain_repair_20261009/audit_manifest.json"
+}

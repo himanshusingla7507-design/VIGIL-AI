@@ -1,0 +1,96 @@
+{
+  "model_importance_top_10": [
+    {
+      "feature": "HostnameLength",
+      "absolute_coefficient": 0.17817300891080473
+    },
+    {
+      "feature": "IsTrustedTLD",
+      "absolute_coefficient": 0.1658026679267455
+    },
+    {
+      "feature": "DigitRatioInURL",
+      "absolute_coefficient": 0.09628168172170469
+    },
+    {
+      "feature": "HasSuspiciousToken",
+      "absolute_coefficient": 0.09007249786402524
+    },
+    {
+      "feature": "URLEntropy",
+      "absolute_coefficient": 0.08239417191138367
+    },
+    {
+      "feature": "NoOfHyphenInURL",
+      "absolute_coefficient": 0.07743507127139101
+    },
+    {
+      "feature": "HasSuspiciousTLD",
+      "absolute_coefficient": 0.06015959290996484
+    },
+    {
+      "feature": "NoOfDigitsInURL",
+      "absolute_coefficient": 0.04961721108118581
+    },
+    {
+      "feature": "LetterRatioInURL",
+      "absolute_coefficient": 0.04610129371290004
+    },
+    {
+      "feature": "FragmentLength",
+      "absolute_coefficient": 0.040578912650111126
+    }
+  ],
+  "validation_permutation_importance_top_10": [
+    {
+      "feature": "HostnameLength",
+      "importance_mean": 0.11349420527217631,
+      "importance_std": 0.00590526054668807
+    },
+    {
+      "feature": "IsTrustedTLD",
+      "importance_mean": 0.02708046193955264,
+      "importance_std": 0.005127549597419545
+    },
+    {
+      "feature": "NoOfHyphenInURL",
+      "importance_mean": 0.016687352204249477,
+      "importance_std": 0.0009776567447676164
+    },
+    {
+      "feature": "HasSuspiciousToken",
+      "importance_mean": 0.013627132973561698,
+      "importance_std": 0.00376435784380307
+    },
+    {
+      "feature": "DigitRatioInURL",
+      "importance_mean": 0.013213317123311344,
+      "importance_std": 0.002851976801415606
+    },
+    {
+      "feature": "URLEntropy",
+      "importance_mean": 0.009463309189229996,
+      "importance_std": 0.0013859003330181146
+    },
+    {
+      "feature": "HasSuspiciousTLD",
+      "importance_mean": 0.007199321476307159,
+      "importance_std": 0.002085802659735268
+    },
+    {
+      "feature": "FragmentLength",
+      "importance_mean": 0.004193610337546801,
+      "importance_std": 0.0006011534249425885
+    },
+    {
+      "feature": "NoOfDigitsInURL",
+      "importance_mean": 0.003131420128478372,
+      "importance_std": 0.0015928971981213705
+    },
+    {
+      "feature": "URLLength",
+      "importance_mean": 0.0018048119673919432,
+      "importance_std": 0.0008608454490262593
+    }
+  ]
+}

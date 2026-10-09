@@ -1,0 +1,2749 @@
+{
+  "failure_count": 23,
+  "false_negative_examples": [
+    {
+      "cohorts": [
+        "content_path"
+      ],
+      "features": {
+        "DigitRatioInURL": 0.1206896551724138,
+        "DomainLength": 21,
+        "DotCount": 2,
+        "FragmentLength": 0,
+        "HasObfuscation": 0,
+        "HasPort": 0,
+        "HasSuspiciousTLD": 0,
+        "HasSuspiciousToken": 0,
+        "HasSuspiciousWord": 0,
+        "HasTrustedBrand": 0,
+        "HasTrustedBrandToken": 0,
+        "HasUserInfo": 0,
+        "HostnameLength": 21,
+        "IsDomainIP": 0,
+        "IsHTTPS": 1,
+        "IsShortened": 0,
+        "IsTrustedTLD": 1,
+        "LetterRatioInURL": 0.7241379310344828,
+        "NoOfAmpersandInURL": 0,
+        "NoOfAtInURL": 0,
+        "NoOfDigitsInURL": 7,
+        "NoOfEqualsInURL": 0,
+        "NoOfHyphenInURL": 3,
+        "NoOfLettersInURL": 42,
+        "NoOfQMarkInURL": 0,
+        "NoOfSubDomain": 1,
+        "NoOfUnderscoreInURL": 0,
+        "PathLength": 30,
+        "PathSegmentCount": 1,
+        "QueryLength": 0,
+        "QueryParameterCount": 0,
+        "SubdomainDepth": 1,
+        "URLEntropy": 4.891789615518818,
+        "URLLength": 58,
+        "URLPercentEncodingCount": 0
+      },
+      "label": 1,
+      "probability": 0.4254811805735554,
+      "registered_domain": "hsforms.com",
+      "source_name": "PhishTank verified online feed",
+      "url": "https://share-eu1.hsforms.com/16--t1H8KT3yrpixjkbzjTw2exuvw",
+      "verdict": "NOT_PHISHING"
+    },
+    {
+      "cohorts": [
+        "content_path",
+        "fragment"
+      ],
+      "features": {
+        "DigitRatioInURL": 0.0,
+        "DomainLength": 16,
+        "DotCount": 1,
+        "FragmentLength": 21,
+        "HasObfuscation": 0,
+        "HasPort": 0,
+        "HasSuspiciousTLD": 0,
+        "HasSuspiciousToken": 0,
+        "HasSuspiciousWord": 0,
+        "HasTrustedBrand": 0,
+        "HasTrustedBrandToken": 0,
+        "HasUserInfo": 0,
+        "HostnameLength": 16,
+        "IsDomainIP": 0,
+        "IsHTTPS": 1,
+        "IsShortened": 0,
+        "IsTrustedTLD": 1,
+        "LetterRatioInURL": 0.84,
+        "NoOfAmpersandInURL": 0,
+        "NoOfAtInURL": 0,
+        "NoOfDigitsInURL": 0,
+        "NoOfEqualsInURL": 0,
+        "NoOfHyphenInURL": 0,
+        "NoOfLettersInURL": 42,
+        "NoOfQMarkInURL": 1,
+        "NoOfSubDomain": 0,
+        "NoOfUnderscoreInURL": 0,
+        "PathLength": 5,
+        "PathSegmentCount": 1,
+        "QueryLength": 0,
+        "QueryParameterCount": 0,
+        "SubdomainDepth": 0,
+        "URLEntropy": 4.728367439558377,
+        "URLLength": 50,
+        "URLPercentEncodingCount": 0
+      },
+      "label": 1,
+      "probability": 0.3471159062970047,
+      "registered_domain": "karizsoheili.com",
+      "source_name": "PhishTank verified online feed",
+      "url": "https://karizsoheili.com/ejd/#?YWFhYUBleGFtcGxlLmpw",
+      "verdict": "NOT_PHISHING"
+    },
+    {
+      "cohorts": [
+        "content_path"
+      ],
+      "features": {
+        "DigitRatioInURL": 0.0,
+        "DomainLength": 16,
+        "DotCount": 2,
+        "FragmentLength": 0,
+        "HasObfuscation": 0,
+        "HasPort": 0,
+        "HasSuspiciousTLD": 0,
+        "HasSuspiciousToken": 0,
+        "HasSuspiciousWord": 0,
+        "HasTrustedBrand": 0,
+        "HasTrustedBrandToken": 0,
+        "HasUserInfo": 0,
+        "HostnameLength": 16,
+        "IsDomainIP": 0,
+        "IsHTTPS": 1,
+        "IsShortened": 0,
+        "IsTrustedTLD": 1,
+        "LetterRatioInURL": 0.8048780487804879,
+        "NoOfAmpersandInURL": 0,
+        "NoOfAtInURL": 0,
+        "NoOfDigitsInURL": 0,
+        "NoOfEqualsInURL": 0,
+        "NoOfHyphenInURL": 0,
+        "NoOfLettersInURL": 33,
+        "NoOfQMarkInURL": 0,
+        "NoOfSubDomain": 1,
+        "NoOfUnderscoreInURL": 0,
+        "PathLength": 18,
+        "PathSegmentCount": 3,
+        "QueryLength": 0,
+        "QueryParameterCount": 0,
+        "SubdomainDepth": 1,
+        "URLEntropy": 4.1386698472757155,
+        "URLLength": 41,
+        "URLPercentEncodingCount": 0
+      },
+      "label": 1,
+      "probability": 0.31272380284438345,
+      "registered_domain": "sender.net",
+      "source_name": "PhishTank verified online feed",
+      "url": "https://stats.sender.net/forms/dLDNWd/view",
+      "verdict": "NOT_PHISHING"
+    },
+    {
+      "cohorts": [
+        "content_path"
+      ],
+      "features": {
+        "DigitRatioInURL": 0.0,
+        "DomainLength": 15,
+        "DotCount": 1,
+        "FragmentLength": 0,
+        "HasObfuscation": 0,
+        "HasPort": 0,
+        "HasSuspiciousTLD": 0,
+        "HasSuspiciousToken": 0,
+        "HasSuspiciousWord": 0,
+        "HasTrustedBrand": 0,
+        "HasTrustedBrandToken": 0,
+        "HasUserInfo": 0,
+        "HostnameLength": 15,
+        "IsDomainIP": 0,
+        "IsHTTPS": 1,
+        "IsShortened": 0,
+        "IsTrustedTLD": 1,
+        "LetterRatioInURL": 0.8205128205128205,
+        "NoOfAmpersandInURL": 0,
+        "NoOfAtInURL": 0,
+        "NoOfDigitsInURL": 0,
+        "NoOfEqualsInURL": 0,
+        "NoOfHyphenInURL": 0,
+        "NoOfLettersInURL": 32,
+        "NoOfQMarkInURL": 0,
+        "NoOfSubDomain": 0,
+        "NoOfUnderscoreInURL": 0,
+        "PathLength": 17,
+        "PathSegmentCount": 2,
+        "QueryLength": 0,
+        "QueryParameterCount": 0,
+        "SubdomainDepth": 0,
+        "URLEntropy": 3.9133567059307888,
+        "URLLength": 39,
+        "URLPercentEncodingCount": 0
+      },
+      "label": 1,
+      "probability": 0.27011407198891046,
+      "registered_domain": "pescachoice.com",
+      "source_name": "PhishTank verified online feed",
+      "url": "https://pescachoice.com/file/obdobe.html",
+      "verdict": "NOT_PHISHING"
+    },
+    {
+      "cohorts": [
+        "content_path"
+      ],
+      "features": {
+        "DigitRatioInURL": 0.0,
+        "DomainLength": 13,
+        "DotCount": 1,
+        "FragmentLength": 0,
+        "HasObfuscation": 0,
+        "HasPort": 0,
+        "HasSuspiciousTLD": 0,
+        "HasSuspiciousToken": 0,
+        "HasSuspiciousWord": 0,
+        "HasTrustedBrand": 0,
+        "HasTrustedBrandToken": 0,
+        "HasUserInfo": 0,
+        "HostnameLength": 13,
+        "IsDomainIP": 0,
+        "IsHTTPS": 1,
+        "IsShortened": 0,
+        "IsTrustedTLD": 1,
+        "LetterRatioInURL": 0.75,
+        "NoOfAmpersandInURL": 0,
+        "NoOfAtInURL": 0,
+        "NoOfDigitsInURL": 0,
+        "NoOfEqualsInURL": 0,
+        "NoOfHyphenInURL": 1,
+        "NoOfLettersInURL": 18,
+        "NoOfQMarkInURL": 0,
+        "NoOfSubDomain": 0,
+        "NoOfUnderscoreInURL": 0,
+        "PathLength": 4,
+        "PathSegmentCount": 1,
+        "QueryLength": 0,
+        "QueryParameterCount": 0,
+        "SubdomainDepth": 0,
+        "URLEntropy": 3.709147917027245,
+        "URLLength": 24,
+        "URLPercentEncodingCount": 0
+      },
+      "label": 1,
+      "probability": 0.16837595721787404,
+      "registered_domain": "ebk-konto.com",
+      "source_name": "PhishTank verified online feed",
+      "url": "https://ebk-konto.com/app",
+      "verdict": "NOT_PHISHING"
+    },
+    {
+      "cohorts": [
+        "content_path",
+        "query"
+      ],
+      "features": {
+        "DigitRatioInURL": 0.3283582089552239,
+        "DomainLength": 11,
+        "DotCount": 2,
+        "FragmentLength": 0,
+        "HasObfuscation": 0,
+        "HasPort": 0,
+        "HasSuspiciousTLD": 0,
+        "HasSuspiciousToken": 0,
+        "HasSuspiciousWord": 0,
+        "HasTrustedBrand": 0,
+        "HasTrustedBrandToken": 0,
+        "HasUserInfo": 0,
+        "HostnameLength": 11,
+        "IsDomainIP": 0,
+        "IsHTTPS": 1,
+        "IsShortened": 0,
+        "IsTrustedTLD": 1,
+        "LetterRatioInURL": 0.47761194029850745,
+        "NoOfAmpersandInURL": 0,
+        "NoOfAtInURL": 0,
+        "NoOfDigitsInURL": 22,
+        "NoOfEqualsInURL": 1,
+        "NoOfHyphenInURL": 4,
+        "NoOfLettersInURL": 32,
+        "NoOfQMarkInURL": 1,
+        "NoOfSubDomain": 1,
+        "NoOfUnderscoreInURL": 0,
+        "PathLength": 9,
+        "PathSegmentCount": 1,
+        "QueryLength": 39,
+        "QueryParameterCount": 1,
+        "SubdomainDepth": 1,
+        "URLEntropy": 4.686306026668601,
+        "URLLength": 67,
+        "URLPercentEncodingCount": 0
+      },
+      "label": 1,
+      "probability": 0.14780820315000792,
+      "registered_domain": "vk.com",
+      "source_name": "PhishTank verified online feed",
+      "url": "https://away.vk.com/away.php?rh=7ea9d089-aac9-45e0-83e7-91853370b42b",
+      "verdict": "NOT_PHISHING"
+    },
+    {
+      "cohorts": [
+        "content_path"
+      ],
+      "features": {
+        "DigitRatioInURL": 0.0,
+        "DomainLength": 9,
+        "DotCount": 1,
+        "FragmentLength": 0,
+        "HasObfuscation": 0,
+        "HasPort": 0,
+        "HasSuspiciousTLD": 0,
+        "HasSuspiciousToken": 0,
+        "HasSuspiciousWord": 0,
+        "HasTrustedBrand": 0,
+        "HasTrustedBrandToken": 0,
+        "HasUserInfo": 0,
+        "HostnameLength": 9,
+        "IsDomainIP": 0,
+        "IsHTTPS": 1,
+        "IsShortened": 0,
+        "IsTrustedTLD": 0,
+        "LetterRatioInURL": 0.8076923076923077,
+        "NoOfAmpersandInURL": 0,
+        "NoOfAtInURL": 0,
+        "NoOfDigitsInURL": 0,
+        "NoOfEqualsInURL": 0,
+        "NoOfHyphenInURL": 0,
+        "NoOfLettersInURL": 21,
+        "NoOfQMarkInURL": 0,
+        "NoOfSubDomain": 0,
+        "NoOfUnderscoreInURL": 0,
+        "PathLength": 10,
+        "PathSegmentCount": 1,
+        "QueryLength": 0,
+        "QueryParameterCount": 0,
+        "SubdomainDepth": 0,
+        "URLEntropy": 4.132944044980959,
+        "URLLength": 26,
+        "URLPercentEncodingCount": 0
+      },
+      "label": 1,
+      "probability": 0.1441322416180056,
+      "registered_domain": "flow.page",
+      "source_name": "PhishTank verified online feed",
+      "url": "https://flow.page/voxdrives",
+      "verdict": "NOT_PHISHING"
+    },
+    {
+      "cohorts": [
+        "content_path",
+        "query"
+      ],
+      "features": {
+        "DigitRatioInURL": 0.0,
+        "DomainLength": 6,
+        "DotCount": 1,
+        "FragmentLength": 0,
+        "HasObfuscation": 0,
+        "HasPort": 0,
+        "HasSuspiciousTLD": 0,
+        "HasSuspiciousToken": 0,
+        "HasSuspiciousWord": 0,
+        "HasTrustedBrand": 0,
+        "HasTrustedBrandToken": 0,
+        "HasUserInfo": 0,
+        "HostnameLength": 6,
+        "IsDomainIP": 0,
+        "IsHTTPS": 1,
+        "IsShortened": 0,
+        "IsTrustedTLD": 1,
+        "LetterRatioInURL": 0.7808219178082192,
+        "NoOfAmpersandInURL": 0,
+        "NoOfAtInURL": 0,
+        "NoOfDigitsInURL": 0,
+        "NoOfEqualsInURL": 1,
+        "NoOfHyphenInURL": 1,
+        "NoOfLettersInURL": 57,
+        "NoOfQMarkInURL": 2,
+        "NoOfSubDomain": 0,
+        "NoOfUnderscoreInURL": 0,
+        "PathLength": 9,
+        "PathSegmentCount": 1,
+        "QueryLength": 50,
+        "QueryParameterCount": 1,
+        "SubdomainDepth": 0,
+        "URLEntropy": 4.463042196574383,
+        "URLLength": 73,
+        "URLPercentEncodingCount": 0
+      },
+      "label": 1,
+      "probability": 0.10007944757807806,
+      "registered_domain": "vk.com",
+      "source_name": "PhishTank verified online feed",
+      "url": "https://vk.com/away.php?to=https://irs-on.lineclaimform.com/?kutilangdarat",
+      "verdict": "NOT_PHISHING"
+    }
+  ],
+  "false_positive_examples": [
+    {
+      "cohorts": [
+        "content_path"
+      ],
+      "features": {
+        "DigitRatioInURL": 0.0,
+        "DomainLength": 28,
+        "DotCount": 2,
+        "FragmentLength": 0,
+        "HasObfuscation": 0,
+        "HasPort": 0,
+        "HasSuspiciousTLD": 0,
+        "HasSuspiciousToken": 0,
+        "HasSuspiciousWord": 0,
+        "HasTrustedBrand": 0,
+        "HasTrustedBrandToken": 0,
+        "HasUserInfo": 0,
+        "HostnameLength": 28,
+        "IsDomainIP": 0,
+        "IsHTTPS": 1,
+        "IsShortened": 0,
+        "IsTrustedTLD": 1,
+        "LetterRatioInURL": 0.8478260869565217,
+        "NoOfAmpersandInURL": 0,
+        "NoOfAtInURL": 0,
+        "NoOfDigitsInURL": 0,
+        "NoOfEqualsInURL": 0,
+        "NoOfHyphenInURL": 0,
+        "NoOfLettersInURL": 39,
+        "NoOfQMarkInURL": 0,
+        "NoOfSubDomain": 1,
+        "NoOfUnderscoreInURL": 0,
+        "PathLength": 11,
+        "PathSegmentCount": 1,
+        "QueryLength": 0,
+        "QueryParameterCount": 0,
+        "SubdomainDepth": 1,
+        "URLEntropy": 4.0808548261309205,
+        "URLLength": 46,
+        "URLPercentEncodingCount": 0
+      },
+      "label": 0,
+      "probability": 0.8271109491976165,
+      "registered_domain": "linuxfoundation.org",
+      "source_name": "Linux Foundation",
+      "url": "https://training.linuxfoundation.org/resources/",
+      "verdict": "PHISHING"
+    },
+    {
+      "cohorts": [
+        "content_path"
+      ],
+      "features": {
+        "DigitRatioInURL": 0.0,
+        "DomainLength": 19,
+        "DotCount": 1,
+        "FragmentLength": 0,
+        "HasObfuscation": 0,
+        "HasPort": 0,
+        "HasSuspiciousTLD": 0,
+        "HasSuspiciousToken": 1,
+        "HasSuspiciousWord": 1,
+        "HasTrustedBrand": 0,
+        "HasTrustedBrandToken": 0,
+        "HasUserInfo": 0,
+        "HostnameLength": 19,
+        "IsDomainIP": 0,
+        "IsHTTPS": 1,
+        "IsShortened": 0,
+        "IsTrustedTLD": 1,
+        "LetterRatioInURL": 0.8571428571428571,
+        "NoOfAmpersandInURL": 0,
+        "NoOfAtInURL": 0,
+        "NoOfDigitsInURL": 0,
+        "NoOfEqualsInURL": 0,
+        "NoOfHyphenInURL": 0,
+        "NoOfLettersInURL": 30,
+        "NoOfQMarkInURL": 0,
+        "NoOfSubDomain": 0,
+        "NoOfUnderscoreInURL": 0,
+        "PathLength": 9,
+        "PathSegmentCount": 1,
+        "QueryLength": 0,
+        "QueryParameterCount": 0,
+        "SubdomainDepth": 0,
+        "URLEntropy": 4.16429908806447,
+        "URLLength": 35,
+        "URLPercentEncodingCount": 0
+      },
+      "label": 0,
+      "probability": 0.8139685579695402,
+      "registered_domain": "linuxfoundation.org",
+      "source_name": "Linux Foundation",
+      "url": "https://www.linuxfoundation.org/security",
+      "verdict": "PHISHING"
+    },
+    {
+      "cohorts": [
+        "content_path"
+      ],
+      "features": {
+        "DigitRatioInURL": 0.0,
+        "DomainLength": 28,
+        "DotCount": 2,
+        "FragmentLength": 0,
+        "HasObfuscation": 0,
+        "HasPort": 0,
+        "HasSuspiciousTLD": 0,
+        "HasSuspiciousToken": 0,
+        "HasSuspiciousWord": 0,
+        "HasTrustedBrand": 0,
+        "HasTrustedBrandToken": 0,
+        "HasUserInfo": 0,
+        "HostnameLength": 28,
+        "IsDomainIP": 0,
+        "IsHTTPS": 1,
+        "IsShortened": 0,
+        "IsTrustedTLD": 1,
+        "LetterRatioInURL": 0.8367346938775511,
+        "NoOfAmpersandInURL": 0,
+        "NoOfAtInURL": 0,
+        "NoOfDigitsInURL": 0,
+        "NoOfEqualsInURL": 0,
+        "NoOfHyphenInURL": 1,
+        "NoOfLettersInURL": 41,
+        "NoOfQMarkInURL": 0,
+        "NoOfSubDomain": 1,
+        "NoOfUnderscoreInURL": 0,
+        "PathLength": 14,
+        "PathSegmentCount": 1,
+        "QueryLength": 0,
+        "QueryParameterCount": 0,
+        "SubdomainDepth": 1,
+        "URLEntropy": 4.00799441649887,
+        "URLLength": 49,
+        "URLPercentEncodingCount": 0
+      },
+      "label": 0,
+      "probability": 0.8018577973350575,
+      "registered_domain": "linuxfoundation.org",
+      "source_name": "Linux Foundation",
+      "url": "https://training.linuxfoundation.org/full-catalog/",
+      "verdict": "PHISHING"
+    },
+    {
+      "cohorts": [
+        "content_path"
+      ],
+      "features": {
+        "DigitRatioInURL": 0.07272727272727272,
+        "DomainLength": 15,
+        "DotCount": 2,
+        "FragmentLength": 0,
+        "HasObfuscation": 0,
+        "HasPort": 0,
+        "HasSuspiciousTLD": 0,
+        "HasSuspiciousToken": 0,
+        "HasSuspiciousWord": 0,
+        "HasTrustedBrand": 0,
+        "HasTrustedBrandToken": 0,
+        "HasUserInfo": 0,
+        "HostnameLength": 15,
+        "IsDomainIP": 0,
+        "IsHTTPS": 1,
+        "IsShortened": 0,
+        "IsTrustedTLD": 0,
+        "LetterRatioInURL": 0.7636363636363637,
+        "NoOfAmpersandInURL": 0,
+        "NoOfAtInURL": 0,
+        "NoOfDigitsInURL": 4,
+        "NoOfEqualsInURL": 0,
+        "NoOfHyphenInURL": 2,
+        "NoOfLettersInURL": 42,
+        "NoOfQMarkInURL": 0,
+        "NoOfSubDomain": 1,
+        "NoOfUnderscoreInURL": 0,
+        "PathLength": 33,
+        "PathSegmentCount": 2,
+        "QueryLength": 0,
+        "QueryParameterCount": 0,
+        "SubdomainDepth": 1,
+        "URLEntropy": 4.33362056978938,
+        "URLLength": 55,
+        "URLPercentEncodingCount": 0
+      },
+      "label": 0,
+      "probability": 0.7783001993292966,
+      "registered_domain": "epfl.ch",
+      "source_name": "EPFL",
+      "url": "https://memento.epfl.ch/event/journees-dinformation-2026",
+      "verdict": "PHISHING"
+    },
+    {
+      "cohorts": [
+        "content_path"
+      ],
+      "features": {
+        "DigitRatioInURL": 0.0,
+        "DomainLength": 19,
+        "DotCount": 1,
+        "FragmentLength": 0,
+        "HasObfuscation": 0,
+        "HasPort": 0,
+        "HasSuspiciousTLD": 0,
+        "HasSuspiciousToken": 0,
+        "HasSuspiciousWord": 0,
+        "HasTrustedBrand": 0,
+        "HasTrustedBrandToken": 0,
+        "HasUserInfo": 0,
+        "HostnameLength": 19,
+        "IsDomainIP": 0,
+        "IsHTTPS": 1,
+        "IsShortened": 0,
+        "IsTrustedTLD": 1,
+        "LetterRatioInURL": 0.8666666666666667,
+        "NoOfAmpersandInURL": 0,
+        "NoOfAtInURL": 0,
+        "NoOfDigitsInURL": 0,
+        "NoOfEqualsInURL": 0,
+        "NoOfHyphenInURL": 0,
+        "NoOfLettersInURL": 39,
+        "NoOfQMarkInURL": 0,
+        "NoOfSubDomain": 0,
+        "NoOfUnderscoreInURL": 0,
+        "PathLength": 19,
+        "PathSegmentCount": 2,
+        "QueryLength": 0,
+        "QueryParameterCount": 0,
+        "SubdomainDepth": 0,
+        "URLEntropy": 4.144537752260994,
+        "URLLength": 45,
+        "URLPercentEncodingCount": 0
+      },
+      "label": 0,
+      "probability": 0.7752637192963961,
+      "registered_domain": "linuxfoundation.org",
+      "source_name": "Linux Foundation",
+      "url": "https://www.linuxfoundation.org/projects/standards",
+      "verdict": "PHISHING"
+    },
+    {
+      "cohorts": [
+        "content_path"
+      ],
+      "features": {
+        "DigitRatioInURL": 0.0,
+        "DomainLength": 19,
+        "DotCount": 1,
+        "FragmentLength": 0,
+        "HasObfuscation": 0,
+        "HasPort": 0,
+        "HasSuspiciousTLD": 0,
+        "HasSuspiciousToken": 0,
+        "HasSuspiciousWord": 0,
+        "HasTrustedBrand": 0,
+        "HasTrustedBrandToken": 0,
+        "HasUserInfo": 0,
+        "HostnameLength": 19,
+        "IsDomainIP": 0,
+        "IsHTTPS": 1,
+        "IsShortened": 0,
+        "IsTrustedTLD": 1,
+        "LetterRatioInURL": 0.7878787878787878,
+        "NoOfAmpersandInURL": 0,
+        "NoOfAtInURL": 0,
+        "NoOfDigitsInURL": 0,
+        "NoOfEqualsInURL": 0,
+        "NoOfHyphenInURL": 1,
+        "NoOfLettersInURL": 26,
+        "NoOfQMarkInURL": 0,
+        "NoOfSubDomain": 0,
+        "NoOfUnderscoreInURL": 0,
+        "PathLength": 7,
+        "PathSegmentCount": 1,
+        "QueryLength": 0,
+        "QueryParameterCount": 0,
+        "SubdomainDepth": 0,
+        "URLEntropy": 4.06667707370723,
+        "URLLength": 33,
+        "URLPercentEncodingCount": 0
+      },
+      "label": 0,
+      "probability": 0.754589355617107,
+      "registered_domain": "linuxfoundation.org",
+      "source_name": "Linux Foundation",
+      "url": "https://www.linuxfoundation.org/ja-jp/",
+      "verdict": "PHISHING"
+    },
+    {
+      "cohorts": [
+        "content_path",
+        "query"
+      ],
+      "features": {
+        "DigitRatioInURL": 0.0,
+        "DomainLength": 19,
+        "DotCount": 1,
+        "FragmentLength": 0,
+        "HasObfuscation": 0,
+        "HasPort": 0,
+        "HasSuspiciousTLD": 0,
+        "HasSuspiciousToken": 0,
+        "HasSuspiciousWord": 0,
+        "HasTrustedBrand": 0,
+        "HasTrustedBrandToken": 0,
+        "HasUserInfo": 0,
+        "HostnameLength": 19,
+        "IsDomainIP": 0,
+        "IsHTTPS": 1,
+        "IsShortened": 0,
+        "IsTrustedTLD": 1,
+        "LetterRatioInURL": 0.8260869565217391,
+        "NoOfAmpersandInURL": 0,
+        "NoOfAtInURL": 0,
+        "NoOfDigitsInURL": 0,
+        "NoOfEqualsInURL": 1,
+        "NoOfHyphenInURL": 0,
+        "NoOfLettersInURL": 38,
+        "NoOfQMarkInURL": 1,
+        "NoOfSubDomain": 0,
+        "NoOfUnderscoreInURL": 0,
+        "PathLength": 10,
+        "PathSegmentCount": 1,
+        "QueryLength": 9,
+        "QueryParameterCount": 1,
+        "SubdomainDepth": 0,
+        "URLEntropy": 4.35813498922143,
+        "URLLength": 46,
+        "URLPercentEncodingCount": 0
+      },
+      "label": 0,
+      "probability": 0.7442507423679209,
+      "registered_domain": "linuxfoundation.org",
+      "source_name": "Linux Foundation",
+      "url": "https://www.linuxfoundation.org/projects/?hsLang=en",
+      "verdict": "PHISHING"
+    },
+    {
+      "cohorts": [
+        "content_path",
+        "query"
+      ],
+      "features": {
+        "DigitRatioInURL": 0.0,
+        "DomainLength": 19,
+        "DotCount": 1,
+        "FragmentLength": 0,
+        "HasObfuscation": 0,
+        "HasPort": 0,
+        "HasSuspiciousTLD": 0,
+        "HasSuspiciousToken": 0,
+        "HasSuspiciousWord": 0,
+        "HasTrustedBrand": 0,
+        "HasTrustedBrandToken": 0,
+        "HasUserInfo": 0,
+        "HostnameLength": 19,
+        "IsDomainIP": 0,
+        "IsHTTPS": 1,
+        "IsShortened": 0,
+        "IsTrustedTLD": 1,
+        "LetterRatioInURL": 0.8125,
+        "NoOfAmpersandInURL": 0,
+        "NoOfAtInURL": 0,
+        "NoOfDigitsInURL": 0,
+        "NoOfEqualsInURL": 1,
+        "NoOfHyphenInURL": 0,
+        "NoOfLettersInURL": 39,
+        "NoOfQMarkInURL": 1,
+        "NoOfSubDomain": 0,
+        "NoOfUnderscoreInURL": 0,
+        "PathLength": 12,
+        "PathSegmentCount": 2,
+        "QueryLength": 9,
+        "QueryParameterCount": 1,
+        "SubdomainDepth": 0,
+        "URLEntropy": 4.290400719733289,
+        "URLLength": 48,
+        "URLPercentEncodingCount": 0
+      },
+      "label": 0,
+      "probability": 0.7442507423679209,
+      "registered_domain": "linuxfoundation.org",
+      "source_name": "Linux Foundation",
+      "url": "https://www.linuxfoundation.org/zh/chinese/?hsLang=en",
+      "verdict": "PHISHING"
+    },
+    {
+      "cohorts": [
+        "content_path",
+        "query"
+      ],
+      "features": {
+        "DigitRatioInURL": 0.0,
+        "DomainLength": 19,
+        "DotCount": 1,
+        "FragmentLength": 0,
+        "HasObfuscation": 0,
+        "HasPort": 0,
+        "HasSuspiciousTLD": 0,
+        "HasSuspiciousToken": 0,
+        "HasSuspiciousWord": 0,
+        "HasTrustedBrand": 0,
+        "HasTrustedBrandToken": 0,
+        "HasUserInfo": 0,
+        "HostnameLength": 19,
+        "IsDomainIP": 0,
+        "IsHTTPS": 1,
+        "IsShortened": 0,
+        "IsTrustedTLD": 1,
+        "LetterRatioInURL": 0.8545454545454545,
+        "NoOfAmpersandInURL": 0,
+        "NoOfAtInURL": 0,
+        "NoOfDigitsInURL": 0,
+        "NoOfEqualsInURL": 1,
+        "NoOfHyphenInURL": 0,
+        "NoOfLettersInURL": 47,
+        "NoOfQMarkInURL": 1,
+        "NoOfSubDomain": 0,
+        "NoOfUnderscoreInURL": 0,
+        "PathLength": 19,
+        "PathSegmentCount": 2,
+        "QueryLength": 9,
+        "QueryParameterCount": 1,
+        "SubdomainDepth": 0,
+        "URLEntropy": 4.315374432013919,
+        "URLLength": 55,
+        "URLPercentEncodingCount": 0
+      },
+      "label": 0,
+      "probability": 0.7428470984960487,
+      "registered_domain": "linuxfoundation.org",
+      "source_name": "Linux Foundation",
+      "url": "https://www.linuxfoundation.org/projects/standards?hsLang=en",
+      "verdict": "PHISHING"
+    },
+    {
+      "cohorts": [
+        "content_path",
+        "docs"
+      ],
+      "features": {
+        "DigitRatioInURL": 0.0,
+        "DomainLength": 19,
+        "DotCount": 1,
+        "FragmentLength": 0,
+        "HasObfuscation": 0,
+        "HasPort": 0,
+        "HasSuspiciousTLD": 0,
+        "HasSuspiciousToken": 0,
+        "HasSuspiciousWord": 0,
+        "HasTrustedBrand": 0,
+        "HasTrustedBrandToken": 0,
+        "HasUserInfo": 0,
+        "HostnameLength": 19,
+        "IsDomainIP": 0,
+        "IsHTTPS": 1,
+        "IsShortened": 0,
+        "IsTrustedTLD": 1,
+        "LetterRatioInURL": 0.8604651162790697,
+        "NoOfAmpersandInURL": 0,
+        "NoOfAtInURL": 0,
+        "NoOfDigitsInURL": 0,
+        "NoOfEqualsInURL": 0,
+        "NoOfHyphenInURL": 1,
+        "NoOfLettersInURL": 37,
+        "NoOfQMarkInURL": 0,
+        "NoOfSubDomain": 0,
+        "NoOfUnderscoreInURL": 0,
+        "PathLength": 17,
+        "PathSegmentCount": 1,
+        "QueryLength": 0,
+        "QueryParameterCount": 0,
+        "SubdomainDepth": 0,
+        "URLEntropy": 4.184774568998513,
+        "URLLength": 43,
+        "URLPercentEncodingCount": 0
+      },
+      "label": 0,
+      "probability": 0.704184074725462,
+      "registered_domain": "linuxfoundation.org",
+      "source_name": "Linux Foundation",
+      "url": "https://www.linuxfoundation.org/brand-guidelines",
+      "verdict": "PHISHING"
+    },
+    {
+      "cohorts": [
+        "content_path"
+      ],
+      "features": {
+        "DigitRatioInURL": 0.0,
+        "DomainLength": 26,
+        "DotCount": 2,
+        "FragmentLength": 0,
+        "HasObfuscation": 0,
+        "HasPort": 0,
+        "HasSuspiciousTLD": 0,
+        "HasSuspiciousToken": 0,
+        "HasSuspiciousWord": 0,
+        "HasTrustedBrand": 0,
+        "HasTrustedBrandToken": 0,
+        "HasUserInfo": 0,
+        "HostnameLength": 26,
+        "IsDomainIP": 0,
+        "IsHTTPS": 1,
+        "IsShortened": 0,
+        "IsTrustedTLD": 1,
+        "LetterRatioInURL": 0.8333333333333334,
+        "NoOfAmpersandInURL": 0,
+        "NoOfAtInURL": 0,
+        "NoOfDigitsInURL": 0,
+        "NoOfEqualsInURL": 0,
+        "NoOfHyphenInURL": 3,
+        "NoOfLettersInURL": 50,
+        "NoOfQMarkInURL": 0,
+        "NoOfSubDomain": 1,
+        "NoOfUnderscoreInURL": 0,
+        "PathLength": 27,
+        "PathSegmentCount": 1,
+        "QueryLength": 0,
+        "QueryParameterCount": 0,
+        "SubdomainDepth": 1,
+        "URLEntropy": 4.213175446562157,
+        "URLLength": 60,
+        "URLPercentEncodingCount": 0
+      },
+      "label": 0,
+      "probability": 0.6935581687925723,
+      "registered_domain": "linuxfoundation.org",
+      "source_name": "Linux Foundation",
+      "url": "https://events.linuxfoundation.org/open-source-summit-europe/",
+      "verdict": "PHISHING"
+    },
+    {
+      "cohorts": [
+        "content_path",
+        "docs"
+      ],
+      "features": {
+        "DigitRatioInURL": 0.0,
+        "DomainLength": 19,
+        "DotCount": 1,
+        "FragmentLength": 0,
+        "HasObfuscation": 0,
+        "HasPort": 0,
+        "HasSuspiciousTLD": 0,
+        "HasSuspiciousToken": 0,
+        "HasSuspiciousWord": 0,
+        "HasTrustedBrand": 0,
+        "HasTrustedBrandToken": 0,
+        "HasUserInfo": 0,
+        "HostnameLength": 19,
+        "IsDomainIP": 0,
+        "IsHTTPS": 1,
+        "IsShortened": 0,
+        "IsTrustedTLD": 1,
+        "LetterRatioInURL": 0.8545454545454545,
+        "NoOfAmpersandInURL": 0,
+        "NoOfAtInURL": 0,
+        "NoOfDigitsInURL": 0,
+        "NoOfEqualsInURL": 0,
+        "NoOfHyphenInURL": 2,
+        "NoOfLettersInURL": 47,
+        "NoOfQMarkInURL": 0,
+        "NoOfSubDomain": 0,
+        "NoOfUnderscoreInURL": 0,
+        "PathLength": 29,
+        "PathSegmentCount": 2,
+        "QueryLength": 0,
+        "QueryParameterCount": 0,
+        "SubdomainDepth": 0,
+        "URLEntropy": 4.140653696115068,
+        "URLLength": 55,
+        "URLPercentEncodingCount": 0
+      },
+      "label": 0,
+      "probability": 0.6554764753056913,
+      "registered_domain": "linuxfoundation.org",
+      "source_name": "Linux Foundation",
+      "url": "https://www.linuxfoundation.org/resources/open-source-guides",
+      "verdict": "PHISHING"
+    },
+    {
+      "cohorts": [
+        "content_path",
+        "query"
+      ],
+      "features": {
+        "DigitRatioInURL": 0.0,
+        "DomainLength": 19,
+        "DotCount": 1,
+        "FragmentLength": 0,
+        "HasObfuscation": 0,
+        "HasPort": 0,
+        "HasSuspiciousTLD": 0,
+        "HasSuspiciousToken": 0,
+        "HasSuspiciousWord": 0,
+        "HasTrustedBrand": 0,
+        "HasTrustedBrandToken": 0,
+        "HasUserInfo": 0,
+        "HostnameLength": 19,
+        "IsDomainIP": 0,
+        "IsHTTPS": 1,
+        "IsShortened": 0,
+        "IsTrustedTLD": 1,
+        "LetterRatioInURL": 0.8448275862068966,
+        "NoOfAmpersandInURL": 0,
+        "NoOfAtInURL": 0,
+        "NoOfDigitsInURL": 0,
+        "NoOfEqualsInURL": 1,
+        "NoOfHyphenInURL": 1,
+        "NoOfLettersInURL": 49,
+        "NoOfQMarkInURL": 1,
+        "NoOfSubDomain": 0,
+        "NoOfUnderscoreInURL": 0,
+        "PathLength": 22,
+        "PathSegmentCount": 2,
+        "QueryLength": 9,
+        "QueryParameterCount": 1,
+        "SubdomainDepth": 0,
+        "URLEntropy": 4.372826417758303,
+        "URLLength": 58,
+        "URLPercentEncodingCount": 0
+      },
+      "label": 0,
+      "probability": 0.6539290822242314,
+      "registered_domain": "linuxfoundation.org",
+      "source_name": "Linux Foundation",
+      "url": "https://www.linuxfoundation.org/legal/trademark-usage?hsLang=en",
+      "verdict": "PHISHING"
+    },
+    {
+      "cohorts": [
+        "content_path",
+        "query"
+      ],
+      "features": {
+        "DigitRatioInURL": 0.0,
+        "DomainLength": 19,
+        "DotCount": 1,
+        "FragmentLength": 0,
+        "HasObfuscation": 0,
+        "HasPort": 0,
+        "HasSuspiciousTLD": 0,
+        "HasSuspiciousToken": 0,
+        "HasSuspiciousWord": 0,
+        "HasTrustedBrand": 0,
+        "HasTrustedBrandToken": 0,
+        "HasUserInfo": 0,
+        "HostnameLength": 19,
+        "IsDomainIP": 0,
+        "IsHTTPS": 1,
+        "IsShortened": 0,
+        "IsTrustedTLD": 1,
+        "LetterRatioInURL": 0.8333333333333334,
+        "NoOfAmpersandInURL": 0,
+        "NoOfAtInURL": 0,
+        "NoOfDigitsInURL": 0,
+        "NoOfEqualsInURL": 1,
+        "NoOfHyphenInURL": 2,
+        "NoOfLettersInURL": 50,
+        "NoOfQMarkInURL": 1,
+        "NoOfSubDomain": 0,
+        "NoOfUnderscoreInURL": 0,
+        "PathLength": 21,
+        "PathSegmentCount": 2,
+        "QueryLength": 12,
+        "QueryParameterCount": 1,
+        "SubdomainDepth": 0,
+        "URLEntropy": 4.521567004295789,
+        "URLLength": 60,
+        "URLPercentEncodingCount": 0
+      },
+      "label": 0,
+      "probability": 0.6335857087654128,
+      "registered_domain": "linuxfoundation.org",
+      "source_name": "Linux Foundation",
+      "url": "https://www.linuxfoundation.org/legal/privacy-policy?hsLang=ja-jp",
+      "verdict": "PHISHING"
+    },
+    {
+      "cohorts": [
+        "content_path",
+        "query"
+      ],
+      "features": {
+        "DigitRatioInURL": 0.0,
+        "DomainLength": 19,
+        "DotCount": 1,
+        "FragmentLength": 0,
+        "HasObfuscation": 0,
+        "HasPort": 0,
+        "HasSuspiciousTLD": 0,
+        "HasSuspiciousToken": 0,
+        "HasSuspiciousWord": 0,
+        "HasTrustedBrand": 0,
+        "HasTrustedBrandToken": 0,
+        "HasUserInfo": 0,
+        "HostnameLength": 19,
+        "IsDomainIP": 0,
+        "IsHTTPS": 1,
+        "IsShortened": 0,
+        "IsTrustedTLD": 1,
+        "LetterRatioInURL": 0.8235294117647058,
+        "NoOfAmpersandInURL": 0,
+        "NoOfAtInURL": 0,
+        "NoOfDigitsInURL": 0,
+        "NoOfEqualsInURL": 1,
+        "NoOfHyphenInURL": 3,
+        "NoOfLettersInURL": 56,
+        "NoOfQMarkInURL": 1,
+        "NoOfSubDomain": 0,
+        "NoOfUnderscoreInURL": 0,
+        "PathLength": 29,
+        "PathSegmentCount": 3,
+        "QueryLength": 12,
+        "QueryParameterCount": 1,
+        "SubdomainDepth": 0,
+        "URLEntropy": 4.377832791419001,
+        "URLLength": 68,
+        "URLPercentEncodingCount": 0
+      },
+      "label": 0,
+      "probability": 0.6166869214035202,
+      "registered_domain": "linuxfoundation.org",
+      "source_name": "Linux Foundation",
+      "url": "https://www.linuxfoundation.org/ja-jp/projects/digital-trust?hsLang=ja-jp",
+      "verdict": "PHISHING"
+    }
+  ],
+  "feature_error_contrasts": {
+    "DigitRatioInURL": {
+      "correct_legitimate_mean": 0.003498272466261083,
+      "detected_phishing_mean": 0.11475850027692376,
+      "false_negative_mean": 0.05613098301595471,
+      "false_positive_mean": 0.0048484848484848485
+    },
+    "DotCount": {
+      "correct_legitimate_mean": 1.0869565217391304,
+      "detected_phishing_mean": 1.9342105263157894,
+      "false_negative_mean": 1.375,
+      "false_positive_mean": 1.2666666666666666
+    },
+    "FragmentLength": {
+      "correct_legitimate_mean": 0.6811594202898551,
+      "detected_phishing_mean": 1.2105263157894737,
+      "false_negative_mean": 2.625,
+      "false_positive_mean": 0.0
+    },
+    "HasObfuscation": {
+      "correct_legitimate_mean": 0.0,
+      "detected_phishing_mean": 0.0,
+      "false_negative_mean": 0.0,
+      "false_positive_mean": 0.0
+    },
+    "HasPort": {
+      "correct_legitimate_mean": 0.0,
+      "detected_phishing_mean": 0.0,
+      "false_negative_mean": 0.0,
+      "false_positive_mean": 0.0
+    },
+    "HasSuspiciousTLD": {
+      "correct_legitimate_mean": 0.0,
+      "detected_phishing_mean": 0.039473684210526314,
+      "false_negative_mean": 0.0,
+      "false_positive_mean": 0.0
+    },
+    "HasSuspiciousToken": {
+      "correct_legitimate_mean": 0.043478260869565216,
+      "detected_phishing_mean": 0.039473684210526314,
+      "false_negative_mean": 0.0,
+      "false_positive_mean": 0.06666666666666667
+    },
+    "HasUserInfo": {
+      "correct_legitimate_mean": 0.0,
+      "detected_phishing_mean": 0.0,
+      "false_negative_mean": 0.0,
+      "false_positive_mean": 0.0
+    },
+    "HostnameLength": {
+      "correct_legitimate_mean": 8.072463768115941,
+      "detected_phishing_mean": 26.289473684210527,
+      "false_negative_mean": 13.375,
+      "false_positive_mean": 20.4
+    },
+    "IsDomainIP": {
+      "correct_legitimate_mean": 0.0,
+      "detected_phishing_mean": 0.0,
+      "false_negative_mean": 0.0,
+      "false_positive_mean": 0.0
+    },
+    "IsShortened": {
+      "correct_legitimate_mean": 0.0,
+      "detected_phishing_mean": 0.0,
+      "false_negative_mean": 0.0,
+      "false_positive_mean": 0.0
+    },
+    "IsTrustedTLD": {
+      "correct_legitimate_mean": 0.7681159420289855,
+      "detected_phishing_mean": 0.5526315789473685,
+      "false_negative_mean": 0.875,
+      "false_positive_mean": 0.9333333333333333
+    },
+    "LetterRatioInURL": {
+      "correct_legitimate_mean": 0.8026300121402126,
+      "detected_phishing_mean": 0.7244698976224102,
+      "false_negative_mean": 0.7507068707658532,
+      "false_positive_mean": 0.8335368068459156
+    },
+    "NoOfAmpersandInURL": {
+      "correct_legitimate_mean": 0.028985507246376812,
+      "detected_phishing_mean": 0.039473684210526314,
+      "false_negative_mean": 0.0,
+      "false_positive_mean": 0.0
+    },
+    "NoOfAtInURL": {
+      "correct_legitimate_mean": 0.0,
+      "detected_phishing_mean": 0.039473684210526314,
+      "false_negative_mean": 0.0,
+      "false_positive_mean": 0.0
+    },
+    "NoOfDigitsInURL": {
+      "correct_legitimate_mean": 0.17391304347826086,
+      "detected_phishing_mean": 7.4868421052631575,
+      "false_negative_mean": 3.625,
+      "false_positive_mean": 0.26666666666666666
+    },
+    "NoOfEqualsInURL": {
+      "correct_legitimate_mean": 0.10144927536231885,
+      "detected_phishing_mean": 0.17105263157894737,
+      "false_negative_mean": 0.25,
+      "false_positive_mean": 0.4
+    },
+    "NoOfHyphenInURL": {
+      "correct_legitimate_mean": 2.6956521739130435,
+      "detected_phishing_mean": 1.236842105263158,
+      "false_negative_mean": 1.125,
+      "false_positive_mean": 1.0666666666666667
+    },
+    "NoOfLettersInURL": {
+      "correct_legitimate_mean": 44.82608695652174,
+      "detected_phishing_mean": 40.01315789473684,
+      "false_negative_mean": 34.625,
+      "false_positive_mean": 42.0
+    },
+    "NoOfQMarkInURL": {
+      "correct_legitimate_mean": 0.07246376811594203,
+      "detected_phishing_mean": 0.14473684210526316,
+      "false_negative_mean": 0.5,
+      "false_positive_mean": 0.4
+    },
+    "NoOfUnderscoreInURL": {
+      "correct_legitimate_mean": 0.11594202898550725,
+      "detected_phishing_mean": 0.2236842105263158,
+      "false_negative_mean": 0.0,
+      "false_positive_mean": 0.0
+    },
+    "PathLength": {
+      "correct_legitimate_mean": 37.2463768115942,
+      "detected_phishing_mean": 17.80263157894737,
+      "false_negative_mean": 12.75,
+      "false_positive_mean": 18.6
+    },
+    "PathSegmentCount": {
+      "correct_legitimate_mean": 2.3043478260869565,
+      "detected_phishing_mean": 1.2763157894736843,
+      "false_negative_mean": 1.375,
+      "false_positive_mean": 1.6
+    },
+    "QueryLength": {
+      "correct_legitimate_mean": 1.7536231884057971,
+      "detected_phishing_mean": 3.763157894736842,
+      "false_negative_mean": 11.125,
+      "false_positive_mean": 4.0
+    },
+    "QueryParameterCount": {
+      "correct_legitimate_mean": 0.10144927536231885,
+      "detected_phishing_mean": 0.15789473684210525,
+      "false_negative_mean": 0.25,
+      "false_positive_mean": 0.4
+    },
+    "SubdomainDepth": {
+      "correct_legitimate_mean": 0.08695652173913043,
+      "detected_phishing_mean": 0.9342105263157895,
+      "false_negative_mean": 0.375,
+      "false_positive_mean": 0.26666666666666666
+    },
+    "URLEntropy": {
+      "correct_legitimate_mean": 4.113120309539281,
+      "detected_phishing_mean": 4.48577348087731,
+      "false_negative_mean": 4.332952974191861,
+      "false_positive_mean": 4.238181586171288
+    },
+    "URLLength": {
+      "correct_legitimate_mean": 54.91304347826087,
+      "detected_phishing_mean": 56.26315789473684,
+      "false_negative_mean": 47.25,
+      "false_positive_mean": 50.4
+    },
+    "URLPercentEncodingCount": {
+      "correct_legitimate_mean": 0.0,
+      "detected_phishing_mean": 0.0,
+      "false_negative_mean": 0.0,
+      "false_positive_mean": 0.0
+    }
+  },
+  "registered_domain": {
+    "0btu8g.icu": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "2b2n3b.hair": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "6a-lpost.shop": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "abv-108382.square.site": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "aozare-hamun.com": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "asset-download.wixstudio.com": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "bigframe.netlify.app": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "cg-938172634.site": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "convertflowpages.com": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "cryptoconformite.com": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "curious-capybara-17edd6.netlify.app": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "direction-dgfip.netlify.app": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "docsectypess.pages.dev": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "dpdlocahk.top": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "e-postada.firebaseapp.com": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "ebk-konto.com": {
+      "false_negatives": 1,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 1,
+        "percentage": 100.0
+      },
+      "rows": 1
+    },
+    "embeddedwhite.top": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "eminent-shingle-c24.notion.site": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "epfl.ch": {
+      "false_negatives": 0,
+      "false_positives": 1,
+      "legitimate": 17,
+      "legitimate_fpr": {
+        "denominator": 17,
+        "numerator": 1,
+        "percentage": 5.882352941176471
+      },
+      "phishing": 0,
+      "phishing_false_negative_rate": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "rows": 17
+    },
+    "eportalweb.app": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "fda.gov": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 17,
+      "legitimate_fpr": {
+        "denominator": 17,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "phishing": 0,
+      "phishing_false_negative_rate": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "rows": 17
+    },
+    "flow.page": {
+      "false_negatives": 1,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 1,
+        "percentage": 100.0
+      },
+      "rows": 1
+    },
+    "flowto.it": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "homepage-ldgercdn.wixstudio.com": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "hsforms.com": {
+      "false_negatives": 1,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 18,
+      "phishing_false_negative_rate": {
+        "denominator": 18,
+        "numerator": 1,
+        "percentage": 5.555555555555555
+      },
+      "rows": 18
+    },
+    "ifyouloveityoucandoit.com": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "infosecupass-ca.com": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "irs.gov": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 16,
+      "legitimate_fpr": {
+        "denominator": 16,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "phishing": 0,
+      "phishing_false_negative_rate": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "rows": 16
+    },
+    "isocomputercity.co.za": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "karizsoheili.com": {
+      "false_negatives": 1,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 1,
+        "percentage": 100.0
+      },
+      "rows": 1
+    },
+    "konto2754.icu": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "linuxfoundation.org": {
+      "false_negatives": 0,
+      "false_positives": 14,
+      "legitimate": 17,
+      "legitimate_fpr": {
+        "denominator": 17,
+        "numerator": 14,
+        "percentage": 82.3529411764706
+      },
+      "phishing": 0,
+      "phishing_false_negative_rate": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "rows": 17
+    },
+    "mojouarua.s3.amazonaws.com": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "my-tanggemcdn.wixstudio.com": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "myauthlogin.com": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "nps.gov": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 17,
+      "legitimate_fpr": {
+        "denominator": 17,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "phishing": 0,
+      "phishing_false_negative_rate": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "rows": 17
+    },
+    "oferta-lokalana584395934.shop": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "open-legr-live.wixstudio.com": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "orsotoscani1ito.blogspot.com": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "palikakolika.wpenginepowered.com": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "pandadoc.com": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "pcn-noticuv.top": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "pescachoice.com": {
+      "false_negatives": 1,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 1,
+        "percentage": 100.0
+      },
+      "rows": 1
+    },
+    "primevideo-remboursement.com": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "pub-192f62c6161041fcac5089098032e9a9.r2.dev": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "pub-25eadace405d4ebf9140320cf7903a66.r2.dev": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "pub-37e0821b39ef4ddd869a063490f0f064.r2.dev": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "pub-52fba99061af4511b93951e7a5615c96.r2.dev": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "pub-5ad78922363d4a128861ffd45c7bae37.r2.dev": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "pub-61de878776464004b912696c6c2eb40e.r2.dev": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "pub-8cf6c576561a4233b781051eef30e964.r2.dev": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "pub-9aad4e2ed32b42b88fa27857bc71078a.r2.dev": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "pub-f1e213d7f7cb4ce7ba1028767eebb8db.r2.dev": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "relay-brief-cube.s3.ap-south-1.amazonaws.com": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "rvmobltech.com": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "salesmate.io": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "secure-sakuraaccount.com": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "sender.net": {
+      "false_negatives": 1,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 1,
+        "percentage": 100.0
+      },
+      "rows": 1
+    },
+    "share.google": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 2,
+      "phishing_false_negative_rate": {
+        "denominator": 2,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 2
+    },
+    "smcbnokkiomeia.com": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "startapps-ledgro.wixstudio.com": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "started-io-trexxer.wixstudio.com": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "startsso-ledgrdn.wixstudio.com": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "swiceth-cim0-redir.pages.dev": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "tradesafe-info.webflow.io": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "upndownco.tor1.digitaloceanspaces.com": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "us-chngenoow.wixstudio.com": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "vk.com": {
+      "false_negatives": 2,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 2,
+      "phishing_false_negative_rate": {
+        "denominator": 2,
+        "numerator": 2,
+        "percentage": 100.0
+      },
+      "rows": 2
+    },
+    "willowy-moxie-4d085f.netlify.app": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "zoll39820.web.app": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    }
+  },
+  "source": {
+    "EPFL": {
+      "false_negatives": 0,
+      "false_positives": 1,
+      "legitimate": 17,
+      "legitimate_fpr": {
+        "denominator": 17,
+        "numerator": 1,
+        "percentage": 5.882352941176471
+      },
+      "phishing": 0,
+      "phishing_false_negative_rate": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "rows": 17
+    },
+    "Internal Revenue Service": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 16,
+      "legitimate_fpr": {
+        "denominator": 16,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "phishing": 0,
+      "phishing_false_negative_rate": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "rows": 16
+    },
+    "Linux Foundation": {
+      "false_negatives": 0,
+      "false_positives": 14,
+      "legitimate": 17,
+      "legitimate_fpr": {
+        "denominator": 17,
+        "numerator": 14,
+        "percentage": 82.3529411764706
+      },
+      "phishing": 0,
+      "phishing_false_negative_rate": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "rows": 17
+    },
+    "National Park Service": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 17,
+      "legitimate_fpr": {
+        "denominator": 17,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "phishing": 0,
+      "phishing_false_negative_rate": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "rows": 17
+    },
+    "PhishTank verified online feed": {
+      "false_negatives": 8,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 84,
+      "phishing_false_negative_rate": {
+        "denominator": 84,
+        "numerator": 8,
+        "percentage": 9.523809523809524
+      },
+      "rows": 84
+    },
+    "U.S. Food and Drug Administration": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 17,
+      "legitimate_fpr": {
+        "denominator": 17,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "phishing": 0,
+      "phishing_false_negative_rate": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "rows": 17
+    }
+  },
+  "url_structure": {
+    "api_endpoint": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 0,
+      "legitimate_fpr": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 1
+    },
+    "content_path": {
+      "false_negatives": 8,
+      "false_positives": 15,
+      "legitimate": 80,
+      "legitimate_fpr": {
+        "denominator": 80,
+        "numerator": 15,
+        "percentage": 18.75
+      },
+      "phishing": 79,
+      "phishing_false_negative_rate": {
+        "denominator": 79,
+        "numerator": 8,
+        "percentage": 10.126582278481013
+      },
+      "rows": 159
+    },
+    "docs": {
+      "false_negatives": 0,
+      "false_positives": 2,
+      "legitimate": 2,
+      "legitimate_fpr": {
+        "denominator": 2,
+        "numerator": 2,
+        "percentage": 100.0
+      },
+      "phishing": 3,
+      "phishing_false_negative_rate": {
+        "denominator": 3,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 5
+    },
+    "fragment": {
+      "false_negatives": 1,
+      "false_positives": 0,
+      "legitimate": 6,
+      "legitimate_fpr": {
+        "denominator": 6,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "phishing": 6,
+      "phishing_false_negative_rate": {
+        "denominator": 6,
+        "numerator": 1,
+        "percentage": 16.666666666666668
+      },
+      "rows": 12
+    },
+    "homepage": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 3,
+      "legitimate_fpr": {
+        "denominator": 3,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "phishing": 3,
+      "phishing_false_negative_rate": {
+        "denominator": 3,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 6
+    },
+    "login_account": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 3,
+      "legitimate_fpr": {
+        "denominator": 3,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "phishing": 3,
+      "phishing_false_negative_rate": {
+        "denominator": 3,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 6
+    },
+    "multiple_parameters": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 2,
+      "legitimate_fpr": {
+        "denominator": 2,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "phishing": 1,
+      "phishing_false_negative_rate": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 3
+    },
+    "query": {
+      "false_negatives": 2,
+      "false_positives": 6,
+      "legitimate": 11,
+      "legitimate_fpr": {
+        "denominator": 11,
+        "numerator": 6,
+        "percentage": 54.54545454545455
+      },
+      "phishing": 12,
+      "phishing_false_negative_rate": {
+        "denominator": 12,
+        "numerator": 2,
+        "percentage": 16.666666666666668
+      },
+      "rows": 23
+    },
+    "tracking": {
+      "false_negatives": 0,
+      "false_positives": 0,
+      "legitimate": 2,
+      "legitimate_fpr": {
+        "denominator": 2,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "phishing": 2,
+      "phishing_false_negative_rate": {
+        "denominator": 2,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "rows": 4
+    }
+  }
+}

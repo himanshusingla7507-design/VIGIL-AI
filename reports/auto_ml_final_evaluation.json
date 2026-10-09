@@ -1,0 +1,2979 @@
+{
+  "acceptance_gates": {
+    "backend_and_extension_tests": {
+      "backend_pytest": {
+        "failed": 1,
+        "failed_test": "test_experimental_url_features_share_serving_canonicalization",
+        "failure": "ModuleNotFoundError: No module named scripts.final_ml_pass",
+        "file": "tests/test_pipeline.py",
+        "passed": 14,
+        "remaining_tests": "14 passed, 1 deselected when excluding the unavailable-module test",
+        "status": "FAIL"
+      },
+      "extension_node_tests": {
+        "failed": 0,
+        "files": [
+          "extenison/extension.test.mjs",
+          "extenison/background.runtime.test.mjs"
+        ],
+        "passed": 23,
+        "status": "PASS"
+      },
+      "status": "FAIL"
+    },
+    "fixed_domain_disjoint_phishing_recall_at_least_97_percent": {
+      "denominator": 392,
+      "numerator": 301,
+      "percentage": 76.78571428571429,
+      "status": "FAIL"
+    },
+    "internal_domain_disjoint_phishing_recall_at_least_98_percent": {
+      "denominator": 1039,
+      "numerator": 781,
+      "percentage": 75.1684311838306,
+      "status": "FAIL"
+    },
+    "legitimate_benchmark_fpr_at_or_below_0_5_percent": {
+      "denominator": 600,
+      "numerator": 34,
+      "percentage": 5.666666666666667,
+      "status": "FAIL"
+    },
+    "no_major_hard_phishing_cohort_regression": {
+      "cohorts": {
+        "content_path": {
+          "candidate_recall_percentage": 76.51715039577836,
+          "delta_percentage_points": -23.48284960422164,
+          "denominator": 379,
+          "production_recall_percentage": 100.0
+        },
+        "encoding": {
+          "candidate_recall_percentage": 72.72727272727273,
+          "delta_percentage_points": -27.272727272727266,
+          "denominator": 11,
+          "production_recall_percentage": 100.0
+        },
+        "login_account": {
+          "candidate_recall_percentage": 81.69014084507042,
+          "delta_percentage_points": -18.309859154929583,
+          "denominator": 71,
+          "production_recall_percentage": 100.0
+        },
+        "long_query": {
+          "candidate_recall_percentage": 93.33333333333333,
+          "delta_percentage_points": -6.666666666666671,
+          "denominator": 15,
+          "production_recall_percentage": 100.0
+        },
+        "multiple_parameters": {
+          "candidate_recall_percentage": 88.88888888888889,
+          "delta_percentage_points": -11.111111111111114,
+          "denominator": 18,
+          "production_recall_percentage": 100.0
+        },
+        "query": {
+          "candidate_recall_percentage": 84.21052631578948,
+          "delta_percentage_points": -15.78947368421052,
+          "denominator": 57,
+          "production_recall_percentage": 100.0
+        }
+      },
+      "maximum_allowed_regression_percentage_points": 5.0,
+      "status": "FAIL"
+    },
+    "no_systematic_normal_url_structure_false_positive_jumps": {
+      "basis": "domain-disjoint test cohorts plus all fixed legitimate counterfactual pairs; sparse cohorts are reported separately",
+      "status": "UNVERIFIED"
+    },
+    "overall_candidate_gate": "FAIL",
+    "zero_phishing_verdicts_on_fixed_core_legitimate_set": {
+      "denominator": 16,
+      "phishing_verdicts": 1,
+      "status": "FAIL"
+    }
+  },
+  "candidate_selection": {
+    "final_test_used_for_selection": false,
+    "fixed_benchmark_used_for_selection": false,
+    "method": "Validation-only ranking: satisfy fixed 0.5% FPR target where possible; if no candidate qualifies, minimize FPR shortfall, then maximize phishing recall, precision, and Brier score.",
+    "selected_candidate": "hist_gradient_regularized_calibrated",
+    "thresholds_not_tuned": true
+  },
+  "cohort_gaps": {
+    "interpretation": "Empty denominators are UNVERIFIED, not a pass.",
+    "missing_legitimate_or_phishing_test_class": [
+      "fragment"
+    ]
+  },
+  "created_utc": "2026-10-09T07:00:37.160039+00:00",
+  "experiment_count": 6,
+  "experiment_id": "realworld_v3",
+  "fixed_benchmark": {
+    "all_curated_counterfactuals_including_baseline_metrics": {
+      "brier_score": null,
+      "cohorts": {
+        "api_endpoint": {
+          "legitimate_fpr": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "legitimate_rows": 0,
+          "phishing_recall": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "phishing_rows": 0,
+          "rows": 0
+        },
+        "content_path": {
+          "legitimate_fpr": {
+            "denominator": 36,
+            "numerator": 2,
+            "percentage": 5.555555555555555
+          },
+          "legitimate_rows": 36,
+          "phishing_recall": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "phishing_rows": 0,
+          "rows": 36
+        },
+        "docs": {
+          "legitimate_fpr": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "legitimate_rows": 0,
+          "phishing_recall": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "phishing_rows": 0,
+          "rows": 0
+        },
+        "encoding": {
+          "legitimate_fpr": {
+            "denominator": 11,
+            "numerator": 1,
+            "percentage": 9.090909090909092
+          },
+          "legitimate_rows": 11,
+          "phishing_recall": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "phishing_rows": 0,
+          "rows": 11
+        },
+        "fragment": {
+          "legitimate_fpr": {
+            "denominator": 11,
+            "numerator": 0,
+            "percentage": 0.0
+          },
+          "legitimate_rows": 11,
+          "phishing_recall": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "phishing_rows": 0,
+          "rows": 11
+        },
+        "homepage": {
+          "legitimate_fpr": {
+            "denominator": 10,
+            "numerator": 0,
+            "percentage": 0.0
+          },
+          "legitimate_rows": 10,
+          "phishing_recall": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "phishing_rows": 0,
+          "rows": 10
+        },
+        "login_account": {
+          "legitimate_fpr": {
+            "denominator": 8,
+            "numerator": 0,
+            "percentage": 0.0
+          },
+          "legitimate_rows": 8,
+          "phishing_recall": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "phishing_rows": 0,
+          "rows": 8
+        },
+        "long_query": {
+          "legitimate_fpr": {
+            "denominator": 1,
+            "numerator": 0,
+            "percentage": 0.0
+          },
+          "legitimate_rows": 1,
+          "phishing_recall": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "phishing_rows": 0,
+          "rows": 1
+        },
+        "long_url": {
+          "legitimate_fpr": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "legitimate_rows": 0,
+          "phishing_recall": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "phishing_rows": 0,
+          "rows": 0
+        },
+        "multiple_parameters": {
+          "legitimate_fpr": {
+            "denominator": 13,
+            "numerator": 1,
+            "percentage": 7.6923076923076925
+          },
+          "legitimate_rows": 13,
+          "phishing_recall": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "phishing_rows": 0,
+          "rows": 13
+        },
+        "pagination": {
+          "legitimate_fpr": {
+            "denominator": 10,
+            "numerator": 1,
+            "percentage": 10.0
+          },
+          "legitimate_rows": 10,
+          "phishing_recall": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "phishing_rows": 0,
+          "rows": 10
+        },
+        "query": {
+          "legitimate_fpr": {
+            "denominator": 49,
+            "numerator": 2,
+            "percentage": 4.081632653061225
+          },
+          "legitimate_rows": 49,
+          "phishing_recall": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "phishing_rows": 0,
+          "rows": 49
+        },
+        "search": {
+          "legitimate_fpr": {
+            "denominator": 58,
+            "numerator": 3,
+            "percentage": 5.172413793103448
+          },
+          "legitimate_rows": 58,
+          "phishing_recall": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "phishing_rows": 0,
+          "rows": 58
+        },
+        "tracking": {
+          "legitimate_fpr": {
+            "denominator": 1,
+            "numerator": 0,
+            "percentage": 0.0
+          },
+          "legitimate_rows": 1,
+          "phishing_recall": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "phishing_rows": 0,
+          "rows": 1
+        }
+      },
+      "legitimate_false_phishing": {
+        "denominator": 86,
+        "numerator": 4,
+        "percentage": 4.651162790697675
+      },
+      "legitimate_rows": 86,
+      "legitimate_verdict_counts": {
+        "PHISHING": 4,
+        "SAFE": 69,
+        "SUSPICIOUS": 13
+      },
+      "phishing_count": 4,
+      "phishing_f1": 0.0,
+      "phishing_false_negative": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing_precision": {
+        "denominator": 4,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "phishing_recall": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing_rows": 0,
+      "phishing_verdict_counts": {
+        "PHISHING": 0,
+        "SAFE": 0,
+        "SUSPICIOUS": 0
+      },
+      "pr_auc": null,
+      "roc_auc": null,
+      "rows": 86,
+      "safe_count": 69,
+      "suspicious_count": 13
+    },
+    "benchmark_domains_reserved_from_candidate_data": 407,
+    "candidate_vs_existing_production": {
+      "domain_disjoint_metrics": {
+        "brier_score": 0.6007778422685998,
+        "cohorts": {
+          "api_endpoint": {
+            "legitimate_fpr": {
+              "denominator": 8,
+              "numerator": 8,
+              "percentage": 100.0
+            },
+            "legitimate_rows": 8,
+            "phishing_recall": {
+              "denominator": 1,
+              "numerator": 1,
+              "percentage": 100.0
+            },
+            "phishing_rows": 1,
+            "rows": 9
+          },
+          "content_path": {
+            "legitimate_fpr": {
+              "denominator": 586,
+              "numerator": 586,
+              "percentage": 100.0
+            },
+            "legitimate_rows": 586,
+            "phishing_recall": {
+              "denominator": 379,
+              "numerator": 379,
+              "percentage": 100.0
+            },
+            "phishing_rows": 379,
+            "rows": 965
+          },
+          "docs": {
+            "legitimate_fpr": {
+              "denominator": 129,
+              "numerator": 129,
+              "percentage": 100.0
+            },
+            "legitimate_rows": 129,
+            "phishing_recall": {
+              "denominator": 1,
+              "numerator": 1,
+              "percentage": 100.0
+            },
+            "phishing_rows": 1,
+            "rows": 130
+          },
+          "encoding": {
+            "legitimate_fpr": {
+              "denominator": 81,
+              "numerator": 81,
+              "percentage": 100.0
+            },
+            "legitimate_rows": 81,
+            "phishing_recall": {
+              "denominator": 11,
+              "numerator": 11,
+              "percentage": 100.0
+            },
+            "phishing_rows": 11,
+            "rows": 92
+          },
+          "fragment": {
+            "legitimate_fpr": {
+              "denominator": 84,
+              "numerator": 84,
+              "percentage": 100.0
+            },
+            "legitimate_rows": 84,
+            "phishing_recall": {
+              "denominator": 0,
+              "numerator": 0,
+              "percentage": null
+            },
+            "phishing_rows": 0,
+            "rows": 84
+          },
+          "homepage": {
+            "legitimate_fpr": {
+              "denominator": 2,
+              "numerator": 0,
+              "percentage": 0.0
+            },
+            "legitimate_rows": 2,
+            "phishing_recall": {
+              "denominator": 2,
+              "numerator": 2,
+              "percentage": 100.0
+            },
+            "phishing_rows": 2,
+            "rows": 4
+          },
+          "login_account": {
+            "legitimate_fpr": {
+              "denominator": 7,
+              "numerator": 7,
+              "percentage": 100.0
+            },
+            "legitimate_rows": 7,
+            "phishing_recall": {
+              "denominator": 71,
+              "numerator": 71,
+              "percentage": 100.0
+            },
+            "phishing_rows": 71,
+            "rows": 78
+          },
+          "long_query": {
+            "legitimate_fpr": {
+              "denominator": 14,
+              "numerator": 14,
+              "percentage": 100.0
+            },
+            "legitimate_rows": 14,
+            "phishing_recall": {
+              "denominator": 15,
+              "numerator": 15,
+              "percentage": 100.0
+            },
+            "phishing_rows": 15,
+            "rows": 29
+          },
+          "long_url": {
+            "legitimate_fpr": {
+              "denominator": 5,
+              "numerator": 5,
+              "percentage": 100.0
+            },
+            "legitimate_rows": 5,
+            "phishing_recall": {
+              "denominator": 9,
+              "numerator": 9,
+              "percentage": 100.0
+            },
+            "phishing_rows": 9,
+            "rows": 14
+          },
+          "multiple_parameters": {
+            "legitimate_fpr": {
+              "denominator": 102,
+              "numerator": 102,
+              "percentage": 100.0
+            },
+            "legitimate_rows": 102,
+            "phishing_recall": {
+              "denominator": 18,
+              "numerator": 18,
+              "percentage": 100.0
+            },
+            "phishing_rows": 18,
+            "rows": 120
+          },
+          "pagination": {
+            "legitimate_fpr": {
+              "denominator": 11,
+              "numerator": 11,
+              "percentage": 100.0
+            },
+            "legitimate_rows": 11,
+            "phishing_recall": {
+              "denominator": 1,
+              "numerator": 1,
+              "percentage": 100.0
+            },
+            "phishing_rows": 1,
+            "rows": 12
+          },
+          "query": {
+            "legitimate_fpr": {
+              "denominator": 152,
+              "numerator": 152,
+              "percentage": 100.0
+            },
+            "legitimate_rows": 152,
+            "phishing_recall": {
+              "denominator": 57,
+              "numerator": 57,
+              "percentage": 100.0
+            },
+            "phishing_rows": 57,
+            "rows": 209
+          },
+          "search": {
+            "legitimate_fpr": {
+              "denominator": 0,
+              "numerator": 0,
+              "percentage": null
+            },
+            "legitimate_rows": 0,
+            "phishing_recall": {
+              "denominator": 0,
+              "numerator": 0,
+              "percentage": null
+            },
+            "phishing_rows": 0,
+            "rows": 0
+          },
+          "tracking": {
+            "legitimate_fpr": {
+              "denominator": 12,
+              "numerator": 12,
+              "percentage": 100.0
+            },
+            "legitimate_rows": 12,
+            "phishing_recall": {
+              "denominator": 0,
+              "numerator": 0,
+              "percentage": null
+            },
+            "phishing_rows": 0,
+            "rows": 12
+          }
+        },
+        "legitimate_false_phishing": {
+          "denominator": 600,
+          "numerator": 598,
+          "percentage": 99.66666666666667
+        },
+        "legitimate_rows": 600,
+        "phishing_count": 990,
+        "phishing_f1": 0.5672937771345875,
+        "phishing_false_negative": {
+          "denominator": 392,
+          "numerator": 0,
+          "percentage": 0.0
+        },
+        "phishing_precision": {
+          "denominator": 990,
+          "numerator": 392,
+          "percentage": 39.5959595959596
+        },
+        "phishing_recall": {
+          "denominator": 392,
+          "numerator": 392,
+          "percentage": 100.0
+        },
+        "phishing_rows": 392,
+        "pr_auc": 0.38729884587932983,
+        "roc_auc": 0.49812499999999993,
+        "rows": 992,
+        "safe_count": 1,
+        "suspicious_count": 1
+      },
+      "fixed_urls_metrics": {
+        "brier_score": null,
+        "cohorts": {
+          "api_endpoint": {
+            "legitimate_fpr": {
+              "denominator": 0,
+              "numerator": 0,
+              "percentage": null
+            },
+            "legitimate_rows": 0,
+            "phishing_recall": {
+              "denominator": 0,
+              "numerator": 0,
+              "percentage": null
+            },
+            "phishing_rows": 0,
+            "rows": 0
+          },
+          "content_path": {
+            "legitimate_fpr": {
+              "denominator": 36,
+              "numerator": 36,
+              "percentage": 100.0
+            },
+            "legitimate_rows": 36,
+            "phishing_recall": {
+              "denominator": 0,
+              "numerator": 0,
+              "percentage": null
+            },
+            "phishing_rows": 0,
+            "rows": 36
+          },
+          "docs": {
+            "legitimate_fpr": {
+              "denominator": 0,
+              "numerator": 0,
+              "percentage": null
+            },
+            "legitimate_rows": 0,
+            "phishing_recall": {
+              "denominator": 0,
+              "numerator": 0,
+              "percentage": null
+            },
+            "phishing_rows": 0,
+            "rows": 0
+          },
+          "encoding": {
+            "legitimate_fpr": {
+              "denominator": 11,
+              "numerator": 11,
+              "percentage": 100.0
+            },
+            "legitimate_rows": 11,
+            "phishing_recall": {
+              "denominator": 0,
+              "numerator": 0,
+              "percentage": null
+            },
+            "phishing_rows": 0,
+            "rows": 11
+          },
+          "fragment": {
+            "legitimate_fpr": {
+              "denominator": 11,
+              "numerator": 5,
+              "percentage": 45.45454545454545
+            },
+            "legitimate_rows": 11,
+            "phishing_recall": {
+              "denominator": 0,
+              "numerator": 0,
+              "percentage": null
+            },
+            "phishing_rows": 0,
+            "rows": 11
+          },
+          "homepage": {
+            "legitimate_fpr": {
+              "denominator": 10,
+              "numerator": 0,
+              "percentage": 0.0
+            },
+            "legitimate_rows": 10,
+            "phishing_recall": {
+              "denominator": 0,
+              "numerator": 0,
+              "percentage": null
+            },
+            "phishing_rows": 0,
+            "rows": 10
+          },
+          "login_account": {
+            "legitimate_fpr": {
+              "denominator": 8,
+              "numerator": 7,
+              "percentage": 87.5
+            },
+            "legitimate_rows": 8,
+            "phishing_recall": {
+              "denominator": 0,
+              "numerator": 0,
+              "percentage": null
+            },
+            "phishing_rows": 0,
+            "rows": 8
+          },
+          "long_query": {
+            "legitimate_fpr": {
+              "denominator": 1,
+              "numerator": 1,
+              "percentage": 100.0
+            },
+            "legitimate_rows": 1,
+            "phishing_recall": {
+              "denominator": 0,
+              "numerator": 0,
+              "percentage": null
+            },
+            "phishing_rows": 0,
+            "rows": 1
+          },
+          "long_url": {
+            "legitimate_fpr": {
+              "denominator": 0,
+              "numerator": 0,
+              "percentage": null
+            },
+            "legitimate_rows": 0,
+            "phishing_recall": {
+              "denominator": 0,
+              "numerator": 0,
+              "percentage": null
+            },
+            "phishing_rows": 0,
+            "rows": 0
+          },
+          "multiple_parameters": {
+            "legitimate_fpr": {
+              "denominator": 13,
+              "numerator": 13,
+              "percentage": 100.0
+            },
+            "legitimate_rows": 13,
+            "phishing_recall": {
+              "denominator": 0,
+              "numerator": 0,
+              "percentage": null
+            },
+            "phishing_rows": 0,
+            "rows": 13
+          },
+          "pagination": {
+            "legitimate_fpr": {
+              "denominator": 10,
+              "numerator": 10,
+              "percentage": 100.0
+            },
+            "legitimate_rows": 10,
+            "phishing_recall": {
+              "denominator": 0,
+              "numerator": 0,
+              "percentage": null
+            },
+            "phishing_rows": 0,
+            "rows": 10
+          },
+          "query": {
+            "legitimate_fpr": {
+              "denominator": 49,
+              "numerator": 42,
+              "percentage": 85.71428571428571
+            },
+            "legitimate_rows": 49,
+            "phishing_recall": {
+              "denominator": 0,
+              "numerator": 0,
+              "percentage": null
+            },
+            "phishing_rows": 0,
+            "rows": 49
+          },
+          "search": {
+            "legitimate_fpr": {
+              "denominator": 58,
+              "numerator": 51,
+              "percentage": 87.93103448275862
+            },
+            "legitimate_rows": 58,
+            "phishing_recall": {
+              "denominator": 0,
+              "numerator": 0,
+              "percentage": null
+            },
+            "phishing_rows": 0,
+            "rows": 58
+          },
+          "tracking": {
+            "legitimate_fpr": {
+              "denominator": 1,
+              "numerator": 1,
+              "percentage": 100.0
+            },
+            "legitimate_rows": 1,
+            "phishing_recall": {
+              "denominator": 0,
+              "numerator": 0,
+              "percentage": null
+            },
+            "phishing_rows": 0,
+            "rows": 1
+          }
+        },
+        "legitimate_false_phishing": {
+          "denominator": 86,
+          "numerator": 63,
+          "percentage": 73.25581395348837
+        },
+        "legitimate_rows": 86,
+        "phishing_count": 63,
+        "phishing_f1": 0.0,
+        "phishing_false_negative": {
+          "denominator": 0,
+          "numerator": 0,
+          "percentage": null
+        },
+        "phishing_precision": {
+          "denominator": 63,
+          "numerator": 0,
+          "percentage": 0.0
+        },
+        "phishing_recall": {
+          "denominator": 0,
+          "numerator": 0,
+          "percentage": null
+        },
+        "phishing_rows": 0,
+        "pr_auc": null,
+        "roc_auc": null,
+        "rows": 86,
+        "safe_count": 7,
+        "suspicious_count": 16
+      }
+    },
+    "counterfactual_data_note": "The fixed counterfactual variants are curated benchmark cases, not observed URLs and were never included in training.",
+    "counterfactual_pairs": {
+      "by_variant_type": {
+        "encoded": {
+          "count": 10,
+          "median_probability_delta": 0.34841158833133823,
+          "phishing_verdict_count": 1
+        },
+        "fragment": {
+          "count": 10,
+          "median_probability_delta": 0.017156843521373644,
+          "phishing_verdict_count": 0
+        },
+        "homepage": {
+          "count": 10,
+          "median_probability_delta": 0.0,
+          "phishing_verdict_count": 0
+        },
+        "multi-query": {
+          "count": 10,
+          "median_probability_delta": 0.054525562757079926,
+          "phishing_verdict_count": 1
+        },
+        "path": {
+          "count": 10,
+          "median_probability_delta": 0.05575850904896889,
+          "phishing_verdict_count": 1
+        },
+        "path+query": {
+          "count": 10,
+          "median_probability_delta": 0.02062948149956144,
+          "phishing_verdict_count": 0
+        },
+        "query": {
+          "count": 10,
+          "median_probability_delta": 0.005195543491934081,
+          "phishing_verdict_count": 0
+        }
+      },
+      "count": 70,
+      "median_probability_delta": 0.04307677159921065,
+      "pairs": [
+        {
+          "base_probability": 0.06027076386206809,
+          "base_url": "https://www.google.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.0,
+          "variant_probability": 0.06027076386206809,
+          "variant_type": "homepage",
+          "variant_url": "https://www.google.com/",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.06027076386206809,
+          "base_url": "https://www.google.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.04307677159921065,
+          "variant_probability": 0.10334753546127874,
+          "variant_type": "path",
+          "variant_url": "https://www.google.com/search",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.06027076386206809,
+          "base_url": "https://www.google.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.003693969042142295,
+          "variant_probability": 0.06396473290421038,
+          "variant_type": "query",
+          "variant_url": "https://www.google.com/?q=test",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.06027076386206809,
+          "base_url": "https://www.google.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.054525562757079926,
+          "variant_probability": 0.11479632661914801,
+          "variant_type": "multi-query",
+          "variant_url": "https://www.google.com/?q=test&page=2",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.06027076386206809,
+          "base_url": "https://www.google.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.34841158833133823,
+          "variant_probability": 0.4086823521934063,
+          "variant_type": "encoded",
+          "variant_url": "https://www.google.com/?q=cyber%20security",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.06027076386206809,
+          "base_url": "https://www.google.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.015493102721645363,
+          "variant_probability": 0.07576386658371345,
+          "variant_type": "fragment",
+          "variant_url": "https://www.google.com/#results",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.06027076386206809,
+          "base_url": "https://www.google.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.02062948149956144,
+          "variant_probability": 0.08090024536162953,
+          "variant_type": "path+query",
+          "variant_url": "https://www.google.com/search?q=test",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.05694001111393099,
+          "base_url": "https://www.bing.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.0,
+          "variant_probability": 0.05694001111393099,
+          "variant_type": "homepage",
+          "variant_url": "https://www.bing.com/",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.05694001111393099,
+          "base_url": "https://www.bing.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.016304963163160782,
+          "variant_probability": 0.07324497427709177,
+          "variant_type": "path",
+          "variant_url": "https://www.bing.com/search",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.05694001111393099,
+          "base_url": "https://www.bing.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.0022250913447684623,
+          "variant_probability": 0.05916510245869945,
+          "variant_type": "query",
+          "variant_url": "https://www.bing.com/?q=test",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.05694001111393099,
+          "base_url": "https://www.bing.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.03480824037736878,
+          "variant_probability": 0.09174825149129977,
+          "variant_type": "multi-query",
+          "variant_url": "https://www.bing.com/?q=test&page=2",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.05694001111393099,
+          "base_url": "https://www.bing.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.1113517611087371,
+          "variant_probability": 0.16829177222266808,
+          "variant_type": "encoded",
+          "variant_url": "https://www.bing.com/?q=cyber%20security",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.05694001111393099,
+          "base_url": "https://www.bing.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.00375847573358698,
+          "variant_probability": 0.06069848684751797,
+          "variant_type": "fragment",
+          "variant_url": "https://www.bing.com/#results",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.05694001111393099,
+          "base_url": "https://www.bing.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.004715300198986999,
+          "variant_probability": 0.06165531131291799,
+          "variant_type": "path+query",
+          "variant_url": "https://www.bing.com/search?q=test",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.06027076386206809,
+          "base_url": "https://www.youtube.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.0,
+          "variant_probability": 0.06027076386206809,
+          "variant_type": "homepage",
+          "variant_url": "https://www.youtube.com/",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.06027076386206809,
+          "base_url": "https://www.youtube.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.0553122944947817,
+          "variant_probability": 0.11558305835684979,
+          "variant_type": "path",
+          "variant_url": "https://www.youtube.com/search",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.06027076386206809,
+          "base_url": "https://www.youtube.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.0051261358371448296,
+          "variant_probability": 0.06539689969921292,
+          "variant_type": "query",
+          "variant_url": "https://www.youtube.com/?q=test",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.06027076386206809,
+          "base_url": "https://www.youtube.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.054525562757079926,
+          "variant_probability": 0.11479632661914801,
+          "variant_type": "multi-query",
+          "variant_url": "https://www.youtube.com/?q=test&page=2",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.06027076386206809,
+          "base_url": "https://www.youtube.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.30560283127647775,
+          "variant_probability": 0.36587359513854584,
+          "variant_type": "encoded",
+          "variant_url": "https://www.youtube.com/?q=cyber%20security",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.06027076386206809,
+          "base_url": "https://www.youtube.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.01594405491945708,
+          "variant_probability": 0.07621481878152517,
+          "variant_type": "fragment",
+          "variant_url": "https://www.youtube.com/#results",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.06027076386206809,
+          "base_url": "https://www.youtube.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.02062948149956144,
+          "variant_probability": 0.08090024536162953,
+          "variant_type": "path+query",
+          "variant_url": "https://www.youtube.com/search?q=test",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.06027076386206809,
+          "base_url": "https://github.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.0,
+          "variant_probability": 0.06027076386206809,
+          "variant_type": "homepage",
+          "variant_url": "https://github.com/",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.06027076386206809,
+          "base_url": "https://github.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.05620472360315608,
+          "variant_probability": 0.11647548746522417,
+          "variant_type": "path",
+          "variant_url": "https://github.com/search",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.06027076386206809,
+          "base_url": "https://github.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.005264951146723332,
+          "variant_probability": 0.06553571500879142,
+          "variant_type": "query",
+          "variant_url": "https://github.com/?q=test",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.06027076386206809,
+          "base_url": "https://github.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.054525562757079926,
+          "variant_probability": 0.11479632661914801,
+          "variant_type": "multi-query",
+          "variant_url": "https://github.com/?q=test&page=2",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.06027076386206809,
+          "base_url": "https://github.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.34841158833133823,
+          "variant_probability": 0.4086823521934063,
+          "variant_type": "encoded",
+          "variant_url": "https://github.com/?q=cyber%20security",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.06027076386206809,
+          "base_url": "https://github.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.017156843521373644,
+          "variant_probability": 0.07742760738344173,
+          "variant_type": "fragment",
+          "variant_url": "https://github.com/#results",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.06027076386206809,
+          "base_url": "https://github.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.02062948149956144,
+          "variant_probability": 0.08090024536162953,
+          "variant_type": "path+query",
+          "variant_url": "https://github.com/search?q=test",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.06027076386206809,
+          "base_url": "https://www.amazon.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.0,
+          "variant_probability": 0.06027076386206809,
+          "variant_type": "homepage",
+          "variant_url": "https://www.amazon.com/",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.06027076386206809,
+          "base_url": "https://www.amazon.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.04307677159921065,
+          "variant_probability": 0.10334753546127874,
+          "variant_type": "path",
+          "variant_url": "https://www.amazon.com/search",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.06027076386206809,
+          "base_url": "https://www.amazon.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.005264951146723332,
+          "variant_probability": 0.06553571500879142,
+          "variant_type": "query",
+          "variant_url": "https://www.amazon.com/?q=test",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.06027076386206809,
+          "base_url": "https://www.amazon.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.054525562757079926,
+          "variant_probability": 0.11479632661914801,
+          "variant_type": "multi-query",
+          "variant_url": "https://www.amazon.com/?q=test&page=2",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.06027076386206809,
+          "base_url": "https://www.amazon.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.34841158833133823,
+          "variant_probability": 0.4086823521934063,
+          "variant_type": "encoded",
+          "variant_url": "https://www.amazon.com/?q=cyber%20security",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.06027076386206809,
+          "base_url": "https://www.amazon.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.01922909653984589,
+          "variant_probability": 0.07949986040191398,
+          "variant_type": "fragment",
+          "variant_url": "https://www.amazon.com/#results",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.06027076386206809,
+          "base_url": "https://www.amazon.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.02062948149956144,
+          "variant_probability": 0.08090024536162953,
+          "variant_type": "path+query",
+          "variant_url": "https://www.amazon.com/search?q=test",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.09774293441717664,
+          "base_url": "https://learn.microsoft.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.0,
+          "variant_probability": 0.09774293441717664,
+          "variant_type": "homepage",
+          "variant_url": "https://learn.microsoft.com/",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.09774293441717664,
+          "base_url": "https://learn.microsoft.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.13494924980703776,
+          "variant_probability": 0.2326921842242144,
+          "variant_type": "path",
+          "variant_url": "https://learn.microsoft.com/search",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.09774293441717664,
+          "base_url": "https://learn.microsoft.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.15314553897240174,
+          "variant_probability": 0.25088847338957837,
+          "variant_type": "query",
+          "variant_url": "https://learn.microsoft.com/?q=test",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.09774293441717664,
+          "base_url": "https://learn.microsoft.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.6282685071539068,
+          "variant_probability": 0.7260114415710834,
+          "variant_type": "multi-query",
+          "variant_url": "https://learn.microsoft.com/?q=test&page=2",
+          "variant_verdict": "SUSPICIOUS"
+        },
+        {
+          "base_probability": 0.09774293441717664,
+          "base_url": "https://learn.microsoft.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.5252737437728779,
+          "variant_probability": 0.6230166781900546,
+          "variant_type": "encoded",
+          "variant_url": "https://learn.microsoft.com/?q=cyber%20security",
+          "variant_verdict": "SUSPICIOUS"
+        },
+        {
+          "base_probability": 0.09774293441717664,
+          "base_url": "https://learn.microsoft.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.09555416475061966,
+          "variant_probability": 0.1932970991677963,
+          "variant_type": "fragment",
+          "variant_url": "https://learn.microsoft.com/#results",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.09774293441717664,
+          "base_url": "https://learn.microsoft.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.12379655423964019,
+          "variant_probability": 0.22153948865681683,
+          "variant_type": "path+query",
+          "variant_url": "https://learn.microsoft.com/search?q=test",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.5976333763991306,
+          "base_url": "https://stackoverflow.com/",
+          "base_verdict": "SUSPICIOUS",
+          "probability_delta": 0.0,
+          "variant_probability": 0.5976333763991306,
+          "variant_type": "homepage",
+          "variant_url": "https://stackoverflow.com/",
+          "variant_verdict": "SUSPICIOUS"
+        },
+        {
+          "base_probability": 0.5976333763991306,
+          "base_url": "https://stackoverflow.com/",
+          "base_verdict": "SUSPICIOUS",
+          "probability_delta": 0.29647882331308284,
+          "variant_probability": 0.8941121997122135,
+          "variant_type": "path",
+          "variant_url": "https://stackoverflow.com/search",
+          "variant_verdict": "PHISHING"
+        },
+        {
+          "base_probability": 0.5976333763991306,
+          "base_url": "https://stackoverflow.com/",
+          "base_verdict": "SUSPICIOUS",
+          "probability_delta": 0.06271100915287597,
+          "variant_probability": 0.6603443855520066,
+          "variant_type": "query",
+          "variant_url": "https://stackoverflow.com/?q=test",
+          "variant_verdict": "SUSPICIOUS"
+        },
+        {
+          "base_probability": 0.5976333763991306,
+          "base_url": "https://stackoverflow.com/",
+          "base_verdict": "SUSPICIOUS",
+          "probability_delta": 0.31908324856517656,
+          "variant_probability": 0.9167166249643072,
+          "variant_type": "multi-query",
+          "variant_url": "https://stackoverflow.com/?q=test&page=2",
+          "variant_verdict": "PHISHING"
+        },
+        {
+          "base_probability": 0.5976333763991306,
+          "base_url": "https://stackoverflow.com/",
+          "base_verdict": "SUSPICIOUS",
+          "probability_delta": 0.2589857146520679,
+          "variant_probability": 0.8566190910511985,
+          "variant_type": "encoded",
+          "variant_url": "https://stackoverflow.com/?q=cyber%20security",
+          "variant_verdict": "PHISHING"
+        },
+        {
+          "base_probability": 0.5976333763991306,
+          "base_url": "https://stackoverflow.com/",
+          "base_verdict": "SUSPICIOUS",
+          "probability_delta": 0.22521044738078844,
+          "variant_probability": 0.822843823779919,
+          "variant_type": "fragment",
+          "variant_url": "https://stackoverflow.com/#results",
+          "variant_verdict": "SUSPICIOUS"
+        },
+        {
+          "base_probability": 0.5976333763991306,
+          "base_url": "https://stackoverflow.com/",
+          "base_verdict": "SUSPICIOUS",
+          "probability_delta": 0.15883831179120944,
+          "variant_probability": 0.75647168819034,
+          "variant_type": "path+query",
+          "variant_url": "https://stackoverflow.com/search?q=test",
+          "variant_verdict": "SUSPICIOUS"
+        },
+        {
+          "base_probability": 0.24456177802100262,
+          "base_url": "https://en.wikipedia.org/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.0,
+          "variant_probability": 0.24456177802100262,
+          "variant_type": "homepage",
+          "variant_url": "https://en.wikipedia.org/",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.24456177802100262,
+          "base_url": "https://en.wikipedia.org/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.2966334253824229,
+          "variant_probability": 0.5411952034034255,
+          "variant_type": "path",
+          "variant_url": "https://en.wikipedia.org/search",
+          "variant_verdict": "SUSPICIOUS"
+        },
+        {
+          "base_probability": 0.24456177802100262,
+          "base_url": "https://en.wikipedia.org/",
+          "base_verdict": "SAFE",
+          "probability_delta": -0.0165975617205861,
+          "variant_probability": 0.22796421630041652,
+          "variant_type": "query",
+          "variant_url": "https://en.wikipedia.org/?q=test",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.24456177802100262,
+          "base_url": "https://en.wikipedia.org/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.5287512370617072,
+          "variant_probability": 0.7733130150827099,
+          "variant_type": "multi-query",
+          "variant_url": "https://en.wikipedia.org/?q=test&page=2",
+          "variant_verdict": "SUSPICIOUS"
+        },
+        {
+          "base_probability": 0.24456177802100262,
+          "base_url": "https://en.wikipedia.org/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.3153617500381942,
+          "variant_probability": 0.5599235280591969,
+          "variant_type": "encoded",
+          "variant_url": "https://en.wikipedia.org/?q=cyber%20security",
+          "variant_verdict": "SUSPICIOUS"
+        },
+        {
+          "base_probability": 0.24456177802100262,
+          "base_url": "https://en.wikipedia.org/",
+          "base_verdict": "SAFE",
+          "probability_delta": -0.061206688957654964,
+          "variant_probability": 0.18335508906334766,
+          "variant_type": "fragment",
+          "variant_url": "https://en.wikipedia.org/#results",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.24456177802100262,
+          "base_url": "https://en.wikipedia.org/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.04993091395231555,
+          "variant_probability": 0.2944926919733182,
+          "variant_type": "path+query",
+          "variant_url": "https://en.wikipedia.org/search?q=test",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.06027076386206809,
+          "base_url": "https://www.reddit.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.0,
+          "variant_probability": 0.06027076386206809,
+          "variant_type": "homepage",
+          "variant_url": "https://www.reddit.com/",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.06027076386206809,
+          "base_url": "https://www.reddit.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.04307677159921065,
+          "variant_probability": 0.10334753546127874,
+          "variant_type": "path",
+          "variant_url": "https://www.reddit.com/search",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.06027076386206809,
+          "base_url": "https://www.reddit.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.003693969042142295,
+          "variant_probability": 0.06396473290421038,
+          "variant_type": "query",
+          "variant_url": "https://www.reddit.com/?q=test",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.06027076386206809,
+          "base_url": "https://www.reddit.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.054525562757079926,
+          "variant_probability": 0.11479632661914801,
+          "variant_type": "multi-query",
+          "variant_url": "https://www.reddit.com/?q=test&page=2",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.06027076386206809,
+          "base_url": "https://www.reddit.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.34841158833133823,
+          "variant_probability": 0.4086823521934063,
+          "variant_type": "encoded",
+          "variant_url": "https://www.reddit.com/?q=cyber%20security",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.06027076386206809,
+          "base_url": "https://www.reddit.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.017156843521373644,
+          "variant_probability": 0.07742760738344173,
+          "variant_type": "fragment",
+          "variant_url": "https://www.reddit.com/#results",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.06027076386206809,
+          "base_url": "https://www.reddit.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.02062948149956144,
+          "variant_probability": 0.08090024536162953,
+          "variant_type": "path+query",
+          "variant_url": "https://www.reddit.com/search?q=test",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.09774293441717664,
+          "base_url": "https://accounts.google.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.0,
+          "variant_probability": 0.09774293441717664,
+          "variant_type": "homepage",
+          "variant_url": "https://accounts.google.com/",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.09774293441717664,
+          "base_url": "https://accounts.google.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.11672462404219101,
+          "variant_probability": 0.21446755845936766,
+          "variant_type": "path",
+          "variant_url": "https://accounts.google.com/search",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.09774293441717664,
+          "base_url": "https://accounts.google.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.11445877038496323,
+          "variant_probability": 0.21220170480213987,
+          "variant_type": "query",
+          "variant_url": "https://accounts.google.com/?q=test",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.09774293441717664,
+          "base_url": "https://accounts.google.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.4859176231103962,
+          "variant_probability": 0.5836605575275728,
+          "variant_type": "multi-query",
+          "variant_url": "https://accounts.google.com/?q=test&page=2",
+          "variant_verdict": "SUSPICIOUS"
+        },
+        {
+          "base_probability": 0.09774293441717664,
+          "base_url": "https://accounts.google.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.5252737437728779,
+          "variant_probability": 0.6230166781900546,
+          "variant_type": "encoded",
+          "variant_url": "https://accounts.google.com/?q=cyber%20security",
+          "variant_verdict": "SUSPICIOUS"
+        },
+        {
+          "base_probability": 0.09774293441717664,
+          "base_url": "https://accounts.google.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.02027000129007933,
+          "variant_probability": 0.11801293570725598,
+          "variant_type": "fragment",
+          "variant_url": "https://accounts.google.com/#results",
+          "variant_verdict": "SAFE"
+        },
+        {
+          "base_probability": 0.09774293441717664,
+          "base_url": "https://accounts.google.com/",
+          "base_verdict": "SAFE",
+          "probability_delta": 0.12379655423964019,
+          "variant_probability": 0.22153948865681683,
+          "variant_type": "path+query",
+          "variant_url": "https://accounts.google.com/search?q=test",
+          "variant_verdict": "SAFE"
+        }
+      ],
+      "phishing_variant_verdict_count": 3,
+      "positive_probability_delta_count": 58
+    },
+    "domain_disjoint_metrics": {
+      "brier_score": 0.09945348612072491,
+      "cohorts": {
+        "api_endpoint": {
+          "legitimate_fpr": {
+            "denominator": 8,
+            "numerator": 0,
+            "percentage": 0.0
+          },
+          "legitimate_rows": 8,
+          "phishing_recall": {
+            "denominator": 1,
+            "numerator": 1,
+            "percentage": 100.0
+          },
+          "phishing_rows": 1,
+          "rows": 9
+        },
+        "content_path": {
+          "legitimate_fpr": {
+            "denominator": 586,
+            "numerator": 34,
+            "percentage": 5.802047781569966
+          },
+          "legitimate_rows": 586,
+          "phishing_recall": {
+            "denominator": 379,
+            "numerator": 290,
+            "percentage": 76.51715039577836
+          },
+          "phishing_rows": 379,
+          "rows": 965
+        },
+        "docs": {
+          "legitimate_fpr": {
+            "denominator": 129,
+            "numerator": 1,
+            "percentage": 0.7751937984496124
+          },
+          "legitimate_rows": 129,
+          "phishing_recall": {
+            "denominator": 1,
+            "numerator": 0,
+            "percentage": 0.0
+          },
+          "phishing_rows": 1,
+          "rows": 130
+        },
+        "encoding": {
+          "legitimate_fpr": {
+            "denominator": 81,
+            "numerator": 12,
+            "percentage": 14.814814814814815
+          },
+          "legitimate_rows": 81,
+          "phishing_recall": {
+            "denominator": 11,
+            "numerator": 8,
+            "percentage": 72.72727272727273
+          },
+          "phishing_rows": 11,
+          "rows": 92
+        },
+        "fragment": {
+          "legitimate_fpr": {
+            "denominator": 84,
+            "numerator": 0,
+            "percentage": 0.0
+          },
+          "legitimate_rows": 84,
+          "phishing_recall": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "phishing_rows": 0,
+          "rows": 84
+        },
+        "homepage": {
+          "legitimate_fpr": {
+            "denominator": 2,
+            "numerator": 0,
+            "percentage": 0.0
+          },
+          "legitimate_rows": 2,
+          "phishing_recall": {
+            "denominator": 2,
+            "numerator": 2,
+            "percentage": 100.0
+          },
+          "phishing_rows": 2,
+          "rows": 4
+        },
+        "login_account": {
+          "legitimate_fpr": {
+            "denominator": 7,
+            "numerator": 0,
+            "percentage": 0.0
+          },
+          "legitimate_rows": 7,
+          "phishing_recall": {
+            "denominator": 71,
+            "numerator": 58,
+            "percentage": 81.69014084507042
+          },
+          "phishing_rows": 71,
+          "rows": 78
+        },
+        "long_query": {
+          "legitimate_fpr": {
+            "denominator": 14,
+            "numerator": 0,
+            "percentage": 0.0
+          },
+          "legitimate_rows": 14,
+          "phishing_recall": {
+            "denominator": 15,
+            "numerator": 14,
+            "percentage": 93.33333333333333
+          },
+          "phishing_rows": 15,
+          "rows": 29
+        },
+        "long_url": {
+          "legitimate_fpr": {
+            "denominator": 5,
+            "numerator": 3,
+            "percentage": 60.0
+          },
+          "legitimate_rows": 5,
+          "phishing_recall": {
+            "denominator": 9,
+            "numerator": 8,
+            "percentage": 88.88888888888889
+          },
+          "phishing_rows": 9,
+          "rows": 14
+        },
+        "multiple_parameters": {
+          "legitimate_fpr": {
+            "denominator": 102,
+            "numerator": 1,
+            "percentage": 0.9803921568627451
+          },
+          "legitimate_rows": 102,
+          "phishing_recall": {
+            "denominator": 18,
+            "numerator": 16,
+            "percentage": 88.88888888888889
+          },
+          "phishing_rows": 18,
+          "rows": 120
+        },
+        "pagination": {
+          "legitimate_fpr": {
+            "denominator": 11,
+            "numerator": 0,
+            "percentage": 0.0
+          },
+          "legitimate_rows": 11,
+          "phishing_recall": {
+            "denominator": 1,
+            "numerator": 1,
+            "percentage": 100.0
+          },
+          "phishing_rows": 1,
+          "rows": 12
+        },
+        "query": {
+          "legitimate_fpr": {
+            "denominator": 152,
+            "numerator": 1,
+            "percentage": 0.6578947368421053
+          },
+          "legitimate_rows": 152,
+          "phishing_recall": {
+            "denominator": 57,
+            "numerator": 48,
+            "percentage": 84.21052631578948
+          },
+          "phishing_rows": 57,
+          "rows": 209
+        },
+        "search": {
+          "legitimate_fpr": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "legitimate_rows": 0,
+          "phishing_recall": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "phishing_rows": 0,
+          "rows": 0
+        },
+        "tracking": {
+          "legitimate_fpr": {
+            "denominator": 12,
+            "numerator": 1,
+            "percentage": 8.333333333333334
+          },
+          "legitimate_rows": 12,
+          "phishing_recall": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "phishing_rows": 0,
+          "rows": 12
+        }
+      },
+      "legitimate_false_phishing": {
+        "denominator": 600,
+        "numerator": 34,
+        "percentage": 5.666666666666667
+      },
+      "legitimate_rows": 600,
+      "legitimate_verdict_counts": {
+        "PHISHING": 34,
+        "SAFE": 482,
+        "SUSPICIOUS": 84
+      },
+      "phishing_count": 335,
+      "phishing_f1": 0.828060522696011,
+      "phishing_false_negative": {
+        "denominator": 392,
+        "numerator": 91,
+        "percentage": 23.214285714285715
+      },
+      "phishing_precision": {
+        "denominator": 335,
+        "numerator": 301,
+        "percentage": 89.85074626865672
+      },
+      "phishing_recall": {
+        "denominator": 392,
+        "numerator": 301,
+        "percentage": 76.78571428571429
+      },
+      "phishing_rows": 392,
+      "phishing_verdict_counts": {
+        "PHISHING": 301,
+        "SAFE": 25,
+        "SUSPICIOUS": 66
+      },
+      "pr_auc": 0.9314074257103653,
+      "roc_auc": 0.9516156462585033,
+      "rows": 992,
+      "safe_count": 507,
+      "suspicious_count": 150
+    },
+    "domain_disjoint_registered_domains": {
+      "cross_label_overlap": 0,
+      "legitimate": 8,
+      "phishing": 392
+    },
+    "fixed_baseline_core_legitimate_metrics": {
+      "brier_score": null,
+      "cohorts": {
+        "api_endpoint": {
+          "legitimate_fpr": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "legitimate_rows": 0,
+          "phishing_recall": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "phishing_rows": 0,
+          "rows": 0
+        },
+        "content_path": {
+          "legitimate_fpr": {
+            "denominator": 16,
+            "numerator": 1,
+            "percentage": 6.25
+          },
+          "legitimate_rows": 16,
+          "phishing_recall": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "phishing_rows": 0,
+          "rows": 16
+        },
+        "docs": {
+          "legitimate_fpr": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "legitimate_rows": 0,
+          "phishing_recall": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "phishing_rows": 0,
+          "rows": 0
+        },
+        "encoding": {
+          "legitimate_fpr": {
+            "denominator": 1,
+            "numerator": 0,
+            "percentage": 0.0
+          },
+          "legitimate_rows": 1,
+          "phishing_recall": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "phishing_rows": 0,
+          "rows": 1
+        },
+        "fragment": {
+          "legitimate_fpr": {
+            "denominator": 1,
+            "numerator": 0,
+            "percentage": 0.0
+          },
+          "legitimate_rows": 1,
+          "phishing_recall": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "phishing_rows": 0,
+          "rows": 1
+        },
+        "homepage": {
+          "legitimate_fpr": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "legitimate_rows": 0,
+          "phishing_recall": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "phishing_rows": 0,
+          "rows": 0
+        },
+        "login_account": {
+          "legitimate_fpr": {
+            "denominator": 1,
+            "numerator": 0,
+            "percentage": 0.0
+          },
+          "legitimate_rows": 1,
+          "phishing_recall": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "phishing_rows": 0,
+          "rows": 1
+        },
+        "long_query": {
+          "legitimate_fpr": {
+            "denominator": 1,
+            "numerator": 0,
+            "percentage": 0.0
+          },
+          "legitimate_rows": 1,
+          "phishing_recall": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "phishing_rows": 0,
+          "rows": 1
+        },
+        "long_url": {
+          "legitimate_fpr": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "legitimate_rows": 0,
+          "phishing_recall": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "phishing_rows": 0,
+          "rows": 0
+        },
+        "multiple_parameters": {
+          "legitimate_fpr": {
+            "denominator": 3,
+            "numerator": 0,
+            "percentage": 0.0
+          },
+          "legitimate_rows": 3,
+          "phishing_recall": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "phishing_rows": 0,
+          "rows": 3
+        },
+        "pagination": {
+          "legitimate_fpr": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "legitimate_rows": 0,
+          "phishing_recall": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "phishing_rows": 0,
+          "rows": 0
+        },
+        "query": {
+          "legitimate_fpr": {
+            "denominator": 9,
+            "numerator": 0,
+            "percentage": 0.0
+          },
+          "legitimate_rows": 9,
+          "phishing_recall": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "phishing_rows": 0,
+          "rows": 9
+        },
+        "search": {
+          "legitimate_fpr": {
+            "denominator": 8,
+            "numerator": 0,
+            "percentage": 0.0
+          },
+          "legitimate_rows": 8,
+          "phishing_recall": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "phishing_rows": 0,
+          "rows": 8
+        },
+        "tracking": {
+          "legitimate_fpr": {
+            "denominator": 1,
+            "numerator": 0,
+            "percentage": 0.0
+          },
+          "legitimate_rows": 1,
+          "phishing_recall": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "phishing_rows": 0,
+          "rows": 1
+        }
+      },
+      "legitimate_false_phishing": {
+        "denominator": 16,
+        "numerator": 1,
+        "percentage": 6.25
+      },
+      "legitimate_rows": 16,
+      "legitimate_verdict_counts": {
+        "PHISHING": 1,
+        "SAFE": 13,
+        "SUSPICIOUS": 2
+      },
+      "phishing_count": 1,
+      "phishing_f1": 0.0,
+      "phishing_false_negative": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing_precision": {
+        "denominator": 1,
+        "numerator": 0,
+        "percentage": 0.0
+      },
+      "phishing_recall": {
+        "denominator": 0,
+        "numerator": 0,
+        "percentage": null
+      },
+      "phishing_rows": 0,
+      "phishing_verdict_counts": {
+        "PHISHING": 0,
+        "SAFE": 0,
+        "SUSPICIOUS": 0
+      },
+      "pr_auc": null,
+      "roc_auc": null,
+      "rows": 16,
+      "safe_count": 13,
+      "suspicious_count": 2
+    },
+    "fixed_baseline_core_phishing_verdicts": 1,
+    "manifest_version": "v1"
+  },
+  "inputs": {
+    "all_split_rows": {
+      "calibration": {
+        "legitimate": 5313,
+        "legitimate_domains": 10,
+        "phishing": 73835,
+        "phishing_domains": 32267
+      },
+      "test": {
+        "legitimate": 25791,
+        "legitimate_domains": 24,
+        "phishing": 71440,
+        "phishing_domains": 32421
+      },
+      "train": {
+        "legitimate": 100031,
+        "legitimate_domains": 136,
+        "phishing": 533725,
+        "phishing_domains": 226034
+      },
+      "validation": {
+        "legitimate": 5565,
+        "legitimate_domains": 19,
+        "phishing": 72113,
+        "phishing_domains": 32474
+      }
+    },
+    "benchmark_domain_reservation": {
+      "legitimate_rows_excluded": 1330,
+      "phishing_rows_excluded": 37188,
+      "reason": "Keep every fixed benchmark registered domain out of all candidate data.",
+      "registered_domains": 407
+    },
+    "conflict_policy": "Phishing-feed label wins for exact normalized URL conflicts; conflicting legitimate rows are excluded.",
+    "duplicate_normalized_url_removal": {
+      "legitimate": 0,
+      "phishing": 79
+    },
+    "exact_url_label_conflicts": 0,
+    "input_sha256": {
+      "benchmark_manifest": "cce6bf41a0107165fee33fe5a9335b2d8d7358723fa118a84b7045567a8a6767",
+      "legitimate_csv": "4ddaa799a3b43be02a137cd2d68fdf6f53d51659f8c21d2ef1ce76101a21a900",
+      "phishing_feed": "fb7abaea60ceb5045cce0404cd3499e018b990f0150f3b94bc850aae58d1c0ad"
+    },
+    "invalid_input_counts": {
+      "legitimate": {},
+      "phishing": {
+        "invalid_url": 672,
+        "unsupported_scheme": 2
+      }
+    },
+    "raw_input_rows": {
+      "legitimate_csv": 138030,
+      "phishing_feed": 789054
+    },
+    "registered_domain_split_overlap": {},
+    "retained_candidate_pool": {
+      "legitimate": 136700,
+      "legitimate_domains": 189,
+      "legitimate_source_categories": {
+        "api_endpoint": 1726,
+        "content_path": 126271,
+        "docs": 1999,
+        "encoding": 343,
+        "fragment": 477,
+        "homepage": 219,
+        "login_account": 119,
+        "long_query": 234,
+        "long_url": 912,
+        "multiple_query_parameters": 1375,
+        "pagination": 593,
+        "query_parameter": 2222,
+        "search": 133,
+        "tracking": 77
+      },
+      "phishing": 751113,
+      "phishing_domains": 323196,
+      "source_counts": {
+        "Books to Scrape": 77,
+        "Discourse": 1,
+        "Electron": 1,
+        "GOV.UK": 20012,
+        "GitHub Careers": 1,
+        "GitHub Status": 1,
+        "Instagram": 1,
+        "JSONPlaceholder": 7,
+        "LinkedIn": 2,
+        "Mockend": 1,
+        "NASA": 29545,
+        "Node.js": 1747,
+        "Python": 24,
+        "Python documentation": 7,
+        "Python.org": 17,
+        "RFC Editor": 10252,
+        "SerpApi": 1,
+        "Sphinx": 1,
+        "The GitHub Blog": 18497,
+        "TikTok": 1,
+        "Twitch": 1,
+        "WHO": 13,
+        "Web Scraper Test Sites": 10,
+        "X": 1,
+        "airbnb.com": 106,
+        "aljazeera.com": 227,
+        "ally.com": 21,
+        "android.com": 13,
+        "angular.dev": 1012,
+        "apache.org": 12,
+        "apple.com": 24,
+        "apwg.org": 12,
+        "archive.org": 1010,
+        "arxiv.org": 1,
+        "astro.build": 350,
+        "bandcamp.com": 13,
+        "bankofamerica.com": 35,
+        "bbc.co.uk": 13,
+        "berkeley.edu": 63,
+        "bitbucket.org": 11,
+        "boingboing.net": 1,
+        "booking.com": 1,
+        "brown.edu": 13,
+        "bun.sh": 13,
+        "cbsnews.com": 514,
+        "chase.com": 919,
+        "chef.io": 1007,
+        "citi.com": 322,
+        "cmu.edu": 315,
+        "cnbc.com": 262,
+        "cnet.com": 1012,
+        "cnn.com": 467,
+        "codeberg.org": 13,
+        "consumerreports.org": 11,
+        "cornell.edu": 28,
+        "costco.com": 1673,
+        "discourse.org": 104,
+        "discover.com": 903,
+        "docker.com": 1016,
+        "duke.edu": 100,
+        "dw.com": 63,
+        "eff.org": 13,
+        "elastic.co": 1011,
+        "elsevier.com": 1,
+        "europa.eu": 1026,
+        "factcheck.org": 12,
+        "flickr.com": 12,
+        "foreignaffairs.com": 1012,
+        "fortune.com": 1,
+        "france24.com": 13,
+        "fullfact.org": 12,
+        "gatech.edu": 1011,
+        "gitlab.com": 1015,
+        "go.dev": 1024,
+        "gov.scot": 679,
+        "gov.wales": 511,
+        "grafana.com": 1013,
+        "gutenberg.org": 13,
+        "harvard.edu": 11,
+        "haskell.org": 13,
+        "hp.com": 1012,
+        "huggingface.co": 22,
+        "ibm.com": 1012,
+        "ic3.gov": 10,
+        "icann.org": 1,
+        "ietf.org": 13,
+        "ikea.com": 791,
+        "imdb.com": 1,
+        "java.com": 12,
+        "julialang.org": 265,
+        "justice.gov": 1,
+        "kotlinlang.org": 507,
+        "kubernetes.io": 1005,
+        "latimes.com": 12,
+        "lenovo.com": 630,
+        "linux.org": 13,
+        "loc.gov": 71,
+        "lowes.com": 967,
+        "lyft.com": 1008,
+        "mapillary.com": 38,
+        "mastercard.com": 1008,
+        "merriam-webster.com": 84,
+        "mit.edu": 11,
+        "msu.edu": 132,
+        "my.gov.au": 498,
+        "nasa.gov": 11,
+        "nationalgallery.org.uk": 1011,
+        "nationalgeographic.com": 1013,
+        "nbcnews.com": 169,
+        "ncsc.gov.uk": 1,
+        "newsweek.com": 194,
+        "nidirect.gov.uk": 1011,
+        "nist.gov": 1000,
+        "northwestern.edu": 13,
+        "npr.org": 146,
+        "nuget.org": 11,
+        "nvidia.com": 13,
+        "nytimes.com": 1,
+        "openstreetmap.org": 13,
+        "oracle.com": 12,
+        "osu.edu": 447,
+        "patagonia.com": 1001,
+        "paypal.com": 1029,
+        "pbs.org": 13,
+        "pcworld.com": 761,
+        "perl.org": 12,
+        "php.net": 13,
+        "poetryfoundation.org": 632,
+        "politifact.com": 13,
+        "prometheus.io": 249,
+        "psu.edu": 342,
+        "puppet.com": 429,
+        "purdue.edu": 1012,
+        "pypi.org": 1013,
+        "r-project.org": 12,
+        "react.dev": 11,
+        "revolut.com": 10,
+        "rijksmuseum.nl": 1012,
+        "ruby-lang.org": 1002,
+        "rubygems.org": 13,
+        "rust-lang.org": 13,
+        "rutgers.edu": 10,
+        "samsung.com": 12,
+        "scala-lang.org": 13,
+        "sciencenews.org": 366,
+        "scientificamerican.com": 1012,
+        "semanticscholar.org": 1,
+        "serverfault.com": 10,
+        "shopify.com": 570,
+        "snopes.com": 57,
+        "soundcloud.com": 60,
+        "sourceforge.net": 9,
+        "southwest.com": 1008,
+        "spotify.com": 13,
+        "squareup.com": 1010,
+        "stanford.edu": 39,
+        "stripe.com": 2023,
+        "svelte.dev": 13,
+        "swift.org": 493,
+        "target.com": 13,
+        "techcrunch.com": 55,
+        "theregister.com": 12,
+        "thetimes.com": 12,
+        "theverge.com": 92,
+        "time.com": 98,
+        "twitch.tv": 12,
+        "typescriptlang.org": 13,
+        "ucdavis.edu": 1010,
+        "uchicago.edu": 313,
+        "uci.edu": 51,
+        "ucla.edu": 124,
+        "ucsb.edu": 156,
+        "ucsd.edu": 13,
+        "ufl.edu": 33,
+        "umd.edu": 12,
+        "un.org": 13,
+        "upenn.edu": 90,
+        "usatoday.com": 530,
+        "vanguard.com": 43,
+        "vimeo.com": 12,
+        "vox.com": 25,
+        "vuejs.org": 120,
+        "w3.org": 12,
+        "walmart.com": 18,
+        "web.dev": 12,
+        "wellsfargo.com": 868,
+        "wikimedia.org": 8,
+        "wired.com": 1011,
+        "wisc.edu": 39,
+        "wise.com": 13,
+        "worldbank.org": 25,
+        "wto.org": 13,
+        "yale.edu": 1012,
+        "zdnet.com": 1012
+      }
+    },
+    "run": {
+      "created_utc": "2026-10-09T07:00:03.776755+00:00",
+      "cumulative_controlled_experiments_this_task": 20,
+      "experiment_budget": 20,
+      "experiment_id": "realworld_v3",
+      "experiments_planned": 6,
+      "feature_extraction": "feature_extractor.extract_features and existing production_29 feature selection.",
+      "prior_controlled_experiments_this_task": 14,
+      "seed": 42,
+      "thresholds": {
+        "phishing": 0.85,
+        "safe": 0.45,
+        "source": "existing config.py; fixed throughout this run"
+      }
+    },
+    "split_method": "Stable SHA-256 assignment of registered domains to 70/10/10/10 train/calibration/validation/test buckets.",
+    "valid_unique_before_conflict_resolution": {
+      "legitimate": 138030,
+      "phishing": 788301
+    }
+  },
+  "production_artifact_integrity": {
+    "sha256": {
+      "feature_extractor.py": "826436788ddf02e2dfe76c55cf6e062bab297c3cf1ead4602e4533c446733874",
+      "feature_names.pkl": "d02a7c9cd2cb5b73c2bbccc7347c240fed6d77593b8e7d602dbb67f424099da9",
+      "model_metadata.json": "76f11a2883837c0226898d9a37d28a58475d5bdedc013e9f7969a43a493feba9",
+      "phishing_model.pkl": "5f16e09d5f6fb613d391051b2b5693cf47478356d77cec8c8e52f5b309159ba2"
+    },
+    "status": "PASS",
+    "unchanged": true
+  },
+  "recommended_candidate": null,
+  "selected_candidate": {
+    "artifact": "experiments\\auto_ml\\realworld_v3\\candidates\\hist_gradient_regularized_calibrated\\candidate.joblib",
+    "calibration": "separate domain-disjoint calibration set",
+    "family": "HistGradientBoosting",
+    "features": [
+      "URLLength",
+      "HostnameLength",
+      "PathLength",
+      "QueryLength",
+      "FragmentLength",
+      "PathSegmentCount",
+      "QueryParameterCount",
+      "DotCount",
+      "SubdomainDepth",
+      "NoOfDigitsInURL",
+      "DigitRatioInURL",
+      "NoOfLettersInURL",
+      "LetterRatioInURL",
+      "NoOfEqualsInURL",
+      "NoOfQMarkInURL",
+      "NoOfAmpersandInURL",
+      "NoOfAtInURL",
+      "NoOfHyphenInURL",
+      "NoOfUnderscoreInURL",
+      "URLPercentEncodingCount",
+      "HasObfuscation",
+      "HasUserInfo",
+      "HasPort",
+      "IsDomainIP",
+      "IsShortened",
+      "HasSuspiciousTLD",
+      "HasSuspiciousToken",
+      "IsTrustedTLD",
+      "URLEntropy"
+    ],
+    "internal_domain_disjoint_test_metrics": {
+      "brier_score": 0.11584730661629788,
+      "cohorts": {
+        "api_endpoint": {
+          "legitimate_fpr": {
+            "denominator": 46,
+            "numerator": 0,
+            "percentage": 0.0
+          },
+          "legitimate_rows": 46,
+          "phishing_recall": {
+            "denominator": 43,
+            "numerator": 32,
+            "percentage": 74.4186046511628
+          },
+          "phishing_rows": 43,
+          "rows": 89
+        },
+        "content_path": {
+          "legitimate_fpr": {
+            "denominator": 1004,
+            "numerator": 92,
+            "percentage": 9.163346613545817
+          },
+          "legitimate_rows": 1004,
+          "phishing_recall": {
+            "denominator": 985,
+            "numerator": 744,
+            "percentage": 75.53299492385787
+          },
+          "phishing_rows": 985,
+          "rows": 1989
+        },
+        "docs": {
+          "legitimate_fpr": {
+            "denominator": 172,
+            "numerator": 0,
+            "percentage": 0.0
+          },
+          "legitimate_rows": 172,
+          "phishing_recall": {
+            "denominator": 92,
+            "numerator": 65,
+            "percentage": 70.65217391304348
+          },
+          "phishing_rows": 92,
+          "rows": 264
+        },
+        "encoding": {
+          "legitimate_fpr": {
+            "denominator": 49,
+            "numerator": 19,
+            "percentage": 38.775510204081634
+          },
+          "legitimate_rows": 49,
+          "phishing_recall": {
+            "denominator": 50,
+            "numerator": 39,
+            "percentage": 78.0
+          },
+          "phishing_rows": 50,
+          "rows": 99
+        },
+        "fragment": {
+          "legitimate_fpr": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "legitimate_rows": 0,
+          "phishing_recall": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "phishing_rows": 0,
+          "rows": 0
+        },
+        "homepage": {
+          "legitimate_fpr": {
+            "denominator": 28,
+            "numerator": 1,
+            "percentage": 3.5714285714285716
+          },
+          "legitimate_rows": 28,
+          "phishing_recall": {
+            "denominator": 28,
+            "numerator": 16,
+            "percentage": 57.142857142857146
+          },
+          "phishing_rows": 28,
+          "rows": 56
+        },
+        "login_account": {
+          "legitimate_fpr": {
+            "denominator": 177,
+            "numerator": 2,
+            "percentage": 1.1299435028248588
+          },
+          "legitimate_rows": 177,
+          "phishing_recall": {
+            "denominator": 178,
+            "numerator": 143,
+            "percentage": 80.33707865168539
+          },
+          "phishing_rows": 178,
+          "rows": 355
+        },
+        "long_query": {
+          "legitimate_fpr": {
+            "denominator": 24,
+            "numerator": 5,
+            "percentage": 20.833333333333332
+          },
+          "legitimate_rows": 24,
+          "phishing_recall": {
+            "denominator": 45,
+            "numerator": 40,
+            "percentage": 88.88888888888889
+          },
+          "phishing_rows": 45,
+          "rows": 69
+        },
+        "long_url": {
+          "legitimate_fpr": {
+            "denominator": 14,
+            "numerator": 2,
+            "percentage": 14.285714285714286
+          },
+          "legitimate_rows": 14,
+          "phishing_recall": {
+            "denominator": 29,
+            "numerator": 28,
+            "percentage": 96.55172413793103
+          },
+          "phishing_rows": 29,
+          "rows": 43
+        },
+        "multiple_parameters": {
+          "legitimate_fpr": {
+            "denominator": 98,
+            "numerator": 38,
+            "percentage": 38.775510204081634
+          },
+          "legitimate_rows": 98,
+          "phishing_recall": {
+            "denominator": 116,
+            "numerator": 93,
+            "percentage": 80.17241379310344
+          },
+          "phishing_rows": 116,
+          "rows": 214
+        },
+        "pagination": {
+          "legitimate_fpr": {
+            "denominator": 1,
+            "numerator": 0,
+            "percentage": 0.0
+          },
+          "legitimate_rows": 1,
+          "phishing_recall": {
+            "denominator": 2,
+            "numerator": 1,
+            "percentage": 50.0
+          },
+          "phishing_rows": 2,
+          "rows": 3
+        },
+        "query": {
+          "legitimate_fpr": {
+            "denominator": 172,
+            "numerator": 78,
+            "percentage": 45.348837209302324
+          },
+          "legitimate_rows": 172,
+          "phishing_recall": {
+            "denominator": 214,
+            "numerator": 165,
+            "percentage": 77.10280373831776
+          },
+          "phishing_rows": 214,
+          "rows": 386
+        },
+        "search": {
+          "legitimate_fpr": {
+            "denominator": 6,
+            "numerator": 1,
+            "percentage": 16.666666666666668
+          },
+          "legitimate_rows": 6,
+          "phishing_recall": {
+            "denominator": 6,
+            "numerator": 5,
+            "percentage": 83.33333333333333
+          },
+          "phishing_rows": 6,
+          "rows": 12
+        },
+        "tracking": {
+          "legitimate_fpr": {
+            "denominator": 22,
+            "numerator": 1,
+            "percentage": 4.545454545454546
+          },
+          "legitimate_rows": 22,
+          "phishing_recall": {
+            "denominator": 23,
+            "numerator": 14,
+            "percentage": 60.869565217391305
+          },
+          "phishing_rows": 23,
+          "rows": 45
+        }
+      },
+      "legitimate_false_phishing": {
+        "denominator": 1039,
+        "numerator": 94,
+        "percentage": 9.04716073147257
+      },
+      "legitimate_rows": 1039,
+      "legitimate_verdict_counts": {
+        "PHISHING": 94,
+        "SAFE": 767,
+        "SUSPICIOUS": 178
+      },
+      "phishing_count": 875,
+      "phishing_f1": 0.8160919540229885,
+      "phishing_false_negative": {
+        "denominator": 1039,
+        "numerator": 258,
+        "percentage": 24.831568816169394
+      },
+      "phishing_precision": {
+        "denominator": 875,
+        "numerator": 781,
+        "percentage": 89.25714285714285
+      },
+      "phishing_recall": {
+        "denominator": 1039,
+        "numerator": 781,
+        "percentage": 75.1684311838306
+      },
+      "phishing_rows": 1039,
+      "phishing_verdict_counts": {
+        "PHISHING": 781,
+        "SAFE": 82,
+        "SUSPICIOUS": 176
+      },
+      "pr_auc": 0.9284825057374289,
+      "roc_auc": 0.9274312403371495,
+      "rows": 2078,
+      "safe_count": 849,
+      "suspicious_count": 354
+    },
+    "internal_test_inference_latency": {
+      "median_ms_per_url_including_feature_extraction": 3.3164499996019003,
+      "p95_ms_per_url_including_feature_extraction": 3.7916749995019927,
+      "sample_count": 300
+    },
+    "internal_test_sample_domains": {
+      "legitimate": 24,
+      "phishing": 793
+    },
+    "internal_test_sample_rows": 2078,
+    "name": "hist_gradient_regularized_calibrated",
+    "parameters": {
+      "class_weight": null,
+      "l2_regularization": 1.0,
+      "learning_rate": 0.05,
+      "max_iter": 100,
+      "max_leaf_nodes": 15,
+      "min_samples_leaf": 20,
+      "random_state": 42
+    },
+    "validation_metrics": {
+      "brier_score": 0.06769360319534747,
+      "cohorts": {
+        "api_endpoint": {
+          "legitimate_fpr": {
+            "denominator": 35,
+            "numerator": 0,
+            "percentage": 0.0
+          },
+          "legitimate_rows": 35,
+          "phishing_recall": {
+            "denominator": 20,
+            "numerator": 15,
+            "percentage": 75.0
+          },
+          "phishing_rows": 20,
+          "rows": 55
+        },
+        "content_path": {
+          "legitimate_fpr": {
+            "denominator": 484,
+            "numerator": 5,
+            "percentage": 1.0330578512396693
+          },
+          "legitimate_rows": 484,
+          "phishing_recall": {
+            "denominator": 479,
+            "numerator": 381,
+            "percentage": 79.54070981210856
+          },
+          "phishing_rows": 479,
+          "rows": 963
+        },
+        "docs": {
+          "legitimate_fpr": {
+            "denominator": 91,
+            "numerator": 0,
+            "percentage": 0.0
+          },
+          "legitimate_rows": 91,
+          "phishing_recall": {
+            "denominator": 84,
+            "numerator": 68,
+            "percentage": 80.95238095238095
+          },
+          "phishing_rows": 84,
+          "rows": 175
+        },
+        "encoding": {
+          "legitimate_fpr": {
+            "denominator": 9,
+            "numerator": 1,
+            "percentage": 11.11111111111111
+          },
+          "legitimate_rows": 9,
+          "phishing_recall": {
+            "denominator": 6,
+            "numerator": 5,
+            "percentage": 83.33333333333333
+          },
+          "phishing_rows": 6,
+          "rows": 15
+        },
+        "fragment": {
+          "legitimate_fpr": {
+            "denominator": 1,
+            "numerator": 0,
+            "percentage": 0.0
+          },
+          "legitimate_rows": 1,
+          "phishing_recall": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null
+          },
+          "phishing_rows": 0,
+          "rows": 1
+        },
+        "homepage": {
+          "legitimate_fpr": {
+            "denominator": 24,
+            "numerator": 0,
+            "percentage": 0.0
+          },
+          "legitimate_rows": 24,
+          "phishing_recall": {
+            "denominator": 24,
+            "numerator": 17,
+            "percentage": 70.83333333333333
+          },
+          "phishing_rows": 24,
+          "rows": 48
+        },
+        "login_account": {
+          "legitimate_fpr": {
+            "denominator": 64,
+            "numerator": 1,
+            "percentage": 1.5625
+          },
+          "legitimate_rows": 64,
+          "phishing_recall": {
+            "denominator": 67,
+            "numerator": 53,
+            "percentage": 79.1044776119403
+          },
+          "phishing_rows": 67,
+          "rows": 131
+        },
+        "long_query": {
+          "legitimate_fpr": {
+            "denominator": 9,
+            "numerator": 1,
+            "percentage": 11.11111111111111
+          },
+          "legitimate_rows": 9,
+          "phishing_recall": {
+            "denominator": 21,
+            "numerator": 19,
+            "percentage": 90.47619047619048
+          },
+          "phishing_rows": 21,
+          "rows": 30
+        },
+        "long_url": {
+          "legitimate_fpr": {
+            "denominator": 1,
+            "numerator": 0,
+            "percentage": 0.0
+          },
+          "legitimate_rows": 1,
+          "phishing_recall": {
+            "denominator": 15,
+            "numerator": 13,
+            "percentage": 86.66666666666667
+          },
+          "phishing_rows": 15,
+          "rows": 16
+        },
+        "multiple_parameters": {
+          "legitimate_fpr": {
+            "denominator": 41,
+            "numerator": 3,
+            "percentage": 7.317073170731708
+          },
+          "legitimate_rows": 41,
+          "phishing_recall": {
+            "denominator": 52,
+            "numerator": 42,
+            "percentage": 80.76923076923077
+          },
+          "phishing_rows": 52,
+          "rows": 93
+        },
+        "pagination": {
+          "legitimate_fpr": {
+            "denominator": 3,
+            "numerator": 0,
+            "percentage": 0.0
+          },
+          "legitimate_rows": 3,
+          "phishing_recall": {
+            "denominator": 3,
+            "numerator": 2,
+            "percentage": 66.66666666666667
+          },
+          "phishing_rows": 3,
+          "rows": 6
+        },
+        "query": {
+          "legitimate_fpr": {
+            "denominator": 53,
+            "numerator": 3,
+            "percentage": 5.660377358490566
+          },
+          "legitimate_rows": 53,
+          "phishing_recall": {
+            "denominator": 75,
+            "numerator": 58,
+            "percentage": 77.33333333333333
+          },
+          "phishing_rows": 75,
+          "rows": 128
+        },
+        "search": {
+          "legitimate_fpr": {
+            "denominator": 2,
+            "numerator": 0,
+            "percentage": 0.0
+          },
+          "legitimate_rows": 2,
+          "phishing_recall": {
+            "denominator": 2,
+            "numerator": 1,
+            "percentage": 50.0
+          },
+          "phishing_rows": 2,
+          "rows": 4
+        },
+        "tracking": {
+          "legitimate_fpr": {
+            "denominator": 13,
+            "numerator": 0,
+            "percentage": 0.0
+          },
+          "legitimate_rows": 13,
+          "phishing_recall": {
+            "denominator": 13,
+            "numerator": 9,
+            "percentage": 69.23076923076923
+          },
+          "phishing_rows": 13,
+          "rows": 26
+        }
+      },
+      "legitimate_false_phishing": {
+        "denominator": 510,
+        "numerator": 5,
+        "percentage": 0.9803921568627451
+      },
+      "legitimate_rows": 510,
+      "phishing_count": 406,
+      "phishing_f1": 0.8755458515283843,
+      "phishing_false_negative": {
+        "denominator": 510,
+        "numerator": 109,
+        "percentage": 21.372549019607842
+      },
+      "phishing_precision": {
+        "denominator": 406,
+        "numerator": 401,
+        "percentage": 98.76847290640394
+      },
+      "phishing_recall": {
+        "denominator": 510,
+        "numerator": 401,
+        "percentage": 78.62745098039215
+      },
+      "phishing_rows": 510,
+      "pr_auc": 0.9746078641827677,
+      "roc_auc": 0.9690792003075739,
+      "rows": 1020,
+      "safe_count": 490,
+      "suspicious_count": 124
+    }
+  }
+}

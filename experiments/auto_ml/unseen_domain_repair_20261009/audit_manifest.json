@@ -1,0 +1,47 @@
+{
+  "run_id": "unseen_domain_repair_20261009",
+  "created_at_utc": "2026-10-09T09:34:00Z",
+  "training_started": false,
+  "experiment_budget": 12,
+  "experiments_completed": 0,
+  "stop_reason": "fresh_validation_and_domain_disjoint_lockbox_unavailable",
+  "input_hashes": {
+    "legacy_legitimate_csv": "4ddaa799a3b43be02a137cd2d68fdf6f53d51659f8c21d2ef1ce76101a21a900",
+    "legacy_phishing_feed": "fb7abaea60ceb5045cce0404cd3499e018b990f0150f3b94bc850aae58d1c0ad",
+    "prior_phishtank_snapshot": "4516c161ca96f4a28ac246a92c0135e6e2c39d8bedcea2d7678badb1c610e9b2",
+    "previous_fresh_legitimate_collection": "f09115f83c7bc053ea6216072cc9307b6f91a973ce81ac609a6c3d8cfad32055",
+    "new_phishtank_snapshot": "5c306827153c4fcd6a2dc6271ebbbddd205618c846f2539012301e5c77c4bbd5",
+    "benchmark_manifest": "cce6bf41a0107165fee33fe5a9335b2d8d7358723fa118a84b7045567a8a6767"
+  },
+  "new_phishtank_snapshot": {
+    "path": "phishtank_snapshot_20261009T0934Z.csv",
+    "rows": 69100,
+    "verified_yes_rows": 69100,
+    "online_yes_rows": 69100,
+    "unique_phish_ids": 69100,
+    "unique_raw_urls": 69097,
+    "destination_urls_fetched": 0,
+    "domain_overlap_status": "not_certified",
+    "source_url": "https://data.phishtank.com/data/online-valid.csv",
+    "download_count_this_run": 1
+  },
+  "split_reservation": {
+    "base_collector_domains_unused_by_prior_data_or_benchmark": 0,
+    "supplemental_prior_repair_allowlist_domains_unused_by_stored_data_or_benchmark": 22,
+    "supplemental_unused_domains_with_zero_rows_in_previous_collection": 22,
+    "fresh_legitimate_rows_collected_this_run": 0,
+    "new_lockbox_domains_reserved": 0,
+    "previous_validation_or_test_rows_reused": false,
+    "registered_domain_overlap_checks_for_new_phishing_snapshot_completed": false,
+    "benchmark_v1_policy": "regression_only"
+  },
+  "production_hashes_before": {
+    "phishing_model.pkl": "5f16e09d5f6fb613d391051b2b5693cf47478356d77cec8c8e52f5b309159ba2",
+    "feature_names.pkl": "d02a7c9cd2cb5b73c2bbccc7347c240fed6d77593b8e7d602dbb67f424099da9",
+    "model_metadata.json": "76f11a2883837c0226898d9a37d28a58475d5bdedc013e9f7969a43a493feba9",
+    "feature_extractor.py": "826436788ddf02e2dfe76c55cf6e062bab297c3cf1ead4602e4533c446733874",
+    "service.py": "10834ae85143560c5fe3defc665f31ab0eeed9b6ce6f3a19f8e0ed582328cf23",
+    "config.py": "23ef9dfe2390e605ab866d99abd5ba7b4e6a7cc7bc09a7a15497991d1ecc7dfb"
+  },
+  "production_files_modified": false
+}

@@ -1,0 +1,308 @@
+{
+  "audit_version": 1,
+  "created_at_utc": "2026-10-09T09:34:00Z",
+  "decision": "BLOCKED_BEFORE_TRAINING",
+  "decision_reason": [
+    "The latest validation and test rows were already used in prior model selection or reporting.",
+    "The newly downloaded PhishTank snapshot has not been certified domain-disjoint from all earlier training and evaluation inputs.",
+    "No new legitimate lockbox rows were collected; 22 candidate domains in the prior repair source allowlist produced zero rows on their earlier collection attempt and were not retried in this run.",
+    "The legacy phishing URL text feed has no row timestamps or verification metadata."
+  ],
+  "normalization": {
+    "function": "feature_extractor.normalize_url",
+    "registered_domain_function": "feature_extractor.get_registered_domain",
+    "legacy_legitimate_normalized_duplicate_rows": 0,
+    "legacy_legitimate_normalization_mismatches": 0,
+    "legacy_phishing_normalized_duplicate_rows_removed_in_latest_audit": 79,
+    "exact_normalized_label_conflicts_in_latest_audit": 0
+  },
+  "inputs": {
+    "legacy_legitimate": {
+      "path": "legitimate_urls_realworld_v3.csv",
+      "sha256": "4ddaa799a3b43be02a137cd2d68fdf6f53d51659f8c21d2ef1ce76101a21a900",
+      "rows": 138030,
+      "label_counts": {
+        "0": 138030
+      },
+      "registered_domains": 201,
+      "source_names": 210,
+      "invalid_or_unnormalizable_urls": 0,
+      "normalized_duplicate_rows": 0,
+      "source_page_registered_domain_mismatch_rows": 37,
+      "status_assessment": "PARTIALLY_VERIFIED",
+      "verification_method_counts": {
+        "explicit_individual_target_http_200_claim": 2090,
+        "explicit_target_not_separately_fetched": 80017,
+        "other_or_ambiguous_verification_method": 55923
+      },
+      "category_counts": {
+        "content_path": 127436,
+        "query_parameter": 2247,
+        "docs": 2020,
+        "api_endpoint": 1736,
+        "multiple_query_parameters": 1378,
+        "long_url": 912,
+        "pagination": 593,
+        "fragment": 516,
+        "encoding": 343,
+        "homepage": 244,
+        "long_query": 236,
+        "login_account": 141,
+        "search": 139,
+        "tracking": 89
+      },
+      "top_sources": [
+        {
+          "source": "NASA",
+          "rows": 29545
+        },
+        {
+          "source": "GOV.UK",
+          "rows": 20012
+        },
+        {
+          "source": "The GitHub Blog",
+          "rows": 18497
+        },
+        {
+          "source": "RFC Editor",
+          "rows": 10252
+        }
+      ],
+      "top_four_source_share_percentage": 56.7,
+      "source_split_check": {
+        "method": "Existing stable registered-domain split assignment",
+        "source_groups_checked": 210,
+        "source_groups_crossing_splits": 0,
+        "qualification": "The runner does not explicitly assign by source group; this is an observed property of this input, not a general guarantee."
+      },
+      "notes": [
+        "The dominant category is content_path (92.3% of rows).",
+        "Most rows do not have an unambiguous individual target GET/status/final-URL record.",
+        "The 37 source-page/domain mismatches may be valid outbound links, but need row-level evidence review before inclusion in a strict first-party dataset."
+      ]
+    },
+    "previous_fresh_legitimate_collection": {
+      "path": "experiments/auto_ml/accuracy_repair_20261009/new_legitimate_observations.csv",
+      "sha256": "f09115f83c7bc053ea6216072cc9307b6f91a973ce81ac609a6c3d8cfad32055",
+      "collection_manifest": "experiments/auto_ml/accuracy_repair_20261009/collection_manifest.json",
+      "rows": 425,
+      "unique_normalized_urls": 425,
+      "registered_domains": 33,
+      "sources": 33,
+      "http_200_same_registered_domain": 424,
+      "http_202_same_registered_domain": 1,
+      "original_url_redirected_within_registered_domain": 51,
+      "cross_registered_domain_redirects": 0,
+      "cohort_counts": {
+        "path": 387,
+        "query": 46,
+        "homepage": 28,
+        "fragment": 18,
+        "multiple_parameters": 9,
+        "encoded": 8,
+        "documentation": 8,
+        "tracking": 5,
+        "search": 2,
+        "long_url": 2,
+        "login_account": 2,
+        "pagination": 1
+      },
+      "synthetic_urls_created": 0,
+      "status_assessment": "OBSERVED_AND_FETCH_VERIFIED_BUT_PREVIOUSLY_USED",
+      "notes": [
+        "Every retained row has a recorded HTTP status and final URL on the same registered domain.",
+        "The single HTTP 202 response is weaker reachability evidence than HTTP 200.",
+        "This collection was used in the prior accuracy-repair experiment; its test rows are not a new lockbox."
+      ]
+    },
+    "legacy_phishing_feed": {
+      "path": "data/external/phishing_database_active.txt",
+      "sha256": "fb7abaea60ceb5045cce0404cd3499e018b990f0150f3b94bc850aae58d1c0ad",
+      "raw_lines": 789054,
+      "http_or_https_lines": 789052,
+      "timestamps_present": false,
+      "verified_or_online_fields_present": false,
+      "latest_report_retained_unique_rows": 751113,
+      "latest_report_duplicate_rows_removed": 79,
+      "latest_report_invalid_or_unsupported_rows": 674,
+      "label_interpretation": "Feed-listed phishing label only; current activity or malicious behavior is not independently established."
+    },
+    "prior_phishtank_snapshot": {
+      "path": "experiments/auto_ml/accuracy_repair_20261009/phishtank_online_valid.csv",
+      "sha256": "4516c161ca96f4a28ac246a92c0135e6e2c39d8bedcea2d7678badb1c610e9b2",
+      "rows": 69139,
+      "verified_yes_rows": 69139,
+      "online_yes_rows": 69139,
+      "unique_raw_urls": 69136,
+      "submission_time_range_utc": [
+        "2011-02-18T10:50:32+00:00",
+        "2026-10-08T13:53:35+00:00"
+      ],
+      "verification_time_range_utc": [
+        "2011-02-19T00:05:43+00:00",
+        "2026-10-08T14:11:25+00:00"
+      ],
+      "verification_age_at_new_snapshot_capture": {
+        "within_7_days": 690,
+        "8_to_30_days": 2448,
+        "31_to_365_days": 32794,
+        "older_than_1_year": 33207
+      },
+      "label_interpretation": "PhishTank community verified/online flags at their recorded verification time; not proof of current activity."
+    },
+    "new_phishtank_snapshot": {
+      "path": "experiments/auto_ml/unseen_domain_repair_20261009/phishtank_snapshot_20261009T0934Z.csv",
+      "sha256": "5c306827153c4fcd6a2dc6271ebbbddd205618c846f2539012301e5c77c4bbd5",
+      "bytes": 13223563,
+      "capture_time_utc": "2026-10-09T09:34:00Z",
+      "rows": 69100,
+      "verified_yes_rows": 69100,
+      "online_yes_rows": 69100,
+      "unique_phish_ids": 69100,
+      "unique_raw_urls": 69097,
+      "submission_time_range_utc": [
+        "2011-02-18T10:50:32+00:00",
+        "2026-10-08T13:53:35+00:00"
+      ],
+      "verification_time_range_utc": [
+        "2011-02-19T00:05:43+00:00",
+        "2026-10-09T09:11:30+00:00"
+      ],
+      "registered_domain_overlap_with_all_prior_inputs": "NOT_CERTIFIED",
+      "destination_urls_fetched": 0,
+      "notes": [
+        "Downloaded once from the official PhishTank CSV endpoint using a descriptive User-Agent.",
+        "PhishTank documents hourly database updates and recommends an application key for automated downloads; no repeated polling was performed.",
+        "A source-listing/verified/online flag is recorded as provenance, not treated as proof that a URL remains active or is malicious today."
+      ]
+    }
+  },
+  "latest_prior_experiment": {
+    "run_id": "20261009T084933Z",
+    "experiments_completed": 5,
+    "selected_candidate": "character_ngrams_plus_numeric",
+    "selection_split": "Previously used validation split; not reusable for new selection.",
+    "reported_internal_test": {
+      "legitimate_false_positives": {
+        "numerator": 162,
+        "denominator": 1039,
+        "percentage": 15.591915303176132,
+        "wilson_95_ci_percentage": [
+          13.513203054107148,
+          17.92412196281694
+        ]
+      },
+      "phishing_false_negatives": {
+        "numerator": 32,
+        "denominator": 1039,
+        "percentage": 3.079884504331087
+      },
+      "phishing_recall": {
+        "numerator": 1007,
+        "denominator": 1039,
+        "percentage": 96.92011549566891,
+        "wilson_95_ci_percentage": [
+          95.68452198980279,
+          97.81003480530076
+        ]
+      },
+      "phishing_precision_percentage": 86.14,
+      "brier_score": 0.06579175514367513,
+      "pr_auc": 0.9759603878524791,
+      "roc_auc": 0.9794936828463736,
+      "expected_calibration_error_10_bins": 0.059894399546965536,
+      "phishing_threshold": 0.48177141554223285,
+      "registered_domains": {
+        "legitimate": 24,
+        "phishing": 793
+      },
+      "status": "REPEATABILITY_OR_REGRESSION_EVIDENCE_ONLY"
+    },
+    "benchmark_v1_regression_only": {
+      "legitimate_false_positives": {
+        "numerator": 51,
+        "denominator": 600,
+        "percentage": 8.5,
+        "wilson_95_ci_percentage": [
+          6.524029664442158,
+          11.003991519695003
+        ]
+      },
+      "phishing_false_negatives": {
+        "numerator": 11,
+        "denominator": 392,
+        "percentage": 2.806122448979592
+      },
+      "phishing_recall": {
+        "numerator": 381,
+        "denominator": 392,
+        "percentage": 97.1938775510204,
+        "wilson_95_ci_percentage": [
+          95.04574811789948,
+          98.42601734656655
+        ]
+      },
+      "status": "EXPOSED_REGRESSION_CHECK_ONLY"
+    }
+  },
+  "split_and_lockbox_audit": {
+    "previous_split_method": "Stable registered-domain hashing into train/calibration/validation/test.",
+    "previous_registered_domain_overlap": {},
+    "source_group_overlap_observed_in_legacy_legitimate_rows": 0,
+    "new_lockbox_reserved_before_new_model_selection": false,
+    "new_phishing_snapshot_domain_disjointness": "UNVERIFIED",
+    "new_legitimate_lockbox_domains_collected": 0,
+    "base_first_party_source_catalog": {
+      "registered_domains": 17,
+      "unused_by_prior_legitimate_data_or_benchmark": 0
+    },
+    "prior_repair_source_allowlist": {
+      "registered_domains": 56,
+      "domains_unused_by_stored_prior_data_or_benchmark": 22,
+      "unused_domains_with_zero_rows_in_previous_collection_attempt": 22,
+      "successful_domains_already_used_in_previous_experiment": 33,
+      "benchmark_reserved_domains": 1
+    },
+    "benchmark_v1_use": "Regression only; repeatedly evaluated."
+  },
+  "production_artifact_hashes": {
+    "before": {
+      "phishing_model.pkl": "5f16e09d5f6fb613d391051b2b5693cf47478356d77cec8c8e52f5b309159ba2",
+      "feature_names.pkl": "d02a7c9cd2cb5b73c2bbccc7347c240fed6d77593b8e7d602dbb67f424099da9",
+      "model_metadata.json": "76f11a2883837c0226898d9a37d28a58475d5bdedc013e9f7969a43a493feba9",
+      "feature_extractor.py": "826436788ddf02e2dfe76c55cf6e062bab297c3cf1ead4602e4533c446733874",
+      "service.py": "10834ae85143560c5fe3defc665f31ab0eeed9b6ce6f3a19f8e0ed582328cf23",
+      "config.py": "23ef9dfe2390e605ab866d99abd5ba7b4e6a7cc7bc09a7a15497991d1ecc7dfb"
+    },
+    "after": {
+      "phishing_model.pkl": "5f16e09d5f6fb613d391051b2b5693cf47478356d77cec8c8e52f5b309159ba2",
+      "feature_names.pkl": "d02a7c9cd2cb5b73c2bbccc7347c240fed6d77593b8e7d602dbb67f424099da9",
+      "model_metadata.json": "76f11a2883837c0226898d9a37d28a58475d5bdedc013e9f7969a43a493feba9",
+      "feature_extractor.py": "826436788ddf02e2dfe76c55cf6e062bab297c3cf1ead4602e4533c446733874",
+      "service.py": "10834ae85143560c5fe3defc665f31ab0eeed9b6ce6f3a19f8e0ed582328cf23",
+      "config.py": "23ef9dfe2390e605ab866d99abd5ba7b4e6a7cc7bc09a7a15497991d1ecc7dfb"
+    },
+    "unchanged": true
+  },
+  "tests": {
+    "backend_pipeline": {
+      "passed": 14,
+      "failed": 1,
+      "failure": "ModuleNotFoundError: No module named 'scripts.final_ml_pass' (test_experimental_url_features_share_serving_canonicalization)",
+      "status": "FAIL"
+    },
+    "extension": {
+      "passed": 23,
+      "failed": 0,
+      "status": "PASS"
+    }
+  },
+  "limitations": [
+    "The 22 previously zero-yield first-party source domains should be retried or replaced with additional documented reputable sources; no new observed rows were collected from them in this run.",
+    "The new PhishTank snapshot must be normalized, deduplicated, and domain-overlap checked against every previously used training, calibration, validation, and test domain before any rows can be designated lockbox.",
+    "At least 600 legitimate URLs from 20 or more new registered domains are needed even to make the 0.5% FPR target minimally measurable; materially more is preferable for tight confidence bounds.",
+    "The legacy phishing feed lacks per-row timestamps, and many PhishTank rows have verification times more than one year old.",
+    "No destination phishing URL was fetched."
+  ]
+}

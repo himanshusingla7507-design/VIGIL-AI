@@ -1,0 +1,87 @@
+{
+  "status": "BLOCKED_NO_REAL_LEGITIMATE_ROWS_FOR_REQUIRED_COHORTS",
+  "dataset_generated": false,
+  "clean_dataset_csv_created": false,
+  "requested_training_output": "data/processed/clean_dataset.csv",
+  "summary_scope": "Blocker assessment only; no replacement training rows or splits were generated.",
+  "production_modified": false,
+  "training_performed": false,
+  "training_pipeline_schema": {
+    "columns": ["url", "label", "source", "collection_date"],
+    "label_mapping": {
+      "0": "legitimate",
+      "1": "phishing"
+    },
+    "feature_count": 29,
+    "feature_schema_matches_saved_feature_names": true
+  },
+  "locally_available_real_rows": {
+    "legitimate": {
+      "path": "data/experiments/legitimate_dynamic_training.csv",
+      "rows": 95,
+      "columns": ["url", "label", "source", "cohort"],
+      "normalized_unique": true,
+      "source_manifest": "reports/benign_dynamic_url_sources.json",
+      "reported_full_verified_cohort_size": 435,
+      "row_level_manifest_urls_retained": 95,
+      "category_counts_in_available_rows": {
+        "homepage": 15,
+        "path_only": 79,
+        "query_only": 0,
+        "path_plus_query": 1,
+        "fragment": 0,
+        "encoded": 4,
+        "multiple_query_params": 0,
+        "long_query": 0,
+        "long_url": 0,
+        "tracking_utm_parameters": 0,
+        "search": 5,
+        "docs": 9,
+        "login_account": 0,
+        "search_routes_with_query_strings": 0,
+        "account_registration_routes": 1
+      }
+    },
+    "phishing": {
+      "path": "data/external/phishing_database_active.txt",
+      "available": true,
+      "source_label": "phishing",
+      "reported_source_rows": 789054
+    }
+  },
+  "excluded_sources": [
+    {
+      "path": "data/experiments/legitimate_dynamic_benchmark.csv",
+      "rows": 544,
+      "reason": "reports/legitimate_dynamic_benchmark.json states that only 95 rows came from the local source manifest and 449 are curated public-service patterns. The curated rows are not retained real observations and are excluded to honor the prohibition on synthetic URL strings."
+    },
+    {
+      "path": "reports/benign_dynamic_url_sources.json",
+      "reason": "Contains aggregate counts for 435 verified URLs but retains row-level strings for only 95 first-party pages. Aggregate category counts cannot be expanded into URL rows."
+    },
+    {
+      "path": "reports/benign_dynamic_url_training.json",
+      "reason": "Contains the same limited first-party URL rows and aggregate experiment data, not the missing complete legitimate URL list."
+    }
+  ],
+  "missing_required_legitimate_categories": [
+    "Search-result URLs with query strings (five real search-path pages exist, but none has a query string)",
+    "multiple query parameters",
+    "fragments",
+    "tracking/UTM parameters",
+    "login/sign-in/account-management paths (one account-registration URL is present, but no login/sign-in example)",
+    "long queries",
+    "long URLs",
+    "API-like URLs"
+  ],
+  "domain_disjoint_splits": {
+    "created": false,
+    "reason": "A valid replacement dataset could not be constructed without real legitimate examples for the required structures."
+  },
+  "why_generation_was_blocked": "Using the available 95 legitimate rows would omit most mandatory positive cohorts. Filling those gaps from the 449 curated benchmark rows would violate the requirement not to create synthetic URL strings. No complete original clean_dataset.csv or benign_dynamic_urls.csv is present locally.",
+  "minimum_additional_data_needed": {
+    "legitimate": "A row-level, provenance-bearing export of real legitimate URLs covering the missing required structures, including url, source, category, and collection_date or source observation date.",
+    "phishing": "The existing local phishing feed can supply label-1 URLs, but a reproducible merged dataset also needs an explicit source/category mapping and a documented domain-disjoint split policy."
+  },
+  "existing_processed_summary_preserved": "data/processed/dataset_summary.json was not modified."
+}

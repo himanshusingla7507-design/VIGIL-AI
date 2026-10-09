@@ -1,0 +1,2104 @@
+{
+  "experiment": "exp002_verified_sources_domain_balanced",
+  "training_or_promotion_performed": true,
+  "production_modified": false,
+  "dataset_composition": {
+    "experiment": "exp002_verified_sources_domain_balanced",
+    "dataset": "experiments\\auto_ml\\exp002_verified_sources_domain_balanced\\dataset.csv",
+    "feature_count": 29,
+    "features": [
+      "URLLength",
+      "HostnameLength",
+      "PathLength",
+      "QueryLength",
+      "FragmentLength",
+      "PathSegmentCount",
+      "QueryParameterCount",
+      "DotCount",
+      "SubdomainDepth",
+      "NoOfDigitsInURL",
+      "DigitRatioInURL",
+      "NoOfLettersInURL",
+      "LetterRatioInURL",
+      "NoOfEqualsInURL",
+      "NoOfQMarkInURL",
+      "NoOfAmpersandInURL",
+      "NoOfAtInURL",
+      "NoOfHyphenInURL",
+      "NoOfUnderscoreInURL",
+      "URLPercentEncodingCount",
+      "HasObfuscation",
+      "HasUserInfo",
+      "HasPort",
+      "IsDomainIP",
+      "IsShortened",
+      "HasSuspiciousTLD",
+      "HasSuspiciousToken",
+      "IsTrustedTLD",
+      "URLEntropy"
+    ],
+    "legitimate_source": {
+      "path": "experiments\\auto_ml\\data_bootstrap_002\\legitimate_urls.csv",
+      "input_rows": 3594,
+      "analysis_unique_rows": 3594,
+      "duplicates_removed": 0,
+      "registered_domains": 59,
+      "source_counts": {
+        "Wikimedia Wikipedia": 111,
+        "Mozilla Developer Network": 77,
+        "GitHub": 97,
+        "NASA": 74,
+        "Library of Congress": 19,
+        "World Wide Web Consortium": 66,
+        "Internet Engineering Task Force": 51,
+        "arXiv": 77,
+        "OpenStreetMap": 91,
+        "World Health Organization": 99,
+        "Massachusetts Institute of Technology": 52,
+        "Stanford University": 49,
+        "University of California, Berkeley": 58,
+        "GOV.UK": 70,
+        "European Space Agency": 54,
+        "Chrome for Developers": 36,
+        "RFC Editor": 54,
+        "NumPy": 37,
+        "pandas": 82,
+        "PyTorch": 58,
+        "TensorFlow": 73,
+        "Go": 71,
+        "Rust": 28,
+        "Kotlin": 54,
+        "PHP": 86,
+        "Ruby": 29,
+        "Perl": 26,
+        "Julia": 73,
+        "SQLite": 66,
+        "GNU Project": 67,
+        "Linux Kernel": 46,
+        "OpenAPI Initiative": 48,
+        "OWASP": 27,
+        "docs.rs": 70,
+        "Django": 61,
+        "Centers for Disease Control and Prevention": 92,
+        "US Food and Drug Administration": 90,
+        "National Institute of Standards and Technology": 54,
+        "Environmental Protection Agency": 41,
+        "US Department of Energy": 50,
+        "USA.gov": 30,
+        "US National Park Service": 75,
+        "US Census Bureau": 56,
+        "US Securities and Exchange Commission": 94,
+        "Federal Reserve": 69,
+        "Federal Trade Commission": 69,
+        "Consumer Financial Protection Bureau": 69,
+        "Harvard University": 75,
+        "California Institute of Technology": 50,
+        "Carnegie Mellon University": 50,
+        "Cornell University": 35,
+        "University of Oxford": 15,
+        "University of Cambridge": 101,
+        "United Nations": 47,
+        "World Bank": 61,
+        "UNESCO": 2,
+        "BBC": 61,
+        "NPR": 80,
+        "The Guardian": 91
+      }
+    },
+    "phishing_source": {
+      "path": "data\\external\\phishing_database_active.txt",
+      "physical_lines": 789054,
+      "blank_lines": 0,
+      "invalid_urls": 674,
+      "selection": "One URL per registered domain outside all legitimate and benchmark domains; deterministic SHA-256 ordering within the matching primary structure bucket."
+    },
+    "split_method": "Deterministic SHA-256 rank assignment over legitimate registered domains, with exact target-count quantiles; the resulting cutoffs assign phishing-feed registered domains to the same four partitions. Positive and phishing domains are kept in exactly one partition.",
+    "domain_split_plan": {
+      "eligible_legitimate_domains": 57,
+      "legitimate_domains_per_split": {
+        "train": 34,
+        "calibration": 9,
+        "validation": 8,
+        "test": 6
+      },
+      "hash_score_cutoffs": {
+        "train_upper_exclusive": 0.5002106086652395,
+        "calibration_upper_exclusive": 0.6442670724260321,
+        "validation_upper_exclusive": 0.7542879701502527
+      },
+      "benchmark_reserved_positive_domains": [
+        "github.com",
+        "wikipedia.org"
+      ]
+    },
+    "split_rows": {
+      "train": {
+        "total": 4006,
+        "legitimate": 2003,
+        "phishing": 2003,
+        "registered_domains": 2037,
+        "source_counts": {
+          "NASA": 74,
+          "Library of Congress": 19,
+          "World Wide Web Consortium": 66,
+          "Internet Engineering Task Force": 51,
+          "arXiv": 77,
+          "OpenStreetMap": 91,
+          "World Health Organization": 99,
+          "Stanford University": 49,
+          "RFC Editor": 54,
+          "pandas": 82,
+          "PyTorch": 58,
+          "TensorFlow": 73,
+          "PHP": 86,
+          "Perl": 26,
+          "Julia": 73,
+          "GNU Project": 67,
+          "OpenAPI Initiative": 48,
+          "Centers for Disease Control and Prevention": 92,
+          "National Institute of Standards and Technology": 54,
+          "Environmental Protection Agency": 41,
+          "US Department of Energy": 50,
+          "USA.gov": 30,
+          "US Census Bureau": 56,
+          "Federal Reserve": 69,
+          "Federal Trade Commission": 69,
+          "Consumer Financial Protection Bureau": 69,
+          "California Institute of Technology": 50,
+          "Carnegie Mellon University": 50,
+          "Cornell University": 35,
+          "University of Oxford": 15,
+          "University of Cambridge": 101,
+          "United Nations": 47,
+          "UNESCO": 2,
+          "NPR": 80,
+          "phishing_database_active": 2003
+        },
+        "primary_structures": {
+          "homepage": 30,
+          "path_only": 3392,
+          "path_plus_query": 500,
+          "query_only": 84
+        }
+      },
+      "calibration": {
+        "total": 884,
+        "legitimate": 442,
+        "phishing": 442,
+        "registered_domains": 451,
+        "source_counts": {
+          "Massachusetts Institute of Technology": 52,
+          "European Space Agency": 54,
+          "Rust": 28,
+          "Ruby": 29,
+          "Linux Kernel": 46,
+          "OWASP": 27,
+          "docs.rs": 70,
+          "US National Park Service": 75,
+          "World Bank": 61,
+          "phishing_database_active": 442
+        },
+        "primary_structures": {
+          "homepage": 4,
+          "path_only": 780,
+          "path_plus_query": 94,
+          "query_only": 6
+        }
+      },
+      "validation": {
+        "total": 1098,
+        "legitimate": 549,
+        "phishing": 549,
+        "registered_domains": 557,
+        "source_counts": {
+          "University of California, Berkeley": 58,
+          "GOV.UK": 70,
+          "NumPy": 37,
+          "Go": 71,
+          "Kotlin": 54,
+          "US Food and Drug Administration": 90,
+          "US Securities and Exchange Commission": 94,
+          "Harvard University": 75,
+          "phishing_database_active": 549
+        },
+        "primary_structures": {
+          "homepage": 8,
+          "path_only": 910,
+          "path_plus_query": 172,
+          "query_only": 8
+        }
+      },
+      "test": {
+        "total": 784,
+        "legitimate": 392,
+        "phishing": 392,
+        "registered_domains": 398,
+        "source_counts": {
+          "Mozilla Developer Network": 77,
+          "Chrome for Developers": 36,
+          "SQLite": 66,
+          "Django": 61,
+          "BBC": 61,
+          "The Guardian": 91,
+          "phishing_database_active": 392
+        },
+        "primary_structures": {
+          "path_only": 666,
+          "homepage": 4,
+          "path_plus_query": 92,
+          "query_only": 22
+        }
+      }
+    },
+    "phishing_structure_quotas": {
+      "train": {
+        "rows": 2003,
+        "primary_structure_counts": {
+          "homepage": 15,
+          "query_only": 42,
+          "path_plus_query": 250,
+          "path_only": 1696
+        },
+        "registered_domains": 2003
+      },
+      "calibration": {
+        "rows": 442,
+        "primary_structure_counts": {
+          "homepage": 2,
+          "query_only": 3,
+          "path_plus_query": 47,
+          "path_only": 390
+        },
+        "registered_domains": 442
+      },
+      "validation": {
+        "rows": 549,
+        "primary_structure_counts": {
+          "homepage": 4,
+          "query_only": 4,
+          "path_plus_query": 86,
+          "path_only": 455
+        },
+        "registered_domains": 549
+      },
+      "test": {
+        "rows": 392,
+        "primary_structure_counts": {
+          "homepage": 2,
+          "query_only": 11,
+          "path_plus_query": 46,
+          "path_only": 333
+        },
+        "registered_domains": 392
+      }
+    },
+    "registered_domain_split_overlaps": {
+      "train|calibration": 0,
+      "train|validation": 0,
+      "train|test": 0,
+      "calibration|validation": 0,
+      "calibration|test": 0,
+      "validation|test": 0
+    },
+    "benchmark": {
+      "version": "v1",
+      "legitimate_urls": 600,
+      "phishing_urls": 392,
+      "baseline_urls": 16,
+      "counterfactual_urls": 70,
+      "counterfactual_rows_are_evaluation_only": true,
+      "no_synthetic_training_urls": true,
+      "sha256": {
+        "experiments\\auto_ml\\benchmark_v1\\legitimate_domain_disjoint.csv": "541749cbdee74446f5348f9978b05838101d18240596414bc1c65e3f1533e694",
+        "experiments\\auto_ml\\benchmark_v1\\phishing_domain_disjoint.csv": "706c12d4002e6ef8f6bb8f60087cc1ad90a1cbbe63a67e1c0a22b39850ea998c",
+        "experiments\\auto_ml\\benchmark_v1\\fixed_urls.json": "2d04fd816d86fa3b2bb862be58726a792e1f34395cc94fc0b9392a52bb0e1fcc"
+      }
+    },
+    "data_coverage": {
+      "legitimate_structure_counts": {
+        "path": 3510,
+        "encoded": 178,
+        "docs": 487,
+        "api": 33,
+        "homepage": 15,
+        "search": 209,
+        "query": 584,
+        "path_plus_query": 524,
+        "multiple_query_params": 273,
+        "pagination": 77,
+        "fragment": 449,
+        "long_url": 67,
+        "login_account": 27,
+        "long_query": 35,
+        "tracking": 21
+      },
+      "phishing_structure_counts": {
+        "homepage": 23,
+        "query": 489,
+        "multiple_query_params": 192,
+        "tracking": 7,
+        "long_query": 161,
+        "docs": 61,
+        "long_url": 165,
+        "path": 3303,
+        "path_plus_query": 429,
+        "login_account": 535,
+        "encoded": 87,
+        "pagination": 4,
+        "search": 3,
+        "api": 7
+      },
+      "limitations": [
+        "The phishing feed has no fragment-bearing URLs in the sampled pool; fragment-bearing verified legitimate URLs are retained only in the domain-held-out benchmark.",
+        "API-like and search URL examples are sparse in the phishing feed and therefore remain explicitly measured as cohort metrics."
+      ]
+    },
+    "production_modified": false,
+    "training_performed": false
+  },
+  "candidates": [
+    {
+      "experiment": "exp002_verified_sources_domain_balanced",
+      "candidate": "hist_gradient_boosting_production_29",
+      "candidate_artifact": "experiments\\auto_ml\\exp002_verified_sources_domain_balanced\\candidates\\hist_gradient_boosting_production_29\\candidate.joblib",
+      "feature_count": 29,
+      "selected_threshold": {
+        "phishing_threshold": 0.512821021338388,
+        "selected_on": "domain-disjoint validation partition only",
+        "maximum_validation_fpr": 0.005,
+        "validation_fpr": 0.0,
+        "validation_phishing_recall": 0.5245901639344263,
+        "validation_legitimate_rows": 549,
+        "validation_phishing_rows": 549
+      },
+      "validation_at_selected_threshold": {
+        "rows": 1098,
+        "legitimate_rows": 549,
+        "phishing_rows": 549,
+        "decision_threshold": 0.512821021338388,
+        "accuracy": 0.7622950819672131,
+        "precision": 1.0,
+        "recall": 0.5245901639344263,
+        "phishing_recall": 0.5245901639344263,
+        "phishing_fnr": 0.47540983606557374,
+        "f1": 0.6881720430107527,
+        "roc_auc": 0.971167978872001,
+        "pr_auc": 0.9716267013992549,
+        "brier_score": 0.23694063551343525,
+        "ece": 0.3875203060445328,
+        "legitimate_fpr": 0.0,
+        "confusion": {
+          "tn": 549,
+          "fp": 0,
+          "fn": 261,
+          "tp": 288
+        }
+      },
+      "domain_disjoint_test_at_selected_threshold": {
+        "rows": 784,
+        "legitimate_rows": 392,
+        "phishing_rows": 392,
+        "decision_threshold": 0.512821021338388,
+        "accuracy": 0.7767857142857143,
+        "precision": 1.0,
+        "recall": 0.5535714285714286,
+        "phishing_recall": 0.5535714285714286,
+        "phishing_fnr": 0.4464285714285714,
+        "f1": 0.7126436781609196,
+        "roc_auc": 0.9674809975010412,
+        "pr_auc": 0.973241895040924,
+        "brier_score": 0.23857211933658323,
+        "ece": 0.3563566311786267,
+        "legitimate_fpr": 0.0,
+        "confusion": {
+          "tn": 392,
+          "fp": 0,
+          "fn": 175,
+          "tp": 217
+        }
+      },
+      "domain_disjoint_test_at_0_5": {
+        "rows": 784,
+        "legitimate_rows": 392,
+        "phishing_rows": 392,
+        "decision_threshold": 0.5,
+        "accuracy": 0.8698979591836735,
+        "precision": 0.8251121076233184,
+        "recall": 0.9387755102040817,
+        "phishing_recall": 0.9387755102040817,
+        "phishing_fnr": 0.061224489795918324,
+        "f1": 0.8782816229116945,
+        "roc_auc": 0.9674809975010412,
+        "pr_auc": 0.973241895040924,
+        "brier_score": 0.23857211933658323,
+        "ece": 0.3563566311786267,
+        "legitimate_fpr": 0.1989795918367347,
+        "confusion": {
+          "tn": 314,
+          "fp": 78,
+          "fn": 24,
+          "tp": 368
+        }
+      },
+      "legitimate_benchmark": {
+        "combined_legitimate_urls": {
+          "count": 686,
+          "phishing_count": 0,
+          "fpr": 0.0,
+          "safe": 0,
+          "suspicious": 686,
+          "phishing": 0,
+          "average_probability": 0.48617560767329887,
+          "maximum_probability": 0.5126613060795602
+        },
+        "verified_legitimate_domain_test": {
+          "count": 600,
+          "phishing_count": 0,
+          "fpr": 0.0
+        },
+        "fixed_baseline": {
+          "count": 16,
+          "verdicts": {
+            "SUSPICIOUS": 16
+          }
+        },
+        "counterfactuals": {
+          "count": 70,
+          "verdicts": {
+            "SUSPICIOUS": 70
+          },
+          "per_variant": {
+            "path": {
+              "samples": 10,
+              "median_probability_delta": -0.007793336037564047,
+              "mean_probability_delta": -0.005916183902733946,
+              "maximum_probability_delta": -3.022285574033612e-05,
+              "positive_delta_count": 0,
+              "systematic_jump": false
+            },
+            "query": {
+              "samples": 10,
+              "median_probability_delta": -0.007008258055576144,
+              "mean_probability_delta": -0.00618157404254272,
+              "maximum_probability_delta": 3.031599226765991e-06,
+              "positive_delta_count": 1,
+              "systematic_jump": false
+            },
+            "multi-query": {
+              "samples": 10,
+              "median_probability_delta": -0.013209062728348514,
+              "mean_probability_delta": -0.011674541340450045,
+              "maximum_probability_delta": 0.00011146426816527333,
+              "positive_delta_count": 1,
+              "systematic_jump": false
+            },
+            "encoded": {
+              "samples": 10,
+              "median_probability_delta": -0.016457206221111798,
+              "mean_probability_delta": -0.013967917973242738,
+              "maximum_probability_delta": 0.0001100698417994539,
+              "positive_delta_count": 1,
+              "systematic_jump": false
+            },
+            "fragment": {
+              "samples": 10,
+              "median_probability_delta": -0.016973886922073245,
+              "mean_probability_delta": -0.016806550417224418,
+              "maximum_probability_delta": -0.00025145198156190096,
+              "positive_delta_count": 0,
+              "systematic_jump": false
+            },
+            "path+query": {
+              "samples": 10,
+              "median_probability_delta": -0.00960959456079899,
+              "mean_probability_delta": -0.009575475865348293,
+              "maximum_probability_delta": -8.914416184724328e-05,
+              "positive_delta_count": 0,
+              "systematic_jump": false
+            }
+          }
+        },
+        "highest_probability_examples": [
+          {
+            "url": "https://www.djangoproject.com/weblog/2026/oct/06/security-releases/",
+            "probability": 0.5126613060795602,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.theguardian.com/index/subjects/a",
+            "probability": 0.51237213491545,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.theguardian.com/lifeandstyle/2026/oct/08/sudoku-7479-hard",
+            "probability": 0.5121245305940935,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.theguardian.com/preference/edition/eur",
+            "probability": 0.5118648885605764,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.theguardian.com/preference/edition/us",
+            "probability": 0.5117975986131077,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.djangoproject.com/download/6.0.9/checksum/",
+            "probability": 0.5110518887114953,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.djangoproject.com/download/6.1.2/checksum/",
+            "probability": 0.5110518887114953,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://github.com/community/community/blob/9b4ed8f9f9961d38041198da75b5d10a4f1d0bb6/CODE_OF_CONDUCT.md",
+            "probability": 0.5110068726633715,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.theguardian.com/tone/recipes",
+            "probability": 0.5109585121846252,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.theguardian.com/sport/cycling",
+            "probability": 0.5106955246963404,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.theguardian.com/world/ukraine",
+            "probability": 0.5106955246963404,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://accounts.google.com/signin/v2/identifier",
+            "probability": 0.5106601363131947,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.theguardian.com/world/israel",
+            "probability": 0.5104562974881688,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.theguardian.com/sport/golf",
+            "probability": 0.5103938063486265,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://stackoverflow.com/questions/tagged/python",
+            "probability": 0.5102013504857126,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://developer.mozilla.org/en-US/play",
+            "probability": 0.5100406226872013,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.theguardian.com/travel",
+            "probability": 0.509712040583995,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://developer.mozilla.org/de/",
+            "probability": 0.5093937356986616,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://developer.mozilla.org/fr/",
+            "probability": 0.5092942855955894,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://developer.mozilla.org/ja/",
+            "probability": 0.5092942855955894,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://developer.mozilla.org/en-US/",
+            "probability": 0.5090525051255126,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.theguardian.com/technology",
+            "probability": 0.5090071216917613,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.theguardian.com/crosswords",
+            "probability": 0.5088536811792861,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.djangoproject.com/download/5.2.18/checksum/",
+            "probability": 0.5087352402031778,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://got.wikipedia.org/wiki/%F0%90%8C%B0%F0%90%8C%BD%F0%90%8C%B0%F0%90%8D%83%F0%90%8D%84%F0%90%8D%89%F0%90%8C%B3%F0%90%8C%B4%F0%90%8C%B9%F0%90%8C%BD%F0%90%8C%B9%F0%90%8C%BB%F0%90%8C%B0%F0%90%8C%BF%F0%90%8D%86%F0%90%8D%83",
+            "probability": 0.50865226690711,
+            "verdict": "SUSPICIOUS"
+          }
+        ]
+      },
+      "phishing_benchmark": {
+        "rows": 784,
+        "phishing_recall": 0.5535714285714286,
+        "false_negative_rate": 0.4464285714285714,
+        "features": {
+          "path": 758,
+          "docs": 119,
+          "api": 8,
+          "homepage": 3,
+          "fragment": 71,
+          "query": 114,
+          "path_plus_query": 92,
+          "multiple_query_params": 68,
+          "encoded": 24,
+          "long_query": 29,
+          "long_url": 26,
+          "tracking": 12,
+          "login_account": 64,
+          "search": 2
+        }
+      },
+      "hard_phishing_cohorts": {
+        "query_strings": {
+          "samples": 5,
+          "excluded_due_to_training_domain_overlap": 0,
+          "candidate_phishing_recall": 0.0,
+          "production_phishing_recall_same_nontraining_domains": 1.0,
+          "not_major_regression": false
+        },
+        "paths": {
+          "samples": 5,
+          "excluded_due_to_training_domain_overlap": 0,
+          "candidate_phishing_recall": 0.2,
+          "production_phishing_recall_same_nontraining_domains": 1.0,
+          "not_major_regression": false
+        },
+        "login_parameters": {
+          "samples": 4,
+          "excluded_due_to_training_domain_overlap": 1,
+          "candidate_phishing_recall": 0.5,
+          "production_phishing_recall_same_nontraining_domains": 1.0,
+          "not_major_regression": false
+        },
+        "encoded_values": {
+          "samples": 4,
+          "excluded_due_to_training_domain_overlap": 1,
+          "candidate_phishing_recall": 0.0,
+          "production_phishing_recall_same_nontraining_domains": 1.0,
+          "not_major_regression": false
+        },
+        "long_urls_over_200": {
+          "samples": 4,
+          "excluded_due_to_training_domain_overlap": 1,
+          "candidate_phishing_recall": 0.5,
+          "production_phishing_recall_same_nontraining_domains": 1.0,
+          "not_major_regression": false
+        },
+        "redirect_parameters": {
+          "samples": 2,
+          "excluded_due_to_training_domain_overlap": 3,
+          "candidate_phishing_recall": 0.5,
+          "production_phishing_recall_same_nontraining_domains": 1.0,
+          "not_major_regression": false
+        },
+        "brand_like_hostnames": {
+          "samples": 5,
+          "excluded_due_to_training_domain_overlap": 0,
+          "candidate_phishing_recall": 0.2,
+          "production_phishing_recall_same_nontraining_domains": 1.0,
+          "not_major_regression": false
+        }
+      },
+      "model_size_bytes": 381108,
+      "median_inference_latency_ms_per_url": 0.0041533163272681715,
+      "gates": {
+        "fixed_and_verified_legitimate_phishing_count_zero": true,
+        "legitimate_fpr_le_0_5_percent": true,
+        "phishing_recall_at_least_98_percent": false,
+        "domain_disjoint_test_recall_at_least_97_percent": false,
+        "no_major_existing_hard_cohort_regression": false,
+        "no_systematic_counterfactual_structure_jump": true,
+        "same_registered_domain_splits": true,
+        "uses_current_29_features": true
+      },
+      "all_model_gates_pass": false,
+      "validation_permutation_importance_top_10": [
+        {
+          "feature": "HostnameLength",
+          "importance_mean": 0.2655508715109702,
+          "importance_std": 0.0016859486103898871
+        },
+        {
+          "feature": "IsTrustedTLD",
+          "importance_mean": 0.08684809916155123,
+          "importance_std": 0.004620659816658973
+        },
+        {
+          "feature": "DotCount",
+          "importance_mean": 0.029923656610691962,
+          "importance_std": 0.003731842574599031
+        },
+        {
+          "feature": "NoOfHyphenInURL",
+          "importance_mean": 0.015420785591976719,
+          "importance_std": 0.0011024616705336973
+        },
+        {
+          "feature": "FragmentLength",
+          "importance_mean": 0.012896521298113065,
+          "importance_std": 0.00098751330942858
+        },
+        {
+          "feature": "URLEntropy",
+          "importance_mean": 0.009784597265688663,
+          "importance_std": 0.0021841427991269595
+        },
+        {
+          "feature": "DigitRatioInURL",
+          "importance_mean": 0.006367760374743736,
+          "importance_std": 0.001519163617416352
+        },
+        {
+          "feature": "NoOfDigitsInURL",
+          "importance_mean": 0.0036301675736454264,
+          "importance_std": 0.00034214696409248254
+        },
+        {
+          "feature": "SubdomainDepth",
+          "importance_mean": 0.0034894380070110698,
+          "importance_std": 0.0007410781671727132
+        },
+        {
+          "feature": "PathSegmentCount",
+          "importance_mean": 0.0033159168191593627,
+          "importance_std": 0.0011345101778524726
+        }
+      ],
+      "registered_domain_overlaps": {
+        "train|calibration": 0,
+        "train|validation": 0,
+        "train|test": 0,
+        "calibration|validation": 0,
+        "calibration|test": 0,
+        "validation|test": 0
+      }
+    },
+    {
+      "experiment": "exp002_verified_sources_domain_balanced",
+      "candidate": "logistic_regression_production_29",
+      "candidate_artifact": "experiments\\auto_ml\\exp002_verified_sources_domain_balanced\\candidates\\logistic_regression_production_29\\candidate.joblib",
+      "feature_count": 29,
+      "selected_threshold": {
+        "phishing_threshold": 0.5016734809875593,
+        "selected_on": "domain-disjoint validation partition only",
+        "maximum_validation_fpr": 0.005,
+        "validation_fpr": 0.0036429872495446266,
+        "validation_phishing_recall": 0.15482695810564662,
+        "validation_legitimate_rows": 549,
+        "validation_phishing_rows": 549
+      },
+      "validation_at_selected_threshold": {
+        "rows": 1098,
+        "legitimate_rows": 549,
+        "phishing_rows": 549,
+        "decision_threshold": 0.5016734809875593,
+        "accuracy": 0.575591985428051,
+        "precision": 0.9770114942528736,
+        "recall": 0.15482695810564662,
+        "phishing_recall": 0.15482695810564662,
+        "phishing_fnr": 0.8451730418943534,
+        "f1": 0.2672955974842767,
+        "roc_auc": 0.8973394248857834,
+        "pr_auc": 0.9000192455401463,
+        "brier_score": 0.24930242150456472,
+        "ece": 0.3287973185366633,
+        "legitimate_fpr": 0.0036429872495446266,
+        "confusion": {
+          "tn": 547,
+          "fp": 2,
+          "fn": 464,
+          "tp": 85
+        }
+      },
+      "domain_disjoint_test_at_selected_threshold": {
+        "rows": 784,
+        "legitimate_rows": 392,
+        "phishing_rows": 392,
+        "decision_threshold": 0.5016734809875593,
+        "accuracy": 0.5727040816326531,
+        "precision": 1.0,
+        "recall": 0.14540816326530612,
+        "phishing_recall": 0.14540816326530612,
+        "phishing_fnr": 0.8545918367346939,
+        "f1": 0.25389755011135856,
+        "roc_auc": 0.8992802478134111,
+        "pr_auc": 0.9213318206697274,
+        "brier_score": 0.24936251099279672,
+        "ece": 0.34233147553181886,
+        "legitimate_fpr": 0.0,
+        "confusion": {
+          "tn": 392,
+          "fp": 0,
+          "fn": 335,
+          "tp": 57
+        }
+      },
+      "domain_disjoint_test_at_0_5": {
+        "rows": 784,
+        "legitimate_rows": 392,
+        "phishing_rows": 392,
+        "decision_threshold": 0.5,
+        "accuracy": 0.8431122448979592,
+        "precision": 0.9438943894389439,
+        "recall": 0.7295918367346939,
+        "phishing_recall": 0.7295918367346939,
+        "phishing_fnr": 0.27040816326530615,
+        "f1": 0.823021582733813,
+        "roc_auc": 0.8992802478134111,
+        "pr_auc": 0.9213318206697274,
+        "brier_score": 0.24936251099279672,
+        "ece": 0.34233147553181886,
+        "legitimate_fpr": 0.04336734693877551,
+        "confusion": {
+          "tn": 375,
+          "fp": 17,
+          "fn": 106,
+          "tp": 286
+        }
+      },
+      "legitimate_benchmark": {
+        "combined_legitimate_urls": {
+          "count": 686,
+          "phishing_count": 0,
+          "fpr": 0.0,
+          "safe": 0,
+          "suspicious": 686,
+          "phishing": 0,
+          "average_probability": 0.499336099382111,
+          "maximum_probability": 0.5010522626406104
+        },
+        "verified_legitimate_domain_test": {
+          "count": 600,
+          "phishing_count": 0,
+          "fpr": 0.0
+        },
+        "fixed_baseline": {
+          "count": 16,
+          "verdicts": {
+            "SUSPICIOUS": 16
+          }
+        },
+        "counterfactuals": {
+          "count": 70,
+          "verdicts": {
+            "SUSPICIOUS": 70
+          },
+          "per_variant": {
+            "path": {
+              "samples": 10,
+              "median_probability_delta": 0.00010798870424999496,
+              "mean_probability_delta": 9.804435814250723e-05,
+              "maximum_probability_delta": 0.00015517201927495172,
+              "positive_delta_count": 10,
+              "systematic_jump": false
+            },
+            "query": {
+              "samples": 10,
+              "median_probability_delta": 3.2896374035640275e-05,
+              "mean_probability_delta": 3.294174805901218e-05,
+              "maximum_probability_delta": 9.521903366555007e-05,
+              "positive_delta_count": 8,
+              "systematic_jump": false
+            },
+            "multi-query": {
+              "samples": 10,
+              "median_probability_delta": 0.00025396152149986806,
+              "mean_probability_delta": 0.00022102255563672958,
+              "maximum_probability_delta": 0.00028822626728541856,
+              "positive_delta_count": 10,
+              "systematic_jump": false
+            },
+            "encoded": {
+              "samples": 10,
+              "median_probability_delta": 0.00012357159292175623,
+              "mean_probability_delta": 0.00013219761601488412,
+              "maximum_probability_delta": 0.000261553860454955,
+              "positive_delta_count": 10,
+              "systematic_jump": false
+            },
+            "fragment": {
+              "samples": 10,
+              "median_probability_delta": 5.900905246444821e-05,
+              "mean_probability_delta": 5.787389251567521e-05,
+              "maximum_probability_delta": 0.0001571613039442199,
+              "positive_delta_count": 8,
+              "systematic_jump": false
+            },
+            "path+query": {
+              "samples": 10,
+              "median_probability_delta": 9.700971221318633e-05,
+              "mean_probability_delta": 8.122564133857812e-05,
+              "maximum_probability_delta": 0.0001435649821220908,
+              "positive_delta_count": 8,
+              "systematic_jump": false
+            }
+          }
+        },
+        "highest_probability_examples": [
+          {
+            "url": "https://ka.wikipedia.org/wiki/%E1%83%95%E1%83%98%E1%83%99%E1%83%98%E1%83%9E%E1%83%94%E1%83%93%E1%83%98%E1%83%90:%E1%83%A0%E1%83%A9%E1%83%94%E1%83%A3%E1%83%9A%E1%83%98_%E1%83%A4%E1%83%9D%E1%83%A2%E1%83%9D%E1%83%94%E1%83%91%E1%83%98",
+            "probability": 0.5010522626406104,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://support.theguardian.com/subscribe/weekly?REFPVID=undefined&INTCMP=undefined&acquisitionData=%7B%22source%22%3A%22GUARDIAN_WEB%22%2C%22componentId%22%3A%22PrintSubscriptionsHeaderLink%22%2C%22componentType%22%3A%22ACQUISITIONS_HEADER%22%2C%22referrerUrl%22%3A%22%22%7D",
+            "probability": 0.5008632209432017,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://got.wikipedia.org/wiki/%F0%90%8C%B0%F0%90%8C%BD%F0%90%8C%B0%F0%90%8D%83%F0%90%8D%84%F0%90%8D%89%F0%90%8C%B3%F0%90%8C%B4%F0%90%8C%B9%F0%90%8C%BD%F0%90%8C%B9%F0%90%8C%BB%F0%90%8C%B0%F0%90%8C%BF%F0%90%8D%86%F0%90%8D%83",
+            "probability": 0.5008134817277383,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://dz.wikipedia.org/wiki/Wikipedia:%E0%BD%82%E0%BD%9F%E0%BD%B4%E0%BD%82%E0%BD%A6%E0%BC%8B%E0%BD%96%E0%BD%A2%E0%BE%99%E0%BD%93%E0%BC%8B%E0%BD%A0%E0%BD%91%E0%BD%B2%E0%BC%8B%E0%BD%A6%E0%BD%BA%E0%BD%A3%E0%BC%8B%E0%BD%A0%E0%BD%90%E0%BD%B4%E0%BC%8B%E0%BD%A0%E0%BD%96%E0%BD%91%E0%BC%8B%E0%BD%A1%E0%BD%BC%E0%BD%91%E0%BD%94%E0%BC%8B%E0%BD%A8%E0%BD%B2%E0%BD%93%E0%BC%8D",
+            "probability": 0.5006775835807665,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://si.wikipedia.org/wiki/%E0%B7%80%E0%B7%92%E0%B6%9A%E0%B7%92%E0%B6%B4%E0%B7%93%E0%B6%A9%E0%B7%92%E0%B6%BA%E0%B7%8F:%E0%B6%AD%E0%B7%9D%E0%B6%BB%E0%B7%8F%E0%B6%9C%E0%B6%AD%E0%B7%8A_%E0%B7%83%E0%B7%9A%E0%B6%BA%E0%B7%8F%E0%B6%BB%E0%B7%94%E0%B7%80",
+            "probability": 0.5006684187848663,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://hi.wikipedia.org/wiki/%E0%A4%B5%E0%A4%BF%E0%A4%95%E0%A4%BF%E0%A4%AA%E0%A5%80%E0%A4%A1%E0%A4%BF%E0%A4%AF%E0%A4%BE:%E0%A4%AE%E0%A5%81%E0%A4%96%E0%A4%AA%E0%A5%83%E0%A4%B7%E0%A5%8D%E0%A4%A0_%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%AE%E0%A5%81%E0%A4%96_%E0%A4%9A%E0%A4%BF%E0%A4%A4%E0%A5%8D%E0%A4%B0",
+            "probability": 0.500625403238765,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://profile.theguardian.com/signin?INTCMP=DOTCOM_NEWHEADER_SIGNIN&componentEventParams=componentType%3Didentityauthentication%26componentId%3Dguardian_signin_header",
+            "probability": 0.5005759225696639,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://tcy.wikipedia.org/wiki/%E0%B2%B5%E0%B2%BF%E0%B2%95%E0%B2%BF%E0%B2%AA%E0%B3%80%E0%B2%A1%E0%B2%BF%E0%B2%AF:%E0%B2%B5%E0%B2%BF%E0%B2%B8%E0%B3%87%E0%B2%B8%E0%B3%8A_%E0%B2%9A%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%B0%E0%B3%8A%E0%B2%B2%E0%B3%81",
+            "probability": 0.5005698434333362,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://profile.theguardian.com/signin?INTCMP=DOTCOM_COMMENTS_SIGNIN&componentEventParams=componentType%3Didentityauthentication%26componentId%3Dregister_to_comment",
+            "probability": 0.5005218623944914,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://profile.theguardian.com/signin?INTCMP=DOTCOM_NEWHEADER_SIGNIN&ABCMP=ab-sign-in&componentEventParams=componentType%3Didentityauthentication%26componentId%3Dguardian_signin_header",
+            "probability": 0.5005181170273431,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://profile.theguardian.com/signin?INTCMP=DOTCOM_COMMENTS_SIGNIN&componentEventParams=componentType%3Didentityauthentication%26componentId%3Dsignin_to_comment",
+            "probability": 0.5005147239691385,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://sa.wikipedia.org/wiki/%E0%A4%B5%E0%A4%BF%E0%A4%95%E0%A4%BF%E0%A4%AA%E0%A5%80%E0%A4%A1%E0%A4%BF%E0%A4%AF%E0%A4%BE:%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%AE%E0%A5%81%E0%A4%96%E0%A4%82_%E0%A4%9A%E0%A4%BF%E0%A4%A4%E0%A5%8D%E0%A4%B0%E0%A4%AE%E0%A5%8D",
+            "probability": 0.5004987990204792,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://support.theguardian.com/subscribe/weekly?acquisitionData=%7B%22source%22:%22GUARDIAN_WEB%22,%22componentType%22:%22ACQUISITIONS_HEADER%22,%22componentId%22:%22mobilenav_print_cta%22%7D&INTCMP=mobilenav_print_cta",
+            "probability": 0.5004880144574433,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://support.theguardian.com/subscribe/weekly?acquisitionData=%7B%22source%22:%22GUARDIAN_WEB%22,%22componentType%22:%22ACQUISITIONS_HEADER%22,%22componentId%22:%22header_print_cta%22%7D&INTCMP=header_print_cta",
+            "probability": 0.5004672469016181,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://support.theguardian.com/contribute?acquisitionData=%7B%22source%22:%22GUARDIAN_WEB%22,%22componentType%22:%22ACQUISITIONS_FOOTER%22,%22componentId%22:%22footer_support_contribute%22%7D&INTCMP=footer_support_contribute",
+            "probability": 0.5004025640482205,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.djangoproject.com/weblog/2026/oct/06/security-releases/",
+            "probability": 0.5004017829952891,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://support.theguardian.com?acquisitionData=%7B%22source%22:%22GUARDIAN_WEB%22,%22componentType%22:%22ACQUISITIONS_HEADER%22,%22componentId%22:%22side_menu_support%22%7D&INTCMP=side_menu_support",
+            "probability": 0.5003999092332687,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://bn.wikipedia.org/wiki/%E0%A6%89%E0%A6%87%E0%A6%95%E0%A6%BF%E0%A6%AA%E0%A6%BF%E0%A6%A1%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE:%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%9A%E0%A6%BF%E0%A6%A4_%E0%A6%9B%E0%A6%AC%E0%A6%BF",
+            "probability": 0.5003932521717033,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy#directives",
+            "probability": 0.5003889664364913,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://ne.wikipedia.org/wiki/%E0%A4%B5%E0%A4%BF%E0%A4%95%E0%A4%BF%E0%A4%AA%E0%A4%BF%E0%A4%A1%E0%A4%BF%E0%A4%AF%E0%A4%BE:%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%AE%E0%A5%81%E0%A4%96_%E0%A4%9A%E0%A4%BF%E0%A4%A4%E0%A5%8D%E0%A4%B0",
+            "probability": 0.5003664558666355,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://support.theguardian.com/contribute?acquisitionData=%7B%22source%22:%22GUARDIAN_WEB%22,%22componentType%22:%22ACQUISITIONS_HEADER%22,%22componentId%22:%22side_menu_support_contribute%22%7D&INTCMP=side_menu_support_contribute",
+            "probability": 0.5003412973370278,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://accounts.google.com/signin/v2/identifier",
+            "probability": 0.5003281626111845,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://en.wikipedia.org/w/index.php?title=1862&oldid=1358615004",
+            "probability": 0.5003156371760684,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.djangoproject.com/weblog/2026/oct/08/django-security-reporting-update/",
+            "probability": 0.5002815767691119,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://github.com/community/community/blob/9b4ed8f9f9961d38041198da75b5d10a4f1d0bb6/CODE_OF_CONDUCT.md",
+            "probability": 0.500257283123455,
+            "verdict": "SUSPICIOUS"
+          }
+        ]
+      },
+      "phishing_benchmark": {
+        "rows": 784,
+        "phishing_recall": 0.14540816326530612,
+        "false_negative_rate": 0.8545918367346939,
+        "features": {
+          "path": 758,
+          "docs": 119,
+          "api": 8,
+          "homepage": 3,
+          "fragment": 71,
+          "query": 114,
+          "path_plus_query": 92,
+          "multiple_query_params": 68,
+          "encoded": 24,
+          "long_query": 29,
+          "long_url": 26,
+          "tracking": 12,
+          "login_account": 64,
+          "search": 2
+        }
+      },
+      "hard_phishing_cohorts": {
+        "query_strings": {
+          "samples": 5,
+          "excluded_due_to_training_domain_overlap": 0,
+          "candidate_phishing_recall": 0.2,
+          "production_phishing_recall_same_nontraining_domains": 1.0,
+          "not_major_regression": false
+        },
+        "paths": {
+          "samples": 5,
+          "excluded_due_to_training_domain_overlap": 0,
+          "candidate_phishing_recall": 0.2,
+          "production_phishing_recall_same_nontraining_domains": 1.0,
+          "not_major_regression": false
+        },
+        "login_parameters": {
+          "samples": 4,
+          "excluded_due_to_training_domain_overlap": 1,
+          "candidate_phishing_recall": 0.5,
+          "production_phishing_recall_same_nontraining_domains": 1.0,
+          "not_major_regression": false
+        },
+        "encoded_values": {
+          "samples": 4,
+          "excluded_due_to_training_domain_overlap": 1,
+          "candidate_phishing_recall": 0.0,
+          "production_phishing_recall_same_nontraining_domains": 1.0,
+          "not_major_regression": false
+        },
+        "long_urls_over_200": {
+          "samples": 4,
+          "excluded_due_to_training_domain_overlap": 1,
+          "candidate_phishing_recall": 0.75,
+          "production_phishing_recall_same_nontraining_domains": 1.0,
+          "not_major_regression": false
+        },
+        "redirect_parameters": {
+          "samples": 2,
+          "excluded_due_to_training_domain_overlap": 3,
+          "candidate_phishing_recall": 1.0,
+          "production_phishing_recall_same_nontraining_domains": 1.0,
+          "not_major_regression": true
+        },
+        "brand_like_hostnames": {
+          "samples": 5,
+          "excluded_due_to_training_domain_overlap": 0,
+          "candidate_phishing_recall": 0.4,
+          "production_phishing_recall_same_nontraining_domains": 1.0,
+          "not_major_regression": false
+        }
+      },
+      "model_size_bytes": 4049,
+      "median_inference_latency_ms_per_url": 0.002098469387735294,
+      "gates": {
+        "fixed_and_verified_legitimate_phishing_count_zero": true,
+        "legitimate_fpr_le_0_5_percent": true,
+        "phishing_recall_at_least_98_percent": false,
+        "domain_disjoint_test_recall_at_least_97_percent": false,
+        "no_major_existing_hard_cohort_regression": false,
+        "no_systematic_counterfactual_structure_jump": true,
+        "same_registered_domain_splits": true,
+        "uses_current_29_features": true
+      },
+      "all_model_gates_pass": false,
+      "validation_permutation_importance_top_10": [
+        {
+          "feature": "HostnameLength",
+          "importance_mean": 0.11349420527217631,
+          "importance_std": 0.00590526054668807
+        },
+        {
+          "feature": "IsTrustedTLD",
+          "importance_mean": 0.02708046193955264,
+          "importance_std": 0.00512754959741962
+        },
+        {
+          "feature": "NoOfHyphenInURL",
+          "importance_mean": 0.01668735220424944,
+          "importance_std": 0.0009776567447675655
+        },
+        {
+          "feature": "HasSuspiciousToken",
+          "importance_mean": 0.013627132973561773,
+          "importance_std": 0.0037643578438029753
+        },
+        {
+          "feature": "DigitRatioInURL",
+          "importance_mean": 0.013213317123311344,
+          "importance_std": 0.002851976801415606
+        },
+        {
+          "feature": "URLEntropy",
+          "importance_mean": 0.009463309189229996,
+          "importance_std": 0.0013859003330181146
+        },
+        {
+          "feature": "HasSuspiciousTLD",
+          "importance_mean": 0.007199321476307159,
+          "importance_std": 0.002085802659735268
+        },
+        {
+          "feature": "FragmentLength",
+          "importance_mean": 0.004193610337546801,
+          "importance_std": 0.0006011534249425885
+        },
+        {
+          "feature": "NoOfDigitsInURL",
+          "importance_mean": 0.003131420128478335,
+          "importance_std": 0.001592897198121423
+        },
+        {
+          "feature": "URLLength",
+          "importance_mean": 0.0018048119673919432,
+          "importance_std": 0.0008608454490262593
+        }
+      ],
+      "registered_domain_overlaps": {
+        "train|calibration": 0,
+        "train|validation": 0,
+        "train|test": 0,
+        "calibration|validation": 0,
+        "calibration|test": 0,
+        "validation|test": 0
+      }
+    },
+    {
+      "experiment": "exp002_verified_sources_domain_balanced",
+      "candidate": "random_forest_production_29",
+      "candidate_artifact": "experiments\\auto_ml\\exp002_verified_sources_domain_balanced\\candidates\\random_forest_production_29\\candidate.joblib",
+      "feature_count": 29,
+      "selected_threshold": {
+        "phishing_threshold": 0.5098413011518829,
+        "selected_on": "domain-disjoint validation partition only",
+        "maximum_validation_fpr": 0.005,
+        "validation_fpr": 0.0036429872495446266,
+        "validation_phishing_recall": 0.5355191256830601,
+        "validation_legitimate_rows": 549,
+        "validation_phishing_rows": 549
+      },
+      "validation_at_selected_threshold": {
+        "rows": 1098,
+        "legitimate_rows": 549,
+        "phishing_rows": 549,
+        "decision_threshold": 0.5098413011518829,
+        "accuracy": 0.7659380692167578,
+        "precision": 0.9932432432432432,
+        "recall": 0.5355191256830601,
+        "phishing_recall": 0.5355191256830601,
+        "phishing_fnr": 0.46448087431693985,
+        "f1": 0.6958579881656805,
+        "roc_auc": 0.9686563747300108,
+        "pr_auc": 0.9697700599167897,
+        "brier_score": 0.2399878123930282,
+        "ece": 0.40595051563995466,
+        "legitimate_fpr": 0.0036429872495446266,
+        "confusion": {
+          "tn": 547,
+          "fp": 2,
+          "fn": 255,
+          "tp": 294
+        }
+      },
+      "domain_disjoint_test_at_selected_threshold": {
+        "rows": 784,
+        "legitimate_rows": 392,
+        "phishing_rows": 392,
+        "decision_threshold": 0.5098413011518829,
+        "accuracy": 0.7857142857142857,
+        "precision": 1.0,
+        "recall": 0.5714285714285714,
+        "phishing_recall": 0.5714285714285714,
+        "phishing_fnr": 0.4285714285714286,
+        "f1": 0.7272727272727273,
+        "roc_auc": 0.9573419929196169,
+        "pr_auc": 0.967303029696425,
+        "brier_score": 0.24191502440966134,
+        "ece": 0.36193753840057297,
+        "legitimate_fpr": 0.0,
+        "confusion": {
+          "tn": 392,
+          "fp": 0,
+          "fn": 168,
+          "tp": 224
+        }
+      },
+      "domain_disjoint_test_at_0_5": {
+        "rows": 784,
+        "legitimate_rows": 392,
+        "phishing_rows": 392,
+        "decision_threshold": 0.5,
+        "accuracy": 0.8711734693877551,
+        "precision": 0.8407494145199064,
+        "recall": 0.9158163265306123,
+        "phishing_recall": 0.9158163265306123,
+        "phishing_fnr": 0.08418367346938771,
+        "f1": 0.8766788766788767,
+        "roc_auc": 0.9573419929196169,
+        "pr_auc": 0.967303029696425,
+        "brier_score": 0.24191502440966134,
+        "ece": 0.36193753840057297,
+        "legitimate_fpr": 0.17346938775510204,
+        "confusion": {
+          "tn": 324,
+          "fp": 68,
+          "fn": 33,
+          "tp": 359
+        }
+      },
+      "legitimate_benchmark": {
+        "combined_legitimate_urls": {
+          "count": 686,
+          "phishing_count": 0,
+          "fpr": 0.0,
+          "safe": 0,
+          "suspicious": 686,
+          "phishing": 0,
+          "average_probability": 0.4905966925476229,
+          "maximum_probability": 0.5085902372510086
+        },
+        "verified_legitimate_domain_test": {
+          "count": 600,
+          "phishing_count": 0,
+          "fpr": 0.0
+        },
+        "fixed_baseline": {
+          "count": 16,
+          "verdicts": {
+            "SUSPICIOUS": 16
+          }
+        },
+        "counterfactuals": {
+          "count": 70,
+          "verdicts": {
+            "SUSPICIOUS": 70
+          },
+          "per_variant": {
+            "path": {
+              "samples": 10,
+              "median_probability_delta": -0.0014635533094192188,
+              "mean_probability_delta": -0.0012901475785623063,
+              "maximum_probability_delta": 0.0030928636106714036,
+              "positive_delta_count": 4,
+              "systematic_jump": false
+            },
+            "query": {
+              "samples": 10,
+              "median_probability_delta": -0.0037010362266017283,
+              "mean_probability_delta": -0.003712199954598222,
+              "maximum_probability_delta": 0.0022031363414977134,
+              "positive_delta_count": 1,
+              "systematic_jump": false
+            },
+            "multi-query": {
+              "samples": 10,
+              "median_probability_delta": -0.0018393042500655654,
+              "mean_probability_delta": -0.003115818661345021,
+              "maximum_probability_delta": 0.004562787989911277,
+              "positive_delta_count": 2,
+              "systematic_jump": false
+            },
+            "encoded": {
+              "samples": 10,
+              "median_probability_delta": -0.0018996907531440843,
+              "mean_probability_delta": -0.0026788242312916987,
+              "maximum_probability_delta": 0.0041222028572242,
+              "positive_delta_count": 3,
+              "systematic_jump": false
+            },
+            "fragment": {
+              "samples": 10,
+              "median_probability_delta": -0.00568006399951046,
+              "mean_probability_delta": -0.006233356578264587,
+              "maximum_probability_delta": 0.002489100220193219,
+              "positive_delta_count": 1,
+              "systematic_jump": false
+            },
+            "path+query": {
+              "samples": 10,
+              "median_probability_delta": -0.0050594310104288,
+              "mean_probability_delta": -0.0058333046143079995,
+              "maximum_probability_delta": 0.001650729478293922,
+              "positive_delta_count": 1,
+              "systematic_jump": false
+            }
+          }
+        },
+        "highest_probability_examples": [
+          {
+            "url": "https://www.theguardian.com/preference/edition/eur",
+            "probability": 0.5085902372510086,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.theguardian.com/preference/edition/us",
+            "probability": 0.5074622161623729,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://stackoverflow.com/questions/tagged/python",
+            "probability": 0.5066059697859735,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.theguardian.com/world",
+            "probability": 0.506284101469559,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://ka.wikipedia.org/wiki/%E1%83%95%E1%83%98%E1%83%99%E1%83%98%E1%83%9E%E1%83%94%E1%83%93%E1%83%98%E1%83%90:%E1%83%A0%E1%83%A9%E1%83%94%E1%83%A3%E1%83%9A%E1%83%98_%E1%83%A4%E1%83%9D%E1%83%A2%E1%83%9D%E1%83%94%E1%83%91%E1%83%98",
+            "probability": 0.5061058186167338,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://accounts.google.com/signin/v2/identifier",
+            "probability": 0.506090651081518,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.theguardian.com/index/subjects/a",
+            "probability": 0.506029752287996,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.theguardian.com/books",
+            "probability": 0.506013442955463,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.djangoproject.com/weblog/2026/oct/06/security-releases/",
+            "probability": 0.5059587029692999,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://github.com/community/community/blob/9b4ed8f9f9961d38041198da75b5d10a4f1d0bb6/CODE_OF_CONDUCT.md",
+            "probability": 0.5059564228796231,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://tcy.wikipedia.org/wiki/%E0%B2%B5%E0%B2%BF%E0%B2%95%E0%B2%BF%E0%B2%AA%E0%B3%80%E0%B2%A1%E0%B2%BF%E0%B2%AF:%E0%B2%B5%E0%B2%BF%E0%B2%B8%E0%B3%87%E0%B2%B8%E0%B3%8A_%E0%B2%9A%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%B0%E0%B3%8A%E0%B2%B2%E0%B3%81",
+            "probability": 0.5059067509632567,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://got.wikipedia.org/wiki/%F0%90%8C%B0%F0%90%8C%BD%F0%90%8C%B0%F0%90%8D%83%F0%90%8D%84%F0%90%8D%89%F0%90%8C%B3%F0%90%8C%B4%F0%90%8C%B9%F0%90%8C%BD%F0%90%8C%B9%F0%90%8C%BB%F0%90%8C%B0%F0%90%8C%BF%F0%90%8D%86%F0%90%8D%83",
+            "probability": 0.5058336752631951,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.djangoproject.com/download/5.2.18/checksum/",
+            "probability": 0.5058182509926593,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://en.wikipedia.org/w/index.php?title=1862&oldid=1358615004",
+            "probability": 0.5057933112535603,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://sa.wikipedia.org/wiki/%E0%A4%B5%E0%A4%BF%E0%A4%95%E0%A4%BF%E0%A4%AA%E0%A5%80%E0%A4%A1%E0%A4%BF%E0%A4%AF%E0%A4%BE:%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%AE%E0%A5%81%E0%A4%96%E0%A4%82_%E0%A4%9A%E0%A4%BF%E0%A4%A4%E0%A5%8D%E0%A4%B0%E0%A4%AE%E0%A5%8D",
+            "probability": 0.5057198734987317,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://ne.wikipedia.org/wiki/%E0%A4%B5%E0%A4%BF%E0%A4%95%E0%A4%BF%E0%A4%AA%E0%A4%BF%E0%A4%A1%E0%A4%BF%E0%A4%AF%E0%A4%BE:%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%AE%E0%A5%81%E0%A4%96_%E0%A4%9A%E0%A4%BF%E0%A4%A4%E0%A5%8D%E0%A4%B0",
+            "probability": 0.5056612449427427,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://ab.wikipedia.org/wiki/%D0%98%D1%85%D0%B0%D0%B4%D0%BE%D1%83_%D0%B0%D0%B4%D0%B0%D2%9F%D1%8C%D0%B0",
+            "probability": 0.5054935967634087,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://bn.wikipedia.org/wiki/%E0%A6%89%E0%A6%87%E0%A6%95%E0%A6%BF%E0%A6%AA%E0%A6%BF%E0%A6%A1%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE:%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%9A%E0%A6%BF%E0%A6%A4_%E0%A6%9B%E0%A6%AC%E0%A6%BF",
+            "probability": 0.5053754285324998,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://si.wikipedia.org/wiki/%E0%B7%80%E0%B7%92%E0%B6%9A%E0%B7%92%E0%B6%B4%E0%B7%93%E0%B6%A9%E0%B7%92%E0%B6%BA%E0%B7%8F:%E0%B6%AD%E0%B7%9D%E0%B6%BB%E0%B7%8F%E0%B6%9C%E0%B6%AD%E0%B7%8A_%E0%B7%83%E0%B7%9A%E0%B6%BA%E0%B7%8F%E0%B6%BB%E0%B7%94%E0%B7%80",
+            "probability": 0.5053680998595994,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://hi.wikipedia.org/wiki/%E0%A4%B5%E0%A4%BF%E0%A4%95%E0%A4%BF%E0%A4%AA%E0%A5%80%E0%A4%A1%E0%A4%BF%E0%A4%AF%E0%A4%BE:%E0%A4%AE%E0%A5%81%E0%A4%96%E0%A4%AA%E0%A5%83%E0%A4%B7%E0%A5%8D%E0%A4%A0_%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%AE%E0%A5%81%E0%A4%96_%E0%A4%9A%E0%A4%BF%E0%A4%A4%E0%A5%8D%E0%A4%B0",
+            "probability": 0.5053217721240835,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.theguardian.com/tone/recipes",
+            "probability": 0.5052541080195605,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://developer.mozilla.org/en-US/play",
+            "probability": 0.5051466801376292,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://ks.wikipedia.org/wiki/%D8%A7%D9%8E%DB%81%D9%8E%D9%85_%D8%B5%D9%8E%D9%81%DB%81%D9%95",
+            "probability": 0.5050119342741551,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://dz.wikipedia.org/wiki/Wikipedia:%E0%BD%82%E0%BD%9F%E0%BD%B4%E0%BD%82%E0%BD%A6%E0%BC%8B%E0%BD%96%E0%BD%A2%E0%BE%99%E0%BD%93%E0%BC%8B%E0%BD%A0%E0%BD%91%E0%BD%B2%E0%BC%8B%E0%BD%A6%E0%BD%BA%E0%BD%A3%E0%BC%8B%E0%BD%A0%E0%BD%90%E0%BD%B4%E0%BC%8B%E0%BD%A0%E0%BD%96%E0%BD%91%E0%BC%8B%E0%BD%A1%E0%BD%BC%E0%BD%91%E0%BD%94%E0%BC%8B%E0%BD%A8%E0%BD%B2%E0%BD%93%E0%BC%8D",
+            "probability": 0.5049322491750166,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.djangoproject.com/download/6.0.9/checksum/",
+            "probability": 0.5048488660894082,
+            "verdict": "SUSPICIOUS"
+          }
+        ]
+      },
+      "phishing_benchmark": {
+        "rows": 784,
+        "phishing_recall": 0.5714285714285714,
+        "false_negative_rate": 0.4285714285714286,
+        "features": {
+          "path": 758,
+          "docs": 119,
+          "api": 8,
+          "homepage": 3,
+          "fragment": 71,
+          "query": 114,
+          "path_plus_query": 92,
+          "multiple_query_params": 68,
+          "encoded": 24,
+          "long_query": 29,
+          "long_url": 26,
+          "tracking": 12,
+          "login_account": 64,
+          "search": 2
+        }
+      },
+      "hard_phishing_cohorts": {
+        "query_strings": {
+          "samples": 5,
+          "excluded_due_to_training_domain_overlap": 0,
+          "candidate_phishing_recall": 0.0,
+          "production_phishing_recall_same_nontraining_domains": 1.0,
+          "not_major_regression": false
+        },
+        "paths": {
+          "samples": 5,
+          "excluded_due_to_training_domain_overlap": 0,
+          "candidate_phishing_recall": 0.0,
+          "production_phishing_recall_same_nontraining_domains": 1.0,
+          "not_major_regression": false
+        },
+        "login_parameters": {
+          "samples": 4,
+          "excluded_due_to_training_domain_overlap": 1,
+          "candidate_phishing_recall": 0.5,
+          "production_phishing_recall_same_nontraining_domains": 1.0,
+          "not_major_regression": false
+        },
+        "encoded_values": {
+          "samples": 4,
+          "excluded_due_to_training_domain_overlap": 1,
+          "candidate_phishing_recall": 0.0,
+          "production_phishing_recall_same_nontraining_domains": 1.0,
+          "not_major_regression": false
+        },
+        "long_urls_over_200": {
+          "samples": 4,
+          "excluded_due_to_training_domain_overlap": 1,
+          "candidate_phishing_recall": 0.25,
+          "production_phishing_recall_same_nontraining_domains": 1.0,
+          "not_major_regression": false
+        },
+        "redirect_parameters": {
+          "samples": 2,
+          "excluded_due_to_training_domain_overlap": 3,
+          "candidate_phishing_recall": 1.0,
+          "production_phishing_recall_same_nontraining_domains": 1.0,
+          "not_major_regression": true
+        },
+        "brand_like_hostnames": {
+          "samples": 5,
+          "excluded_due_to_training_domain_overlap": 0,
+          "candidate_phishing_recall": 0.4,
+          "production_phishing_recall_same_nontraining_domains": 1.0,
+          "not_major_regression": false
+        }
+      },
+      "model_size_bytes": 9483003,
+      "median_inference_latency_ms_per_url": 0.06547927295964562,
+      "gates": {
+        "fixed_and_verified_legitimate_phishing_count_zero": true,
+        "legitimate_fpr_le_0_5_percent": true,
+        "phishing_recall_at_least_98_percent": false,
+        "domain_disjoint_test_recall_at_least_97_percent": false,
+        "no_major_existing_hard_cohort_regression": false,
+        "no_systematic_counterfactual_structure_jump": true,
+        "same_registered_domain_splits": true,
+        "uses_current_29_features": true
+      },
+      "all_model_gates_pass": false,
+      "validation_permutation_importance_top_10": [
+        {
+          "feature": "HostnameLength",
+          "importance_mean": 0.1580012510839047,
+          "importance_std": 0.00124711347323473
+        },
+        {
+          "feature": "IsTrustedTLD",
+          "importance_mean": 0.048842986956110036,
+          "importance_std": 0.0031725075693857393
+        },
+        {
+          "feature": "FragmentLength",
+          "importance_mean": 0.015691903971049692,
+          "importance_std": 0.001146649483105968
+        },
+        {
+          "feature": "URLEntropy",
+          "importance_mean": 0.011155239476923207,
+          "importance_std": 0.0006261171727592593
+        },
+        {
+          "feature": "DigitRatioInURL",
+          "importance_mean": 0.010917092319715308,
+          "importance_std": 0.00039183963158828287
+        },
+        {
+          "feature": "NoOfHyphenInURL",
+          "importance_mean": 0.008543795457655786,
+          "importance_std": 0.0003093883191979689
+        },
+        {
+          "feature": "PathLength",
+          "importance_mean": 0.0059056979627110096,
+          "importance_std": 0.0001357930240962412
+        },
+        {
+          "feature": "NoOfDigitsInURL",
+          "importance_mean": 0.005482419555355296,
+          "importance_std": 0.000464515708641731
+        },
+        {
+          "feature": "PathSegmentCount",
+          "importance_mean": 0.00507533924775172,
+          "importance_std": 0.0008216927229724128
+        },
+        {
+          "feature": "DotCount",
+          "importance_mean": 0.0041586947593828345,
+          "importance_std": 0.0006295140784848208
+        }
+      ],
+      "registered_domain_overlaps": {
+        "train|calibration": 0,
+        "train|validation": 0,
+        "train|test": 0,
+        "calibration|validation": 0,
+        "calibration|test": 0,
+        "validation|test": 0
+      }
+    },
+    {
+      "experiment": "exp002_verified_sources_domain_balanced",
+      "candidate": "hist_gradient_boosting_drop_PathLength",
+      "candidate_artifact": "experiments\\auto_ml\\exp002_verified_sources_domain_balanced\\candidates\\hist_gradient_boosting_drop_PathLength\\candidate.joblib",
+      "feature_count": 28,
+      "selected_threshold": {
+        "phishing_threshold": 0.5128990460886129,
+        "selected_on": "domain-disjoint validation partition only",
+        "maximum_validation_fpr": 0.005,
+        "validation_fpr": 0.0036429872495446266,
+        "validation_phishing_recall": 0.5391621129326047,
+        "validation_legitimate_rows": 549,
+        "validation_phishing_rows": 549
+      },
+      "validation_at_selected_threshold": {
+        "rows": 1098,
+        "legitimate_rows": 549,
+        "phishing_rows": 549,
+        "decision_threshold": 0.5128990460886129,
+        "accuracy": 0.76775956284153,
+        "precision": 0.9932885906040269,
+        "recall": 0.5391621129326047,
+        "phishing_recall": 0.5391621129326047,
+        "phishing_fnr": 0.46083788706739526,
+        "f1": 0.6989374262101535,
+        "roc_auc": 0.9708743501182809,
+        "pr_auc": 0.9714827257537095,
+        "brier_score": 0.23691881852027905,
+        "ece": 0.39022084088774645,
+        "legitimate_fpr": 0.0036429872495446266,
+        "confusion": {
+          "tn": 547,
+          "fp": 2,
+          "fn": 253,
+          "tp": 296
+        }
+      },
+      "domain_disjoint_test_at_selected_threshold": {
+        "rows": 784,
+        "legitimate_rows": 392,
+        "phishing_rows": 392,
+        "decision_threshold": 0.5128990460886129,
+        "accuracy": 0.7857142857142857,
+        "precision": 1.0,
+        "recall": 0.5714285714285714,
+        "phishing_recall": 0.5714285714285714,
+        "phishing_fnr": 0.4285714285714286,
+        "f1": 0.7272727272727273,
+        "roc_auc": 0.9652423469387754,
+        "pr_auc": 0.9712787030078402,
+        "brier_score": 0.23865894301305102,
+        "ece": 0.3576444795351159,
+        "legitimate_fpr": 0.0,
+        "confusion": {
+          "tn": 392,
+          "fp": 0,
+          "fn": 168,
+          "tp": 224
+        }
+      },
+      "domain_disjoint_test_at_0_5": {
+        "rows": 784,
+        "legitimate_rows": 392,
+        "phishing_rows": 392,
+        "decision_threshold": 0.5,
+        "accuracy": 0.8711734693877551,
+        "precision": 0.8269662921348314,
+        "recall": 0.9387755102040817,
+        "phishing_recall": 0.9387755102040817,
+        "phishing_fnr": 0.061224489795918324,
+        "f1": 0.8793309438470729,
+        "roc_auc": 0.9652423469387754,
+        "pr_auc": 0.9712787030078402,
+        "brier_score": 0.23865894301305102,
+        "ece": 0.3576444795351159,
+        "legitimate_fpr": 0.19642857142857142,
+        "confusion": {
+          "tn": 315,
+          "fp": 77,
+          "fn": 24,
+          "tp": 368
+        }
+      },
+      "legitimate_benchmark": {
+        "combined_legitimate_urls": {
+          "count": 686,
+          "phishing_count": 0,
+          "fpr": 0.0,
+          "safe": 0,
+          "suspicious": 686,
+          "phishing": 0,
+          "average_probability": 0.48612735279862906,
+          "maximum_probability": 0.5126408404123669
+        },
+        "verified_legitimate_domain_test": {
+          "count": 600,
+          "phishing_count": 0,
+          "fpr": 0.0
+        },
+        "fixed_baseline": {
+          "count": 16,
+          "verdicts": {
+            "SUSPICIOUS": 16
+          }
+        },
+        "counterfactuals": {
+          "count": 70,
+          "verdicts": {
+            "SUSPICIOUS": 70
+          },
+          "per_variant": {
+            "path": {
+              "samples": 10,
+              "median_probability_delta": -0.007240382720179128,
+              "mean_probability_delta": -0.00530220008914174,
+              "maximum_probability_delta": -1.5252064414494892e-05,
+              "positive_delta_count": 0,
+              "systematic_jump": false
+            },
+            "query": {
+              "samples": 10,
+              "median_probability_delta": -0.00793621922566043,
+              "mean_probability_delta": -0.00768997074741814,
+              "maximum_probability_delta": -5.791610149807891e-05,
+              "positive_delta_count": 0,
+              "systematic_jump": false
+            },
+            "multi-query": {
+              "samples": 10,
+              "median_probability_delta": -0.01377860511109763,
+              "mean_probability_delta": -0.012667499230206807,
+              "maximum_probability_delta": -3.052322789143247e-05,
+              "positive_delta_count": 0,
+              "systematic_jump": false
+            },
+            "encoded": {
+              "samples": 10,
+              "median_probability_delta": -0.015363898744140542,
+              "mean_probability_delta": -0.013132002929513498,
+              "maximum_probability_delta": 0.00020626903518022877,
+              "positive_delta_count": 1,
+              "systematic_jump": false
+            },
+            "fragment": {
+              "samples": 10,
+              "median_probability_delta": -0.016208014856912256,
+              "mean_probability_delta": -0.015982535704861238,
+              "maximum_probability_delta": -0.0003231366574585892,
+              "positive_delta_count": 0,
+              "systematic_jump": false
+            },
+            "path+query": {
+              "samples": 10,
+              "median_probability_delta": -0.011523316168929348,
+              "mean_probability_delta": -0.010694749864401226,
+              "maximum_probability_delta": -0.0001633015195186549,
+              "positive_delta_count": 0,
+              "systematic_jump": false
+            }
+          }
+        },
+        "highest_probability_examples": [
+          {
+            "url": "https://www.djangoproject.com/download/6.0.9/checksum/",
+            "probability": 0.5126408404123669,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.djangoproject.com/download/6.1.2/checksum/",
+            "probability": 0.5126408404123669,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.theguardian.com/index/subjects/a",
+            "probability": 0.5125180552994372,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.djangoproject.com/weblog/2026/oct/06/security-releases/",
+            "probability": 0.5124268141297035,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.theguardian.com/preference/edition/eur",
+            "probability": 0.5123611457331039,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.theguardian.com/preference/edition/us",
+            "probability": 0.5122536096098179,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.theguardian.com/lifeandstyle/2026/oct/08/sudoku-7479-hard",
+            "probability": 0.5114915098963958,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.djangoproject.com/download/5.2.18/checksum/",
+            "probability": 0.511069866946657,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://github.com/community/community/blob/9b4ed8f9f9961d38041198da75b5d10a4f1d0bb6/CODE_OF_CONDUCT.md",
+            "probability": 0.5107975076004251,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.theguardian.com/tone/recipes",
+            "probability": 0.5105152919778359,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://stackoverflow.com/questions/tagged/python",
+            "probability": 0.510507980506756,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.theguardian.com/technology",
+            "probability": 0.5104401634995108,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.theguardian.com/travel",
+            "probability": 0.5103946235604996,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://developer.mozilla.org/en-US/play",
+            "probability": 0.5103538441277596,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.theguardian.com/crosswords",
+            "probability": 0.5102958337135078,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://accounts.google.com/signin/v2/identifier",
+            "probability": 0.5102027381729872,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.theguardian.com/world/israel",
+            "probability": 0.5099741422386607,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.theguardian.com/email-newsletters?INTCMP=DOTCOM_FOOTER_NEWSLETTER_INTERNATIONAL",
+            "probability": 0.5099202608308788,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.theguardian.com/sport/cycling",
+            "probability": 0.5097963743934342,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.theguardian.com/world/ukraine",
+            "probability": 0.5097963743934342,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://developer.mozilla.org/en-US/about",
+            "probability": 0.509587407529741,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://developer.mozilla.org/en-US/",
+            "probability": 0.5093978907018508,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.theguardian.com/sport/golf",
+            "probability": 0.5091833640547098,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.theguardian.com/culture",
+            "probability": 0.5090365036618022,
+            "verdict": "SUSPICIOUS"
+          },
+          {
+            "url": "https://www.theguardian.com/science",
+            "probability": 0.5090365036618022,
+            "verdict": "SUSPICIOUS"
+          }
+        ]
+      },
+      "phishing_benchmark": {
+        "rows": 784,
+        "phishing_recall": 0.5714285714285714,
+        "false_negative_rate": 0.4285714285714286,
+        "features": {
+          "path": 758,
+          "docs": 119,
+          "api": 8,
+          "homepage": 3,
+          "fragment": 71,
+          "query": 114,
+          "path_plus_query": 92,
+          "multiple_query_params": 68,
+          "encoded": 24,
+          "long_query": 29,
+          "long_url": 26,
+          "tracking": 12,
+          "login_account": 64,
+          "search": 2
+        }
+      },
+      "hard_phishing_cohorts": {
+        "query_strings": {
+          "samples": 5,
+          "excluded_due_to_training_domain_overlap": 0,
+          "candidate_phishing_recall": 0.2,
+          "production_phishing_recall_same_nontraining_domains": 1.0,
+          "not_major_regression": false
+        },
+        "paths": {
+          "samples": 5,
+          "excluded_due_to_training_domain_overlap": 0,
+          "candidate_phishing_recall": 0.2,
+          "production_phishing_recall_same_nontraining_domains": 1.0,
+          "not_major_regression": false
+        },
+        "login_parameters": {
+          "samples": 4,
+          "excluded_due_to_training_domain_overlap": 1,
+          "candidate_phishing_recall": 0.25,
+          "production_phishing_recall_same_nontraining_domains": 1.0,
+          "not_major_regression": false
+        },
+        "encoded_values": {
+          "samples": 4,
+          "excluded_due_to_training_domain_overlap": 1,
+          "candidate_phishing_recall": 0.0,
+          "production_phishing_recall_same_nontraining_domains": 1.0,
+          "not_major_regression": false
+        },
+        "long_urls_over_200": {
+          "samples": 4,
+          "excluded_due_to_training_domain_overlap": 1,
+          "candidate_phishing_recall": 0.5,
+          "production_phishing_recall_same_nontraining_domains": 1.0,
+          "not_major_regression": false
+        },
+        "redirect_parameters": {
+          "samples": 2,
+          "excluded_due_to_training_domain_overlap": 3,
+          "candidate_phishing_recall": 0.5,
+          "production_phishing_recall_same_nontraining_domains": 1.0,
+          "not_major_regression": false
+        },
+        "brand_like_hostnames": {
+          "samples": 5,
+          "excluded_due_to_training_domain_overlap": 0,
+          "candidate_phishing_recall": 0.4,
+          "production_phishing_recall_same_nontraining_domains": 1.0,
+          "not_major_regression": false
+        }
+      },
+      "model_size_bytes": 379577,
+      "median_inference_latency_ms_per_url": 0.0038468112254066707,
+      "gates": {
+        "fixed_and_verified_legitimate_phishing_count_zero": true,
+        "legitimate_fpr_le_0_5_percent": true,
+        "phishing_recall_at_least_98_percent": false,
+        "domain_disjoint_test_recall_at_least_97_percent": false,
+        "no_major_existing_hard_cohort_regression": false,
+        "no_systematic_counterfactual_structure_jump": true,
+        "same_registered_domain_splits": true,
+        "uses_current_29_features": false
+      },
+      "all_model_gates_pass": false,
+      "validation_permutation_importance_top_10": [
+        {
+          "feature": "HostnameLength",
+          "importance_mean": 0.2857858740812858,
+          "importance_std": 0.0016218186450611648
+        },
+        {
+          "feature": "IsTrustedTLD",
+          "importance_mean": 0.08939165935892639,
+          "importance_std": 0.0037220658446551584
+        },
+        {
+          "feature": "DotCount",
+          "importance_mean": 0.025315900835123768,
+          "importance_std": 0.0029804187635175303
+        },
+        {
+          "feature": "NoOfHyphenInURL",
+          "importance_mean": 0.013179843704691866,
+          "importance_std": 0.0010353450309701407
+        },
+        {
+          "feature": "FragmentLength",
+          "importance_mean": 0.011285782222716515,
+          "importance_std": 0.001087734766622489
+        },
+        {
+          "feature": "URLEntropy",
+          "importance_mean": 0.010351071948359528,
+          "importance_std": 0.003205138161428311
+        },
+        {
+          "feature": "DigitRatioInURL",
+          "importance_mean": 0.0062785930403894685,
+          "importance_std": 0.00150476474072272
+        },
+        {
+          "feature": "SubdomainDepth",
+          "importance_mean": 0.006059458449163706,
+          "importance_std": 0.0009703745176616608
+        },
+        {
+          "feature": "PathSegmentCount",
+          "importance_mean": 0.0039441424927744535,
+          "importance_std": 0.0011704648716553945
+        },
+        {
+          "feature": "QueryLength",
+          "importance_mean": 0.003034584327569201,
+          "importance_std": 0.0008654390103194548
+        }
+      ],
+      "registered_domain_overlaps": {
+        "train|calibration": 0,
+        "train|validation": 0,
+        "train|test": 0,
+        "calibration|validation": 0,
+        "calibration|test": 0,
+        "validation|test": 0
+      }
+    }
+  ],
+  "best_candidate": "hist_gradient_boosting_drop_PathLength",
+  "best_candidate_passes_all_gates": false,
+  "production_artifact_paths_modified": []
+}

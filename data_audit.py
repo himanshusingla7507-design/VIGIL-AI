@@ -3,7 +3,7 @@ import os
 
 import pandas as pd
 
-from prepare_dataset import prepare_records
+import prepare_dataset
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 DATASET = os.path.join(ROOT, "final_dataset_v2.csv")
@@ -14,7 +14,9 @@ def main() -> dict:
     if not os.path.isfile(DATASET):
         raise FileNotFoundError(f"Expected dataset at {DATASET}")
     frame = pd.read_csv(DATASET)
-    _, report = prepare_records(frame, os.path.basename(DATASET))
+    _, report = getattr(prepare_dataset, "prepare_records")(
+        frame, os.path.basename(DATASET)
+    )
     report.update(
         {
             "file": os.path.basename(DATASET),

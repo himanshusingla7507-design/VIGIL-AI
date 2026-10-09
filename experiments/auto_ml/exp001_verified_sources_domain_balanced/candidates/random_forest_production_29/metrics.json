@@ -1,0 +1,428 @@
+{
+  "experiment": "exp001_verified_sources_domain_balanced",
+  "candidate": "random_forest_production_29",
+  "candidate_artifact": "experiments\\auto_ml\\exp001_verified_sources_domain_balanced\\candidates\\random_forest_production_29\\candidate.joblib",
+  "feature_count": 29,
+  "selected_threshold": {
+    "phishing_threshold": 0.5070074998653752,
+    "selected_on": "domain-disjoint validation partition only",
+    "maximum_validation_fpr": 0.005,
+    "validation_fpr": 0.0,
+    "validation_phishing_recall": 0.8947368421052632,
+    "validation_legitimate_rows": 38,
+    "validation_phishing_rows": 38
+  },
+  "validation_at_selected_threshold": {
+    "rows": 76,
+    "legitimate_rows": 38,
+    "phishing_rows": 38,
+    "decision_threshold": 0.5070074998653752,
+    "accuracy": 0.9473684210526315,
+    "precision": 1.0,
+    "recall": 0.8947368421052632,
+    "phishing_recall": 0.8947368421052632,
+    "phishing_fnr": 0.10526315789473684,
+    "f1": 0.9444444444444444,
+    "roc_auc": 0.9750692520775623,
+    "pr_auc": 0.9805281561885335,
+    "brier_score": 0.2394373737558413,
+    "ece": 0.36981876500434707,
+    "legitimate_fpr": 0.0,
+    "confusion": {
+      "tn": 38,
+      "fp": 0,
+      "fn": 4,
+      "tp": 34
+    }
+  },
+  "domain_disjoint_test_at_selected_threshold": {
+    "rows": 276,
+    "legitimate_rows": 138,
+    "phishing_rows": 138,
+    "decision_threshold": 0.5070074998653752,
+    "accuracy": 0.8804347826086957,
+    "precision": 0.972972972972973,
+    "recall": 0.782608695652174,
+    "phishing_recall": 0.782608695652174,
+    "phishing_fnr": 0.21739130434782605,
+    "f1": 0.8674698795180723,
+    "roc_auc": 0.9606175173282923,
+    "pr_auc": 0.968952759307414,
+    "brier_score": 0.2405631139790385,
+    "ece": 0.38434287403197487,
+    "legitimate_fpr": 0.021739130434782608,
+    "confusion": {
+      "tn": 135,
+      "fp": 3,
+      "fn": 30,
+      "tp": 108
+    }
+  },
+  "domain_disjoint_test_at_0_5": {
+    "rows": 276,
+    "legitimate_rows": 138,
+    "phishing_rows": 138,
+    "decision_threshold": 0.5,
+    "accuracy": 0.894927536231884,
+    "precision": 0.8562091503267973,
+    "recall": 0.9492753623188406,
+    "phishing_recall": 0.9492753623188406,
+    "phishing_fnr": 0.050724637681159424,
+    "f1": 0.9003436426116839,
+    "roc_auc": 0.9606175173282923,
+    "pr_auc": 0.968952759307414,
+    "brier_score": 0.2405631139790385,
+    "ece": 0.38434287403197487,
+    "legitimate_fpr": 0.15942028985507245,
+    "confusion": {
+      "tn": 116,
+      "fp": 22,
+      "fn": 7,
+      "tp": 131
+    }
+  },
+  "legitimate_benchmark": {
+    "combined_legitimate_urls": {
+      "count": 293,
+      "phishing_count": 5,
+      "fpr": 0.017064846416382253,
+      "safe": 0,
+      "suspicious": 288,
+      "phishing": 5,
+      "average_probability": 0.49037135963420964,
+      "maximum_probability": 0.5108310549295995
+    },
+    "verified_legitimate_domain_test": {
+      "count": 207,
+      "phishing_count": 3,
+      "fpr": 0.014492753623188406
+    },
+    "fixed_baseline": {
+      "count": 16,
+      "verdicts": {
+        "SUSPICIOUS": 14,
+        "PHISHING": 2
+      }
+    },
+    "counterfactuals": {
+      "count": 70,
+      "verdicts": {
+        "SUSPICIOUS": 70
+      },
+      "per_variant": {
+        "path": {
+          "samples": 10,
+          "median_probability_delta": -0.004619854001104706,
+          "mean_probability_delta": -0.0035162836540411023,
+          "maximum_probability_delta": 0.003736596480145127,
+          "positive_delta_count": 2,
+          "systematic_jump": false
+        },
+        "query": {
+          "samples": 10,
+          "median_probability_delta": -0.005209431322286712,
+          "mean_probability_delta": -0.0048963806860432444,
+          "maximum_probability_delta": 0.002958077073674681,
+          "positive_delta_count": 1,
+          "systematic_jump": false
+        },
+        "multi-query": {
+          "samples": 10,
+          "median_probability_delta": 0.0006412070237279688,
+          "mean_probability_delta": -0.0023665026194637563,
+          "maximum_probability_delta": 0.005341246551598844,
+          "positive_delta_count": 6,
+          "systematic_jump": false
+        },
+        "encoded": {
+          "samples": 10,
+          "median_probability_delta": -0.0006159296003914461,
+          "mean_probability_delta": -0.0028082951997370764,
+          "maximum_probability_delta": 0.004674859040364465,
+          "positive_delta_count": 3,
+          "systematic_jump": false
+        },
+        "fragment": {
+          "samples": 10,
+          "median_probability_delta": -0.007148396954753056,
+          "mean_probability_delta": -0.007237689180958873,
+          "maximum_probability_delta": 0.0021218010904832663,
+          "positive_delta_count": 1,
+          "systematic_jump": false
+        },
+        "path+query": {
+          "samples": 10,
+          "median_probability_delta": -0.005511391165966412,
+          "mean_probability_delta": -0.007261104177496263,
+          "maximum_probability_delta": 0.0006819378875330684,
+          "positive_delta_count": 1,
+          "systematic_jump": false
+        }
+      }
+    },
+    "highest_probability_examples": [
+      {
+        "url": "https://www.theguardian.com/tone/recipes",
+        "probability": 0.5108310549295995,
+        "verdict": "PHISHING"
+      },
+      {
+        "url": "https://developer.chrome.com/docs/privacy-security",
+        "probability": 0.5090737875898268,
+        "verdict": "PHISHING"
+      },
+      {
+        "url": "https://accounts.google.com/signin/v2/identifier",
+        "probability": 0.5076154073711622,
+        "verdict": "PHISHING"
+      },
+      {
+        "url": "https://stackoverflow.com/questions/tagged/python",
+        "probability": 0.5074370180868303,
+        "verdict": "PHISHING"
+      },
+      {
+        "url": "https://www.theguardian.com/index/subjects/a",
+        "probability": 0.5070707511924845,
+        "verdict": "PHISHING"
+      },
+      {
+        "url": "https://www.theguardian.com/help/contact-us",
+        "probability": 0.5068599148815135,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://www.theguardian.com/sport/rugby-union",
+        "probability": 0.5063880567011702,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://stackoverflow.com/search",
+        "probability": 0.5053835847025074,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://www.theguardian.com/sport/golf",
+        "probability": 0.5049239046981026,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://stackoverflow.com/",
+        "probability": 0.5045332646170809,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://learn.microsoft.com/",
+        "probability": 0.5038398984410665,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://developer.mozilla.org/en-US/",
+        "probability": 0.5037505437026221,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://developer.mozilla.org/en-US/docs/Web/HTML",
+        "probability": 0.5027905601532212,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://ta.wikipedia.org/wiki/%E0%AE%B5%E0%AE%BF%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%BF%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AF%80%E0%AE%9F%E0%AE%BF%E0%AE%AF%E0%AE%BE:%E0%AE%9A%E0%AE%BF%E0%AE%B1%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AF%81%E0%AE%AA%E0%AF%8D_%E0%AE%AA%E0%AE%9F%E0%AE%99%E0%AF%8D%E0%AE%95%E0%AE%B3%E0%AF%8D",
+        "probability": 0.5027839825926179,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://ne.wikipedia.org/wiki/%E0%A4%B5%E0%A4%BF%E0%A4%95%E0%A4%BF%E0%A4%AA%E0%A4%BF%E0%A4%A1%E0%A4%BF%E0%A4%AF%E0%A4%BE:%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%AE%E0%A5%81%E0%A4%96_%E0%A4%9A%E0%A4%BF%E0%A4%A4%E0%A5%8D%E0%A4%B0",
+        "probability": 0.5027342317824859,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://bat-smg.wikipedia.org/wiki/P%C4%97rms_poslapis",
+        "probability": 0.5027228205452501,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP",
+        "probability": 0.5026164321077822,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://bn.wikipedia.org/wiki/%E0%A6%89%E0%A6%87%E0%A6%95%E0%A6%BF%E0%A6%AA%E0%A6%BF%E0%A6%A1%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE:%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%9A%E0%A6%BF%E0%A6%A4_%E0%A6%9B%E0%A6%AC%E0%A6%BF",
+        "probability": 0.502535228010383,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://tcy.wikipedia.org/wiki/%E0%B2%B5%E0%B2%BF%E0%B2%95%E0%B2%BF%E0%B2%AA%E0%B3%80%E0%B2%A1%E0%B2%BF%E0%B2%AF:%E0%B2%B5%E0%B2%BF%E0%B2%B8%E0%B3%87%E0%B2%B8%E0%B3%8A_%E0%B2%9A%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%B0%E0%B3%8A%E0%B2%B2%E0%B3%81",
+        "probability": 0.502535228010383,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://www.theguardian.com/artanddesign",
+        "probability": 0.50245891863715,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://developer.mozilla.org/de/",
+        "probability": 0.5023887122546108,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://support.theguardian.com/subscribe/weekly?REFPVID=undefined&INTCMP=undefined&acquisitionData=%7B%22source%22%3A%22GUARDIAN_WEB%22%2C%22componentId%22%3A%22PrintSubscriptionsHeaderLink%22%2C%22componentType%22%3A%22ACQUISITIONS_HEADER%22%2C%22referrerUrl%22%3A%22%22%7D",
+        "probability": 0.5023775808404936,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements",
+        "probability": 0.502372265675532,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://dz.wikipedia.org/wiki/Wikipedia:%E0%BD%82%E0%BD%9F%E0%BD%B4%E0%BD%82%E0%BD%A6%E0%BC%8B%E0%BD%96%E0%BD%A2%E0%BE%99%E0%BD%93%E0%BC%8B%E0%BD%A0%E0%BD%91%E0%BD%B2%E0%BC%8B%E0%BD%A6%E0%BD%BA%E0%BD%A3%E0%BC%8B%E0%BD%A0%E0%BD%90%E0%BD%B4%E0%BC%8B%E0%BD%A0%E0%BD%96%E0%BD%91%E0%BC%8B%E0%BD%A1%E0%BD%BC%E0%BD%91%E0%BD%94%E0%BC%8B%E0%BD%A8%E0%BD%B2%E0%BD%93%E0%BC%8D",
+        "probability": 0.5023113478097905,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Cheatsheet",
+        "probability": 0.502189607370779,
+        "verdict": "SUSPICIOUS"
+      }
+    ]
+  },
+  "phishing_benchmark": {
+    "rows": 276,
+    "phishing_recall": 0.782608695652174,
+    "false_negative_rate": 0.21739130434782605,
+    "features": {
+      "path": 270,
+      "docs": 43,
+      "api": 6,
+      "homepage": 3,
+      "fragment": 31,
+      "query": 36,
+      "path_plus_query": 34,
+      "multiple_query_params": 20,
+      "encoded": 17,
+      "long_query": 18,
+      "long_url": 12,
+      "tracking": 2,
+      "login_account": 19,
+      "search": 2
+    }
+  },
+  "hard_phishing_cohorts": {
+    "query_strings": {
+      "samples": 5,
+      "excluded_due_to_training_domain_overlap": 0,
+      "candidate_phishing_recall": 0.6,
+      "production_phishing_recall_same_nontraining_domains": 1.0,
+      "not_major_regression": false
+    },
+    "paths": {
+      "samples": 5,
+      "excluded_due_to_training_domain_overlap": 0,
+      "candidate_phishing_recall": 0.4,
+      "production_phishing_recall_same_nontraining_domains": 1.0,
+      "not_major_regression": false
+    },
+    "login_parameters": {
+      "samples": 4,
+      "excluded_due_to_training_domain_overlap": 1,
+      "candidate_phishing_recall": 0.5,
+      "production_phishing_recall_same_nontraining_domains": 1.0,
+      "not_major_regression": false
+    },
+    "encoded_values": {
+      "samples": 5,
+      "excluded_due_to_training_domain_overlap": 0,
+      "candidate_phishing_recall": 0.0,
+      "production_phishing_recall_same_nontraining_domains": 1.0,
+      "not_major_regression": false
+    },
+    "long_urls_over_200": {
+      "samples": 5,
+      "excluded_due_to_training_domain_overlap": 0,
+      "candidate_phishing_recall": 0.6,
+      "production_phishing_recall_same_nontraining_domains": 1.0,
+      "not_major_regression": false
+    },
+    "redirect_parameters": {
+      "samples": 5,
+      "excluded_due_to_training_domain_overlap": 0,
+      "candidate_phishing_recall": 1.0,
+      "production_phishing_recall_same_nontraining_domains": 1.0,
+      "not_major_regression": true
+    },
+    "brand_like_hostnames": {
+      "samples": 5,
+      "excluded_due_to_training_domain_overlap": 0,
+      "candidate_phishing_recall": 0.6,
+      "production_phishing_recall_same_nontraining_domains": 1.0,
+      "not_major_regression": false
+    }
+  },
+  "model_size_bytes": 6033579,
+  "median_inference_latency_ms_per_url": 0.18437644927172991,
+  "gates": {
+    "fixed_and_verified_legitimate_phishing_count_zero": false,
+    "legitimate_fpr_le_0_5_percent": false,
+    "phishing_recall_at_least_98_percent": false,
+    "domain_disjoint_test_recall_at_least_97_percent": false,
+    "no_major_existing_hard_cohort_regression": false,
+    "no_systematic_counterfactual_structure_jump": true,
+    "same_registered_domain_splits": true,
+    "uses_current_29_features": true
+  },
+  "all_model_gates_pass": false,
+  "validation_permutation_importance_top_10": [
+    {
+      "feature": "IsTrustedTLD",
+      "importance_mean": 0.14627755726349814,
+      "importance_std": 0.03166986387511923
+    },
+    {
+      "feature": "HostnameLength",
+      "importance_mean": 0.06841433391623168,
+      "importance_std": 0.008042799313400512
+    },
+    {
+      "feature": "FragmentLength",
+      "importance_mean": 0.024009395777432774,
+      "importance_std": 0.010727748127041583
+    },
+    {
+      "feature": "DigitRatioInURL",
+      "importance_mean": 0.010388523429916289,
+      "importance_std": 0.000431733985258838
+    },
+    {
+      "feature": "URLEntropy",
+      "importance_mean": 0.005492285383534634,
+      "importance_std": 0.0011803637717430573
+    },
+    {
+      "feature": "NoOfDigitsInURL",
+      "importance_mean": 0.005397526392922199,
+      "importance_std": 0.0006040556736693093
+    },
+    {
+      "feature": "PathSegmentCount",
+      "importance_mean": 0.004686160931892854,
+      "importance_std": 0.001275020579704644
+    },
+    {
+      "feature": "NoOfHyphenInURL",
+      "importance_mean": 0.0020074287601182426,
+      "importance_std": 0.0023637528455929075
+    },
+    {
+      "feature": "QueryParameterCount",
+      "importance_mean": 0.000731242955087863,
+      "importance_std": 0.0
+    },
+    {
+      "feature": "NoOfAtInURL",
+      "importance_mean": 0.0006550872201842584,
+      "importance_std": 0.0
+    }
+  ]
+}

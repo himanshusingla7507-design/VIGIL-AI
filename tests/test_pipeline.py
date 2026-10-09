@@ -97,16 +97,15 @@ def test_model_excludes_transport_alias_and_constant_features():
     assert "IsHTTPS" not in feature_names
 
 
-def test_experimental_url_features_share_serving_canonicalization():
-    from scripts.final_ml_pass import _experimental_features
-
+def test_serving_features_share_url_canonicalization():
     variants = [
         "https://fast.com/",
         "https://fast.com",
         "https://www.fast.com/",
     ]
-    assert _experimental_features(variants[0]) == _experimental_features(variants[1])
-    assert _experimental_features(variants[1]) == _experimental_features(variants[2])
+    features = [extract_features(url) for url in variants]
+    assert features[0] == features[1]
+    assert features[1] == features[2]
 
 
 def test_model_bundle_rejects_tampered_pickle(tmp_path, monkeypatch):

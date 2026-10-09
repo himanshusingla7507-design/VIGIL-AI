@@ -1,0 +1,210 @@
+{
+  "experiment": "dynamic_candidate",
+  "production_artifacts_modified": false,
+  "dataset": {
+    "dataset_size": 190,
+    "legitimate_count": 95,
+    "phishing_count": 95,
+    "class_ratio_phishing_to_legitimate": 1.0,
+    "unique_registered_domains": 112,
+    "features": [
+      "URLLength",
+      "HostnameLength",
+      "PathLength",
+      "QueryLength",
+      "FragmentLength",
+      "PathSegmentCount",
+      "QueryParameterCount",
+      "DotCount",
+      "SubdomainDepth",
+      "NoOfDigitsInURL",
+      "DigitRatioInURL",
+      "NoOfLettersInURL",
+      "LetterRatioInURL",
+      "NoOfEqualsInURL",
+      "NoOfQMarkInURL",
+      "NoOfAmpersandInURL",
+      "NoOfAtInURL",
+      "NoOfHyphenInURL",
+      "NoOfUnderscoreInURL",
+      "URLPercentEncodingCount",
+      "HasObfuscation",
+      "HasUserInfo",
+      "HasPort",
+      "IsDomainIP",
+      "IsShortened",
+      "HasSuspiciousTLD",
+      "HasSuspiciousToken",
+      "IsTrustedTLD",
+      "URLEntropy"
+    ],
+    "feature_count": 29,
+    "legitimate_source": {
+      "path": "data\\experiments\\legitimate_dynamic_training.csv",
+      "selected_rows": 95,
+      "duplicate_normalized_urls_removed": 0,
+      "unique_registered_domains": 17
+    },
+    "phishing_source": {
+      "path": "data\\external\\phishing_database_active.txt",
+      "rows_read": 789054,
+      "invalid_rows_skipped": 674,
+      "duplicate_normalized_urls_skipped": 79,
+      "unique_domain_candidates_outside_legitimate_domains": 323590,
+      "selected_rows": 95,
+      "selection": "Deterministic SHA-256 ordering, one URL per registered domain, excluding all legitimate cohort domains."
+    },
+    "class_balance_policy": "1:1; select one phishing URL per registered domain outside all legitimate cohort domains."
+  },
+  "split": {
+    "method": "GroupShuffleSplit by registered domain; test 20%, then calibration 25% of the remaining rows.",
+    "seed": 44,
+    "counts": {
+      "train": {
+        "rows": 126,
+        "legitimate": 72,
+        "phishing": 54,
+        "unique_registered_domains": 66
+      },
+      "calibration": {
+        "rows": 34,
+        "legitimate": 14,
+        "phishing": 20,
+        "unique_registered_domains": 23
+      },
+      "test": {
+        "rows": 30,
+        "legitimate": 9,
+        "phishing": 21,
+        "unique_registered_domains": 23
+      }
+    },
+    "train_count": 126,
+    "calibration_count": 34,
+    "test_count": 30,
+    "registered_domain_overlaps": {
+      "train|calibration": 0,
+      "train|test": 0,
+      "calibration|test": 0
+    }
+  },
+  "model": {
+    "estimator": "HistGradientBoostingClassifier",
+    "parameters": {
+      "learning_rate": 0.05,
+      "max_iter": 100,
+      "max_leaf_nodes": 31,
+      "random_state": 42
+    },
+    "calibration": {
+      "method": "LogisticRegression over raw HGB probabilities on a domain-disjoint calibration partition.",
+      "solver": "lbfgs",
+      "max_iter": 1000,
+      "random_state": 42
+    },
+    "metric_decision_threshold": 0.5
+  },
+  "test_metrics": {
+    "accuracy": 0.8,
+    "precision": 0.8947368421052632,
+    "recall": 0.8095238095238095,
+    "f1": 0.85,
+    "roc_auc": 0.9259259259259259,
+    "pr_auc": 0.9702280420292846,
+    "brier_score": 0.14267625778923948
+  },
+  "baseline_legitimate_urls": {
+    "total": 16,
+    "SAFE": 0,
+    "SUSPICIOUS": 15,
+    "PHISHING": 1,
+    "maximum_legitimate_probability": 0.6971267359337556,
+    "results": [
+      {
+        "url": "https://www.google.com/search?q=phishing+prevention",
+        "probability": 0.39451193837142917,
+        "label": "SUSPICIOUS"
+      },
+      {
+        "url": "https://www.bing.com/search?q=phishing+prevention",
+        "probability": 0.37430148608317676,
+        "label": "SUSPICIOUS"
+      },
+      {
+        "url": "https://www.youtube.com/results?search_query=phishing+prevention",
+        "probability": 0.43620592109244055,
+        "label": "SUSPICIOUS"
+      },
+      {
+        "url": "https://github.com/microsoft/vscode",
+        "probability": 0.3912221874204163,
+        "label": "SUSPICIOUS"
+      },
+      {
+        "url": "https://github.com/search?q=python+url+parser&type=repositories",
+        "probability": 0.39451193837142917,
+        "label": "SUSPICIOUS"
+      },
+      {
+        "url": "https://www.amazon.com/s?k=usb+c+hub",
+        "probability": 0.4460309852311752,
+        "label": "SUSPICIOUS"
+      },
+      {
+        "url": "https://learn.microsoft.com/en-us/python/",
+        "probability": 0.48959959130798014,
+        "label": "SUSPICIOUS"
+      },
+      {
+        "url": "https://stackoverflow.com/questions/tagged/python",
+        "probability": 0.4785616075206577,
+        "label": "SUSPICIOUS"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Computer_security",
+        "probability": 0.40631252385456457,
+        "label": "SUSPICIOUS"
+      },
+      {
+        "url": "https://www.reddit.com/r/cybersecurity/",
+        "probability": 0.3883330288112554,
+        "label": "SUSPICIOUS"
+      },
+      {
+        "url": "https://accounts.google.com/signin/v2/identifier",
+        "probability": 0.6971267359337556,
+        "label": "PHISHING"
+      },
+      {
+        "url": "https://www.google.com/search?q=security+news&utm_source=baseline&utm_medium=organic",
+        "probability": 0.40076264409324447,
+        "label": "SUSPICIOUS"
+      },
+      {
+        "url": "https://www.bing.com/search?q=python&count=20&form=QBLH&sp=-1",
+        "probability": 0.378483611619544,
+        "label": "SUSPICIOUS"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/URL#Components",
+        "probability": 0.44700439580201207,
+        "label": "SUSPICIOUS"
+      },
+      {
+        "url": "https://www.google.com/search?q=URL%20encoding%20examples",
+        "probability": 0.3921067338218664,
+        "label": "SUSPICIOUS"
+      },
+      {
+        "url": "https://www.google.com/search?q=legitimate+dynamic+url+baseline+with+a+deliberately+long+query+containing+several+ordinary+words+for+testing+how+the+production+model+responds+to+long+search+queries",
+        "probability": 0.40076264409324447,
+        "label": "SUSPICIOUS"
+      }
+    ],
+    "thresholds_from_unchanged_production_metadata": {
+      "safe": 0.13140956380602112,
+      "phishing": 0.6961575221255231
+    }
+  },
+  "candidate_artifact": "models\\experimental\\dynamic_candidate\\dynamic_candidate.joblib"
+}
