@@ -1,0 +1,429 @@
+{
+  "evaluation_status": "completed_existing_artifacts_only",
+  "evaluated_at": "2026-10-09T13:28:58+00:00",
+  "dataset": {
+    "path": "C:\\Users\\adity\\Desktop\\VIGIL-AI-git\\data\\processed\\clean_dataset.csv",
+    "sha256": "af373d723739836235e630e9198d902a690f9cbbd994a2b4fc9e2a0ca71e1dcc",
+    "rows": 854870,
+    "test_rows": 170974,
+    "split": "StratifiedShuffleSplit random_state=42 test_size=0.2"
+  },
+  "candidate_audit": {
+    "model_path": "C:\\Users\\adity\\Desktop\\VIGIL-AI-git\\models\\experimental\\train_model_v2\\repair_source_balanced_natural_calibration\\candidate_model.pkl",
+    "exists": false,
+    "missing_reason": "The report/manifest reference this artifact, but candidate_model.pkl is absent from the workspace.",
+    "feature_names_sha256": "3a0ba3aee8e4acfda42ba05a8907d92ec8a741bf49e42c5dd9bc545c24e6bffe",
+    "feature_names": [
+      "URLLength",
+      "HostnameLength",
+      "PathLength",
+      "QueryLength",
+      "FragmentLength",
+      "PathSegmentCount",
+      "QueryParameterCount",
+      "DotCount",
+      "SubdomainDepth",
+      "NoOfDigitsInURL",
+      "DigitRatioInURL",
+      "NoOfLettersInURL",
+      "LetterRatioInURL",
+      "NoOfEqualsInURL",
+      "NoOfQMarkInURL",
+      "NoOfAmpersandInURL",
+      "NoOfAtInURL",
+      "NoOfHyphenInURL",
+      "NoOfUnderscoreInURL",
+      "URLPercentEncodingCount",
+      "HasObfuscation",
+      "HasUserInfo",
+      "HasPort",
+      "IsDomainIP",
+      "IsShortened",
+      "HasSuspiciousTLD",
+      "HasSuspiciousToken",
+      "IsTrustedTLD",
+      "URLEntropy"
+    ],
+    "manifest_sha256": "25213228d13077ad4a0ac02fe1294e2535511f4c69f6066a03d1967fec9b8985",
+    "manifest": {
+      "dataset": {
+        "path": "data\\processed\\clean_dataset.csv",
+        "sha256": "af373d723739836235e630e9198d902a690f9cbbd994a2b4fc9e2a0ca71e1dcc",
+        "rows_before_deduplication": 854870,
+        "rows_before": 854870,
+        "rows_after": 854870,
+        "invalid_urls": 0,
+        "normalized_duplicate_rows_removed": 0,
+        "registered_domains": 463308,
+        "label_counts_before_deduplication": {
+          "0": 134849,
+          "1": 720021
+        },
+        "label_counts_after_deduplication": {
+          "0": 134849,
+          "1": 720021
+        },
+        "source_label_counts_after_deduplication": {
+          "PhiUSIIL": {
+            "0": 134849,
+            "1": 99584
+          },
+          "phishing_database_active": {
+            "1": 620437
+          }
+        },
+        "missing_collection_date_rows": 854870,
+        "collection_date_note": "All dates are missing; the dataset summary confirms dates were not supplied by either source.",
+        "domains_with_both_labels": 296,
+        "domains_with_single_label": 463012,
+        "domain_label_conflicts": "Retained and reported. All rows for a registered domain are assigned to exactly one split; the conflict may reflect distinct benign and malicious URLs on the same domain or source-label noise."
+      },
+      "features": [
+        "URLLength",
+        "HostnameLength",
+        "PathLength",
+        "QueryLength",
+        "FragmentLength",
+        "PathSegmentCount",
+        "QueryParameterCount",
+        "DotCount",
+        "SubdomainDepth",
+        "NoOfDigitsInURL",
+        "DigitRatioInURL",
+        "NoOfLettersInURL",
+        "LetterRatioInURL",
+        "NoOfEqualsInURL",
+        "NoOfQMarkInURL",
+        "NoOfAmpersandInURL",
+        "NoOfAtInURL",
+        "NoOfHyphenInURL",
+        "NoOfUnderscoreInURL",
+        "URLPercentEncodingCount",
+        "HasObfuscation",
+        "HasUserInfo",
+        "HasPort",
+        "IsDomainIP",
+        "IsShortened",
+        "HasSuspiciousTLD",
+        "HasSuspiciousToken",
+        "IsTrustedTLD",
+        "URLEntropy"
+      ],
+      "split": {
+        "train": {
+          "rows": 511442,
+          "class_counts": {
+            "0": 81310,
+            "1": 430132
+          },
+          "registered_domains": 278006,
+          "source_counts": {
+            "phishing_database_active": 371102,
+            "PhiUSIIL": 139850,
+            "legitimate_dynamic_benchmark": 305,
+            "legitimate_training_v3": 126,
+            "legitimate_dynamic_training": 59
+          }
+        },
+        "calibration": {
+          "rows": 172704,
+          "class_counts": {
+            "0": 27081,
+            "1": 145623
+          },
+          "registered_domains": 92669,
+          "source_counts": {
+            "phishing_database_active": 126535,
+            "PhiUSIIL": 46036,
+            "legitimate_dynamic_benchmark": 73,
+            "legitimate_training_v3": 42,
+            "legitimate_dynamic_training": 18
+          }
+        },
+        "test": {
+          "rows": 171470,
+          "class_counts": {
+            "0": 27204,
+            "1": 144266
+          },
+          "registered_domains": 92669,
+          "source_counts": {
+            "phishing_database_active": 122800,
+            "PhiUSIIL": 48547,
+            "legitimate_dynamic_benchmark": 71,
+            "legitimate_training_v3": 34,
+            "legitimate_dynamic_training": 18
+          }
+        },
+        "registered_domain_overlaps": {
+          "train::calibration": 0,
+          "train::test": 0,
+          "calibration::test": 0
+        }
+      },
+      "calibration": null,
+      "model": null
+    },
+    "report_generated_at_utc": "2026-10-09T11:31:00+00:00",
+    "report_candidate_status": "EXPERIMENTAL_NOT_PROMOTED",
+    "report_expected_sha256": "fc294873f2f651d16029adf1ae9a47e3497b303ac3b7964bda9d1fa7f206fbe7",
+    "report_candidate_path": "models\\experimental\\train_model_v2\\repair_source_balanced_natural_calibration\\candidate_model.pkl",
+    "report_model": {
+      "estimator": "HistGradientBoostingClassifier",
+      "parameters": {
+        "learning_rate": 0.05,
+        "max_iter": 100,
+        "max_leaf_nodes": 31,
+        "random_state": 44
+      },
+      "sample_weighting": "Equal total weight per source_group within each class on the training partition; classes have equal total mass.",
+      "calibration": {
+        "method": "LogisticRegression over raw estimator probabilities, fit without sample weights to retain calibration-partition prevalence",
+        "fit_partition": "registered-domain-disjoint calibration partition only",
+        "sample_weighting": "none; natural observed calibration rows",
+        "parameters": {
+          "solver": "lbfgs",
+          "max_iter": 1000,
+          "random_state": 44
+        }
+      }
+    },
+    "report_split": {
+      "method": "GroupShuffleSplit by registered domain; test 20%; calibration 25% of remaining rows",
+      "seed": 44,
+      "train": {
+        "rows": 511442,
+        "class_counts": {
+          "0": 81310,
+          "1": 430132
+        },
+        "registered_domains": 278006,
+        "source_counts": {
+          "phishing_database_active": 371102,
+          "PhiUSIIL": 139850,
+          "legitimate_dynamic_benchmark": 305,
+          "legitimate_training_v3": 126,
+          "legitimate_dynamic_training": 59
+        }
+      },
+      "calibration": {
+        "rows": 172704,
+        "class_counts": {
+          "0": 27081,
+          "1": 145623
+        },
+        "registered_domains": 92669,
+        "source_counts": {
+          "phishing_database_active": 126535,
+          "PhiUSIIL": 46036,
+          "legitimate_dynamic_benchmark": 73,
+          "legitimate_training_v3": 42,
+          "legitimate_dynamic_training": 18
+        }
+      },
+      "test": {
+        "rows": 171470,
+        "class_counts": {
+          "0": 27204,
+          "1": 144266
+        },
+        "registered_domains": 92669,
+        "source_counts": {
+          "phishing_database_active": 122800,
+          "PhiUSIIL": 48547,
+          "legitimate_dynamic_benchmark": 71,
+          "legitimate_training_v3": 34,
+          "legitimate_dynamic_training": 18
+        }
+      },
+      "registered_domain_overlaps": {
+        "train::calibration": 0,
+        "train::test": 0,
+        "calibration::test": 0
+      },
+      "registered_domain_overlap_checked_before_augmentation": false,
+      "no_registered_domain_crosses_partitions": true
+    }
+  },
+  "production": {
+    "model_path": "C:\\Users\\adity\\Desktop\\VIGIL-AI-git\\phishing_model.pkl",
+    "model_sha256": "aac10b885770c479a0e5501af32d8af423dc5b8ae3c3156f481fc7ecb5943688",
+    "feature_names": [
+      "URLLength",
+      "HostnameLength",
+      "PathLength",
+      "QueryLength",
+      "FragmentLength",
+      "PathSegmentCount",
+      "QueryParameterCount",
+      "DotCount",
+      "SubdomainDepth",
+      "NoOfDigitsInURL",
+      "DigitRatioInURL",
+      "NoOfLettersInURL",
+      "LetterRatioInURL",
+      "NoOfEqualsInURL",
+      "NoOfQMarkInURL",
+      "NoOfAmpersandInURL",
+      "NoOfAtInURL",
+      "NoOfHyphenInURL",
+      "NoOfUnderscoreInURL",
+      "URLPercentEncodingCount",
+      "HasObfuscation",
+      "HasUserInfo",
+      "HasPort",
+      "IsDomainIP",
+      "IsShortened",
+      "HasSuspiciousTLD",
+      "HasSuspiciousToken",
+      "IsTrustedTLD",
+      "URLEntropy"
+    ],
+    "model_version": "v3.0.0",
+    "model_type": "DomainDisjointCalibratedHistGradientBoosting",
+    "metrics": {
+      "threshold": 0.9106962115698227,
+      "accuracy": 0.7376501690315487,
+      "precision": 0.9853345734005581,
+      "recall": 0.6989180856087331,
+      "roc_auc": 0.8874013478563098,
+      "pr_auc": 0.9770531573118199,
+      "brier_score": 0.11558769326311595,
+      "fpr": 0.05554319614386355,
+      "fnr": 0.3010819143912669,
+      "confusion_matrix": [
+        [
+          25472,
+          1498
+        ],
+        [
+          43357,
+          100647
+        ]
+      ]
+    },
+    "calibration": {
+      "expected_calibration_error": 0.11123995056830452,
+      "reliability_bins": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 14563,
+          "mean_probability": 0.0661500497084581,
+          "positive_rate": 0.3568632836640802
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 6857,
+          "mean_probability": 0.1473293675321076,
+          "positive_rate": 0.5390112294006125
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "count": 2744,
+          "mean_probability": 0.2475088350382653,
+          "positive_rate": 0.7842565597667639
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "count": 2700,
+          "mean_probability": 0.3498258671624815,
+          "positive_rate": 0.6659259259259259
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 2776,
+          "mean_probability": 0.44348422888606637,
+          "positive_rate": 0.6639048991354467
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6000000000000001,
+          "count": 2746,
+          "mean_probability": 0.5541558266233346,
+          "positive_rate": 0.6919155134741443
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "count": 4211,
+          "mean_probability": 0.6536855600711226,
+          "positive_rate": 0.5872714319639041
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "count": 7640,
+          "mean_probability": 0.7574486498629965,
+          "positive_rate": 0.6307591623036649
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 18465,
+          "mean_probability": 0.8628199264572562,
+          "positive_rate": 0.7642567018683997
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 108272,
+          "mean_probability": 0.9263550073973852,
+          "positive_rate": 0.9791451160041377
+        }
+      ]
+    },
+    "known_legitimate": [
+      {
+        "url": "https://chatgpt.com/",
+        "probability": 0.07294205833745974
+      },
+      {
+        "url": "https://www.youtube.com/",
+        "probability": 0.07529511800050373
+      },
+      {
+        "url": "https://gemini.google.com/app?hl=en-IN",
+        "probability": 0.1763698271422453
+      },
+      {
+        "url": "https://mail.google.com/mail/u/0/#inbox",
+        "probability": 0.1305402718768361
+      },
+      {
+        "url": "https://www.netflix.com/browse",
+        "probability": 0.3713570401445309
+      },
+      {
+        "url": "https://www.canva.com/templates",
+        "probability": 0.05581056352591755
+      },
+      {
+        "url": "https://www.instagram.com/accounts/onetap/?lsrc=ci",
+        "probability": 0.13497214106613037
+      }
+    ],
+    "known_phishing": [
+      {
+        "url": "https://paypal-login.example.com/verify-account",
+        "probability": 0.9138214826485723
+      },
+      {
+        "url": "http://secure-bank-login.example.com/update-account",
+        "probability": 0.9300483685638007
+      },
+      {
+        "url": "https://chatgpt.com.example.com/verify-login",
+        "probability": 0.8866074699814736
+      }
+    ]
+  },
+  "candidate_evaluation": {
+    "status": "not_run_missing_artifact",
+    "path": "C:\\Users\\adity\\Desktop\\VIGIL-AI-git\\models\\experimental\\train_model_v2\\repair_source_balanced_natural_calibration\\candidate_model.pkl"
+  }
+}

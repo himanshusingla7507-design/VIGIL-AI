@@ -1,8 +1,6 @@
 // VIGIL's service worker is the only extension-side coordinator. It delegates
 // classification to the Flask API and never implements a second verdict rule.
 const API_BASE = "http://127.0.0.1:5000";
-const CACHE_TTL_MS = 30_000;
-const scans = new Map();
 const inFlight = new Map();
 const bypasses = new Map();
 const latestNavigations = new Map();
@@ -20,7 +18,8 @@ function logScan(url, result) {
     model_version: result?.model_version || null,
     model_fingerprint: result?.model_fingerprint || null,
     raw_fold_probabilities: result?.diagnostics?.raw_fold_probabilities || null,
-    calibrated_probability: result?.probability ?? null,
+    calibrated_probability: result?.model_probability ?? null,
+    effective_probability: result?.effective_probability ?? null,
     thresholds: result?.thresholds || null,
     verdict: result?.label || "ERROR",
     risk_score: result?.risk_score ?? null,
@@ -67,24 +66,22 @@ function cacheKey(tabId, url) {
 function isValidScanResult(data) {
   if (!data || typeof data !== "object" || Array.isArray(data)) return false;
   if (!["SAFE", "SUSPICIOUS", "PHISHING"].includes(data.label)) return false;
-  if (!Number.isFinite(data.probability) || data.probability < 0 || data.probability > 1) return false;
+  if (!Number.isFinite(data.model_probability) || data.model_probability < 0 || data.model_probability > 1) return false;
+  if (!Number.isFinite(data.effective_probability) || data.effective_probability < 0 || data.effective_probability > 1) return false;
+  if (!["model", "verified_official_route_policy", "local_host_policy"].includes(data.probability_source)) return false;
+  if (!data.reputation || typeof data.reputation.applied !== "boolean" || typeof data.reputation.source !== "string") return false;
   if (!Number.isInteger(data.risk_score) || data.risk_score < 0 || data.risk_score > 100) return false;
   const {safe, phishing} = data.thresholds || {};
   if (!Number.isFinite(safe) || !Number.isFinite(phishing) || safe < 0 || safe >= phishing || phishing > 1) return false;
   if (typeof data.normalized_url !== "string" || typeof data.model_version !== "string") return false;
-  // Older local backends may omit the audit-only raw score; the decision
-  // contract remains validated by probability, thresholds, and label.
-  if (data.model_probability !== undefined
-    && (!Number.isFinite(data.model_probability) || data.model_probability < 0 || data.model_probability > 1)) return false;
   if (typeof data.model_fingerprint !== "string" || !/^[a-f0-9]{64}$/.test(data.model_fingerprint)) return false;
   if (typeof data.request_id !== "string" || !/^[0-9a-f-]{36}$/i.test(data.request_id)) return false;
   if (!data.backend || typeof data.backend.api_endpoint !== "string"
     || !Number.isInteger(data.backend.backend_pid)
     || typeof data.backend.backend_instance_id !== "string") return false;
-  const expectedLabel = data.probability >= phishing
-    ? "PHISHING"
-    : data.probability >= safe ? "SUSPICIOUS" : "SAFE";
-  return data.label === expectedLabel;
+  // Verdict ownership stays with the backend.  The extension validates the
+  // response shape, then consumes its verdict without recalculating it.
+  return true;
 }
 
 function isValidHealth(data) {
@@ -111,23 +108,6 @@ async function scanUrl(tabId, url) {
   const normalizedUrl = new URL(url).href;
   const key = cacheKey(tabId, normalizedUrl);
   const clientScanId = crypto.randomUUID();
-  const cached = scans.get(key);
-  if (cached && Date.now() - cached.at < CACHE_TTL_MS) {
-    try {
-      const {response, data} = await fetchWithTimeout(`${API_BASE}/health`);
-      if (response.ok && isValidHealth(data) && data.model_fingerprint === cached.result.model_fingerprint) {
-        const result = {
-          ...cached.result,
-          diagnostics: {...cached.result.diagnostics, client_scan_id: clientScanId, cache_hit: true}
-        };
-        logScan(normalizedUrl, result);
-        return result;
-      }
-    } catch {
-      scans.delete(key);
-    }
-    scans.delete(key);
-  }
   if (inFlight.has(key)) return inFlight.get(key);
 
   const request = fetchWithTimeout(`${API_BASE}/scan`, {
@@ -141,7 +121,6 @@ async function scanUrl(tabId, url) {
       ...data,
       diagnostics: {...data.diagnostics, client_scan_id: clientScanId, cache_hit: false}
     };
-    scans.set(key, {at: Date.now(), result});
     logScan(normalizedUrl, result);
     const navigation = latestNavigations.get(tabId);
     if (!navigation || navigation.url === normalizedUrl) setBadge(tabId, result.label);
@@ -208,7 +187,6 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
 });
 
 chrome.tabs.onRemoved.addListener(tabId => {
-  for (const key of scans.keys()) if (key.startsWith(`${tabId}:`)) scans.delete(key);
   for (const key of inFlight.keys()) if (key.startsWith(`${tabId}:`)) inFlight.delete(key);
   bypasses.delete(tabId);
   latestNavigations.delete(tabId);

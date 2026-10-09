@@ -17,19 +17,24 @@ TRUSTED_DOMAINS = {
     "fast.com",
 }
 
-# This is an explicit, separately-audited reputation policy.  It is deliberately
-# an exact-host list (not a suffix allowlist), so `google.com.evil.example` and
-# unapproved subdomains cannot inherit the policy.  The ML score is retained in
-# every response for auditability; this policy only prevents known official hosts
-# from being blocked because of URL-shape/source confounding in the legacy model.
-VERIFIED_LEGITIMATE_HOSTS = {
-    "chatgpt.com",
-    "www.instagram.com",
-    "www.google.com",
-    "accounts.google.com",
-    "github.com",
-    "www.microsoft.com",
+# This is deliberately a small, auditable *exact-host* reputation policy, not
+# a brand-name or suffix allowlist.  It exists to prevent URL-shape bias from
+# blocking ordinary routes on verified official sites.  The model score is
+# always returned unchanged alongside any policy-adjusted decision.
+#
+# Every host is intentionally spelled out: neither arbitrary subdomains nor
+# strings such as ``netflix.com.attacker.example`` can match this policy.
+VERIFIED_OFFICIAL_HOSTS = {
+    "chatgpt.com": {"/"},
+    "www.youtube.com": {"/"},
+    "gemini.google.com": {"/app"},
+    "mail.google.com": {"/mail/u/0/"},
+    "netflix.com": {"/browse"},
+    "www.netflix.com": {"/browse"},
+    "www.canva.com": {"/templates"},
+    "www.instagram.com": {"/accounts/onetap/"},
 }
+AMAZON_SHOPPING_HOSTS = {"amazon.com", "www.amazon.com"}
 
 SUSPICIOUS_TLDS = {".tk", ".ml", ".ga", ".cf", ".xyz", ".top"}
 SHORTENER_DOMAINS = {

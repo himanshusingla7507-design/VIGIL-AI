@@ -7,7 +7,7 @@ The Flask API runs on `http://127.0.0.1:5000` by default (`VIGIL_PORT` changes t
 Returns `200` when the model bundle loads:
 
 ```json
-{"status":"ok","model_loaded":true,"model_version":"v2.1.0"}
+{"status":"ok","model_loaded":true,"model_version":"v3.0.0"}
 ```
 
 Returns `503` with `status: "degraded"` when the bundle is unavailable.
@@ -30,12 +30,13 @@ Response shape:
 {
   "url": "https://example.com",
   "normalized_url": "https://example.com",
-  "label": "SUSPICIOUS",
-  "risk_score": 6,
+  "label": "SAFE",
+  "risk_score": 0,
   "probability": 0.165493,
   "model_probability": 0.165493,
+  "effective_probability": 0.165493,
   "probability_source": "model",
-  "reputation": {"applied": false, "host": "example.com", "source": "model", "model_probability": 0.165493},
+  "reputation": {"applied": false, "host": "example.com", "source": "model", "model_probability": 0.165493, "effective_probability": 0.165493},
   "evidence": [{
     "id": "intermediate_model_score",
     "severity": "warning",
@@ -46,15 +47,21 @@ Response shape:
     "value": 0.165493
   }],
   "features": {"URLLength": 20},
-  "model_version": "v2.1.0",
-  "thresholds": {"safe": 0.13140956380602112, "phishing": 0.6961575221255231},
+  "model_version": "v3.0.0",
+  "thresholds": {"safe": 0.25, "phishing": 0.9106962115698227},
   "scanned_at": "2026-10-04T00:00:00+00:00"
 }
 ```
 
-The exact evidence and feature map vary by URL. `model_probability` is the calibrated model output. Usually `probability` is the same value and `probability_source` is `model`. For the small, audited exact-host reputation policy, `probability_source` is `verified_exact_host_policy`: `model_probability` remains available for audit, while `probability`, `label`, and `risk_score` are the effective decision values. The policy never matches suffixes or arbitrary subdomains. `risk_score` maps the effective probability between the configured SAFE and PHISHING thresholds to 0–100.
+The exact evidence and feature map vary by URL. `model_probability` is the calibrated model output. Usually `probability` is the same value and `probability_source` is `model`; when a documented policy applies, `model_probability` remains available for audit while `probability`, `label`, and `risk_score` describe the effective decision. `risk_score` maps the effective probability between the configured SAFE and PHISHING thresholds to 0–100.
 
 ## History
+
+The policy name and contract in the preceding legacy note are superseded by the current decision contract below.
+
+### Current decision contract
+
+`model_probability` is the raw calibrated output. `effective_probability` is the value used for `label` and `risk_score`; legacy `probability` is the same effective value for compatibility. `verified_official_route_policy` retains the raw score and applies only to exact approved HTTPS hosts and routes, rejecting redirect-like destinations and authority tricks. For Amazon, only `amazon.com` and `www.amazon.com` shopping routes (home, search, cart, product detail, and the standard buy handler) qualify; lookalike/subdomains, malformed product IDs, and URLs with redirect destinations still use the model score. `local_host_policy` prevents loopback IP addresses (`127.0.0.0/8` and `::1`) and the reserved `localhost`/`.localhost` names from being blocked by URL-only model scores; the raw model probability is still returned for audit. Other private-network IPs continue to use the model. The extension consumes the backend `label` without recalculating a verdict.
 
 - `GET /history` returns up to the latest 100 stored scans.
 - `GET /history/<id>` returns one scan or `404` with `{"error":"not_found",...}`.

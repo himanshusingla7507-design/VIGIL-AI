@@ -56,7 +56,7 @@ function renderResult(result) {
       model_version: result.model_version,
       model_fingerprint: result.model_fingerprint,
       raw_fold_probabilities: result.diagnostics?.raw_fold_probabilities || null,
-      calibrated_probability: result.probability,
+      calibrated_probability: result.model_probability,
       thresholds: result.thresholds,
       verdict: result.label,
       risk_score: result.risk_score,

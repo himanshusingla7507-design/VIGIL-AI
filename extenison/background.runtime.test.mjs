@@ -24,6 +24,10 @@ function result(url, label, probability = label === "SAFE" ? 0.06 : label === "S
     normalized_url: new URL(url).href,
     label,
     probability,
+    model_probability: probability,
+    effective_probability: probability,
+    probability_source: "model",
+    reputation: {applied: false, host: new URL(url).hostname, source: "model", model_probability: probability, effective_probability: probability},
     risk_score,
     thresholds,
     request_id: requestId,
@@ -163,6 +167,23 @@ test("only an explicit PHISHING verdict redirects to the blocked page", async ()
   assert.match(worker.updates[0].url, /^chrome-extension:\/\/vigil\/blocked\.html\?token=/);
 });
 
+test("local-host policy verdicts are accepted and do not block localhost navigation", async () => {
+  const localUrl = "http://localhost:5173/";
+  const localResult = result(localUrl, "SAFE");
+  localResult.probability_source = "local_host_policy";
+  localResult.reputation = {
+    applied: true,
+    host: "localhost",
+    source: "local_host_policy",
+    model_probability: 0.999,
+    effective_probability: 0
+  };
+  const worker = loadWorker(async () => new Response(JSON.stringify(localResult), {status: 200}));
+  await worker.navigate({tabId: 7, frameId: 0, url: localUrl});
+  await waitForWorker();
+  assert.deepEqual(worker.updates, []);
+});
+
 test("blocked-page bypass remains one-time and does not re-scan its redirect", async () => {
   let scanCalls = 0;
   const phishingUrl = "http://secure-login-paypal-account.xyz/";
@@ -192,9 +213,6 @@ test("backend errors, malformed verdicts, and timeout all fail open", async t =>
     ["malformed response", async () => new Response("not JSON", {status: 200})],
     ["unknown verdict", async () => new Response(JSON.stringify({label: "UNKNOWN"}), {status: 200})],
     ["missing verdict", async () => new Response(JSON.stringify({probability: 0.99}), {status: 200})],
-    ["phishing verdict below its threshold", async () => new Response(JSON.stringify({
-      ...result("https://ordinary.example/", "PHISHING", 0.4)
-    }), {status: 200})],
     ["phishing verdict missing thresholds", async () => {
       const invalid = result("https://ordinary.example/", "PHISHING");
       delete invalid.thresholds;
@@ -220,7 +238,7 @@ test("backend errors, malformed verdicts, and timeout all fail open", async t =>
   }
 });
 
-test("cache entries are isolated by tab and normalized URL", async () => {
+test("fresh decisions are isolated by tab and normalized URL", async () => {
   const scannedUrls = [];
   const worker = loadWorker(async (_url, options) => {
     if (_url.endsWith("/health")) return new Response(JSON.stringify(healthResult()), {status: 200});
@@ -239,7 +257,7 @@ test("cache entries are isolated by tab and normalized URL", async () => {
   assert.equal(new Set(scannedUrls).size, 2);
 });
 
-test("a cache hit preserves the backend response and reports its provenance", async () => {
+test("each completed scan requests a fresh backend decision", async () => {
   let scanCount = 0;
   const worker = loadWorker(async (url, options) => {
     if (url.endsWith("/health")) return new Response(JSON.stringify(healthResult()), {status: 200});
@@ -248,15 +266,13 @@ test("a cache hit preserves the backend response and reports its provenance", as
     return new Response(JSON.stringify(result(scannedUrl, "SAFE")), {status: 200});
   });
   const first = await send(worker.message, {type: "SCAN_CURRENT_TAB"});
-  const cached = await send(worker.message, {type: "SCAN_CURRENT_TAB"});
-  assert.equal(first.result.label, cached.result.label);
-  assert.equal(first.result.probability, cached.result.probability);
-  assert.equal(first.result.model_fingerprint, cached.result.model_fingerprint);
-  assert.equal(cached.result.diagnostics.cache_hit, true);
-  assert.equal(scanCount, 1);
+  const second = await send(worker.message, {type: "SCAN_CURRENT_TAB"});
+  assert.equal(first.result.label, second.result.label);
+  assert.equal(first.result.probability, second.result.probability);
+  assert.equal(scanCount, 2);
 });
 
-test("cached results are invalidated when the backend model fingerprint changes", async () => {
+test("a fresh scan observes a backend model fingerprint change", async () => {
   let currentFingerprint = fingerprint;
   let scanCount = 0;
   const worker = loadWorker(async (url, options) => {

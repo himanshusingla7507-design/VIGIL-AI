@@ -8,18 +8,70 @@
 </head>
 <body>
   <main class="interstitial" aria-labelledby="title">
-    <header class="brand"><span class="mark" aria-hidden="true">V</span><span>VIGIL</span><span class="product">URL protection</span></header>
+    <header class="brand">
+      <span class="mark" aria-hidden="true">V</span>
+      <span>VIGIL</span>
+      <span class="product">URL protection</span>
+      <div class="header-live-clock">
+        <span class="live-clock-dot" aria-hidden="true"></span>
+        <span id="live-clock">--:--:--</span>
+      </div>
+    </header>
     <section class="warning-card">
-      <p class="eyebrow">Security warning</p>
-      <div class="title-row"><span class="warning-mark" aria-hidden="true">!</span><div><h1 id="title">This page was blocked</h1><p class="lede">Backend verdict: <strong id="verdict">Loading</strong>. VIGIL classified this navigation as high risk.</p></div></div>
-      <div class="url-block"><span class="eyebrow">Blocked URL</span><code id="blocked-url">Loading blocked URL…</code></div>
-      <div class="metrics"><div><span>Risk score</span><strong id="risk">—</strong><small>/100</small></div><div><span>Effective probability</span><strong id="probability">—</strong></div></div>
-      <section class="evidence" aria-labelledby="evidence-title"><div class="section-head"><h2 id="evidence-title">Why VIGIL blocked this</h2><span id="model"></span></div><ul id="evidence-list"></ul></section>
+      <div class="warning-header-row">
+        <p class="eyebrow">Security warning</p>
+        <div class="blocked-timestamp-badge">
+          <span>BLOCKED AT:</span>
+          <strong id="blocked-timestamp">Recording event time…</strong>
+        </div>
+      </div>
+      <div class="title-row">
+        <span class="warning-mark" aria-hidden="true">!</span>
+        <div>
+          <h1 id="title">This page was blocked</h1>
+          <p class="lede">Backend verdict: <strong id="verdict">Loading</strong>. VIGIL classified this navigation as high risk.</p>
+        </div>
+      </div>
+      <div class="url-block">
+        <div class="url-header-row">
+          <span class="eyebrow">Blocked URL</span>
+          <button class="copy-url-btn" id="copy-url" type="button" aria-label="Copy blocked URL">Copy URL</button>
+        </div>
+        <code id="blocked-url">Loading blocked URL…</code>
+      </div>
+      <div class="metrics">
+        <div>
+          <span>Risk score</span>
+          <strong id="risk">—</strong>
+          <small>/100</small>
+        </div>
+        <div>
+          <span>Effective probability</span>
+          <strong id="probability">—</strong>
+        </div>
+        <div>
+          <span>Model probability</span>
+          <strong id="raw-probability">—</strong>
+        </div>
+      </div>
+      <section class="evidence" aria-labelledby="evidence-title">
+        <div class="section-head">
+          <h2 id="evidence-title">Why VIGIL blocked this</h2>
+          <span id="model"></span>
+        </div>
+        <ul id="evidence-list"></ul>
+      </section>
       <p class="error" id="error" hidden></p>
-      <div class="actions"><button class="primary" id="back" type="button">← Go back to safety</button><button class="secondary" id="more" type="button" aria-expanded="false">More options</button></div>
-      <div class="advanced" id="advanced" hidden><p>Proceeding will open a URL VIGIL classified as high risk.</p><button class="danger" id="proceed" type="button">Proceed anyway</button></div>
+      <div class="actions">
+        <button class="primary" id="back" type="button">← Go back to safety</button>
+        <button class="secondary" id="more" type="button" aria-expanded="false">More options</button>
+      </div>
+      <div class="advanced" id="advanced" hidden>
+        <p>Proceeding will open a URL VIGIL classified as high risk.</p>
+        <button class="danger" id="proceed" type="button">Proceed anyway</button>
+      </div>
     </section>
-    <footer>VIGIL URL Protection · URL-only security assessment</footer>
+    <footer>VIGIL URL Protection · URL-only security assessment · Zero-execution analysis</footer>
   </main>
   <script src="blocked.js"></script>
 </body>

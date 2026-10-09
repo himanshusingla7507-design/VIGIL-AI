@@ -1,17 +1,39 @@
-import copy, json, os, sqlite3
+import copy, json, math, os, sqlite3, time
 import uuid
 from contextlib import contextmanager
 from urllib.parse import urlsplit, urlunsplit
-from flask import Flask, jsonify, request
+from flask import Flask, Response, jsonify, request
 from flask_cors import CORS
 from service import model_info, scan
 
+from legal_knowledge import get_legal_knowledge_storage
+from scam_broadcast import get_scam_case_storage
+from threat_intel import (
+    StreamEvent,
+    get_threat_broadcaster,
+    get_threat_pipeline,
+    get_threat_scheduler,
+    get_threat_storage,
+)
+
 app = Flask(__name__)
-app.config["MAX_CONTENT_LENGTH"] = 4096
-CORS(app, resources={r"/*": {"origins": os.getenv("VIGIL_FRONTEND_ORIGIN", "http://localhost:5173")}})
+app.config["MAX_CONTENT_LENGTH"] = 65536  # Support slightly larger payloads for batch operations while staying bounded
+CORS(app, resources={r"/*": {"origins": "*"}})
 DB_PATH = os.path.join(os.path.dirname(__file__), "vigil_history.sqlite3")
 API_INSTANCE_ID = str(uuid.uuid4())
 DEBUG_DIAGNOSTICS = os.getenv("VIGIL_DEBUG", "").lower() in {"1", "true", "yes"}
+
+# Initialize threat intel, scam broadcast, and legal knowledge subsystems
+threat_storage = get_threat_storage()
+threat_broadcaster = get_threat_broadcaster()
+threat_pipeline = get_threat_pipeline()
+threat_scheduler = get_threat_scheduler()
+scam_storage = get_scam_case_storage()
+legal_storage = get_legal_knowledge_storage()
+
+# Automatically start ingestion scheduler daemon unless explicitly disabled in tests
+if os.getenv("VIGIL_DISABLE_SCHEDULER", "").lower() not in {"1", "true", "yes"}:
+    threat_scheduler.start(initial_sync=True)
 
 def _backend_identity(endpoint):
     return {
@@ -24,7 +46,10 @@ def _backend_identity(endpoint):
 def db():
     conn = sqlite3.connect(DB_PATH, timeout=5)
     try:
+        conn.execute("PRAGMA journal_mode=WAL")
+        conn.execute("PRAGMA synchronous=NORMAL")
         conn.execute("CREATE TABLE IF NOT EXISTS scans (id INTEGER PRIMARY KEY AUTOINCREMENT, scanned_at TEXT NOT NULL, url TEXT NOT NULL, result TEXT NOT NULL)")
+        conn.execute("CREATE INDEX IF NOT EXISTS idx_scans_scanned_at ON scans(scanned_at DESC)")
         yield conn
         conn.commit()
     except Exception:
@@ -105,7 +130,8 @@ def scan_route():
                 "model_version": result["model_version"],
                 "model_fingerprint": result["model_fingerprint"],
                 "raw_fold_probabilities": result["diagnostics"]["raw_fold_probabilities"],
-                "calibrated_probability": result["probability"],
+                "calibrated_probability": result["model_probability"],
+                "effective_probability": result["effective_probability"],
                 "thresholds": result["thresholds"],
                 "verdict": result["label"],
                 "risk_score": result["risk_score"],
@@ -130,5 +156,234 @@ def history_item(item_id):
 def clear_history():
     with db() as conn: conn.execute("DELETE FROM scans")
     return jsonify({"status": "cleared"})
+
+# ==========================================
+# MODULE 1: GLOBAL SCAMWATCH LIVE (SSE & REST)
+# ==========================================
+
+@app.get("/threat-feed/stream")
+def threat_feed_stream():
+    """
+    Live Server-Sent Events (SSE) feed.
+    Streams new threat indicators, stats updates, and source health changes without page refresh.
+    Supports Last-Event-ID for reconnection recovery.
+    """
+    client_id, q = threat_broadcaster.subscribe()
+
+    last_event_id = request.headers.get("Last-Event-ID") or request.args.get("last_event_id")
+    initial_events = []
+    if last_event_id:
+        try:
+            parts = last_event_id.split("_")
+            cursor_id = int(parts[1]) if len(parts) >= 2 and parts[1].isdigit() else int(parts[0])
+            missed = threat_storage.get_indicators_since(cursor_id, limit=50)
+            for item in missed:
+                initial_events.append(
+                    StreamEvent(
+                        event_id=f"evt_{item.id}_{int(time.time()*1000)}",
+                        event_type="indicator.new",
+                        indicator=item.to_dict(),
+                        stats=None,
+                        source_health=None,
+                        source_timestamp=item.source_timestamp,
+                        ingested_at=item.ingested_at,
+                        persisted_at=item.ingested_at,
+                        emitted_at=item.ingested_at,
+                    )
+                )
+        except Exception:
+            pass
+
+    response = Response(
+        threat_broadcaster.sse_event_generator(
+            client_id=client_id,
+            q=q,
+            initial_events=initial_events,
+        ),
+        mimetype="text/event-stream",
+    )
+    response.headers["Cache-Control"] = "no-cache, no-transform"
+    response.headers["X-Accel-Buffering"] = "no"
+    response.headers["Connection"] = "keep-alive"
+    return response
+
+@app.get("/threat-feed/indicators")
+def threat_feed_indicators():
+    """Paginated threat indicators query with filtering and search."""
+    page = request.args.get("page", 1, type=int)
+    limit = request.args.get("limit", 50, type=int)
+    source = request.args.get("source")
+    category = request.args.get("category")
+    status = request.args.get("status")
+    search = request.args.get("q")
+
+    indicators, total = threat_storage.query_indicators(
+        page=page,
+        limit=limit,
+        source=source,
+        category=category,
+        status=status,
+        search=search,
+    )
+
+    total_pages = math.ceil(total / limit) if total > 0 else 1
+    return jsonify({
+        "indicators": [ind.to_dict() for ind in indicators],
+        "total": total,
+        "page": page,
+        "limit": limit,
+        "total_pages": total_pages,
+    })
+
+@app.get("/threat-feed/stats")
+def threat_feed_stats():
+    """Return aggregated live feed statistics."""
+    stats = threat_storage.get_feed_stats(active_stream_clients=threat_broadcaster.client_count)
+    return jsonify(stats.to_dict())
+
+@app.get("/threat-feed/sources")
+def threat_feed_sources():
+    """Return status and health metrics for all upstream threat providers."""
+    for p in threat_scheduler.providers:
+        threat_storage.save_source_status(p.get_source_status())
+    statuses = threat_storage.get_all_source_statuses()
+    return jsonify([s.to_dict() for s in statuses])
+
+@app.post("/threat-feed/sync")
+def threat_feed_sync():
+    """Trigger on-demand sync of upstream threat intelligence feeds."""
+    limit = request.args.get("limit", 150, type=int)
+    results = threat_scheduler.trigger_all_sync(limit=limit)
+    return jsonify({"status": "completed", "results": results})
+
+@app.post("/threat-feed/test-inject")
+def threat_feed_test_inject():
+    """
+    Test injection endpoint for automated testing and verifying real-time live feed updates.
+    Broadcasts the newly injected threat indicator via SSE.
+    """
+    if not request.is_json:
+        return err("invalid_json", "Request body must be JSON.", 400)
+    data = request.get_json(silent=True) or {}
+    url = data.get("url")
+    if not url or not isinstance(url, str):
+        return err("missing_url", "URL is required for test indicator injection.", 400)
+
+    source = data.get("source", "test_feed")
+    indicator_type = data.get("indicator_type", "phishing_url")
+    threat_type = data.get("threat_type", "synthetic_threat_test")
+    tags = data.get("tags", ["test_injection", "live_stream_verification"])
+    source_timestamp = data.get("source_timestamp")
+    status = data.get("status", "active")
+
+    indicator = threat_pipeline.inject_test_indicator(
+        url=url,
+        source=source,
+        indicator_type=indicator_type,
+        threat_type=threat_type,
+        tags=tags,
+        source_timestamp=source_timestamp,
+        status=status,
+    )
+    return jsonify({"status": "injected", "indicator": indicator.to_dict()})
+
+# ==========================================
+# MODULE 2: CYBER SCAM CASE BROADCAST ROUTES
+# ==========================================
+
+@app.get("/scam-cases")
+def list_scam_cases():
+    """List verified cyber scam cases with filtering and search."""
+    page = request.args.get("page", 1, type=int)
+    limit = request.args.get("limit", 20, type=int)
+    scam_type = request.args.get("scam_type")
+    status = request.args.get("status")
+    severity = request.args.get("severity")
+    search = request.args.get("q")
+
+    cases, total = scam_storage.query_cases(
+        page=page,
+        limit=limit,
+        scam_type=scam_type,
+        status=status,
+        severity=severity,
+        search=search,
+    )
+    total_pages = math.ceil(total / limit) if total > 0 else 1
+    return jsonify({
+        "cases": [c.to_dict() for c in cases],
+        "total": total,
+        "page": page,
+        "limit": limit,
+        "total_pages": total_pages,
+    })
+
+@app.get("/scam-cases/<string:id_or_slug>")
+def get_scam_case_detail(id_or_slug: str):
+    """Get complete case study with attack chain, recovery steps, and legal references."""
+    case = scam_storage.get_case(id_or_slug)
+    if not case:
+        return err("not_found", "Scam case broadcast was not found.", 404)
+    return jsonify(case.to_dict())
+
+@app.get("/scam-cases/stats")
+def get_scam_stats_route():
+    """Return summary statistics of documented scam cases."""
+    return jsonify(scam_storage.get_scam_stats())
+
+# ==========================================
+# MODULE 3: INDIA DIGITAL RIGHTS & CYBER LAW ROUTES
+# ==========================================
+
+@app.get("/legal-knowledge/instruments")
+def get_legal_instruments():
+    """List legal instruments (Constitution, Acts, Rules, Regulations, Directions)."""
+    category = request.args.get("category")
+    search = request.args.get("q")
+    instruments = legal_storage.get_all_instruments(category=category, search=search)
+    return jsonify([inst.to_dict() for inst in instruments])
+
+@app.get("/legal-knowledge/instruments/<string:inst_id>")
+def get_legal_instrument_detail(inst_id: str):
+    """Get single legal instrument with all provisions, citizen remedies, and official source URL."""
+    inst = legal_storage.get_instrument(inst_id)
+    if not inst:
+        return err("not_found", "Legal instrument was not found.", 404)
+    return jsonify(inst.to_dict())
+
+@app.get("/legal-knowledge/scenarios")
+def get_legal_scenarios():
+    """List real-world cyber scenarios mapped to legal provisions and reporting steps."""
+    search = request.args.get("q")
+    scenarios = legal_storage.get_all_scenarios(search=search)
+    return jsonify([sc.to_dict() for sc in scenarios])
+
+@app.get("/legal-knowledge/scenarios/<string:sc_id>")
+def get_legal_scenario_detail(sc_id: str):
+    """Get single scenario guidance."""
+    sc = legal_storage.get_scenario(sc_id)
+    if not sc:
+        return err("not_found", "Legal scenario was not found.", 404)
+    return jsonify(sc.to_dict())
+
+@app.get("/legal-knowledge/glossary")
+def get_legal_glossary():
+    """List search-enabled cyber legal glossary terms."""
+    search = request.args.get("q")
+    terms = legal_storage.get_glossary(search=search)
+    return jsonify([t.to_dict() for t in terms])
+
+@app.get("/legal-knowledge/guides")
+def get_citizen_guides():
+    """List practical citizen action guides."""
+    category = request.args.get("category")
+    guides = legal_storage.get_guides(category=category)
+    return jsonify([g.to_dict() for g in guides])
+
+@app.get("/legal-knowledge/search")
+def search_legal_knowledge():
+    """Cross-cutting search across instruments, scenarios, glossary, and guides."""
+    query = request.args.get("q", "")
+    return jsonify(legal_storage.search_all(query))
 
 if __name__ == "__main__": app.run(host="127.0.0.1", port=int(os.getenv("VIGIL_PORT", "5000")), debug=False)
