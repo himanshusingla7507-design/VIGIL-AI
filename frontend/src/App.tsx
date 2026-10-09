@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { lazy, Suspense, useEffect, useState } from 'react'
 import { motion } from 'motion/react'
 import { api } from './services/api'
 import type { ScanResult } from './types'
@@ -10,6 +10,10 @@ import { LegalKnowledgePage } from './pages/LegalKnowledgePage'
 import { HistoryPage } from './pages/HistoryPage'
 import { AnalysisPage } from './pages/AnalysisPage'
 import { AboutPage } from './pages/AboutPage'
+
+const QrScannerPage = lazy(() =>
+  import('./pages/QrScannerPage').then(module => ({ default: module.QrScannerPage }))
+)
 
 export default function App() {
   const [page, setPage] = useState<Page>('scan')
@@ -35,7 +39,9 @@ export default function App() {
   }
 
   const content =
-    page === 'scan' ? (
+    page === 'qr' ? (
+      <QrScannerPage />
+    ) : page === 'scan' ? (
       <ScanPage result={result} onResult={setResult} initialUrl={inspectUrl} />
     ) : page === 'feed' ? (
       <FeedPage onInspectUrl={handleInspectUrl} />
@@ -62,7 +68,9 @@ export default function App() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.2 }}
       >
-        {content}
+        <Suspense fallback={<div className="page-container qr-page" role="status">Loading scanner…</div>}>
+          {content}
+        </Suspense>
       </motion.div>
     </Shell>
   )
