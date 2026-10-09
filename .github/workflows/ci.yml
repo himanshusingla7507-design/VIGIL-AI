@@ -13,8 +13,12 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+          cache: pip
+          cache-dependency-path: |
+            requirements.txt
+            requirements.lock
       - name: Install Python dependencies
-        run: python -m pip install -r requirements.txt
+        run: python -m pip install -r requirements.txt -c requirements.lock
       - name: Compile Python modules
         run: python -m py_compile api.py service.py phishing_detector.py feature_extractor.py train_model.py prepare_dataset.py evaluate_model.py
       - name: Run Python tests
@@ -22,7 +26,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24.19.0
           cache: npm
           cache-dependency-path: frontend/package-lock.json
       - name: Install frontend dependencies
@@ -30,7 +34,7 @@ jobs:
         run: npm ci
       - name: Run frontend tests
         working-directory: frontend
-        run: npm test -- --run
+        run: npm test
       - name: Build frontend
         working-directory: frontend
         run: npm run build

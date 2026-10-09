@@ -14,10 +14,29 @@ function sendWorkerMessage(message) {
 function renderState(state) {
   if (!state?.result) { $("error").hidden = false; $("error").textContent = "VIGIL could not load the scan details. The original URL remains blocked."; return; }
   const result = state.result;
+  if (result.label !== "PHISHING") {
+    $("error").hidden = false; $("error").textContent = "The saved scan verdict does not match this blocked navigation. The original URL remains blocked."; return;
+  }
+  if (globalThis.VIGIL_DEBUG === true) {
+    console.info("[BLOCKED PAGE RESULT]", JSON.stringify({
+      normalized_url: result.normalized_url,
+      hostname: new URL(result.normalized_url).hostname,
+      api_endpoint: result.backend?.api_endpoint || null,
+      request_id: result.request_id,
+      model_version: result.model_version,
+      model_fingerprint: result.model_fingerprint,
+      raw_fold_probabilities: result.diagnostics?.raw_fold_probabilities || null,
+      calibrated_probability: result.probability,
+      thresholds: result.thresholds,
+      verdict: result.label,
+      risk_score: result.risk_score
+    }));
+  }
   $("blocked-url").textContent = state.url || "Unavailable";
+  $("verdict").textContent = result.label;
   $("risk").textContent = String(result.risk_score);
   $("probability").textContent = `${(Number(result.probability) * 100).toFixed(1)}%`;
-  $("model").textContent = result.model_version ? `Model ${result.model_version}` : "";
+  $("model").textContent = result.model_version ? `Model ${result.model_version} · Request ${result.request_id || "unknown"}` : "";
   const evidence = Array.isArray(result.evidence) ? result.evidence : [];
   $("evidence-list").replaceChildren(...evidence.slice(0, 6).map(item => {
     const row = document.createElement("li");

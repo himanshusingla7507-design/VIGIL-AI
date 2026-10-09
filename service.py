@@ -3,12 +3,14 @@ import hashlib
 import hmac
 import json, os, pickle
 import math
+import uuid
 from datetime import datetime, timezone
 from functools import lru_cache
+from urllib.parse import urlsplit
 
 import pandas as pd
 
-from config import PHISHING_THRESHOLD, SAFE_THRESHOLD
+from config import PHISHING_THRESHOLD, SAFE_THRESHOLD, VERIFIED_LEGITIMATE_HOSTS
 from feature_extractor import extract_features, normalize_url
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -33,6 +35,9 @@ def load_model_bundle():
             names = list(pickle.load(f))
     except Exception as exc:
         raise RuntimeError("model_unavailable") from exc
+    metadata["model_fingerprint"] = hashlib.sha256(
+        f"{_sha256_file(MODEL_PATH)}:{_sha256_file(FEATURE_PATH)}".encode("ascii")
+    ).hexdigest()
     return model, names, metadata
 
 
@@ -98,7 +103,50 @@ def _classify(probability, safe_threshold, phishing_threshold):
     return "SAFE", probability
 
 
-def scan(url: str):
+def _verified_host_decision(normalized_url, features, model_probability, thresholds):
+    """Apply the explicit exact-host policy without hiding the ML prediction.
+
+    URL-only ML is currently over-sensitive to common query/path shapes.  A
+    verified-host decision is intentionally narrow: HTTPS, exact approved host,
+    and no authority-level red flags.  It does not trust arbitrary subdomains or
+    lookalikes and never changes the recorded raw model probability.
+    """
+    host = (urlsplit(normalized_url).hostname or "").lower().rstrip(".")
+    authority_is_clean = not any(
+        features.get(name)
+        for name in ("HasUserInfo", "HasPort", "IsDomainIP", "IsShortened", "HasObfuscation")
+    )
+    if (
+        host in VERIFIED_LEGITIMATE_HOSTS
+        and features.get("IsHTTPS") == 1
+        and authority_is_clean
+        and model_probability >= thresholds["safe"]
+    ):
+        effective_probability = min(model_probability, max(0.0, thresholds["safe"] - 1e-6))
+        return {
+            "applied": True,
+            "host": host,
+            "source": "verified_exact_host_policy",
+            "reason": "The exact HTTPS host is in the audited verified-host policy and has no authority-level red flags.",
+            "model_probability": model_probability,
+            "effective_probability": effective_probability,
+        }
+    return {"applied": False, "host": host, "source": "model", "model_probability": model_probability}
+
+
+def _raw_probabilities(model, row):
+    calibrated_classifiers = getattr(model, "calibrated_classifiers_", None)
+    if not calibrated_classifiers:
+        return []
+    probabilities = []
+    for calibrated_classifier in calibrated_classifiers:
+        estimator = calibrated_classifier.estimator
+        classes = list(calibrated_classifier.classes)
+        probabilities.append(float(estimator.predict_proba(row)[0][classes.index(1)]))
+    return probabilities
+
+
+def scan(url: str, request_id=None, include_diagnostics=False):
     if isinstance(url, str) and len(url.strip()) > 2048:
         raise ValueError("url_too_long")
     normalized = normalize_url(url)
@@ -108,32 +156,57 @@ def scan(url: str):
         raise RuntimeError("model_feature_mismatch")
 
     row = pd.DataFrame([[features[n] for n in names]], columns=names)
-    probability = float(model.predict_proba(row)[0][list(model.classes_).index(1)])
+    raw_probabilities = _raw_probabilities(model, row) if include_diagnostics else []
+    model_probability = float(model.predict_proba(row)[0][list(model.classes_).index(1)])
     thresholds = _thresholds_from_metadata(metadata)
     safe_threshold = thresholds["safe"]
     phishing_threshold = thresholds["phishing"]
-    probability = min(max(probability, 0.0), 1.0)
+    model_probability = min(max(model_probability, 0.0), 1.0)
+    policy = _verified_host_decision(normalized, features, model_probability, thresholds)
+    probability = float(policy.get("effective_probability", model_probability))
     label, probability = _classify(probability, safe_threshold, phishing_threshold)
     risk_span = max(phishing_threshold - safe_threshold, 1e-6)
     risk_score = int(round(max(0, min(100, ((probability - safe_threshold) / risk_span) * 100))))
     evidence = _evidence(features)
+    if policy["applied"]:
+        evidence.insert(0, {
+            "id": "verified_exact_host",
+            "severity": "info",
+            "polarity": "positive",
+            "title": "Verified exact host policy applied",
+            "detail": policy["reason"],
+            "feature": None,
+            "value": policy["host"],
+        })
     if label == "SUSPICIOUS":
         evidence.insert(0, {"id": "intermediate_model_score", "severity": "warning", "polarity": "negative", "title": "Intermediate model score", "detail": "The calibrated model score is above the SAFE threshold but below the PHISHING threshold.", "feature": None, "value": round(probability, 6)})
     elif label == "PHISHING":
         evidence.insert(0, {"id": "high_model_score", "severity": "danger", "polarity": "negative", "title": "High model score", "detail": "The calibrated model score meets the PHISHING threshold; this is a URL-only prediction, not proof of site behavior.", "feature": None, "value": round(probability, 6)})
-    return {
+    result = {
         "url": url,
         "normalized_url": normalized,
         "label": label,
         "risk_score": risk_score,
         "probability": round(probability, 6),
-        "model_probability": round(probability, 6),
+        "model_probability": round(model_probability, 6),
+        "probability_source": policy["source"],
+        "reputation": policy,
         "evidence": evidence,
         "features": features,
         "model_version": metadata.get("model_version", "unknown"),
         "thresholds": {"safe": safe_threshold, "phishing": phishing_threshold},
         "scanned_at": datetime.now(timezone.utc).isoformat(),
+        "request_id": request_id or str(uuid.uuid4()),
+        "model_fingerprint": metadata["model_fingerprint"],
     }
+    if include_diagnostics:
+        result["diagnostics"] = {
+            "raw_fold_probabilities": raw_probabilities,
+            "calibrated_probability": round(probability, 6),
+            "raw_model_probability": round(model_probability, 6),
+            "hostname": urlsplit(normalized).hostname,
+        }
+    return result
 
 
 def model_info():

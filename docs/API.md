@@ -34,6 +34,8 @@ Response shape:
   "risk_score": 6,
   "probability": 0.165493,
   "model_probability": 0.165493,
+  "probability_source": "model",
+  "reputation": {"applied": false, "host": "example.com", "source": "model", "model_probability": 0.165493},
   "evidence": [{
     "id": "intermediate_model_score",
     "severity": "warning",
@@ -50,7 +52,7 @@ Response shape:
 }
 ```
 
-The exact evidence and feature map vary by URL. `probability` is the calibrated phishing probability; `risk_score` maps the configured SAFE and PHISHING thresholds to 0–100.
+The exact evidence and feature map vary by URL. `model_probability` is the calibrated model output. Usually `probability` is the same value and `probability_source` is `model`. For the small, audited exact-host reputation policy, `probability_source` is `verified_exact_host_policy`: `model_probability` remains available for audit, while `probability`, `label`, and `risk_score` are the effective decision values. The policy never matches suffixes or arbitrary subdomains. `risk_score` maps the effective probability between the configured SAFE and PHISHING thresholds to 0–100.
 
 ## History
 

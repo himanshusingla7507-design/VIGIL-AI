@@ -7,23 +7,38 @@ const inFlight = new Map();
 const bypasses = new Map();
 const latestNavigations = new Map();
 
-function debugUrl(url) {
-  try {
-    const parsed = new URL(url);
-    return `${parsed.protocol}//${parsed.host}/`;
-  } catch {
-    return "unavailable";
-  }
-}
-
 function logScan(url, result) {
   if (globalThis.VIGIL_DEBUG !== true) return;
-  console.info(`[SCAN]\nURL: ${debugUrl(url)}\nVERDICT: ${result?.label || "ERROR"}\nPROBABILITY: ${result?.probability ?? "n/a"}\nRISK: ${result?.risk_score ?? "n/a"}`);
+  console.info("[SCAN]", JSON.stringify({
+    normalized_url: url,
+    hostname: new URL(url).hostname,
+    api_endpoint: result?.backend?.api_endpoint || `${API_BASE}/scan`,
+    request_id: result?.request_id || null,
+    client_scan_id: result?.diagnostics?.client_scan_id || null,
+    backend_pid: result?.backend?.backend_pid || null,
+    backend_instance_id: result?.backend?.backend_instance_id || null,
+    model_version: result?.model_version || null,
+    model_fingerprint: result?.model_fingerprint || null,
+    raw_fold_probabilities: result?.diagnostics?.raw_fold_probabilities || null,
+    calibrated_probability: result?.probability ?? null,
+    thresholds: result?.thresholds || null,
+    verdict: result?.label || "ERROR",
+    risk_score: result?.risk_score ?? null,
+    cache_hit: result?.diagnostics?.cache_hit ?? false
+  }));
 }
 
-function logBlockDecision(url, verdict, action) {
+function logBlockDecision(url, verdict, action, result = null) {
   if (globalThis.VIGIL_DEBUG !== true) return;
-  console.info(`[BLOCK DECISION]\nURL: ${debugUrl(url)}\nVERDICT: ${verdict}\nACTION: ${action}`);
+  const normalizedUrl = new URL(url).href;
+  console.info("[BLOCK DECISION]", JSON.stringify({
+    normalized_url: normalizedUrl,
+    hostname: new URL(normalizedUrl).hostname,
+    verdict,
+    action,
+    request_id: result?.request_id || null,
+    model_fingerprint: result?.model_fingerprint || null
+  }));
 }
 
 async function fetchWithTimeout(url, options = {}, timeoutMs = 5000) {
@@ -49,6 +64,37 @@ function cacheKey(tabId, url) {
   return `${tabId}:${new URL(url).href}`;
 }
 
+function isValidScanResult(data) {
+  if (!data || typeof data !== "object" || Array.isArray(data)) return false;
+  if (!["SAFE", "SUSPICIOUS", "PHISHING"].includes(data.label)) return false;
+  if (!Number.isFinite(data.probability) || data.probability < 0 || data.probability > 1) return false;
+  if (!Number.isInteger(data.risk_score) || data.risk_score < 0 || data.risk_score > 100) return false;
+  const {safe, phishing} = data.thresholds || {};
+  if (!Number.isFinite(safe) || !Number.isFinite(phishing) || safe < 0 || safe >= phishing || phishing > 1) return false;
+  if (typeof data.normalized_url !== "string" || typeof data.model_version !== "string") return false;
+  // Older local backends may omit the audit-only raw score; the decision
+  // contract remains validated by probability, thresholds, and label.
+  if (data.model_probability !== undefined
+    && (!Number.isFinite(data.model_probability) || data.model_probability < 0 || data.model_probability > 1)) return false;
+  if (typeof data.model_fingerprint !== "string" || !/^[a-f0-9]{64}$/.test(data.model_fingerprint)) return false;
+  if (typeof data.request_id !== "string" || !/^[0-9a-f-]{36}$/i.test(data.request_id)) return false;
+  if (!data.backend || typeof data.backend.api_endpoint !== "string"
+    || !Number.isInteger(data.backend.backend_pid)
+    || typeof data.backend.backend_instance_id !== "string") return false;
+  const expectedLabel = data.probability >= phishing
+    ? "PHISHING"
+    : data.probability >= safe ? "SUSPICIOUS" : "SAFE";
+  return data.label === expectedLabel;
+}
+
+function isValidHealth(data) {
+  return data?.status === "ok"
+    && data.model_loaded === true
+    && typeof data.model_fingerprint === "string"
+    && /^[a-f0-9]{64}$/.test(data.model_fingerprint)
+    && typeof data.backend?.backend_instance_id === "string";
+}
+
 function badgeFor(label) {
   if (label === "PHISHING") return {text: "!", color: "#d96b6b"};
   if (label === "SUSPICIOUS") return {text: "?", color: "#d6a84f"};
@@ -64,25 +110,42 @@ function setBadge(tabId, label, offline = false) {
 async function scanUrl(tabId, url) {
   const normalizedUrl = new URL(url).href;
   const key = cacheKey(tabId, normalizedUrl);
+  const clientScanId = crypto.randomUUID();
   const cached = scans.get(key);
   if (cached && Date.now() - cached.at < CACHE_TTL_MS) {
-    logScan(normalizedUrl, cached.result);
-    return cached.result;
+    try {
+      const {response, data} = await fetchWithTimeout(`${API_BASE}/health`);
+      if (response.ok && isValidHealth(data) && data.model_fingerprint === cached.result.model_fingerprint) {
+        const result = {
+          ...cached.result,
+          diagnostics: {...cached.result.diagnostics, client_scan_id: clientScanId, cache_hit: true}
+        };
+        logScan(normalizedUrl, result);
+        return result;
+      }
+    } catch {
+      scans.delete(key);
+    }
+    scans.delete(key);
   }
   if (inFlight.has(key)) return inFlight.get(key);
 
   const request = fetchWithTimeout(`${API_BASE}/scan`, {
     method: "POST",
-    headers: {"Content-Type": "application/json"},
+    headers: {"Content-Type": "application/json", "X-Vigil-Request-Id": clientScanId},
     body: JSON.stringify({url: normalizedUrl})
   }).then(({response, data}) => {
     if (!response.ok) throw new Error(data?.message || "The VIGIL backend rejected the scan.");
-    if (!data || !["SAFE", "SUSPICIOUS", "PHISHING"].includes(data.label)) throw new Error("The VIGIL backend returned an invalid result.");
-    scans.set(key, {at: Date.now(), result: data});
-    logScan(normalizedUrl, data);
+    if (!isValidScanResult(data) || new URL(data.normalized_url).href !== normalizedUrl) throw new Error("The VIGIL backend returned an invalid result.");
+    const result = {
+      ...data,
+      diagnostics: {...data.diagnostics, client_scan_id: clientScanId, cache_hit: false}
+    };
+    scans.set(key, {at: Date.now(), result});
+    logScan(normalizedUrl, result);
     const navigation = latestNavigations.get(tabId);
-    if (!navigation || navigation.url === normalizedUrl) setBadge(tabId, data.label);
-    return data;
+    if (!navigation || navigation.url === normalizedUrl) setBadge(tabId, result.label);
+    return result;
   }).catch(error => {
     logScan(normalizedUrl, null);
     const navigation = latestNavigations.get(tabId);
@@ -104,21 +167,21 @@ async function blockNavigation(details, navigation) {
   try {
     const result = await scanUrl(details.tabId, details.url);
     if (latestNavigations.get(details.tabId) !== navigation) {
-      logBlockDecision(details.url, result.label, "ALLOW (navigation changed)");
+      logBlockDecision(details.url, result.label, "ALLOW (navigation changed)", result);
       return;
     }
     if (result.label !== "PHISHING") {
-      logBlockDecision(details.url, result.label, "ALLOW");
+      logBlockDecision(details.url, result.label, "ALLOW", result);
       return;
     }
     const token = await saveBlockedState(details.tabId, details.url, result);
     if (latestNavigations.get(details.tabId) !== navigation) {
       await chrome.storage.session.remove(`blocked:${token}`);
-      logBlockDecision(details.url, result.label, "ALLOW (navigation changed)");
+      logBlockDecision(details.url, result.label, "ALLOW (navigation changed)", result);
       return;
     }
     const blockedUrl = chrome.runtime.getURL(`blocked.html?token=${encodeURIComponent(token)}`);
-    logBlockDecision(details.url, result.label, "BLOCK");
+    logBlockDecision(details.url, result.label, "BLOCK", result);
     await chrome.tabs.update(details.tabId, {url: blockedUrl});
   } catch {
     logBlockDecision(details.url, "ERROR", "ALLOW");
@@ -154,8 +217,8 @@ chrome.tabs.onRemoved.addListener(tabId => {
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message?.type === "HEALTH_CHECK") {
     fetchWithTimeout(`${API_BASE}/health`).then(({response, data}) => {
-      if (!response.ok || data?.status !== "ok" || data?.model_loaded !== true) return {state: "BACKEND_OFFLINE"};
-      return {state: "CONNECTED", model_version: data.model_version || null};
+      if (!response.ok || !isValidHealth(data)) return {state: "BACKEND_OFFLINE"};
+      return {state: "CONNECTED", model_version: data.model_version || null, model_fingerprint: data.model_fingerprint, backend: data.backend, api_endpoint: `${API_BASE}/health`};
     }).catch(() => ({state: "BACKEND_OFFLINE"})).then(sendResponse);
     return true;
   }
@@ -170,7 +233,15 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         if (state) return {state: "RESULT", blocked: true, url: state.url, result: state.result};
       }
       if (!tab?.url || !isScannableUrl(tab.url)) return {state: "UNSUPPORTED", url: tab?.url || ""};
-      try { return {state: "RESULT", url: tab.url, result: await scanUrl(tab.id, tab.url)}; }
+      const requestedUrl = new URL(tab.url).href;
+      try {
+        const result = await scanUrl(tab.id, requestedUrl);
+        const currentTabs = await chrome.tabs.query({active: true, currentWindow: true});
+        if (currentTabs[0]?.id !== tab.id || !isScannableUrl(currentTabs[0]?.url) || new URL(currentTabs[0].url).href !== requestedUrl) {
+          return {state: "STALE", url: requestedUrl};
+        }
+        return {state: "RESULT", url: requestedUrl, result};
+      }
       catch (error) { return {state: "OFFLINE", url: tab.url, message: error.message}; }
     }).then(sendResponse);
     return true;

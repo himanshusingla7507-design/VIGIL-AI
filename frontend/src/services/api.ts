@@ -15,7 +15,34 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
 }
 
 export const api = {
-  scanUrl: (url: string) => request<ScanResult>('/scan', { method: 'POST', body: JSON.stringify({ url }) }),
+  scanUrl: async (url: string) => {
+    const requestId = globalThis.crypto?.randomUUID?.()
+    const result = await request<ScanResult>('/scan', {
+      method: 'POST',
+      headers: requestId ? { 'X-Vigil-Request-Id': requestId } : undefined,
+      body: JSON.stringify({ url }),
+    })
+    if (import.meta.env.DEV) {
+      console.info('[VIGIL scan]', JSON.stringify({
+        normalized_url: result.normalized_url,
+        hostname: new URL(result.normalized_url).hostname,
+        api_endpoint: result.backend.api_endpoint,
+        request_id: result.request_id,
+        client_scan_id: requestId || null,
+        backend_pid: result.backend.backend_pid,
+        backend_instance_id: result.backend.backend_instance_id,
+        model_version: result.model_version,
+        model_fingerprint: result.model_fingerprint,
+        raw_fold_probabilities: result.diagnostics?.raw_fold_probabilities || null,
+        calibrated_probability: result.probability,
+        thresholds: result.thresholds,
+        verdict: result.label,
+        risk_score: result.risk_score,
+        cache_hit: false,
+      }))
+    }
+    return result
+  },
   getHistory: () => request<ScanResult[]>('/history'),
   getHistoryItem: (id: number) => request<ScanResult>(`/history/${id}`),
   clearHistory: () => request<{ status: string }>('/history', { method: 'DELETE' }),

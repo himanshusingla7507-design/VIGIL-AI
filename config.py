@@ -17,6 +17,20 @@ TRUSTED_DOMAINS = {
     "fast.com",
 }
 
+# This is an explicit, separately-audited reputation policy.  It is deliberately
+# an exact-host list (not a suffix allowlist), so `google.com.evil.example` and
+# unapproved subdomains cannot inherit the policy.  The ML score is retained in
+# every response for auditability; this policy only prevents known official hosts
+# from being blocked because of URL-shape/source confounding in the legacy model.
+VERIFIED_LEGITIMATE_HOSTS = {
+    "chatgpt.com",
+    "www.instagram.com",
+    "www.google.com",
+    "accounts.google.com",
+    "github.com",
+    "www.microsoft.com",
+}
+
 SUSPICIOUS_TLDS = {".tk", ".ml", ".ga", ".cf", ".xyz", ".top"}
 SHORTENER_DOMAINS = {
     "bit.ly",

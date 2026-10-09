@@ -49,6 +49,75 @@ def test_app_and_api_share_pipeline():
     assert api_result["probability"] == pytest.approx(direct_result["probability"], abs=1e-6)
 
 
+def test_scan_trace_identifies_model_request_and_backend(tmp_path, monkeypatch):
+    import api
+    import uuid
+
+    monkeypatch.setattr(api, "DB_PATH", str(tmp_path / "history.sqlite3"))
+    client = api.app.test_client()
+    health = client.get("/health").get_json()
+    assert health["model_fingerprint"]
+    assert health["backend"]["backend_pid"] > 0
+    assert health["backend"]["api_endpoint"].endswith("/health")
+
+    urls = [
+        "https://chatgpt.com",
+        "https://chatgpt.com/",
+        "https://chatgpt.com/?q=hello",
+        "https://www.instagram.com/accounts/onetap/?lsrc=ci",
+        "https://www.google.com/search?q=cybersecurity",
+        "https://accounts.google.com/signin/v2",
+        "https://github.com",
+        "https://www.microsoft.com/",
+        "https://paypal-login.example.com/verify-account",
+        "http://secure-bank-login.example.com/update-account",
+    ]
+    response_by_url = {}
+    for index, url in enumerate(urls):
+        request_id = str(uuid.uuid4())
+        response = client.post(
+            "/scan",
+            json={"url": url},
+            headers={"X-Vigil-Request-Id": request_id},
+        )
+        result = response.get_json()
+        direct = scan(url)
+
+        assert response.status_code == 200
+        assert result["request_id"] == request_id
+        assert result["normalized_url"] == normalize_url(url)
+        assert result["model_fingerprint"] == health["model_fingerprint"]
+        assert result["backend"]["backend_pid"] == health["backend"]["backend_pid"]
+        assert result["backend"]["backend_instance_id"] == health["backend"]["backend_instance_id"]
+        assert result["backend"]["api_endpoint"].endswith("/scan")
+        assert result["label"] == direct["label"], url
+        assert result["probability"] == pytest.approx(direct["probability"], abs=1e-6), url
+        response_by_url[url] = result
+
+    bare = response_by_url["https://chatgpt.com"]
+    slash = response_by_url["https://chatgpt.com/"]
+    assert bare["label"] == slash["label"]
+    assert bare["probability"] == slash["probability"]
+
+
+def test_development_scan_diagnostics_include_raw_and_calibrated_scores(tmp_path, monkeypatch):
+    import api
+
+    monkeypatch.setattr(api, "DB_PATH", str(tmp_path / "history.sqlite3"))
+    monkeypatch.setattr(api, "DEBUG_DIAGNOSTICS", True)
+    response = api.app.test_client().post(
+        "/scan",
+        json={"url": "https://chatgpt.com/auth/login"},
+    )
+    result = response.get_json()
+
+    assert response.status_code == 200
+    assert result["diagnostics"]["hostname"] == "chatgpt.com"
+    assert len(result["diagnostics"]["raw_fold_probabilities"]) == 3
+    assert result["diagnostics"]["calibrated_probability"] == result["probability"]
+    assert result["thresholds"]["phishing"] > result["thresholds"]["safe"]
+
+
 def test_canonical_variants_have_identical_predictions():
     variants = ["https://fast.com", "https://fast.com/", "https://www.fast.com/"]
     results = [predict_url(url) for url in variants]
@@ -214,3 +283,30 @@ def test_history_redacts_userinfo_query_and_fragment(tmp_path, monkeypatch):
     serialized = str(items[0])
     for secret in ("alice", "secret", "SECRET", "fragment"):
         assert secret not in serialized
+
+
+@pytest.mark.parametrize(
+    "url",
+    [
+        "https://chatgpt.com",
+        "https://chatgpt.com/",
+        "https://chatgpt.com/?q=hello",
+        "https://www.instagram.com/accounts/onetap/?lsrc=ci",
+        "https://www.google.com/search?q=cybersecurity",
+        "https://accounts.google.com/signin/v2",
+        "https://github.com",
+        "https://www.microsoft.com/",
+    ],
+)
+def test_verified_official_hosts_are_not_blocked_by_legacy_url_shape_bias(url):
+    result = scan(url)
+    assert result["label"] != "PHISHING"
+    assert result["probability_source"] == "verified_exact_host_policy"
+    assert result["model_probability"] >= result["probability"]
+
+
+def test_verified_host_policy_does_not_trust_lookalikes_or_unapproved_subdomains():
+    for url in ("https://google.com.evil.example/", "https://evil.google.com/"):
+        result = scan(url)
+        assert result["probability_source"] == "model"
+        assert result["reputation"]["applied"] is False
