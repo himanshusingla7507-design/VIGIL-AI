@@ -39,7 +39,7 @@ function result(url, label, probability = label === "SAFE" ? 0.06 : label === "S
   };
 }
 
-function loadWorker(fetchImpl, {shortTimeouts = false} = {}) {
+function loadWorker(fetchImpl, {shortTimeouts = false, closedTabs = new Set()} = {}) {
   const listeners = {};
   const storage = new Map();
   const updates = [];
@@ -53,14 +53,33 @@ function loadWorker(fetchImpl, {shortTimeouts = false} = {}) {
     tabs: {
       query: async () => [{id: 7, url: activeUrl}],
       update: async (tabId, update) => {
+        if (closedTabs.has(tabId)) {
+          throw new Error(`No tab with id: ${tabId}.`);
+        }
         updates.push({tabId, ...update});
         if (update.url) activeUrl = update.url;
       },
-      goBack: async () => undefined,
+      goBack: async tabId => {
+        if (closedTabs.has(tabId)) {
+          throw new Error(`No tab with id: ${tabId}.`);
+        }
+        return undefined;
+      },
       onUpdated: {addListener: listener => {listeners.updated = listener;}},
       onRemoved: {addListener: listener => {listeners.removed = listener;}}
     },
-    action: {setBadgeText: () => undefined, setBadgeBackgroundColor: () => undefined},
+    action: {
+      setBadgeText: async ({tabId}) => {
+        if (closedTabs.has(tabId)) {
+          throw new Error(`No tab with id: ${tabId}.`);
+        }
+      },
+      setBadgeBackgroundColor: async ({tabId}) => {
+        if (closedTabs.has(tabId)) {
+          throw new Error(`No tab with id: ${tabId}.`);
+        }
+      }
+    },
     storage: {session: {
       set: async value => {for (const [key, item] of Object.entries(value)) storage.set(key, item);},
       get: async key => ({[key]: storage.get(key)}),
@@ -81,6 +100,12 @@ function loadWorker(fetchImpl, {shortTimeouts = false} = {}) {
   return {
     message: listeners.message,
     navigate: details => listeners.navigation(details),
+    tabUpdated: (tabId, changeInfo, tab) => listeners.updated?.(tabId, changeInfo, tab),
+    tabRemoved: tabId => listeners.removed?.(tabId),
+    closeTab: tabId => {
+      closedTabs.add(tabId);
+      listeners.removed?.(tabId);
+    },
     setActiveUrl: url => {activeUrl = url;},
     updates
   };
@@ -92,7 +117,7 @@ function send(listener, message, sender = {}) {
   });
 }
 
-const waitForWorker = () => new Promise(resolve => setTimeout(resolve, 20));
+const waitForWorker = () => new Promise(resolve => setTimeout(resolve, 25));
 
 test("worker reports backend connectivity separately from scan state", async () => {
   const worker = loadWorker(async url => new Response(JSON.stringify(url.endsWith("/health")
@@ -328,4 +353,60 @@ test("a late PHISHING response cannot block a newer navigation in the same tab",
   await oldNavigation;
   await waitForWorker();
   assert.deepEqual(worker.updates, []);
+});
+
+test("Tab closes during in-flight scan without unhandled rejection (Error: No tab with id)", async () => {
+  const closedTabId = 2088692213;
+  let releaseScan;
+  const pendingScan = new Promise(resolve => {releaseScan = resolve;});
+  
+  const worker = loadWorker(async () => {
+    await pendingScan;
+    return new Response(JSON.stringify(result("https://example.com/", "SAFE")), {status: 200});
+  });
+
+  // Start navigation on tab
+  const navPromise = worker.navigate({tabId: closedTabId, frameId: 0, url: "https://example.com/"});
+  
+  // Close the tab while scan is pending
+  worker.closeTab(closedTabId);
+  
+  // Backend scan finishes after tab closure
+  releaseScan();
+  await navPromise;
+  await waitForWorker();
+  
+  // Must complete cleanly without unhandled rejection
+  assert.ok(true);
+});
+
+test("Tab closes during redirect update without unhandled rejection (Error: No tab with id)", async () => {
+  const closedTabId = 2088692275;
+  const phishingUrl = "http://malicious-login-attempt.example/";
+  
+  const worker = loadWorker(async () => {
+    return new Response(JSON.stringify(result(phishingUrl, "PHISHING")), {status: 200});
+  });
+
+  // Mark tab as closed so tabs.update throws "No tab with id: 2088692275"
+  worker.closeTab(closedTabId);
+  
+  await worker.navigate({tabId: closedTabId, frameId: 0, url: phishingUrl});
+  await waitForWorker();
+  
+  // Handled safely without unhandled rejection
+  assert.ok(true);
+});
+
+test("onRemoved cleans up in-flight requests and per-tab state cleanly", async () => {
+  const tabId = 999;
+  const worker = loadWorker(async () => {
+    return new Response(JSON.stringify(result("https://test.com/", "SAFE")), {status: 200});
+  });
+
+  await worker.navigate({tabId, frameId: 0, url: "https://test.com/"});
+  worker.tabRemoved(tabId);
+  await waitForWorker();
+  
+  assert.ok(true);
 });

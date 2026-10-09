@@ -5,6 +5,18 @@ const inFlight = new Map();
 const bypasses = new Map();
 const latestNavigations = new Map();
 
+function isTabClosedError(error) {
+  if (!error) return false;
+  const msg = error?.message || String(error);
+  return (
+    msg.includes("No tab with id") ||
+    msg.includes("Tabs cannot be queried") ||
+    msg.includes("tab was closed") ||
+    msg.includes("Invalid tab ID") ||
+    msg.includes("The tab was closed")
+  );
+}
+
 function logScan(url, result) {
   if (globalThis.VIGIL_DEBUG !== true) return;
   console.info("[SCAN]", JSON.stringify({
@@ -79,8 +91,6 @@ function isValidScanResult(data) {
   if (!data.backend || typeof data.backend.api_endpoint !== "string"
     || !Number.isInteger(data.backend.backend_pid)
     || typeof data.backend.backend_instance_id !== "string") return false;
-  // Verdict ownership stays with the backend.  The extension validates the
-  // response shape, then consumes its verdict without recalculating it.
   return true;
 }
 
@@ -98,10 +108,19 @@ function badgeFor(label) {
   return {text: "", color: "#69c995"};
 }
 
-function setBadge(tabId, label, offline = false) {
+async function setBadge(tabId, label, offline = false) {
+  if (typeof tabId !== "number" || tabId < 0) return;
   const badge = offline ? {text: "–", color: "#7e8b92"} : badgeFor(label);
-  chrome.action.setBadgeText({tabId, text: badge.text});
-  chrome.action.setBadgeBackgroundColor({tabId, color: badge.color});
+  try {
+    await Promise.all([
+      chrome.action.setBadgeText({tabId, text: badge.text}),
+      chrome.action.setBadgeBackgroundColor({tabId, color: badge.color})
+    ]);
+  } catch (error) {
+    if (!isTabClosedError(error) && globalThis.VIGIL_DEBUG === true) {
+      console.warn("[BADGE ERROR]", error?.message || error);
+    }
+  }
 }
 
 async function scanUrl(tabId, url) {
@@ -114,21 +133,27 @@ async function scanUrl(tabId, url) {
     method: "POST",
     headers: {"Content-Type": "application/json", "X-Vigil-Request-Id": clientScanId},
     body: JSON.stringify({url: normalizedUrl})
-  }).then(({response, data}) => {
+  }).then(async ({response, data}) => {
     if (!response.ok) throw new Error(data?.message || "The VIGIL backend rejected the scan.");
-    if (!isValidScanResult(data) || new URL(data.normalized_url).href !== normalizedUrl) throw new Error("The VIGIL backend returned an invalid result.");
+    if (!isValidScanResult(data) || new URL(data.normalized_url).href !== normalizedUrl) {
+      throw new Error("The VIGIL backend returned an invalid result.");
+    }
     const result = {
       ...data,
       diagnostics: {...data.diagnostics, client_scan_id: clientScanId, cache_hit: false}
     };
     logScan(normalizedUrl, result);
     const navigation = latestNavigations.get(tabId);
-    if (!navigation || navigation.url === normalizedUrl) setBadge(tabId, result.label);
+    if (!navigation || navigation.url === normalizedUrl) {
+      await setBadge(tabId, result.label);
+    }
     return result;
-  }).catch(error => {
+  }).catch(async error => {
     logScan(normalizedUrl, null);
     const navigation = latestNavigations.get(tabId);
-    if (!navigation || navigation.url === normalizedUrl) setBadge(tabId, null, true);
+    if (!navigation || navigation.url === normalizedUrl) {
+      await setBadge(tabId, null, true);
+    }
     throw error;
   }).finally(() => inFlight.delete(key));
 
@@ -138,7 +163,15 @@ async function scanUrl(tabId, url) {
 
 async function saveBlockedState(tabId, url, result) {
   const token = crypto.randomUUID();
-  await chrome.storage.session.set({[`blocked:${token}`]: {tabId, url, result, createdAt: Date.now()}});
+  await chrome.storage.session.set({
+    [`blocked:${token}`]: {
+      tabId,
+      url,
+      result,
+      createdAt: Date.now(),
+      blockedAt: result.scanned_at || new Date().toISOString()
+    }
+  });
   return token;
 }
 
@@ -155,14 +188,20 @@ async function blockNavigation(details, navigation) {
     }
     const token = await saveBlockedState(details.tabId, details.url, result);
     if (latestNavigations.get(details.tabId) !== navigation) {
-      await chrome.storage.session.remove(`blocked:${token}`);
+      await chrome.storage.session.remove(`blocked:${token}`).catch(() => undefined);
       logBlockDecision(details.url, result.label, "ALLOW (navigation changed)", result);
       return;
     }
     const blockedUrl = chrome.runtime.getURL(`blocked.html?token=${encodeURIComponent(token)}`);
     logBlockDecision(details.url, result.label, "BLOCK", result);
-    await chrome.tabs.update(details.tabId, {url: blockedUrl});
-  } catch {
+    try {
+      await chrome.tabs.update(details.tabId, {url: blockedUrl});
+    } catch (err) {
+      if (!isTabClosedError(err) && globalThis.VIGIL_DEBUG === true) {
+        console.warn("[UPDATE BLOCKED TAB ERROR]", err?.message || err);
+      }
+    }
+  } catch (error) {
     logBlockDecision(details.url, "ERROR", "ALLOW");
     // Fail open with an honest offline state. A failed request is not a phishing verdict.
   }
@@ -170,7 +209,11 @@ async function blockNavigation(details, navigation) {
 
 chrome.webNavigation.onBeforeNavigate.addListener(details => {
   if (details.frameId !== 0) return;
-  const navigation = {url: isScannableUrl(details.url) ? new URL(details.url).href : null};
+  const navigation = {
+    url: isScannableUrl(details.url) ? new URL(details.url).href : null,
+    navigationId: details.navigationId || null,
+    timestamp: Date.now()
+  };
   latestNavigations.set(details.tabId, navigation);
   if (!isScannableUrl(details.url)) return;
   const bypassUrl = bypasses.get(details.tabId);
@@ -178,16 +221,22 @@ chrome.webNavigation.onBeforeNavigate.addListener(details => {
     bypasses.delete(details.tabId);
     return;
   }
-  return blockNavigation(details, navigation);
+  void blockNavigation(details, navigation).catch(err => {
+    if (!isTabClosedError(err) && globalThis.VIGIL_DEBUG === true) {
+      console.warn("[NAV BLOCK ERROR]", err?.message || err);
+    }
+  });
 });
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-  if (changeInfo.status !== "complete" || !isScannableUrl(tab.url)) return;
+  if (changeInfo.status !== "complete" || !tab?.url || !isScannableUrl(tab.url)) return;
   void scanUrl(tabId, tab.url).catch(() => undefined);
 });
 
 chrome.tabs.onRemoved.addListener(tabId => {
-  for (const key of inFlight.keys()) if (key.startsWith(`${tabId}:`)) inFlight.delete(key);
+  for (const key of inFlight.keys()) {
+    if (key.startsWith(`${tabId}:`)) inFlight.delete(key);
+  }
   bypasses.delete(tabId);
   latestNavigations.delete(tabId);
 });
@@ -196,7 +245,13 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message?.type === "HEALTH_CHECK") {
     fetchWithTimeout(`${API_BASE}/health`).then(({response, data}) => {
       if (!response.ok || !isValidHealth(data)) return {state: "BACKEND_OFFLINE"};
-      return {state: "CONNECTED", model_version: data.model_version || null, model_fingerprint: data.model_fingerprint, backend: data.backend, api_endpoint: `${API_BASE}/health`};
+      return {
+        state: "CONNECTED",
+        model_version: data.model_version || null,
+        model_fingerprint: data.model_fingerprint,
+        backend: data.backend,
+        api_endpoint: `${API_BASE}/health`
+      };
     }).catch(() => ({state: "BACKEND_OFFLINE"})).then(sendResponse);
     return true;
   }
@@ -204,6 +259,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message?.type === "SCAN_CURRENT_TAB") {
     chrome.tabs.query({active: true, currentWindow: true}).then(async tabs => {
       const tab = tabs[0];
+      if (!tab) return {state: "UNSUPPORTED", url: ""};
       if (tab?.url?.startsWith(chrome.runtime.getURL("blocked.html"))) {
         const token = new URL(tab.url).searchParams.get("token");
         const stored = token ? await chrome.storage.session.get(`blocked:${token}`) : {};
@@ -215,37 +271,60 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       try {
         const result = await scanUrl(tab.id, requestedUrl);
         const currentTabs = await chrome.tabs.query({active: true, currentWindow: true});
-        if (currentTabs[0]?.id !== tab.id || !isScannableUrl(currentTabs[0]?.url) || new URL(currentTabs[0].url).href !== requestedUrl) {
+        if (
+          !currentTabs[0] ||
+          currentTabs[0].id !== tab.id ||
+          !isScannableUrl(currentTabs[0].url) ||
+          new URL(currentTabs[0].url).href !== requestedUrl
+        ) {
           return {state: "STALE", url: requestedUrl};
         }
         return {state: "RESULT", url: requestedUrl, result};
+      } catch (error) {
+        return {state: "OFFLINE", url: tab.url, message: error.message};
       }
-      catch (error) { return {state: "OFFLINE", url: tab.url, message: error.message}; }
+    }).catch(err => {
+      return {state: "OFFLINE", url: "", message: err?.message || "Tab query failed"};
     }).then(sendResponse);
     return true;
   }
 
   if (message?.type === "GET_BLOCKED_STATE") {
-    chrome.storage.session.get(`blocked:${message.token}`).then(data => sendResponse(data[`blocked:${message.token}`] || null));
+    chrome.storage.session.get(`blocked:${message.token}`)
+      .then(data => sendResponse(data[`blocked:${message.token}`] || null))
+      .catch(() => sendResponse(null));
     return true;
   }
 
   if (message?.type === "GO_BACK" && sender.tab?.id !== undefined) {
-    chrome.tabs.goBack(sender.tab.id).catch(() => chrome.tabs.update(sender.tab.id, {url: "about:blank"}));
-    sendResponse({ok: true});
-    return false;
-  }
-
-  if (message?.type === "BYPASS_ONCE" && sender.tab?.id !== undefined) {
-    chrome.storage.session.get(`blocked:${message.token}`).then(async data => {
-      const state = data[`blocked:${message.token}`];
-      if (!state || state.tabId !== sender.tab.id) return;
-      bypasses.set(sender.tab.id, new URL(state.url).href);
-      await chrome.tabs.update(sender.tab.id, {url: state.url});
-      await chrome.storage.session.remove(`blocked:${message.token}`);
+    const tabId = sender.tab.id;
+    chrome.tabs.goBack(tabId).catch(() => {
+      return chrome.tabs.update(tabId, {url: "about:blank"}).catch(() => undefined);
     });
     sendResponse({ok: true});
     return false;
   }
 
+  if (message?.type === "BYPASS_ONCE" && sender.tab?.id !== undefined) {
+    const tabId = sender.tab.id;
+    chrome.storage.session.get(`blocked:${message.token}`).then(async data => {
+      const state = data[`blocked:${message.token}`];
+      if (!state || state.tabId !== tabId) return;
+      bypasses.set(tabId, new URL(state.url).href);
+      try {
+        await chrome.tabs.update(tabId, {url: state.url});
+      } catch (err) {
+        if (!isTabClosedError(err) && globalThis.VIGIL_DEBUG === true) {
+          console.warn("[BYPASS TAB UPDATE ERROR]", err?.message || err);
+        }
+      }
+      await chrome.storage.session.remove(`blocked:${message.token}`).catch(() => undefined);
+    }).catch(err => {
+      if (!isTabClosedError(err) && globalThis.VIGIL_DEBUG === true) {
+        console.warn("[BYPASS ERROR]", err?.message || err);
+      }
+    });
+    sendResponse({ok: true});
+    return false;
+  }
 });
