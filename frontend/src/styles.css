@@ -551,6 +551,11 @@ h2 {
   transform: translateY(0);
 }
 
+.primary-button:focus-visible {
+  outline: 2px solid #e0f2fe;
+  outline-offset: 3px;
+}
+
 .primary-button:disabled {
   opacity: 0.45;
   cursor: not-allowed;
@@ -3142,6 +3147,12 @@ h2 {
   margin-top: 10px;
   gap: 16px;
   flex-wrap: wrap;
+}
+
+.source-link-error {
+  color: #fca5a5;
+  font-size: 13px;
+  margin: 0;
 }
 
 /* Scenario Matrix Layout */

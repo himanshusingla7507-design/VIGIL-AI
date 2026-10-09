@@ -22,6 +22,7 @@ import {
 } from 'lucide-react'
 import type { CitizenActionGuide, GlossaryTerm, LegalInstrument, LegalScenario } from '../types'
 import { api } from '../services/api'
+import { getOfficialLegalSourceUrl } from '../utils'
 
 interface LegalKnowledgePageProps {
   initialInstrumentId?: string
@@ -112,6 +113,7 @@ export function LegalKnowledgePage({ initialInstrumentId }: LegalKnowledgePagePr
     () => instruments.find(i => i.id === expandedInstrumentId) || instruments[0],
     [instruments, expandedInstrumentId]
   )
+  const officialSourceUrl = getOfficialLegalSourceUrl(selectedInst?.official_source_url)
 
   return (
     <div className="page-container legal-knowledge-page">
@@ -341,15 +343,21 @@ export function LegalKnowledgePage({ initialInstrumentId }: LegalKnowledgePagePr
                     <h3>8. Authoritative Primary Source</h3>
                     <div className="source-link-box">
                       <p>View the official statutory gazette notification and legal text:</p>
-                      <a
-                        href={selectedInst.official_source_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="primary-button"
-                      >
-                        <span>Open Primary Legal Source</span>
-                        <ExternalLink size={14} />
-                      </a>
+                      {officialSourceUrl ? (
+                        <a
+                          href={officialSourceUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="primary-button"
+                        >
+                          <span>Open Primary Legal Source</span>
+                          <ExternalLink size={14} />
+                        </a>
+                      ) : (
+                        <p className="source-link-error" role="alert">
+                          The official source link is missing or could not be validated.
+                        </p>
+                      )}
                     </div>
                   </div>
                 </div>
