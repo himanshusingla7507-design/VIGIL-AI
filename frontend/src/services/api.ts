@@ -6,6 +6,7 @@ import type {
   LegalScenario,
   LegalSearchResult,
   ModelInfo,
+  ScanAnalytics,
   ScanResult,
   ScamCaseBroadcast,
   ScamCasesResponse,
@@ -53,6 +54,7 @@ export const api = {
   getHistoryItem: (id: number) => request<ScanResult>(`/history/${id}`),
   clearHistory: () => request<{ status: string }>('/history', { method: 'DELETE' }),
   getModelInfo: () => request<ModelInfo>('/model-info'),
+  getScanAnalytics: () => request<ScanAnalytics>('/analysis/scan-analytics'),
   getHealth: () => request<HealthResponse>('/health'),
 
   // MODULE 1: Threat Intelligence Feed API

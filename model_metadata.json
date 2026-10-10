@@ -5,6 +5,9 @@
   "dataset": {
     "file": "experiments\\auto_ml\\realworld_v3\\sampled_dataset.csv",
     "rows": 11510,
+    "sha256": "890c6b41e54fe2e8a72a03c628e945dc4a3434d3739c9204794e9225ebcbfc11",
+    "unique_urls": 11510,
+    "registered_domains": 4373,
     "class_distribution": {
       "0": 5755,
       "1": 5755
@@ -90,6 +93,24 @@
     "calibration": 640,
     "validation": 1020,
     "test": 2078
+  },
+  "split_class_counts": {
+    "train": {"0": 3886, "1": 3886},
+    "calibration": {"0": 320, "1": 320},
+    "validation": {"0": 510, "1": 510},
+    "test": {"0": 1039, "1": 1039}
+  },
+  "split_unique_urls": {
+    "train": 7772,
+    "calibration": 640,
+    "validation": 1020,
+    "test": 2078
+  },
+  "split_registered_domains": {
+    "train": 2852,
+    "calibration": 265,
+    "validation": 439,
+    "test": 817
   },
   "candidate_selected": "full_29",
   "artifacts": {

@@ -6,6 +6,7 @@ import ipaddress
 import math
 import re
 import uuid
+import copy
 from datetime import datetime, timezone
 from functools import lru_cache
 from urllib.parse import parse_qsl, urlsplit
@@ -19,8 +20,20 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 MODEL_PATH, FEATURE_PATH, METADATA_PATH = [os.path.join(ROOT, x) for x in ("phishing_model.pkl", "feature_names.pkl", "model_metadata.json")]
 
 
+def _artifact_signature():
+    signature = []
+    for path in (MODEL_PATH, FEATURE_PATH, METADATA_PATH):
+        try:
+            stat = os.stat(path)
+            signature.append((path, stat.st_mtime_ns, stat.st_size))
+        except FileNotFoundError:
+            signature.append((path, None, None))
+    return tuple(signature)
+
+
 @lru_cache(maxsize=1)
-def load_model_bundle():
+def _load_model_bundle(signature):
+    del signature
     if not all(os.path.exists(p) for p in (MODEL_PATH, FEATURE_PATH, METADATA_PATH)):
         raise FileNotFoundError("model_unavailable")
     try:
@@ -40,7 +53,20 @@ def load_model_bundle():
     metadata["model_fingerprint"] = hashlib.sha256(
         f"{_sha256_file(MODEL_PATH)}:{_sha256_file(FEATURE_PATH)}".encode("ascii")
     ).hexdigest()
+    metadata["active_artifact"] = {
+        "path": os.path.relpath(MODEL_PATH, ROOT),
+        "sha256": _sha256_file(MODEL_PATH),
+    }
+    metadata["model_load_status"] = "loaded"
+    metadata["last_successful_load_at"] = datetime.now(timezone.utc).isoformat()
     return model, names, metadata
+
+
+def load_model_bundle():
+    return _load_model_bundle(_artifact_signature())
+
+
+load_model_bundle.cache_clear = _load_model_bundle.cache_clear
 
 
 def _sha256_file(path):
@@ -270,4 +296,104 @@ def scan(url: str, request_id=None, include_diagnostics=False):
 
 
 def model_info():
-    return load_model_bundle()[2]
+    model, names, loaded_metadata = load_model_bundle()
+    metadata = copy.deepcopy(loaded_metadata)
+    dataset = metadata.get("dataset") if isinstance(metadata.get("dataset"), dict) else {}
+    split_rows = metadata.get("split_rows") if isinstance(metadata.get("split_rows"), dict) else {}
+    split_class_counts = metadata.get("split_class_counts") if isinstance(metadata.get("split_class_counts"), dict) else {}
+    split_unique_urls = metadata.get("split_unique_urls") if isinstance(metadata.get("split_unique_urls"), dict) else {}
+    split_registered_domains = metadata.get("split_registered_domains") if isinstance(metadata.get("split_registered_domains"), dict) else {}
+    dataset_source_status = "checksum_unavailable"
+    dataset_path = dataset.get("file")
+    dataset_sha256 = dataset.get("sha256")
+    if isinstance(dataset_path, str) and isinstance(dataset_sha256, str):
+        resolved_dataset_path = os.path.abspath(os.path.join(ROOT, dataset_path))
+        if os.path.commonpath((ROOT, resolved_dataset_path)) == ROOT and os.path.isfile(resolved_dataset_path):
+            dataset_source_status = (
+                "verified"
+                if hmac.compare_digest(dataset_sha256, _sha256_file(resolved_dataset_path))
+                else "checksum_mismatch"
+            )
+        else:
+            dataset_source_status = "source_unavailable"
+
+    def split_value(values, split, key=None):
+        value = values.get(split)
+        if key is not None:
+            value = value.get(key) if isinstance(value, dict) else None
+        return value if isinstance(value, int) and not isinstance(value, bool) else None
+
+    test_metrics = metadata.get("held_out_test_metrics")
+    test_metrics = test_metrics if isinstance(test_metrics, dict) else {}
+    confusion_matrix = test_metrics.get("confusion_matrix")
+    matrix_valid = (
+        isinstance(confusion_matrix, list)
+        and len(confusion_matrix) == 2
+        and all(isinstance(row, list) and len(row) == 2 for row in confusion_matrix)
+        and all(isinstance(value, int) and not isinstance(value, bool) for row in confusion_matrix for value in row)
+    )
+    test_sample_count = split_value(split_rows, "test")
+    if matrix_valid and confusion_matrix is not None:
+        tn, fp = confusion_matrix[0]
+        fn, tp = confusion_matrix[1]
+        matrix_count = tn + fp + fn + tp
+        if test_sample_count is None:
+            test_sample_count = matrix_count
+        f1_score = (2 * tp / (2 * tp + fp + fn)) if 2 * tp + fp + fn else None
+        false_positive_rate = (fp / (tn + fp)) if tn + fp else None
+        false_negative_rate = (fn / (fn + tp)) if fn + tp else None
+    else:
+        confusion_matrix = None
+        f1_score = false_positive_rate = false_negative_rate = None
+
+    architecture = type(getattr(model, "estimator", model)).__name__
+    calibrator = getattr(model, "calibrator", None)
+    calibration_method = (
+        f"Sigmoid ({type(calibrator).__name__})"
+        if calibrator is not None and type(calibrator).__name__ == "LogisticRegression"
+        else type(calibrator).__name__ if calibrator is not None else None
+    )
+    metadata.update({
+        "model_path": metadata.get("active_artifact", {}).get("path"),
+        "artifact_sha256": metadata.get("active_artifact", {}).get("sha256"),
+        "model_load_status": "loaded",
+        "last_successful_load_at": metadata.get("last_successful_load_at"),
+        "model_architecture": architecture,
+        "calibration_method": calibration_method,
+        "feature_count": len(names),
+        "features": list(names),
+        "training": {
+            "dataset_rows": dataset.get("rows") if isinstance(dataset.get("rows"), int) else None,
+            "dataset_path": dataset.get("file"),
+            "dataset_sha256": dataset.get("sha256"),
+            "dataset_source_status": dataset_source_status,
+            "sample_count": split_value(split_rows, "train"),
+            "legitimate_samples": split_value(split_class_counts, "train", "0"),
+            "phishing_samples": split_value(split_class_counts, "train", "1"),
+            "calibration_samples": split_value(split_rows, "calibration"),
+            "validation_samples": split_value(split_rows, "validation"),
+            "test_samples": test_sample_count,
+            "unique_urls": split_value(split_unique_urls, "train"),
+            "registered_domains": split_value(split_registered_domains, "train"),
+            "split_counts": copy.deepcopy(split_rows),
+        },
+        "evaluation": {
+            "type": "offline_held_out_test",
+            "sample_count": test_sample_count,
+            "dataset_path": dataset.get("file"),
+            "evaluated_at": metadata.get("test_evaluation_date"),
+            "precision": test_metrics.get("precision"),
+            "recall": test_metrics.get("recall"),
+            "false_positive_rate": false_positive_rate if false_positive_rate is not None else test_metrics.get("fpr"),
+            "false_negative_rate": false_negative_rate,
+            "f1_score": f1_score,
+            "roc_auc": test_metrics.get("roc_auc"),
+            "pr_auc": test_metrics.get("pr_auc"),
+            "confusion_matrix": confusion_matrix,
+            "limitations": [
+                "The held-out test split is balanced and domain-disjoint; population precision may differ at real-world prevalence.",
+                "The test split was not used for threshold selection.",
+            ],
+        },
+    })
+    return metadata

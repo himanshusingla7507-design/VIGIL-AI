@@ -47,15 +47,69 @@ export interface ScanResult {
 export interface ModelInfo {
   model_version?: string
   model_type?: string
+  model_path?: string | null
+  model_architecture?: string | null
+  model_load_status?: string | null
+  last_successful_load_at?: string | null
+  artifact_sha256?: string | null
+  calibration_method?: string | null
   dataset_rows?: number
   feature_count?: number
+  features?: string[]
   train_rows?: number
   test_rows?: number
   threshold_rows?: number
+  training?: {
+    dataset_rows: number | null
+    dataset_path: string | null
+    dataset_sha256: string | null
+    dataset_source_status: string
+    sample_count: number | null
+    legitimate_samples: number | null
+    phishing_samples: number | null
+    calibration_samples: number | null
+    validation_samples: number | null
+    test_samples: number | null
+    unique_urls: number | null
+    registered_domains: number | null
+    split_counts: Record<string, number>
+  }
+  evaluation?: {
+    type: string
+    sample_count: number | null
+    dataset_path: string | null
+    evaluated_at: string | null
+    precision: number | null
+    recall: number | null
+    false_positive_rate: number | null
+    false_negative_rate: number | null
+    f1_score: number | null
+    roc_auc: number | null
+    pr_auc: number | null
+    confusion_matrix: number[][] | null
+    limitations: string[]
+  }
   thresholds?: Record<string, number>
   threshold_selection?: string
   calibration?: string
   [key: string]: unknown
+}
+
+export interface ScanAnalytics {
+  source: string
+  total_scans: number
+  verdict_counts: Record<Verdict, number>
+  verdict_percentages: Record<Verdict, number | null>
+  trend: {
+    range: string
+    start_date: string
+    end_date: string
+    daily: Array<{
+      date: string
+      total: number
+      verdict_counts: Record<Verdict, number>
+    }>
+  }
 }
 
 export interface HealthResponse {

@@ -1,6 +1,7 @@
 import copy, json, math, os, sqlite3, time
 import uuid
 from contextlib import contextmanager
+from datetime import datetime, timedelta, timezone
 from urllib.parse import urlsplit, urlunsplit
 from flask import Flask, Response, jsonify, request
 from flask_cors import CORS
@@ -156,6 +157,67 @@ def history_item(item_id):
 def clear_history():
     with db() as conn: conn.execute("DELETE FROM scans")
     return jsonify({"status": "cleared"})
+
+@app.get("/analysis/scan-analytics")
+def scan_analytics():
+    end_date = datetime.now(timezone.utc).date()
+    start_date = end_date - timedelta(days=6)
+    start_timestamp = datetime.combine(start_date, datetime.min.time(), timezone.utc).isoformat()
+    end_timestamp = datetime.combine(end_date + timedelta(days=1), datetime.min.time(), timezone.utc).isoformat()
+    verdicts = ("SAFE", "SUSPICIOUS", "PHISHING")
+    with db() as conn:
+        row = conn.execute(
+            """
+            SELECT COUNT(*),
+                SUM(CASE WHEN json_extract(result, '$.label') = 'SAFE' THEN 1 ELSE 0 END),
+                SUM(CASE WHEN json_extract(result, '$.label') = 'SUSPICIOUS' THEN 1 ELSE 0 END),
+                SUM(CASE WHEN json_extract(result, '$.label') = 'PHISHING' THEN 1 ELSE 0 END)
+            FROM scans
+            """
+        ).fetchone()
+        daily_rows = conn.execute(
+            """
+            SELECT date(scanned_at), json_extract(result, '$.label'), COUNT(*)
+            FROM scans
+            WHERE scanned_at >= ? AND scanned_at < ?
+            GROUP BY date(scanned_at), json_extract(result, '$.label')
+            """,
+            (start_timestamp, end_timestamp),
+        ).fetchall()
+
+    total = row[0] or 0
+    verdict_counts = {verdict: row[index] or 0 for index, verdict in enumerate(verdicts, start=1)}
+    verdict_percentages = {
+        verdict: round(count * 100 / total, 1) if total else None
+        for verdict, count in verdict_counts.items()
+    }
+    daily = {
+        (start_date + timedelta(days=offset)).isoformat(): {verdict: 0 for verdict in verdicts}
+        for offset in range(7)
+    }
+    for day, verdict, count in daily_rows:
+        if day in daily and verdict in daily[day]:
+            daily[day][verdict] = count
+    daily_series = [
+        {
+            "date": day,
+            "total": sum(counts.values()),
+            "verdict_counts": counts,
+        }
+        for day, counts in daily.items()
+    ]
+    return jsonify({
+        "source": "vigil_history.sqlite3:scans",
+        "total_scans": total,
+        "verdict_counts": verdict_counts,
+        "verdict_percentages": verdict_percentages,
+        "trend": {
+            "range": "last_7_utc_calendar_days",
+            "start_date": start_date.isoformat(),
+            "end_date": end_date.isoformat(),
+            "daily": daily_series,
+        },
+    })
 
 # ==========================================
 # MODULE 1: GLOBAL SCAMWATCH LIVE (SSE & REST)

@@ -1,98 +1,113 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion } from 'motion/react'
 import {
   Activity,
+  AlertTriangle,
   CheckCircle2,
-  Cpu,
+  Clock3,
   Database,
   Fingerprint,
-  Globe,
-  Layers,
   LoaderCircle,
-  Network,
-  Scale,
+  RefreshCw,
   ShieldAlert,
   ShieldCheck,
   ShieldX,
-  Sparkles,
 } from 'lucide-react'
-import type { ModelInfo, ScanResult } from '../types'
+import type { ModelInfo, ScanAnalytics, ScanResult, Verdict } from '../types'
 import { api } from '../services/api'
-import { StatusBadge } from '../components/StatusBadge'
 import { AnimatedNumber } from '../components/AnimatedNumber'
+import { StatusBadge } from '../components/StatusBadge'
+
+const verdicts: Verdict[] = ['SAFE', 'SUSPICIOUS', 'PHISHING']
+
+function displayCount(value: number | null | undefined) {
+  return typeof value === 'number' ? value.toLocaleString() : 'Unavailable'
+}
+
+function displayPercent(value: number | null | undefined) {
+  return typeof value === 'number' ? `${(value * 100).toFixed(2)}%` : 'Unavailable'
+}
+
+function displayDate(value: string | null | undefined) {
+  if (!value) return 'Unavailable'
+  const date = new Date(value)
+  return Number.isNaN(date.getTime()) ? 'Unavailable' : date.toLocaleString()
+}
+
+function displayUrl(item: ScanResult) {
+  return item.url || item.normalized_url || 'Unknown URL'
+}
 
 export function AnalysisPage() {
-  const [items, setItems] = useState<ScanResult[]>([])
+  const [history, setHistory] = useState<ScanResult[]>([])
   const [model, setModel] = useState<ModelInfo | null>(null)
+  const [analytics, setAnalytics] = useState<ScanAnalytics | null>(null)
   const [loading, setLoading] = useState(true)
+  const [refreshing, setRefreshing] = useState(false)
   const [error, setError] = useState('')
+  const [refreshKey, setRefreshKey] = useState(0)
 
   useEffect(() => {
-    Promise.all([api.getHistory(), api.getModelInfo()])
-      .then(([history, info]) => {
-        setItems(history)
-        setModel(info)
+    let active = true
+    const refresh = refreshKey > 0
+    if (refresh) setRefreshing(true)
+    else setLoading(true)
+    setError('')
+
+    Promise.all([api.getHistory(), api.getModelInfo(), api.getScanAnalytics()])
+      .then(([recent, modelInfo, scanAnalytics]) => {
+        if (!active) return
+        setHistory(recent)
+        setModel(modelInfo)
+        setAnalytics(scanAnalytics)
       })
-      .catch(e => setError(e.message))
-      .finally(() => setLoading(false))
-  }, [])
+      .catch(reason => {
+        if (active) setError(reason instanceof Error ? reason.message : 'Analysis data could not be loaded.')
+      })
+      .finally(() => {
+        if (!active) return
+        setLoading(false)
+        setRefreshing(false)
+      })
 
-  const counts = useMemo(
-    () => ({
-      SAFE: items.filter(x => x.label === 'SAFE').length,
-      SUSPICIOUS: items.filter(x => x.label === 'SUSPICIOUS').length,
-      PHISHING: items.filter(x => x.label === 'PHISHING').length,
-    }),
-    [items]
-  )
-
-  const urlStats = useMemo(() => {
-    if (items.length === 0) return { https: 0, http: 0, ipBased: 0, customPort: 0, avgLength: 0 }
-    let https = 0
-    let ipBased = 0
-    let customPort = 0
-    let totalLen = 0
-
-    items.forEach(item => {
-      totalLen += item.url.length
-      if (item.url.startsWith('https://')) https++
-      if (item.features?.url_has_port === 1) customPort++
-      if (item.features?.url_is_ip === 1) ipBased++
-    })
-
-    return {
-      https,
-      http: items.length - https,
-      ipBased,
-      customPort,
-      avgLength: Math.round(totalLen / items.length),
+    return () => {
+      active = false
     }
-  }, [items])
+  }, [refreshKey])
 
   if (loading) {
     return (
       <div className="center-state">
         <LoaderCircle className="spin" size={32} />
-        <span>Loading telemetry & model metrics...</span>
+        <span>Loading model intelligence and scan analytics...</span>
       </div>
     )
   }
 
-  if (error) {
+  if (error || !model || !analytics) {
     return (
-      <div className="page-container">
-        <div className="error-panel">
+      <div className="page-container analysis-page">
+        <div className="error-panel" role="alert">
           <ShieldAlert size={20} />
-          <span>{error}</span>
+          <span>{error || 'The backend returned incomplete analysis data.'}</span>
+          <button className="analysis-refresh" onClick={() => setRefreshKey(value => value + 1)}>
+            <RefreshCw size={15} /> Retry
+          </button>
         </div>
       </div>
     )
   }
 
+  const training = model.training
+  const evaluation = model.evaluation
+  const maxDailyScans = Math.max(1, ...analytics.trend.daily.map(day => day.total))
+  const lastSuccessfulLoad = displayDate(model.last_successful_load_at)
+  const fullChecksum = model.artifact_sha256
+
   return (
     <div className="page-container analysis-page">
       <motion.div
-        className="page-heading"
+        className="page-heading analysis-heading"
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3 }}
@@ -100,229 +115,298 @@ export function AnalysisPage() {
         <div>
           <p className="eyebrow">Cybersecurity Telemetry & Analytics</p>
           <h1>System Analysis</h1>
-          <p>Live telemetry, classification distribution, and feature weights for the active VIGIL machine learning engine.</p>
+          <p>Artifact-backed model details, recorded runtime usage, and offline evaluation—kept as separate evidence.</p>
         </div>
+        <button
+          className="analysis-refresh"
+          onClick={() => setRefreshKey(value => value + 1)}
+          disabled={refreshing}
+          aria-label="Refresh analysis data"
+        >
+          <RefreshCw size={16} className={refreshing ? 'analysis-refreshing' : undefined} />
+          {refreshing ? 'Refreshing' : 'Refresh data'}
+        </button>
       </motion.div>
 
-      {/* Top Metric Cards */}
-      <div className="metric-grid">
-        <motion.div
-          className="metric-card"
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.25, delay: 0.05 }}
-        >
-          <div className="metric-icon-wrap blue">
-            <Activity size={20} />
+      <motion.section
+        className="panel analysis-panel analysis-section"
+        initial={{ opacity: 0, y: 14 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3, delay: 0.05 }}
+        aria-labelledby="model-intelligence-title"
+      >
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Active artifact · {model.model_load_status || 'status unavailable'}</p>
+            <h2 id="model-intelligence-title">Model Intelligence</h2>
           </div>
-          <span className="metric-label">Recorded Scans</span>
-          <strong className="metric-val">
-            <AnimatedNumber value={items.length} />
-          </strong>
-          <span className="metric-sub">Audited in local repository</span>
-        </motion.div>
-
-        <motion.div
-          className="metric-card"
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.25, delay: 0.1 }}
-        >
-          <div className="metric-icon-wrap green">
-            <ShieldCheck size={20} />
-          </div>
-          <span className="metric-label">Safe Results</span>
-          <strong className="metric-val text-safe">
-            <AnimatedNumber value={counts.SAFE} />
-          </strong>
-          <span className="metric-sub">
-            {items.length > 0 ? `${((counts.SAFE / items.length) * 100).toFixed(1)}% of total` : '0%'}
+          <span className={`status-pill ${model.model_load_status === 'loaded' ? 'green' : ''}`}>
+            {model.model_load_status === 'loaded' ? <CheckCircle2 size={14} /> : <AlertTriangle size={14} />}
+            {model.model_load_status === 'loaded' ? 'Loaded' : 'Status unavailable'}
           </span>
-        </motion.div>
+        </div>
 
-        <motion.div
-          className="metric-card"
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.25, delay: 0.15 }}
-        >
-          <div className="metric-icon-wrap amber">
-            <ShieldAlert size={20} />
+        <div className="analysis-fact-grid">
+          <div className="analysis-fact-card primary-fact">
+            <Database size={18} />
+            <span title="Training samples are the train split only; calibration, validation and test rows are separate.">Training samples</span>
+            <strong>
+              {training?.sample_count == null ? 'Unavailable' : <AnimatedNumber value={training.sample_count} />}
+            </strong>
           </div>
-          <span className="metric-label">Suspicious Flags</span>
-          <strong className="metric-val text-warning">
-            <AnimatedNumber value={counts.SUSPICIOUS} />
-          </strong>
-          <span className="metric-sub">
-            {items.length > 0 ? `${((counts.SUSPICIOUS / items.length) * 100).toFixed(1)}% of total` : '0%'}
-          </span>
-        </motion.div>
-
-        <motion.div
-          className="metric-card"
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.25, delay: 0.2 }}
-        >
-          <div className="metric-icon-wrap red">
-            <ShieldX size={20} />
+          <div className="analysis-fact-card">
+            <ShieldCheck size={18} className="text-safe" />
+            <span title="Legitimate URLs in the active model's training split.">Legitimate training</span>
+            <strong>{displayCount(training?.legitimate_samples)}</strong>
           </div>
-          <span className="metric-label">Phishing Blocked</span>
-          <strong className="metric-val text-danger">
-            <AnimatedNumber value={counts.PHISHING} />
-          </strong>
-          <span className="metric-sub">
-            {items.length > 0 ? `${((counts.PHISHING / items.length) * 100).toFixed(1)}% of total` : '0%'}
-          </span>
-        </motion.div>
-      </div>
+          <div className="analysis-fact-card">
+            <ShieldX size={18} className="text-danger" />
+            <span title="Phishing URLs in the active model's training split.">Phishing training</span>
+            <strong>{displayCount(training?.phishing_samples)}</strong>
+          </div>
+          <div className="analysis-fact-card">
+            <Fingerprint size={18} className="text-cyan" />
+            <span title="Unique registered domains among URLs in the training split.">Training domains</span>
+            <strong>{displayCount(training?.registered_domains)}</strong>
+          </div>
+        </div>
 
-      <div className="analysis-grid-layout">
-        {/* Classification Distribution */}
-        <motion.section
-          className="panel analysis-panel"
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3, delay: 0.25 }}
-        >
-          <div className="section-heading">
-            <div>
-              <p className="eyebrow">Audit Population</p>
-              <h2>Verdict Distribution</h2>
+        <div className="analysis-spec-grid">
+          <div className="analysis-spec">
+            <span>Active version</span>
+            <strong>{model.model_version || 'Unavailable'}</strong>
+          </div>
+          <div className="analysis-spec">
+            <span>Artifact path</span>
+            <code>{model.model_path || 'Unavailable'}</code>
+          </div>
+          <div className="analysis-spec">
+            <span>Dataset rows <small title="All rows in the source dataset across train, calibration, validation and test splits.">ⓘ</small></span>
+            <strong>{displayCount(training?.dataset_rows)}</strong>
+          </div>
+          <div className="analysis-spec">
+            <span>Calibration split <small title="Held-out rows used to fit the probability calibrator.">ⓘ</small></span>
+            <strong>{displayCount(training?.calibration_samples)}</strong>
+          </div>
+          <div className="analysis-spec">
+            <span>Validation split <small title="Held-out rows used for threshold selection and validation metrics.">ⓘ</small></span>
+            <strong>{displayCount(training?.validation_samples)}</strong>
+          </div>
+          <div className="analysis-spec">
+            <span>Test split <small title="Held-out evaluation rows; not used for threshold selection.">ⓘ</small></span>
+            <strong>{displayCount(training?.test_samples)}</strong>
+          </div>
+          <div className="analysis-spec">
+            <span>Unique training URLs</span>
+            <strong>{displayCount(training?.unique_urls)}</strong>
+          </div>
+          <div className="analysis-spec">
+            <span>Model features</span>
+            <strong>{displayCount(model.feature_count)}</strong>
+          </div>
+          <div className="analysis-spec feature-names-spec">
+            <span>Exact feature names</span>
+            {model.features?.length ? (
+              <details>
+                <summary>{model.features.length} active features</summary>
+                <ul>{model.features.map(feature => <li key={feature}><code>{feature}</code></li>)}</ul>
+              </details>
+            ) : <strong>Unavailable</strong>}
+          </div>
+          <div className="analysis-spec">
+            <span>Architecture</span>
+            <strong>{model.model_architecture || model.model_type || 'Unavailable'}</strong>
+          </div>
+          <div className="analysis-spec">
+            <span>Calibration method</span>
+            <strong>{model.calibration_method || 'Unavailable'}</strong>
+          </div>
+          <div className="analysis-spec">
+            <span>Last successful load</span>
+            <strong>{lastSuccessfulLoad}</strong>
+          </div>
+          <div className="analysis-spec checksum-spec">
+            <span>Active artifact SHA-256</span>
+            {fullChecksum ? (
+              <details>
+                <summary><code>{fullChecksum.slice(0, 16)}…</code> <small>Show full checksum</small></summary>
+                <code className="analysis-full-checksum">{fullChecksum}</code>
+              </details>
+            ) : <strong>Unavailable</strong>}
+          </div>
+          <div className="analysis-spec data-source-spec">
+            <span>Training data provenance</span>
+            <code>{training?.dataset_path || 'Unavailable'}</code>
+            <strong>Source status: {training?.dataset_source_status || 'Unavailable'}</strong>
+            <small title="SHA-256 checksum of the source dataset recorded with the active model.">
+              Dataset SHA-256: {training?.dataset_sha256 || 'Unavailable'}
+            </small>
+          </div>
+        </div>
+        <p className="analysis-footnote">
+          Dataset rows are not the training count. Train, calibration, validation, and test samples are distinct splits.
+          Missing artifact metadata is shown as unavailable; no display fallback is used.
+        </p>
+      </motion.section>
+
+      <motion.section
+        className="panel analysis-panel analysis-section"
+        initial={{ opacity: 0, y: 14 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3, delay: 0.1 }}
+        aria-labelledby="runtime-analytics-title"
+      >
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Persistent scan history · {analytics.source}</p>
+            <h2 id="runtime-analytics-title">Runtime Scan Analytics</h2>
+          </div>
+          <span className="total-badge"><AnimatedNumber value={analytics.total_scans} /> recorded events</span>
+        </div>
+
+        <div className="analysis-verdict-grid">
+          {verdicts.map(verdict => {
+            const count = analytics.verdict_counts[verdict]
+            const percent = analytics.verdict_percentages[verdict]
+            const Icon = verdict === 'SAFE' ? ShieldCheck : verdict === 'SUSPICIOUS' ? ShieldAlert : ShieldX
+            return (
+              <div className={`analysis-verdict-card ${verdict.toLowerCase()}`} key={verdict}>
+                <Icon size={18} />
+                <span>{verdict === 'SAFE' ? 'Safe' : verdict === 'SUSPICIOUS' ? 'Suspicious' : 'Phishing'}</span>
+                <strong><AnimatedNumber value={count} /></strong>
+                <small>{percent == null ? '— of recorded scans' : `${percent.toFixed(1)}% of recorded scans`}</small>
+              </div>
+            )
+          })}
+        </div>
+
+        <div className="analysis-runtime-grid">
+          <div className="analysis-subpanel">
+            <div className="analysis-subheading">
+              <div>
+                <h3>Scans over time</h3>
+                <p>Daily recorded events · UTC · {analytics.trend.start_date} to {analytics.trend.end_date}</p>
+              </div>
+              <Activity size={17} />
             </div>
-            <span className="total-badge">{items.length} Total</span>
-          </div>
-
-          {items.length === 0 ? (
-            <div className="panel-empty">No scan records available to visualize distribution.</div>
-          ) : (
-            <div className="distribution-bars">
-              {(['SAFE', 'SUSPICIOUS', 'PHISHING'] as const).map(key => {
-                const count = counts[key]
-                const pct = items.length ? (count / items.length) * 100 : 0
-                return (
-                  <div className="distribution-row" key={key}>
-                    <div className="distribution-meta">
-                      <StatusBadge verdict={key} />
-                      <span className="distribution-pct">{pct.toFixed(1)}%</span>
+            {analytics.trend.daily.length === 0 ? (
+              <div className="panel-empty">No trend data is available for this range.</div>
+            ) : (
+              <div className="analysis-trend-chart" aria-label="Seven-day scan activity by verdict">
+                {analytics.trend.daily.map(day => (
+                  <div className="analysis-trend-column" key={day.date} title={`${day.date}: ${day.total} scans`}>
+                    <strong>{day.total}</strong>
+                    <div className="analysis-trend-bar">
+                      {verdicts.map(verdict => {
+                        const amount = day.verdict_counts[verdict]
+                        const height = amount ? (amount / maxDailyScans) * 100 : 0
+                        return (
+                          <motion.span
+                            key={verdict}
+                            className={`trend-${verdict.toLowerCase()}`}
+                            initial={{ height: 0 }}
+                            animate={{ height: `${height}%` }}
+                            transition={{ duration: 0.5, ease: 'easeOut' }}
+                          />
+                        )
+                      })}
                     </div>
-                    <div className="distribution-track" title={`${count} scans (${pct.toFixed(1)}%)`}>
-                      <motion.div
-                        className={`distribution-fill ${key.toLowerCase()}`}
-                        initial={{ width: 0 }}
-                        animate={{ width: `${pct}%` }}
-                        transition={{ duration: 0.8, ease: 'easeOut' }}
-                      />
-                    </div>
-                    <div className="distribution-count">
-                      <strong>{count}</strong>
-                      <small>/{items.length}</small>
-                    </div>
+                    <small>{new Date(`${day.date}T00:00:00Z`).toLocaleDateString(undefined, { month: 'short', day: 'numeric', timeZone: 'UTC' })}</small>
                   </div>
-                )
-              })}
-            </div>
-          )}
-        </motion.section>
-
-        {/* Active Model Information */}
-        <motion.section
-          className="panel analysis-panel"
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3, delay: 0.3 }}
-        >
-          <div className="section-heading">
-            <div>
-              <p className="eyebrow">Inference Engine</p>
-              <h2>Model Specifications</h2>
-            </div>
-            <span className="status-pill green">
-              <span className="pulse-dot" /> Loaded
-            </span>
-          </div>
-
-          <div className="model-specs-grid">
-            <div className="spec-item">
-              <span className="spec-label">Engine Version</span>
-              <strong className="spec-val">{String(model?.model_version ?? 'v2.1-calibrated')}</strong>
-            </div>
-            <div className="spec-item">
-              <span className="spec-label">Architecture</span>
-              <strong className="spec-val">{String(model?.model_type ?? 'LightGBM / Calibrated Ensemble')}</strong>
-            </div>
-            <div className="spec-item">
-              <span className="spec-label">Feature Dimension</span>
-              <strong className="spec-val">{model?.feature_count ?? 64} lexical & structural signals</strong>
-            </div>
-            <div className="spec-item">
-              <span className="spec-label">Training Corpus</span>
-              <strong className="spec-val">
-                {model?.dataset_rows ? `${model.dataset_rows.toLocaleString()} balanced samples` : '128,450 URL samples'}
-              </strong>
-            </div>
-            <div className="spec-item">
-              <span className="spec-label">Probability Calibration</span>
-              <strong className="spec-val">
-                {typeof model?.calibration === 'string' ? model.calibration : 'Isotonic / Temperature Scaling'}
-              </strong>
-            </div>
-            <div className="spec-item">
-              <span className="spec-label">Artifact Checksum</span>
-              <code className="spec-code">{model?.artifact_id ? String(model.artifact_id).slice(0, 16) : 'sha256-a9f83e20'}</code>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* URL Structural Characteristics Telemetry */}
-        <motion.section
-          className="panel analysis-panel full-width"
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3, delay: 0.35 }}
-        >
-          <div className="section-heading">
-            <div>
-              <p className="eyebrow">Lexical Anatomy</p>
-              <h2>Audited URL Characteristics</h2>
+                ))}
+              </div>
+            )}
+            <div className="analysis-chart-legend">
+              {verdicts.map(verdict => <span key={verdict} className={`legend-${verdict.toLowerCase()}`}>{verdict.toLowerCase()}</span>)}
             </div>
           </div>
 
-          <div className="url-telemetry-grid">
-            <div className="telemetry-box">
-              <Globe size={18} className="text-cyan" />
-              <div className="telemetry-content">
-                <span className="telemetry-label">HTTPS Adoption</span>
-                <strong>{urlStats.https} <small>({items.length > 0 ? ((urlStats.https / items.length) * 100).toFixed(0) : 0}%)</small></strong>
+          <div className="analysis-subpanel">
+            <div className="analysis-subheading">
+              <div>
+                <h3>Recent scan activity</h3>
+                <p>Latest events from scan history</p>
               </div>
+              <Clock3 size={17} />
             </div>
-
-            <div className="telemetry-box">
-              <Layers size={18} className="text-indigo" />
-              <div className="telemetry-content">
-                <span className="telemetry-label">Avg URL Length</span>
-                <strong>{urlStats.avgLength} <small>chars</small></strong>
-              </div>
-            </div>
-
-            <div className="telemetry-box">
-              <Network size={18} className="text-amber" />
-              <div className="telemetry-content">
-                <span className="telemetry-label">Non-Standard Ports</span>
-                <strong>{urlStats.customPort} <small>instances</small></strong>
-              </div>
-            </div>
-
-            <div className="telemetry-box">
-              <Cpu size={18} className="text-red" />
-              <div className="telemetry-content">
-                <span className="telemetry-label">IP-Based Hostnames</span>
-                <strong>{urlStats.ipBased} <small>instances</small></strong>
-              </div>
-            </div>
+            {history.length === 0 ? (
+              <div className="panel-empty">No scans have been recorded yet.</div>
+            ) : (
+              <ul className="analysis-recent-list">
+                {history.slice(0, 8).map(item => (
+                  <li key={item.id ?? item.request_id}>
+                    <StatusBadge verdict={item.label} />
+                    <span className="analysis-recent-url" title={displayUrl(item)}>{displayUrl(item)}</span>
+                    <time dateTime={item.scanned_at}>{displayDate(item.scanned_at)}</time>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
-        </motion.section>
-      </div>
+        </div>
+        <p className="analysis-footnote">
+          Counts and percentages are aggregated over all recorded database events. Recent activity is a separate, latest-100 view.
+          These verdict proportions describe usage and are not model accuracy.
+        </p>
+      </motion.section>
+
+      <motion.section
+        className="panel analysis-panel analysis-section"
+        initial={{ opacity: 0, y: 14 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3, delay: 0.15 }}
+        aria-labelledby="model-evaluation-title"
+      >
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Offline labeled holdout · Not runtime telemetry</p>
+            <h2 id="model-evaluation-title">Model Evaluation</h2>
+          </div>
+          <span className="total-badge">
+            {evaluation ? `${displayCount(evaluation.sample_count)} test samples` : 'Unavailable'}
+          </span>
+        </div>
+
+        {!evaluation || evaluation.sample_count == null ? (
+          <div className="panel-empty">No verifiable labeled evaluation results are recorded for the active model.</div>
+        ) : (
+          <>
+            <div className="analysis-eval-grid">
+              {[
+                ['Precision', evaluation.precision, 'Share of predicted phishing samples that are phishing.'],
+                ['Recall', evaluation.recall, 'Share of labeled phishing samples detected.'],
+                ['False-positive rate', evaluation.false_positive_rate, 'Share of legitimate test samples marked phishing.'],
+                ['False-negative rate', evaluation.false_negative_rate, 'Share of phishing test samples missed.'],
+                ['F1 score', evaluation.f1_score, 'Harmonic mean of precision and recall.'],
+                ['ROC-AUC', evaluation.roc_auc, 'Area under the receiver operating characteristic curve.'],
+                ['PR-AUC', evaluation.pr_auc, 'Area under the precision-recall curve. Not recorded in the active metadata.'],
+              ].map(([label, value, explanation]) => (
+                <div className="analysis-eval-card" key={String(label)} title={String(explanation)}>
+                  <span>{label}</span>
+                  <strong>{displayPercent(typeof value === 'number' ? value : null)}</strong>
+                </div>
+              ))}
+            </div>
+            {evaluation.confusion_matrix && (
+              <div className="analysis-confusion">
+                <h3>Confusion matrix <small>(actual rows × predicted columns)</small></h3>
+                <table>
+                  <thead><tr><th>Actual / predicted</th><th>Legitimate</th><th>Phishing</th></tr></thead>
+                  <tbody>
+                    <tr><th>Legitimate</th><td>{displayCount(evaluation.confusion_matrix[0]?.[0])}</td><td>{displayCount(evaluation.confusion_matrix[0]?.[1])}</td></tr>
+                    <tr><th>Phishing</th><td>{displayCount(evaluation.confusion_matrix[1]?.[0])}</td><td>{displayCount(evaluation.confusion_matrix[1]?.[1])}</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            )}
+            <div className="analysis-evaluation-notes">
+              <p><strong>Evaluation dataset:</strong> {evaluation.dataset_path || 'Unavailable'}</p>
+              <p><strong>Evaluation date:</strong> {displayDate(evaluation.evaluated_at)}</p>
+              {evaluation.limitations.map(note => <p key={note}><AlertTriangle size={14} /> {note}</p>)}
+            </div>
+          </>
+        )}
+      </motion.section>
     </div>
   )
 }

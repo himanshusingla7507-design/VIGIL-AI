@@ -10,6 +10,7 @@ export default defineConfig({
       '/scan': 'http://127.0.0.1:5000',
       '/history': 'http://127.0.0.1:5000',
       '/model-info': 'http://127.0.0.1:5000',
+      '/analysis': 'http://127.0.0.1:5000',
       '/health': 'http://127.0.0.1:5000',
       '/threat-feed': 'http://127.0.0.1:5000',
       '/scam-cases': 'http://127.0.0.1:5000',
