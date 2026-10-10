@@ -60,3 +60,5 @@ scripts/final_ml_pass.py
 
 # Experiment model artifacts
 /models/experiments/
+
+data/
