@@ -1,0 +1,241 @@
+{
+  "total_rows_by_label": {
+    "1": 720021,
+    "0": 134849
+  },
+  "cohorts": {
+    "homepage": {
+      "definition": "Path is empty or '/', with no query and no fragment.",
+      "counts_by_label": {
+        "0": 134849,
+        "1": 220445
+      },
+      "percentage_within_label": {
+        "0": 100.0,
+        "1": 30.616468
+      }
+    },
+    "path_only": {
+      "definition": "Non-root path and empty query; a fragment may also be present.",
+      "counts_by_label": {
+        "0": 0,
+        "1": 377872
+      },
+      "percentage_within_label": {
+        "0": 0.0,
+        "1": 52.480692
+      }
+    },
+    "query_only": {
+      "definition": "Empty or root path and non-empty query.",
+      "counts_by_label": {
+        "0": 0,
+        "1": 9800
+      },
+      "percentage_within_label": {
+        "0": 0.0,
+        "1": 1.361071
+      }
+    },
+    "path_plus_query": {
+      "definition": "Non-root path and non-empty query.",
+      "counts_by_label": {
+        "0": 0,
+        "1": 111720
+      },
+      "percentage_within_label": {
+        "0": 0.0,
+        "1": 15.516214
+      }
+    },
+    "fragment": {
+      "definition": "Non-empty fragment component.",
+      "counts_by_label": {
+        "0": 0,
+        "1": 831
+      },
+      "percentage_within_label": {
+        "0": 0.0,
+        "1": 0.115413
+      }
+    },
+    "encoded": {
+      "definition": "URL contains a percent-encoded byte (% followed by two hex digits).",
+      "counts_by_label": {
+        "0": 0,
+        "1": 15440
+      },
+      "percentage_within_label": {
+        "0": 0.0,
+        "1": 2.144382
+      }
+    },
+    "multiple_query_params": {
+      "definition": "Query has more than one key/value segment.",
+      "counts_by_label": {
+        "0": 0,
+        "1": 48999
+      },
+      "percentage_within_label": {
+        "0": 0.0,
+        "1": 6.805218
+      }
+    },
+    "long_query": {
+      "definition": "Raw query string is longer than 100 characters.",
+      "counts_by_label": {
+        "0": 0,
+        "1": 42549
+      },
+      "percentage_within_label": {
+        "0": 0.0,
+        "1": 5.909411
+      }
+    },
+    "long_url": {
+      "definition": "URL is longer than 200 characters.",
+      "counts_by_label": {
+        "0": 0,
+        "1": 40014
+      },
+      "percentage_within_label": {
+        "0": 0.0,
+        "1": 5.557338
+      }
+    },
+    "tracking_utm_parameters": {
+      "definition": "Query contains utm_*, gclid, fbclid, yclid, or mc_* parameter.",
+      "counts_by_label": {
+        "0": null,
+        "1": null
+      },
+      "percentage_within_label": {
+        "0": null,
+        "1": null
+      }
+    },
+    "suspicious_token_present": {
+      "definition": "Production HasSuspiciousToken feature is 1.",
+      "counts_by_label": {
+        "0": null,
+        "1": null
+      },
+      "percentage_within_label": {
+        "0": null,
+        "1": null
+      }
+    },
+    "suspicious_token_absent": {
+      "definition": "Production HasSuspiciousToken feature is 0.",
+      "counts_by_label": {
+        "0": null,
+        "1": null
+      },
+      "percentage_within_label": {
+        "0": null,
+        "1": null
+      }
+    },
+    "digits_present": {
+      "definition": "URL contains at least one digit.",
+      "counts_by_label": {
+        "0": null,
+        "1": null
+      },
+      "percentage_within_label": {
+        "0": null,
+        "1": null
+      }
+    },
+    "digits_absent": {
+      "definition": "URL contains no digits.",
+      "counts_by_label": {
+        "0": null,
+        "1": null
+      },
+      "percentage_within_label": {
+        "0": null,
+        "1": null
+      }
+    }
+  },
+  "pairwise_cohort_overlap_counts": null,
+  "known_disjoint_overlaps": {
+    "homepage|homepage": {
+      "0": 134849,
+      "1": 220445
+    },
+    "homepage|path_only": {
+      "0": 0,
+      "1": 0
+    },
+    "homepage|query_only": {
+      "0": 0,
+      "1": 0
+    },
+    "homepage|path_plus_query": {
+      "0": 0,
+      "1": 0
+    },
+    "path_only|path_only": {
+      "0": 0,
+      "1": 377872
+    },
+    "path_only|query_only": {
+      "0": 0,
+      "1": 0
+    },
+    "path_only|path_plus_query": {
+      "0": 0,
+      "1": 0
+    },
+    "query_only|query_only": {
+      "0": 0,
+      "1": 9800
+    },
+    "query_only|path_plus_query": {
+      "0": 0,
+      "1": 0
+    },
+    "path_plus_query|path_plus_query": {
+      "0": 0,
+      "1": 111720
+    }
+  },
+  "overlap_status": "row_level_dataset_missing; only structural disjointness and cohort marginals are available",
+  "source_report": {
+    "path": "reports\\dynamic_url_false_positive_analysis.json",
+    "generated_at_utc": "2026-10-07T17:27:58+00:00",
+    "dataset": "data\\processed\\clean_dataset.csv"
+  },
+  "unavailable_metrics": [
+    "tracking_utm_parameters exact counts",
+    "suspicious_token_present and suspicious_token_absent counts",
+    "digits_present and digits_absent counts",
+    "pairwise overlaps outside the disjoint structural cohorts"
+  ],
+  "related_report_metric": {
+    "name": "redirect_or_tracking_parameter",
+    "counts_by_label": {
+      "0": 0,
+      "1": 4527
+    },
+    "note": "The stored report combines redirect and tracking parameters; it is not an exact tracking/UTM-only count."
+  },
+  "data_source": {
+    "mode": "stored_report_fallback",
+    "dataset_path": "data\\processed\\clean_dataset.csv",
+    "dataset_available": false,
+    "note": "Counts are limited to exact marginals in the stored production-corpus report."
+  },
+  "hypothesis_assessment": {
+    "status": "supports",
+    "statement": "The stored production-dataset counts show phishing examples in each path/query cohort and zero legitimate examples in all three.",
+    "core_cohorts": [
+      "path_only",
+      "query_only",
+      "path_plus_query"
+    ],
+    "limitation": "The row-level clean_dataset.csv is absent locally. This assessment uses its prior stored cohort report; null fields were not inferred."
+  }
+}

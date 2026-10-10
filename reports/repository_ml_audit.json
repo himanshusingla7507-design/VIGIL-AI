@@ -1,0 +1,293 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-10-09",
+  "audit_scope": "Read-only static audit; no training, model promotion, data download, or artifact deserialization.",
+  "production_artifact": {
+    "is_served": true,
+    "serving_code": "service.py:load_model_bundle",
+    "model_path": "phishing_model.pkl",
+    "feature_list_path": "feature_names.pkl",
+    "metadata_path": "model_metadata.json",
+    "model_version": "v2.1.0",
+    "model_type": "CalibratedHistGradientBoosting",
+    "selected_estimator": "hist_gradient_boosting",
+    "calibration": "Calibrated model; metadata type and training reports identify probability calibration. Serialized object was not deserialized during audit.",
+    "artifact_sizes_bytes": {
+      "phishing_model.pkl": 1100240,
+      "feature_names.pkl": 504
+    },
+    "sha256": {
+      "phishing_model.pkl": "5f16e09d5f6fb613d391051b2b5693cf47478356d77cec8c8e52f5b309159ba2",
+      "feature_names.pkl": "d02a7c9cd2cb5b73c2bbccc7347c240fed6d77593b8e7d602dbb67f424099da9",
+      "feature_extractor.py": "826436788ddf02e2dfe76c55cf6e062bab297c3cf1ead4602e4533c446733874"
+    },
+    "hash_check": "The local model, feature-list, and feature-extractor hashes match values recorded in model_metadata.json.",
+    "integrity_limit": "service.py checks model/feature hashes only when nonempty expected hash values exist. model_metadata.json is not signed, so this is not an authenticity chain.",
+    "serialized_artifact_loading": "Not performed; Python pickle/joblib artifacts can execute code during deserialization."
+  },
+  "feature_schema": {
+    "feature_count": 29,
+    "ordered_features": [
+      "URLLength",
+      "HostnameLength",
+      "PathLength",
+      "QueryLength",
+      "FragmentLength",
+      "PathSegmentCount",
+      "QueryParameterCount",
+      "DotCount",
+      "SubdomainDepth",
+      "NoOfDigitsInURL",
+      "DigitRatioInURL",
+      "NoOfLettersInURL",
+      "LetterRatioInURL",
+      "NoOfEqualsInURL",
+      "NoOfQMarkInURL",
+      "NoOfAmpersandInURL",
+      "NoOfAtInURL",
+      "NoOfHyphenInURL",
+      "NoOfUnderscoreInURL",
+      "URLPercentEncodingCount",
+      "HasObfuscation",
+      "HasUserInfo",
+      "HasPort",
+      "IsDomainIP",
+      "IsShortened",
+      "HasSuspiciousTLD",
+      "HasSuspiciousToken",
+      "IsTrustedTLD",
+      "URLEntropy"
+    ],
+    "ordering_evidence": "The ordered feature list in metadata matches the production feature-list artifact SHA-256; pickle was not loaded.",
+    "extractor_output_count": 35,
+    "excluded_features": {
+      "IsHTTPS": "Retained by feature extraction/evidence but excluded from model after protocol counterfactuals indicated a spurious shift.",
+      "DomainLength": "Alias of HostnameLength.",
+      "NoOfSubDomain": "Alias of SubdomainDepth.",
+      "HasSuspiciousWord": "Alias of HasSuspiciousToken.",
+      "HasTrustedBrand": "Constant-zero placeholder.",
+      "HasTrustedBrandToken": "Constant-zero placeholder."
+    }
+  },
+  "classification": {
+    "thresholds_source": "model_metadata.json, loaded by service.py",
+    "safe_max_exclusive": 0.13140956380602112,
+    "phishing_min_inclusive": 0.6961575221255231,
+    "rules": [
+      "SAFE when probability < 0.13140956380602112",
+      "SUSPICIOUS when probability >= 0.13140956380602112 and < 0.6961575221255231",
+      "PHISHING when probability >= 0.6961575221255231"
+    ],
+    "risk_score": "Rounded, clamped 0-100 interpolation between the SAFE and PHISHING thresholds.",
+    "config_fallbacks": {
+      "safe": 0.45,
+      "phishing": 0.85,
+      "note": "config.py defaults differ from active metadata and are used only if metadata threshold values are absent/invalid."
+    }
+  },
+  "training_data": {
+    "metadata_declared_path": "data/processed/clean_dataset.csv",
+    "metadata_source_file": "final_dataset_v2.csv",
+    "metadata_dataset_sha256": "e8c940e67936b5631b3fad290231667138d58a6c4b9b0f1334e8a746c8a91cd0",
+    "metadata_rows": 234432,
+    "metadata_class_distribution": {
+      "0": 134849,
+      "1": 99583
+    },
+    "metadata_registered_domains": 197707,
+    "metadata_cleaning": {
+      "original_rows": 235370,
+      "removed_duplicate_rows": 936,
+      "removed_conflicting_label_rows": 2,
+      "exact_duplicate_rows": 14,
+      "normalized_duplicate_rows": 937,
+      "conflicting_label_groups": 1
+    },
+    "provenance": "Metadata says the input file has no upstream source, license, or collection-date fields.",
+    "required_training_files_present": false,
+    "missing_files": [
+      "final_dataset_v2.csv",
+      "data/processed/clean_dataset.csv",
+      "data/external/benign_dynamic/legitimate_dynamic_urls.csv"
+    ],
+    "current_preparation_status": "Root dataset_summary.json states BLOCKED_NO_REAL_LEGITIMATE_ROWS_FOR_REQUIRED_COHORTS; no replacement clean dataset or domain-disjoint split was generated.",
+    "available_real_benign_rows": 95,
+    "available_phishing_feed_rows_reported": 789054,
+    "curated_benchmark_rows_excluded_as_synthetic_or_non-observation": 449
+  },
+  "recorded_metrics": {
+    "threshold_for_metrics": 0.5,
+    "random_split": {
+      "strategy": "Stratified random holdout",
+      "train_rows": 187545,
+      "model_fit_rows": 168790,
+      "threshold_selection_rows": 18755,
+      "test_rows": 46887,
+      "overlapping_registered_domains": 3272,
+      "accuracy": 0.8609422654467123,
+      "precision": 0.9559594309441154,
+      "recall": 0.7051262740372546,
+      "f1": 0.8116042533518262,
+      "roc_auc": 0.8845801045789786,
+      "pr_auc": 0.9006214375042932,
+      "brier_score": 0.10836509470792338,
+      "fpr": 0.023989618094178718,
+      "fnr": 0.2948737259627454,
+      "expected_calibration_error": 0.004762101624871921
+    },
+    "registered_domain_holdout": {
+      "strategy": "GroupShuffleSplit by registered domain",
+      "train_rows": 186531,
+      "test_rows": 47901,
+      "train_domains": 158165,
+      "test_domains": 39542,
+      "overlapping_domains": 0,
+      "accuracy": 0.8631552577190456,
+      "precision": 0.951943776117513,
+      "recall": 0.7217608372137679,
+      "f1": 0.821023890784983,
+      "roc_auc": 0.8874904284071098,
+      "pr_auc": 0.9061921631722574,
+      "brier_score": 0.10673927965551437,
+      "fpr": 0.028038418913926857,
+      "fnr": 0.27823916278623206,
+      "expected_calibration_error": 0.0067050571473532185
+    },
+    "threshold_selection": {
+      "rows": 18755,
+      "method": "Maximize SAFE coverage with <=2% false-safe rate and PHISHING recall with <=1% benign phishing rate.",
+      "safe_threshold": 0.13140956380602112,
+      "phishing_threshold": 0.6961575221255231,
+      "false_safe_rate": 0.018953181875235346,
+      "phishing_false_positive_rate": 0.009918427882832778,
+      "phishing_false_negative_rate": 0.31115852893184387
+    },
+    "evaluation_report_state": {
+      "reports/metrics.json": "blocked_model_dataset_mismatch",
+      "dataset_hash_in_blocked_report": "af373d723739836235e630e9198d902a690f9cbbd994a2b4fc9e2a0ca71e1dcc",
+      "production_dataset_hash": "e8c940e67936b5631b3fad290231667138d58a6c4b9b0f1334e8a746c8a91cd0",
+      "fresh_evaluation_ran_during_audit": false
+    }
+  },
+  "external_validation": {
+    "active_metadata_status": "not_run",
+    "reason": "No compatible external source with verified reuse licensing was integrated.",
+    "historical_report": {
+      "path": "reports/external_validation.json",
+      "reported_rows": 154931,
+      "reported_label_distribution": "Phishing-only",
+      "reported_recall": 0.9571873930975725,
+      "reported_fnr": 0.04281260690242753,
+      "interpretation": "Can describe misses within that positive-only feed only; FPR and overall population performance are not measurable."
+    },
+    "temporal_evaluation": "Not run; collection dates unavailable."
+  },
+  "experimental_candidates": [
+    {
+      "artifact": "models/experimental/dynamic_candidate/dynamic_candidate.joblib",
+      "size_bytes": 80897,
+      "role": "Experimental candidate, not referenced by service.py."
+    },
+    {
+      "experiment": "reports/dynamic_candidate_training.json",
+      "model": "HistGradientBoostingClassifier with LogisticRegression calibration",
+      "rows": 190,
+      "class_counts": {
+        "legitimate": 95,
+        "phishing": 95
+      },
+      "test_accuracy": 0.8,
+      "test_recall": 0.8095238095238095,
+      "candidate_gate": "FAIL",
+      "failed_gates": [
+        "Phishing on a fixed legitimate baseline",
+        "Recall materially below strongest validated reference",
+        "Major hard-cohort regression"
+      ],
+      "production_artifacts_modified": false
+    },
+    {
+      "experiment": "reports/final_promotion_gate.json",
+      "candidate": "Domain-only hostname character TF-IDF plus Logistic Regression, n-grams 2-6",
+      "decision": "DO NOT PROMOTE",
+      "candidate_artifact_promoted": false,
+      "candidate_serving_path": null,
+      "known_gate_gaps": [
+        "Candidate fast.com SAFE regression results not persisted",
+        "Complete SAFE/SUSPICIOUS/PHISHING legitimate-reference counts unavailable",
+        "Candidate size approximately 8.8x current model; acceptance not established"
+      ],
+      "reported_legitimate_false_phishing_count": 233,
+      "production_artifacts_unchanged": true
+    }
+  ],
+  "known_bias_and_failure_modes": [
+    "Production training provenance and dates are unavailable; temporal/generalization drift cannot be measured.",
+    "Random split leaks registered domains across train/test (3,272 overlaps); domain-aware split has zero overlap but remains dataset-specific.",
+    "The data is artificially class-balanced and does not represent real deployment prevalence.",
+    "URL-only lexical features cannot inspect page content, redirects, DNS, or live reputation.",
+    "PathLength has importance 0.2483 and dominates the saved feature-importance table; lexical shortcuts are a bias concern.",
+    "Saved model metadata records domain-holdout recall 0.7218 and FNR 0.2782 at threshold 0.5.",
+    "The `fast.com` false-positive history is a known regression case; production report says current canonical variants are SAFE at probability 0.060029.",
+    "Phishing-only external reports cannot measure false positives; report metrics cannot be interpreted as balanced external accuracy.",
+    "The dynamic candidate's saved evaluation fails promotion gates, including a false-phishing event on the fixed benign baseline and low-recall hard cohorts."
+  ],
+  "dataset_and_report_conflicts": [
+    {
+      "paths": [
+        "model_metadata.json",
+        "dataset_summary.json",
+        "data/processed/dataset_summary.json"
+      ],
+      "conflict": "Active metadata claims a 234,432-row final_dataset_v2.csv source; root summary states replacement preparation is blocked and only 95 real benign rows are retained; processed summary describes an earlier 854,870-row PhiUSIIL plus phishing-feed pipeline."
+    },
+    {
+      "paths": [
+        "model_metadata.json",
+        "reports/metrics.json"
+      ],
+      "conflict": "Metadata contains saved random/domain metrics, but latest metrics.json is blocked because the available candidate dataset hash differs from the production metadata hash."
+    },
+    {
+      "paths": [
+        "model_metadata.json",
+        "reports/external_validation.json"
+      ],
+      "conflict": "Active model metadata says external validation was not run; an older report contains positive-only phishing-feed measurements."
+    },
+    {
+      "paths": [
+        "config.py",
+        "model_metadata.json",
+        "docs/MODEL_REPORT.md"
+      ],
+      "conflict": "Fallback defaults are 0.45/0.85, active serving metadata uses 0.1314095638/0.6961575221, and historical model documentation cites yet another superseded threshold pair."
+    }
+  ],
+  "preexisting_json_syntax_issues": [
+    {
+      "path": "reports/external_validation.json",
+      "issue": "Contains a bare NaN value for roc_auc; rejected by strict JSON parsers."
+    },
+    {
+      "path": "reports/model_comparison.json",
+      "issue": "Contains a bare NaN value for roc_auc; rejected by strict JSON parsers."
+    }
+  ],
+  "missing_information": [
+    "The original final_dataset_v2.csv and generated clean_dataset.csv are absent; exact row-level training examples cannot be reconstructed.",
+    "No upstream dataset license, provenance, or collection dates are attached to the production training source.",
+    "Only 95 row-level real benign dynamic URLs remain; missing required URL structures cannot be recovered from aggregate category counts.",
+    "No temporal validation or independent balanced validation is available.",
+    "Current Python model-load compatibility was not tested; local venv, training metadata, and CI target different Python versions.",
+    "Candidate artifacts were not deserialized; only their paths/sizes and saved metadata/reports were inspected."
+  ],
+  "audit_validation": {
+    "production_model_sha256_matches_metadata": true,
+    "feature_list_sha256_matches_metadata": true,
+    "feature_extractor_sha256_matches_metadata": true,
+    "training_or_promotion_performed": false,
+    "datasets_downloaded": false,
+    "external_urls_accessed": false
+  }
+}

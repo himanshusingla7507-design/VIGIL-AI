@@ -1,0 +1,389 @@
+{
+  "dataset": {
+    "path": "data\\processed\\clean_dataset.csv",
+    "sha256": "af373d723739836235e630e9198d902a690f9cbbd994a2b4fc9e2a0ca71e1dcc",
+    "rows_before_deduplication": 854870,
+    "rows_before": 854870,
+    "rows_after": 854870,
+    "invalid_urls": 0,
+    "normalized_duplicate_rows_removed": 0,
+    "registered_domains": 463308,
+    "label_counts_before_deduplication": {
+      "0": 134849,
+      "1": 720021
+    },
+    "label_counts_after_deduplication": {
+      "0": 134849,
+      "1": 720021
+    },
+    "source_label_counts_after_deduplication": {
+      "PhiUSIIL": {
+        "0": 134849,
+        "1": 99584
+      },
+      "phishing_database_active": {
+        "1": 620437
+      }
+    },
+    "missing_collection_date_rows": 854870,
+    "collection_date_note": "All dates are missing; the dataset summary confirms dates were not supplied by either source.",
+    "domains_with_both_labels": 296,
+    "domains_with_single_label": 463012,
+    "domain_label_conflicts": "Retained and reported. All rows for a registered domain are assigned to exactly one split; the conflict may reflect distinct benign and malicious URLs on the same domain or source-label noise."
+  },
+  "optional_datasets": {
+    "legitimate_dynamic_training": {
+      "path": "data\\experiments\\legitimate_dynamic_training.csv",
+      "sha256": "0ffb97d38b36521727ce05854f79a54a312746a90c872b76c4e38b859c1eed60",
+      "status": "VALID_LEGITIMATE_REGRESSION_ONLY",
+      "label_counts": {
+        "0": 95
+      },
+      "rows_before": 95,
+      "rows_after": 95,
+      "invalid_urls": 0,
+      "normalized_duplicate_rows_removed": 0,
+      "registered_domains": 17,
+      "used_for_training": false,
+      "prior_use": "Previously used in an earlier candidate experiment."
+    },
+    "legitimate_dynamic_benchmark": {
+      "path": "data\\experiments\\legitimate_dynamic_benchmark.csv",
+      "sha256": "e80df11ac2d1cfeedcbf8f7ee67313d260e314e6c0623643eb819b35dcaa5e94",
+      "status": "VALID_LEGITIMATE_REGRESSION_ONLY",
+      "label_counts": {
+        "0": 544
+      },
+      "rows_before": 544,
+      "rows_after": 544,
+      "invalid_urls": 0,
+      "normalized_duplicate_rows_removed": 0,
+      "registered_domains": 65,
+      "used_for_training": false,
+      "prior_use": "Previously used as benchmark/regression data; not an untouched test."
+    },
+    "legitimate_training_v3": {
+      "path": "data\\experiments\\legitimate_training_v3.csv",
+      "sha256": "5deb4c56cce486d1922c883394351537502e369c646075f228cc0bdb5baa56f6",
+      "status": "VALID_LEGITIMATE_REGRESSION_ONLY",
+      "label_counts": {
+        "0": 298
+      },
+      "rows_before": 298,
+      "rows_after": 298,
+      "invalid_urls": 0,
+      "normalized_duplicate_rows_removed": 0,
+      "registered_domains": 17,
+      "used_for_training": false,
+      "prior_use": "Previously used/reviewed in earlier training-data experiments."
+    },
+    "external_benign_dynamic": {
+      "path": "data\\external\\benign_dynamic\\legitimate_dynamic_urls.csv",
+      "status": "MISSING_OPTIONAL"
+    }
+  },
+  "augmentation": {
+    "primary_rows": 854870,
+    "dynamic_rows_before_deduplication": 937,
+    "dynamic_rows_after_deduplication": 746,
+    "dynamic_duplicate_rows_removed": 191,
+    "dynamic_rows_by_dataset": {
+      "legitimate_dynamic_training": 95,
+      "legitimate_dynamic_benchmark": 544,
+      "legitimate_training_v3": 298
+    },
+    "combined_same_label_duplicate_rows_removed": 0,
+    "combined_rows": 855616,
+    "combined_label_counts": {
+      "0": 135595,
+      "1": 720021
+    },
+    "combined_registered_domains": 463344
+  },
+  "features": [
+    "URLLength",
+    "HostnameLength",
+    "PathLength",
+    "QueryLength",
+    "FragmentLength",
+    "PathSegmentCount",
+    "QueryParameterCount",
+    "DotCount",
+    "SubdomainDepth",
+    "NoOfDigitsInURL",
+    "DigitRatioInURL",
+    "NoOfLettersInURL",
+    "LetterRatioInURL",
+    "NoOfEqualsInURL",
+    "NoOfQMarkInURL",
+    "NoOfAmpersandInURL",
+    "NoOfAtInURL",
+    "NoOfHyphenInURL",
+    "NoOfUnderscoreInURL",
+    "URLPercentEncodingCount",
+    "HasObfuscation",
+    "HasUserInfo",
+    "HasPort",
+    "IsDomainIP",
+    "IsShortened",
+    "HasSuspiciousTLD",
+    "HasSuspiciousToken",
+    "IsTrustedTLD",
+    "URLEntropy"
+  ],
+  "production_feature_metadata_sha256": "76f11a2883837c0226898d9a37d28a58475d5bdedc013e9f7969a43a493feba9",
+  "production_feature_pickle_sha256": "d02a7c9cd2cb5b73c2bbccc7347c240fed6d77593b8e7d602dbb67f424099da9",
+  "split_seed": 44,
+  "split": {
+    "train": {
+      "rows": 511442,
+      "class_counts": {
+        "0": 81310,
+        "1": 430132
+      },
+      "registered_domains": 278006,
+      "source_counts": {
+        "phishing_database_active": 371102,
+        "PhiUSIIL": 139850,
+        "legitimate_dynamic_benchmark": 305,
+        "legitimate_training_v3": 126,
+        "legitimate_dynamic_training": 59
+      }
+    },
+    "calibration": {
+      "rows": 172704,
+      "class_counts": {
+        "0": 27081,
+        "1": 145623
+      },
+      "registered_domains": 92669,
+      "source_counts": {
+        "phishing_database_active": 126535,
+        "PhiUSIIL": 46036,
+        "legitimate_dynamic_benchmark": 73,
+        "legitimate_training_v3": 42,
+        "legitimate_dynamic_training": 18
+      }
+    },
+    "test": {
+      "rows": 171470,
+      "class_counts": {
+        "0": 27204,
+        "1": 144266
+      },
+      "registered_domains": 92669,
+      "source_counts": {
+        "phishing_database_active": 122800,
+        "PhiUSIIL": 48547,
+        "legitimate_dynamic_benchmark": 71,
+        "legitimate_training_v3": 34,
+        "legitimate_dynamic_training": 18
+      }
+    },
+    "registered_domain_overlaps": {
+      "train::calibration": 0,
+      "train::test": 0,
+      "calibration::test": 0
+    }
+  },
+  "source_and_url_structure_audit": {
+    "by_source_and_label": {
+      "PhiUSIIL::label_0": {
+        "rows": 134849,
+        "registered_domains": 132185,
+        "feature_median": {
+          "URLLength": 22.0,
+          "HostnameLength": 15.0,
+          "PathLength": 0.0,
+          "QueryLength": 0.0,
+          "QueryParameterCount": 0.0,
+          "URLPercentEncodingCount": 0.0,
+          "HasSuspiciousTLD": 0.0,
+          "HasSuspiciousToken": 0.0,
+          "IsDomainIP": 0.0,
+          "IsTrustedTLD": 1.0,
+          "URLEntropy": 3.7622673511505127
+        },
+        "structure_rates": {
+          "homepage": 1.0,
+          "content_path": 0.0,
+          "search": 0.0,
+          "query": 0.0,
+          "multiple_query_parameters": 0.0,
+          "query_heavy": 0.0,
+          "encoded": 0.0,
+          "fragment": 0.0
+        }
+      },
+      "PhiUSIIL::label_1": {
+        "rows": 99584,
+        "registered_domains": 65628,
+        "feature_median": {
+          "URLLength": 32.0,
+          "HostnameLength": 19.0,
+          "PathLength": 0.0,
+          "QueryLength": 0.0,
+          "QueryParameterCount": 0.0,
+          "URLPercentEncodingCount": 0.0,
+          "HasSuspiciousTLD": 0.0,
+          "HasSuspiciousToken": 0.0,
+          "IsDomainIP": 0.0,
+          "IsTrustedTLD": 0.0,
+          "URLEntropy": 4.037844657897949
+        },
+        "structure_rates": {
+          "homepage": 0.7146830816195373,
+          "content_path": 0.2731462885604113,
+          "search": 0.0029221561696658096,
+          "query": 0.06078285668380463,
+          "multiple_query_parameters": 0.026791452442159382,
+          "query_heavy": 0.026791452442159382,
+          "encoded": 0.00880663560411311,
+          "fragment": 0.008344714010282776
+        }
+      },
+      "phishing_database_active::label_1": {
+        "rows": 620437,
+        "registered_domains": 269848,
+        "feature_median": {
+          "URLLength": 54.0,
+          "HostnameLength": 21.0,
+          "PathLength": 17.0,
+          "QueryLength": 0.0,
+          "QueryParameterCount": 0.0,
+          "URLPercentEncodingCount": 0.0,
+          "HasSuspiciousTLD": 0.0,
+          "HasSuspiciousToken": 0.0,
+          "IsDomainIP": 0.0,
+          "IsTrustedTLD": 0.0,
+          "URLEntropy": 4.350372791290283
+        },
+        "structure_rates": {
+          "homepage": 0.2405965472723258,
+          "content_path": 0.7452424661972126,
+          "search": 0.00218877984388423,
+          "query": 0.18608819267709695,
+          "multiple_query_parameters": 0.07467478567525793,
+          "query_heavy": 0.07467478567525793,
+          "encoded": 0.02347216558651402,
+          "fragment": 0.0
+        }
+      },
+      "verified_legitimate_dynamic::label_0": {
+        "rows": 746,
+        "registered_domains": 65,
+        "feature_median": {
+          "URLLength": 50.0,
+          "HostnameLength": 10.0,
+          "PathLength": 10.0,
+          "QueryLength": 0.0,
+          "QueryParameterCount": 0.0,
+          "URLPercentEncodingCount": 0.0,
+          "HasSuspiciousTLD": 0.0,
+          "HasSuspiciousToken": 0.0,
+          "IsDomainIP": 0.0,
+          "IsTrustedTLD": 1.0,
+          "URLEntropy": 4.29692268371582
+        },
+        "structure_rates": {
+          "homepage": 0.057640750670241284,
+          "content_path": 0.9155495978552279,
+          "search": 0.3739946380697051,
+          "query": 0.4410187667560322,
+          "multiple_query_parameters": 0.15147453083109919,
+          "query_heavy": 0.15147453083109919,
+          "encoded": 0.28418230563002683,
+          "fragment": 0.05227882037533512
+        }
+      }
+    },
+    "by_label": {
+      "0": {
+        "rows": 135595,
+        "feature_median": {
+          "URLLength": 22.0,
+          "HostnameLength": 15.0,
+          "PathLength": 0.0,
+          "QueryLength": 0.0,
+          "QueryParameterCount": 0.0,
+          "URLPercentEncodingCount": 0.0,
+          "HasSuspiciousTLD": 0.0,
+          "HasSuspiciousToken": 0.0,
+          "IsDomainIP": 0.0,
+          "IsTrustedTLD": 1.0,
+          "URLEntropy": 3.7622673511505127
+        },
+        "structure_rates": {
+          "homepage": 0.99481544304731,
+          "content_path": 0.005037058888602087,
+          "search": 0.0020575979940263282,
+          "query": 0.0024263431542461003,
+          "multiple_query_parameters": 0.000833364062096685,
+          "query_heavy": 0.000833364062096685,
+          "encoded": 0.0015634794793318338,
+          "fragment": 0.00028762122497142225
+        }
+      },
+      "1": {
+        "rows": 720021,
+        "feature_median": {
+          "URLLength": 50.0,
+          "HostnameLength": 21.0,
+          "PathLength": 13.0,
+          "QueryLength": 0.0,
+          "QueryParameterCount": 0.0,
+          "URLPercentEncodingCount": 0.0,
+          "HasSuspiciousTLD": 0.0,
+          "HasSuspiciousToken": 0.0,
+          "IsDomainIP": 0.0,
+          "IsTrustedTLD": 0.0,
+          "URLEntropy": 4.305950164794922
+        },
+        "structure_rates": {
+          "homepage": 0.3061660701562871,
+          "content_path": 0.6799482237323634,
+          "search": 0.002290210979957529,
+          "query": 0.1687575779039778,
+          "multiple_query_parameters": 0.06805218181136384,
+          "query_heavy": 0.06805218181136384,
+          "encoded": 0.02144381899972362,
+          "fragment": 0.0011541330044540369
+        }
+      }
+    },
+    "cohort_counts_by_label": {
+      "homepage": {
+        "0": 134892,
+        "1": 220446
+      },
+      "content_path": {
+        "0": 683,
+        "1": 489577
+      },
+      "search": {
+        "0": 279,
+        "1": 1649
+      },
+      "query": {
+        "0": 329,
+        "1": 121509
+      },
+      "multiple_query_parameters": {
+        "0": 113,
+        "1": 48999
+      },
+      "query_heavy": {
+        "0": 113,
+        "1": 48999
+      },
+      "encoded": {
+        "0": 212,
+        "1": 15440
+      },
+      "fragment": {
+        "0": 39,
+        "1": 831
+      }
+    }
+  }
+}

@@ -1,0 +1,455 @@
+{
+  "created_at_utc": "2026-10-09T05:51:55+00:00",
+  "dataset": "data\\experiments\\legitimate_training_v3.csv",
+  "label_mapping": {
+    "0": "legitimate observed URL; source and verification provenance are recorded per row"
+  },
+  "training_data_policy": "Observed legitimate training rows only. Curated and counterfactual benchmark examples are excluded.",
+  "benchmark_examples": {
+    "included_in_training_csv": 0,
+    "separate_benchmark_dataset": null
+  },
+  "collection_policy": {
+    "approved_source_allowlist": [
+      {
+        "source": "Wikimedia Wikipedia",
+        "homepage": "https://en.wikipedia.org/wiki/Main_Page",
+        "registered_domain": "wikipedia.org"
+      },
+      {
+        "source": "Mozilla Developer Network",
+        "homepage": "https://developer.mozilla.org/en-US/",
+        "registered_domain": "mozilla.org"
+      },
+      {
+        "source": "GitHub",
+        "homepage": "https://github.com/",
+        "registered_domain": "github.com"
+      },
+      {
+        "source": "NASA",
+        "homepage": "https://www.nasa.gov/",
+        "registered_domain": "nasa.gov"
+      },
+      {
+        "source": "Library of Congress",
+        "homepage": "https://www.loc.gov/",
+        "registered_domain": "loc.gov"
+      },
+      {
+        "source": "World Wide Web Consortium",
+        "homepage": "https://www.w3.org/",
+        "registered_domain": "w3.org"
+      },
+      {
+        "source": "Internet Engineering Task Force",
+        "homepage": "https://www.ietf.org/",
+        "registered_domain": "ietf.org"
+      },
+      {
+        "source": "arXiv",
+        "homepage": "https://arxiv.org/",
+        "registered_domain": "arxiv.org"
+      },
+      {
+        "source": "OpenStreetMap",
+        "homepage": "https://www.openstreetmap.org/",
+        "registered_domain": "openstreetmap.org"
+      },
+      {
+        "source": "World Health Organization",
+        "homepage": "https://www.who.int/",
+        "registered_domain": "who.int"
+      },
+      {
+        "source": "Massachusetts Institute of Technology",
+        "homepage": "https://www.mit.edu/",
+        "registered_domain": "mit.edu"
+      },
+      {
+        "source": "Stanford University",
+        "homepage": "https://www.stanford.edu/",
+        "registered_domain": "stanford.edu"
+      },
+      {
+        "source": "University of California, Berkeley",
+        "homepage": "https://www.berkeley.edu/",
+        "registered_domain": "berkeley.edu"
+      },
+      {
+        "source": "GOV.UK",
+        "homepage": "https://www.gov.uk/",
+        "registered_domain": "gov.uk"
+      },
+      {
+        "source": "European Space Agency",
+        "homepage": "https://www.esa.int/",
+        "registered_domain": "esa.int"
+      },
+      {
+        "source": "Chrome for Developers",
+        "homepage": "https://developer.chrome.com/",
+        "registered_domain": "chrome.com"
+      },
+      {
+        "source": "RFC Editor",
+        "homepage": "https://www.rfc-editor.org/",
+        "registered_domain": "rfc-editor.org"
+      }
+    ],
+    "redirect_policy": "HTTPS redirects are followed only when the registered domain stays within that source's approved registered domain.",
+    "per_source_link_verification_cap": 16,
+    "per_source_child_page_cap": 2,
+    "request_pause_seconds": 0.5,
+    "page_body_limit_bytes": 1500000,
+    "synthetic_urls_created": 0
+  },
+  "recovery": {
+    "input_rows": 95,
+    "unmatched_historical_rows": 0,
+    "manifest_reported_verified_rows": 435
+  },
+  "source_provenance": [
+    {
+      "source": "Wikimedia Wikipedia",
+      "registered_domain": "wikipedia.org",
+      "approved_homepage": "https://en.wikipedia.org/wiki/Main_Page",
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 15,
+      "request_count": 17,
+      "errors": [
+        "link: URLError: <urlopen error redirect outside approved HTTPS registered domain blocked>"
+      ],
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "provenance": "Wikipedia's official public encyclopedia page and same-registered-domain article/navigation routes."
+    },
+    {
+      "source": "Mozilla Developer Network",
+      "registered_domain": "mozilla.org",
+      "approved_homepage": "https://developer.mozilla.org/en-US/",
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 16,
+      "request_count": 17,
+      "errors": [],
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "provenance": "Mozilla's official developer documentation and same-registered-domain documentation routes."
+    },
+    {
+      "source": "GitHub",
+      "registered_domain": "github.com",
+      "approved_homepage": "https://github.com/",
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 13,
+      "request_count": 17,
+      "errors": [
+        "link: HTTPError: HTTP Error 504: Gateway Time-out",
+        "link: HTTPError: HTTP Error 403: Forbidden",
+        "link: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "provenance": "GitHub's official public service homepage and same-registered-domain product/navigation routes."
+    },
+    {
+      "source": "NASA",
+      "registered_domain": "nasa.gov",
+      "approved_homepage": "https://www.nasa.gov/",
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 16,
+      "request_count": 17,
+      "errors": [],
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "provenance": "NASA's official government homepage and same-registered-domain news and information routes."
+    },
+    {
+      "source": "Library of Congress",
+      "registered_domain": "loc.gov",
+      "approved_homepage": "https://www.loc.gov/",
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 5,
+      "request_count": 17,
+      "errors": [
+        "link: HTTPError: HTTP Error 403: Forbidden",
+        "link: HTTPError: HTTP Error 403: Forbidden",
+        "link: HTTPError: HTTP Error 403: Forbidden",
+        "link: HTTPError: HTTP Error 403: Forbidden",
+        "link: HTTPError: HTTP Error 403: Forbidden",
+        "link: HTTPError: HTTP Error 403: Forbidden",
+        "link: HTTPError: HTTP Error 403: Forbidden",
+        "link: HTTPError: HTTP Error 403: Forbidden",
+        "link: HTTPError: HTTP Error 403: Forbidden",
+        "link: HTTPError: HTTP Error 403: Forbidden",
+        "link: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "provenance": "The Library of Congress official government site and same-registered-domain catalog/navigation routes."
+    },
+    {
+      "source": "World Wide Web Consortium",
+      "registered_domain": "w3.org",
+      "approved_homepage": "https://www.w3.org/",
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 16,
+      "request_count": 17,
+      "errors": [],
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "provenance": "W3C's official standards organization site and same-registered-domain standards routes."
+    },
+    {
+      "source": "Internet Engineering Task Force",
+      "registered_domain": "ietf.org",
+      "approved_homepage": "https://www.ietf.org/",
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 16,
+      "request_count": 17,
+      "errors": [],
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "provenance": "IETF's official standards organization site and same-registered-domain publication routes."
+    },
+    {
+      "source": "arXiv",
+      "registered_domain": "arxiv.org",
+      "approved_homepage": "https://arxiv.org/",
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 16,
+      "request_count": 17,
+      "errors": [],
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "provenance": "The arXiv official research preprint repository and same-registered-domain browsing/search routes."
+    },
+    {
+      "source": "OpenStreetMap",
+      "registered_domain": "openstreetmap.org",
+      "approved_homepage": "https://www.openstreetmap.org/",
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 16,
+      "request_count": 17,
+      "errors": [],
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "provenance": "OpenStreetMap's official public mapping service and same-registered-domain user interface routes."
+    },
+    {
+      "source": "World Health Organization",
+      "registered_domain": "who.int",
+      "approved_homepage": "https://www.who.int/",
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 16,
+      "request_count": 17,
+      "errors": [],
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "provenance": "WHO's official public health organization site and same-registered-domain information routes."
+    },
+    {
+      "source": "Massachusetts Institute of Technology",
+      "registered_domain": "mit.edu",
+      "approved_homepage": "https://www.mit.edu/",
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 16,
+      "request_count": 17,
+      "errors": [],
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "provenance": "MIT's official university homepage and same-registered-domain academic navigation routes."
+    },
+    {
+      "source": "Stanford University",
+      "registered_domain": "stanford.edu",
+      "approved_homepage": "https://www.stanford.edu/",
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 12,
+      "request_count": 17,
+      "errors": [
+        "link: HTTPError: HTTP Error 403: Forbidden",
+        "link: HTTPError: HTTP Error 403: Forbidden",
+        "link: HTTPError: HTTP Error 403: Forbidden",
+        "link: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "provenance": "Stanford's official university homepage and same-registered-domain academic navigation routes."
+    },
+    {
+      "source": "University of California, Berkeley",
+      "registered_domain": "berkeley.edu",
+      "approved_homepage": "https://www.berkeley.edu/",
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 16,
+      "request_count": 17,
+      "errors": [],
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "provenance": "UC Berkeley's official university homepage and same-registered-domain academic navigation routes."
+    },
+    {
+      "source": "GOV.UK",
+      "registered_domain": "gov.uk",
+      "approved_homepage": "https://www.gov.uk/",
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 16,
+      "request_count": 17,
+      "errors": [],
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "provenance": "The UK government's official public services portal and same-registered-domain service routes."
+    },
+    {
+      "source": "European Space Agency",
+      "registered_domain": "esa.int",
+      "approved_homepage": "https://www.esa.int/",
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 16,
+      "request_count": 17,
+      "errors": [],
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "provenance": "ESA's official public space agency site and same-registered-domain information routes."
+    },
+    {
+      "source": "Chrome for Developers",
+      "registered_domain": "chrome.com",
+      "approved_homepage": "https://developer.chrome.com/",
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 16,
+      "request_count": 17,
+      "errors": [],
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "provenance": "Google Chrome's official developer documentation and same-registered-domain documentation routes."
+    },
+    {
+      "source": "RFC Editor",
+      "registered_domain": "rfc-editor.org",
+      "approved_homepage": "https://www.rfc-editor.org/",
+      "homepage_status": 200,
+      "homepage_verified": true,
+      "links_checked": 16,
+      "links_verified": 16,
+      "request_count": 17,
+      "errors": [],
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "provenance": "The RFC Editor's official standards publication site and same-registered-domain publication routes."
+    }
+  ],
+  "row_counts": {
+    "recovered_local_rows_before_deduplication": 95,
+    "new_live_verified_rows_before_deduplication": 270,
+    "usable_unique_observed_legitimate_urls": 298
+  },
+  "counts_by_source": {
+    "Chrome for Developers": 17,
+    "European Space Agency": 18,
+    "GOV.UK": 17,
+    "GitHub": 16,
+    "Internet Engineering Task Force": 17,
+    "Library of Congress": 6,
+    "Massachusetts Institute of Technology": 22,
+    "Mozilla Developer Network": 17,
+    "NASA": 21,
+    "OpenStreetMap": 18,
+    "RFC Editor": 18,
+    "Stanford University": 14,
+    "University of California, Berkeley": 19,
+    "Wikimedia Wikipedia": 21,
+    "World Health Organization": 22,
+    "World Wide Web Consortium": 18,
+    "arXiv": 17
+  },
+  "counts_by_registered_domain": {
+    "arxiv.org": 17,
+    "berkeley.edu": 19,
+    "chrome.com": 17,
+    "esa.int": 18,
+    "github.com": 16,
+    "gov.uk": 17,
+    "ietf.org": 17,
+    "loc.gov": 6,
+    "mit.edu": 22,
+    "mozilla.org": 17,
+    "nasa.gov": 21,
+    "openstreetmap.org": 18,
+    "rfc-editor.org": 18,
+    "stanford.edu": 14,
+    "w3.org": 18,
+    "who.int": 22,
+    "wikipedia.org": 21
+  },
+  "counts_by_cohort": {
+    "documentation": 36,
+    "encoded": 13,
+    "fragment": 13,
+    "homepage": 15,
+    "login_account": 2,
+    "multiple_parameters": 14,
+    "pagination": 3,
+    "path": 278,
+    "query": 28,
+    "search": 17,
+    "tracking": 1
+  },
+  "counts_by_verification_status": {
+    "historical_http_200": 95,
+    "http_200_same_registered_domain": 203
+  },
+  "missing_cohorts": [
+    "long_url"
+  ],
+  "duplicate_removal": {
+    "input_observations": 365,
+    "output_unique_rows": 298,
+    "exact_duplicate_rows_removed": 67,
+    "normalized_duplicate_rows_removed": 0,
+    "duplicate_rows_removed_total": 67,
+    "normalization_function": "feature_extractor.normalize_url"
+  },
+  "cohort_definitions": {
+    "homepage": "Observed HTTPS homepage/root URL with no path, query, or fragment.",
+    "path": "Observed non-root path.",
+    "search": "Observed search/find/results route or search-like query key.",
+    "query": "Observed non-empty query string.",
+    "multiple_parameters": "Observed URL query with two or more parsed parameters.",
+    "encoded": "Observed URL containing percent-encoding.",
+    "fragment": "Observed URL containing a fragment.",
+    "pagination": "Observed page/offset/cursor-style pagination parameter.",
+    "tracking": "Observed known tracking parameter.",
+    "documentation": "Observed documentation path or developer/docs host.",
+    "login_account": "Observed login, authentication, registration, or account route.",
+    "long_url": "Observed URL longer than 200 characters."
+  },
+  "data_gaps": {
+    "missing_cohorts": [
+      "long_url"
+    ],
+    "reported_but_unrecoverable_rows": 340,
+    "historically_unmatched_local_rows": 0,
+    "notes": [
+      "The source reports describe 435 verified URLs, but only the local row-level CSV rows were recoverable; aggregate report categories are not treated as row-level data.",
+      "No cohort is filled with invented paths, generated query strings, or unverified examples.",
+      "A missing cohort means no URL meeting the recorded URL-string rule was present in this collection."
+    ]
+  }
+}

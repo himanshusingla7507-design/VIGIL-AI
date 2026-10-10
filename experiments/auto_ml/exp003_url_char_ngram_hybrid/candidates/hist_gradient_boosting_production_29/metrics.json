@@ -1,0 +1,472 @@
+{
+  "experiment": "exp003_url_char_ngram_hybrid",
+  "candidate": "hist_gradient_boosting_production_29",
+  "candidate_artifact": "experiments\\auto_ml\\exp003_url_char_ngram_hybrid\\candidates\\hist_gradient_boosting_production_29\\candidate.joblib",
+  "feature_count": 29,
+  "production_numeric_feature_count": 29,
+  "selected_threshold": {
+    "phishing_threshold": 0.5127057287082563,
+    "selected_on": "domain-disjoint validation partition only",
+    "maximum_validation_fpr": 0.005,
+    "validation_fpr": 0.0,
+    "validation_phishing_recall": 0.5591985428051002,
+    "validation_legitimate_rows": 549,
+    "validation_phishing_rows": 549
+  },
+  "validation_at_selected_threshold": {
+    "rows": 1098,
+    "legitimate_rows": 549,
+    "phishing_rows": 549,
+    "decision_threshold": 0.5127057287082563,
+    "accuracy": 0.7795992714025501,
+    "precision": 1.0,
+    "recall": 0.5591985428051002,
+    "phishing_recall": 0.5591985428051002,
+    "phishing_fnr": 0.4408014571948998,
+    "f1": 0.7172897196261683,
+    "roc_auc": 0.970972226369521,
+    "pr_auc": 0.9718056100545538,
+    "brier_score": 0.2369989859335485,
+    "ece": 0.38844544887643895,
+    "legitimate_fpr": 0.0,
+    "confusion": {
+      "tn": 549,
+      "fp": 0,
+      "fn": 242,
+      "tp": 307
+    }
+  },
+  "domain_disjoint_test_at_selected_threshold": {
+    "rows": 784,
+    "legitimate_rows": 392,
+    "phishing_rows": 392,
+    "decision_threshold": 0.5127057287082563,
+    "accuracy": 0.7971938775510204,
+    "precision": 1.0,
+    "recall": 0.5943877551020408,
+    "phishing_recall": 0.5943877551020408,
+    "phishing_fnr": 0.4056122448979592,
+    "f1": 0.7456,
+    "roc_auc": 0.9657824864639732,
+    "pr_auc": 0.9718120297840437,
+    "brier_score": 0.23867243787396625,
+    "ece": 0.35644021615420296,
+    "legitimate_fpr": 0.0,
+    "confusion": {
+      "tn": 392,
+      "fp": 0,
+      "fn": 159,
+      "tp": 233
+    }
+  },
+  "domain_disjoint_test_at_0_5": {
+    "rows": 784,
+    "legitimate_rows": 392,
+    "phishing_rows": 392,
+    "decision_threshold": 0.5,
+    "accuracy": 0.8698979591836735,
+    "precision": 0.8251121076233184,
+    "recall": 0.9387755102040817,
+    "phishing_recall": 0.9387755102040817,
+    "phishing_fnr": 0.061224489795918324,
+    "f1": 0.8782816229116945,
+    "roc_auc": 0.9657824864639732,
+    "pr_auc": 0.9718120297840437,
+    "brier_score": 0.23867243787396625,
+    "ece": 0.35644021615420296,
+    "legitimate_fpr": 0.1989795918367347,
+    "confusion": {
+      "tn": 314,
+      "fp": 78,
+      "fn": 24,
+      "tp": 368
+    }
+  },
+  "legitimate_benchmark": {
+    "combined_legitimate_urls": {
+      "count": 686,
+      "phishing_count": 0,
+      "fpr": 0.0,
+      "safe": 0,
+      "suspicious": 686,
+      "phishing": 0,
+      "average_probability": 0.4862085136765473,
+      "maximum_probability": 0.5126078255455357
+    },
+    "verified_legitimate_domain_test": {
+      "count": 600,
+      "phishing_count": 0,
+      "fpr": 0.0
+    },
+    "fixed_baseline": {
+      "count": 16,
+      "verdicts": {
+        "SUSPICIOUS": 16
+      }
+    },
+    "counterfactuals": {
+      "count": 70,
+      "verdicts": {
+        "SUSPICIOUS": 70
+      },
+      "per_variant": {
+        "path": {
+          "samples": 10,
+          "median_probability_delta": -0.008954346777503203,
+          "mean_probability_delta": -0.00694597351869104,
+          "maximum_probability_delta": -7.422585578786833e-06,
+          "positive_delta_count": 0,
+          "systematic_jump": false
+        },
+        "query": {
+          "samples": 10,
+          "median_probability_delta": -0.009835689581900342,
+          "mean_probability_delta": -0.008945007895609558,
+          "maximum_probability_delta": -9.712363803271451e-05,
+          "positive_delta_count": 0,
+          "systematic_jump": false
+        },
+        "multi-query": {
+          "samples": 10,
+          "median_probability_delta": -0.016636136267011575,
+          "mean_probability_delta": -0.014370151785220785,
+          "maximum_probability_delta": -1.8811058259293745e-05,
+          "positive_delta_count": 0,
+          "systematic_jump": false
+        },
+        "encoded": {
+          "samples": 10,
+          "median_probability_delta": -0.01873431022059649,
+          "mean_probability_delta": -0.01622212170103396,
+          "maximum_probability_delta": -8.661539120136119e-05,
+          "positive_delta_count": 0,
+          "systematic_jump": false
+        },
+        "fragment": {
+          "samples": 10,
+          "median_probability_delta": -0.01869681549788782,
+          "mean_probability_delta": -0.017936681395061344,
+          "maximum_probability_delta": -0.0003031712597831304,
+          "positive_delta_count": 0,
+          "systematic_jump": false
+        },
+        "path+query": {
+          "samples": 10,
+          "median_probability_delta": -0.01394270489887714,
+          "mean_probability_delta": -0.01249614946725422,
+          "maximum_probability_delta": -0.00020817952098217685,
+          "positive_delta_count": 0,
+          "systematic_jump": false
+        }
+      }
+    },
+    "highest_probability_examples": [
+      {
+        "url": "https://www.djangoproject.com/weblog/2026/oct/06/security-releases/",
+        "probability": 0.5126078255455357,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://www.theguardian.com/index/subjects/a",
+        "probability": 0.5124969336706269,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://www.theguardian.com/lifeandstyle/2026/oct/08/sudoku-7479-hard",
+        "probability": 0.5121811755154799,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://www.theguardian.com/preference/edition/eur",
+        "probability": 0.512108595779129,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://www.djangoproject.com/download/6.0.9/checksum/",
+        "probability": 0.5120427359011702,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://www.djangoproject.com/download/6.1.2/checksum/",
+        "probability": 0.5120427359011702,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://www.theguardian.com/preference/edition/us",
+        "probability": 0.5117126367631846,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://accounts.google.com/signin/v2/identifier",
+        "probability": 0.5109027939597859,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://www.theguardian.com/tone/recipes",
+        "probability": 0.5108028490544781,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://stackoverflow.com/questions/tagged/python",
+        "probability": 0.5106142886375907,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://www.djangoproject.com/download/5.2.18/checksum/",
+        "probability": 0.5106096355478956,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://developer.mozilla.org/de/",
+        "probability": 0.5105671997893065,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://developer.mozilla.org/fr/",
+        "probability": 0.5105671997893065,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://developer.mozilla.org/ja/",
+        "probability": 0.5105671997893065,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://www.theguardian.com/sport/cycling",
+        "probability": 0.5104862749354416,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://www.theguardian.com/world/ukraine",
+        "probability": 0.5104862749354416,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://github.com/community/community/blob/9b4ed8f9f9961d38041198da75b5d10a4f1d0bb6/CODE_OF_CONDUCT.md",
+        "probability": 0.5104521812900558,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://www.theguardian.com/world/israel",
+        "probability": 0.5104110528139388,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://developer.mozilla.org/en-US/play",
+        "probability": 0.5103059253151088,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://www.theguardian.com/sport/golf",
+        "probability": 0.5101816189176327,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://developer.mozilla.org/en-US/about",
+        "probability": 0.50975939706179,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://developer.chrome.com/docs/privacy-security",
+        "probability": 0.5094043531050326,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://www.theguardian.com/travel",
+        "probability": 0.509037299313962,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://www.theguardian.com/crosswords",
+        "probability": 0.5086535101846875,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://www.theguardian.com/technology",
+        "probability": 0.5086535101846875,
+        "verdict": "SUSPICIOUS"
+      }
+    ]
+  },
+  "phishing_benchmark": {
+    "rows": 784,
+    "phishing_recall": 0.5943877551020408,
+    "false_negative_rate": 0.4056122448979592,
+    "features": {
+      "path": 758,
+      "docs": 119,
+      "api": 8,
+      "homepage": 3,
+      "fragment": 71,
+      "query": 114,
+      "path_plus_query": 92,
+      "multiple_query_params": 68,
+      "encoded": 24,
+      "long_query": 29,
+      "long_url": 26,
+      "tracking": 12,
+      "login_account": 64,
+      "search": 2
+    }
+  },
+  "hard_phishing_cohorts": {
+    "query_strings": {
+      "samples": 5,
+      "excluded_due_to_training_domain_overlap": 0,
+      "candidate_phishing_recall": 0.2,
+      "production_phishing_recall_same_nontraining_domains": 1.0,
+      "not_major_regression": false
+    },
+    "paths": {
+      "samples": 5,
+      "excluded_due_to_training_domain_overlap": 0,
+      "candidate_phishing_recall": 0.2,
+      "production_phishing_recall_same_nontraining_domains": 1.0,
+      "not_major_regression": false
+    },
+    "login_parameters": {
+      "samples": 4,
+      "excluded_due_to_training_domain_overlap": 1,
+      "candidate_phishing_recall": 0.5,
+      "production_phishing_recall_same_nontraining_domains": 1.0,
+      "not_major_regression": false
+    },
+    "encoded_values": {
+      "samples": 4,
+      "excluded_due_to_training_domain_overlap": 1,
+      "candidate_phishing_recall": 0.0,
+      "production_phishing_recall_same_nontraining_domains": 1.0,
+      "not_major_regression": false
+    },
+    "long_urls_over_200": {
+      "samples": 4,
+      "excluded_due_to_training_domain_overlap": 1,
+      "candidate_phishing_recall": 0.75,
+      "production_phishing_recall_same_nontraining_domains": 1.0,
+      "not_major_regression": false
+    },
+    "redirect_parameters": {
+      "samples": 2,
+      "excluded_due_to_training_domain_overlap": 3,
+      "candidate_phishing_recall": 0.5,
+      "production_phishing_recall_same_nontraining_domains": 1.0,
+      "not_major_regression": false
+    },
+    "brand_like_hostnames": {
+      "samples": 5,
+      "excluded_due_to_training_domain_overlap": 0,
+      "candidate_phishing_recall": 0.4,
+      "production_phishing_recall_same_nontraining_domains": 1.0,
+      "not_major_regression": false
+    }
+  },
+  "model_size_bytes": 381163,
+  "median_inference_latency_ms_per_url": 0.0037791454077501395,
+  "gates": {
+    "fixed_and_verified_legitimate_phishing_count_zero": true,
+    "legitimate_fpr_le_0_5_percent": true,
+    "phishing_recall_at_least_98_percent": false,
+    "domain_disjoint_test_recall_at_least_97_percent": false,
+    "no_major_existing_hard_cohort_regression": false,
+    "no_systematic_counterfactual_structure_jump": true,
+    "same_registered_domain_splits": true,
+    "includes_current_29_numeric_features": true
+  },
+  "all_model_gates_pass": false,
+  "feature_importance": {
+    "model_importance_top_10": [
+      {
+        "feature": "HostnameLength",
+        "normalized_split_gain": 0.3964428545720691
+      },
+      {
+        "feature": "IsTrustedTLD",
+        "normalized_split_gain": 0.1617898657654293
+      },
+      {
+        "feature": "DotCount",
+        "normalized_split_gain": 0.057695457914848605
+      },
+      {
+        "feature": "NoOfHyphenInURL",
+        "normalized_split_gain": 0.05626654442263097
+      },
+      {
+        "feature": "URLLength",
+        "normalized_split_gain": 0.05503897225037876
+      },
+      {
+        "feature": "URLEntropy",
+        "normalized_split_gain": 0.047792717434363044
+      },
+      {
+        "feature": "DigitRatioInURL",
+        "normalized_split_gain": 0.04593268147157729
+      },
+      {
+        "feature": "PathSegmentCount",
+        "normalized_split_gain": 0.025412737650027738
+      },
+      {
+        "feature": "NoOfDigitsInURL",
+        "normalized_split_gain": 0.023587626186794088
+      },
+      {
+        "feature": "HasSuspiciousToken",
+        "normalized_split_gain": 0.020328847662996245
+      }
+    ],
+    "validation_permutation_importance_top_10": [
+      {
+        "feature": "HostnameLength",
+        "importance_mean": 0.2663310538601785,
+        "importance_std": 0.0015666821409375182
+      },
+      {
+        "feature": "IsTrustedTLD",
+        "importance_mean": 0.08693915220734545,
+        "importance_std": 0.0036047967573692567
+      },
+      {
+        "feature": "DotCount",
+        "importance_mean": 0.027920482031436416,
+        "importance_std": 0.003634067136960677
+      },
+      {
+        "feature": "NoOfHyphenInURL",
+        "importance_mean": 0.015848710489044942,
+        "importance_std": 0.0012267508697938938
+      },
+      {
+        "feature": "FragmentLength",
+        "importance_mean": 0.012914157690495939,
+        "importance_std": 0.0009796607354683779
+      },
+      {
+        "feature": "URLEntropy",
+        "importance_mean": 0.010860159765769891,
+        "importance_std": 0.0023238265158823483
+      },
+      {
+        "feature": "DigitRatioInURL",
+        "importance_mean": 0.006233094916791841,
+        "importance_std": 0.0011260176902391935
+      },
+      {
+        "feature": "SubdomainDepth",
+        "importance_mean": 0.004660145453092346,
+        "importance_std": 0.0008736722721314953
+      },
+      {
+        "feature": "PathSegmentCount",
+        "importance_mean": 0.0035729272692678338,
+        "importance_std": 0.0011393463642211815
+      },
+      {
+        "feature": "NoOfDigitsInURL",
+        "importance_mean": 0.003069166297393733,
+        "importance_std": 0.00033607542034648063
+      }
+    ]
+  }
+}

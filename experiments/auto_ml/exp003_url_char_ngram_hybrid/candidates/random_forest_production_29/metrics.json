@@ -1,0 +1,472 @@
+{
+  "experiment": "exp003_url_char_ngram_hybrid",
+  "candidate": "random_forest_production_29",
+  "candidate_artifact": "experiments\\auto_ml\\exp003_url_char_ngram_hybrid\\candidates\\random_forest_production_29\\candidate.joblib",
+  "feature_count": 29,
+  "production_numeric_feature_count": 29,
+  "selected_threshold": {
+    "phishing_threshold": 0.5098413011518829,
+    "selected_on": "domain-disjoint validation partition only",
+    "maximum_validation_fpr": 0.005,
+    "validation_fpr": 0.0036429872495446266,
+    "validation_phishing_recall": 0.5355191256830601,
+    "validation_legitimate_rows": 549,
+    "validation_phishing_rows": 549
+  },
+  "validation_at_selected_threshold": {
+    "rows": 1098,
+    "legitimate_rows": 549,
+    "phishing_rows": 549,
+    "decision_threshold": 0.5098413011518829,
+    "accuracy": 0.7659380692167578,
+    "precision": 0.9932432432432432,
+    "recall": 0.5355191256830601,
+    "phishing_recall": 0.5355191256830601,
+    "phishing_fnr": 0.46448087431693985,
+    "f1": 0.6958579881656805,
+    "roc_auc": 0.9686563747300108,
+    "pr_auc": 0.9697700599167897,
+    "brier_score": 0.2399878123930282,
+    "ece": 0.40595051563995466,
+    "legitimate_fpr": 0.0036429872495446266,
+    "confusion": {
+      "tn": 547,
+      "fp": 2,
+      "fn": 255,
+      "tp": 294
+    }
+  },
+  "domain_disjoint_test_at_selected_threshold": {
+    "rows": 784,
+    "legitimate_rows": 392,
+    "phishing_rows": 392,
+    "decision_threshold": 0.5098413011518829,
+    "accuracy": 0.7857142857142857,
+    "precision": 1.0,
+    "recall": 0.5714285714285714,
+    "phishing_recall": 0.5714285714285714,
+    "phishing_fnr": 0.4285714285714286,
+    "f1": 0.7272727272727273,
+    "roc_auc": 0.9573419929196169,
+    "pr_auc": 0.967303029696425,
+    "brier_score": 0.24191502440966134,
+    "ece": 0.36193753840057297,
+    "legitimate_fpr": 0.0,
+    "confusion": {
+      "tn": 392,
+      "fp": 0,
+      "fn": 168,
+      "tp": 224
+    }
+  },
+  "domain_disjoint_test_at_0_5": {
+    "rows": 784,
+    "legitimate_rows": 392,
+    "phishing_rows": 392,
+    "decision_threshold": 0.5,
+    "accuracy": 0.8711734693877551,
+    "precision": 0.8407494145199064,
+    "recall": 0.9158163265306123,
+    "phishing_recall": 0.9158163265306123,
+    "phishing_fnr": 0.08418367346938771,
+    "f1": 0.8766788766788767,
+    "roc_auc": 0.9573419929196169,
+    "pr_auc": 0.967303029696425,
+    "brier_score": 0.24191502440966134,
+    "ece": 0.36193753840057297,
+    "legitimate_fpr": 0.17346938775510204,
+    "confusion": {
+      "tn": 324,
+      "fp": 68,
+      "fn": 33,
+      "tp": 359
+    }
+  },
+  "legitimate_benchmark": {
+    "combined_legitimate_urls": {
+      "count": 686,
+      "phishing_count": 0,
+      "fpr": 0.0,
+      "safe": 0,
+      "suspicious": 686,
+      "phishing": 0,
+      "average_probability": 0.4905966925476229,
+      "maximum_probability": 0.5085902372510086
+    },
+    "verified_legitimate_domain_test": {
+      "count": 600,
+      "phishing_count": 0,
+      "fpr": 0.0
+    },
+    "fixed_baseline": {
+      "count": 16,
+      "verdicts": {
+        "SUSPICIOUS": 16
+      }
+    },
+    "counterfactuals": {
+      "count": 70,
+      "verdicts": {
+        "SUSPICIOUS": 70
+      },
+      "per_variant": {
+        "path": {
+          "samples": 10,
+          "median_probability_delta": -0.0014635533094192188,
+          "mean_probability_delta": -0.0012901475785623063,
+          "maximum_probability_delta": 0.0030928636106714036,
+          "positive_delta_count": 4,
+          "systematic_jump": false
+        },
+        "query": {
+          "samples": 10,
+          "median_probability_delta": -0.0037010362266017283,
+          "mean_probability_delta": -0.003712199954598222,
+          "maximum_probability_delta": 0.0022031363414977134,
+          "positive_delta_count": 1,
+          "systematic_jump": false
+        },
+        "multi-query": {
+          "samples": 10,
+          "median_probability_delta": -0.0018393042500655654,
+          "mean_probability_delta": -0.0031158186613450324,
+          "maximum_probability_delta": 0.004562787989911277,
+          "positive_delta_count": 2,
+          "systematic_jump": false
+        },
+        "encoded": {
+          "samples": 10,
+          "median_probability_delta": -0.0018996907531440843,
+          "mean_probability_delta": -0.0026788242312916987,
+          "maximum_probability_delta": 0.0041222028572242,
+          "positive_delta_count": 3,
+          "systematic_jump": false
+        },
+        "fragment": {
+          "samples": 10,
+          "median_probability_delta": -0.00568006399951046,
+          "mean_probability_delta": -0.006233356578264587,
+          "maximum_probability_delta": 0.002489100220193219,
+          "positive_delta_count": 1,
+          "systematic_jump": false
+        },
+        "path+query": {
+          "samples": 10,
+          "median_probability_delta": -0.0050594310104288,
+          "mean_probability_delta": -0.0058333046143079995,
+          "maximum_probability_delta": 0.001650729478293922,
+          "positive_delta_count": 1,
+          "systematic_jump": false
+        }
+      }
+    },
+    "highest_probability_examples": [
+      {
+        "url": "https://www.theguardian.com/preference/edition/eur",
+        "probability": 0.5085902372510086,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://www.theguardian.com/preference/edition/us",
+        "probability": 0.5074622161623729,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://stackoverflow.com/questions/tagged/python",
+        "probability": 0.5066059697859735,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://www.theguardian.com/world",
+        "probability": 0.506284101469559,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://ka.wikipedia.org/wiki/%E1%83%95%E1%83%98%E1%83%99%E1%83%98%E1%83%9E%E1%83%94%E1%83%93%E1%83%98%E1%83%90:%E1%83%A0%E1%83%A9%E1%83%94%E1%83%A3%E1%83%9A%E1%83%98_%E1%83%A4%E1%83%9D%E1%83%A2%E1%83%9D%E1%83%94%E1%83%91%E1%83%98",
+        "probability": 0.5061058186167338,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://accounts.google.com/signin/v2/identifier",
+        "probability": 0.506090651081518,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://www.theguardian.com/index/subjects/a",
+        "probability": 0.506029752287996,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://www.theguardian.com/books",
+        "probability": 0.506013442955463,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://www.djangoproject.com/weblog/2026/oct/06/security-releases/",
+        "probability": 0.5059587029692999,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://github.com/community/community/blob/9b4ed8f9f9961d38041198da75b5d10a4f1d0bb6/CODE_OF_CONDUCT.md",
+        "probability": 0.5059564228796231,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://tcy.wikipedia.org/wiki/%E0%B2%B5%E0%B2%BF%E0%B2%95%E0%B2%BF%E0%B2%AA%E0%B3%80%E0%B2%A1%E0%B2%BF%E0%B2%AF:%E0%B2%B5%E0%B2%BF%E0%B2%B8%E0%B3%87%E0%B2%B8%E0%B3%8A_%E0%B2%9A%E0%B2%BF%E0%B2%A4%E0%B3%8D%E0%B2%B0%E0%B3%8A%E0%B2%B2%E0%B3%81",
+        "probability": 0.5059067509632567,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://got.wikipedia.org/wiki/%F0%90%8C%B0%F0%90%8C%BD%F0%90%8C%B0%F0%90%8D%83%F0%90%8D%84%F0%90%8D%89%F0%90%8C%B3%F0%90%8C%B4%F0%90%8C%B9%F0%90%8C%BD%F0%90%8C%B9%F0%90%8C%BB%F0%90%8C%B0%F0%90%8C%BF%F0%90%8D%86%F0%90%8D%83",
+        "probability": 0.5058336752631951,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://www.djangoproject.com/download/5.2.18/checksum/",
+        "probability": 0.5058182509926593,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://en.wikipedia.org/w/index.php?title=1862&oldid=1358615004",
+        "probability": 0.5057933112535603,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://sa.wikipedia.org/wiki/%E0%A4%B5%E0%A4%BF%E0%A4%95%E0%A4%BF%E0%A4%AA%E0%A5%80%E0%A4%A1%E0%A4%BF%E0%A4%AF%E0%A4%BE:%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%AE%E0%A5%81%E0%A4%96%E0%A4%82_%E0%A4%9A%E0%A4%BF%E0%A4%A4%E0%A5%8D%E0%A4%B0%E0%A4%AE%E0%A5%8D",
+        "probability": 0.5057198734987317,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://ne.wikipedia.org/wiki/%E0%A4%B5%E0%A4%BF%E0%A4%95%E0%A4%BF%E0%A4%AA%E0%A4%BF%E0%A4%A1%E0%A4%BF%E0%A4%AF%E0%A4%BE:%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%AE%E0%A5%81%E0%A4%96_%E0%A4%9A%E0%A4%BF%E0%A4%A4%E0%A5%8D%E0%A4%B0",
+        "probability": 0.5056612449427427,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://ab.wikipedia.org/wiki/%D0%98%D1%85%D0%B0%D0%B4%D0%BE%D1%83_%D0%B0%D0%B4%D0%B0%D2%9F%D1%8C%D0%B0",
+        "probability": 0.5054935967634087,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://bn.wikipedia.org/wiki/%E0%A6%89%E0%A6%87%E0%A6%95%E0%A6%BF%E0%A6%AA%E0%A6%BF%E0%A6%A1%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE:%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%9A%E0%A6%BF%E0%A6%A4_%E0%A6%9B%E0%A6%AC%E0%A6%BF",
+        "probability": 0.5053754285324998,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://si.wikipedia.org/wiki/%E0%B7%80%E0%B7%92%E0%B6%9A%E0%B7%92%E0%B6%B4%E0%B7%93%E0%B6%A9%E0%B7%92%E0%B6%BA%E0%B7%8F:%E0%B6%AD%E0%B7%9D%E0%B6%BB%E0%B7%8F%E0%B6%9C%E0%B6%AD%E0%B7%8A_%E0%B7%83%E0%B7%9A%E0%B6%BA%E0%B7%8F%E0%B6%BB%E0%B7%94%E0%B7%80",
+        "probability": 0.5053680998595994,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://hi.wikipedia.org/wiki/%E0%A4%B5%E0%A4%BF%E0%A4%95%E0%A4%BF%E0%A4%AA%E0%A5%80%E0%A4%A1%E0%A4%BF%E0%A4%AF%E0%A4%BE:%E0%A4%AE%E0%A5%81%E0%A4%96%E0%A4%AA%E0%A5%83%E0%A4%B7%E0%A5%8D%E0%A4%A0_%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%AE%E0%A5%81%E0%A4%96_%E0%A4%9A%E0%A4%BF%E0%A4%A4%E0%A5%8D%E0%A4%B0",
+        "probability": 0.5053217721240835,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://www.theguardian.com/tone/recipes",
+        "probability": 0.5052541080195605,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://developer.mozilla.org/en-US/play",
+        "probability": 0.5051466801376292,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://ks.wikipedia.org/wiki/%D8%A7%D9%8E%DB%81%D9%8E%D9%85_%D8%B5%D9%8E%D9%81%DB%81%D9%95",
+        "probability": 0.5050119342741551,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://dz.wikipedia.org/wiki/Wikipedia:%E0%BD%82%E0%BD%9F%E0%BD%B4%E0%BD%82%E0%BD%A6%E0%BC%8B%E0%BD%96%E0%BD%A2%E0%BE%99%E0%BD%93%E0%BC%8B%E0%BD%A0%E0%BD%91%E0%BD%B2%E0%BC%8B%E0%BD%A6%E0%BD%BA%E0%BD%A3%E0%BC%8B%E0%BD%A0%E0%BD%90%E0%BD%B4%E0%BC%8B%E0%BD%A0%E0%BD%96%E0%BD%91%E0%BC%8B%E0%BD%A1%E0%BD%BC%E0%BD%91%E0%BD%94%E0%BC%8B%E0%BD%A8%E0%BD%B2%E0%BD%93%E0%BC%8D",
+        "probability": 0.5049322491750166,
+        "verdict": "SUSPICIOUS"
+      },
+      {
+        "url": "https://www.djangoproject.com/download/6.0.9/checksum/",
+        "probability": 0.5048488660894082,
+        "verdict": "SUSPICIOUS"
+      }
+    ]
+  },
+  "phishing_benchmark": {
+    "rows": 784,
+    "phishing_recall": 0.5714285714285714,
+    "false_negative_rate": 0.4285714285714286,
+    "features": {
+      "path": 758,
+      "docs": 119,
+      "api": 8,
+      "homepage": 3,
+      "fragment": 71,
+      "query": 114,
+      "path_plus_query": 92,
+      "multiple_query_params": 68,
+      "encoded": 24,
+      "long_query": 29,
+      "long_url": 26,
+      "tracking": 12,
+      "login_account": 64,
+      "search": 2
+    }
+  },
+  "hard_phishing_cohorts": {
+    "query_strings": {
+      "samples": 5,
+      "excluded_due_to_training_domain_overlap": 0,
+      "candidate_phishing_recall": 0.0,
+      "production_phishing_recall_same_nontraining_domains": 1.0,
+      "not_major_regression": false
+    },
+    "paths": {
+      "samples": 5,
+      "excluded_due_to_training_domain_overlap": 0,
+      "candidate_phishing_recall": 0.0,
+      "production_phishing_recall_same_nontraining_domains": 1.0,
+      "not_major_regression": false
+    },
+    "login_parameters": {
+      "samples": 4,
+      "excluded_due_to_training_domain_overlap": 1,
+      "candidate_phishing_recall": 0.5,
+      "production_phishing_recall_same_nontraining_domains": 1.0,
+      "not_major_regression": false
+    },
+    "encoded_values": {
+      "samples": 4,
+      "excluded_due_to_training_domain_overlap": 1,
+      "candidate_phishing_recall": 0.0,
+      "production_phishing_recall_same_nontraining_domains": 1.0,
+      "not_major_regression": false
+    },
+    "long_urls_over_200": {
+      "samples": 4,
+      "excluded_due_to_training_domain_overlap": 1,
+      "candidate_phishing_recall": 0.25,
+      "production_phishing_recall_same_nontraining_domains": 1.0,
+      "not_major_regression": false
+    },
+    "redirect_parameters": {
+      "samples": 2,
+      "excluded_due_to_training_domain_overlap": 3,
+      "candidate_phishing_recall": 1.0,
+      "production_phishing_recall_same_nontraining_domains": 1.0,
+      "not_major_regression": true
+    },
+    "brand_like_hostnames": {
+      "samples": 5,
+      "excluded_due_to_training_domain_overlap": 0,
+      "candidate_phishing_recall": 0.4,
+      "production_phishing_recall_same_nontraining_domains": 1.0,
+      "not_major_regression": false
+    }
+  },
+  "model_size_bytes": 9483058,
+  "median_inference_latency_ms_per_url": 0.0642401785705019,
+  "gates": {
+    "fixed_and_verified_legitimate_phishing_count_zero": true,
+    "legitimate_fpr_le_0_5_percent": true,
+    "phishing_recall_at_least_98_percent": false,
+    "domain_disjoint_test_recall_at_least_97_percent": false,
+    "no_major_existing_hard_cohort_regression": false,
+    "no_systematic_counterfactual_structure_jump": true,
+    "same_registered_domain_splits": true,
+    "includes_current_29_numeric_features": true
+  },
+  "all_model_gates_pass": false,
+  "feature_importance": {
+    "model_importance_top_10": [
+      {
+        "feature": "HostnameLength",
+        "importance": 0.265130786460393
+      },
+      {
+        "feature": "IsTrustedTLD",
+        "importance": 0.14940946145310066
+      },
+      {
+        "feature": "URLEntropy",
+        "importance": 0.06592257681471049
+      },
+      {
+        "feature": "DigitRatioInURL",
+        "importance": 0.06319948819244231
+      },
+      {
+        "feature": "NoOfDigitsInURL",
+        "importance": 0.051378000415425736
+      },
+      {
+        "feature": "NoOfHyphenInURL",
+        "importance": 0.04964060134505657
+      },
+      {
+        "feature": "LetterRatioInURL",
+        "importance": 0.045632463380680104
+      },
+      {
+        "feature": "PathLength",
+        "importance": 0.042383417881008904
+      },
+      {
+        "feature": "PathSegmentCount",
+        "importance": 0.036044218900747646
+      },
+      {
+        "feature": "URLLength",
+        "importance": 0.033332924491796964
+      }
+    ],
+    "validation_permutation_importance_top_10": [
+      {
+        "feature": "HostnameLength",
+        "importance_mean": 0.15800140026438178,
+        "importance_std": 0.0012471735309265057
+      },
+      {
+        "feature": "IsTrustedTLD",
+        "importance_mean": 0.04884298695611,
+        "importance_std": 0.003172507569385692
+      },
+      {
+        "feature": "FragmentLength",
+        "importance_mean": 0.015691903971049692,
+        "importance_std": 0.001146649483105968
+      },
+      {
+        "feature": "URLEntropy",
+        "importance_mean": 0.011155239476923207,
+        "importance_std": 0.0006261171727592593
+      },
+      {
+        "feature": "DigitRatioInURL",
+        "importance_mean": 0.010917092319715308,
+        "importance_std": 0.00039183963158828287
+      },
+      {
+        "feature": "NoOfHyphenInURL",
+        "importance_mean": 0.008543795457655748,
+        "importance_std": 0.00030938831919799064
+      },
+      {
+        "feature": "PathLength",
+        "importance_mean": 0.0059056979627110096,
+        "importance_std": 0.0001357930240962412
+      },
+      {
+        "feature": "NoOfDigitsInURL",
+        "importance_mean": 0.005482419555355296,
+        "importance_std": 0.000464515708641731
+      },
+      {
+        "feature": "PathSegmentCount",
+        "importance_mean": 0.005075369465466421,
+        "importance_std": 0.0008216907020138531
+      },
+      {
+        "feature": "DotCount",
+        "importance_mean": 0.0041586947593828345,
+        "importance_std": 0.0006295140784848208
+      }
+    ]
+  }
+}

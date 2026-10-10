@@ -1,0 +1,147 @@
+[
+  {
+    "feature": "IsTrustedTLD",
+    "importance_mean": 0.11315122158606046,
+    "importance_std": 0.009159488555714397
+  },
+  {
+    "feature": "HostnameLength",
+    "importance_mean": 0.03400963506832962,
+    "importance_std": 0.007559945271461278
+  },
+  {
+    "feature": "FragmentLength",
+    "importance_mean": 0.019703756124139327,
+    "importance_std": 0.0034716361971604045
+  },
+  {
+    "feature": "DigitRatioInURL",
+    "importance_mean": 0.011188171257995464,
+    "importance_std": 0.006478060496343503
+  },
+  {
+    "feature": "HasSuspiciousTLD",
+    "importance_mean": 0.010014537839146742,
+    "importance_std": 0.009079707331391917
+  },
+  {
+    "feature": "NoOfHyphenInURL",
+    "importance_mean": 0.008234477259748277,
+    "importance_std": 0.0014643111906115997
+  },
+  {
+    "feature": "IsDomainIP",
+    "importance_mean": 0.007038369466778049,
+    "importance_std": 0.005296525189935364
+  },
+  {
+    "feature": "HasSuspiciousToken",
+    "importance_mean": 0.006587535451997158,
+    "importance_std": 0.0036496054033308785
+  },
+  {
+    "feature": "NoOfAtInURL",
+    "importance_mean": 0.005340469216178738,
+    "importance_std": 0.0001924100084861377
+  },
+  {
+    "feature": "URLEntropy",
+    "importance_mean": 0.003931401592047375,
+    "importance_std": 0.007840099655366157
+  },
+  {
+    "feature": "LetterRatioInURL",
+    "importance_mean": 0.0020554589255392663,
+    "importance_std": 0.0022386626608222357
+  },
+  {
+    "feature": "PathLength",
+    "importance_mean": 0.0020138443721839927,
+    "importance_std": 0.0006468565453809558
+  },
+  {
+    "feature": "DotCount",
+    "importance_mean": 0.0018509020327837817,
+    "importance_std": 0.0028968547696219334
+  },
+  {
+    "feature": "QueryParameterCount",
+    "importance_mean": 0.0015169200493904134,
+    "importance_std": 0.0
+  },
+  {
+    "feature": "NoOfQMarkInURL",
+    "importance_mean": 0.0015169200493904134,
+    "importance_std": 0.0
+  },
+  {
+    "feature": "SubdomainDepth",
+    "importance_mean": 0.0013931853179356042,
+    "importance_std": 0.0015033079849343571
+  },
+  {
+    "feature": "NoOfAmpersandInURL",
+    "importance_mean": 0.0007476076555024136,
+    "importance_std": 0.0
+  },
+  {
+    "feature": "PathSegmentCount",
+    "importance_mean": 0.0003839032310987145,
+    "importance_std": 0.00016253328887091772
+  },
+  {
+    "feature": "QueryLength",
+    "importance_mean": 0.0003024803387779995,
+    "importance_std": 0.0004277717974510554
+  },
+  {
+    "feature": "NoOfUnderscoreInURL",
+    "importance_mean": 0.0002515506008356298,
+    "importance_std": 0.00035574627132484843
+  },
+  {
+    "feature": "NoOfDigitsInURL",
+    "importance_mean": 0.00012967070974501116,
+    "importance_std": 0.000842933955595699
+  },
+  {
+    "feature": "NoOfEqualsInURL",
+    "importance_mean": 0.0,
+    "importance_std": 0.0
+  },
+  {
+    "feature": "HasUserInfo",
+    "importance_mean": 0.0,
+    "importance_std": 0.0
+  },
+  {
+    "feature": "HasPort",
+    "importance_mean": 0.0,
+    "importance_std": 0.0
+  },
+  {
+    "feature": "IsShortened",
+    "importance_mean": 0.0,
+    "importance_std": 0.0
+  },
+  {
+    "feature": "URLPercentEncodingCount",
+    "importance_mean": -0.000210737052842321,
+    "importance_std": 0.00029802719822414594
+  },
+  {
+    "feature": "NoOfLettersInURL",
+    "importance_mean": -0.000387033201037279,
+    "importance_std": 0.001004263568225715
+  },
+  {
+    "feature": "URLLength",
+    "importance_mean": -0.0006856252730490509,
+    "importance_std": 0.0006508084826535472
+  },
+  {
+    "feature": "HasObfuscation",
+    "importance_mean": -0.0008588085040421486,
+    "importance_std": 0.0012145386338977555
+  }
+]

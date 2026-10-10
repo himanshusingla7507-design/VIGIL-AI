@@ -4,8 +4,42 @@ import fs from "node:fs";
 import vm from "node:vm";
 
 const source = fs.readFileSync(new URL("./background.js", import.meta.url), "utf8");
+const thresholds = {safe: 0.1314, phishing: 0.6962};
+const fingerprint = "a".repeat(64);
+const requestId = "d4a8b732-8bcd-4a91-b3ba-6beccf2dd28c";
+const healthResult = (modelFingerprint = fingerprint) => ({
+  status: "ok",
+  model_loaded: true,
+  model_version: "v2.1.0",
+  model_fingerprint: modelFingerprint,
+  backend: {api_endpoint: "http://127.0.0.1:5000/health", backend_pid: 42, backend_instance_id: "test-instance"}
+});
 
-function loadWorker(fetchImpl, {shortTimeouts = false} = {}) {
+function result(url, label, probability = label === "SAFE" ? 0.06 : label === "SUSPICIOUS" ? 0.4 : 0.99, modelFingerprint = fingerprint) {
+  const risk_score = probability < thresholds.safe
+    ? 0
+    : Math.round(Math.min(100, ((probability - thresholds.safe) / (thresholds.phishing - thresholds.safe)) * 100));
+  return {
+    url,
+    normalized_url: new URL(url).href,
+    label,
+    probability,
+    model_probability: probability,
+    effective_probability: probability,
+    probability_source: "model",
+    reputation: {applied: false, host: new URL(url).hostname, source: "model", model_probability: probability, effective_probability: probability},
+    risk_score,
+    thresholds,
+    request_id: requestId,
+    model_version: "v2.1.0",
+    model_fingerprint: modelFingerprint,
+    backend: {api_endpoint: "http://127.0.0.1:5000/scan", backend_pid: 42, backend_instance_id: "test-instance"},
+    evidence: [],
+    features: {}
+  };
+}
+
+function loadWorker(fetchImpl, {shortTimeouts = false, closedTabs = new Set()} = {}) {
   const listeners = {};
   const storage = new Map();
   const updates = [];
@@ -19,14 +53,33 @@ function loadWorker(fetchImpl, {shortTimeouts = false} = {}) {
     tabs: {
       query: async () => [{id: 7, url: activeUrl}],
       update: async (tabId, update) => {
+        if (closedTabs.has(tabId)) {
+          throw new Error(`No tab with id: ${tabId}.`);
+        }
         updates.push({tabId, ...update});
         if (update.url) activeUrl = update.url;
       },
-      goBack: async () => undefined,
+      goBack: async tabId => {
+        if (closedTabs.has(tabId)) {
+          throw new Error(`No tab with id: ${tabId}.`);
+        }
+        return undefined;
+      },
       onUpdated: {addListener: listener => {listeners.updated = listener;}},
       onRemoved: {addListener: listener => {listeners.removed = listener;}}
     },
-    action: {setBadgeText: () => undefined, setBadgeBackgroundColor: () => undefined},
+    action: {
+      setBadgeText: async ({tabId}) => {
+        if (closedTabs.has(tabId)) {
+          throw new Error(`No tab with id: ${tabId}.`);
+        }
+      },
+      setBadgeBackgroundColor: async ({tabId}) => {
+        if (closedTabs.has(tabId)) {
+          throw new Error(`No tab with id: ${tabId}.`);
+        }
+      }
+    },
     storage: {session: {
       set: async value => {for (const [key, item] of Object.entries(value)) storage.set(key, item);},
       get: async key => ({[key]: storage.get(key)}),
@@ -40,13 +93,19 @@ function loadWorker(fetchImpl, {shortTimeouts = false} = {}) {
     URL,
     setTimeout: shortTimeouts ? (callback, _delay) => setTimeout(callback, 10) : setTimeout,
     clearTimeout,
-    crypto: {randomUUID: () => "test-token"},
+    crypto: {randomUUID: () => requestId},
     console
   };
   vm.runInNewContext(source, context);
   return {
     message: listeners.message,
     navigate: details => listeners.navigation(details),
+    tabUpdated: (tabId, changeInfo, tab) => listeners.updated?.(tabId, changeInfo, tab),
+    tabRemoved: tabId => listeners.removed?.(tabId),
+    closeTab: tabId => {
+      closedTabs.add(tabId);
+      listeners.removed?.(tabId);
+    },
     setActiveUrl: url => {activeUrl = url;},
     updates
   };
@@ -58,18 +117,18 @@ function send(listener, message, sender = {}) {
   });
 }
 
-const waitForWorker = () => new Promise(resolve => setTimeout(resolve, 20));
+const waitForWorker = () => new Promise(resolve => setTimeout(resolve, 25));
 
 test("worker reports backend connectivity separately from scan state", async () => {
   const worker = loadWorker(async url => new Response(JSON.stringify(url.endsWith("/health")
-    ? {status: "ok", model_loaded: true, model_version: "v2.1.0"}
-    : {label: "SAFE", risk_score: 0, probability: 0.06, evidence: [], features: {}, model_version: "v2.1.0"}), {status: 200}));
+    ? healthResult()
+    : result("https://fast.com/", "SAFE")), {status: 200}));
   const health = await send(worker.message, {type: "HEALTH_CHECK"});
   assert.equal(health.state, "CONNECTED");
   assert.equal(health.model_version, "v2.1.0");
-  const result = await send(worker.message, {type: "SCAN_CURRENT_TAB"});
-  assert.equal(result.state, "RESULT");
-  assert.equal(result.result.label, "SAFE");
+  const scanResponse = await send(worker.message, {type: "SCAN_CURRENT_TAB"});
+  assert.equal(scanResponse.state, "RESULT");
+  assert.equal(scanResponse.result.label, "SAFE");
 });
 
 test("worker reports backend offline without inventing a verdict", async () => {
@@ -85,10 +144,10 @@ test("same tab and URL share one active scan request", async () => {
   let release;
   const pending = new Promise(resolve => {release = resolve;});
   const worker = loadWorker(async url => {
-    if (url.endsWith("/health")) return new Response(JSON.stringify({status: "ok", model_loaded: true}), {status: 200});
+    if (url.endsWith("/health")) return new Response(JSON.stringify(healthResult()), {status: 200});
     scanCalls += 1;
     await pending;
-    return new Response(JSON.stringify({label: "SAFE", risk_score: 0, probability: 0.06, evidence: [], features: {}}), {status: 200});
+    return new Response(JSON.stringify(result("https://fast.com/", "SAFE")), {status: 200});
   });
   const first = send(worker.message, {type: "SCAN_CURRENT_TAB"});
   const second = send(worker.message, {type: "SCAN_CURRENT_TAB"});
@@ -97,12 +156,26 @@ test("same tab and URL share one active scan request", async () => {
   assert.equal(scanCalls, 1);
 });
 
+test("same exact URL and backend response preserve the same verdict and request identity", async () => {
+  let requestHeader;
+  const worker = loadWorker(async (url, options = {}) => {
+    if (url.endsWith("/health")) return new Response(JSON.stringify(healthResult()), {status: 200});
+    requestHeader = options.headers["X-Vigil-Request-Id"];
+    const {url: scannedUrl} = JSON.parse(options.body);
+    return new Response(JSON.stringify(result(scannedUrl, "SAFE")), {status: 200});
+  });
+  const response = await send(worker.message, {type: "SCAN_CURRENT_TAB"});
+  assert.equal(response.state, "RESULT");
+  assert.equal(response.url, response.result.normalized_url);
+  assert.equal(response.result.label, "SAFE");
+  assert.equal(response.result.request_id, requestHeader);
+  assert.equal(response.result.backend.api_endpoint, "http://127.0.0.1:5000/scan");
+});
+
 test("SAFE and SUSPICIOUS verdicts allow top-level navigation", async t => {
   for (const label of ["SAFE", "SUSPICIOUS"]) {
     await t.test(label, async () => {
-      const worker = loadWorker(async () => new Response(JSON.stringify({
-        label, risk_score: 8, probability: 0.17, evidence: [], features: {}
-      }), {status: 200}));
+      const worker = loadWorker(async () => new Response(JSON.stringify(result("https://ordinary.example/", label)), {status: 200}));
       await worker.navigate({tabId: 7, frameId: 0, url: "https://ordinary.example/"});
       await waitForWorker();
       assert.deepEqual(worker.updates, []);
@@ -111,28 +184,45 @@ test("SAFE and SUSPICIOUS verdicts allow top-level navigation", async t => {
 });
 
 test("only an explicit PHISHING verdict redirects to the blocked page", async () => {
-  const worker = loadWorker(async () => new Response(JSON.stringify({
-    label: "PHISHING", risk_score: 100, probability: 0.99, evidence: [], features: {}
-  }), {status: 200}));
-  await worker.navigate({tabId: 7, frameId: 0, url: "http://secure-login-paypal-account.xyz/"});
+  const phishingUrl = "http://secure-login-paypal-account.xyz/";
+  const worker = loadWorker(async () => new Response(JSON.stringify(result(phishingUrl, "PHISHING")), {status: 200}));
+  await worker.navigate({tabId: 7, frameId: 0, url: phishingUrl});
   await waitForWorker();
   assert.equal(worker.updates.length, 1);
   assert.match(worker.updates[0].url, /^chrome-extension:\/\/vigil\/blocked\.html\?token=/);
 });
 
+test("local-host policy verdicts are accepted and do not block localhost navigation", async () => {
+  const localUrl = "http://localhost:5173/";
+  const localResult = result(localUrl, "SAFE");
+  localResult.probability_source = "local_host_policy";
+  localResult.reputation = {
+    applied: true,
+    host: "localhost",
+    source: "local_host_policy",
+    model_probability: 0.999,
+    effective_probability: 0
+  };
+  const worker = loadWorker(async () => new Response(JSON.stringify(localResult), {status: 200}));
+  await worker.navigate({tabId: 7, frameId: 0, url: localUrl});
+  await waitForWorker();
+  assert.deepEqual(worker.updates, []);
+});
+
 test("blocked-page bypass remains one-time and does not re-scan its redirect", async () => {
   let scanCalls = 0;
+  const phishingUrl = "http://secure-login-paypal-account.xyz/";
   const worker = loadWorker(async () => {
     scanCalls += 1;
-    return new Response(JSON.stringify({label: "PHISHING", risk_score: 100, probability: 0.99, evidence: [], features: {}}), {status: 200});
+    return new Response(JSON.stringify(result(phishingUrl, "PHISHING")), {status: 200});
   });
-  const url = "http://secure-login-paypal-account.xyz/";
+  const url = phishingUrl;
   await worker.navigate({tabId: 7, frameId: 0, url});
   await waitForWorker();
-  const blocked = await send(worker.message, {type: "GET_BLOCKED_STATE", token: "test-token"});
+  const blocked = await send(worker.message, {type: "GET_BLOCKED_STATE", token: requestId});
   assert.equal(blocked.url, url);
 
-  await send(worker.message, {type: "BYPASS_ONCE", token: "test-token"}, {tab: {id: 7}});
+  await send(worker.message, {type: "BYPASS_ONCE", token: requestId}, {tab: {id: 7}});
   await waitForWorker();
   await worker.navigate({tabId: 7, frameId: 0, url});
   await waitForWorker();
@@ -148,6 +238,11 @@ test("backend errors, malformed verdicts, and timeout all fail open", async t =>
     ["malformed response", async () => new Response("not JSON", {status: 200})],
     ["unknown verdict", async () => new Response(JSON.stringify({label: "UNKNOWN"}), {status: 200})],
     ["missing verdict", async () => new Response(JSON.stringify({probability: 0.99}), {status: 200})],
+    ["phishing verdict missing thresholds", async () => {
+      const invalid = result("https://ordinary.example/", "PHISHING");
+      delete invalid.thresholds;
+      return new Response(JSON.stringify(invalid), {status: 200});
+    }],
     ["timeout", (url, options) => new Promise((_resolve, reject) => {
       options.signal.addEventListener("abort", () => reject(new Error("request timed out")));
     })],
@@ -168,13 +263,14 @@ test("backend errors, malformed verdicts, and timeout all fail open", async t =>
   }
 });
 
-test("cache entries are isolated by tab and normalized URL", async () => {
+test("fresh decisions are isolated by tab and normalized URL", async () => {
   const scannedUrls = [];
   const worker = loadWorker(async (_url, options) => {
+    if (_url.endsWith("/health")) return new Response(JSON.stringify(healthResult()), {status: 200});
     const {url} = JSON.parse(options.body);
     scannedUrls.push(url);
-    const label = url.includes("evil.example") ? "PHISHING" : "SAFE";
-    return new Response(JSON.stringify({label, probability: 0.99, risk_score: 100, evidence: [], features: {}}), {status: 200});
+    const scanResult = url.includes("evil.example") ? result(url, "PHISHING") : result(url, "SAFE");
+    return new Response(JSON.stringify(scanResult), {status: 200});
   });
   worker.setActiveUrl("https://evil.example/");
   const malicious = await send(worker.message, {type: "SCAN_CURRENT_TAB"});
@@ -186,6 +282,60 @@ test("cache entries are isolated by tab and normalized URL", async () => {
   assert.equal(new Set(scannedUrls).size, 2);
 });
 
+test("each completed scan requests a fresh backend decision", async () => {
+  let scanCount = 0;
+  const worker = loadWorker(async (url, options) => {
+    if (url.endsWith("/health")) return new Response(JSON.stringify(healthResult()), {status: 200});
+    scanCount += 1;
+    const {url: scannedUrl} = JSON.parse(options.body);
+    return new Response(JSON.stringify(result(scannedUrl, "SAFE")), {status: 200});
+  });
+  const first = await send(worker.message, {type: "SCAN_CURRENT_TAB"});
+  const second = await send(worker.message, {type: "SCAN_CURRENT_TAB"});
+  assert.equal(first.result.label, second.result.label);
+  assert.equal(first.result.probability, second.result.probability);
+  assert.equal(scanCount, 2);
+});
+
+test("a fresh scan observes a backend model fingerprint change", async () => {
+  let currentFingerprint = fingerprint;
+  let scanCount = 0;
+  const worker = loadWorker(async (url, options) => {
+    if (url.endsWith("/health")) return new Response(JSON.stringify(healthResult(currentFingerprint)), {status: 200});
+    scanCount += 1;
+    const {url: scannedUrl} = JSON.parse(options.body);
+    const label = currentFingerprint === fingerprint ? "SAFE" : "PHISHING";
+    return new Response(JSON.stringify(result(scannedUrl, label, undefined, currentFingerprint)), {status: 200});
+  });
+  const first = await send(worker.message, {type: "SCAN_CURRENT_TAB"});
+  assert.equal(first.result.label, "SAFE");
+  currentFingerprint = "b".repeat(64);
+  const second = await send(worker.message, {type: "SCAN_CURRENT_TAB"});
+  assert.equal(second.result.label, "PHISHING");
+  assert.equal(scanCount, 2);
+});
+
+test("popup receives STALE instead of a result for a tab that changed mid-scan", async () => {
+  let releaseScan;
+  let signalScanStarted;
+  const pendingScan = new Promise(resolve => {releaseScan = resolve;});
+  const scanStarted = new Promise(resolve => {signalScanStarted = resolve;});
+  const worker = loadWorker(async (url, options) => {
+    if (url.endsWith("/health")) return new Response(JSON.stringify(healthResult()), {status: 200});
+    signalScanStarted();
+    await pendingScan;
+    const {url: scannedUrl} = JSON.parse(options.body);
+    return new Response(JSON.stringify(result(scannedUrl, "SAFE")), {status: 200});
+  });
+  const pendingResponse = send(worker.message, {type: "SCAN_CURRENT_TAB"});
+  await scanStarted;
+  worker.setActiveUrl("https://different.example/");
+  releaseScan();
+  const response = await pendingResponse;
+  assert.equal(response.state, "STALE");
+  assert.equal(response.url, "https://fast.com/");
+});
+
 test("a late PHISHING response cannot block a newer navigation in the same tab", async () => {
   let releasePhishing;
   const phishingResponse = new Promise(resolve => {releasePhishing = resolve;});
@@ -193,9 +343,9 @@ test("a late PHISHING response cannot block a newer navigation in the same tab",
     const {url} = JSON.parse(options.body);
     if (url.includes("secure-login-paypal")) {
       await phishingResponse;
-      return new Response(JSON.stringify({label: "PHISHING", risk_score: 100, probability: 0.99, evidence: [], features: {}}), {status: 200});
+      return new Response(JSON.stringify(result(url, "PHISHING")), {status: 200});
     }
-    return new Response(JSON.stringify({label: "SAFE", risk_score: 0, probability: 0.01, evidence: [], features: {}}), {status: 200});
+    return new Response(JSON.stringify(result(url, "SAFE")), {status: 200});
   });
   const oldNavigation = worker.navigate({tabId: 7, frameId: 0, url: "http://secure-login-paypal-account.xyz/"});
   await worker.navigate({tabId: 7, frameId: 0, url: "https://google.com/"});
@@ -203,4 +353,60 @@ test("a late PHISHING response cannot block a newer navigation in the same tab",
   await oldNavigation;
   await waitForWorker();
   assert.deepEqual(worker.updates, []);
+});
+
+test("Tab closes during in-flight scan without unhandled rejection (Error: No tab with id)", async () => {
+  const closedTabId = 2088692213;
+  let releaseScan;
+  const pendingScan = new Promise(resolve => {releaseScan = resolve;});
+  
+  const worker = loadWorker(async () => {
+    await pendingScan;
+    return new Response(JSON.stringify(result("https://example.com/", "SAFE")), {status: 200});
+  });
+
+  // Start navigation on tab
+  const navPromise = worker.navigate({tabId: closedTabId, frameId: 0, url: "https://example.com/"});
+  
+  // Close the tab while scan is pending
+  worker.closeTab(closedTabId);
+  
+  // Backend scan finishes after tab closure
+  releaseScan();
+  await navPromise;
+  await waitForWorker();
+  
+  // Must complete cleanly without unhandled rejection
+  assert.ok(true);
+});
+
+test("Tab closes during redirect update without unhandled rejection (Error: No tab with id)", async () => {
+  const closedTabId = 2088692275;
+  const phishingUrl = "http://malicious-login-attempt.example/";
+  
+  const worker = loadWorker(async () => {
+    return new Response(JSON.stringify(result(phishingUrl, "PHISHING")), {status: 200});
+  });
+
+  // Mark tab as closed so tabs.update throws "No tab with id: 2088692275"
+  worker.closeTab(closedTabId);
+  
+  await worker.navigate({tabId: closedTabId, frameId: 0, url: phishingUrl});
+  await waitForWorker();
+  
+  // Handled safely without unhandled rejection
+  assert.ok(true);
+});
+
+test("onRemoved cleans up in-flight requests and per-tab state cleanly", async () => {
+  const tabId = 999;
+  const worker = loadWorker(async () => {
+    return new Response(JSON.stringify(result("https://test.com/", "SAFE")), {status: 200});
+  });
+
+  await worker.navigate({tabId, frameId: 0, url: "https://test.com/"});
+  worker.tabRemoved(tabId);
+  await waitForWorker();
+  
+  assert.ok(true);
 });

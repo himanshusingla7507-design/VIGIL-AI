@@ -1,0 +1,70 @@
+{
+  "status": "NOT_FOUND",
+  "searched_locations": [
+    "Workspace root and descendant filenames, including hidden and ignored files",
+    "data/",
+    "reports/",
+    "scripts/",
+    "docs/",
+    "models/ and models/backup/",
+    "trial/",
+    "extenison/",
+    "frontend/",
+    ".gitignore",
+    ".venv/ ignored-file names and text references",
+    "All project archives outside .venv/",
+    "All workspace text-like files outside Git internals, __pycache__, and node_modules"
+  ],
+  "search_terms": [
+    "benign_dynamic_urls.csv",
+    "clean_dataset.csv",
+    "435",
+    "legitimate_dynamic",
+    "first_party_pages_crawled",
+    "source_page_url",
+    "benign_dynamic_url_sources",
+    "benign_dynamic_url_training"
+  ],
+  "git_history_checked": false,
+  "git_history_status": "Unavailable: the workspace has no .git directory, and git log --all --stat, git log --all -- <relevant file>, git ls-files, git branch -a, git tag --list, and git status --short --ignored all report that this is not a Git repository.",
+  "local_search_results": {
+    "target_dataset_files_found": [],
+    "project_archives_found": [],
+    "ignored_data_paths_from_gitignore": {
+      "data/benign_dynamic_urls.csv": "absent",
+      "data/external/benign_dynamic/legitimate_dynamic_urls.csv": "absent",
+      "data/processed/clean_dataset.csv": "absent"
+    },
+    "reported_verified_benign_urls": 435,
+    "row_level_urls_retained_in_benign_source_manifests": 95,
+    "existing_experimental_csv": {
+      "path": "data/experiments/legitimate_dynamic_training.csv",
+      "rows": 95,
+      "normalized_unique_rows": 95,
+      "complete_435_row_dataset": false
+    },
+    "legitimate_real_collection_json": {
+      "path": "legitimate_real_collection.json",
+      "url_strings_present": 0,
+      "content": "Aggregate collection statistics only; not the missing row-level benign dataset."
+    },
+    "benign_source_reports": {
+      "reports/benign_dynamic_url_sources.json": "Contains source summaries and 95 successful first-party page URLs; not all 435 accepted URL rows.",
+      "reports/benign_dynamic_url_training.json": "Contains the same 95 first-party page URLs plus experiment summaries/examples; not all 435 accepted benign URL rows."
+    }
+  },
+  "best_available_dataset": {
+    "path": "data/experiments/legitimate_dynamic_training.csv",
+    "row_count": 95,
+    "description": "A normalized-unique, path-heavy subset derived from the 95 first-party page URLs retained in the source reports. It is not sufficient to reconstruct the 435 reported verified benign URLs."
+  },
+  "missing_required_data": [
+    "The complete row-level export of the 435 verified benign URLs referenced by reports/benign_dynamic_url_sources.json and reports/benign_dynamic_url_training.json.",
+    "Per-row source and category/provenance fields for those URLs, needed to verify labels and preserve cohort assignments."
+  ],
+  "recommended_next_source": "Restore the original locally generated data/benign_dynamic_urls.csv (or data/external/benign_dynamic/legitimate_dynamic_urls.csv) from the machine or job artifact that produced the benign URL reports. Do not substitute the 95-row subset or download data.",
+  "recovery_performed": false,
+  "files_created_by_this_recovery": [
+    "reports/recovered_dynamic_data.json"
+  ]
+}

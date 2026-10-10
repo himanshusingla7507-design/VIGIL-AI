@@ -1,0 +1,49 @@
+{
+  "status": "DO_NOT_PROMOTE",
+  "source_evaluation": "reports/dynamic_candidate_evaluation.json",
+  "production_artifacts_changed": false,
+  "promotion_steps_performed": [],
+  "failed_metrics": {
+    "fixed_legitimate_baseline": {
+      "requirement": "Zero PHISHING results.",
+      "result": "FAIL",
+      "total": 16,
+      "SAFE": 0,
+      "SUSPICIOUS": 15,
+      "PHISHING": 1,
+      "false_phishing_rate": 0.0625,
+      "maximum_probability": 0.6971267359337556
+    },
+    "domain_disjoint_phishing_recall": {
+      "requirement": "No more than a 20% relative recall drop versus the strongest validated reference.",
+      "result": "FAIL",
+      "candidate_recall": 0.7142857142857143,
+      "strongest_validated_reference_recall": 0.9320832009,
+      "minimum_acceptable_recall": 0.74566656072,
+      "candidate_false_negative_rate": 0.2857142857142857
+    },
+    "existing_hard_phishing_cohorts": {
+      "requirement": "Each sampled cohort recall must meet the evaluation gate floor of 0.74566656072.",
+      "result": "FAIL",
+      "low_recall_cohorts": {
+        "paths": {
+          "recalled": 2,
+          "samples": 5,
+          "recall": 0.4
+        },
+        "brand_like_hostnames": {
+          "recalled": 2,
+          "samples": 5,
+          "recall": 0.4
+        }
+      },
+      "sample_size_note": "Five report-backed examples per cohort; screening evidence, not a population estimate."
+    }
+  },
+  "passed_checks": {
+    "production_29_feature_schema": true,
+    "no_systematic_counterfactual_high_risk_escalation": true,
+    "production_thresholds_unchanged": true
+  },
+  "decision": "Candidate did not satisfy all required promotion gates. Production remains unchanged; no backup, artifact replacement, metadata update, or promotion regression run was performed."
+}

@@ -1,0 +1,5092 @@
+{
+  "status": "SCANNED_WITH_LOCAL_PRODUCTION_SERVICE",
+  "url_fetching_performed": false,
+  "total": 544,
+  "verdict_counts": {
+    "SAFE": 7,
+    "SUSPICIOUS": 29,
+    "PHISHING": 508
+  },
+  "average_probability": 0.9428172591911818,
+  "maximum_probability": 0.998033,
+  "highest_risk_urls": [
+    {
+      "url": "https://www.stanford.edu/about/history",
+      "label": 0,
+      "source_name": "Stanford University",
+      "category": "ordinary_content_path",
+      "probability": 0.998033,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://developer.chrome.com/docs",
+      "label": 0,
+      "source_name": "Chrome for Developers",
+      "category": "documentation",
+      "probability": 0.998033,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://developer.chrome.com/blog",
+      "label": 0,
+      "source_name": "Chrome for Developers",
+      "category": "ordinary_content_path",
+      "probability": 0.998033,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.youtube.com/feed/trending",
+      "label": 0,
+      "source_name": "YouTube",
+      "category": "ordinary_content_path",
+      "probability": 0.998033,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://pypi.org/project/requests/",
+      "label": 0,
+      "source_name": "PyPI",
+      "category": "ordinary_content_path",
+      "probability": 0.998033,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://kubernetes.io/docs/tasks/",
+      "label": 0,
+      "source_name": "Kubernetes Documentation",
+      "category": "documentation",
+      "probability": 0.998033,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://react.dev/learn#components",
+      "label": 0,
+      "source_name": "React Documentation",
+      "category": "fragment",
+      "probability": 0.998033,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://appleid.apple.com/sign-in",
+      "label": 0,
+      "source_name": "Apple ID",
+      "category": "login_account",
+      "probability": 0.998033,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://dash.cloudflare.com/login",
+      "label": 0,
+      "source_name": "Cloudflare Dashboard",
+      "category": "login_account",
+      "probability": 0.998033,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://arxiv.org/list/cs.HC/recent",
+      "label": 0,
+      "source_name": "arXiv",
+      "category": "ordinary_content_path",
+      "probability": 0.998023,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://github.com/microsoft/vscode",
+      "label": 0,
+      "source_name": "GitHub",
+      "category": "ordinary_content_path",
+      "probability": 0.998023,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.reddit.com/r/cybersecurity/",
+      "label": 0,
+      "source_name": "Reddit",
+      "category": "ordinary_content_path",
+      "probability": 0.998023,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://gitlab.com/explore/projects",
+      "label": 0,
+      "source_name": "GitLab",
+      "category": "ordinary_content_path",
+      "probability": 0.998023,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://nodejs.org/docs/latest/api/",
+      "label": 0,
+      "source_name": "Node.js Documentation",
+      "category": "documentation",
+      "probability": 0.998023,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://developer.android.com/guide",
+      "label": 0,
+      "source_name": "Android Developers",
+      "category": "documentation",
+      "probability": 0.998023,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.w3.org/help/",
+      "label": 0,
+      "source_name": "World Wide Web Consortium",
+      "category": "ordinary_content_path",
+      "probability": 0.998019,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.w3.org/standards/",
+      "label": 0,
+      "source_name": "W3C",
+      "category": "ordinary_content_path",
+      "probability": 0.998019,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.w3.org/TR/",
+      "label": 0,
+      "source_name": "W3C Standards",
+      "category": "documentation",
+      "probability": 0.998019,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://github.com/team",
+      "label": 0,
+      "source_name": "GitHub",
+      "category": "ordinary_content_path",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://github.com/solutions",
+      "label": 0,
+      "source_name": "GitHub",
+      "category": "ordinary_content_path",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    }
+  ],
+  "results": [
+    {
+      "url": "https://en.wikipedia.org/wiki/Main_Page",
+      "label": 0,
+      "source_name": "Wikimedia Wikipedia",
+      "category": "ordinary_content_path",
+      "probability": 0.997868,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://szl.wikipedia.org/wiki/Przodni%C5%8F_zajta",
+      "label": 0,
+      "source_name": "Wikimedia Wikipedia",
+      "category": "url_encoding",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Mario_Party:_The_Top_100",
+      "label": 0,
+      "source_name": "Wikimedia Wikipedia",
+      "category": "ordinary_content_path",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://tly.wikipedia.org/wiki/S%C9%99rlovh%C9%99",
+      "label": 0,
+      "source_name": "Wikimedia Wikipedia",
+      "category": "url_encoding",
+      "probability": 0.997815,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://ami.wikipedia.org/wiki/Sa%E2%80%99ayayaw_pising_no_tyin-naw",
+      "label": 0,
+      "source_name": "Wikimedia Wikipedia",
+      "category": "url_encoding",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://ga.wikipedia.org/wiki/Pr%C3%ADomhleathanach",
+      "label": 0,
+      "source_name": "Wikimedia Wikipedia",
+      "category": "url_encoding",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/",
+      "label": 0,
+      "source_name": "Mozilla Developer Network",
+      "category": "ordinary_content_path",
+      "probability": 0.998,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements",
+      "label": 0,
+      "source_name": "Mozilla Developer Network",
+      "category": "documentation",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Navigation_API",
+      "label": 0,
+      "source_name": "Mozilla Developer Network",
+      "category": "documentation",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/play",
+      "label": 0,
+      "source_name": "Mozilla Developer Network",
+      "category": "ordinary_content_path",
+      "probability": 0.997745,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors",
+      "label": 0,
+      "source_name": "Mozilla Developer Network",
+      "category": "documentation",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide",
+      "label": 0,
+      "source_name": "Mozilla Developer Network",
+      "category": "documentation",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://github.com/",
+      "label": 0,
+      "source_name": "GitHub",
+      "category": "homepage",
+      "probability": 0.164589,
+      "scan_label": "SUSPICIOUS",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://github.com/team",
+      "label": 0,
+      "source_name": "GitHub",
+      "category": "ordinary_content_path",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://github.com/solutions/executive-insights",
+      "label": 0,
+      "source_name": "GitHub",
+      "category": "ordinary_content_path",
+      "probability": 0.997672,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://github.com/solutions",
+      "label": 0,
+      "source_name": "GitHub",
+      "category": "ordinary_content_path",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://github.com/security/advanced-security/software-supply-chain",
+      "label": 0,
+      "source_name": "GitHub",
+      "category": "ordinary_content_path",
+      "probability": 0.997701,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement",
+      "label": 0,
+      "source_name": "GitHub",
+      "category": "documentation",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.nasa.gov/",
+      "label": 0,
+      "source_name": "NASA",
+      "category": "homepage",
+      "probability": 0.059424,
+      "scan_label": "SAFE",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.nasa.gov/es/aero/",
+      "label": 0,
+      "source_name": "NASA",
+      "category": "ordinary_content_path",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.nasa.gov/budgets-plans-and-reports/agency-financial-reports/",
+      "label": 0,
+      "source_name": "NASA",
+      "category": "ordinary_content_path",
+      "probability": 0.997743,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://science.nasa.gov/solar-system/skywatching/whats-up-october-2026-skywatching-tips-from-nasa/",
+      "label": 0,
+      "source_name": "NASA",
+      "category": "ordinary_content_path",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.nasa.gov/centers-and-facilities/langley/nasa-model-wing-lights-up-during-first-pressure-sensitive-paint-tests/",
+      "label": 0,
+      "source_name": "NASA",
+      "category": "ordinary_content_path",
+      "probability": 0.99775,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.nasa.gov/nasa-virtual-guest-program/",
+      "label": 0,
+      "source_name": "NASA",
+      "category": "ordinary_content_path",
+      "probability": 0.99775,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.loc.gov/",
+      "label": 0,
+      "source_name": "Library of Congress",
+      "category": "homepage",
+      "probability": 0.056329,
+      "scan_label": "SAFE",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.loc.gov/topics/america-250-at-the-library-of-congress",
+      "label": 0,
+      "source_name": "Library of Congress",
+      "category": "ordinary_content_path",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.w3.org/",
+      "label": 0,
+      "source_name": "World Wide Web Consortium",
+      "category": "homepage",
+      "probability": 0.52052,
+      "scan_label": "SUSPICIOUS",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.w3.org/standards/types/",
+      "label": 0,
+      "source_name": "World Wide Web Consortium",
+      "category": "ordinary_content_path",
+      "probability": 0.997745,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.w3.org/zh-hans/",
+      "label": 0,
+      "source_name": "World Wide Web Consortium",
+      "category": "ordinary_content_path",
+      "probability": 0.998011,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.w3.org/mission/accessibility/",
+      "label": 0,
+      "source_name": "World Wide Web Consortium",
+      "category": "ordinary_content_path",
+      "probability": 0.997861,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.w3.org/help/",
+      "label": 0,
+      "source_name": "World Wide Web Consortium",
+      "category": "ordinary_content_path",
+      "probability": 0.998019,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.w3.org/news/2026/updated-candidate-recommendation-scalable-vector-graphics-svg-2/",
+      "label": 0,
+      "source_name": "World Wide Web Consortium",
+      "category": "ordinary_content_path",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.ietf.org/",
+      "label": 0,
+      "source_name": "Internet Engineering Task Force",
+      "category": "homepage",
+      "probability": 0.060029,
+      "scan_label": "SAFE",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.ietf.org/blog/sidrops-and-avoidable-route-hijacks/",
+      "label": 0,
+      "source_name": "Internet Engineering Task Force",
+      "category": "ordinary_content_path",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://datatracker.ietf.org/doc/statement-iesg-ietf-anti-harassment-policy-20131103/",
+      "label": 0,
+      "source_name": "Internet Engineering Task Force",
+      "category": "documentation",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.ietf.org/blog/rfc-editororg-update-202609/",
+      "label": 0,
+      "source_name": "Internet Engineering Task Force",
+      "category": "ordinary_content_path",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.ietf.org/meeting/terms-and-conditions/",
+      "label": 0,
+      "source_name": "Internet Engineering Task Force",
+      "category": "ordinary_content_path",
+      "probability": 0.99775,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.ietf.org/policies/",
+      "label": 0,
+      "source_name": "Internet Engineering Task Force",
+      "category": "ordinary_content_path",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://arxiv.org/",
+      "label": 0,
+      "source_name": "arXiv",
+      "category": "homepage",
+      "probability": 0.155363,
+      "scan_label": "SUSPICIOUS",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://arxiv.org/list/math.CT/recent",
+      "label": 0,
+      "source_name": "arXiv",
+      "category": "ordinary_content_path",
+      "probability": 0.997965,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://arxiv.org/list/math.GM/recent",
+      "label": 0,
+      "source_name": "arXiv",
+      "category": "ordinary_content_path",
+      "probability": 0.997965,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://arxiv.org/list/cs.HC/recent",
+      "label": 0,
+      "source_name": "arXiv",
+      "category": "ordinary_content_path",
+      "probability": 0.998023,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://arxiv.org/list/q-bio.QM/recent",
+      "label": 0,
+      "source_name": "arXiv",
+      "category": "ordinary_content_path",
+      "probability": 0.997833,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://arxiv.org/search/q-fin",
+      "label": 0,
+      "source_name": "arXiv",
+      "category": "ordinary_content_path",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.openstreetmap.org/",
+      "label": 0,
+      "source_name": "OpenStreetMap",
+      "category": "homepage",
+      "probability": 0.131711,
+      "scan_label": "SUSPICIOUS",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.openstreetmap.org/directions",
+      "label": 0,
+      "source_name": "OpenStreetMap",
+      "category": "ordinary_content_path",
+      "probability": 0.996836,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.openstreetmap.org/traces",
+      "label": 0,
+      "source_name": "OpenStreetMap",
+      "category": "ordinary_content_path",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.openstreetmap.org/history",
+      "label": 0,
+      "source_name": "OpenStreetMap",
+      "category": "ordinary_content_path",
+      "probability": 0.998006,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://supporting.openstreetmap.org/donate/",
+      "label": 0,
+      "source_name": "OpenStreetMap",
+      "category": "ordinary_content_path",
+      "probability": 0.99775,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.openstreetmap.org/user/new?cookie_test=true",
+      "label": 0,
+      "source_name": "OpenStreetMap",
+      "category": "path_plus_query",
+      "probability": 0.99775,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.who.int/",
+      "label": 0,
+      "source_name": "World Health Organization",
+      "category": "homepage",
+      "probability": 0.156481,
+      "scan_label": "SUSPICIOUS",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.who.int/news-room/questions-and-answers",
+      "label": 0,
+      "source_name": "World Health Organization",
+      "category": "ordinary_content_path",
+      "probability": 0.99775,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.who.int/health-topics/who-pandemic-agreement",
+      "label": 0,
+      "source_name": "World Health Organization",
+      "category": "ordinary_content_path",
+      "probability": 0.99775,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.who.int/westernpacific/",
+      "label": 0,
+      "source_name": "World Health Organization",
+      "category": "ordinary_content_path",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.who.int/news-room/fact-sheets/detail/obesity-and-overweight",
+      "label": 0,
+      "source_name": "World Health Organization",
+      "category": "ordinary_content_path",
+      "probability": 0.99775,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.who.int/countries/country-presence",
+      "label": 0,
+      "source_name": "World Health Organization",
+      "category": "ordinary_content_path",
+      "probability": 0.997819,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.mit.edu/",
+      "label": 0,
+      "source_name": "Massachusetts Institute of Technology",
+      "category": "homepage",
+      "probability": 0.059231,
+      "scan_label": "SAFE",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.mit.edu/education/",
+      "label": 0,
+      "source_name": "Massachusetts Institute of Technology",
+      "category": "ordinary_content_path",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.mit.edu/innovation/",
+      "label": 0,
+      "source_name": "Massachusetts Institute of Technology",
+      "category": "ordinary_content_path",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.mit.edu/visitmit/",
+      "label": 0,
+      "source_name": "Massachusetts Institute of Technology",
+      "category": "ordinary_content_path",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.mit.edu/accessibility/",
+      "label": 0,
+      "source_name": "Massachusetts Institute of Technology",
+      "category": "ordinary_content_path",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.mit.edu/research/",
+      "label": 0,
+      "source_name": "Massachusetts Institute of Technology",
+      "category": "ordinary_content_path",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.stanford.edu/",
+      "label": 0,
+      "source_name": "Stanford University",
+      "category": "homepage",
+      "probability": 0.165641,
+      "scan_label": "SUSPICIOUS",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://news.stanford.edu/stories/2026/10/karl-deisseroth-nobel-prize-physiology-medicine",
+      "label": 0,
+      "source_name": "Stanford University",
+      "category": "ordinary_content_path",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.stanford.edu/about/history",
+      "label": 0,
+      "source_name": "Stanford University",
+      "category": "ordinary_content_path",
+      "probability": 0.998033,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.berkeley.edu/",
+      "label": 0,
+      "source_name": "University of California, Berkeley",
+      "category": "homepage",
+      "probability": 0.165493,
+      "scan_label": "SUSPICIOUS",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.berkeley.edu/atoz/dept/",
+      "label": 0,
+      "source_name": "University of California, Berkeley",
+      "category": "ordinary_content_path",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://news.berkeley.edu/2025/09/15/no-1-again-uc-berkeley-generates-more-startups-and-founders-than-any-other-university/",
+      "label": 0,
+      "source_name": "University of California, Berkeley",
+      "category": "ordinary_content_path",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.berkeley.edu/academics/advising-tutoring/",
+      "label": 0,
+      "source_name": "University of California, Berkeley",
+      "category": "ordinary_content_path",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://journalism.berkeley.edu/announce-forbidden-stories-lab-uc-berkeley-journalism/",
+      "label": 0,
+      "source_name": "University of California, Berkeley",
+      "category": "ordinary_content_path",
+      "probability": 0.997701,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://news.berkeley.edu/2026/10/06/a-uc-berkeley-undergraduates-research-leads-to-an-astronomical-first/",
+      "label": 0,
+      "source_name": "University of California, Berkeley",
+      "category": "ordinary_content_path",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.gov.uk/",
+      "label": 0,
+      "source_name": "GOV.UK",
+      "category": "homepage",
+      "probability": 0.152755,
+      "scan_label": "SUSPICIOUS",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.gov.uk/browse/tax",
+      "label": 0,
+      "source_name": "GOV.UK",
+      "category": "ordinary_content_path",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.gov.uk/search/policy-papers-and-consultations",
+      "label": 0,
+      "source_name": "GOV.UK",
+      "category": "ordinary_content_path",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.gov.uk/cost-of-living",
+      "label": 0,
+      "source_name": "GOV.UK",
+      "category": "ordinary_content_path",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.gov.uk/government/get-involved",
+      "label": 0,
+      "source_name": "GOV.UK",
+      "category": "ordinary_content_path",
+      "probability": 0.997946,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.gov.uk/foreign-travel-advice",
+      "label": 0,
+      "source_name": "GOV.UK",
+      "category": "ordinary_content_path",
+      "probability": 0.997917,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.esa.int/",
+      "label": 0,
+      "source_name": "European Space Agency",
+      "category": "homepage",
+      "probability": 0.155013,
+      "scan_label": "SUSPICIOUS",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.esa.int/ESA_Multimedia/Images/2026/10/When_the_Sun_turns_black",
+      "label": 0,
+      "source_name": "European Space Agency",
+      "category": "ordinary_content_path",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.esa.int/ESA/Our_Missions",
+      "label": 0,
+      "source_name": "European Space Agency",
+      "category": "ordinary_content_path",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.esa.int/Space_Safety",
+      "label": 0,
+      "source_name": "European Space Agency",
+      "category": "ordinary_content_path",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.esa.int/ESA_Multimedia/Images/2026/09/Earth_from_Space_Venetian_Lagoon",
+      "label": 0,
+      "source_name": "European Space Agency",
+      "category": "ordinary_content_path",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.esa.int/ESA_Multimedia/Videos/2026/10/The_Incredible_Adventures_of_the_Hera_mission_The_space_detectives_arrive",
+      "label": 0,
+      "source_name": "European Space Agency",
+      "category": "ordinary_content_path",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://developer.chrome.com/",
+      "label": 0,
+      "source_name": "Chrome for Developers",
+      "category": "homepage",
+      "probability": 0.777094,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://developer.chrome.com/docs/iwa",
+      "label": 0,
+      "source_name": "Chrome for Developers",
+      "category": "documentation",
+      "probability": 0.997965,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://developer.chrome.com/docs/accessibility",
+      "label": 0,
+      "source_name": "Chrome for Developers",
+      "category": "documentation",
+      "probability": 0.997704,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://developer.chrome.com/docs",
+      "label": 0,
+      "source_name": "Chrome for Developers",
+      "category": "documentation",
+      "probability": 0.998033,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://developer.chrome.com/docs/puppeteer",
+      "label": 0,
+      "source_name": "Chrome for Developers",
+      "category": "documentation",
+      "probability": 0.997758,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://developer.chrome.com/blog",
+      "label": 0,
+      "source_name": "Chrome for Developers",
+      "category": "ordinary_content_path",
+      "probability": 0.998033,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.rfc-editor.org/",
+      "label": 0,
+      "source_name": "RFC Editor",
+      "category": "homepage",
+      "probability": 0.259812,
+      "scan_label": "SUSPICIOUS",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.rfc-editor.org/search/",
+      "label": 0,
+      "source_name": "RFC Editor",
+      "category": "ordinary_content_path",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.rfc-editor.org/subjects/",
+      "label": 0,
+      "source_name": "RFC Editor",
+      "category": "ordinary_content_path",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.rfc-editor.org/info/rfc10054/",
+      "label": 0,
+      "source_name": "RFC Editor",
+      "category": "ordinary_content_path",
+      "probability": 0.997689,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.rfc-editor.org/series/rfc-use/",
+      "label": 0,
+      "source_name": "RFC Editor",
+      "category": "ordinary_content_path",
+      "probability": 0.997946,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.rfc-editor.org/authors/rfc-independent-submissions/",
+      "label": 0,
+      "source_name": "RFC Editor",
+      "category": "ordinary_content_path",
+      "probability": 0.99775,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.google.com/search?q=phishing+prevention",
+      "label": 0,
+      "source_name": "Google Search",
+      "category": "path_plus_query",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.bing.com/search?q=phishing+prevention",
+      "label": 0,
+      "source_name": "Bing Search",
+      "category": "path_plus_query",
+      "probability": 0.997715,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.youtube.com/results?search_query=phishing+prevention",
+      "label": 0,
+      "source_name": "YouTube",
+      "category": "path_plus_query",
+      "probability": 0.997701,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://github.com/microsoft/vscode",
+      "label": 0,
+      "source_name": "GitHub",
+      "category": "ordinary_content_path",
+      "probability": 0.998023,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://github.com/search?q=python+url+parser&type=repositories",
+      "label": 0,
+      "source_name": "GitHub",
+      "category": "multiple_query_params",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.amazon.com/s?k=usb+c+hub",
+      "label": 0,
+      "source_name": "Amazon",
+      "category": "path_plus_query",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/python/",
+      "label": 0,
+      "source_name": "Microsoft Learn",
+      "category": "ordinary_content_path",
+      "probability": 0.997835,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://stackoverflow.com/questions/tagged/python",
+      "label": 0,
+      "source_name": "Stack Overflow",
+      "category": "ordinary_content_path",
+      "probability": 0.997635,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Computer_security",
+      "label": 0,
+      "source_name": "Wikipedia",
+      "category": "ordinary_content_path",
+      "probability": 0.997743,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.reddit.com/r/cybersecurity/",
+      "label": 0,
+      "source_name": "Reddit",
+      "category": "ordinary_content_path",
+      "probability": 0.998023,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://accounts.google.com/signin/v2/identifier",
+      "label": 0,
+      "source_name": "Google Search",
+      "category": "ordinary_content_path",
+      "probability": 0.997815,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.google.com/search?q=security+news&utm_source=baseline&utm_medium=organic",
+      "label": 0,
+      "source_name": "Google Search",
+      "category": "tracking_utm",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.bing.com/search?q=python&count=20&form=QBLH&sp=-1",
+      "label": 0,
+      "source_name": "Bing Search",
+      "category": "multiple_query_params",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/URL#Components",
+      "label": 0,
+      "source_name": "Wikipedia",
+      "category": "fragment",
+      "probability": 0.997715,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.google.com/search?q=URL%20encoding%20examples",
+      "label": 0,
+      "source_name": "Google Search",
+      "category": "url_encoding",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.google.com/search?q=legitimate+dynamic+url+baseline+with+a+deliberately+long+query+containing+several+ordinary+words+for+testing+how+the+production+model+responds+to+long+search+queries",
+      "label": 0,
+      "source_name": "Google Search",
+      "category": "long_query",
+      "probability": 0.997701,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.google.com/",
+      "label": 0,
+      "source_name": "Google",
+      "category": "homepage",
+      "probability": 0.174197,
+      "scan_label": "SUSPICIOUS",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.bing.com/",
+      "label": 0,
+      "source_name": "Bing",
+      "category": "homepage",
+      "probability": 0.059581,
+      "scan_label": "SAFE",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://duckduckgo.com/",
+      "label": 0,
+      "source_name": "DuckDuckGo",
+      "category": "homepage",
+      "probability": 0.160744,
+      "scan_label": "SUSPICIOUS",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://search.yahoo.com/",
+      "label": 0,
+      "source_name": "Yahoo Search",
+      "category": "homepage",
+      "probability": 0.484596,
+      "scan_label": "SUSPICIOUS",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.youtube.com/",
+      "label": 0,
+      "source_name": "YouTube",
+      "category": "homepage",
+      "probability": 0.167584,
+      "scan_label": "SUSPICIOUS",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.amazon.com/",
+      "label": 0,
+      "source_name": "Amazon",
+      "category": "homepage",
+      "probability": 0.1705,
+      "scan_label": "SUSPICIOUS",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.reddit.com/",
+      "label": 0,
+      "source_name": "Reddit",
+      "category": "homepage",
+      "probability": 0.164589,
+      "scan_label": "SUSPICIOUS",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://en.wikipedia.org/",
+      "label": 0,
+      "source_name": "Wikipedia",
+      "category": "homepage",
+      "probability": 0.531338,
+      "scan_label": "SUSPICIOUS",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://stackoverflow.com/",
+      "label": 0,
+      "source_name": "Stack Overflow",
+      "category": "homepage",
+      "probability": 0.129926,
+      "scan_label": "SAFE",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://developer.mozilla.org/",
+      "label": 0,
+      "source_name": "MDN Web Docs",
+      "category": "homepage",
+      "probability": 0.858829,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://learn.microsoft.com/",
+      "label": 0,
+      "source_name": "Microsoft Learn",
+      "category": "homepage",
+      "probability": 0.773441,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://docs.python.org/",
+      "label": 0,
+      "source_name": "Python Documentation",
+      "category": "homepage",
+      "probability": 0.443954,
+      "scan_label": "SUSPICIOUS",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/",
+      "label": 0,
+      "source_name": "AWS Documentation",
+      "category": "homepage",
+      "probability": 0.731508,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://developers.cloudflare.com/",
+      "label": 0,
+      "source_name": "Cloudflare Developers",
+      "category": "homepage",
+      "probability": 0.94959,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://docs.docker.com/",
+      "label": 0,
+      "source_name": "Docker Documentation",
+      "category": "homepage",
+      "probability": 0.443954,
+      "scan_label": "SUSPICIOUS",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://kubernetes.io/",
+      "label": 0,
+      "source_name": "Kubernetes",
+      "category": "homepage",
+      "probability": 0.221606,
+      "scan_label": "SUSPICIOUS",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.npmjs.com/",
+      "label": 0,
+      "source_name": "npm",
+      "category": "homepage",
+      "probability": 0.160968,
+      "scan_label": "SUSPICIOUS",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://pypi.org/",
+      "label": 0,
+      "source_name": "PyPI",
+      "category": "homepage",
+      "probability": 0.063481,
+      "scan_label": "SAFE",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://gitlab.com/",
+      "label": 0,
+      "source_name": "GitLab",
+      "category": "homepage",
+      "probability": 0.164772,
+      "scan_label": "SUSPICIOUS",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.python.org/",
+      "label": 0,
+      "source_name": "Python",
+      "category": "homepage",
+      "probability": 0.177226,
+      "scan_label": "SUSPICIOUS",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.mozilla.org/",
+      "label": 0,
+      "source_name": "Mozilla",
+      "category": "homepage",
+      "probability": 0.165641,
+      "scan_label": "SUSPICIOUS",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://nodejs.org/",
+      "label": 0,
+      "source_name": "Node.js",
+      "category": "homepage",
+      "probability": 0.164772,
+      "scan_label": "SUSPICIOUS",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://react.dev/",
+      "label": 0,
+      "source_name": "React",
+      "category": "homepage",
+      "probability": 0.176262,
+      "scan_label": "SUSPICIOUS",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.postgresql.org/",
+      "label": 0,
+      "source_name": "PostgreSQL",
+      "category": "homepage",
+      "probability": 0.160744,
+      "scan_label": "SUSPICIOUS",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.apple.com/",
+      "label": 0,
+      "source_name": "Apple",
+      "category": "homepage",
+      "probability": 0.163865,
+      "scan_label": "SUSPICIOUS",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.cloudflare.com/",
+      "label": 0,
+      "source_name": "Cloudflare",
+      "category": "homepage",
+      "probability": 0.156086,
+      "scan_label": "SUSPICIOUS",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.google.com/about/",
+      "label": 0,
+      "source_name": "Google",
+      "category": "ordinary_content_path",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.bing.com/images",
+      "label": 0,
+      "source_name": "Bing",
+      "category": "ordinary_content_path",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.youtube.com/feed/trending",
+      "label": 0,
+      "source_name": "YouTube",
+      "category": "ordinary_content_path",
+      "probability": 0.998033,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://github.com/features",
+      "label": 0,
+      "source_name": "GitHub",
+      "category": "ordinary_content_path",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.amazon.com/gp/bestsellers/books",
+      "label": 0,
+      "source_name": "Amazon",
+      "category": "ordinary_content_path",
+      "probability": 0.997868,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.reddit.com/r/python/",
+      "label": 0,
+      "source_name": "Reddit",
+      "category": "ordinary_content_path",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.reddit.com/r/science/",
+      "label": 0,
+      "source_name": "Reddit",
+      "category": "ordinary_content_path",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Computer_science",
+      "label": 0,
+      "source_name": "Wikipedia",
+      "category": "ordinary_content_path",
+      "probability": 0.99775,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Climate_change",
+      "label": 0,
+      "source_name": "Wikipedia",
+      "category": "ordinary_content_path",
+      "probability": 0.99775,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://stackoverflow.com/questions/tagged/javascript",
+      "label": 0,
+      "source_name": "Stack Overflow",
+      "category": "ordinary_content_path",
+      "probability": 0.997621,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.python.org/downloads/",
+      "label": 0,
+      "source_name": "Python",
+      "category": "ordinary_content_path",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.python.org/community/",
+      "label": 0,
+      "source_name": "Python",
+      "category": "ordinary_content_path",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.mozilla.org/firefox/",
+      "label": 0,
+      "source_name": "Mozilla",
+      "category": "ordinary_content_path",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.mozilla.org/about/",
+      "label": 0,
+      "source_name": "Mozilla",
+      "category": "ordinary_content_path",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.w3.org/standards/",
+      "label": 0,
+      "source_name": "W3C",
+      "category": "ordinary_content_path",
+      "probability": 0.998019,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.ietf.org/standards/",
+      "label": 0,
+      "source_name": "IETF",
+      "category": "ordinary_content_path",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.nasa.gov/missions/",
+      "label": 0,
+      "source_name": "NASA",
+      "category": "ordinary_content_path",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.nasa.gov/news/",
+      "label": 0,
+      "source_name": "NASA",
+      "category": "ordinary_content_path",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://openstreetmap.org/about",
+      "label": 0,
+      "source_name": "OpenStreetMap",
+      "category": "ordinary_content_path",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://gitlab.com/explore/projects",
+      "label": 0,
+      "source_name": "GitLab",
+      "category": "ordinary_content_path",
+      "probability": 0.998023,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.npmjs.com/package/react",
+      "label": 0,
+      "source_name": "npm",
+      "category": "ordinary_content_path",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://pypi.org/project/requests/",
+      "label": 0,
+      "source_name": "PyPI",
+      "category": "ordinary_content_path",
+      "probability": 0.998033,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://nodejs.org/en/about",
+      "label": 0,
+      "source_name": "Node.js",
+      "category": "ordinary_content_path",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://react.dev/learn",
+      "label": 0,
+      "source_name": "React",
+      "category": "ordinary_content_path",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.postgresql.org/about/",
+      "label": 0,
+      "source_name": "PostgreSQL",
+      "category": "ordinary_content_path",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.apple.com/macos/",
+      "label": 0,
+      "source_name": "Apple",
+      "category": "ordinary_content_path",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.cloudflare.com/learning/",
+      "label": 0,
+      "source_name": "Cloudflare",
+      "category": "ordinary_content_path",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.djangoproject.com/start/",
+      "label": 0,
+      "source_name": "Django",
+      "category": "ordinary_content_path",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/",
+      "label": 0,
+      "source_name": "RFC Editor",
+      "category": "ordinary_content_path",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP",
+      "label": 0,
+      "source_name": "MDN Web Docs",
+      "category": "documentation",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API",
+      "label": 0,
+      "source_name": "MDN Web Docs",
+      "category": "documentation",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/CSS",
+      "label": 0,
+      "source_name": "MDN Web Docs",
+      "category": "documentation",
+      "probability": 0.997715,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTML",
+      "label": 0,
+      "source_name": "MDN Web Docs",
+      "category": "documentation",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+      "label": 0,
+      "source_name": "MDN Web Docs",
+      "category": "documentation",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://docs.python.org/3/tutorial/",
+      "label": 0,
+      "source_name": "Python Documentation",
+      "category": "documentation",
+      "probability": 0.997815,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://docs.python.org/3/library/pathlib.html",
+      "label": 0,
+      "source_name": "Python Documentation",
+      "category": "documentation",
+      "probability": 0.997815,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://docs.python.org/3/library/urllib.parse.html",
+      "label": 0,
+      "source_name": "Python Documentation",
+      "category": "documentation",
+      "probability": 0.997813,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://docs.python.org/3/library/json.html",
+      "label": 0,
+      "source_name": "Python Documentation",
+      "category": "documentation",
+      "probability": 0.997824,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://docs.python.org/3/library/asyncio.html",
+      "label": 0,
+      "source_name": "Python Documentation",
+      "category": "documentation",
+      "probability": 0.997815,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/dotnet/csharp/",
+      "label": 0,
+      "source_name": "Microsoft Learn",
+      "category": "documentation",
+      "probability": 0.99775,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/architecture/",
+      "label": 0,
+      "source_name": "Microsoft Learn",
+      "category": "documentation",
+      "probability": 0.99775,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/windows/",
+      "label": 0,
+      "source_name": "Microsoft Learn",
+      "category": "documentation",
+      "probability": 0.997819,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/graph/overview",
+      "label": 0,
+      "source_name": "Microsoft Learn",
+      "category": "documentation",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html",
+      "label": 0,
+      "source_name": "AWS Documentation",
+      "category": "documentation",
+      "probability": 0.99775,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html",
+      "label": 0,
+      "source_name": "AWS Documentation",
+      "category": "documentation",
+      "probability": 0.997743,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
+      "label": 0,
+      "source_name": "AWS Documentation",
+      "category": "documentation",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://developers.cloudflare.com/dns/",
+      "label": 0,
+      "source_name": "Cloudflare Developers",
+      "category": "documentation",
+      "probability": 0.99793,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://developers.cloudflare.com/workers/",
+      "label": 0,
+      "source_name": "Cloudflare Developers",
+      "category": "documentation",
+      "probability": 0.997819,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://developers.cloudflare.com/fundamentals/",
+      "label": 0,
+      "source_name": "Cloudflare Developers",
+      "category": "documentation",
+      "probability": 0.997704,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://docs.docker.com/get-started/",
+      "label": 0,
+      "source_name": "Docker Documentation",
+      "category": "documentation",
+      "probability": 0.998,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://docs.docker.com/engine/",
+      "label": 0,
+      "source_name": "Docker Documentation",
+      "category": "documentation",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://kubernetes.io/docs/concepts/",
+      "label": 0,
+      "source_name": "Kubernetes Documentation",
+      "category": "documentation",
+      "probability": 0.998,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://kubernetes.io/docs/tasks/",
+      "label": 0,
+      "source_name": "Kubernetes Documentation",
+      "category": "documentation",
+      "probability": 0.998033,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://docs.djangoproject.com/en/stable/intro/tutorial01/",
+      "label": 0,
+      "source_name": "Django Documentation",
+      "category": "documentation",
+      "probability": 0.997815,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://docs.djangoproject.com/en/stable/topics/db/queries/",
+      "label": 0,
+      "source_name": "Django Documentation",
+      "category": "documentation",
+      "probability": 0.99775,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://nodejs.org/docs/latest/api/",
+      "label": 0,
+      "source_name": "Node.js Documentation",
+      "category": "documentation",
+      "probability": 0.998023,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.postgresql.org/docs/current/tutorial.html",
+      "label": 0,
+      "source_name": "PostgreSQL Documentation",
+      "category": "documentation",
+      "probability": 0.99775,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://git-scm.com/docs",
+      "label": 0,
+      "source_name": "Git Documentation",
+      "category": "documentation",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://docs.github.com/en/get-started",
+      "label": 0,
+      "source_name": "GitHub Documentation",
+      "category": "documentation",
+      "probability": 0.997946,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://docs.github.com/en/rest",
+      "label": 0,
+      "source_name": "GitHub Documentation",
+      "category": "documentation",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://support.google.com/websearch/answer/134479",
+      "label": 0,
+      "source_name": "Google Search Help",
+      "category": "documentation",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://support.microsoft.com/en-us/windows",
+      "label": 0,
+      "source_name": "Microsoft Support",
+      "category": "documentation",
+      "probability": 0.997758,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9110.html",
+      "label": 0,
+      "source_name": "RFC Editor",
+      "category": "documentation",
+      "probability": 0.997897,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.w3.org/TR/",
+      "label": 0,
+      "source_name": "W3C Standards",
+      "category": "documentation",
+      "probability": 0.998019,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://developer.apple.com/documentation/swift",
+      "label": 0,
+      "source_name": "Apple Developer Documentation",
+      "category": "documentation",
+      "probability": 0.997704,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://developer.android.com/guide",
+      "label": 0,
+      "source_name": "Android Developers",
+      "category": "documentation",
+      "probability": 0.998023,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.google.com/search?q=python%20documentation",
+      "label": 0,
+      "source_name": "Google Search",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.google.com/search?q=weather%20forecast%20Tokyo",
+      "label": 0,
+      "source_name": "Google Search",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.google.com/search?q=JavaScript%20array%20methods",
+      "label": 0,
+      "source_name": "Google Search",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.google.com/search?q=open%20source%20software%20licenses",
+      "label": 0,
+      "source_name": "Google Search",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.google.com/search?q=NASA%20Artemis%20mission",
+      "label": 0,
+      "source_name": "Google Search",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.google.com/search?q=renewable%20energy%20research",
+      "label": 0,
+      "source_name": "Google Search",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.google.com/search?q=World%20Health%20Organization%20public%20data",
+      "label": 0,
+      "source_name": "Google Search",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.google.com/search?q=Git%20version%20control%20tutorial",
+      "label": 0,
+      "source_name": "Google Search",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.google.com/search?q=machine%20learning%20books",
+      "label": 0,
+      "source_name": "Google Search",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.google.com/search?q=climate%20change%20reports",
+      "label": 0,
+      "source_name": "Google Search",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.google.com/search?q=New%20York%20public%20transit%20map",
+      "label": 0,
+      "source_name": "Google Search",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.google.com/search?q=CSS%20grid%20layout%20guide",
+      "label": 0,
+      "source_name": "Google Search",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.bing.com/search?q=python%20documentation",
+      "label": 0,
+      "source_name": "Bing Search",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.bing.com/search?q=weather%20forecast%20Tokyo",
+      "label": 0,
+      "source_name": "Bing Search",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.bing.com/search?q=JavaScript%20array%20methods",
+      "label": 0,
+      "source_name": "Bing Search",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.bing.com/search?q=open%20source%20software%20licenses",
+      "label": 0,
+      "source_name": "Bing Search",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.bing.com/search?q=NASA%20Artemis%20mission",
+      "label": 0,
+      "source_name": "Bing Search",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.bing.com/search?q=renewable%20energy%20research",
+      "label": 0,
+      "source_name": "Bing Search",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.bing.com/search?q=World%20Health%20Organization%20public%20data",
+      "label": 0,
+      "source_name": "Bing Search",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.bing.com/search?q=Git%20version%20control%20tutorial",
+      "label": 0,
+      "source_name": "Bing Search",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.bing.com/search?q=machine%20learning%20books",
+      "label": 0,
+      "source_name": "Bing Search",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.bing.com/search?q=climate%20change%20reports",
+      "label": 0,
+      "source_name": "Bing Search",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.bing.com/search?q=New%20York%20public%20transit%20map",
+      "label": 0,
+      "source_name": "Bing Search",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.bing.com/search?q=CSS%20grid%20layout%20guide",
+      "label": 0,
+      "source_name": "Bing Search",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://duckduckgo.com/?q=python%20documentation",
+      "label": 0,
+      "source_name": "DuckDuckGo",
+      "category": "search_query",
+      "probability": 0.996521,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://duckduckgo.com/?q=weather%20forecast%20Tokyo",
+      "label": 0,
+      "source_name": "DuckDuckGo",
+      "category": "search_query",
+      "probability": 0.995182,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://duckduckgo.com/?q=JavaScript%20array%20methods",
+      "label": 0,
+      "source_name": "DuckDuckGo",
+      "category": "search_query",
+      "probability": 0.995354,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://duckduckgo.com/?q=open%20source%20software%20licenses",
+      "label": 0,
+      "source_name": "DuckDuckGo",
+      "category": "search_query",
+      "probability": 0.997618,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://duckduckgo.com/?q=NASA%20Artemis%20mission",
+      "label": 0,
+      "source_name": "DuckDuckGo",
+      "category": "search_query",
+      "probability": 0.995276,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://duckduckgo.com/?q=renewable%20energy%20research",
+      "label": 0,
+      "source_name": "DuckDuckGo",
+      "category": "search_query",
+      "probability": 0.995354,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://duckduckgo.com/?q=World%20Health%20Organization%20public%20data",
+      "label": 0,
+      "source_name": "DuckDuckGo",
+      "category": "search_query",
+      "probability": 0.997618,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://duckduckgo.com/?q=Git%20version%20control%20tutorial",
+      "label": 0,
+      "source_name": "DuckDuckGo",
+      "category": "search_query",
+      "probability": 0.997618,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://duckduckgo.com/?q=machine%20learning%20books",
+      "label": 0,
+      "source_name": "DuckDuckGo",
+      "category": "search_query",
+      "probability": 0.995182,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://duckduckgo.com/?q=climate%20change%20reports",
+      "label": 0,
+      "source_name": "DuckDuckGo",
+      "category": "search_query",
+      "probability": 0.995182,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://duckduckgo.com/?q=New%20York%20public%20transit%20map",
+      "label": 0,
+      "source_name": "DuckDuckGo",
+      "category": "search_query",
+      "probability": 0.997618,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://duckduckgo.com/?q=CSS%20grid%20layout%20guide",
+      "label": 0,
+      "source_name": "DuckDuckGo",
+      "category": "search_query",
+      "probability": 0.997618,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://search.yahoo.com/search?p=python%20documentation",
+      "label": 0,
+      "source_name": "Yahoo Search",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://search.yahoo.com/search?p=weather%20forecast%20Tokyo",
+      "label": 0,
+      "source_name": "Yahoo Search",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://search.yahoo.com/search?p=JavaScript%20array%20methods",
+      "label": 0,
+      "source_name": "Yahoo Search",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://search.yahoo.com/search?p=open%20source%20software%20licenses",
+      "label": 0,
+      "source_name": "Yahoo Search",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://search.yahoo.com/search?p=NASA%20Artemis%20mission",
+      "label": 0,
+      "source_name": "Yahoo Search",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://search.yahoo.com/search?p=renewable%20energy%20research",
+      "label": 0,
+      "source_name": "Yahoo Search",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://search.yahoo.com/search?p=World%20Health%20Organization%20public%20data",
+      "label": 0,
+      "source_name": "Yahoo Search",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://search.yahoo.com/search?p=Git%20version%20control%20tutorial",
+      "label": 0,
+      "source_name": "Yahoo Search",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://search.yahoo.com/search?p=machine%20learning%20books",
+      "label": 0,
+      "source_name": "Yahoo Search",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://search.yahoo.com/search?p=climate%20change%20reports",
+      "label": 0,
+      "source_name": "Yahoo Search",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://search.yahoo.com/search?p=New%20York%20public%20transit%20map",
+      "label": 0,
+      "source_name": "Yahoo Search",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://search.yahoo.com/search?p=CSS%20grid%20layout%20guide",
+      "label": 0,
+      "source_name": "Yahoo Search",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.youtube.com/results?search_query=python%20documentation",
+      "label": 0,
+      "source_name": "YouTube",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.youtube.com/results?search_query=weather%20forecast%20Tokyo",
+      "label": 0,
+      "source_name": "YouTube",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.youtube.com/results?search_query=JavaScript%20array%20methods",
+      "label": 0,
+      "source_name": "YouTube",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.youtube.com/results?search_query=open%20source%20software%20licenses",
+      "label": 0,
+      "source_name": "YouTube",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.youtube.com/results?search_query=NASA%20Artemis%20mission",
+      "label": 0,
+      "source_name": "YouTube",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.youtube.com/results?search_query=renewable%20energy%20research",
+      "label": 0,
+      "source_name": "YouTube",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.youtube.com/results?search_query=World%20Health%20Organization%20public%20data",
+      "label": 0,
+      "source_name": "YouTube",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.youtube.com/results?search_query=Git%20version%20control%20tutorial",
+      "label": 0,
+      "source_name": "YouTube",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.youtube.com/results?search_query=machine%20learning%20books",
+      "label": 0,
+      "source_name": "YouTube",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.youtube.com/results?search_query=climate%20change%20reports",
+      "label": 0,
+      "source_name": "YouTube",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.youtube.com/results?search_query=New%20York%20public%20transit%20map",
+      "label": 0,
+      "source_name": "YouTube",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.youtube.com/results?search_query=CSS%20grid%20layout%20guide",
+      "label": 0,
+      "source_name": "YouTube",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://github.com/search?q=python%20documentation",
+      "label": 0,
+      "source_name": "GitHub",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://github.com/search?q=weather%20forecast%20Tokyo",
+      "label": 0,
+      "source_name": "GitHub",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://github.com/search?q=JavaScript%20array%20methods",
+      "label": 0,
+      "source_name": "GitHub",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://github.com/search?q=open%20source%20software%20licenses",
+      "label": 0,
+      "source_name": "GitHub",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://github.com/search?q=NASA%20Artemis%20mission",
+      "label": 0,
+      "source_name": "GitHub",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://github.com/search?q=renewable%20energy%20research",
+      "label": 0,
+      "source_name": "GitHub",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://github.com/search?q=World%20Health%20Organization%20public%20data",
+      "label": 0,
+      "source_name": "GitHub",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://github.com/search?q=Git%20version%20control%20tutorial",
+      "label": 0,
+      "source_name": "GitHub",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://github.com/search?q=machine%20learning%20books",
+      "label": 0,
+      "source_name": "GitHub",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://github.com/search?q=climate%20change%20reports",
+      "label": 0,
+      "source_name": "GitHub",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://github.com/search?q=New%20York%20public%20transit%20map",
+      "label": 0,
+      "source_name": "GitHub",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://github.com/search?q=CSS%20grid%20layout%20guide",
+      "label": 0,
+      "source_name": "GitHub",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.reddit.com/search/?q=python%20documentation",
+      "label": 0,
+      "source_name": "Reddit",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.reddit.com/search/?q=weather%20forecast%20Tokyo",
+      "label": 0,
+      "source_name": "Reddit",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.reddit.com/search/?q=JavaScript%20array%20methods",
+      "label": 0,
+      "source_name": "Reddit",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.reddit.com/search/?q=open%20source%20software%20licenses",
+      "label": 0,
+      "source_name": "Reddit",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.reddit.com/search/?q=NASA%20Artemis%20mission",
+      "label": 0,
+      "source_name": "Reddit",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.reddit.com/search/?q=renewable%20energy%20research",
+      "label": 0,
+      "source_name": "Reddit",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.reddit.com/search/?q=World%20Health%20Organization%20public%20data",
+      "label": 0,
+      "source_name": "Reddit",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.reddit.com/search/?q=Git%20version%20control%20tutorial",
+      "label": 0,
+      "source_name": "Reddit",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.reddit.com/search/?q=machine%20learning%20books",
+      "label": 0,
+      "source_name": "Reddit",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.reddit.com/search/?q=climate%20change%20reports",
+      "label": 0,
+      "source_name": "Reddit",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.reddit.com/search/?q=New%20York%20public%20transit%20map",
+      "label": 0,
+      "source_name": "Reddit",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.reddit.com/search/?q=CSS%20grid%20layout%20guide",
+      "label": 0,
+      "source_name": "Reddit",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://stackoverflow.com/search?q=python%20documentation",
+      "label": 0,
+      "source_name": "Stack Overflow",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://stackoverflow.com/search?q=weather%20forecast%20Tokyo",
+      "label": 0,
+      "source_name": "Stack Overflow",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://stackoverflow.com/search?q=JavaScript%20array%20methods",
+      "label": 0,
+      "source_name": "Stack Overflow",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://stackoverflow.com/search?q=open%20source%20software%20licenses",
+      "label": 0,
+      "source_name": "Stack Overflow",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://stackoverflow.com/search?q=NASA%20Artemis%20mission",
+      "label": 0,
+      "source_name": "Stack Overflow",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://stackoverflow.com/search?q=renewable%20energy%20research",
+      "label": 0,
+      "source_name": "Stack Overflow",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://stackoverflow.com/search?q=World%20Health%20Organization%20public%20data",
+      "label": 0,
+      "source_name": "Stack Overflow",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://stackoverflow.com/search?q=Git%20version%20control%20tutorial",
+      "label": 0,
+      "source_name": "Stack Overflow",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://stackoverflow.com/search?q=machine%20learning%20books",
+      "label": 0,
+      "source_name": "Stack Overflow",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://stackoverflow.com/search?q=climate%20change%20reports",
+      "label": 0,
+      "source_name": "Stack Overflow",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://stackoverflow.com/search?q=New%20York%20public%20transit%20map",
+      "label": 0,
+      "source_name": "Stack Overflow",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://stackoverflow.com/search?q=CSS%20grid%20layout%20guide",
+      "label": 0,
+      "source_name": "Stack Overflow",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://en.wikipedia.org/w/index.php?search=python%20documentation",
+      "label": 0,
+      "source_name": "Wikipedia",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://en.wikipedia.org/w/index.php?search=weather%20forecast%20Tokyo",
+      "label": 0,
+      "source_name": "Wikipedia",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://en.wikipedia.org/w/index.php?search=JavaScript%20array%20methods",
+      "label": 0,
+      "source_name": "Wikipedia",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://en.wikipedia.org/w/index.php?search=open%20source%20software%20licenses",
+      "label": 0,
+      "source_name": "Wikipedia",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://en.wikipedia.org/w/index.php?search=NASA%20Artemis%20mission",
+      "label": 0,
+      "source_name": "Wikipedia",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://en.wikipedia.org/w/index.php?search=renewable%20energy%20research",
+      "label": 0,
+      "source_name": "Wikipedia",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://en.wikipedia.org/w/index.php?search=World%20Health%20Organization%20public%20data",
+      "label": 0,
+      "source_name": "Wikipedia",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://en.wikipedia.org/w/index.php?search=Git%20version%20control%20tutorial",
+      "label": 0,
+      "source_name": "Wikipedia",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://en.wikipedia.org/w/index.php?search=machine%20learning%20books",
+      "label": 0,
+      "source_name": "Wikipedia",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://en.wikipedia.org/w/index.php?search=climate%20change%20reports",
+      "label": 0,
+      "source_name": "Wikipedia",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://en.wikipedia.org/w/index.php?search=New%20York%20public%20transit%20map",
+      "label": 0,
+      "source_name": "Wikipedia",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://en.wikipedia.org/w/index.php?search=CSS%20grid%20layout%20guide",
+      "label": 0,
+      "source_name": "Wikipedia",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.amazon.com/s?k=python%20documentation",
+      "label": 0,
+      "source_name": "Amazon",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.amazon.com/s?k=weather%20forecast%20Tokyo",
+      "label": 0,
+      "source_name": "Amazon",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.amazon.com/s?k=JavaScript%20array%20methods",
+      "label": 0,
+      "source_name": "Amazon",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.amazon.com/s?k=open%20source%20software%20licenses",
+      "label": 0,
+      "source_name": "Amazon",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.amazon.com/s?k=NASA%20Artemis%20mission",
+      "label": 0,
+      "source_name": "Amazon",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.amazon.com/s?k=renewable%20energy%20research",
+      "label": 0,
+      "source_name": "Amazon",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.amazon.com/s?k=World%20Health%20Organization%20public%20data",
+      "label": 0,
+      "source_name": "Amazon",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.amazon.com/s?k=Git%20version%20control%20tutorial",
+      "label": 0,
+      "source_name": "Amazon",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.amazon.com/s?k=machine%20learning%20books",
+      "label": 0,
+      "source_name": "Amazon",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.amazon.com/s?k=climate%20change%20reports",
+      "label": 0,
+      "source_name": "Amazon",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.amazon.com/s?k=New%20York%20public%20transit%20map",
+      "label": 0,
+      "source_name": "Amazon",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.amazon.com/s?k=CSS%20grid%20layout%20guide",
+      "label": 0,
+      "source_name": "Amazon",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.npmjs.com/search?q=python%20documentation",
+      "label": 0,
+      "source_name": "npm",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.npmjs.com/search?q=weather%20forecast%20Tokyo",
+      "label": 0,
+      "source_name": "npm",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.npmjs.com/search?q=JavaScript%20array%20methods",
+      "label": 0,
+      "source_name": "npm",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.npmjs.com/search?q=open%20source%20software%20licenses",
+      "label": 0,
+      "source_name": "npm",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.npmjs.com/search?q=NASA%20Artemis%20mission",
+      "label": 0,
+      "source_name": "npm",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.npmjs.com/search?q=renewable%20energy%20research",
+      "label": 0,
+      "source_name": "npm",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.npmjs.com/search?q=World%20Health%20Organization%20public%20data",
+      "label": 0,
+      "source_name": "npm",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.npmjs.com/search?q=Git%20version%20control%20tutorial",
+      "label": 0,
+      "source_name": "npm",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.npmjs.com/search?q=machine%20learning%20books",
+      "label": 0,
+      "source_name": "npm",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.npmjs.com/search?q=climate%20change%20reports",
+      "label": 0,
+      "source_name": "npm",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.npmjs.com/search?q=New%20York%20public%20transit%20map",
+      "label": 0,
+      "source_name": "npm",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.npmjs.com/search?q=CSS%20grid%20layout%20guide",
+      "label": 0,
+      "source_name": "npm",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://pypi.org/search/?q=python%20documentation",
+      "label": 0,
+      "source_name": "PyPI",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://pypi.org/search/?q=weather%20forecast%20Tokyo",
+      "label": 0,
+      "source_name": "PyPI",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://pypi.org/search/?q=JavaScript%20array%20methods",
+      "label": 0,
+      "source_name": "PyPI",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://pypi.org/search/?q=open%20source%20software%20licenses",
+      "label": 0,
+      "source_name": "PyPI",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://pypi.org/search/?q=NASA%20Artemis%20mission",
+      "label": 0,
+      "source_name": "PyPI",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://pypi.org/search/?q=renewable%20energy%20research",
+      "label": 0,
+      "source_name": "PyPI",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://pypi.org/search/?q=World%20Health%20Organization%20public%20data",
+      "label": 0,
+      "source_name": "PyPI",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://pypi.org/search/?q=Git%20version%20control%20tutorial",
+      "label": 0,
+      "source_name": "PyPI",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://pypi.org/search/?q=machine%20learning%20books",
+      "label": 0,
+      "source_name": "PyPI",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://pypi.org/search/?q=climate%20change%20reports",
+      "label": 0,
+      "source_name": "PyPI",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://pypi.org/search/?q=New%20York%20public%20transit%20map",
+      "label": 0,
+      "source_name": "PyPI",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://pypi.org/search/?q=CSS%20grid%20layout%20guide",
+      "label": 0,
+      "source_name": "PyPI",
+      "category": "search_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://github.com/search?q=python&type=repositories",
+      "label": 0,
+      "source_name": "GitHub",
+      "category": "path_plus_query",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://github.com/search?q=django&type=issues",
+      "label": 0,
+      "source_name": "GitHub",
+      "category": "path_plus_query",
+      "probability": 0.997715,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://github.com/search?q=react&type=repositories",
+      "label": 0,
+      "source_name": "GitHub",
+      "category": "path_plus_query",
+      "probability": 0.99775,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://github.com/search?q=linux&type=code",
+      "label": 0,
+      "source_name": "GitHub",
+      "category": "path_plus_query",
+      "probability": 0.997724,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://stackoverflow.com/search?q=python+pathlib",
+      "label": 0,
+      "source_name": "Stack Overflow",
+      "category": "path_plus_query",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://stackoverflow.com/search?q=javascript+promises",
+      "label": 0,
+      "source_name": "Stack Overflow",
+      "category": "path_plus_query",
+      "probability": 0.997701,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.reddit.com/search/?q=python&sort=relevance",
+      "label": 0,
+      "source_name": "Reddit",
+      "category": "path_plus_query",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.reddit.com/search/?q=climate+science&sort=top",
+      "label": 0,
+      "source_name": "Reddit",
+      "category": "path_plus_query",
+      "probability": 0.99775,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.bing.com/search?q=public+transport&form=QBLH",
+      "label": 0,
+      "source_name": "Bing Search",
+      "category": "path_plus_query",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.google.com/search?q=python+packaging&hl=en",
+      "label": 0,
+      "source_name": "Google Search",
+      "category": "path_plus_query",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://en.wikipedia.org/w/index.php?search=solar+energy",
+      "label": 0,
+      "source_name": "Wikipedia",
+      "category": "path_plus_query",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.youtube.com/results?search_query=python+tutorial",
+      "label": 0,
+      "source_name": "YouTube",
+      "category": "path_plus_query",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.amazon.com/s?k=mechanical+keyboard",
+      "label": 0,
+      "source_name": "Amazon",
+      "category": "path_plus_query",
+      "probability": 0.997699,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.npmjs.com/search?q=react+router",
+      "label": 0,
+      "source_name": "npm",
+      "category": "path_plus_query",
+      "probability": 0.997868,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://pypi.org/search/?q=data+visualization",
+      "label": 0,
+      "source_name": "PyPI",
+      "category": "path_plus_query",
+      "probability": 0.997715,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/search?q=fetch+API",
+      "label": 0,
+      "source_name": "MDN Web Docs",
+      "category": "path_plus_query",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/search/?terms=Azure+Storage",
+      "label": 0,
+      "source_name": "Microsoft Learn",
+      "category": "path_plus_query",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://docs.github.com/en/search?query=REST+API",
+      "label": 0,
+      "source_name": "GitHub Documentation",
+      "category": "path_plus_query",
+      "probability": 0.997715,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.python.org/search/?q=packaging",
+      "label": 0,
+      "source_name": "Python",
+      "category": "path_plus_query",
+      "probability": 0.997946,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://gitlab.com/search?search=python+projects",
+      "label": 0,
+      "source_name": "GitLab",
+      "category": "path_plus_query",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.cloudflare.com/search/?q=DNS",
+      "label": 0,
+      "source_name": "Cloudflare",
+      "category": "path_plus_query",
+      "probability": 0.997888,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.nasa.gov/search/?search=Artemis",
+      "label": 0,
+      "source_name": "NASA",
+      "category": "path_plus_query",
+      "probability": 0.997868,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.w3.org/search/?q=accessibility",
+      "label": 0,
+      "source_name": "W3C",
+      "category": "path_plus_query",
+      "probability": 0.997858,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.ietf.org/search/?query=HTTP",
+      "label": 0,
+      "source_name": "IETF",
+      "category": "path_plus_query",
+      "probability": 0.997914,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.google.com/search?q=python&hl=en&safe=active",
+      "label": 0,
+      "source_name": "Google Search",
+      "category": "multiple_query_params",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.google.com/search?q=climate+data&num=20&filter=0",
+      "label": 0,
+      "source_name": "Google Search",
+      "category": "multiple_query_params",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.bing.com/search?q=python&count=20&form=QBLH",
+      "label": 0,
+      "source_name": "Bing Search",
+      "category": "multiple_query_params",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.bing.com/search?q=NASA+Artemis&filters=ex1%3A%22ez5_12345%22&count=10",
+      "label": 0,
+      "source_name": "Bing Search",
+      "category": "multiple_query_params",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://github.com/search?q=python&type=repositories&sort=stars",
+      "label": 0,
+      "source_name": "GitHub",
+      "category": "multiple_query_params",
+      "probability": 0.99775,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://github.com/search?q=react&type=issues&state=open",
+      "label": 0,
+      "source_name": "GitHub",
+      "category": "multiple_query_params",
+      "probability": 0.997743,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.reddit.com/search/?q=python&sort=top&t=year",
+      "label": 0,
+      "source_name": "Reddit",
+      "category": "multiple_query_params",
+      "probability": 0.99775,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://stackoverflow.com/search?tab=relevance&q=python+asyncio",
+      "label": 0,
+      "source_name": "Stack Overflow",
+      "category": "multiple_query_params",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://en.wikipedia.org/w/index.php?search=solar+energy&title=Special%3ASearch&fulltext=1",
+      "label": 0,
+      "source_name": "Wikipedia",
+      "category": "multiple_query_params",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.amazon.com/s?k=wireless+mouse&page=1&ref=sr_pg_1",
+      "label": 0,
+      "source_name": "Amazon",
+      "category": "multiple_query_params",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.youtube.com/results?search_query=astronomy&sp=EgIQAQ%253D%253D",
+      "label": 0,
+      "source_name": "YouTube",
+      "category": "multiple_query_params",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://pypi.org/search/?q=fastapi&page=1",
+      "label": 0,
+      "source_name": "PyPI",
+      "category": "multiple_query_params",
+      "probability": 0.997893,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.npmjs.com/search?q=typescript&ranking=popularity",
+      "label": 0,
+      "source_name": "npm",
+      "category": "multiple_query_params",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://api.github.com/search/repositories?q=python&sort=stars&per_page=10",
+      "label": 0,
+      "source_name": "GitHub API",
+      "category": "multiple_query_params",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://api.stackexchange.com/2.3/search/advanced?site=stackoverflow&title=python&sort=activity",
+      "label": 0,
+      "source_name": "Stack Exchange API",
+      "category": "multiple_query_params",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.405&current=temperature_2m",
+      "label": 0,
+      "source_name": "Open-Meteo API",
+      "category": "multiple_query_params",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.googleapis.com/books/v1/volumes?q=subject%3Ascience&maxResults=10&orderBy=relevance",
+      "label": 0,
+      "source_name": "Google Books API",
+      "category": "multiple_query_params",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://api.crossref.org/works?query.title=climate+change&rows=10&select=DOI,title",
+      "label": 0,
+      "source_name": "Crossref API",
+      "category": "multiple_query_params",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://api.openalex.org/works?search=renewable+energy&per-page=10&sort=cited_by_count%3Adesc",
+      "label": 0,
+      "source_name": "OpenAlex API",
+      "category": "multiple_query_params",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=2024-01-01",
+      "label": 0,
+      "source_name": "NASA API",
+      "category": "multiple_query_params",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.python.org/search/?q=python&submit=Search",
+      "label": 0,
+      "source_name": "Python",
+      "category": "multiple_query_params",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/search?q=CSS&topic=css",
+      "label": 0,
+      "source_name": "MDN Web Docs",
+      "category": "multiple_query_params",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/search/?terms=Azure&category=Documentation",
+      "label": 0,
+      "source_name": "Microsoft Learn",
+      "category": "multiple_query_params",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.w3.org/search/?q=HTML&scope=www.w3.org",
+      "label": 0,
+      "source_name": "W3C",
+      "category": "multiple_query_params",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.ietf.org/search/?query=TLS&type=RFC",
+      "label": 0,
+      "source_name": "IETF",
+      "category": "multiple_query_params",
+      "probability": 0.997724,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.google.com/search?q=python+documentation&start=10",
+      "label": 0,
+      "source_name": "Google Search",
+      "category": "pagination",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.google.com/search?q=renewable+energy&start=20",
+      "label": 0,
+      "source_name": "Google Search",
+      "category": "pagination",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.bing.com/search?q=python&first=11",
+      "label": 0,
+      "source_name": "Bing Search",
+      "category": "pagination",
+      "probability": 0.997889,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.bing.com/search?q=NASA&first=21",
+      "label": 0,
+      "source_name": "Bing Search",
+      "category": "pagination",
+      "probability": 0.997894,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://search.yahoo.com/search?p=python&b=11",
+      "label": 0,
+      "source_name": "Yahoo Search",
+      "category": "pagination",
+      "probability": 0.997815,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://github.com/search?q=python&type=repositories&p=2",
+      "label": 0,
+      "source_name": "GitHub",
+      "category": "pagination",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://github.com/search?q=react&type=repositories&p=3",
+      "label": 0,
+      "source_name": "GitHub",
+      "category": "pagination",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.amazon.com/s?k=books&page=2",
+      "label": 0,
+      "source_name": "Amazon",
+      "category": "pagination",
+      "probability": 0.997783,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.amazon.com/s?k=wireless+headphones&page=3",
+      "label": 0,
+      "source_name": "Amazon",
+      "category": "pagination",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://stackoverflow.com/search?tab=relevance&q=python&page=2",
+      "label": 0,
+      "source_name": "Stack Overflow",
+      "category": "pagination",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://stackoverflow.com/search?tab=relevance&q=javascript&page=3",
+      "label": 0,
+      "source_name": "Stack Overflow",
+      "category": "pagination",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://pypi.org/search/?q=django&page=2",
+      "label": 0,
+      "source_name": "PyPI",
+      "category": "pagination",
+      "probability": 0.99789,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.npmjs.com/search?q=react&page=2",
+      "label": 0,
+      "source_name": "npm",
+      "category": "pagination",
+      "probability": 0.997895,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://en.wikipedia.org/w/index.php?search=astronomy&title=Special%3ASearch&fulltext=1&offset=20",
+      "label": 0,
+      "source_name": "Wikipedia",
+      "category": "pagination",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.reddit.com/r/python/?t=all&sort=top",
+      "label": 0,
+      "source_name": "Reddit",
+      "category": "pagination",
+      "probability": 0.997758,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://gitlab.com/explore/projects?page=2&sort=stars_desc",
+      "label": 0,
+      "source_name": "GitLab",
+      "category": "pagination",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://news.ycombinator.com/news?p=2",
+      "label": 0,
+      "source_name": "Hacker News",
+      "category": "pagination",
+      "probability": 0.997929,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.ebay.com/sch/i.html?_nkw=used+books&_pgn=2",
+      "label": 0,
+      "source_name": "eBay",
+      "category": "pagination",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.etsy.com/search?q=ceramic+mug&page=2",
+      "label": 0,
+      "source_name": "Etsy",
+      "category": "pagination",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.booking.com/searchresults.html?ss=London&offset=25",
+      "label": 0,
+      "source_name": "Booking.com",
+      "category": "pagination",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.google.com/search?q=cyber%20security",
+      "label": 0,
+      "source_name": "Google Search",
+      "category": "url_encoding",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.google.com/search?q=C%2B%2B%20reference",
+      "label": 0,
+      "source_name": "Google Search",
+      "category": "url_encoding",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.bing.com/search?q=machine%20learning%20tutorial",
+      "label": 0,
+      "source_name": "Bing Search",
+      "category": "url_encoding",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://duckduckgo.com/?q=climate%20science",
+      "label": 0,
+      "source_name": "DuckDuckGo",
+      "category": "url_encoding",
+      "probability": 0.995122,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://search.yahoo.com/search?p=public%20health%20data",
+      "label": 0,
+      "source_name": "Yahoo Search",
+      "category": "url_encoding",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.youtube.com/results?search_query=classical%20music",
+      "label": 0,
+      "source_name": "YouTube",
+      "category": "url_encoding",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://github.com/search?q=URL%20parser&type=repositories",
+      "label": 0,
+      "source_name": "GitHub",
+      "category": "url_encoding",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://stackoverflow.com/search?q=Python%20asyncio",
+      "label": 0,
+      "source_name": "Stack Overflow",
+      "category": "url_encoding",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://en.wikipedia.org/w/index.php?search=solar%20energy",
+      "label": 0,
+      "source_name": "Wikipedia",
+      "category": "url_encoding",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.amazon.com/s?k=USB%20C%20hub",
+      "label": 0,
+      "source_name": "Amazon",
+      "category": "url_encoding",
+      "probability": 0.997818,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/search?q=web%20workers",
+      "label": 0,
+      "source_name": "MDN Web Docs",
+      "category": "url_encoding",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/search/?terms=Azure%20Functions",
+      "label": 0,
+      "source_name": "Microsoft Learn",
+      "category": "url_encoding",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://api.github.com/search/repositories?q=natural%20language%20processing",
+      "label": 0,
+      "source_name": "GitHub API",
+      "category": "url_encoding",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://api.openalex.org/works?search=urban%20planning",
+      "label": 0,
+      "source_name": "OpenAlex API",
+      "category": "url_encoding",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://api.crossref.org/works?query.title=public%20transport",
+      "label": 0,
+      "source_name": "Crossref API",
+      "category": "url_encoding",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.npmjs.com/search?q=state%20management",
+      "label": 0,
+      "source_name": "npm",
+      "category": "url_encoding",
+      "probability": 0.997815,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://pypi.org/search/?q=image%20processing",
+      "label": 0,
+      "source_name": "PyPI",
+      "category": "url_encoding",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.reddit.com/search/?q=home%20gardening",
+      "label": 0,
+      "source_name": "Reddit",
+      "category": "url_encoding",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.python.org/search/?q=web%20development",
+      "label": 0,
+      "source_name": "Python",
+      "category": "url_encoding",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.w3.org/search/?q=web%20accessibility",
+      "label": 0,
+      "source_name": "W3C",
+      "category": "url_encoding",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.ietf.org/search/?query=content%20security%20policy",
+      "label": 0,
+      "source_name": "IETF",
+      "category": "url_encoding",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=2024-02-20",
+      "label": 0,
+      "source_name": "NASA API",
+      "category": "url_encoding",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide#functions",
+      "label": 0,
+      "source_name": "MDN Web Docs",
+      "category": "fragment",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP#overview",
+      "label": 0,
+      "source_name": "MDN Web Docs",
+      "category": "fragment",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/CSS#reference",
+      "label": 0,
+      "source_name": "MDN Web Docs",
+      "category": "fragment",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://docs.python.org/3/tutorial/controlflow.html#defining-functions",
+      "label": 0,
+      "source_name": "Python Documentation",
+      "category": "fragment",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://docs.python.org/3/library/pathlib.html#basic-use",
+      "label": 0,
+      "source_name": "Python Documentation",
+      "category": "fragment",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://docs.python.org/3/library/urllib.parse.html#url-parsing",
+      "label": 0,
+      "source_name": "Python Documentation",
+      "category": "fragment",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html#how-to-use-lambda",
+      "label": 0,
+      "source_name": "AWS Documentation",
+      "category": "fragment",
+      "probability": 0.99775,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://docs.docker.com/get-started/#recap-and-cheat-sheet",
+      "label": 0,
+      "source_name": "Docker Documentation",
+      "category": "fragment",
+      "probability": 0.99775,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://kubernetes.io/docs/concepts/overview/#kubernetes-control-plane",
+      "label": 0,
+      "source_name": "Kubernetes Documentation",
+      "category": "fragment",
+      "probability": 0.997718,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://docs.djangoproject.com/en/stable/intro/tutorial01/#creating-a-project",
+      "label": 0,
+      "source_name": "Django Documentation",
+      "category": "fragment",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://nodejs.org/docs/latest/api/fs.html#file-system",
+      "label": 0,
+      "source_name": "Node.js Documentation",
+      "category": "fragment",
+      "probability": 0.997743,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://react.dev/learn#components",
+      "label": 0,
+      "source_name": "React Documentation",
+      "category": "fragment",
+      "probability": 0.998033,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.postgresql.org/docs/current/tutorial.html#TUTORIAL-SQL-INTRO",
+      "label": 0,
+      "source_name": "PostgreSQL Documentation",
+      "category": "fragment",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://docs.github.com/en/get-started/quickstart/hello-world#introduction",
+      "label": 0,
+      "source_name": "GitHub Documentation",
+      "category": "fragment",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9110.html#name-introduction",
+      "label": 0,
+      "source_name": "RFC Editor",
+      "category": "fragment",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.w3.org/TR/WCAG22/#introduction",
+      "label": 0,
+      "source_name": "W3C Standards",
+      "category": "fragment",
+      "probability": 0.99784,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Computer_science#History",
+      "label": 0,
+      "source_name": "Wikipedia",
+      "category": "fragment",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Climate_change#Causes",
+      "label": 0,
+      "source_name": "Wikipedia",
+      "category": "fragment",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://github.com/python/cpython#readme",
+      "label": 0,
+      "source_name": "GitHub",
+      "category": "fragment",
+      "probability": 0.997835,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://github.com/microsoft/vscode#readme",
+      "label": 0,
+      "source_name": "GitHub",
+      "category": "fragment",
+      "probability": 0.997819,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.python.org/about/#python-ecosystem",
+      "label": 0,
+      "source_name": "Python",
+      "category": "fragment",
+      "probability": 0.997819,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.nasa.gov/missions/artemis/#overview",
+      "label": 0,
+      "source_name": "NASA",
+      "category": "fragment",
+      "probability": 0.997758,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://developer.apple.com/documentation/swift#overview",
+      "label": 0,
+      "source_name": "Apple Developer Documentation",
+      "category": "fragment",
+      "probability": 0.997643,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://developer.android.com/guide#overview",
+      "label": 0,
+      "source_name": "Android Developers",
+      "category": "fragment",
+      "probability": 0.99775,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.ietf.org/standards/#standards-process",
+      "label": 0,
+      "source_name": "IETF",
+      "category": "fragment",
+      "probability": 0.99775,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.python.org/downloads/?utm_source=python.org&utm_medium=referral&utm_campaign=downloads",
+      "label": 0,
+      "source_name": "Python",
+      "category": "tracking_utm",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://github.com/features/copilot?utm_source=github&utm_medium=website&utm_campaign=product",
+      "label": 0,
+      "source_name": "GitHub",
+      "category": "tracking_utm",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript?utm_source=mdn&utm_medium=referral&utm_campaign=docs",
+      "label": 0,
+      "source_name": "MDN Web Docs",
+      "category": "tracking_utm",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/?utm_source=microsoft&utm_medium=referral&utm_campaign=learn",
+      "label": 0,
+      "source_name": "Microsoft Learn",
+      "category": "tracking_utm",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.nasa.gov/missions/?utm_source=nasa&utm_medium=referral&utm_campaign=missions",
+      "label": 0,
+      "source_name": "NASA",
+      "category": "tracking_utm",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.mozilla.org/firefox/?utm_source=mozilla&utm_medium=website&utm_campaign=firefox",
+      "label": 0,
+      "source_name": "Mozilla",
+      "category": "tracking_utm",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.w3.org/standards/?utm_source=w3c&utm_medium=referral&utm_campaign=standards",
+      "label": 0,
+      "source_name": "W3C",
+      "category": "tracking_utm",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.ietf.org/standards/?utm_source=ietf&utm_medium=referral&utm_campaign=standards",
+      "label": 0,
+      "source_name": "IETF",
+      "category": "tracking_utm",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.cloudflare.com/learning/dns/?utm_source=cloudflare&utm_medium=referral&utm_campaign=learning",
+      "label": 0,
+      "source_name": "Cloudflare",
+      "category": "tracking_utm",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://docs.docker.com/get-started/?utm_source=docker&utm_medium=referral&utm_campaign=docs",
+      "label": 0,
+      "source_name": "Docker Documentation",
+      "category": "tracking_utm",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://kubernetes.io/docs/home/?utm_source=kubernetes&utm_medium=referral&utm_campaign=documentation",
+      "label": 0,
+      "source_name": "Kubernetes",
+      "category": "tracking_utm",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.reddit.com/r/python/?utm_source=reddit&utm_medium=web&utm_campaign=community",
+      "label": 0,
+      "source_name": "Reddit",
+      "category": "tracking_utm",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.amazon.com/gp/bestsellers/books?utm_source=amazon&utm_medium=referral&utm_campaign=books",
+      "label": 0,
+      "source_name": "Amazon",
+      "category": "tracking_utm",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.youtube.com/feed/trending?utm_source=youtube&utm_medium=web&utm_campaign=trending",
+      "label": 0,
+      "source_name": "YouTube",
+      "category": "tracking_utm",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.postgresql.org/docs/current/?utm_source=postgresql&utm_medium=referral&utm_campaign=docs",
+      "label": 0,
+      "source_name": "PostgreSQL",
+      "category": "tracking_utm",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://nodejs.org/en/learn?utm_source=nodejs&utm_medium=referral&utm_campaign=learn",
+      "label": 0,
+      "source_name": "Node.js",
+      "category": "tracking_utm",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://react.dev/learn?utm_source=react&utm_medium=referral&utm_campaign=learn",
+      "label": 0,
+      "source_name": "React",
+      "category": "tracking_utm",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://pypi.org/project/requests/?utm_source=pypi&utm_medium=referral&utm_campaign=project",
+      "label": 0,
+      "source_name": "PyPI",
+      "category": "tracking_utm",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.npmjs.com/package/typescript?utm_source=npm&utm_medium=referral&utm_campaign=package",
+      "label": 0,
+      "source_name": "npm",
+      "category": "tracking_utm",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.loc.gov/collections/?utm_source=loc&utm_medium=referral&utm_campaign=collections",
+      "label": 0,
+      "source_name": "Library of Congress",
+      "category": "tracking_utm",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://github.com/login",
+      "label": 0,
+      "source_name": "GitHub",
+      "category": "login_account",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.amazon.com/ap/signin",
+      "label": 0,
+      "source_name": "Amazon",
+      "category": "login_account",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.reddit.com/login/",
+      "label": 0,
+      "source_name": "Reddit",
+      "category": "login_account",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.dropbox.com/login",
+      "label": 0,
+      "source_name": "Dropbox",
+      "category": "login_account",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://appleid.apple.com/sign-in",
+      "label": 0,
+      "source_name": "Apple ID",
+      "category": "login_account",
+      "probability": 0.998033,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.linkedin.com/login",
+      "label": 0,
+      "source_name": "LinkedIn",
+      "category": "login_account",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.notion.so/login",
+      "label": 0,
+      "source_name": "Notion",
+      "category": "login_account",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://id.atlassian.com/login",
+      "label": 0,
+      "source_name": "Atlassian Account",
+      "category": "login_account",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://accounts.spotify.com/en/login",
+      "label": 0,
+      "source_name": "Spotify Accounts",
+      "category": "login_account",
+      "probability": 0.997965,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://login.salesforce.com/",
+      "label": 0,
+      "source_name": "Salesforce",
+      "category": "login_account",
+      "probability": 0.960471,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.paypal.com/signin",
+      "label": 0,
+      "source_name": "PayPal",
+      "category": "login_account",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.adobe.com/account/sign-in.html",
+      "label": 0,
+      "source_name": "Adobe Account",
+      "category": "login_account",
+      "probability": 0.997946,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.canva.com/login/",
+      "label": 0,
+      "source_name": "Canva",
+      "category": "login_account",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://zoom.us/signin",
+      "label": 0,
+      "source_name": "Zoom",
+      "category": "login_account",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.airbnb.com/login",
+      "label": 0,
+      "source_name": "Airbnb",
+      "category": "login_account",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.etsy.com/signin",
+      "label": 0,
+      "source_name": "Etsy",
+      "category": "login_account",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.twitch.tv/login",
+      "label": 0,
+      "source_name": "Twitch",
+      "category": "login_account",
+      "probability": 0.998018,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://dash.cloudflare.com/login",
+      "label": 0,
+      "source_name": "Cloudflare Dashboard",
+      "category": "login_account",
+      "probability": 0.998033,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://login.microsoftonline.com/",
+      "label": 0,
+      "source_name": "Microsoft Account",
+      "category": "login_account",
+      "probability": 0.980537,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://api.github.com/repos/python/cpython",
+      "label": 0,
+      "source_name": "GitHub API",
+      "category": "api_path",
+      "probability": 0.997758,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://api.github.com/repos/microsoft/vscode",
+      "label": 0,
+      "source_name": "GitHub API",
+      "category": "api_path",
+      "probability": 0.99775,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://api.github.com/users/octocat/repos?per_page=5&page=1",
+      "label": 0,
+      "source_name": "GitHub API",
+      "category": "api_path",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://api.github.com/repos/python/cpython/issues?state=open&per_page=5",
+      "label": 0,
+      "source_name": "GitHub API",
+      "category": "api_path",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://api.stackexchange.com/2.3/questions?site=stackoverflow&pagesize=10&page=1",
+      "label": 0,
+      "source_name": "Stack Exchange API",
+      "category": "api_path",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://api.weather.gov/points/39.7456,-97.0892",
+      "label": 0,
+      "source_name": "National Weather Service API",
+      "category": "api_path",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://api.nasa.gov/neo/rest/v1/feed?start_date=2024-01-01&end_date=2024-01-02&api_key=DEMO_KEY",
+      "label": 0,
+      "source_name": "NASA API",
+      "category": "api_path",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=Python&format=json",
+      "label": 0,
+      "source_name": "MediaWiki API",
+      "category": "api_path",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbsearchentities&search=Earth&language=en&format=json",
+      "label": 0,
+      "source_name": "Wikidata API",
+      "category": "api_path",
+      "probability": 0.997742,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://api.crossref.org/works?query.title=machine+learning&rows=10",
+      "label": 0,
+      "source_name": "Crossref API",
+      "category": "api_path",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://api.openalex.org/works?search=climate+change&per-page=10",
+      "label": 0,
+      "source_name": "OpenAlex API",
+      "category": "api_path",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.googleapis.com/books/v1/volumes?q=subject%3Ascience&maxResults=5",
+      "label": 0,
+      "source_name": "Google Books API",
+      "category": "api_path",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://jsonplaceholder.typicode.com/posts/1",
+      "label": 0,
+      "source_name": "JSONPlaceholder API",
+      "category": "api_path",
+      "probability": 0.997815,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://jsonplaceholder.typicode.com/users/1/posts",
+      "label": 0,
+      "source_name": "JSONPlaceholder API",
+      "category": "api_path",
+      "probability": 0.997815,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://api.github.com/repos/nodejs/node/releases?per_page=5",
+      "label": 0,
+      "source_name": "GitHub API",
+      "category": "api_path",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://api.github.com/search/issues?q=repo%3Apython%2Fcpython+is%3Aissue",
+      "label": 0,
+      "source_name": "GitHub API",
+      "category": "api_path",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://api.github.com/repos/pallets/flask/commits?per_page=5",
+      "label": 0,
+      "source_name": "GitHub API",
+      "category": "api_path",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://api.open-meteo.com/v1/forecast?latitude=40.71&longitude=-74.01&daily=temperature_2m_max&timezone=America%2FNew_York",
+      "label": 0,
+      "source_name": "Open-Meteo API",
+      "category": "api_path",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.google.com/search?q=how%20to%20use%20Python%20pathlib%20to%20find%20files%20recursively%20and%20safely%20handle%20paths%20on%20Windows%20and%20Linux",
+      "label": 0,
+      "source_name": "Google Search",
+      "category": "long_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.bing.com/search?q=best%20practices%20for%20documenting%20a%20public%20REST%20API%20with%20examples%20for%20pagination%20filtering%20and%20sorting",
+      "label": 0,
+      "source_name": "Bing Search",
+      "category": "long_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://duckduckgo.com/?q=how%20do%20JavaScript%20promises%20and%20async%20functions%20work%20together%20when%20fetching%20data%20from%20a%20web%20service",
+      "label": 0,
+      "source_name": "DuckDuckGo",
+      "category": "long_query",
+      "probability": 0.997618,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://stackoverflow.com/search?q=official%20documentation%20for%20configuring%20access%20controls%20and%20lifecycle%20rules%20for%20cloud%20object%20storage",
+      "label": 0,
+      "source_name": "Stack Overflow",
+      "category": "long_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://github.com/search?q=research%20articles%20about%20renewable%20energy%20storage%20battery%20materials%20and%20electric%20grid%20reliability",
+      "label": 0,
+      "source_name": "GitHub",
+      "category": "long_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://search.yahoo.com/search?p=how%20to%20compare%20public%20transportation%20options%20and%20accessibility%20information%20when%20planning%20a%20city%20trip",
+      "label": 0,
+      "source_name": "Yahoo Search",
+      "category": "long_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.youtube.com/results?search_query=examples%20of%20SQL%20joins%20indexes%20and%20query%20plans%20for%20learning%20relational%20database%20performance",
+      "label": 0,
+      "source_name": "YouTube",
+      "category": "long_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/search?q=guide%20to%20browser%20security%20headers%20content%20security%20policy%20and%20cross%20origin%20resource%20sharing%20configuration",
+      "label": 0,
+      "source_name": "MDN Web Docs",
+      "category": "long_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/search/?terms=how%20to%20use%20Git%20branches%20pull%20requests%20and%20code%20review%20for%20collaborative%20open%20source%20development",
+      "label": 0,
+      "source_name": "Microsoft Learn",
+      "category": "long_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://en.wikipedia.org/w/index.php?search=NASA%20public%20information%20about%20the%20Artemis%20program%20mission%20schedule%20spacecraft%20and%20lunar%20exploration",
+      "label": 0,
+      "source_name": "Wikipedia",
+      "category": "long_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://pypi.org/search/?q=Python%20package%20installation%20troubleshooting%20virtual%20environments%20dependency%20resolution%20and%20project%20metadata",
+      "label": 0,
+      "source_name": "PyPI",
+      "category": "long_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.npmjs.com/search?q=web%20accessibility%20guidance%20for%20semantic%20HTML%20keyboard%20navigation%20color%20contrast%20and%20screen%20readers",
+      "label": 0,
+      "source_name": "npm",
+      "category": "long_query",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.google.com/search?q=documentation%20for%20Python%20packaging%20metadata%20dependency%20declarations%20and%20installation%20options&hl=en&safe=active&num=20&filter=0&detail=full&view=all&format=html",
+      "label": 0,
+      "source_name": "Google Search",
+      "category": "long_url",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.bing.com/search?q=search%20results%20about%20web%20accessibility%20standards%20keyboard%20navigation%20and%20screen%20reader%20support&page=2&sort=relevance&source=documentation&detail=full&view=all&format=html",
+      "label": 0,
+      "source_name": "Bing Search",
+      "category": "long_url",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://duckduckgo.com/?q=guide%20to%20cloud%20storage%20permissions%20lifecycle%20policies%20encryption%20and%20audit%20logging&page=2&sort=relevance&source=documentation&detail=full&view=all&format=html",
+      "label": 0,
+      "source_name": "DuckDuckGo",
+      "category": "long_url",
+      "probability": 0.997618,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://stackoverflow.com/search?q=research%20about%20climate%20data%20renewable%20power%20storage%20and%20regional%20electric%20grid%20planning&page=2&sort=relevance&source=documentation&detail=full&view=all&format=html",
+      "label": 0,
+      "source_name": "Stack Overflow",
+      "category": "long_url",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://github.com/search?q=examples%20of%20JavaScript%20modules%20browser%20APIs%20asynchronous%20requests%20and%20error%20handling&page=2&sort=relevance&source=documentation&detail=full&view=all&format=html",
+      "label": 0,
+      "source_name": "GitHub",
+      "category": "long_url",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://search.yahoo.com/search?p=tutorial%20about%20SQL%20indexes%20query%20optimization%20transactions%20and%20database%20administration&page=2&sort=relevance&source=documentation&detail=full&view=all&format=html",
+      "label": 0,
+      "source_name": "Yahoo Search",
+      "category": "long_url",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.youtube.com/results?search_query=information%20about%20NASA%20missions%20spacecraft%20instruments%20and%20public%20science%20datasets&page=2&sort=relevance&source=documentation&detail=full&view=all&format=html",
+      "label": 0,
+      "source_name": "YouTube",
+      "category": "long_url",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/search?q=Git%20version%20control%20documentation%20for%20branches%20remotes%20commits%20and%20collaborative%20review&page=2&sort=relevance&source=documentation&detail=full&view=all&format=html",
+      "label": 0,
+      "source_name": "MDN Web Docs",
+      "category": "long_url",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/search/?terms=public%20documentation%20on%20HTTP%20caching%20content%20negotiation%20and%20secure%20web%20application%20design&page=2&sort=relevance&source=documentation",
+      "label": 0,
+      "source_name": "Microsoft Learn",
+      "category": "long_url",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://en.wikipedia.org/w/index.php?search=Python%20standard%20library%20reference%20for%20URL%20parsing%20JSON%20processing%20and%20filesystem%20paths&page=2&sort=relevance&source=documentation&detail=full&view=all&format=html",
+      "label": 0,
+      "source_name": "Wikipedia",
+      "category": "long_url",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://pypi.org/search/?q=Kubernetes%20concepts%20for%20deployments%20services%20configuration%20and%20application%20health%20checks&page=2&sort=relevance&source=documentation&detail=full&view=all&format=html",
+      "label": 0,
+      "source_name": "PyPI",
+      "category": "long_url",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    },
+    {
+      "url": "https://www.npmjs.com/search?q=open%20source%20project%20search%20for%20data%20visualization%20scientific%20computing%20and%20educational%20tools&page=2&sort=relevance&source=documentation&detail=full&view=all&format=html",
+      "label": 0,
+      "source_name": "npm",
+      "category": "long_url",
+      "probability": 0.997812,
+      "scan_label": "PHISHING",
+      "model_version": "v2.1.0"
+    }
+  ]
+}

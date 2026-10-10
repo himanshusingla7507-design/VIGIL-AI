@@ -1,0 +1,88 @@
+{
+  "model_name": "logistic_regression",
+  "feature_variant": "production_29",
+  "feature_names": [
+    "URLLength",
+    "HostnameLength",
+    "PathLength",
+    "QueryLength",
+    "FragmentLength",
+    "PathSegmentCount",
+    "QueryParameterCount",
+    "DotCount",
+    "SubdomainDepth",
+    "NoOfDigitsInURL",
+    "DigitRatioInURL",
+    "NoOfLettersInURL",
+    "LetterRatioInURL",
+    "NoOfEqualsInURL",
+    "NoOfQMarkInURL",
+    "NoOfAmpersandInURL",
+    "NoOfAtInURL",
+    "NoOfHyphenInURL",
+    "NoOfUnderscoreInURL",
+    "URLPercentEncodingCount",
+    "HasObfuscation",
+    "HasUserInfo",
+    "HasPort",
+    "IsDomainIP",
+    "IsShortened",
+    "HasSuspiciousTLD",
+    "HasSuspiciousToken",
+    "IsTrustedTLD",
+    "URLEntropy"
+  ],
+  "additional_features": {
+    "type": null,
+    "max_features": null,
+    "fitted_on": null,
+    "model_input_feature_count": 29
+  },
+  "parameters": {
+    "memory": null,
+    "steps": [
+      [
+        "scaler",
+        "StandardScaler()"
+      ],
+      [
+        "classifier",
+        "LogisticRegression(max_iter=2500, random_state=42, solver='liblinear')"
+      ]
+    ],
+    "transform_input": null,
+    "verbose": false,
+    "scaler": "StandardScaler()",
+    "classifier": "LogisticRegression(max_iter=2500, random_state=42, solver='liblinear')",
+    "scaler__copy": true,
+    "scaler__with_mean": true,
+    "scaler__with_std": true,
+    "classifier__C": 1.0,
+    "classifier__class_weight": null,
+    "classifier__dual": false,
+    "classifier__fit_intercept": true,
+    "classifier__intercept_scaling": 1,
+    "classifier__l1_ratio": 0.0,
+    "classifier__max_iter": 2500,
+    "classifier__n_jobs": null,
+    "classifier__penalty": "deprecated",
+    "classifier__random_state": 42,
+    "classifier__solver": "liblinear",
+    "classifier__tol": 0.0001,
+    "classifier__verbose": 0,
+    "classifier__warm_start": false
+  },
+  "weighting": "Inverse per-registered-domain row count, normalized to equal total weight for each class in training/calibration partitions.",
+  "calibration": "LogisticRegression on a separate registered-domain-disjoint calibration partition.",
+  "threshold_selection": {
+    "phishing_threshold": 0.5016734809875593,
+    "selected_on": "domain-disjoint validation partition only",
+    "maximum_validation_fpr": 0.005,
+    "validation_fpr": 0.0036429872495446266,
+    "validation_phishing_recall": 0.15482695810564662,
+    "validation_legitimate_rows": 549,
+    "validation_phishing_rows": 549
+  },
+  "seed": 42,
+  "training_seconds": 0.007772099999783677
+}

@@ -1,0 +1,132 @@
+{
+  "total_unique_urls": 95,
+  "usable_dynamic_urls_excluding_homepages": 80,
+  "counts_per_cohort": {
+    "homepage": 15,
+    "path_only": 79,
+    "query_only": 0,
+    "path_plus_query": 1,
+    "fragment": 0,
+    "encoded": 4,
+    "multiple_query_params": 0,
+    "long_query": 0,
+    "long_url": 0,
+    "tracking_utm_parameters": 0,
+    "search": 5,
+    "docs": 9,
+    "login_account": 0
+  },
+  "counts_per_source": {
+    "Chrome for Developers": 6,
+    "European Space Agency": 6,
+    "GOV.UK": 6,
+    "GitHub": 6,
+    "Internet Engineering Task Force": 6,
+    "Library of Congress": 2,
+    "Massachusetts Institute of Technology": 6,
+    "Mozilla Developer Network": 6,
+    "NASA": 6,
+    "OpenStreetMap": 6,
+    "RFC Editor": 6,
+    "Stanford University": 3,
+    "University of California, Berkeley": 6,
+    "Wikimedia Wikipedia": 6,
+    "World Health Organization": 6,
+    "World Wide Web Consortium": 6,
+    "arXiv": 6
+  },
+  "duplicate_count_removed": 95,
+  "input_row_count": 190,
+  "urls_overlapping_multiple_cohorts": 18,
+  "missing_or_unsupported_requested_cohorts": [
+    {
+      "cohort": "query_only",
+      "row_level_count": 0,
+      "aggregate_report_count": 5,
+      "note": "Aggregate count is present in the source report, but the individual verified URL rows are not preserved in the report."
+    },
+    {
+      "cohort": "fragment",
+      "row_level_count": 0,
+      "aggregate_report_count": 62,
+      "note": "Aggregate count is present in the source report, but the individual verified URL rows are not preserved in the report."
+    },
+    {
+      "cohort": "multiple_query_params",
+      "row_level_count": 0,
+      "aggregate_report_count": 26,
+      "note": "Aggregate count is present in the source report, but the individual verified URL rows are not preserved in the report."
+    },
+    {
+      "cohort": "long_query",
+      "row_level_count": 0,
+      "aggregate_report_count": null,
+      "note": "No row-level URL in the extracted first-party page records."
+    },
+    {
+      "cohort": "long_url",
+      "row_level_count": 0,
+      "aggregate_report_count": 3,
+      "note": "Aggregate count is present in the source report, but the individual verified URL rows are not preserved in the report."
+    },
+    {
+      "cohort": "tracking_utm_parameters",
+      "row_level_count": 0,
+      "aggregate_report_count": 3,
+      "note": "Aggregate count is present in the source report, but the individual verified URL rows are not preserved in the report."
+    },
+    {
+      "cohort": "login_account",
+      "row_level_count": 0,
+      "aggregate_report_count": null,
+      "note": "No row-level URL in the extracted first-party page records."
+    }
+  ],
+  "aggregate_report_category_counts_not_used_as_rows": {
+    "encoded_query": 32,
+    "fragment": 62,
+    "high_entropy_legitimate": 118,
+    "multiple_query_parameters": 26,
+    "path_only": 146,
+    "redirect_style": 1,
+    "path_query": 39,
+    "tracking_parameters": 3,
+    "query_only": 5,
+    "long_legitimate_url": 3
+  },
+  "provenance": {
+    "reports_used_for_rows": [
+      "reports\\benign_dynamic_url_sources.json",
+      "reports\\benign_dynamic_url_training.json"
+    ],
+    "row_selection": "Only first_party_pages_crawled entries with HTTP status 200 were used; URLs are already recorded locally and were not opened or fetched.",
+    "deduplication": "feature_extractor.normalize_url applied to the full URL; original URL spelling and structure are retained in the CSV.",
+    "label_basis": "The reports identify these as successful first-party pages on each source's registered domain; all cohort labels are 0 (legitimate).",
+    "other_inspected_reports_excluded": {
+      "reports": [
+        "reports/dynamic_augmentation_final.json",
+        "reports/dynamic_hardening_final.json",
+        "reports/dynamic_recovery_comparison.json",
+        "reports/dynamic_recovery_final.json",
+        "reports/dynamic_training_comparison.json"
+      ],
+      "reason": "Their retained URLs are regression references or phishing examples, not row-level verified benign source URLs."
+    },
+    "full_manifest_row_level_limitation": "The benign source reports summarize 435 verified URLs, but do not retain the complete 435 URL rows; this CSV uses only the successful first-party page URLs explicitly present in both reports."
+  },
+  "minimum_additional_data_needed": {
+    "path_referenced_by_existing_report": "data/benign_dynamic_urls.csv",
+    "required_fields": [
+      "url",
+      "source",
+      "cohort/category",
+      "verification status"
+    ],
+    "reason": "The complete row-level list is needed to recover all reported verified examples and populate currently absent dynamic categories without fabrication."
+  },
+  "candidate_retraining_readiness": {
+    "ready": false,
+    "usable_dynamic_urls": 80,
+    "reason": "The available rows are a small, path-heavy subset and contain no row-level query-only, multi-query, fragment, long-query, tracking, or login/account examples; this does not cover the reported 435-URL cohort."
+  }
+}

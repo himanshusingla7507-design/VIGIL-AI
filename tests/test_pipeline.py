@@ -49,6 +49,75 @@ def test_app_and_api_share_pipeline():
     assert api_result["probability"] == pytest.approx(direct_result["probability"], abs=1e-6)
 
 
+def test_scan_trace_identifies_model_request_and_backend(tmp_path, monkeypatch):
+    import api
+    import uuid
+
+    monkeypatch.setattr(api, "DB_PATH", str(tmp_path / "history.sqlite3"))
+    client = api.app.test_client()
+    health = client.get("/health").get_json()
+    assert health["model_fingerprint"]
+    assert health["backend"]["backend_pid"] > 0
+    assert health["backend"]["api_endpoint"].endswith("/health")
+
+    urls = [
+        "https://chatgpt.com",
+        "https://chatgpt.com/",
+        "https://chatgpt.com/?q=hello",
+        "https://www.instagram.com/accounts/onetap/?lsrc=ci",
+        "https://www.google.com/search?q=cybersecurity",
+        "https://accounts.google.com/signin/v2",
+        "https://github.com",
+        "https://www.microsoft.com/",
+        "https://paypal-login.example.com/verify-account",
+        "http://secure-bank-login.example.com/update-account",
+    ]
+    response_by_url = {}
+    for index, url in enumerate(urls):
+        request_id = str(uuid.uuid4())
+        response = client.post(
+            "/scan",
+            json={"url": url},
+            headers={"X-Vigil-Request-Id": request_id},
+        )
+        result = response.get_json()
+        direct = scan(url)
+
+        assert response.status_code == 200
+        assert result["request_id"] == request_id
+        assert result["normalized_url"] == normalize_url(url)
+        assert result["model_fingerprint"] == health["model_fingerprint"]
+        assert result["backend"]["backend_pid"] == health["backend"]["backend_pid"]
+        assert result["backend"]["backend_instance_id"] == health["backend"]["backend_instance_id"]
+        assert result["backend"]["api_endpoint"].endswith("/scan")
+        assert result["label"] == direct["label"], url
+        assert result["probability"] == pytest.approx(direct["probability"], abs=1e-6), url
+        response_by_url[url] = result
+
+    bare = response_by_url["https://chatgpt.com"]
+    slash = response_by_url["https://chatgpt.com/"]
+    assert bare["label"] == slash["label"]
+    assert bare["probability"] == slash["probability"]
+
+
+def test_development_scan_diagnostics_include_raw_and_calibrated_scores(tmp_path, monkeypatch):
+    import api
+
+    monkeypatch.setattr(api, "DB_PATH", str(tmp_path / "history.sqlite3"))
+    monkeypatch.setattr(api, "DEBUG_DIAGNOSTICS", True)
+    response = api.app.test_client().post(
+        "/scan",
+        json={"url": "https://chatgpt.com/auth/login"},
+    )
+    result = response.get_json()
+
+    assert response.status_code == 200
+    assert result["diagnostics"]["hostname"] == "chatgpt.com"
+    assert len(result["diagnostics"]["raw_fold_probabilities"]) >= 1
+    assert result["diagnostics"]["calibrated_probability"] == result["model_probability"]
+    assert result["thresholds"]["phishing"] > result["thresholds"]["safe"]
+
+
 def test_canonical_variants_have_identical_predictions():
     variants = ["https://fast.com", "https://fast.com/", "https://www.fast.com/"]
     results = [predict_url(url) for url in variants]
@@ -90,23 +159,22 @@ def test_model_excludes_transport_alias_and_constant_features():
 
     model, feature_names, metadata = load_model_bundle()
     assert len(FEATURE_NAMES) == 35
-    assert metadata["feature_count"] == 29
+    assert metadata["feature_count"] == len(feature_names)
     assert metadata["features"] == feature_names
     assert model.n_features_in_ == len(feature_names)
     assert not (set(feature_names) & MODEL_EXCLUDED_FEATURES)
     assert "IsHTTPS" not in feature_names
 
 
-def test_experimental_url_features_share_serving_canonicalization():
-    from scripts.final_ml_pass import _experimental_features
-
+def test_serving_features_share_url_canonicalization():
     variants = [
         "https://fast.com/",
         "https://fast.com",
         "https://www.fast.com/",
     ]
-    assert _experimental_features(variants[0]) == _experimental_features(variants[1])
-    assert _experimental_features(variants[1]) == _experimental_features(variants[2])
+    features = [extract_features(url) for url in variants]
+    assert features[0] == features[1]
+    assert features[1] == features[2]
 
 
 def test_model_bundle_rejects_tampered_pickle(tmp_path, monkeypatch):
@@ -215,3 +283,165 @@ def test_history_redacts_userinfo_query_and_fragment(tmp_path, monkeypatch):
     serialized = str(items[0])
     for secret in ("alice", "secret", "SECRET", "fragment"):
         assert secret not in serialized
+
+
+@pytest.mark.parametrize("url", [
+    "https://chatgpt.com/?q=hello",
+    "https://www.instagram.com/accounts/onetap/?lsrc=ci",
+    "https://www.google.com/search?q=cybersecurity",
+])
+def test_legitimate_dynamic_urls_use_the_model_without_score_override(url):
+    result = scan(url)
+    assert result["label"] != "PHISHING"
+    assert result["probability_source"] == "model"
+    assert result["model_probability"] == result["effective_probability"] == result["probability"]
+
+
+@pytest.mark.parametrize("url", [
+    "https://chatgpt.com/",
+    "https://www.youtube.com/",
+    "https://gemini.google.com/app?hl=en-IN",
+    "https://mail.google.com/mail/u/0/#inbox",
+    "https://www.netflix.com/browse",
+    "https://netflix.com/watch/81666170?trackId=264163088&ctx=",
+    "https://www.canva.com/templates",
+    "https://www.instagram.com/accounts/onetap/?lsrc=ci",
+])
+def test_known_legitimate_urls_are_never_phishing(url):
+    result = scan(url)
+    assert result["label"] != "PHISHING", (url, result)
+    assert result["probability_source"] in {"model", "verified_official_route_policy"}
+    assert result["effective_probability"] == result["probability"]
+    if result["reputation"]["applied"]:
+        assert result["model_probability"] >= result["thresholds"]["safe"]
+        assert result["effective_probability"] < result["thresholds"]["safe"]
+    else:
+        assert result["probability"] == result["model_probability"]
+
+
+def test_verified_host_policy_does_not_trust_lookalikes_or_unapproved_subdomains():
+    for url in ("https://www.netflix.com.attacker.example/", "https://canva-login.example/", "https://evil.netflix.com/"):
+        result = scan(url)
+        assert result["probability_source"] == "model"
+        assert result["reputation"]["applied"] is False
+
+
+def test_verified_official_route_policy_rejects_redirects_and_authority_tricks(monkeypatch):
+    import service
+
+    model, names, metadata = service.load_model_bundle()
+    features = extract_features("https://www.netflix.com/browse")
+    monkeypatch.setattr(model, "predict_proba", lambda _row: [[0.001, 0.999]])
+    trusted = service._prediction("https://www.netflix.com/browse", features, model, names, metadata)
+    redirect = service._prediction("https://www.netflix.com/browse?next=https://evil.example", extract_features("https://www.netflix.com/browse?next=https://evil.example"), model, names, metadata)
+    assert trusted["reputation"]["applied"] is True
+    assert trusted["label"] == "SAFE"
+    assert redirect["reputation"]["applied"] is False
+
+
+@pytest.mark.parametrize("url", [
+    "http://localhost:5173/",
+    "http://dev.localhost:8080/",
+    "http://127.0.0.1:5000/",
+    "http://127.42.0.8:5173/",
+    "http://[::1]:5173/",
+])
+def test_localhost_urls_are_not_blocked_by_high_model_scores(url, monkeypatch):
+    import service
+
+    model, names, metadata = service.load_model_bundle()
+    monkeypatch.setattr(model, "predict_proba", lambda _row: [[0.001, 0.999]])
+    result = service._prediction(
+        normalize_url(url),
+        extract_features(url),
+        model,
+        names,
+        metadata,
+    )
+
+    assert result["label"] == "SAFE"
+    assert result["model_probability"] == 0.999
+    assert result["effective_probability"] < result["thresholds"]["safe"]
+    assert result["probability_source"] == "local_host_policy"
+    assert result["reputation"]["applied"] is True
+
+
+@pytest.mark.parametrize("url", [
+    "http://192.168.1.10:5173/",
+    "http://localhost.attacker.example/",
+    "http://dev.localhost.attacker.example/",
+])
+def test_localhost_policy_does_not_cover_other_hosts(url, monkeypatch):
+    import service
+
+    model, names, metadata = service.load_model_bundle()
+    monkeypatch.setattr(model, "predict_proba", lambda _row: [[0.001, 0.999]])
+    result = service._prediction(
+        normalize_url(url),
+        extract_features(url),
+        model,
+        names,
+        metadata,
+    )
+
+    assert result["label"] == "PHISHING"
+    assert result["probability_source"] == "model"
+    assert result["reputation"]["applied"] is False
+
+
+def test_verified_netflix_playback_policy_is_route_and_query_constrained(monkeypatch):
+    import service
+
+    model, names, metadata = service.load_model_bundle()
+    monkeypatch.setattr(model, "predict_proba", lambda _row: [[0.001, 0.999]])
+    allowed_url = "https://netflix.com/watch/81666170?trackId=264163088&ctx="
+    disallowed_url = "https://netflix.com/watch/not-an-id?trackId=264163088"
+    encoded_destination = "https://netflix.com/watch/81666170?ctx=%252F%252Fevil.example"
+    allowed = service._prediction(allowed_url, extract_features(allowed_url), model, names, metadata)
+    invalid_path = service._prediction(disallowed_url, extract_features(disallowed_url), model, names, metadata)
+    double_encoded = service._prediction(encoded_destination, extract_features(encoded_destination), model, names, metadata)
+    assert allowed["reputation"]["applied"] is True
+    assert invalid_path["reputation"]["applied"] is False
+    assert double_encoded["reputation"]["applied"] is False
+
+
+@pytest.mark.parametrize("url", [
+    "https://www.amazon.com/",
+    "https://www.amazon.com/s?k=usb+c+hub",
+    "https://www.amazon.com/cart",
+    "https://www.amazon.com/gp/cart/view.html",
+    "https://www.amazon.com/dp/B0C1H4M9K4",
+    "https://www.amazon.com/usb-hub/dp/B0C1H4M9K4/ref=sr_1_1",
+    "https://www.amazon.com/gp/product/B0C1H4M9K4",
+    "https://www.amazon.com/gp/buy/spc/handlers/display.html",
+])
+def test_amazon_shopping_routes_do_not_block_on_url_shape_alone(url, monkeypatch):
+    import service
+
+    model, names, metadata = service.load_model_bundle()
+    monkeypatch.setattr(model, "predict_proba", lambda _row: [[0.001, 0.999]])
+    result = service._prediction(url, extract_features(url), model, names, metadata)
+
+    assert result["label"] == "SAFE"
+    assert result["model_probability"] == 0.999
+    assert result["effective_probability"] < result["thresholds"]["safe"]
+    assert result["probability_source"] == "verified_official_route_policy"
+
+
+def test_amazon_route_policy_rejects_lookalikes_invalid_products_and_redirects(monkeypatch):
+    import service
+
+    model, names, metadata = service.load_model_bundle()
+    monkeypatch.setattr(model, "predict_proba", lambda _row: [[0.001, 0.999]])
+    urls = [
+        "https://amazon.com.attacker.example/dp/B0C1H4M9K4",
+        "https://evil.amazon.com/dp/B0C1H4M9K4",
+        "https://www.amazon.com/dp/not-an-asin",
+        "https://www.amazon.com/dp/B0C1H4M9K4?url=https://attacker.example",
+        "https://www.amazon.com/gp/redirect.html?url=https://attacker.example",
+    ]
+
+    for url in urls:
+        result = service._prediction(url, extract_features(url), model, names, metadata)
+        assert result["reputation"]["applied"] is False, url
+        assert result["probability_source"] == "model", url

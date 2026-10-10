@@ -1,0 +1,8 @@
+{
+  "phishing_threshold": 0.9331532237264898,
+  "threshold_split_phishing_recall": 0.6063483136774898,
+  "threshold_split_domain_fpr": 0.019973275195161403,
+  "threshold_split_url_fpr": 0.014439140811455847,
+  "domain_fpr_limit": 0.02,
+  "selection_rule": "maximum phishing recall with registered-domain FPR <= 2%"
+}

@@ -1,0 +1,3045 @@
+{
+  "experiment": "auto_ml_data_bootstrap_001",
+  "dataset": "experiments\\auto_ml\\data_bootstrap_001\\legitimate_urls.csv",
+  "generated_at_utc": "2026-10-08T21:08:04+00:00",
+  "label_mapping": {
+    "0": "legitimate; existing labeled first-party evidence or individually verified successful first-party HTTPS link"
+  },
+  "total_unique_urls": 1537,
+  "counts_by_category": {
+    "path_only": 560,
+    "path_only|encoded": 4,
+    "path_only|docs": 9,
+    "homepage": 15,
+    "path_only|search": 5,
+    "path_plus_query": 1,
+    "encoded_query": 69,
+    "fragment": 207,
+    "high_entropy_legitimate": 453,
+    "long_legitimate_url": 22,
+    "multiple_query_parameters": 76,
+    "path_query": 91,
+    "query_only": 6,
+    "redirect_style": 1,
+    "long_query": 12,
+    "tracking_parameters": 6
+  },
+  "counts_by_source": {
+    "Wikimedia Wikipedia": 40,
+    "Mozilla Developer Network": 31,
+    "GitHub": 29,
+    "NASA": 40,
+    "Library of Congress": 10,
+    "World Wide Web Consortium": 31,
+    "Internet Engineering Task Force": 31,
+    "arXiv": 29,
+    "OpenStreetMap": 38,
+    "World Health Organization": 42,
+    "Massachusetts Institute of Technology": 30,
+    "Stanford University": 23,
+    "University of California, Berkeley": 25,
+    "GOV.UK": 25,
+    "European Space Agency": 25,
+    "Chrome for Developers": 18,
+    "RFC Editor": 32,
+    "NumPy": 16,
+    "pandas": 25,
+    "PyTorch": 25,
+    "TensorFlow": 30,
+    "Go": 22,
+    "Rust": 10,
+    "Kotlin": 25,
+    "PHP": 36,
+    "Ruby": 15,
+    "Perl": 18,
+    "Julia": 30,
+    "SQLite": 27,
+    "GNU Project": 32,
+    "Linux Kernel": 33,
+    "OpenAPI Initiative": 12,
+    "OWASP": 12,
+    "docs.rs": 24,
+    "Django": 22,
+    "Centers for Disease Control and Prevention": 30,
+    "US Food and Drug Administration": 36,
+    "National Institute of Standards and Technology": 24,
+    "Environmental Protection Agency": 22,
+    "US Department of Energy": 26,
+    "USA.gov": 16,
+    "US National Park Service": 31,
+    "US Census Bureau": 22,
+    "US Securities and Exchange Commission": 36,
+    "Federal Reserve": 33,
+    "Federal Trade Commission": 31,
+    "Consumer Financial Protection Bureau": 30,
+    "Harvard University": 34,
+    "California Institute of Technology": 24,
+    "Carnegie Mellon University": 22,
+    "Cornell University": 11,
+    "University of Oxford": 15,
+    "University of Cambridge": 33,
+    "United Nations": 20,
+    "World Bank": 28,
+    "UNESCO": 2,
+    "BBC": 26,
+    "NPR": 36,
+    "The Guardian": 36
+  },
+  "unique_registered_domains": 59,
+  "deduplication": {
+    "full_url_key": "feature_extractor.normalize_url",
+    "cross_label_conflict_key": "feature_extractor._analysis_url",
+    "duplicate_normalized_legitimate_rows_skipped": 55,
+    "phishing_feed_identity_conflicts_skipped": 0,
+    "phishing_feed": {
+      "path": "data\\external\\phishing_database_active.txt",
+      "physical_lines": 789054,
+      "blank_lines": 0,
+      "invalid_urls": 674,
+      "unique_analysis_identities": 784385
+    }
+  },
+  "sources": [
+    {
+      "source_name": "Wikimedia Wikipedia",
+      "source_page_url": "https://en.wikipedia.org/wiki/Main_Page",
+      "source_homepage_status": 200,
+      "source_registered_domain": "wikipedia.org",
+      "why_legitimate": "Wikipedia's official public encyclopedia page and same-registered-domain article/navigation routes.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Main_Page",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Wikipedia:Featured_pictures",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://dga.wikipedia.org/wiki/A_Gamp%C9%9Bl%C9%9B_zu",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://abstract.wikipedia.org/wiki/Abstract_Wikipedia:Main_page",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/2019_Baku_protests",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://bat-smg.wikipedia.org/wiki/P%C4%97rms_poslapis",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 36,
+      "verified_urls": 34,
+      "category_counts": {
+        "encoded_query": 10,
+        "fragment": 1,
+        "high_entropy_legitimate": 8,
+        "long_legitimate_url": 10,
+        "multiple_query_parameters": 5
+      },
+      "error": null
+    },
+    {
+      "source_name": "Mozilla Developer Network",
+      "source_page_url": "https://developer.mozilla.org/en-US/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "mozilla.org",
+      "why_legitimate": "Mozilla's official developer documentation and same-registered-domain documentation routes.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://developer.mozilla.org/en-US/",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://developer.mozilla.org/en-US/docs/Web/API/Navigation_API",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://developer.mozilla.org/en-US/play",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide",
+          "status": 200,
+          "content_type": "text/html"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 30,
+      "verified_urls": 30,
+      "category_counts": {
+        "fragment": 10,
+        "high_entropy_legitimate": 10,
+        "path_only": 10
+      },
+      "error": null
+    },
+    {
+      "source_name": "GitHub",
+      "source_page_url": "https://github.com/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "github.com",
+      "why_legitimate": "GitHub's official public service homepage and same-registered-domain product/navigation routes.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://github.com/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://github.com/team",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://github.com/solutions/executive-insights",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://github.com/solutions",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://github.com/security/advanced-security/software-supply-chain",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 36,
+      "verified_urls": 27,
+      "category_counts": {
+        "encoded_query": 2,
+        "fragment": 1,
+        "high_entropy_legitimate": 10,
+        "multiple_query_parameters": 1,
+        "path_only": 10,
+        "path_query": 3
+      },
+      "error": null
+    },
+    {
+      "source_name": "NASA",
+      "source_page_url": "https://www.nasa.gov/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "nasa.gov",
+      "why_legitimate": "NASA's official government homepage and same-registered-domain news and information routes.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.nasa.gov/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://plus.nasa.gov/series/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://science.nasa.gov/earth/earth-observatory/powerful-storms-continue-to-prowl-the-pacific/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://science.nasa.gov/solar-system/skywatching/whats-up-october-2026-skywatching-tips-from-nasa/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.nasa.gov/ames/dr-natasha-schatzman-receives-vertical-flight-society-vfs-award/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.nasa.gov/es/la-nasa-anuncia-la-cobertura-de-la-mision-lunar-artemis-ii/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 36,
+      "verified_urls": 36,
+      "category_counts": {
+        "encoded_query": 10,
+        "high_entropy_legitimate": 10,
+        "multiple_query_parameters": 1,
+        "path_only": 10,
+        "query_only": 5
+      },
+      "error": null
+    },
+    {
+      "source_name": "Library of Congress",
+      "source_page_url": "https://www.loc.gov/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "loc.gov",
+      "why_legitimate": "The Library of Congress official government site and same-registered-domain catalog/navigation routes.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.loc.gov/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.loc.gov/topics/america-250-at-the-library-of-congress",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        }
+      ],
+      "child_page_errors": [
+        {
+          "url": "https://www.loc.gov/programs/john-w-kluge-center/",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        },
+        {
+          "url": "https://www.loc.gov/services-and-programs/",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        },
+        {
+          "url": "https://www.loc.gov/collections/",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        },
+        {
+          "url": "https://www.loc.gov/resource/afc1995028.afc1995028_mcc05010",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ],
+      "candidate_links_checked": 36,
+      "verified_urls": 9,
+      "category_counts": {
+        "high_entropy_legitimate": 3,
+        "path_only": 6
+      },
+      "error": null
+    },
+    {
+      "source_name": "World Wide Web Consortium",
+      "source_page_url": "https://www.w3.org/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "w3.org",
+      "why_legitimate": "W3C's official standards organization site and same-registered-domain standards routes.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.w3.org/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.w3.org/standards/types/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.w3.org/zh-hans/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.w3.org/mission/accessibility/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.w3.org/help/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.w3.org/news/2026/w3c-issues-press-release-about-developing-verifiable-credential-barcodes/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 30,
+      "verified_urls": 30,
+      "category_counts": {
+        "fragment": 8,
+        "high_entropy_legitimate": 10,
+        "path_only": 10,
+        "path_query": 2
+      },
+      "error": null
+    },
+    {
+      "source_name": "Internet Engineering Task Force",
+      "source_page_url": "https://www.ietf.org/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "ietf.org",
+      "why_legitimate": "IETF's official standards organization site and same-registered-domain publication routes.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.ietf.org/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.ietf.org/blog/sidrops-and-avoidable-route-hijacks/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://datatracker.ietf.org/doc/statement-iesg-ietf-anti-harassment-policy-20131103/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.ietf.org/blog/rfc-editororg-update-202609/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.ietf.org/meeting/terms-and-conditions/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.ietf.org/policies/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 31,
+      "verified_urls": 30,
+      "category_counts": {
+        "fragment": 10,
+        "high_entropy_legitimate": 10,
+        "path_only": 10
+      },
+      "error": null
+    },
+    {
+      "source_name": "arXiv",
+      "source_page_url": "https://arxiv.org/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "arxiv.org",
+      "why_legitimate": "The arXiv official research preprint repository and same-registered-domain browsing/search routes.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://arxiv.org/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://arxiv.org/list/math.CT/recent",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://arxiv.org/list/math.GM/recent",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://arxiv.org/list/cs.HC/recent",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://arxiv.org/list/q-bio.QM/recent",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://arxiv.org/search/q-fin",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 30,
+      "verified_urls": 28,
+      "category_counts": {
+        "encoded_query": 10,
+        "multiple_query_parameters": 10,
+        "path_only": 8
+      },
+      "error": null
+    },
+    {
+      "source_name": "OpenStreetMap",
+      "source_page_url": "https://www.openstreetmap.org/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "openstreetmap.org",
+      "why_legitimate": "OpenStreetMap's official public mapping service and same-registered-domain user interface routes.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.openstreetmap.org/directions",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.openstreetmap.org/traces",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.openstreetmap.org/history",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://supporting.openstreetmap.org/donate/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.openstreetmap.org/user/new?cookie_test=true",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 36,
+      "verified_urls": 36,
+      "category_counts": {
+        "encoded_query": 5,
+        "fragment": 2,
+        "high_entropy_legitimate": 10,
+        "multiple_query_parameters": 8,
+        "path_only": 10,
+        "path_query": 1
+      },
+      "error": null
+    },
+    {
+      "source_name": "World Health Organization",
+      "source_page_url": "https://www.who.int/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "who.int",
+      "why_legitimate": "WHO's official public health organization site and same-registered-domain information routes.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.who.int/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.who.int/news-room/questions-and-answers",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.who.int/emergencies/situations/ebola-outbreak---drc-2026",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.who.int/about/policies/terms-of-use",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.who.int/news/item/29-09-2026-who-reports-latest-global-trends-in-cholera--meningitis-and-plague",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.who.int/westernpacific/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 36,
+      "verified_urls": 36,
+      "category_counts": {
+        "fragment": 10,
+        "high_entropy_legitimate": 10,
+        "long_legitimate_url": 4,
+        "multiple_query_parameters": 3,
+        "path_only": 9
+      },
+      "error": null
+    },
+    {
+      "source_name": "Massachusetts Institute of Technology",
+      "source_page_url": "https://www.mit.edu/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "mit.edu",
+      "why_legitimate": "MIT's official university homepage and same-registered-domain academic navigation routes.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.mit.edu/",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.mit.edu/campus-life/",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.mit.edu/research/",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.mit.edu/privacy/",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.mit.edu/about/",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://news.mit.edu/2026/fact-sheet-supporting-mits-jewish-community",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 24,
+      "verified_urls": 24,
+      "category_counts": {
+        "fragment": 2,
+        "high_entropy_legitimate": 10,
+        "multiple_query_parameters": 1,
+        "path_only": 10,
+        "redirect_style": 1
+      },
+      "error": null
+    },
+    {
+      "source_name": "Stanford University",
+      "source_page_url": "https://www.stanford.edu/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "stanford.edu",
+      "why_legitimate": "Stanford's official university homepage and same-registered-domain academic navigation routes.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.stanford.edu/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://news.stanford.edu/stories/2026/09/faculty-athletic-fellows-program",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://news.stanford.edu/stories/2026/08/tavita-pritchard-interview-football-coach",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.stanford.edu/about/history",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.stanford.edu/about",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "child_page_errors": [
+        {
+          "url": "https://news.stanford.edu/subscribe",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ],
+      "candidate_links_checked": 22,
+      "verified_urls": 22,
+      "category_counts": {
+        "fragment": 1,
+        "high_entropy_legitimate": 10,
+        "multiple_query_parameters": 1,
+        "path_only": 10
+      },
+      "error": null
+    },
+    {
+      "source_name": "University of California, Berkeley",
+      "source_page_url": "https://www.berkeley.edu/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "berkeley.edu",
+      "why_legitimate": "UC Berkeley's official university homepage and same-registered-domain academic navigation routes.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.berkeley.edu/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.berkeley.edu/atoz/dept/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://news.berkeley.edu/2025/09/15/no-1-again-uc-berkeley-generates-more-startups-and-founders-than-any-other-university/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.berkeley.edu/academics/advising-tutoring/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://news.berkeley.edu/2026/10/02/to-decipher-local-laws-researchers-used-ai-to-build-a-database-of-millions-of-them/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://news.berkeley.edu/2026/10/08/berkeley-helped-make-icecube-a-success-and-earn-its-leader-the-2026-nobel-prize-in-physics/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 23,
+      "verified_urls": 23,
+      "category_counts": {
+        "fragment": 2,
+        "high_entropy_legitimate": 10,
+        "multiple_query_parameters": 1,
+        "path_only": 10
+      },
+      "error": null
+    },
+    {
+      "source_name": "GOV.UK",
+      "source_page_url": "https://www.gov.uk/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "gov.uk",
+      "why_legitimate": "The UK government's official public services portal and same-registered-domain service routes.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.gov.uk/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.gov.uk/browse/tax",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.gov.uk/search/policy-papers-and-consultations",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.gov.uk/cost-of-living",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.gov.uk/government/get-involved",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.gov.uk/foreign-travel-advice",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 24,
+      "verified_urls": 24,
+      "category_counts": {
+        "encoded_query": 1,
+        "high_entropy_legitimate": 10,
+        "path_only": 10,
+        "path_query": 3
+      },
+      "error": null
+    },
+    {
+      "source_name": "European Space Agency",
+      "source_page_url": "https://www.esa.int/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "esa.int",
+      "why_legitimate": "ESA's official public space agency site and same-registered-domain information routes.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.esa.int/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.esa.int/ESA_Multimedia/Videos/2026/10/Juice_s_September_2026_Earth_flyby_the_movie",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.esa.int/ESA/Our_Missions",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.esa.int/Space_Safety",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.esa.int/ESA_Multimedia/Images/2026/09/Earth_from_Space_Venetian_Lagoon",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.esa.int/ESA_Multimedia/Videos/2026/10/The_Incredible_Adventures_of_the_Hera_mission_The_space_detectives_arrive",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 23,
+      "verified_urls": 23,
+      "category_counts": {
+        "fragment": 3,
+        "high_entropy_legitimate": 10,
+        "path_only": 10
+      },
+      "error": null
+    },
+    {
+      "source_name": "Chrome for Developers",
+      "source_page_url": "https://developer.chrome.com/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "chrome.com",
+      "why_legitimate": "Google Chrome's official developer documentation and same-registered-domain documentation routes.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://developer.chrome.com/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://developer.chrome.com/docs/iwa",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://developer.chrome.com/docs/accessibility",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://developer.chrome.com/docs",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://developer.chrome.com/docs/puppeteer",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://developer.chrome.com/blog",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 17,
+      "verified_urls": 17,
+      "category_counts": {
+        "fragment": 1,
+        "high_entropy_legitimate": 5,
+        "path_only": 10,
+        "path_query": 1
+      },
+      "error": null
+    },
+    {
+      "source_name": "RFC Editor",
+      "source_page_url": "https://www.rfc-editor.org/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "rfc-editor.org",
+      "why_legitimate": "The RFC Editor's official standards publication site and same-registered-domain publication routes.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.rfc-editor.org/",
+          "status": 200,
+          "content_type": "text/html;charset=utf-8"
+        },
+        {
+          "url": "https://www.rfc-editor.org/search/",
+          "status": 200,
+          "content_type": "text/html;charset=utf-8"
+        },
+        {
+          "url": "https://www.rfc-editor.org/subjects/",
+          "status": 200,
+          "content_type": "text/html;charset=utf-8"
+        },
+        {
+          "url": "https://www.rfc-editor.org/info/rfc10065/",
+          "status": 200,
+          "content_type": "text/html;charset=utf-8"
+        },
+        {
+          "url": "https://www.rfc-editor.org/series/rfc-use/",
+          "status": 200,
+          "content_type": "text/html;charset=utf-8"
+        },
+        {
+          "url": "https://www.rfc-editor.org/authors/rfc-independent-submissions/",
+          "status": 200,
+          "content_type": "text/html;charset=utf-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 30,
+      "verified_urls": 30,
+      "category_counts": {
+        "fragment": 7,
+        "high_entropy_legitimate": 10,
+        "path_only": 10,
+        "path_query": 3
+      },
+      "error": null
+    },
+    {
+      "source_name": "NumPy",
+      "source_page_url": "https://numpy.org/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "numpy.org",
+      "why_legitimate": "Official NumPy project homepage and its first-party documentation/navigation links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://numpy.org/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://numpy.org/case-studies/gw-discov/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://numpy.org/gethelp/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://numpy.org/contribute/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://numpy.org/case-studies/cricket-analytics/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://numpy.org/ja/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 18,
+      "verified_urls": 16,
+      "category_counts": {
+        "fragment": 5,
+        "high_entropy_legitimate": 1,
+        "path_only": 10
+      },
+      "error": null
+    },
+    {
+      "source_name": "pandas",
+      "source_page_url": "https://pandas.pydata.org/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "pydata.org",
+      "why_legitimate": "Official pandas project homepage and its first-party documentation/navigation links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://pandas.pydata.org/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://pandas.pydata.org/about/team.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://pandas.pydata.org/about/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://pandas.pydata.org/docs/development/index.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://pandas.pydata.org/docs/whatsnew/v2.2.3.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://pandas.pydata.org/docs/whatsnew/v3.0.6.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 30,
+      "verified_urls": 25,
+      "category_counts": {
+        "fragment": 5,
+        "high_entropy_legitimate": 10,
+        "path_only": 10
+      },
+      "error": null
+    },
+    {
+      "source_name": "scikit-learn",
+      "source_page_url": "https://scikit-learn.org/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "scikit-learn.org",
+      "why_legitimate": "Official scikit-learn project homepage and its first-party documentation/navigation links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://scikit-learn.org/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 0,
+      "verified_urls": 0,
+      "category_counts": {},
+      "error": null
+    },
+    {
+      "source_name": "PyTorch",
+      "source_page_url": "https://pytorch.org/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "pytorch.org",
+      "why_legitimate": "Official PyTorch project homepage and its first-party documentation/navigation links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://pytorch.org/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://pytorch.org/projects/safetensors/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://pytorch.org/projects/host-your-project/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://pytorch.org/webinars/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://pytorch.org/blog/session-aware-agentic-inference-with-nvidia-dynamo/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://pytorch.org/get-started/previous-versions/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 25,
+      "verified_urls": 25,
+      "category_counts": {
+        "fragment": 1,
+        "high_entropy_legitimate": 4,
+        "long_query": 10,
+        "path_only": 10
+      },
+      "error": null
+    },
+    {
+      "source_name": "TensorFlow",
+      "source_page_url": "https://www.tensorflow.org/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "tensorflow.org",
+      "why_legitimate": "Official TensorFlow project homepage and its first-party documentation/navigation links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.tensorflow.org/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.tensorflow.org/datasets",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.tensorflow.org/tutorials",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.tensorflow.org/community/contribute",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.tensorflow.org/guide/data",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 30,
+      "verified_urls": 30,
+      "category_counts": {
+        "fragment": 10,
+        "high_entropy_legitimate": 10,
+        "path_only": 10
+      },
+      "error": null
+    },
+    {
+      "source_name": "Go",
+      "source_page_url": "https://go.dev/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "go.dev",
+      "why_legitimate": "Official Go language site and first-party documentation links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://go.dev/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://go.dev/solutions/use-cases",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://go.dev/solutions/mercadolibre",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://go.dev/doc/security/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://go.dev/doc/effective_go",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://go.dev/talks/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 22,
+      "verified_urls": 22,
+      "category_counts": {
+        "fragment": 10,
+        "high_entropy_legitimate": 1,
+        "path_only": 10,
+        "path_query": 1
+      },
+      "error": null
+    },
+    {
+      "source_name": "Rust",
+      "source_page_url": "https://rust-lang.org/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "rust-lang.org",
+      "why_legitimate": "Official Rust language site and first-party documentation links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://rust-lang.org/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://rust-lang.org/policies/security/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://rust-lang.org/what/embedded/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://rust-lang.org/funding/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 12,
+      "verified_urls": 10,
+      "category_counts": {
+        "fragment": 1,
+        "high_entropy_legitimate": 1,
+        "path_only": 8
+      },
+      "error": null
+    },
+    {
+      "source_name": "Kotlin",
+      "source_page_url": "https://kotlinlang.org/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "kotlinlang.org",
+      "why_legitimate": "Official Kotlin language site and first-party documentation links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://kotlinlang.org/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://kotlinlang.org/api/core/kotlin-test/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://kotlinlang.org/docs/multiplatform/get-started.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://kotlinlang.org/kotlin-effect/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://kotlinlang.org/api/kotlinx-metadata-jvm/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 25,
+      "verified_urls": 25,
+      "category_counts": {
+        "fragment": 5,
+        "high_entropy_legitimate": 10,
+        "path_only": 10
+      },
+      "error": null
+    },
+    {
+      "source_name": "PHP",
+      "source_page_url": "https://www.php.net/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "php.net",
+      "why_legitimate": "Official PHP project site and first-party documentation links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.php.net/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://downloads.php.net/~mbeccati/",
+          "status": 200,
+          "content_type": "text/html;charset=UTF-8"
+        },
+        {
+          "url": "https://www.php.net/manual/en/features.gc.php",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.php.net/cal.php",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.php.net/manual/en/tutorial.php",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.php.net/manual/en/security.variables.php",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 36,
+      "verified_urls": 36,
+      "category_counts": {
+        "fragment": 10,
+        "high_entropy_legitimate": 10,
+        "multiple_query_parameters": 10,
+        "path_only": 6
+      },
+      "error": null
+    },
+    {
+      "source_name": "Ruby",
+      "source_page_url": "https://www.ruby-lang.org/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "ruby-lang.org",
+      "why_legitimate": "Official Ruby language site and first-party documentation links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.ruby-lang.org/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.ruby-lang.org/en/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 15,
+      "verified_urls": 15,
+      "category_counts": {
+        "high_entropy_legitimate": 5,
+        "path_only": 10
+      },
+      "error": null
+    },
+    {
+      "source_name": "Perl",
+      "source_page_url": "https://www.perl.org/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "perl.org",
+      "why_legitimate": "Official Perl project site and first-party documentation links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.perl.org/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.perl.org/events.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.perl.org/get.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.perl.org/about.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.perl.org/docs.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.perl.org/contribute.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 18,
+      "verified_urls": 18,
+      "category_counts": {
+        "high_entropy_legitimate": 8,
+        "path_only": 10
+      },
+      "error": null
+    },
+    {
+      "source_name": "Julia",
+      "source_page_url": "https://julialang.org/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "julialang.org",
+      "why_legitimate": "Official Julia language site and first-party documentation links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://julialang.org/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://julialang.org/downloads/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://julialang.org/benchmarks/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://julialang.org/learning/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://docs.julialang.org/en/v1/stdlib/Logging/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://julialang.org/about/help/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 30,
+      "verified_urls": 30,
+      "category_counts": {
+        "fragment": 10,
+        "high_entropy_legitimate": 10,
+        "path_only": 10
+      },
+      "error": null
+    },
+    {
+      "source_name": "SQLite",
+      "source_page_url": "https://www.sqlite.org/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "sqlite.org",
+      "why_legitimate": "Official SQLite project site and first-party documentation links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.sqlite.org/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.sqlite.org/prosupport.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.sqlite.org/cintro.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.sqlite.org/quirks.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.sqlite.org/docs.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.sqlite.org/lang.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 27,
+      "verified_urls": 27,
+      "category_counts": {
+        "fragment": 10,
+        "high_entropy_legitimate": 6,
+        "path_only": 10,
+        "path_query": 1
+      },
+      "error": null
+    },
+    {
+      "source_name": "GNU Project",
+      "source_page_url": "https://www.gnu.org/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "gnu.org",
+      "why_legitimate": "Official GNU Project site and first-party documentation links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.gnu.org/",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.gnu.org/home.it.html",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.gnu.org/help/",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.gnu.org/software/bison/",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.gnu.org/home.fr.html",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.gnu.org/help/music-subtraction.html",
+          "status": 200,
+          "content_type": "text/html"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 32,
+      "verified_urls": 32,
+      "category_counts": {
+        "fragment": 10,
+        "high_entropy_legitimate": 5,
+        "path_only": 10,
+        "path_query": 7
+      },
+      "error": null
+    },
+    {
+      "source_name": "Linux Kernel",
+      "source_page_url": "https://www.kernel.org/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "kernel.org",
+      "why_legitimate": "Official Linux kernel site and first-party documentation links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.kernel.org/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/diff/?id=v6.6.158&id2=v6.6.157&dt=2",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/diff/?id=v6.1.189&id2=v6.1.188&dt=2",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 34,
+      "verified_urls": 33,
+      "category_counts": {
+        "high_entropy_legitimate": 9,
+        "multiple_query_parameters": 10,
+        "path_only": 10,
+        "path_query": 4
+      },
+      "error": null
+    },
+    {
+      "source_name": "OpenAPI Initiative",
+      "source_page_url": "https://www.openapis.org/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "openapis.org",
+      "why_legitimate": "Official OpenAPI Initiative site and first-party specification links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.openapis.org/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://spec.openapis.org/arazzo/latest.html",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.openapis.org/about/technical-developer-community",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.openapis.org/about",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.openapis.org/code-of-conduct-transparency-report",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.openapis.org/membershipjoin",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 12,
+      "verified_urls": 12,
+      "category_counts": {
+        "fragment": 1,
+        "high_entropy_legitimate": 1,
+        "path_only": 10
+      },
+      "error": null
+    },
+    {
+      "source_name": "OWASP",
+      "source_page_url": "https://owasp.org/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "owasp.org",
+      "why_legitimate": "Official OWASP Foundation site and first-party project/documentation links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://owasp.org/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://owasp.org/events",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://owasp.org/supporters/jobs",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://owasp.org/about",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://owasp.org/projects/nettacker",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 12,
+      "verified_urls": 12,
+      "category_counts": {
+        "high_entropy_legitimate": 2,
+        "path_only": 10
+      },
+      "error": null
+    },
+    {
+      "source_name": "docs.rs",
+      "source_page_url": "https://docs.rs/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "docs.rs",
+      "why_legitimate": "Official Rust crate documentation service homepage and first-party navigation links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://docs.rs/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://docs.rs/rp-postgrest/3.2.1/rp_postgrest/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://docs.rs/masl-memc/0.1.0/masl_memc/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://docs.rs/releases/queue",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://docs.rs/uqa-storage-sqlite/0.5.2/uqa_storage_sqlite/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 25,
+      "verified_urls": 24,
+      "category_counts": {
+        "fragment": 3,
+        "high_entropy_legitimate": 10,
+        "path_only": 10,
+        "path_query": 1
+      },
+      "error": null
+    },
+    {
+      "source_name": "Django",
+      "source_page_url": "https://www.djangoproject.com/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "djangoproject.com",
+      "why_legitimate": "Official Django project site and first-party documentation links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.djangoproject.com/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.djangoproject.com/weblog/2026/oct/01/nominate-someone-for-the-2026-malcolm-prize/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.djangoproject.com/start/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.djangoproject.com/foundation/corporate-members/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.djangoproject.com/weblog/2026/oct/08/django-security-reporting-update/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.djangoproject.com/community/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 23,
+      "verified_urls": 22,
+      "category_counts": {
+        "fragment": 4,
+        "high_entropy_legitimate": 8,
+        "multiple_query_parameters": 1,
+        "path_only": 9
+      },
+      "error": null
+    },
+    {
+      "source_name": "Centers for Disease Control and Prevention",
+      "source_page_url": "https://www.cdc.gov/index.html",
+      "source_homepage_status": 200,
+      "source_registered_domain": "cdc.gov",
+      "why_legitimate": "Official US government public health site and first-party information links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.cdc.gov/index.html",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.cdc.gov/health-topics.html",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.cdc.gov/spanish/",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.cdc.gov/other/privacy.html",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.cdc.gov/other/nondiscrimination.html",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.cdc.gov/other/other-languages/index.html",
+          "status": 200,
+          "content_type": "text/html"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 30,
+      "verified_urls": 30,
+      "category_counts": {
+        "fragment": 10,
+        "high_entropy_legitimate": 10,
+        "path_only": 10
+      },
+      "error": null
+    },
+    {
+      "source_name": "US Food and Drug Administration",
+      "source_page_url": "https://www.fda.gov/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "fda.gov",
+      "why_legitimate": "Official US government FDA site and first-party information links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.fda.gov/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.fda.gov/news-events/press-announcements/fda-seeks-public-input-support-ibogaine-research",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.fda.gov/combination-products",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.fda.gov/consumers",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.fda.gov/emergency-preparedness-and-response/mcm-legal-regulatory-and-policy-framework/emergency-use-authorization",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.fda.gov/drugs",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 36,
+      "verified_urls": 36,
+      "category_counts": {
+        "fragment": 10,
+        "high_entropy_legitimate": 10,
+        "path_only": 10,
+        "path_query": 6
+      },
+      "error": null
+    },
+    {
+      "source_name": "National Institutes of Health",
+      "source_page_url": "https://www.nih.gov/",
+      "verified_urls": 0,
+      "category_counts": {},
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "source_name": "National Oceanic and Atmospheric Administration",
+      "source_page_url": "https://www.noaa.gov/",
+      "verified_urls": 0,
+      "category_counts": {},
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "source_name": "National Institute of Standards and Technology",
+      "source_page_url": "https://www.nist.gov/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "nist.gov",
+      "why_legitimate": "Official US government NIST site and first-party standards links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.nist.gov/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.nist.gov/feature-stories",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://webbook.nist.gov/chemistry/",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.nist.gov/major-programs",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.nist.gov/news-events/news/2026/10/nist-joins-white-house-effort-drive-new-golden-age-science",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.nist.gov/news-events/news/2026/09/nist-finalizes-guidelines-protecting-online-identity-and-access-tokens",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 36,
+      "verified_urls": 24,
+      "category_counts": {
+        "fragment": 3,
+        "high_entropy_legitimate": 10,
+        "path_only": 10,
+        "path_query": 1
+      },
+      "error": null
+    },
+    {
+      "source_name": "Environmental Protection Agency",
+      "source_page_url": "https://www.epa.gov/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "epa.gov",
+      "why_legitimate": "Official US government EPA site and first-party information links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.epa.gov/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.epa.gov/aboutepa/epa-racking-massive-environmental-accomplishments-under-trump-administration",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.epa.gov/web-policies-and-procedures/plain-writing",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.epa.gov/newsreleases/epa-administrator-zeldin-proposes-approving-another-innovative-plan-maricopa-county",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.epa.gov/environmental-topics",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.epa.gov/grants",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 25,
+      "verified_urls": 22,
+      "category_counts": {
+        "fragment": 2,
+        "high_entropy_legitimate": 10,
+        "path_only": 10
+      },
+      "error": null
+    },
+    {
+      "source_name": "US Geological Survey",
+      "source_page_url": "https://www.usgs.gov/",
+      "source_homepage_status": 202,
+      "source_registered_domain": "usgs.gov",
+      "why_legitimate": "Official US government USGS site and first-party science/data links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.usgs.gov/",
+          "status": 202,
+          "content_type": "text/html; charset=UTF-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 0,
+      "verified_urls": 0,
+      "category_counts": {},
+      "error": null
+    },
+    {
+      "source_name": "US Department of Energy",
+      "source_page_url": "https://www.energy.gov/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "energy.gov",
+      "why_legitimate": "Official US government Department of Energy site and first-party information links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.energy.gov/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.energy.gov/national-laboratories",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.energy.gov/collection/filter/1381151",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.energy.gov/staff-offices",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.energy.gov/person/chris-wright",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "child_page_errors": [
+        {
+          "url": "https://www.energy.gov/topics/affordable-energy-consumers",
+          "error": "TimeoutError: The read operation timed out"
+        }
+      ],
+      "candidate_links_checked": 26,
+      "verified_urls": 26,
+      "category_counts": {
+        "encoded_query": 3,
+        "high_entropy_legitimate": 10,
+        "path_only": 10,
+        "path_query": 3
+      },
+      "error": null
+    },
+    {
+      "source_name": "USA.gov",
+      "source_page_url": "https://www.usa.gov/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "usa.gov",
+      "why_legitimate": "Official US government public services portal and first-party service links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.usa.gov/",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.usa.gov/confirm-voter-registration",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.usa.gov/blog",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.usa.gov/life-events",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.usa.gov/about",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.usa.gov/housing-help",
+          "status": 200,
+          "content_type": "text/html"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 16,
+      "verified_urls": 16,
+      "category_counts": {
+        "fragment": 1,
+        "high_entropy_legitimate": 5,
+        "path_only": 10
+      },
+      "error": null
+    },
+    {
+      "source_name": "US National Park Service",
+      "source_page_url": "https://www.nps.gov/index.htm",
+      "source_homepage_status": 200,
+      "source_registered_domain": "nps.gov",
+      "why_legitimate": "Official US government National Park Service site and first-party park pages.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.nps.gov/index.htm",
+          "status": 200,
+          "content_type": "text/html;charset=UTF-8"
+        },
+        {
+          "url": "https://www.nps.gov/subjects/amphibiansandreptiles/index.htm",
+          "status": 200,
+          "content_type": "text/html;charset=UTF-8"
+        },
+        {
+          "url": "https://www.nps.gov/subjects/thelaw/courthouses.htm",
+          "status": 200,
+          "content_type": "text/html;charset=UTF-8"
+        },
+        {
+          "url": "https://www.nps.gov/subjects/homes/index.htm",
+          "status": 200,
+          "content_type": "text/html;charset=UTF-8"
+        },
+        {
+          "url": "https://www.nps.gov/articles/000/park-pumpkin-carvings.htm",
+          "status": 200,
+          "content_type": "text/html;charset=UTF-8"
+        },
+        {
+          "url": "https://www.nps.gov/state/mp/index.htm",
+          "status": 200,
+          "content_type": "text/html;charset=UTF-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 31,
+      "verified_urls": 31,
+      "category_counts": {
+        "encoded_query": 2,
+        "fragment": 5,
+        "high_entropy_legitimate": 10,
+        "path_only": 10,
+        "path_query": 4
+      },
+      "error": null
+    },
+    {
+      "source_name": "US Census Bureau",
+      "source_page_url": "https://www.census.gov/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "census.gov",
+      "why_legitimate": "Official US government Census Bureau site and first-party data links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.census.gov/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.census.gov/programs-surveys/2026-census-test.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.census.gov/programs-surveys/sahie.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.census.gov/programs-surveys/decennial-census.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.census.gov/programs-surveys.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.census.gov/programs-surveys/btos.html",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 24,
+      "verified_urls": 22,
+      "category_counts": {
+        "fragment": 2,
+        "high_entropy_legitimate": 10,
+        "path_only": 10
+      },
+      "error": null
+    },
+    {
+      "source_name": "US Securities and Exchange Commission",
+      "source_page_url": "https://www.sec.gov/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "sec.gov",
+      "why_legitimate": "Official US government SEC site and first-party filings/information links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.sec.gov/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.edgarfiling.sec.gov/Welcome/EDGARLogin.htm",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.sec.gov/featured-topics/saving-investing-military-personnel",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.filermanagement.edgarfiling.sec.gov/filermgmt/Welcome/EDGARFilerMgmtMain.htm",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.sec.gov/newsroom/press-releases/2026-102-sec-host-virtual-national-compliance-outreach-seminar-investment-companies-investment-advisers",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.sec.gov/featured-topics/treasury-clearing-implementation",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 36,
+      "verified_urls": 36,
+      "category_counts": {
+        "encoded_query": 3,
+        "fragment": 4,
+        "high_entropy_legitimate": 10,
+        "multiple_query_parameters": 10,
+        "path_only": 9
+      },
+      "error": null
+    },
+    {
+      "source_name": "Federal Reserve",
+      "source_page_url": "https://www.federalreserve.gov/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "federalreserve.gov",
+      "why_legitimate": "Official US Federal Reserve site and first-party publication links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.federalreserve.gov/",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.federalreserve.gov/releases/DSR/",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.federalreserve.gov/data/intlsumm/current.htm",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.federalreserve.gov/paymentsystems/fr-payments-study.htm",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.federalreserve.gov/financial-stability.htm",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.federalreserve.gov/financial-stability/monitoring-risk-across-the-financial-system.htm",
+          "status": 200,
+          "content_type": "text/html"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 35,
+      "verified_urls": 33,
+      "category_counts": {
+        "fragment": 3,
+        "high_entropy_legitimate": 10,
+        "path_only": 10,
+        "path_query": 10
+      },
+      "error": null
+    },
+    {
+      "source_name": "Federal Trade Commission",
+      "source_page_url": "https://www.ftc.gov/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "ftc.gov",
+      "why_legitimate": "Official US government FTC site and first-party consumer information links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.ftc.gov/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.ftc.gov/legal-library/browse/statutes",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.ftc.gov/news-events/events/2026/10/closed-commission-meeting-october-14-2026",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.ftc.gov/news-events/features",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.ftc.gov/business-guidance/resources",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.ftc.gov/policy-notices",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 31,
+      "verified_urls": 31,
+      "category_counts": {
+        "fragment": 1,
+        "high_entropy_legitimate": 10,
+        "path_only": 10,
+        "path_query": 10
+      },
+      "error": null
+    },
+    {
+      "source_name": "Consumer Financial Protection Bureau",
+      "source_page_url": "https://www.consumerfinance.gov/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "consumerfinance.gov",
+      "why_legitimate": "Official US government CFPB site and first-party consumer resource links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.consumerfinance.gov/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.consumerfinance.gov/consumer-tools/money-transfers/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.consumerfinance.gov/data-research/public-data-inventory/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.consumerfinance.gov/enforcement/information-industry-whistleblowers/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.consumerfinance.gov/enforcement/supervision-and-enforcement-priorities/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.consumerfinance.gov/about-us/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 30,
+      "verified_urls": 30,
+      "category_counts": {
+        "fragment": 5,
+        "high_entropy_legitimate": 10,
+        "long_legitimate_url": 1,
+        "multiple_query_parameters": 1,
+        "path_only": 10,
+        "path_query": 3
+      },
+      "error": null
+    },
+    {
+      "source_name": "Harvard University",
+      "source_page_url": "https://www.harvard.edu/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "harvard.edu",
+      "why_legitimate": "Official Harvard University site and first-party academic links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.harvard.edu/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.harvard.edu/about/university-professorships/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://current.fas.harvard.edu/stories/harvard-study-predicts-most-suicide-attempts-week-advance",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.harvard.edu/in-focus/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.gsd.harvard.edu/frances-loeb-library/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://news.harvard.edu/gazette/story/2025/06/sons-diabetes-diagnosis-sent-scientist-on-quest-for-cure/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 36,
+      "verified_urls": 34,
+      "category_counts": {
+        "encoded_query": 2,
+        "fragment": 4,
+        "high_entropy_legitimate": 10,
+        "multiple_query_parameters": 1,
+        "path_only": 9,
+        "path_query": 8
+      },
+      "error": null
+    },
+    {
+      "source_name": "Princeton University",
+      "source_page_url": "https://www.princeton.edu/",
+      "verified_urls": 0,
+      "category_counts": {},
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "source_name": "California Institute of Technology",
+      "source_page_url": "https://www.caltech.edu/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "caltech.edu",
+      "why_legitimate": "Official Caltech site and first-party academic links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.caltech.edu/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.caltech.edu/about/news/caltech-and-aim-build-ai-platform-with-mathematicians-for-mathematicians",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://lindeinstitute.caltech.edu/research/csis",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.caltech.edu/academics/resources/academic-calendar",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.caltech.edu/research/centers-institutes",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "child_page_errors": [
+        {
+          "url": "https://www.caltech.edu/about/news",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ],
+      "candidate_links_checked": 28,
+      "verified_urls": 24,
+      "category_counts": {
+        "encoded_query": 2,
+        "high_entropy_legitimate": 10,
+        "path_only": 9,
+        "path_query": 3
+      },
+      "error": null
+    },
+    {
+      "source_name": "Carnegie Mellon University",
+      "source_page_url": "https://www.cmu.edu/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "cmu.edu",
+      "why_legitimate": "Official Carnegie Mellon University site and first-party academic links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.cmu.edu/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.cmu.edu/academics",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.cmu.edu/news/stories/archives/2026/september/carnegie-mellon-university-reaches-historic-high-at-no-14-in-us-news-rankings-takes-no-1-spot-for",
+          "status": 200,
+          "content_type": "text/html;charset=utf-8"
+        },
+        {
+          "url": "https://www.cmu.edu/engage/get-involved/alumni-association",
+          "status": 200,
+          "content_type": "text/html;charset=utf-8"
+        },
+        {
+          "url": "https://www.cmu.edu/news/stories/archives/2026/may/cmu-graduates-receive-2026-27-fulbright-awards",
+          "status": 200,
+          "content_type": "text/html;charset=utf-8"
+        },
+        {
+          "url": "https://www.cmu.edu/sfs/",
+          "status": 200,
+          "content_type": "text/html"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 25,
+      "verified_urls": 22,
+      "category_counts": {
+        "fragment": 2,
+        "high_entropy_legitimate": 10,
+        "path_only": 10
+      },
+      "error": null
+    },
+    {
+      "source_name": "Cornell University",
+      "source_page_url": "https://www.cornell.edu/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "cornell.edu",
+      "why_legitimate": "Official Cornell University site and first-party academic links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.cornell.edu/",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.cornell.edu/about/values.cfm",
+          "status": 200,
+          "content_type": "text/html;charset=UTF-8"
+        },
+        {
+          "url": "https://www.cornell.edu/copyright.cfm",
+          "status": 200,
+          "content_type": "text/html;charset=UTF-8"
+        }
+      ],
+      "child_page_errors": [
+        {
+          "url": "https://hr.cornell.edu/about/workplace-rights/equal-education-and-employment",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        },
+        {
+          "url": "https://scl.cornell.edu/get-involved",
+          "error": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1006)>"
+        },
+        {
+          "url": "https://news.cornell.edu/stories/2024/11/dual-tracks-top-men-often-linked-power-women-status",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ],
+      "candidate_links_checked": 23,
+      "verified_urls": 11,
+      "category_counts": {
+        "fragment": 1,
+        "path_only": 8,
+        "tracking_parameters": 2
+      },
+      "error": null
+    },
+    {
+      "source_name": "University of Oxford",
+      "source_page_url": "https://www.ox.ac.uk/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "ox.ac.uk",
+      "why_legitimate": "Official University of Oxford site and first-party academic links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.ox.ac.uk/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.ox.ac.uk/privacy-policy",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.ox.ac.uk/about/the-university/history",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        }
+      ],
+      "child_page_errors": [
+        {
+          "url": "https://www.ox.ac.uk/admissions/undergraduate/applying/for-teachers",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        },
+        {
+          "url": "https://www.ox.ac.uk/admissions/graduate/access",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        },
+        {
+          "url": "https://www.ox.ac.uk/about/how-we-are-run/equality-diversity",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ],
+      "candidate_links_checked": 24,
+      "verified_urls": 15,
+      "category_counts": {
+        "high_entropy_legitimate": 8,
+        "path_only": 6,
+        "tracking_parameters": 1
+      },
+      "error": null
+    },
+    {
+      "source_name": "University of Cambridge",
+      "source_page_url": "https://www.cam.ac.uk/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "cam.ac.uk",
+      "why_legitimate": "Official University of Cambridge site and first-party academic links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.cam.ac.uk/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.undergraduate.study.cam.ac.uk/apply/application-dates-deadlines",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.undergraduate.study.cam.ac.uk/events/masterclasses",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.fitzmuseum.cam.ac.uk/plan-your-visit/exhibitions/frank-bowling-seeking-the-sublime",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 36,
+      "verified_urls": 33,
+      "category_counts": {
+        "high_entropy_legitimate": 10,
+        "long_legitimate_url": 7,
+        "path_only": 7,
+        "path_query": 9
+      },
+      "error": null
+    },
+    {
+      "source_name": "University of Toronto",
+      "source_page_url": "https://www.utoronto.ca/",
+      "verified_urls": 0,
+      "category_counts": {},
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "source_name": "United Nations",
+      "source_page_url": "https://www.un.org/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "un.org",
+      "why_legitimate": "Official United Nations site and first-party publication links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.un.org/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.un.org/ru/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.un.org/fr/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.un.org/ar/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.un.org/zh/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.un.org/en/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 27,
+      "verified_urls": 20,
+      "category_counts": {
+        "encoded_query": 1,
+        "high_entropy_legitimate": 9,
+        "path_only": 8,
+        "path_query": 2
+      },
+      "error": null
+    },
+    {
+      "source_name": "World Bank",
+      "source_page_url": "https://www.worldbank.org/ext/en/home",
+      "source_homepage_status": 200,
+      "source_registered_domain": "worldbank.org",
+      "why_legitimate": "Official World Bank site and first-party research/data links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.worldbank.org/ext/en/home",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.worldbank.org/en/results/2026/07/02/artificial-intelligence-in-action-in-latin-america-s-schools-evidence-from-peru",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.worldbank.org/ext/en/what-we-do/project-procurement",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://scorecard.worldbank.org/en/home",
+          "status": 200,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://openknowledge.worldbank.org/entities/publication/8d048ad2-5cc3-4fc0-ba22-2e1f82f5d7de",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.worldbank.org/ext/en/work-with-us/partnerships",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 28,
+      "verified_urls": 28,
+      "category_counts": {
+        "encoded_query": 6,
+        "high_entropy_legitimate": 10,
+        "multiple_query_parameters": 1,
+        "path_only": 10,
+        "query_only": 1
+      },
+      "error": null
+    },
+    {
+      "source_name": "UNESCO",
+      "source_page_url": "https://www.unesco.org/en",
+      "source_homepage_status": 200,
+      "source_registered_domain": "unesco.org",
+      "why_legitimate": "Official UNESCO site and first-party publication links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.unesco.org/en",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.unesco.org/en/world-heritage",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.unesco.org/en/articles/mapping-marine-life-warming-ocean-unesco-briefing-edna-expeditions-ahead-cop17",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.iiep.unesco.org/en/articles/how-six-education-professionals-are-getting-more-girls-school",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.unesco.org/en/unesco-media/4183535/lightbox",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.iiep.unesco.org/en/articles/how-six-education-professionals-are-getting-more-girls-school",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 36,
+      "verified_urls": 2,
+      "category_counts": {
+        "encoded_query": 1,
+        "multiple_query_parameters": 1
+      },
+      "error": null
+    },
+    {
+      "source_name": "BBC",
+      "source_page_url": "https://www.bbc.com/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "bbc.com",
+      "why_legitimate": "Official BBC site and first-party news links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.bbc.com/",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.bbc.com/video/bbc-maestro",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.bbc.com/travel/article/20260714-nonnamaxxing-tourists-are-paying-to-travel-like-grandmothers",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.bbc.com/reel/video/p0p1y4wq/watch",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.bbc.com/vietnamese",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://www.bbc.com/persian",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 26,
+      "verified_urls": 26,
+      "category_counts": {
+        "encoded_query": 1,
+        "high_entropy_legitimate": 10,
+        "long_query": 2,
+        "path_only": 10,
+        "path_query": 1,
+        "tracking_parameters": 2
+      },
+      "error": null
+    },
+    {
+      "source_name": "NPR",
+      "source_page_url": "https://www.npr.org/",
+      "source_homepage_status": 200,
+      "source_registered_domain": "npr.org",
+      "why_legitimate": "Official NPR site and first-party news links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.npr.org/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.npr.org/2023/02/19/1157287474/best-life-advice-tips",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.npr.org/series/1082539802/russia-ukraine-invasion-explained",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://help.npr.org/contact/s/",
+          "status": 200,
+          "content_type": "text/html;charset=UTF-8"
+        },
+        {
+          "url": "https://www.npr.org/sections/asia/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.npr.org/sections/climate/",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 36,
+      "verified_urls": 36,
+      "category_counts": {
+        "fragment": 1,
+        "high_entropy_legitimate": 10,
+        "multiple_query_parameters": 10,
+        "path_only": 10,
+        "path_query": 4,
+        "tracking_parameters": 1
+      },
+      "error": null
+    },
+    {
+      "source_name": "Associated Press",
+      "source_page_url": "https://apnews.com/",
+      "verified_urls": 0,
+      "category_counts": {},
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "source_name": "The Guardian",
+      "source_page_url": "https://www.theguardian.com/international",
+      "source_homepage_status": 200,
+      "source_registered_domain": "theguardian.com",
+      "why_legitimate": "Official Guardian site and first-party news links.",
+      "collection_method": "Official first-party HTTPS page; only linked same-registered-domain URLs individually verified with 2xx HTTPS responses were retained.",
+      "first_party_pages_crawled": [
+        {
+          "url": "https://www.theguardian.com/international",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.theguardian.com/artanddesign",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.theguardian.com/index/subjects/a",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.theguardian.com/sport/2026/oct/07/max-verstappen-red-bull-rb22-formula-one-bahrain-grand-prix-malaysia-sepang",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.theguardian.com/help/contact-us",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://www.theguardian.com/info/2022/nov/14/football-daily-email-sign-up",
+          "status": 200,
+          "content_type": "text/html; charset=UTF-8"
+        }
+      ],
+      "child_page_errors": [],
+      "candidate_links_checked": 36,
+      "verified_urls": 36,
+      "category_counts": {
+        "encoded_query": 10,
+        "fragment": 10,
+        "high_entropy_legitimate": 10,
+        "path_only": 6
+      },
+      "error": null
+    }
+  ],
+  "method": "Uses only first-party links recorded locally plus URLs discovered as existing hyperlinks from official source pages and then individually verified as successful HTTPS responses staying on the same registered domain. No URL components or labels are synthesized.",
+  "network_requests": "Only to the 17 explicitly listed official first-party sources and their same-domain links, using the existing repository collector verification rules."
+}

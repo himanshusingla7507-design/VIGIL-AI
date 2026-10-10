@@ -44,6 +44,25 @@ function sendWorkerMessage(message) {
 }
 
 function renderResult(result) {
+  if (globalThis.VIGIL_DEBUG === true) {
+    console.info("[POPUP RESULT]", JSON.stringify({
+      normalized_url: result.normalized_url,
+      hostname: new URL(result.normalized_url).hostname,
+      api_endpoint: result.backend?.api_endpoint || "unknown",
+      request_id: result.request_id,
+      client_scan_id: result.diagnostics?.client_scan_id || null,
+      backend_pid: result.backend?.backend_pid || null,
+      backend_instance_id: result.backend?.backend_instance_id || null,
+      model_version: result.model_version,
+      model_fingerprint: result.model_fingerprint,
+      raw_fold_probabilities: result.diagnostics?.raw_fold_probabilities || null,
+      calibrated_probability: result.model_probability,
+      thresholds: result.thresholds,
+      verdict: result.label,
+      risk_score: result.risk_score,
+      cache_hit: result.diagnostics?.cache_hit || false
+    }));
+  }
   const label = result.label;
   const summary = label === "SAFE" ? "Low-risk URL characteristics detected." : label === "SUSPICIOUS" ? "Review this URL before continuing." : "High-risk URL detected. Navigation is blocked.";
   setState(label, label === "PHISHING" ? "BLOCKED" : label, summary);
@@ -98,6 +117,11 @@ async function scanCurrent() {
   }).then(response => {
     if (!response) return;
     if (!response || response.state === "UNSUPPORTED") return renderUnsupported(response?.url);
+    if (response.state === "STALE") {
+      clearResult(); setState("ERROR", "Tab changed during scan", "The displayed result may not match the current page."); setProtection("offline", "Retry scan");
+      $("notice").hidden = false; $("notice").textContent = "The active tab changed before this scan completed. Choose Retry to scan the current page.";
+      return;
+    }
     currentUrl = response.url || currentUrl;
     $("site-url").textContent = hostLabel(currentUrl);
     if (response.state === "OFFLINE") {

@@ -1,0 +1,521 @@
+{
+  "artifact": "experiments\\auto_ml\\realworld_v2\\candidates\\logistic_regression_balanced_calibrated\\candidate.joblib",
+  "artifact_sha256": "ba0b06f1ab281a8ef8c93ac998c9ee531833e58a2229c8ec13c215373e3ed792",
+  "artifact_size_bytes": 2239,
+  "calibration": "separate registered-domain-disjoint calibration split using sigmoid LogisticRegression",
+  "candidate": "logistic_regression_balanced_calibrated",
+  "dataset_sha256": {
+    "benchmark_manifest": "cce6bf41a0107165fee33fe5a9335b2d8d7358723fa118a84b7045567a8a6767",
+    "legitimate_csv": "4ddaa799a3b43be02a137cd2d68fdf6f53d51659f8c21d2ef1ce76101a21a900",
+    "phishing_feed": "fb7abaea60ceb5045cce0404cd3499e018b990f0150f3b94bc850aae58d1c0ad"
+  },
+  "domain_balanced_sample_weights": true,
+  "family": "LogisticRegression",
+  "features": [
+    "URLLength",
+    "HostnameLength",
+    "PathLength",
+    "QueryLength",
+    "FragmentLength",
+    "PathSegmentCount",
+    "QueryParameterCount",
+    "DotCount",
+    "SubdomainDepth",
+    "NoOfDigitsInURL",
+    "DigitRatioInURL",
+    "NoOfLettersInURL",
+    "LetterRatioInURL",
+    "NoOfEqualsInURL",
+    "NoOfQMarkInURL",
+    "NoOfAmpersandInURL",
+    "NoOfAtInURL",
+    "NoOfHyphenInURL",
+    "NoOfUnderscoreInURL",
+    "URLPercentEncodingCount",
+    "HasObfuscation",
+    "HasUserInfo",
+    "HasPort",
+    "IsDomainIP",
+    "IsShortened",
+    "HasSuspiciousTLD",
+    "HasSuspiciousToken",
+    "IsTrustedTLD",
+    "URLEntropy"
+  ],
+  "fit_seconds": 0.018830500000149186,
+  "outcome": "validation_only; not evaluated on untouched test or fixed benchmark",
+  "overall_split_row_and_domain_counts": {
+    "calibration": {
+      "legitimate": 5313,
+      "legitimate_domains": 10,
+      "phishing": 73835,
+      "phishing_domains": 32267
+    },
+    "test": {
+      "legitimate": 25791,
+      "legitimate_domains": 24,
+      "phishing": 71440,
+      "phishing_domains": 32421
+    },
+    "train": {
+      "legitimate": 100031,
+      "legitimate_domains": 136,
+      "phishing": 533725,
+      "phishing_domains": 226034
+    },
+    "validation": {
+      "legitimate": 5565,
+      "legitimate_domains": 19,
+      "phishing": 72113,
+      "phishing_domains": 32474
+    }
+  },
+  "parameters": {
+    "C": 1.0,
+    "max_iter": 2500,
+    "random_state": 42,
+    "solver": "liblinear"
+  },
+  "sample_domains": {
+    "calibration": {
+      "legitimate": 10,
+      "phishing": 255
+    },
+    "train": {
+      "legitimate": 129,
+      "phishing": 2723
+    },
+    "validation": {
+      "legitimate": 19,
+      "phishing": 420
+    }
+  },
+  "sample_rows": {
+    "calibration": 640,
+    "train": 7772,
+    "validation": 1020
+  },
+  "sample_sources": {
+    "calibration": {
+      "Phishing.Database active feed": 320,
+      "apwg.org": 12,
+      "nationalgeographic.com": 32,
+      "newsweek.com": 36,
+      "northwestern.edu": 10,
+      "pbs.org": 11,
+      "serverfault.com": 9,
+      "stripe.com": 110,
+      "ucdavis.edu": 49,
+      "wise.com": 12,
+      "yale.edu": 39
+    },
+    "train": {
+      "Books to Scrape": 4,
+      "Discourse": 1,
+      "Electron": 1,
+      "GOV.UK": 247,
+      "LinkedIn": 1,
+      "Mockend": 1,
+      "NASA": 240,
+      "Node.js": 111,
+      "Phishing.Database active feed": 3886,
+      "Python": 12,
+      "Python documentation": 7,
+      "Python.org": 8,
+      "RFC Editor": 75,
+      "SerpApi": 1,
+      "Sphinx": 1,
+      "WHO": 1,
+      "Web Scraper Test Sites": 5,
+      "airbnb.com": 6,
+      "aljazeera.com": 10,
+      "angular.dev": 64,
+      "apple.com": 17,
+      "archive.org": 41,
+      "astro.build": 15,
+      "bandcamp.com": 13,
+      "bankofamerica.com": 3,
+      "bbc.co.uk": 5,
+      "berkeley.edu": 10,
+      "bitbucket.org": 3,
+      "booking.com": 1,
+      "brown.edu": 2,
+      "bun.sh": 12,
+      "cbsnews.com": 23,
+      "chase.com": 51,
+      "cnbc.com": 18,
+      "cnet.com": 42,
+      "cnn.com": 74,
+      "consumerreports.org": 8,
+      "cornell.edu": 7,
+      "costco.com": 209,
+      "discourse.org": 7,
+      "discover.com": 62,
+      "duke.edu": 12,
+      "dw.com": 10,
+      "eff.org": 4,
+      "europa.eu": 75,
+      "factcheck.org": 6,
+      "flickr.com": 4,
+      "foreignaffairs.com": 80,
+      "france24.com": 3,
+      "fullfact.org": 8,
+      "gitlab.com": 117,
+      "go.dev": 75,
+      "gov.scot": 48,
+      "gov.wales": 47,
+      "grafana.com": 46,
+      "gutenberg.org": 4,
+      "harvard.edu": 8,
+      "haskell.org": 2,
+      "hp.com": 64,
+      "huggingface.co": 12,
+      "ietf.org": 2,
+      "imdb.com": 1,
+      "julialang.org": 12,
+      "kubernetes.io": 107,
+      "latimes.com": 1,
+      "lenovo.com": 29,
+      "linux.org": 4,
+      "loc.gov": 3,
+      "lowes.com": 40,
+      "lyft.com": 46,
+      "mapillary.com": 8,
+      "mit.edu": 5,
+      "msu.edu": 5,
+      "my.gov.au": 81,
+      "nasa.gov": 10,
+      "nationalgallery.org.uk": 34,
+      "nbcnews.com": 8,
+      "nidirect.gov.uk": 57,
+      "nist.gov": 69,
+      "npr.org": 22,
+      "nvidia.com": 1,
+      "oracle.com": 1,
+      "osu.edu": 18,
+      "patagonia.com": 30,
+      "pcworld.com": 86,
+      "perl.org": 2,
+      "php.net": 10,
+      "poetryfoundation.org": 29,
+      "politifact.com": 3,
+      "prometheus.io": 65,
+      "psu.edu": 17,
+      "purdue.edu": 123,
+      "r-project.org": 1,
+      "react.dev": 10,
+      "revolut.com": 1,
+      "rijksmuseum.nl": 50,
+      "rubygems.org": 1,
+      "rust-lang.org": 4,
+      "rutgers.edu": 7,
+      "samsung.com": 1,
+      "scala-lang.org": 3,
+      "sciencenews.org": 66,
+      "scientificamerican.com": 40,
+      "semanticscholar.org": 1,
+      "shopify.com": 45,
+      "snopes.com": 4,
+      "soundcloud.com": 21,
+      "sourceforge.net": 3,
+      "southwest.com": 54,
+      "squareup.com": 66,
+      "swift.org": 138,
+      "target.com": 7,
+      "techcrunch.com": 11,
+      "theregister.com": 9,
+      "thetimes.com": 2,
+      "theverge.com": 16,
+      "time.com": 7,
+      "twitch.tv": 12,
+      "typescriptlang.org": 8,
+      "uchicago.edu": 24,
+      "ucsb.edu": 13,
+      "ucsd.edu": 1,
+      "ufl.edu": 6,
+      "umd.edu": 3,
+      "upenn.edu": 5,
+      "usatoday.com": 37,
+      "vanguard.com": 37,
+      "vox.com": 4,
+      "vuejs.org": 85,
+      "web.dev": 9,
+      "wired.com": 44,
+      "wisc.edu": 1,
+      "worldbank.org": 5,
+      "zdnet.com": 51
+    },
+    "validation": {
+      "GitHub Careers": 1,
+      "GitHub Status": 1,
+      "Instagram": 1,
+      "Phishing.Database active feed": 510,
+      "ally.com": 20,
+      "apache.org": 11,
+      "chef.io": 46,
+      "citi.com": 57,
+      "codeberg.org": 8,
+      "elastic.co": 48,
+      "ibm.com": 60,
+      "mastercard.com": 53,
+      "nuget.org": 11,
+      "openstreetmap.org": 4,
+      "paypal.com": 115,
+      "svelte.dev": 8,
+      "uci.edu": 31,
+      "walmart.com": 15,
+      "wikimedia.org": 8,
+      "wto.org": 12
+    }
+  },
+  "training_sampling": {
+    "class_weight": null,
+    "inverse_registered_domain_weights": true,
+    "positive_to_negative_max_ratio": 1,
+    "strategy": "deterministic SHA-256 ordering within primary URL-structure cohort with a per-domain cap"
+  },
+  "validation_metrics": {
+    "brier_score": 0.2471252793082565,
+    "cohorts": {
+      "api_endpoint": {
+        "legitimate_fpr": {
+          "denominator": 35,
+          "numerator": 0,
+          "percentage": 0.0
+        },
+        "legitimate_rows": 35,
+        "phishing_recall": {
+          "denominator": 20,
+          "numerator": 0,
+          "percentage": 0.0
+        },
+        "phishing_rows": 20,
+        "rows": 55
+      },
+      "content_path": {
+        "legitimate_fpr": {
+          "denominator": 484,
+          "numerator": 0,
+          "percentage": 0.0
+        },
+        "legitimate_rows": 484,
+        "phishing_recall": {
+          "denominator": 479,
+          "numerator": 0,
+          "percentage": 0.0
+        },
+        "phishing_rows": 479,
+        "rows": 963
+      },
+      "docs": {
+        "legitimate_fpr": {
+          "denominator": 91,
+          "numerator": 0,
+          "percentage": 0.0
+        },
+        "legitimate_rows": 91,
+        "phishing_recall": {
+          "denominator": 84,
+          "numerator": 0,
+          "percentage": 0.0
+        },
+        "phishing_rows": 84,
+        "rows": 175
+      },
+      "encoding": {
+        "legitimate_fpr": {
+          "denominator": 9,
+          "numerator": 0,
+          "percentage": 0.0
+        },
+        "legitimate_rows": 9,
+        "phishing_recall": {
+          "denominator": 6,
+          "numerator": 0,
+          "percentage": 0.0
+        },
+        "phishing_rows": 6,
+        "rows": 15
+      },
+      "fragment": {
+        "legitimate_fpr": {
+          "denominator": 1,
+          "numerator": 0,
+          "percentage": 0.0
+        },
+        "legitimate_rows": 1,
+        "phishing_recall": {
+          "denominator": 0,
+          "numerator": 0,
+          "percentage": null
+        },
+        "phishing_rows": 0,
+        "rows": 1
+      },
+      "homepage": {
+        "legitimate_fpr": {
+          "denominator": 24,
+          "numerator": 0,
+          "percentage": 0.0
+        },
+        "legitimate_rows": 24,
+        "phishing_recall": {
+          "denominator": 24,
+          "numerator": 0,
+          "percentage": 0.0
+        },
+        "phishing_rows": 24,
+        "rows": 48
+      },
+      "login_account": {
+        "legitimate_fpr": {
+          "denominator": 64,
+          "numerator": 0,
+          "percentage": 0.0
+        },
+        "legitimate_rows": 64,
+        "phishing_recall": {
+          "denominator": 67,
+          "numerator": 0,
+          "percentage": 0.0
+        },
+        "phishing_rows": 67,
+        "rows": 131
+      },
+      "long_query": {
+        "legitimate_fpr": {
+          "denominator": 9,
+          "numerator": 0,
+          "percentage": 0.0
+        },
+        "legitimate_rows": 9,
+        "phishing_recall": {
+          "denominator": 21,
+          "numerator": 0,
+          "percentage": 0.0
+        },
+        "phishing_rows": 21,
+        "rows": 30
+      },
+      "long_url": {
+        "legitimate_fpr": {
+          "denominator": 1,
+          "numerator": 0,
+          "percentage": 0.0
+        },
+        "legitimate_rows": 1,
+        "phishing_recall": {
+          "denominator": 15,
+          "numerator": 0,
+          "percentage": 0.0
+        },
+        "phishing_rows": 15,
+        "rows": 16
+      },
+      "multiple_parameters": {
+        "legitimate_fpr": {
+          "denominator": 41,
+          "numerator": 0,
+          "percentage": 0.0
+        },
+        "legitimate_rows": 41,
+        "phishing_recall": {
+          "denominator": 52,
+          "numerator": 0,
+          "percentage": 0.0
+        },
+        "phishing_rows": 52,
+        "rows": 93
+      },
+      "pagination": {
+        "legitimate_fpr": {
+          "denominator": 3,
+          "numerator": 0,
+          "percentage": 0.0
+        },
+        "legitimate_rows": 3,
+        "phishing_recall": {
+          "denominator": 3,
+          "numerator": 0,
+          "percentage": 0.0
+        },
+        "phishing_rows": 3,
+        "rows": 6
+      },
+      "query": {
+        "legitimate_fpr": {
+          "denominator": 53,
+          "numerator": 0,
+          "percentage": 0.0
+        },
+        "legitimate_rows": 53,
+        "phishing_recall": {
+          "denominator": 75,
+          "numerator": 0,
+          "percentage": 0.0
+        },
+        "phishing_rows": 75,
+        "rows": 128
+      },
+      "search": {
+        "legitimate_fpr": {
+          "denominator": 2,
+          "numerator": 0,
+          "percentage": 0.0
+        },
+        "legitimate_rows": 2,
+        "phishing_recall": {
+          "denominator": 2,
+          "numerator": 0,
+          "percentage": 0.0
+        },
+        "phishing_rows": 2,
+        "rows": 4
+      },
+      "tracking": {
+        "legitimate_fpr": {
+          "denominator": 13,
+          "numerator": 0,
+          "percentage": 0.0
+        },
+        "legitimate_rows": 13,
+        "phishing_recall": {
+          "denominator": 13,
+          "numerator": 0,
+          "percentage": 0.0
+        },
+        "phishing_rows": 13,
+        "rows": 26
+      }
+    },
+    "legitimate_false_phishing": {
+      "denominator": 510,
+      "numerator": 0,
+      "percentage": 0.0
+    },
+    "legitimate_rows": 510,
+    "phishing_count": 0,
+    "phishing_f1": 0.0,
+    "phishing_false_negative": {
+      "denominator": 510,
+      "numerator": 510,
+      "percentage": 100.0
+    },
+    "phishing_precision": {
+      "denominator": 0,
+      "numerator": 0,
+      "percentage": null
+    },
+    "phishing_recall": {
+      "denominator": 510,
+      "numerator": 0,
+      "percentage": 0.0
+    },
+    "phishing_rows": 510,
+    "pr_auc": 0.9169186752468496,
+    "roc_auc": 0.8927374086889658,
+    "rows": 1020,
+    "safe_count": 0,
+    "suspicious_count": 1020
+  }
+}

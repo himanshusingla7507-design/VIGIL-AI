@@ -2,15 +2,16 @@
 title VIGIL
 color 0A
 
-cd /d C:\Users\himan\OneDrive\Desktop\VIGIL-main
+set "ROOT=%~dp0"
+cd /d "%ROOT%"
 
 echo Starting VIGIL Backend...
-start "VIGIL Backend" cmd /k "call .venv\Scripts\activate.bat && python api.py"
+start "VIGIL Backend" /D "%ROOT%" cmd /k "if exist .venv\Scripts\python.exe ( .venv\Scripts\python.exe api.py ) else ( python api.py )"
 
 timeout /t 3 /nobreak >nul
 
 echo Starting VIGIL Frontend...
-start "VIGIL Frontend" cmd /k "cd frontend && npm run dev"
+start "VIGIL Frontend" /D "%ROOT%frontend" cmd /k "npm run dev"
 
 timeout /t 5 /nobreak >nul
 

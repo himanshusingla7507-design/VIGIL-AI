@@ -1,0 +1,566 @@
+{
+  "created_at_utc": "2026-10-09T10:14:00+00:00",
+  "decision": "BLOCKED_NO_CERTIFIED_LOCKBOX_DATA",
+  "training_started": false,
+  "user_agent_policy": "Only observed HTTPS first-party URLs individually fetched with a 2xx response and same registered-domain final URL are retained. No URL is synthesized.",
+  "collection_limits": {
+    "requests_per_source": 17,
+    "minimum_seconds_between_requests": 0.5,
+    "https_only": true,
+    "same_registered_domain_redirects_only": true,
+    "retained_target_status": "2xx"
+  },
+  "historical_domain_union_count": 349480,
+  "historical_normalized_url_union_count": 998788,
+  "historical_dataset_inventory": [
+    {
+      "path": "data\\experiments\\legitimate_dynamic_benchmark.csv",
+      "unique_normalized_urls": 544,
+      "registered_domains": 65
+    },
+    {
+      "path": "data\\experiments\\legitimate_dynamic_training.csv",
+      "unique_normalized_urls": 95,
+      "registered_domains": 17
+    },
+    {
+      "path": "data\\experiments\\legitimate_training_v3.csv",
+      "unique_normalized_urls": 298,
+      "registered_domains": 17
+    },
+    {
+      "path": "experiments\\auto_ml\\accuracy_repair_20261009\\fresh_labeled_rows.csv",
+      "unique_normalized_urls": 24242,
+      "registered_domains": 13990
+    },
+    {
+      "path": "experiments\\auto_ml\\accuracy_repair_20261009\\new_legitimate_observations.csv",
+      "unique_normalized_urls": 425,
+      "registered_domains": 33
+    },
+    {
+      "path": "experiments\\auto_ml\\accuracy_repair_20261009\\phishtank_online_valid.csv",
+      "unique_normalized_urls": 69082,
+      "registered_domains": 26999
+    },
+    {
+      "path": "experiments\\auto_ml\\benchmark_v1\\legitimate_domain_disjoint.csv",
+      "unique_normalized_urls": 600,
+      "registered_domains": 8
+    },
+    {
+      "path": "experiments\\auto_ml\\benchmark_v1\\phishing_domain_disjoint.csv",
+      "unique_normalized_urls": 392,
+      "registered_domains": 392
+    },
+    {
+      "path": "experiments\\auto_ml\\data_bootstrap_001\\legitimate_urls.csv",
+      "unique_normalized_urls": 1537,
+      "registered_domains": 59
+    },
+    {
+      "path": "experiments\\auto_ml\\data_bootstrap_002\\legitimate_urls.csv",
+      "unique_normalized_urls": 3594,
+      "registered_domains": 59
+    },
+    {
+      "path": "experiments\\auto_ml\\exp001_verified_sources_domain_balanced\\dataset.csv",
+      "unique_normalized_urls": 2936,
+      "registered_domains": 1525
+    },
+    {
+      "path": "experiments\\auto_ml\\exp002_verified_sources_domain_balanced\\dataset.csv",
+      "unique_normalized_urls": 6772,
+      "registered_domains": 3443
+    },
+    {
+      "path": "experiments\\auto_ml\\exp003_url_char_ngram_hybrid\\dataset.csv",
+      "unique_normalized_urls": 6772,
+      "registered_domains": 3443
+    },
+    {
+      "path": "experiments\\auto_ml\\realworld_v1\\sampled_dataset.csv",
+      "unique_normalized_urls": 11510,
+      "registered_domains": 4373
+    },
+    {
+      "path": "experiments\\auto_ml\\realworld_v2\\sampled_dataset.csv",
+      "unique_normalized_urls": 11510,
+      "registered_domains": 4373
+    },
+    {
+      "path": "experiments\\auto_ml\\realworld_v3\\sampled_dataset.csv",
+      "unique_normalized_urls": 11510,
+      "registered_domains": 4373
+    },
+    {
+      "path": "experiments\\auto_ml\\unseen_domain_repair_20261009\\phishtank_snapshot_20261009T0934Z.csv",
+      "unique_normalized_urls": 69043,
+      "registered_domains": 26978
+    },
+    {
+      "path": "experiments\\auto_ml\\zero_yield_retry_20261009T101233Z\\new_legitimate_observations.csv",
+      "unique_normalized_urls": 0,
+      "registered_domains": 0
+    },
+    {
+      "path": "legitimate_urls_realworld.csv",
+      "unique_normalized_urls": 208,
+      "registered_domains": 84
+    },
+    {
+      "path": "legitimate_urls_realworld_v2.csv",
+      "unique_normalized_urls": 80189,
+      "registered_domains": 41
+    },
+    {
+      "path": "legitimate_urls_realworld_v3.csv",
+      "unique_normalized_urls": 138030,
+      "registered_domains": 201
+    }
+  ],
+  "phishing_feed": {
+    "path": "data\\external\\phishing_database_active.txt",
+    "label_interpretation": "feed-listed; not proof of current activity",
+    "domain_count_in_union": 349480
+  },
+  "source_retry_count": 15,
+  "sources_skipped_for_domain_overlap": [
+    {
+      "source": "National Institutes of Health",
+      "registered_domain": "nih.gov",
+      "reason": "domain occurs in historical datasets or phishing feed"
+    },
+    {
+      "source": "University of Oxford",
+      "registered_domain": "ox.ac.uk",
+      "reason": "domain occurs in historical datasets or phishing feed"
+    },
+    {
+      "source": "UNESCO",
+      "registered_domain": "unesco.org",
+      "reason": "domain occurs in historical datasets or phishing feed"
+    },
+    {
+      "source": "Etsy",
+      "registered_domain": "etsy.com",
+      "reason": "domain occurs in historical datasets or phishing feed"
+    },
+    {
+      "source": "eBay",
+      "registered_domain": "ebay.com",
+      "reason": "domain occurs in historical datasets or phishing feed"
+    },
+    {
+      "source": "The Atlantic",
+      "registered_domain": "theatlantic.com",
+      "reason": "domain occurs in historical datasets or phishing feed"
+    },
+    {
+      "source": "npm",
+      "registered_domain": "npmjs.com",
+      "reason": "domain occurs in historical datasets or phishing feed"
+    }
+  ],
+  "source_results": [
+    {
+      "source": "Smithsonian",
+      "registered_domain": "si.edu",
+      "approved_homepage": "https://www.si.edu/",
+      "homepage_status": null,
+      "homepage_verified": false,
+      "links_checked": 0,
+      "links_verified": 0,
+      "request_count": 1,
+      "errors": [
+        "homepage: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "provenance": "Official public homepage of Smithsonian; only individually observed same-domain HTTPS responses are retained.",
+      "previous_attempt_errors": [
+        "homepage: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "observed_rows": 0,
+      "homepage_http_error_status": 403
+    },
+    {
+      "source": "NOAA",
+      "registered_domain": "noaa.gov",
+      "approved_homepage": "https://www.noaa.gov/",
+      "homepage_status": null,
+      "homepage_verified": false,
+      "links_checked": 0,
+      "links_verified": 0,
+      "request_count": 1,
+      "errors": [
+        "homepage: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "provenance": "Official public homepage of NOAA; only individually observed same-domain HTTPS responses are retained.",
+      "previous_attempt_errors": [
+        "homepage: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "observed_rows": 0,
+      "homepage_http_error_status": 403
+    },
+    {
+      "source": "U.S. Congress",
+      "registered_domain": "congress.gov",
+      "approved_homepage": "https://www.congress.gov/",
+      "homepage_status": null,
+      "homepage_verified": false,
+      "links_checked": 0,
+      "links_verified": 0,
+      "request_count": 1,
+      "errors": [
+        "homepage: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "provenance": "Official public homepage of U.S. Congress; only individually observed same-domain HTTPS responses are retained.",
+      "previous_attempt_errors": [
+        "homepage: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "observed_rows": 0,
+      "homepage_http_error_status": 403
+    },
+    {
+      "source": "U.S. Department of State",
+      "registered_domain": "state.gov",
+      "approved_homepage": "https://www.state.gov/",
+      "homepage_status": null,
+      "homepage_verified": false,
+      "links_checked": 0,
+      "links_verified": 0,
+      "request_count": 1,
+      "errors": [
+        "homepage: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "provenance": "Official public homepage of U.S. Department of State; only individually observed same-domain HTTPS responses are retained.",
+      "previous_attempt_errors": [
+        "homepage: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "observed_rows": 0,
+      "homepage_http_error_status": 403
+    },
+    {
+      "source": "U.S. Department of Education",
+      "registered_domain": "ed.gov",
+      "approved_homepage": "https://www.ed.gov/",
+      "homepage_status": null,
+      "homepage_verified": false,
+      "links_checked": 0,
+      "links_verified": 0,
+      "request_count": 1,
+      "errors": [
+        "homepage: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "provenance": "Official public homepage of U.S. Department of Education; only individually observed same-domain HTTPS responses are retained.",
+      "previous_attempt_errors": [
+        "homepage: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "observed_rows": 0,
+      "homepage_http_error_status": 403
+    },
+    {
+      "source": "Princeton University",
+      "registered_domain": "princeton.edu",
+      "approved_homepage": "https://www.princeton.edu/",
+      "homepage_status": null,
+      "homepage_verified": false,
+      "links_checked": 0,
+      "links_verified": 0,
+      "request_count": 1,
+      "errors": [
+        "homepage: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "provenance": "Official public homepage of Princeton University; only individually observed same-domain HTTPS responses are retained.",
+      "previous_attempt_errors": [
+        "homepage: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "observed_rows": 0,
+      "homepage_http_error_status": 403
+    },
+    {
+      "source": "University of Toronto",
+      "registered_domain": "utoronto.ca",
+      "approved_homepage": "https://www.utoronto.ca/",
+      "homepage_status": null,
+      "homepage_verified": false,
+      "links_checked": 0,
+      "links_verified": 0,
+      "request_count": 1,
+      "errors": [
+        "homepage: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "provenance": "Official public homepage of University of Toronto; only individually observed same-domain HTTPS responses are retained.",
+      "previous_attempt_errors": [
+        "homepage: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "observed_rows": 0,
+      "homepage_http_error_status": 403
+    },
+    {
+      "source": "Reuters",
+      "registered_domain": "reuters.com",
+      "approved_homepage": "https://www.reuters.com/",
+      "homepage_status": null,
+      "homepage_verified": false,
+      "links_checked": 0,
+      "links_verified": 0,
+      "request_count": 1,
+      "errors": [
+        "homepage: HTTPError: HTTP Error 401: HTTP Forbidden"
+      ],
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "provenance": "Official public homepage of Reuters; only individually observed same-domain HTTPS responses are retained.",
+      "previous_attempt_errors": [
+        "homepage: HTTPError: HTTP Error 401: HTTP Forbidden"
+      ],
+      "observed_rows": 0,
+      "homepage_http_error_status": 401
+    },
+    {
+      "source": "International Monetary Fund",
+      "registered_domain": "imf.org",
+      "approved_homepage": "https://www.imf.org/",
+      "homepage_status": null,
+      "homepage_verified": false,
+      "links_checked": 0,
+      "links_verified": 0,
+      "request_count": 1,
+      "errors": [
+        "homepage: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "provenance": "Official public homepage of International Monetary Fund; only individually observed same-domain HTTPS responses are retained.",
+      "previous_attempt_errors": [
+        "homepage: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "observed_rows": 0,
+      "homepage_http_error_status": 403
+    },
+    {
+      "source": "OECD",
+      "registered_domain": "oecd.org",
+      "approved_homepage": "https://www.oecd.org/",
+      "homepage_status": null,
+      "homepage_verified": false,
+      "links_checked": 0,
+      "links_verified": 0,
+      "request_count": 1,
+      "errors": [
+        "homepage: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "provenance": "Official public homepage of OECD; only individually observed same-domain HTTPS responses are retained.",
+      "previous_attempt_errors": [
+        "homepage: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "observed_rows": 0,
+      "homepage_http_error_status": 403
+    },
+    {
+      "source": "Encyclopaedia Britannica",
+      "registered_domain": "britannica.com",
+      "approved_homepage": "https://www.britannica.com/",
+      "homepage_status": null,
+      "homepage_verified": false,
+      "links_checked": 0,
+      "links_verified": 0,
+      "request_count": 1,
+      "errors": [
+        "homepage: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "provenance": "Official public homepage of Encyclopaedia Britannica; only individually observed same-domain HTTPS responses are retained.",
+      "previous_attempt_errors": [
+        "homepage: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "observed_rows": 0,
+      "homepage_http_error_status": 403
+    },
+    {
+      "source": "Wayfair",
+      "registered_domain": "wayfair.com",
+      "approved_homepage": "https://www.wayfair.com/",
+      "homepage_status": null,
+      "homepage_verified": false,
+      "links_checked": 0,
+      "links_verified": 0,
+      "request_count": 1,
+      "errors": [
+        "homepage: HTTPError: HTTP Error 429: Too Many Requests"
+      ],
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "provenance": "Official public homepage of Wayfair; only individually observed same-domain HTTPS responses are retained.",
+      "previous_attempt_errors": [
+        "homepage: HTTPError: HTTP Error 429: Too Many Requests"
+      ],
+      "observed_rows": 0,
+      "homepage_http_error_status": 429
+    },
+    {
+      "source": "Government of Ireland",
+      "registered_domain": "gov.ie",
+      "approved_homepage": "https://www.gov.ie/",
+      "homepage_status": null,
+      "homepage_verified": false,
+      "links_checked": 0,
+      "links_verified": 0,
+      "request_count": 1,
+      "errors": [
+        "homepage: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "provenance": "Official public homepage of Government of Ireland; only individually observed same-domain HTTPS responses are retained.",
+      "previous_attempt_errors": [
+        "homepage: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "observed_rows": 0,
+      "homepage_http_error_status": 403
+    },
+    {
+      "source": "Parliament of the United Kingdom",
+      "registered_domain": "parliament.uk",
+      "approved_homepage": "https://www.parliament.uk/",
+      "homepage_status": null,
+      "homepage_verified": false,
+      "links_checked": 0,
+      "links_verified": 0,
+      "request_count": 1,
+      "errors": [
+        "homepage: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "provenance": "Official public homepage of Parliament of the United Kingdom; only individually observed same-domain HTTPS responses are retained.",
+      "previous_attempt_errors": [
+        "homepage: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "observed_rows": 0,
+      "homepage_http_error_status": 403
+    },
+    {
+      "source": "Australian Government",
+      "registered_domain": "australia.gov.au",
+      "approved_homepage": "https://www.australia.gov.au/",
+      "homepage_status": null,
+      "homepage_verified": false,
+      "links_checked": 0,
+      "links_verified": 0,
+      "request_count": 1,
+      "errors": [
+        "homepage: URLError: <urlopen error redirect outside approved HTTPS registered domain blocked>"
+      ],
+      "method": "Extract observed HTTPS same-registered-domain links from the official first-party homepage and up to two linked HTML pages; individually GET each retained URL and require 2xx plus same-registered-domain final URL.",
+      "provenance": "Official public homepage of Australian Government; only individually observed same-domain HTTPS responses are retained.",
+      "previous_attempt_errors": [
+        "homepage: URLError: <urlopen error redirect outside approved HTTPS registered domain blocked>"
+      ],
+      "observed_rows": 0,
+      "homepage_http_error_status": null
+    }
+  ],
+  "collection": {
+    "csv": "experiments\\auto_ml\\zero_yield_retry_20261009T101233Z\\new_legitimate_observations.csv",
+    "sha256": "01214ee504003d3f9db2925696644ac2bbf7626c488bbc78c687f78cfc358e5a",
+    "rows": 0,
+    "unique_normalized_urls": 0,
+    "registered_domains": 0,
+    "classes": {},
+    "cohorts": {},
+    "counts_by_source": {},
+    "counts_by_registered_domain": {},
+    "duplicate_rows_removed": {
+      "input_observations": 0,
+      "output_unique_rows": 0,
+      "exact_duplicate_rows_removed": 0,
+      "normalized_duplicate_rows_removed": 0,
+      "duplicate_rows_removed_total": 0,
+      "normalization_function": "feature_extractor.normalize_url"
+    },
+    "provenance_errors": [],
+    "normalized_duplicate_rows_after_deduplication": 0,
+    "domain_overlap_checks": {},
+    "missing_classes": [
+      0,
+      1
+    ],
+    "class_balance_status": "UNAVAILABLE_NO_RETAINED_ROWS",
+    "missing_url_cohorts": [
+      "homepage",
+      "path",
+      "search",
+      "query",
+      "multiple_parameters",
+      "encoded",
+      "fragment",
+      "pagination",
+      "tracking",
+      "documentation",
+      "login_account",
+      "long_url"
+    ],
+    "required_url_cohorts": [
+      "homepage",
+      "path",
+      "search",
+      "query",
+      "multiple_parameters",
+      "encoded",
+      "fragment",
+      "pagination",
+      "tracking",
+      "documentation",
+      "login_account",
+      "long_url"
+    ],
+    "url_cohort_coverage_status": "NO_COHORTS_OBSERVED"
+  },
+  "lockbox_assessment": {
+    "independence_of_collected_domains_from_scanned_history": "NOT_PROVEN",
+    "two_class_lockbox_independence": "NOT_PROVEN",
+    "reason": "No fresh, independently sourced phishing lockbox rows were reserved. Prior phishing-feed entries are historical and feed membership alone does not establish current maliciousness.",
+    "required_before_training": [
+      "Independently sourced phishing rows with timestamped provenance",
+      "Domain-disjoint train/calibration/validation/test/lockbox assignments",
+      "Minimum per-class and per-cohort sample counts set before model selection"
+    ]
+  },
+  "candidate_source_domain_overlap_checks": {},
+  "historical_dataset_domain_count": 35496,
+  "phishing_feed_domain_count": 323590,
+  "phishing_feed_overlap_with_historical_datasets": {
+    "overlapping_registered_domains": 9606,
+    "sample_domains": [
+      "000webhostapp.com",
+      "00web.net",
+      "01us2w056ps.top",
+      "02bundle-renew.com",
+      "03servierchaseelisst.duckdns.org",
+      "06ayushyadav.github.io",
+      "0854157.repl.co",
+      "088invoice.online",
+      "0hi.me",
+      "0k3d76dx.workers.dev",
+      "1000000000000005656656314.tk",
+      "10000000002103221054874458-gq.tk",
+      "1000000000347789523698546.tk",
+      "1000000123459869581473120000016.tk",
+      "100005425375681933515.ml",
+      "1005519.com",
+      "101main.com",
+      "102.130.121.32",
+      "104-245-35-149.cprapid.com",
+      "104.168.52.143",
+      "104.194.8.242",
+      "104.200.17.253",
+      "104.214.62.113",
+      "107-173-176-135.plesk.page",
+      "107-173-246-31.plesk.page"
+    ]
+  }
+}

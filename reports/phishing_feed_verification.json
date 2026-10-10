@@ -1,0 +1,525 @@
+{
+  "status": "PASS",
+  "feed_path": "data\\external\\phishing_database_active.txt",
+  "independent_python_counts": {
+    "total_physical_lines": 789054,
+    "non_empty_lines": 789054,
+    "exact_unique_raw_strings": 789054,
+    "exact_duplicate_raw_strings": 0,
+    "empty_or_whitespace_lines": 0,
+    "invalid_urls": 674,
+    "valid_urls": 788380,
+    "unique_valid_urls_before_normalization": 788380,
+    "unique_valid_urls_after_normalize_url": 788301,
+    "unique_valid_urls_after_analysis_normalization": 784385,
+    "exact_duplicates_after_normalize_url": 79,
+    "normalized_duplicates_after_analysis_url": 3995,
+    "python_casefold_unique_raw_strings": 732011,
+    "python_casefold_unique_valid_urls": 731403,
+    "casefold_collisions_in_raw_unique_strings": 57043
+  },
+  "prepare_dataset_counts": {
+    "rows_before": 789054,
+    "blank_lines": 0,
+    "missing_urls": 0,
+    "invalid_urls": 674,
+    "valid_urls_after_missing_and_invalid_filter": 788380,
+    "exact_duplicate_urls_after_normalize_url": 79,
+    "normalized_duplicate_urls_after_analysis_url": 3995,
+    "duplicates_removed_by_drop_duplicates_analysis_url": 3995,
+    "rows_after": 784385
+  },
+  "known_prepare_dataset_counts_match": true,
+  "powershell_comparison": {
+    "reported_sort_object_unique_count": 732011,
+    "python_exact_unique_raw_count": 789054,
+    "python_exact_unique_valid_raw_url_count": 788380,
+    "exact_count_difference": 57043,
+    "python_casefold_unique_raw_count": 732011,
+    "python_casefold_count_matches_powershell": true,
+    "explanation": "Sort-Object -Unique compares strings case-insensitively by default; the Python casefold diagnostic matches its reported count exactly. Use Sort-Object -CaseSensitive -Unique for an exact-string comparison."
+  },
+  "prepare_dataset_explanation": {
+    "_read_feed()": "Reads UTF-8 with errors='replace', calls splitlines(), records len(lines) as rows_before, counts not line.strip() as blank_lines, and creates one row per line with label=1, source=phishing_database_active, collection_date=NA before canonicalization.",
+    "_canonicalize() missing filter": "Counts null or whitespace-only url values as missing_urls and drops them. For this feed, blank_lines and missing_urls are both zero.",
+    "URL validation and normalize_url()": "For each remaining row, calls normalize_url(str(url).strip()); TypeError/ValueError increments invalid_urls and drops the row. Valid outputs replace url with the normalized URL.",
+    "exact_duplicate_urls": "Computed after normalize_url() as records['url'].duplicated().sum(); this feed has 79 repeated normalized URL strings.",
+    "normalized_duplicate_urls": "Computed after _analysis_url() as records['_analysis_url'].duplicated().sum(); this counts 3,995 rows whose analysis identity has appeared earlier.",
+    "deduplication": "Drops duplicate _analysis_url values, keeping the first row. _analysis_url() removes a leading www. from the host and treats a root '/' path as empty while preserving scheme, non-root path, query, and fragment.",
+    "rows_after": "Set to len(records) after drop_duplicates('_analysis_url'): 788,380 valid rows minus 3,995 duplicates = 784,385."
+  },
+  "duplicate_examples": {
+    "exact_duplicate_raw_strings": [],
+    "same_normalize_url_values_but_distinct_raw_strings": [
+      {
+        "first_raw_url": "https://cba-accessinfo.com/pages",
+        "duplicate_raw_url": "https://Cba-accessinfo.com/pages",
+        "first_normalize_url_value": "https://cba-accessinfo.com/pages",
+        "duplicate_normalize_url_value": "https://cba-accessinfo.com/pages",
+        "first_analysis_url": "https://cba-accessinfo.com/pages",
+        "duplicate_analysis_url": "https://cba-accessinfo.com/pages",
+        "shared_normalization_key": "https://cba-accessinfo.com/pages"
+      },
+      {
+        "first_raw_url": "https://cb-new-notifs.top:443/newtransfer",
+        "duplicate_raw_url": "https://cb-new-notifs.top/newtransfer",
+        "first_normalize_url_value": "https://cb-new-notifs.top/newtransfer",
+        "duplicate_normalize_url_value": "https://cb-new-notifs.top/newtransfer",
+        "first_analysis_url": "https://cb-new-notifs.top/newtransfer",
+        "duplicate_analysis_url": "https://cb-new-notifs.top/newtransfer",
+        "shared_normalization_key": "https://cb-new-notifs.top/newtransfer"
+      },
+      {
+        "first_raw_url": "https://chb57.link/login",
+        "duplicate_raw_url": "https://Chb57.link/login",
+        "first_normalize_url_value": "https://chb57.link/login",
+        "duplicate_normalize_url_value": "https://chb57.link/login",
+        "first_analysis_url": "https://chb57.link/login",
+        "duplicate_analysis_url": "https://chb57.link/login",
+        "shared_normalization_key": "https://chb57.link/login"
+      },
+      {
+        "first_raw_url": "https://coin-notif.top:443/newtransfer",
+        "duplicate_raw_url": "https://coin-notif.top/newtransfer",
+        "first_normalize_url_value": "https://coin-notif.top/newtransfer",
+        "duplicate_normalize_url_value": "https://coin-notif.top/newtransfer",
+        "first_analysis_url": "https://coin-notif.top/newtransfer",
+        "duplicate_analysis_url": "https://coin-notif.top/newtransfer",
+        "shared_normalization_key": "https://coin-notif.top/newtransfer"
+      },
+      {
+        "first_raw_url": "https://commreview-activity.com/pages",
+        "duplicate_raw_url": "https://Commreview-activity.com/pages",
+        "first_normalize_url_value": "https://commreview-activity.com/pages",
+        "duplicate_normalize_url_value": "https://commreview-activity.com/pages",
+        "first_analysis_url": "https://commreview-activity.com/pages",
+        "duplicate_analysis_url": "https://commreview-activity.com/pages",
+        "shared_normalization_key": "https://commreview-activity.com/pages"
+      },
+      {
+        "first_raw_url": "https://commreview-alert.com/pages",
+        "duplicate_raw_url": "https://Commreview-alert.com/pages",
+        "first_normalize_url_value": "https://commreview-alert.com/pages",
+        "duplicate_normalize_url_value": "https://commreview-alert.com/pages",
+        "first_analysis_url": "https://commreview-alert.com/pages",
+        "duplicate_analysis_url": "https://commreview-alert.com/pages",
+        "shared_normalization_key": "https://commreview-alert.com/pages"
+      },
+      {
+        "first_raw_url": "https://connect-formation.fr:443/wordpress/wp-includes/images/smilies/cloud/customer_center/user-143314/identity.php",
+        "duplicate_raw_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-143314/identity.php",
+        "first_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-143314/identity.php",
+        "duplicate_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-143314/identity.php",
+        "first_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-143314/identity.php",
+        "duplicate_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-143314/identity.php",
+        "shared_normalization_key": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-143314/identity.php"
+      },
+      {
+        "first_raw_url": "https://connect-formation.fr:443/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-143314/identity.php",
+        "duplicate_raw_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-143314/identity.php",
+        "first_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-143314/identity.php",
+        "duplicate_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-143314/identity.php",
+        "first_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-143314/identity.php",
+        "duplicate_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-143314/identity.php",
+        "shared_normalization_key": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-143314/identity.php"
+      },
+      {
+        "first_raw_url": "https://connect-formation.fr:443/wordpress/wp-includes/images/smilies/cloud/customer_center/user-149974/3dcard.php",
+        "duplicate_raw_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-149974/3dcard.php",
+        "first_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-149974/3dcard.php",
+        "duplicate_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-149974/3dcard.php",
+        "first_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-149974/3dcard.php",
+        "duplicate_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-149974/3dcard.php",
+        "shared_normalization_key": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-149974/3dcard.php"
+      },
+      {
+        "first_raw_url": "https://connect-formation.fr:443/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-149974/3dCard.php",
+        "duplicate_raw_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-149974/3dCard.php",
+        "first_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-149974/3dCard.php",
+        "duplicate_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-149974/3dCard.php",
+        "first_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-149974/3dCard.php",
+        "duplicate_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-149974/3dCard.php",
+        "shared_normalization_key": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-149974/3dCard.php"
+      },
+      {
+        "first_raw_url": "https://connect-formation.fr:443/wordpress/wp-includes/images/smilies/cloud/customer_center/user-149974/bank.php",
+        "duplicate_raw_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-149974/bank.php",
+        "first_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-149974/bank.php",
+        "duplicate_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-149974/bank.php",
+        "first_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-149974/bank.php",
+        "duplicate_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-149974/bank.php",
+        "shared_normalization_key": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-149974/bank.php"
+      },
+      {
+        "first_raw_url": "https://connect-formation.fr:443/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-149974/bank.php",
+        "duplicate_raw_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-149974/bank.php",
+        "first_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-149974/bank.php",
+        "duplicate_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-149974/bank.php",
+        "first_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-149974/bank.php",
+        "duplicate_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-149974/bank.php",
+        "shared_normalization_key": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-149974/bank.php"
+      },
+      {
+        "first_raw_url": "https://connect-formation.fr:443/wordpress/wp-includes/images/smilies/cloud/customer_center/user-149974/identity.php",
+        "duplicate_raw_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-149974/identity.php",
+        "first_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-149974/identity.php",
+        "duplicate_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-149974/identity.php",
+        "first_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-149974/identity.php",
+        "duplicate_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-149974/identity.php",
+        "shared_normalization_key": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-149974/identity.php"
+      },
+      {
+        "first_raw_url": "https://connect-formation.fr:443/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-149974/identity.php",
+        "duplicate_raw_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-149974/identity.php",
+        "first_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-149974/identity.php",
+        "duplicate_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-149974/identity.php",
+        "first_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-149974/identity.php",
+        "duplicate_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-149974/identity.php",
+        "shared_normalization_key": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-149974/identity.php"
+      },
+      {
+        "first_raw_url": "https://connect-formation.fr:443/wordpress/wp-includes/images/smilies/cloud/customer_center/user-265669/3dcard.php",
+        "duplicate_raw_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-265669/3dcard.php",
+        "first_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-265669/3dcard.php",
+        "duplicate_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-265669/3dcard.php",
+        "first_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-265669/3dcard.php",
+        "duplicate_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-265669/3dcard.php",
+        "shared_normalization_key": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-265669/3dcard.php"
+      },
+      {
+        "first_raw_url": "https://connect-formation.fr:443/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-265669/3dCard.php",
+        "duplicate_raw_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-265669/3dCard.php",
+        "first_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-265669/3dCard.php",
+        "duplicate_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-265669/3dCard.php",
+        "first_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-265669/3dCard.php",
+        "duplicate_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-265669/3dCard.php",
+        "shared_normalization_key": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-265669/3dCard.php"
+      },
+      {
+        "first_raw_url": "https://connect-formation.fr:443/wordpress/wp-includes/images/smilies/cloud/customer_center/user-265669/bank.php",
+        "duplicate_raw_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-265669/bank.php",
+        "first_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-265669/bank.php",
+        "duplicate_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-265669/bank.php",
+        "first_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-265669/bank.php",
+        "duplicate_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-265669/bank.php",
+        "shared_normalization_key": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-265669/bank.php"
+      },
+      {
+        "first_raw_url": "https://connect-formation.fr:443/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-265669/bank.php",
+        "duplicate_raw_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-265669/bank.php",
+        "first_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-265669/bank.php",
+        "duplicate_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-265669/bank.php",
+        "first_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-265669/bank.php",
+        "duplicate_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-265669/bank.php",
+        "shared_normalization_key": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-265669/bank.php"
+      },
+      {
+        "first_raw_url": "https://connect-formation.fr:443/wordpress/wp-includes/images/smilies/cloud/customer_center/user-265669/identity.php",
+        "duplicate_raw_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-265669/identity.php",
+        "first_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-265669/identity.php",
+        "duplicate_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-265669/identity.php",
+        "first_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-265669/identity.php",
+        "duplicate_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-265669/identity.php",
+        "shared_normalization_key": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-265669/identity.php"
+      },
+      {
+        "first_raw_url": "https://connect-formation.fr:443/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-265669/identity.php",
+        "duplicate_raw_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-265669/identity.php",
+        "first_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-265669/identity.php",
+        "duplicate_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-265669/identity.php",
+        "first_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-265669/identity.php",
+        "duplicate_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-265669/identity.php",
+        "shared_normalization_key": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-265669/identity.php"
+      }
+    ],
+    "same_analysis_url_but_distinct_normalize_url_values": [
+      {
+        "first_raw_url": "https://cba-accessinfo.com/pages",
+        "duplicate_raw_url": "https://Cba-accessinfo.com/pages",
+        "first_normalize_url_value": "https://cba-accessinfo.com/pages",
+        "duplicate_normalize_url_value": "https://cba-accessinfo.com/pages",
+        "first_analysis_url": "https://cba-accessinfo.com/pages",
+        "duplicate_analysis_url": "https://cba-accessinfo.com/pages",
+        "shared_normalization_key": "https://cba-accessinfo.com/pages"
+      },
+      {
+        "first_raw_url": "https://cb-new-notifs.top:443/newtransfer",
+        "duplicate_raw_url": "https://cb-new-notifs.top/newtransfer",
+        "first_normalize_url_value": "https://cb-new-notifs.top/newtransfer",
+        "duplicate_normalize_url_value": "https://cb-new-notifs.top/newtransfer",
+        "first_analysis_url": "https://cb-new-notifs.top/newtransfer",
+        "duplicate_analysis_url": "https://cb-new-notifs.top/newtransfer",
+        "shared_normalization_key": "https://cb-new-notifs.top/newtransfer"
+      },
+      {
+        "first_raw_url": "https://chb57.link/login",
+        "duplicate_raw_url": "https://Chb57.link/login",
+        "first_normalize_url_value": "https://chb57.link/login",
+        "duplicate_normalize_url_value": "https://chb57.link/login",
+        "first_analysis_url": "https://chb57.link/login",
+        "duplicate_analysis_url": "https://chb57.link/login",
+        "shared_normalization_key": "https://chb57.link/login"
+      },
+      {
+        "first_raw_url": "https://coin-notif.top:443/newtransfer",
+        "duplicate_raw_url": "https://coin-notif.top/newtransfer",
+        "first_normalize_url_value": "https://coin-notif.top/newtransfer",
+        "duplicate_normalize_url_value": "https://coin-notif.top/newtransfer",
+        "first_analysis_url": "https://coin-notif.top/newtransfer",
+        "duplicate_analysis_url": "https://coin-notif.top/newtransfer",
+        "shared_normalization_key": "https://coin-notif.top/newtransfer"
+      },
+      {
+        "first_raw_url": "https://commreview-activity.com/pages",
+        "duplicate_raw_url": "https://Commreview-activity.com/pages",
+        "first_normalize_url_value": "https://commreview-activity.com/pages",
+        "duplicate_normalize_url_value": "https://commreview-activity.com/pages",
+        "first_analysis_url": "https://commreview-activity.com/pages",
+        "duplicate_analysis_url": "https://commreview-activity.com/pages",
+        "shared_normalization_key": "https://commreview-activity.com/pages"
+      },
+      {
+        "first_raw_url": "https://commreview-alert.com/pages",
+        "duplicate_raw_url": "https://Commreview-alert.com/pages",
+        "first_normalize_url_value": "https://commreview-alert.com/pages",
+        "duplicate_normalize_url_value": "https://commreview-alert.com/pages",
+        "first_analysis_url": "https://commreview-alert.com/pages",
+        "duplicate_analysis_url": "https://commreview-alert.com/pages",
+        "shared_normalization_key": "https://commreview-alert.com/pages"
+      },
+      {
+        "first_raw_url": "https://connect-formation.fr:443/wordpress/wp-includes/images/smilies/cloud/customer_center/user-143314/identity.php",
+        "duplicate_raw_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-143314/identity.php",
+        "first_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-143314/identity.php",
+        "duplicate_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-143314/identity.php",
+        "first_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-143314/identity.php",
+        "duplicate_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-143314/identity.php",
+        "shared_normalization_key": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-143314/identity.php"
+      },
+      {
+        "first_raw_url": "https://connect-formation.fr:443/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-143314/identity.php",
+        "duplicate_raw_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-143314/identity.php",
+        "first_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-143314/identity.php",
+        "duplicate_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-143314/identity.php",
+        "first_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-143314/identity.php",
+        "duplicate_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-143314/identity.php",
+        "shared_normalization_key": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-143314/identity.php"
+      },
+      {
+        "first_raw_url": "https://connect-formation.fr:443/wordpress/wp-includes/images/smilies/cloud/customer_center/user-149974/3dcard.php",
+        "duplicate_raw_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-149974/3dcard.php",
+        "first_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-149974/3dcard.php",
+        "duplicate_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-149974/3dcard.php",
+        "first_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-149974/3dcard.php",
+        "duplicate_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-149974/3dcard.php",
+        "shared_normalization_key": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-149974/3dcard.php"
+      },
+      {
+        "first_raw_url": "https://connect-formation.fr:443/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-149974/3dCard.php",
+        "duplicate_raw_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-149974/3dCard.php",
+        "first_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-149974/3dCard.php",
+        "duplicate_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-149974/3dCard.php",
+        "first_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-149974/3dCard.php",
+        "duplicate_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-149974/3dCard.php",
+        "shared_normalization_key": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-149974/3dCard.php"
+      },
+      {
+        "first_raw_url": "https://connect-formation.fr:443/wordpress/wp-includes/images/smilies/cloud/customer_center/user-149974/bank.php",
+        "duplicate_raw_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-149974/bank.php",
+        "first_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-149974/bank.php",
+        "duplicate_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-149974/bank.php",
+        "first_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-149974/bank.php",
+        "duplicate_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-149974/bank.php",
+        "shared_normalization_key": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-149974/bank.php"
+      },
+      {
+        "first_raw_url": "https://connect-formation.fr:443/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-149974/bank.php",
+        "duplicate_raw_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-149974/bank.php",
+        "first_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-149974/bank.php",
+        "duplicate_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-149974/bank.php",
+        "first_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-149974/bank.php",
+        "duplicate_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-149974/bank.php",
+        "shared_normalization_key": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-149974/bank.php"
+      },
+      {
+        "first_raw_url": "https://connect-formation.fr:443/wordpress/wp-includes/images/smilies/cloud/customer_center/user-149974/identity.php",
+        "duplicate_raw_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-149974/identity.php",
+        "first_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-149974/identity.php",
+        "duplicate_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-149974/identity.php",
+        "first_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-149974/identity.php",
+        "duplicate_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-149974/identity.php",
+        "shared_normalization_key": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-149974/identity.php"
+      },
+      {
+        "first_raw_url": "https://connect-formation.fr:443/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-149974/identity.php",
+        "duplicate_raw_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-149974/identity.php",
+        "first_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-149974/identity.php",
+        "duplicate_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-149974/identity.php",
+        "first_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-149974/identity.php",
+        "duplicate_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-149974/identity.php",
+        "shared_normalization_key": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-149974/identity.php"
+      },
+      {
+        "first_raw_url": "https://connect-formation.fr:443/wordpress/wp-includes/images/smilies/cloud/customer_center/user-265669/3dcard.php",
+        "duplicate_raw_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-265669/3dcard.php",
+        "first_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-265669/3dcard.php",
+        "duplicate_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-265669/3dcard.php",
+        "first_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-265669/3dcard.php",
+        "duplicate_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-265669/3dcard.php",
+        "shared_normalization_key": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-265669/3dcard.php"
+      },
+      {
+        "first_raw_url": "https://connect-formation.fr:443/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-265669/3dCard.php",
+        "duplicate_raw_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-265669/3dCard.php",
+        "first_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-265669/3dCard.php",
+        "duplicate_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-265669/3dCard.php",
+        "first_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-265669/3dCard.php",
+        "duplicate_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-265669/3dCard.php",
+        "shared_normalization_key": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-265669/3dCard.php"
+      },
+      {
+        "first_raw_url": "https://connect-formation.fr:443/wordpress/wp-includes/images/smilies/cloud/customer_center/user-265669/bank.php",
+        "duplicate_raw_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-265669/bank.php",
+        "first_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-265669/bank.php",
+        "duplicate_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-265669/bank.php",
+        "first_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-265669/bank.php",
+        "duplicate_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-265669/bank.php",
+        "shared_normalization_key": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-265669/bank.php"
+      },
+      {
+        "first_raw_url": "https://connect-formation.fr:443/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-265669/bank.php",
+        "duplicate_raw_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-265669/bank.php",
+        "first_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-265669/bank.php",
+        "duplicate_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-265669/bank.php",
+        "first_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-265669/bank.php",
+        "duplicate_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-265669/bank.php",
+        "shared_normalization_key": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-265669/bank.php"
+      },
+      {
+        "first_raw_url": "https://connect-formation.fr:443/wordpress/wp-includes/images/smilies/cloud/customer_center/user-265669/identity.php",
+        "duplicate_raw_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-265669/identity.php",
+        "first_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-265669/identity.php",
+        "duplicate_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-265669/identity.php",
+        "first_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-265669/identity.php",
+        "duplicate_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-265669/identity.php",
+        "shared_normalization_key": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/cloud/customer_center/user-265669/identity.php"
+      },
+      {
+        "first_raw_url": "https://connect-formation.fr:443/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-265669/identity.php",
+        "duplicate_raw_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-265669/identity.php",
+        "first_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-265669/identity.php",
+        "duplicate_normalize_url_value": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-265669/identity.php",
+        "first_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-265669/identity.php",
+        "duplicate_analysis_url": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-265669/identity.php",
+        "shared_normalization_key": "https://connect-formation.fr/wordpress/wp-includes/images/smilies/Cloud/customer_center/user-265669/identity.php"
+      }
+    ],
+    "maximum_examples_per_list": 20
+  },
+  "invalid_url_examples_first_20_only": [
+    {
+      "line_number": 1,
+      "url": "ftp://188.128.111.33/iptv/tv1324/view.html",
+      "error": "unsupported_scheme"
+    },
+    {
+      "line_number": 2,
+      "url": "ftp://me@createkindlebooks.org:noobasshole@createkindlebooks.org/index.html",
+      "error": "unsupported_scheme"
+    },
+    {
+      "line_number": 3256,
+      "url": "http://174.139.46.28/ap/signin?key=a@b.c&openid.assoc_handle=jpf%20lex&openid.claimed_id=http://specs.ope%20nid.net/auth/2.0/identifier_select&openid.identity=http%3%20a//specs.openid.net/auth/2.0/identifier_select&openid.mode=checkid_setup&openid.ns=http://specs.openid.net%20/auth/2.0&openid.pape.max_auth_age=0&openid.return_to=https%20://www.amazon.co.jp/?ref_=nav_em_hd_re_signin&ref_=nav_em_hd_clc_signin",
+      "error": "invalid_url"
+    },
+    {
+      "line_number": 3591,
+      "url": "http://185.159.68.14/ap/signin?key=a@b.c&openid.assoc_handle=jpf%20lex&openid.claimed_id=http://specs.ope%20nid.net/auth/2.0/identifier_select&openid.identity=http%3%20a//specs.openid.net/auth/2.0/identifier_select&openid.mode=checkid_setup&openid.ns=http://specs.openid.net%20/auth/2.0&openid.pape.max_auth_age=0&openid.return_to=https%20://www.amazon.co.jp/?ref_=nav_em_hd_re_signin&ref_=nav_em_hd_clc_signin",
+      "error": "invalid_url"
+    },
+    {
+      "line_number": 5428,
+      "url": "http://2745306.ka511759.web.hosting-test.net/?return_url=https%3a%2f%2",
+      "error": "invalid_url"
+    },
+    {
+      "line_number": 5429,
+      "url": "http://2762868.ti514798.web.hosting-test.net/?return_url=https%3a%2f%2",
+      "error": "invalid_url"
+    },
+    {
+      "line_number": 7639,
+      "url": "http://5002elisabeth_kadar.posshop.com.jo/br/?zwxpc2fizxrox2thzgfyqgphymlslmnvbq==",
+      "error": "invalid_url"
+    },
+    {
+      "line_number": 7640,
+      "url": "http://5002mark_resslerii.posshop.com.jo/br/?bwfya19yzxnzbgvyawlaamfiawwuy29t",
+      "error": "invalid_url"
+    },
+    {
+      "line_number": 9421,
+      "url": "http://94.156.167.30/invoice-4376746733738.r%e%g%r%nc%l%i%c%k%b%y%e%s%b%to%b%cancel%0.zip",
+      "error": "invalid_url"
+    },
+    {
+      "line_number": 9422,
+      "url": "http://94.156.167.30/myfolder/invoice-4376746733738.r%e%g%r%nc%l%i%c%k%b%y%e%s%b%to%b%cancel%0.zip",
+      "error": "invalid_url"
+    },
+    {
+      "line_number": 11262,
+      "url": "http://acn_sprtcnfrmcovu.co.vu/safety_information.html",
+      "error": "invalid_url"
+    },
+    {
+      "line_number": 20180,
+      "url": "http://betrailblazers.in/admin/eight_level/appid.php?emx=gh9i3pob&amp;data=02|01||b2f0a2fed67c4530307d08d6cd7baf50|84df9e7fe9f640afb435aaaaaaaaaaaa|1|0|636922328430844489&amp;sdata=hbm60qbuzfu3p3zd4dra9gzoqbx4gola9tjrizfj7je=&amp;reserved%=",
+      "error": "invalid_url"
+    },
+    {
+      "line_number": 28989,
+      "url": "http://cnfrm_acnrcvrysprt.co.vu/info_help.php",
+      "error": "invalid_url"
+    },
+    {
+      "line_number": 28990,
+      "url": "http://cnfrm_acnrcvrysprt.co.vu/recovery_safety.php",
+      "error": "invalid_url"
+    },
+    {
+      "line_number": 30557,
+      "url": "http://consilium1.com/wp-content/plugins/rxxigpp/o/update/ce5vnfd1dow5kafey8q1vd0h.php?client_id=415f10ed7b79f827ffc6d8809b97bf3c&email=%0%&mkt=en-us&nonce=253587421415f10ed7b79f827ffc6d8809b97bf3c&response_mode=form_post&response_type=code+id_token&scope=openid+profile&ui_locales=en-us",
+      "error": "invalid_url"
+    },
+    {
+      "line_number": 38625,
+      "url": "http://donime.tk/mail1.php?%0%=%2013inboxlightaspxn.1774256418&.rand=13inboxlight.%20aspx?n=1774256418&fav=1&fid=1&fid=1&fid=4%22%20%5cl%20%22n=%201252899642&login=%0%&loginid=$%20loginid",
+      "error": "invalid_url"
+    },
+    {
+      "line_number": 45943,
+      "url": "http://ffraym.tk/mail1.php?%0%=%2013inboxlightaspxn.1774256418&.rand=13inboxlight.%20aspx?n=1774256418&fav=1&fid=1&fid=1&fid=4%22%20%5cl%20%22n=%201252899642&login=%0%&loginid=$%20loginid",
+      "error": "invalid_url"
+    },
+    {
+      "line_number": 49141,
+      "url": "http://geoff_mulligan.falconshar.com/?q=z2vvzmzfbxvsbglnyw5aamfiawwuy29t?q=ahr0chm6ly93d3cuz29vz2xllmnvbq==?q=z2vvzmzfbxvsbglnyw5aamfiawwuy29t",
+      "error": "invalid_url"
+    },
+    {
+      "line_number": 50112,
+      "url": "http://goodbandgreat.tk/deml/sf-express/index.php?login=%0%%22",
+      "error": "invalid_url"
+    },
+    {
+      "line_number": 50632,
+      "url": "http://gregory_hafner.siammodintech.org/?z3jlz29yev9oywzuzxjaz2xpyy5jb20=/0",
+      "error": "invalid_url"
+    }
+  ],
+  "counts_reconcile": true,
+  "explanation_of_difference": "Python exact uniqueness is case-sensitive: all 789,054 non-empty raw lines are distinct. The reported PowerShell Sort-Object -Unique count is 732,011, exactly matching the Python casefolded distinct-string count. This indicates PowerShell's default string comparison collapsed case variants; it is not counting URLs under VIGIL URL normalization. The raw-line difference is 57,043, including 674 invalid URL strings. After URL validation, Python has 788,380 valid rows and 788,380 exact-unique valid raw strings. normalize_url() then collapses 79 additional rows to 788,301 unique canonical URLs. _analysis_url() additionally removes a leading www. and root slash for analysis identity, collapsing 3,995 rows total and leaving 784,385. That final count exactly matches prepare_dataset.py rows_after.",
+  "files_modified": [],
+  "training_performed": false
+}

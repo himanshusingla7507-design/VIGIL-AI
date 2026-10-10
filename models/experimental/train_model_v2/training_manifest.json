@@ -1,0 +1,160 @@
+{
+  "dataset": {
+    "path": "data\\processed\\clean_dataset.csv",
+    "sha256": "af373d723739836235e630e9198d902a690f9cbbd994a2b4fc9e2a0ca71e1dcc",
+    "rows_before_deduplication": 854870,
+    "rows_before": 854870,
+    "rows_after": 854870,
+    "invalid_urls": 0,
+    "normalized_duplicate_rows_removed": 0,
+    "registered_domains": 463308,
+    "label_counts_after_deduplication": {
+      "0": 134849,
+      "1": 720021
+    },
+    "source_label_counts_after_deduplication": {
+      "PhiUSIIL": {
+        "0": 134849,
+        "1": 99584
+      },
+      "phishing_database_active": {
+        "1": 620437
+      }
+    },
+    "missing_collection_date_rows": 854870,
+    "collection_date_note": "All dates are missing; the dataset summary confirms dates were not supplied by either source.",
+    "domains_with_both_labels": 296,
+    "domains_with_single_label": 463012,
+    "domain_label_conflicts": "Retained and reported. All rows for a registered domain are assigned to exactly one split; the conflict may reflect distinct benign and malicious URLs on the same domain or source-label noise."
+  },
+  "optional_datasets": {
+    "legitimate_dynamic_training": {
+      "path": "data\\experiments\\legitimate_dynamic_training.csv",
+      "sha256": "0ffb97d38b36521727ce05854f79a54a312746a90c872b76c4e38b859c1eed60",
+      "status": "VALID_LEGITIMATE_REGRESSION_ONLY",
+      "label_counts": {
+        "0": 95
+      },
+      "rows_before": 95,
+      "rows_after": 95,
+      "invalid_urls": 0,
+      "normalized_duplicate_rows_removed": 0,
+      "registered_domains": 17,
+      "used_for_training": false,
+      "prior_use": "Previously used in an earlier candidate experiment."
+    },
+    "legitimate_dynamic_benchmark": {
+      "path": "data\\experiments\\legitimate_dynamic_benchmark.csv",
+      "sha256": "e80df11ac2d1cfeedcbf8f7ee67313d260e314e6c0623643eb819b35dcaa5e94",
+      "status": "VALID_LEGITIMATE_REGRESSION_ONLY",
+      "label_counts": {
+        "0": 544
+      },
+      "rows_before": 544,
+      "rows_after": 544,
+      "invalid_urls": 0,
+      "normalized_duplicate_rows_removed": 0,
+      "registered_domains": 65,
+      "used_for_training": false,
+      "prior_use": "Previously used as benchmark/regression data; not an untouched test."
+    },
+    "legitimate_training_v3": {
+      "path": "data\\experiments\\legitimate_training_v3.csv",
+      "sha256": "5deb4c56cce486d1922c883394351537502e369c646075f228cc0bdb5baa56f6",
+      "status": "VALID_LEGITIMATE_REGRESSION_ONLY",
+      "label_counts": {
+        "0": 298
+      },
+      "rows_before": 298,
+      "rows_after": 298,
+      "invalid_urls": 0,
+      "normalized_duplicate_rows_removed": 0,
+      "registered_domains": 17,
+      "used_for_training": false,
+      "prior_use": "Previously used/reviewed in earlier training-data experiments."
+    },
+    "external_benign_dynamic": {
+      "path": "data\\external\\benign_dynamic\\legitimate_dynamic_urls.csv",
+      "status": "MISSING_OPTIONAL"
+    }
+  },
+  "excluded_training_rows_on_reserved_regression_domains": 1265,
+  "excluded_training_registered_domains": 29,
+  "features": [
+    "URLLength",
+    "HostnameLength",
+    "PathLength",
+    "QueryLength",
+    "FragmentLength",
+    "PathSegmentCount",
+    "QueryParameterCount",
+    "DotCount",
+    "SubdomainDepth",
+    "NoOfDigitsInURL",
+    "DigitRatioInURL",
+    "NoOfLettersInURL",
+    "LetterRatioInURL",
+    "NoOfEqualsInURL",
+    "NoOfQMarkInURL",
+    "NoOfAmpersandInURL",
+    "NoOfAtInURL",
+    "NoOfHyphenInURL",
+    "NoOfUnderscoreInURL",
+    "URLPercentEncodingCount",
+    "HasObfuscation",
+    "HasUserInfo",
+    "HasPort",
+    "IsDomainIP",
+    "IsShortened",
+    "HasSuspiciousTLD",
+    "HasSuspiciousToken",
+    "IsTrustedTLD",
+    "URLEntropy"
+  ],
+  "production_feature_metadata_sha256": "76f11a2883837c0226898d9a37d28a58475d5bdedc013e9f7969a43a493feba9",
+  "production_feature_pickle_sha256": "d02a7c9cd2cb5b73c2bbccc7347c240fed6d77593b8e7d602dbb67f424099da9",
+  "split_seed": 44,
+  "split": {
+    "train": {
+      "rows": 521652,
+      "class_counts": {
+        "0": 80787,
+        "1": 440865
+      },
+      "registered_domains": 277967,
+      "source_counts": {
+        "phishing_database_active": 379226,
+        "PhiUSIIL": 142426
+      }
+    },
+    "calibration": {
+      "rows": 167156,
+      "class_counts": {
+        "0": 26961,
+        "1": 140195
+      },
+      "registered_domains": 92656,
+      "source_counts": {
+        "phishing_database_active": 120511,
+        "PhiUSIIL": 46645
+      }
+    },
+    "test": {
+      "rows": 164797,
+      "class_counts": {
+        "0": 27038,
+        "1": 137759
+      },
+      "registered_domains": 92656,
+      "source_counts": {
+        "phishing_database_active": 120294,
+        "PhiUSIIL": 44503
+      }
+    },
+    "registered_domain_overlaps": {
+      "train::calibration": 0,
+      "train::test": 0,
+      "calibration::test": 0
+    }
+  }
+}
