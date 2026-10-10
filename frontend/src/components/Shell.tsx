@@ -5,7 +5,6 @@ import {
   BookOpen,
   History,
   Menu,
-  QrCode,
   Radio,
   Scale,
   ScanLine,
@@ -16,7 +15,7 @@ import {
 import type { ReactNode } from 'react'
 import { CyberBackground } from './CyberBackground'
 
-export type Page = 'scan' | 'qr' | 'feed' | 'broadcasts' | 'laws' | 'history' | 'analysis' | 'about'
+export type Page = 'scan' | 'feed' | 'broadcasts' | 'laws' | 'history' | 'analysis' | 'about'
 
 export function Shell({
   page,
@@ -33,7 +32,6 @@ export function Shell({
 
   const links: [Page, string, typeof ScanLine][] = [
     ['scan', 'Scan', ScanLine],
-    ['qr', 'QR Scanner', QrCode],
     ['feed', 'ScamWatch Live', Radio],
     ['broadcasts', 'Scam Broadcasts', Tv],
     ['laws', 'India Cyber Law', Scale],

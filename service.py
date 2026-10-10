@@ -188,6 +188,15 @@ def _verified_official_route_decision(normalized_url, features, model_probabilit
         )
     )
     route_is_approved = route_is_approved or is_amazon_shopping_route
+
+    # Allow exact official government/legal destinations that are not redirect-like
+    # and are known to be published by the relevant authority.  These are
+    # explicitly enumerated, not heuristically inferred.
+    is_exact_official_destination = (
+        host in {"cybercrime.gov.in", "www.cybercrime.gov.in", "www.indiacode.nic.in"}
+        and parsed.path in VERIFIED_OFFICIAL_HOSTS.get(host, set())
+    )
+    route_is_approved = route_is_approved or is_exact_official_destination
     # Do not cover endpoints that commonly forward to a user-provided target,
     # or a query value that itself embeds an absolute URL/host.
     redirect_markers = {"continue", "dest", "destination", "next", "redirect", "return", "target", "url"}

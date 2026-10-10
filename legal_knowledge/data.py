@@ -38,7 +38,7 @@ LEGAL_INSTRUMENTS: List[LegalInstrument] = [
                 "plain_explanation": "Guarantees freedom to express views, publish online, and access information over the internet, subject only to reasonable restrictions specified under Article 19(2) (sovereignty, security, public order, decency, defamation, incitement to an offence).",
                 "applicability_and_scope": "Protects online journalism, digital discourse, and expression across platforms.",
                 "penalties_or_remedy": "Judicial review of internet blocking orders and censorship directives under Anuradha Bhasin v. Union of India (2020) 3 SCC 637.",
-                "official_source_ref": "https://www.indiacode.nic.in/handle/123456789/1522",
+                "official_source_ref": "https://www.legislative.gov.in/static/uploads/2025/07/c9fe9c9b6840524844316f74bb1c556c.pdf",
             },
             {
                 "section_or_article": "Article 32 & Article 226",
@@ -46,7 +46,7 @@ LEGAL_INSTRUMENTS: List[LegalInstrument] = [
                 "plain_explanation": "Empowers citizens to approach the Supreme Court (Art. 32) or High Courts (Art. 226) directly when fundamental digital rights are infringed by state authorities or arbitrary executive action.",
                 "applicability_and_scope": "Direct constitutional recourse for fundamental rights enforcement.",
                 "penalties_or_remedy": "Issuance of binding writs, directions, or orders to public authorities.",
-                "official_source_ref": "https://www.indiacode.nic.in/handle/123456789/1522",
+                "official_source_ref": "https://www.legislative.gov.in/static/uploads/2025/07/c9fe9c9b6840524844316f74bb1c556c.pdf",
             },
         ],
         real_world_scenarios=[
@@ -61,7 +61,7 @@ LEGAL_INSTRUMENTS: List[LegalInstrument] = [
             "File a Writ Petition under Article 226 before the jurisdictional High Court.",
             "File a Writ Petition under Article 32 before the Supreme Court for fundamental rights violation.",
         ],
-        official_source_url="https://www.indiacode.nic.in/handle/123456789/1522",
+        official_source_url="https://www.legislative.gov.in/static/uploads/2025/07/c9fe9c9b6840524844316f74bb1c556c.pdf",
         last_verified_at="2026-10-09T00:00:00Z",
     ),
     LegalInstrument(

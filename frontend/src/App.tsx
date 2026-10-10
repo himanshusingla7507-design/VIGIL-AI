@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion } from 'motion/react'
 import { api } from './services/api'
 import type { ScanResult } from './types'
@@ -11,10 +11,6 @@ import { HistoryPage } from './pages/HistoryPage'
 import { AnalysisPage } from './pages/AnalysisPage'
 import { AboutPage } from './pages/AboutPage'
 
-const QrScannerPage = lazy(() =>
-  import('./pages/QrScannerPage').then(module => ({ default: module.QrScannerPage }))
-)
-
 export default function App() {
   const [page, setPage] = useState<Page>('scan')
   const [result, setResult] = useState<ScanResult | null>(null)
@@ -23,9 +19,34 @@ export default function App() {
   const [targetLegalInstrumentId, setTargetLegalInstrumentId] = useState<string | undefined>(undefined)
 
   useEffect(() => {
-    api.getHealth()
-      .then(value => setHealth(value.status === 'ok' && value.model_loaded))
-      .catch(() => setHealth(false))
+    let active = true
+    let retries = 0
+
+    const checkHealth = async () => {
+      try {
+        const value = await api.getHealth()
+        if (!active) return
+        if (value.status === 'ok' && value.model_loaded) {
+          setHealth(true)
+          return
+        }
+        throw new Error('Backend is not ready yet.')
+      } catch {
+        if (!active) return
+        retries += 1
+        if (retries <= 20) {
+          setHealth(null)
+          window.setTimeout(checkHealth, 2000)
+          return
+        }
+        setHealth(false)
+      }
+    }
+
+    checkHealth()
+    return () => {
+      active = false
+    }
   }, [])
 
   const handleInspectUrl = (url: string) => {
@@ -39,9 +60,7 @@ export default function App() {
   }
 
   const content =
-    page === 'qr' ? (
-      <QrScannerPage />
-    ) : page === 'scan' ? (
+    page === 'scan' ? (
       <ScanPage result={result} onResult={setResult} initialUrl={inspectUrl} />
     ) : page === 'feed' ? (
       <FeedPage onInspectUrl={handleInspectUrl} />
@@ -68,9 +87,7 @@ export default function App() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.2 }}
       >
-        <Suspense fallback={<div className="page-container qr-page" role="status">Loading scanner…</div>}>
-          {content}
-        </Suspense>
+        {content}
       </motion.div>
     </Shell>
   )

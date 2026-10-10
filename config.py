@@ -33,6 +33,16 @@ VERIFIED_OFFICIAL_HOSTS = {
     "www.netflix.com": {"/browse"},
     "www.canva.com": {"/templates"},
     "www.instagram.com": {"/accounts/onetap/"},
+    "cybercrime.gov.in": {"/"},
+    "www.cybercrime.gov.in": {"/"},
+    "www.indiacode.nic.in": {
+        "/handle/123456789/1522",
+        "/handle/123456789/1999",
+        "/handle/123456789/2000",
+        "/handle/123456789/2006",
+        "/handle/123456789/2008",
+        "/handle/123456789/2013",
+    },
 }
 AMAZON_SHOPPING_HOSTS = {"amazon.com", "www.amazon.com"}
 

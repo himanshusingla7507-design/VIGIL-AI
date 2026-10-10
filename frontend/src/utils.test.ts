@@ -19,6 +19,8 @@ describe('official legal source URLs', () => {
   it('accepts HTTPS URLs on official legal-source domains', () => {
     expect(getOfficialLegalSourceUrl('https://www.indiacode.nic.in/handle/123456789/1999'))
       .toBe('https://www.indiacode.nic.in/handle/123456789/1999')
+    expect(getOfficialLegalSourceUrl('https://www.legislative.gov.in/static/uploads/2025/07/c9fe9c9b6840524844316f74bb1c556c.pdf'))
+      .toBe('https://www.legislative.gov.in/static/uploads/2025/07/c9fe9c9b6840524844316f74bb1c556c.pdf')
     expect(getOfficialLegalSourceUrl('https://www.rbi.org.in/scripts/BS_CircularIndexDisplay.aspx?Id=11040'))
       .toBe('https://www.rbi.org.in/scripts/BS_CircularIndexDisplay.aspx?Id=11040')
   })

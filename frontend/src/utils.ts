@@ -12,6 +12,7 @@ export function validateUrl(value: string): string | null {
 
 const officialLegalSourceDomains = [
   'indiacode.nic.in',
+  'legislative.gov.in',
   'meity.gov.in',
   'egazette.gov.in',
   'gazette.nic.in',
